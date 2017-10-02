@@ -16,5 +16,5 @@ function addStyle() {
 }
 
 function verificarNumero() {
-	location.href = 'http://localhost:8080/caja_prymera/micash_resumen';
+	location.href = 'http://localhost:8080/ejemplo2/micash_resumen';
 }

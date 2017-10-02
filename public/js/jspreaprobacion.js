@@ -16,5 +16,5 @@ function addStyle() {
 }
 
 function verificarNumero() {
-	location.href = 'http://localhost:8080/caja_prymera/C_resumen';
+	location.href = 'http://localhost:8080/ejemplo2/C_resumen';
 }

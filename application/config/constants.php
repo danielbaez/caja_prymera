@@ -84,34 +84,18 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-defined('RUTA_CSS')     OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/css/');
-defined('RUTA_FILES')   OR define('RUTA_FILES'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/files/');
-defined('RUTA_FONTS')   OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/fonts/');
-defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/img/');
-defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/js/');
-defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/plugins/');
+
+//RECURSOS PUBLICOS
+defined('RUTA_CSS')     OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/ejemplo2/public/css/');
+defined('RUTA_FILES')   OR define('RUTA_FILES'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/ejemplo2/public/files/');
+defined('RUTA_FONTS')   OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/ejemplo2/public/fonts/');
+defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/ejemplo2/public/img/');
+defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/ejemplo2/public/js/');
+defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/ejemplo2/public/plugins/');
+
 defined('CHARSET_ISO_8859_1') OR define('CHARSET_ISO_8859_1', 'Content-Type: text/html; charset=ISO-8859-1');
-defined('PROYECTO_NAME')      OR define('PROYECTO_NAME','caja_prymera');
+defined('PROYECTO_NAME')      OR define('PROYECTO_NAME','ejemplo2');
 defined('RUTA_CAJA') OR define('RUTA_CAJA', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/'.PROYECTO_NAME.'/');
-
-//TIPO DE PAGO
-defined('TIPO_PAGO_SIMPLE')  OR define('TIPO_PAGO_SIMPLE', 1);
-defined('TIPO_PAGO_DOBLE')  OR define('TIPO_PAGO_DOBLE'  , 2);
-
-
-//Envio de correos
-defined('CORREO_BASE')   OR define('CORREO_BASE'  ,'jhonatan.iberico@comparabien.com');
-defined('PASSWORD_BASE') OR define('PASSWORD_BASE','jhona2015');
-defined('PROTOCOL')      OR define('PROTOCOL'     ,'smtp');
-defined('SMTP_HOST')     OR define('SMTP_HOST'    ,'ssl://smtp.gmail.com');
-defined('SMTP_PORT')     OR define('SMTP_PORT'    ,'465');
-defined('MAILTYPE')      OR define('MAILTYPE'     ,'html');
-
-defined('INSERT_ACCION') OR define('INSERT_ACCION', '1');
-defined('UPDATE_ACCION') OR define('UPDATE_ACCION', '2');
-defined('DELETE_ACCION') OR define('DELETE_ACCION', '3');
 
 defined('PRODUCTO_MICASH')   OR define('PRODUCTO_MICASH'  ,'mi_cash');
 defined('PRODUCTO_VEHICULAR')   OR define('PRODUCTO_VEHICULAR'  ,'vehicular');
-
-//defined('PLAZO_DEFAULT')   OR define('PLAZO_DEFAULT'  , 36);

@@ -42,7 +42,7 @@ class C_preaprobacion extends CI_Controller {
         $data['nombre'] = _getSesion('nom');
         $data['email']='jhiberico@hotmail.com';
         $nombre = $this->session->userdata('nombre');
-//         _log(print_r($this->session->all_userdata('deliverdata'), true));
+        _log(print_r($this->session->all_userdata('deliverdata'), true));
 //         _log(_getSesion('dni'));
         $sueldo = $this->sueldo;
         $minAuto = null;
