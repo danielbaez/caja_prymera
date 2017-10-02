@@ -1,0 +1,120 @@
+.color-value {
+ 	background:#86af49;
+ 	color:#fff;
+ }
+ .color-data {
+ 	color:#005ce6;
+ }
+ .color-info {
+	color:#ccccb3;
+ }
+ 
+div.picture1 {
+   width:20px; /*width of your image*/
+   height:20px; /*height of your image*/
+   background-image:url("https://www.google.com.pe/search?biw=1366&bih=662&tbm=isch&sa=1&q=imagenes+faces+happy+icons&oq=imagenes+faces+happy+icons&gs_l=psy-ab.3...7434.8423.0.8678.6.6.0.0.0.0.347.347.3-1.1.0....0...1.1.64.psy-ab..5.0.0....0.rw21_WR84Ug#imgrc=8JJBybriRsNMeM:");
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+}
+
+.color1 {
+	color:#EC971F;
+}
+
+body {
+	background-image:url(../img/fondos/Background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center; 
+    padding-top: 70px;
+}
+.imagen-fondo {
+	width: 600px;
+    position: relative;
+    right: 131px;
+    top: -49px;
+}
+.logo {
+	max-width: 302px;
+}
+
+.panel-primary,
+.panel-heading {
+	border-top-left-radius: 40px;
+}
+.panel-primary,
+.panel-body{
+	border-bottom-right-radius: 40px;
+}
+.navbar-right{
+	padding: 0 200px;
+}
+.button-login button{
+	background-color: #4e82bb !important;
+    color: #fff;
+    border-radius: 20px;
+    height: 28px;
+    line-height: 16px;
+    text-transform: unset;
+    padding-right: 1px;
+    vertical-align: middle;
+	z-index: 1000;
+	position: relative;
+    left: 53px;
+}
+.button-login button i{
+	background-color: #fff;
+	color: #4e82bb;
+	border-radius: 50%;
+	margin-left: 5px;
+}
+.container-fluid {
+	background-color: #0060aa;
+    height: 132px;
+}
+.container-fluid.contenedor {
+	background-color: #fff;
+    height: 40px;
+}
+.mdi-keyboard_arrow_right {
+	color: #005aa6;
+}
+.form-control {
+    margin-left: 10px;
+    width: 93%;
+    height: 50px;
+	
+}
+.navbar-brand {
+	color: #fff;
+    font-size: 33px;
+    padding: 9px;
+    margin: 6px;
+    margin-top: 11px;
+    margin-bottom: 13px;
+    position: relative;
+    left: 204px;
+}
+div.text-left class1{
+	color: #fff;
+	position: relative;
+	bottom: 8px;
+    right: 100px;
+    top: -6px;
+}
+@font-face {
+    font-family: DeliciousRoman;
+    src: url(http://www.font-face.com/fonts/delicious/Delicious-Roman.otf);
+    font-weight:400;
+}
+
+div.text-left{
+	color: #fff;
+}
+div.checkbox label {
+	position: relative;right: -6px;color: black;
+}
+.input-group {
+	width: 100%
+}

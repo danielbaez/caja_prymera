@@ -1,0 +1,87 @@
+.container-fluid {
+	background-color: #1C4485;
+}
+.navbar-brand {
+	color: #fff;
+    font-size: 33px;
+    padding: 9px;
+    margin: 6px;
+    margin-top: 11px;
+    margin-bottom: 13px;
+    position: relative;
+    left: 204px;
+}
+.container-fluid {
+    background-color: #0060aa;
+    height: 132px;
+}
+panel-primary,
+.panel-body{
+	border-bottom-right-radius: 40px;
+}
+.navbar-right{
+	padding: 0 200px;
+}
+
+div.row.row1 {
+	background-color:#fff;
+	color:#1C4485; 
+	padding:5px 15px;
+}
+
+h1{
+	font-size: 39px;
+    color: #fff;
+    padding-left: 167px;
+}
+h6 {
+	color: #fff;
+    font-size: 16px;
+    /* margin: 2px; */
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: 83px;
+}
+
+h3 {
+	color: #fff;
+    font-size: 36px;
+    margin: 7px;
+    text-align: center;
+    position: relative;
+    left: 81px;
+}
+.logo {
+	height: 97px;
+	width: 302px;
+	position: relative;
+	top: 10px;
+	max-width: 302px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 30px;
+}
+.modal-body {
+	text-align: left;
+    margin-left: 40px;
+    padding: 0px;
+    font-size: 12px;
+}
+.modal-content {
+	border-radius: 12px;
+}
+
+/*ESTILOS-GENERALES*/
+h2.title-prestamo{
+	font-size: 36px;
+	color: #015FA9;
+}
+.card-border{
+	border: 2px solid #015FA9;
+    padding: 30px 15px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}

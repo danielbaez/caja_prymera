@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteEngine on
+	RewriteCond $1 !^(index\.php|uploads|images|public|robots\.txt)
+	RewriteRule ^(.*)$ /caja_prymera/index.php/$1 [L]
+</IfModule>

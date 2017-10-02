@@ -1,0 +1,123 @@
+.container-fluid {
+    background-color: #0060aa;
+    height: 132px;
+}
+.navbar-brand {
+	color: #fff;
+    font-size: 33px;
+    padding: 9px;
+    margin: 6px;
+    margin-top: 11px;
+    margin-bottom: 13px;
+    position: relative;
+    left: 204px;
+}
+body {
+	background-image:url(../img/fondos/Credito-Vehicular-2.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center; 
+    padding-top: 70px;
+}
+panel-primary,
+.panel-body{
+	border-bottom-right-radius: 40px;
+}
+.navbar-right{
+	padding: 0 200px;
+}
+
+div.row.row1 {
+	background-color:#fff;
+	color:#1C4485; 
+	padding:5px 15px;
+}
+h6 {
+	color: #fff;
+    font-size: 16px;
+    /* margin: 2px; */
+    text-align: center;
+    position: relative;
+    top: 10px;
+    left: 11px;
+}
+
+h3 {
+	color: #fff;
+    font-size: 36px;
+    margin: 7px;
+    text-align: center;
+    position: relative;
+    left: 79px;
+}
+div.form-group {
+	background: white; 
+	text-align: left;
+	border-radius: 3px; 
+	padding: 6px 6px; 
+	border-bottom: 1px solid #dadada;
+}
+.form-control {
+	width: 153%;
+}
+span {
+	font-size: 19px;
+}
+.padding {
+	padding: 5px;
+    position: relative;
+    left: -16px;
+}
+.logo {
+	height: 97px;
+	width: 302px;
+	position: relative;
+	top: 10px;
+	max-width: 302px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 30px;
+}
+.panel-primary,
+.panel-heading {
+	color: #00519d;
+	border: none;
+	width: 461px;
+    background-color: #fff;
+    border-radius: 0px;
+    border-top-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+	
+}
+.panel-title {
+	font-size: 25px;
+    color: #1C4485;
+}
+.btn-lg {
+    width: 60%;
+    font-weight: bold;
+    background-color: #017dc3;
+    color: #fff;
+    position: relative;
+    left: 26px;
+}
+.info {
+	font-size: 35px;
+    color: #0c69ac;
+	font-weight:bold;
+    position: relative;
+    left: 100px;
+    top: 0px;
+}
+.color-info {
+	position: relative;
+     top: 10px;
+     text-align: left;
+}
+.info2 {
+	color: #1069ab;
+	font-size: 30px;
+}
