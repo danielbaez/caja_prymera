@@ -309,6 +309,8 @@ class C_preaprobacion extends CI_Controller {
             $Distrito          = _post('Distrito');
             $email             = _post('email');
             $agencia           = _post('agencia');
+            $codigo            = _post('codigo');
+            $nro_fijo          = _post('nro_fijo');
             $idPersona         = _getSesion('idPersona');
             
             $session = array('salario'            => $salario,
@@ -317,7 +319,8 @@ class C_preaprobacion extends CI_Controller {
                              'direccion'          => $direccion_empresa,
                              'departamento'       => $Departamento,
                              'cantidad'           => $Provincia,
-                             'agencia'            => $agencia
+                             'agencia'            => $agencia,
+                             'codigo'             => $codigo
                              );
             $this->session->set_userdata($session);
             $arrayUpdt = array('nro_celular' => $nro_celular);

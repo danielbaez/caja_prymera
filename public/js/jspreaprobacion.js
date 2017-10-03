@@ -22,6 +22,8 @@ function verificarNumero() {
 function enviarMail() {
 	var salario     	  = $('#salario').val();
 	var nro_celular 	  = $('#nro_celular').val();
+	var nro_fijo    	  = $('#nro_fijo').val();
+	var codigo			  = $('#codigo').val();
 	var empleador   	  = $('#empleador').val();
 	var direccion_empresa = $('#direccion_empresa').val();
 	var Departamento	  = $('#Departamento').val();
@@ -58,6 +60,14 @@ function enviarMail() {
 		msj('error', 'Llene el distrito donde vive');
 		return;
 	}
+	if(codigo == null || codigo == '') {
+		msj('error', 'Seleccione el c&oacute;digo de su localidad');
+		return;
+	}
+	if(nro_fijo == null || nro_fijo == '') {
+		msj('error', 'Llene su n&uacute;mero fijo');
+		return;
+	}
 	if(email == '' || email == null || email == undefined) {
 		msj('error','Ingrese su correo electr&oacute;nico');
 		return;
@@ -84,7 +94,9 @@ function enviarMail() {
 				  Provincia : Provincia,
 				  Distrito : Distrito,
 				  email : email,
-				  agencia : agencia},
+				  agencia : agencia,
+				  nro_fijo : nro_fijo,
+				  codigo : codigo},
 		url   : 'C_preaprobacion/enviarEmail',
 		type  : 'POST'
 	}).done(function(data){

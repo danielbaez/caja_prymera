@@ -317,7 +317,7 @@
                                                               	<div class="col-xs-12 p-0">
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                    		<select class="form-control" name="agencias" id="agencia">
+                                                                    		<select class="form-control" name="codigo" id="codigo">
                                                                 		  		<option value="">C&oacute;digo</option>
                                                                 		  		<option value="01">01</option>
                                                                 		  		<option value="041">041</option>
