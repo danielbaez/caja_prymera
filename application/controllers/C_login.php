@@ -12,6 +12,7 @@ class C_login extends CI_Controller {
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
         $this->load->helper("url");
+        $this->load->model('M_preaprobacion');
     }
     
     public function index()
@@ -46,8 +47,7 @@ class C_login extends CI_Controller {
                              'cantidad'          => $json->cantidad_max,
                              'tipo_producto'     => $tipo_producto
             );
-            $this->session->set_userdata('deliverdata', $session);
-            _log(print_r($this->session->all_userdata('deliverdata') , true));
+            $this->session->set_userdata($session);
             if($dni == null) {
                 throw new Exception('Ingrese su DNI');
             }else {
@@ -63,6 +63,12 @@ class C_login extends CI_Controller {
                     $data['url'] = RUTA_CAJA.'c_noencontrado';
                 }
             }
+            $arrayInsert = array('nombre' => utf8_decode($nombre),
+                                 'apellido'  => utf8_decode($apellido),
+                                 'email'  => $email,
+                                 'dni'  => $dni
+            );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

@@ -1,3 +1,8 @@
 function irAUbicacion() {
-	location.href = 'http://localhost:8080/ejemplo2/C_ubicacion';
+	var check = $("#checkAutorizo").is(':checked');
+	if(check == false) {
+		msj('error', 'Por favor seleccione los terminos y condiciones');
+	}else {
+		location.href = 'http://localhost:8080/caja_prymera/C_ubicacion';
+	}
 }

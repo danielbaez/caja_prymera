@@ -13,6 +13,7 @@ class C_preaprobacion extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
+        $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
         $this->array_datos = array(
                                     array(
@@ -33,17 +34,22 @@ class C_preaprobacion extends CI_Controller {
                                 );
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
+        if (! isset($_COOKIE[__getCookieName()])) {
+            header("Location: ".RUTA_CAJA, true, 301);
+        }
         
     }
     
     public function index()
     {
+        if(_getSesion("nombre") == null && _getSesion("email") == null) {
+            header("Location: ".RUTA_CAJA, true, 301);
+        }
         $data['nombreDato']=':D';
-        $data['nombre'] = _getSesion('nom');
-        $data['email']='jhiberico@hotmail.com';
+        $data['nombre'] = _getSesion('nombre');
+        $data['email']= _getSesion('email');
+        $apellido = _getSesion('apellido');
         $nombre = $this->session->userdata('nombre');
-        _log(print_r($this->session->all_userdata('deliverdata'), true));
-//         _log(_getSesion('dni'));
         $sueldo = $this->sueldo;
         $minAuto = null;
         $maxAuto = null;
@@ -67,7 +73,7 @@ class C_preaprobacion extends CI_Controller {
         $valorAuto = ($minAuto+$maxAuto)/2;
         $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.' '.$apellido.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
         $data['iniRango']     = round($valorAuto/100)*100;
@@ -288,6 +294,39 @@ class C_preaprobacion extends CI_Controller {
 //         }
             $tabla = $this->table->generate();
         return $tabla;
+    }
+    
+    function enviarEmail() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $salario           = _post('salario');
+            $nro_celular       = _post('nro_celular');
+            $empleador         = _post('empleador');
+            $direccion_empresa = _post('direccion_empresa');
+            $Departamento      = _post('Departamento');
+            $Provincia         = _post('Provincia');
+            $Distrito          = _post('Distrito');
+            $email             = _post('email');
+            $agencia           = _post('agencia');
+            $idPersona         = _getSesion('idPersona');
+            
+            $session = array('salario'            => $salario,
+                             'nro_celular'        => $nro_celular,
+                             'empleador'          => $empleador,
+                             'direccion'          => $direccion_empresa,
+                             'departamento'       => $Departamento,
+                             'cantidad'           => $Provincia,
+                             'agencia'            => $agencia
+                             );
+            $this->session->set_userdata($session);
+            $arrayUpdt = array('nro_celular' => $nro_celular);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'usuario');
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
     }
 }
 

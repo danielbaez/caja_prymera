@@ -238,38 +238,41 @@
                                                   			    <div class="col-xs-12 p-0">
                                                   			    	<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                			<select class="form-control"  name="salario">
+                                                                			<select class="form-control"  name="salario" id="salario">
                                                                               <option value="">Salario</option>
-                                                                              <option value="">Hasta 1,000 soles</option>
-                                                                              <option value="">De 1,000 a 2,000 soles</option>
-                                                                              <option value="">De 2,000 a 3,000 soles</option>
-                                                                              <option value="">De 3,000 a 4,000 soles</option>
-                                                                              <option value="">De 4,000 a 5,000 soles</option>
-                                                                              <option value="">De 5,000 a 6,000 soles</option>
-                                                                              <option value="">De 6,000 a más</option>
+                                                                              <option value="1000">Hasta 1,000 soles</option>
+                                                                              <option value="De 1,000 a 2,000 soles">De 1,000 a 2,000 soles</option>
+                                                                              <option value="De 2,000 a 3,000 soles">De 2,000 a 3,000 soles</option>
+                                                                              <option value="De 3,000 a 4,000 soles">De 3,000 a 4,000 soles</option>
+                                                                              <option value="De 4,000 a 5,000 soles">De 4,000 a 5,000 soles</option>
+                                                                              <option value="De 5,000 a 6,000 soles">De 5,000 a 6,000 soles</option>
+                                                                              <option value="De 6,000 a más">De 6,000 a más</option>
                                                             				</select>
                                                           				</div>
                                                           			</div>
                                                           			<div class="col-sm-6">
                                                                   		<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular">
+                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" maxlength="9" onkeypress="return valida(event)">
                                                                   		</div>
                                                                   	</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                   			    	<div class="form-group">
-                                                            			<input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" max-lenght="50">
+                                                            			<input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" maxlength="50" onkeypress="return soloLetras(event)">
                                                           			</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                   			    	<div class="form-group">
-                                                            			<input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" max-lenght="50" placeholder="Direcci&oacute;n empresa">
+                                                            			<input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" placeholder="Direcci&oacute;n empresa">
                                                           			</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                       				<div class="form-group">
                                                             			<select class="form-control" id="Departamento" name="Departamento">
                                                                       		<option value="">Departamento</option>
+                                                                      		<option value="Lima">Lima</option>
+                                                                      		<option value="Piura">Piura</option>
+                                                                      		<option value="Lambayeque">Lambayeque</option>
                                                             			</select>
                                                           			</div>
                                                   			    </div>
@@ -278,12 +281,12 @@
                                                           				<div class="form-group">
                                                                 			<select class="form-control" id="Provincia" name="Provincia">
                                                                           		<option value="">Provincia</option>
-                                                                              	<option value="">Surco</option>
-                                                                              	<option value="">Miraflores</option>
-                                                                              	<option value="">Surquillo</option>
-                                                                              	<option value="">Lima</option>
-                                                                              	<option value="">San miguel</option>
-                                                                              	<option value="">Villa el salvador</option>
+                                                                              	<option value="Surco">Surco</option>
+                                                                              	<option value="Miraflores">Miraflores</option>
+                                                                              	<option value="Surquillo">Surquillo</option>
+                                                                              	<option value="Lima">Lima</option>
+                                                                              	<option value="San miguel">San miguel</option>
+                                                                              	<option value="Villa el salvador">Villa el salvador</option>
                                                                 			</select>
                                                               			</div>
                                                           			</div>
@@ -291,12 +294,12 @@
                                                           				<div class="form-group">
                                                                 			<select class="form-control" id="Distrito" name="Distrito">
                                                                               	<option value="">Distrito</option>
-                                                                              	<option value="">Surco</option>
-                                                                              	<option value="">Miraflores</option>
-                                                                              	<option value="">Surquillo</option>
-                                                                              	<option value="">Lima</option>
-                                                                              	<option value="">San miguel</option>
-                                                                              	<option value="">Villa el salvador</option>
+                                                                              	<option value="Surco">Surco</option>
+                                                                              	<option value="Miraflores">Miraflores</option>
+                                                                              	<option value="Surquillo">Surquillo</option>
+                                                                              	<option value="Lima">Lima</option>
+                                                                              	<option value="San miguel">San miguel</option>
+                                                                              	<option value="Villa el salvador">Villa el salvador</option>
                                                                 			</select>
                                                               			</div>
                                                           			</div>
@@ -304,7 +307,7 @@
                                                   			    <div class="col-xs-12 text-left">
                                                   			    	<div class="checkbox">
                                                                       	<label>
-                                                                        	<input type="checkbox" name="autorizacion"> Autorizo que usen mis datos para esta oferta
+                                                                        	<input type="checkbox" name="autorizacion" id="checkAutorizacion"> Autorizo que usen mis datos para esta oferta
                                                                       	</label>
                                                                     </div>
                                                   			    </div>
@@ -314,14 +317,16 @@
                                                               	<div class="col-xs-12 p-0">
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                    		<select class="form-control" name="agencias">
+                                                                    		<select class="form-control" name="agencias" id="agencia">
                                                                 		  		<option value="">C&oacute;digo</option>
+                                                                		  		<option value="01">01</option>
+                                                                		  		<option value="041">041</option>
                                                                     		</select>
                                                                   		</div>
                                                           			</div>
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo">
+                                                                    		<input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" maxlength="7" onkeypress="return valida(event)">
                                                                   		</div>
                                                           			</div>
                                                           		</div>
@@ -355,7 +360,7 @@
                                             								<li id="remove" class="remove"><a data-toggle="tab" style="background-color: #005aa6; color: #fff;position: relative;top: 15px;" href="#home" onclick="addStyle()">Regresar</a></li>
                                             							</ul>
                                             						</div>
-                                                              		<button type="button" data-toggle="modal" style="background-color: #0060aa;color:#fff;font-weight: normal;" data-target="#myModaltelef" class="btn btn-lg selector" onclick="enviarMail()">Aceptar</button>
+                                                              		<button type="button" style="background-color: #0060aa;color:#fff;font-weight: normal;" class="btn btn-lg selector" onclick="enviarMail()">Aceptar</button>
                                                               	</div>
 															</div>
                                                 		</div>

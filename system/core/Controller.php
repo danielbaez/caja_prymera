@@ -61,6 +61,7 @@ class CI_Controller {
 	/**
 	 * Class constructor
 	 *
+	 * @property    M_preaprobacion $M_preaprobacion
 	 * @return	void
 	 */
 	public function __construct()

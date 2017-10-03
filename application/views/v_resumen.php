@@ -174,7 +174,7 @@
 		    	</div>
 		    </div>
 		    <div class="col-md-8 info">
-		    	<p style="font-size:35px;font-weight: bold;">Felicidades!</p>
+		    	<p style="font-size:35px;font-weight: bold;">Felicidades <?php echo $nombre?>!</p>
 		    	<p class="info2">tu pr&eacute;stamo ha sido</p>
 		    	<p class="info2">pre aprobado, ya est&aacute;s cerca</p>
 		    	<p class="info2">de tener el auto de tus sue&ntilde;os</p>

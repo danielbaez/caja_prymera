@@ -1,3 +1,3 @@
 function irAUbicacion() {
-	location.href = 'http://localhost:8080/ejemplo2/micash_ubicacion';
+	location.href = 'http://localhost:8080/caja_prymera/micash_ubicacion';
 }
