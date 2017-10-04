@@ -22,5 +22,5 @@ function enviarMail() {
 
 
 function verificarNumero() {
-	location.href = 'http://localhost:8080/caja_prymera/C_resumen';
+	location.href = '/C_resumen';
 }

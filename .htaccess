@@ -1,4 +1,4 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|uploads|images|public|utils|robots\.txt)
+RewriteCond $1 !^(index\.php|uploads|images|public|robots\.txt)
 #RewriteRule ^(.*)$ /caja_prymera/index.php/$1 [L]
 RewriteRule ^(.*)$ index.php/$1 [L]

@@ -3,6 +3,6 @@ function irAUbicacion() {
 	if(check == false) {
 		msj('error', 'Por favor seleccione los terminos y condiciones');
 	}else {
-		location.href = 'http://localhost:8080/caja_prymera/C_ubicacion';
+		location.href = '/C_ubicacion';
 	}
 }

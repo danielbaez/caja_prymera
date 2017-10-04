@@ -86,16 +86,18 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 //RECURSOS PUBLICOS
-defined('RUTA_CSS')     OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/css/');
-defined('RUTA_FILES')   OR define('RUTA_FILES'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/files/');
-defined('RUTA_FONTS')   OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/fonts/');
-defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/img/');
-defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/js/');
-defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/caja_prymera/public/plugins/');
+defined('RUTA_CSS')     OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/css/');
+defined('RUTA_FILES')   OR define('RUTA_FILES'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/files/');
+defined('RUTA_FONTS')   OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/fonts/');
+defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/img/');
+defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/js/');
+defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/plugins/');
 
 defined('CHARSET_ISO_8859_1') OR define('CHARSET_ISO_8859_1', 'Content-Type: text/html; charset=ISO-8859-1');
 defined('PROYECTO_NAME')      OR define('PROYECTO_NAME','caja_prymera');
-defined('RUTA_CAJA') OR define('RUTA_CAJA', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/'.PROYECTO_NAME.'/');
+//defined('RUTA_CAJA') OR define('RUTA_CAJA', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/'.PROYECTO_NAME.'/');
+
+defined('RUTA_CAJA') OR define('RUTA_CAJA', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/');
 
 defined('PRODUCTO_MICASH')   OR define('PRODUCTO_MICASH'  ,'mi_cash');
 defined('PRODUCTO_VEHICULAR')   OR define('PRODUCTO_VEHICULAR'  ,'vehicular');

@@ -1,5 +1,5 @@
 function confirmarDatos() {
-	location.href = 'http://localhost:8080/caja_prymera/C_confirmacion';
+	location.href = '/C_confirmacion';
 }
 
 var flg_active = 1; 
@@ -16,5 +16,5 @@ function addStyle() {
 }
 
 function verificarNumero() {
-	location.href = 'http://localhost:8080/caja_prymera/micash_resumen';
+	location.href = '/micash_resumen';
 }

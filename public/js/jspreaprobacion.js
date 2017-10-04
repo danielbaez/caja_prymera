@@ -1,5 +1,5 @@
 function confirmarDatos() {
-	location.href = 'http://localhost:8080/caja_prymera/C_confirmacion';
+	location.href = '/C_confirmacion';
 }
 
 var flg_active = 1; 
@@ -16,7 +16,7 @@ function addStyle() {
 }
 
 function verificarNumero() {
-	location.href = 'http://localhost:8080/caja_prymera/C_resumen';
+	location.href = '/C_resumen';
 }
 
 function enviarMail() {

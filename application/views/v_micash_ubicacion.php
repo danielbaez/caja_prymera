@@ -70,7 +70,7 @@
           <li class="dropdown">
           <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
             <ul class="dropdown-menu">
-            <!--  <li><a href="http://localhost:8080/caja_prymera">Logout</a></li>  -->
+            <!--  <li><a href="">Logout</a></li>  -->
             </ul>
           </li>
         </ul>

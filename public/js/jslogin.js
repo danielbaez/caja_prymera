@@ -111,5 +111,5 @@ function moreText() {
 }
 
 function goToLogin() {
-	location.href = "http://localhost:8080/caja_prymera/login";
+	location.href = "/login";
 }

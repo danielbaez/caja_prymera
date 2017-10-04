@@ -85,7 +85,7 @@
               		</div>
               	</div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <form class="text-center" action="http://localhost:8080/caja_prymera/c_mensaje" type="POST">
+                  <form class="text-center" action="/c_mensaje" type="POST">
                     <button type="submit" class="btn btn-lg" style="width:40%;font-weight:bold;background-color: #005aa6;width: 60%;color: #fff;">Aceptar</button>
                   </form>
                 </div>

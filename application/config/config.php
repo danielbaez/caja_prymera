@@ -24,7 +24,7 @@ ob_start();
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8080/caja_prymera';
+//$config['base_url'] = 'http://localhost:8080';
 
 /*
 |--------------------------------------------------------------------------
