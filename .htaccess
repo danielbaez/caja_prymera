@@ -1,3 +1,4 @@
-RewriteEngine on
+RewriteEngine on+
+RewriteCond %{REQUEST_URI} !/utils
 RewriteCond $1 !^(index\.php|uploads|images|public|robots\.txt)
 RewriteRule ^(.*)$ /caja_prymera/index.php/$1 [L]
