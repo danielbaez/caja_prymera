@@ -148,7 +148,7 @@
                                 					</div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="cantMensPago"><?php echo $tcea?>%</span>
+                                                		<span style="color:#1C4485;font-size: 20px" id="tcea"><?php echo $tcea?>%</span>
                                                 		<p style="color:#A9A9A9;font-size:13px">*Cuota aproximada sujeta a evaluación</p>
                                 					</div>
                                 				</div>
@@ -456,22 +456,10 @@
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
+        console.log(data);
         $('#cantTotPago').html('S/ '+data.pagoTotal);  
         $('#cantMensPago').html('S/ '+data.cuotaMensual); 
-        $('#cantMensPago').html('S/ '+data.tcea);  
-        /*try{
-          data = JSON.parse(data);
-          if(data.error == 0){
-            cuota_ini = data.min_cuota;
-              $('#cantTotPago').html('S/ '+data.cantPago);  
-              $('#cantMensPago').html('S/ '+data.mensual);  
-
-          }else {
-            return;
-          }
-        } catch (err){
-          msj('error',err.message);
-        }*/
+        $('#tcea').html('S/ '+data.tcea); 
       });
     });
 

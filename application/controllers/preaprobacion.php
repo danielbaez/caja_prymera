@@ -138,8 +138,9 @@ class preaprobacion extends CI_Controller {
 
         try 
           {
-            $cantidad = _post('cantidad');
-            exit((int)$cantidad);
+            $cantidad = preg_replace("/[^0-9]/","",_post('cantidad'));
+            $meses = preg_replace("/[^0-9]/","",_post('meses'));
+
             //resultado 1 -- ok
           //resultado 3: token
             //resultado 2: error del servidor
@@ -149,7 +150,7 @@ class preaprobacion extends CI_Controller {
            $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
                                   'Importe'=> $cantidad,
-                                  'plazo' => _post('meses')
+                                  'plazo' => $meses
                     );
 
           $result = $client->GetDatosCreditoCash($params);
@@ -159,7 +160,7 @@ class preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = $result->return->cuotaMensual;
             $data['tea'] = $result->return->tea;
             $data['tcea'] = $result->return->tea;
-            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+            $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
 
           }
           if($res == 0){
@@ -174,6 +175,8 @@ class preaprobacion extends CI_Controller {
         {
            //$response = array('status' => 2);
         }
+
+        echo json_encode($data);
 
         /*$data['error'] = EXIT_ERROR;
         $data['msj']   = null;

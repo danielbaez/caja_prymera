@@ -1,10 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ob_start();
-<<<<<<< HEAD
 
-=======
->>>>>>> 2dc8f7191a36716ae534cc5a48900b7b72fb8445
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
