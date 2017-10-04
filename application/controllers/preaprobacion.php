@@ -43,8 +43,14 @@ class preaprobacion extends CI_Controller {
         $data['nombre'] = _getSesion('nombre');
         $data['email']='jhiberico@hotmail.com';
         $nombre = $this->session->userdata('nombre');
-        //_log('$nombre: ' . $nombre);
-        //         _log(_getSesion('dni'));
+
+        $importeMaximo = _getSesion('importeMaximo');
+        $importeMinimo = _getSesion('importeMinimo');
+        $plazos = _getSesion('plazos');
+
+        $plazos_explode = explode(',', $plazos);
+
+
         $sueldo = $this->sueldo;
         $minAuto = null;
         $maxAuto = null;
@@ -70,19 +76,106 @@ class preaprobacion extends CI_Controller {
         $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
-        $data['tipo_product'] = $titulo;
-        $data['iniRango']     = round($valorAuto/100)*100;
-        $data['minAuto']      = round($minAuto/100)*100;
-        $data['maxAuto']      = round($maxAuto/100)*100;
-        $data['max_cuota']    = round($maxInicial/100)*100;
-        $data['min_cuota']    = round($minInicial/100)*100;
-        $data['cantPago']     = round($maxInicial/100)*100;
-        $data['mensual']      = round($minInicial/100)*100;
+        $data['tipo_product'] = $titulo;       
+        
+        $data['plazo_max']      = $plazos_explode[count($plazos_explode)-1];
+        $data['plazo_min']      = $plazos_explode[0];
+
+        $count = count($plazos_explode);
+        if($count == 2){
+            $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
+        }
+        elseif($count >= 3) {
+            $data['plazo_step'] = $plazos_explode[1] - $plazos_explode[0];
+        }
+
+        $data['importeMaximo']      = $importeMaximo;
+        $data['importeMinimo']      = $importeMinimo;
+
+
+        try 
+          {
+            //resultado 1 -- ok
+          //resultado 3: token
+            //resultado 2: error del servidor
+          //resultado 0 : rechazado
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+           $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_getSesion('dni'),
+                                  'Importe'=> $importeMaximo,
+                                  'plazo' => $data['plazo_max']
+                    );
+
+          $result = $client->GetDatosCreditoCash($params);
+          $res = $result->return->resultado;
+          if($res == 1){
+            $documento = $result->return->documento;
+            $data['cuotaMensual'] = $result->return->cuotaMensual;
+            $data['tea'] = $result->return->tea;
+            $data['tcea'] = $result->return->tea;
+            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+
+          }
+          if($res == 0){
+            //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
+          }
+          if($res == 2){
+            //$response = array('status' => 2);
+          }
+
+        }
+        catch(Exception $e)
+        {
+           //$response = array('status' => 2);
+        }
+
+
         $this->load->view('view_preaprobacion', $data);
     }
     
     function changeValues() {
-        $data['error'] = EXIT_ERROR;
+
+        try 
+          {
+            $cantidad = _post('cantidad');
+            exit((int)$cantidad);
+            //resultado 1 -- ok
+          //resultado 3: token
+            //resultado 2: error del servidor
+          //resultado 0 : rechazado
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+           $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_getSesion('dni'),
+                                  'Importe'=> $cantidad,
+                                  'plazo' => _post('meses')
+                    );
+
+          $result = $client->GetDatosCreditoCash($params);
+          $res = $result->return->resultado;
+          if($res == 1){
+            $documento = $result->return->documento;
+            $data['cuotaMensual'] = $result->return->cuotaMensual;
+            $data['tea'] = $result->return->tea;
+            $data['tcea'] = $result->return->tea;
+            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+
+          }
+          if($res == 0){
+            //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
+          }
+          if($res == 2){
+            //$response = array('status' => 2);
+          }
+
+        }
+        catch(Exception $e)
+        {
+           //$response = array('status' => 2);
+        }
+
+        /*$data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
             $cantPago    = null;
@@ -130,7 +223,7 @@ class preaprobacion extends CI_Controller {
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode(array_map('utf8_encode', $data));*/
     }
     
     function changeValuesVehiculo() {

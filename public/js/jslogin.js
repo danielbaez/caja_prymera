@@ -43,9 +43,19 @@ function solicitarPrestamo() {
 				  dni       : dni,
 				  email     : email},
 		url   : 'Login/solicitar',
-		type  : 'POST'
+		type  : 'POST',
+		dataType: 'json',
 	}).done(function(data){
-		try{
+		if(data.status == 0){
+			location.href = data.url;
+		}
+		if(data.status == 1){
+			location.href = data.url;
+		}
+		if(data.status == 2){
+			msj("error", "Hubo un problema en el servidor, vuelva a intertarlo");
+		}
+		/*try{
 			data = JSON.parse(data);
 			if(data.error == 0){
 				location.href = data.url;
@@ -54,7 +64,7 @@ function solicitarPrestamo() {
 			}
 		} catch (err){
 			msj('error',err.message);
-		}
+		}*/
 	});
 }
 

@@ -86,13 +86,13 @@
                             				<div class="col-xs-12 col-md-6" style="color:black;font-size:16px;position: relative;top: 30px;">
                                             	<div class="col-md-12">
                                             		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: 40px;">
-                                                  		<span>12m</span>
+                                                  		<span><?php echo $plazo_min ?>m</span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                  		<span>12m</span>
+                                                  		<span><?php echo  $plazo_min?>m</span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                  		<span>36m</span>
+                                                  		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
                                                     	<label for="slider-range-meses">Plazo de pr&eacute;stamo</label>
@@ -101,37 +101,19 @@
                                                         <p id="slider-range-value-meses" style="margin-top:10px; margin-bottom:0"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: -40px;">
-                                                  		<span>36m</span>
+                                                  		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                             	</div>
-                                            	<div class="col-md-12 hidden">
-                                            		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: 40px;">
-                                                  		<span id="sueldoMin">S/ <?php echo  $minAuto?></span>
-                                                    </div>
-                                                    <div class="visible-xs col-xs-6 text-left">
-                                                  		<span >S/ <?php echo  $minAuto?></span>
-                                                    </div>
-                                                    <div class="visible-xs col-sm-6 text-right">
-                                                  		<span>S/ <?php echo  $maxAuto?></span>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6">
-                                                    	<label for="slider-range">Monto del veh&iacute;culo</label>
-                                                        <div id="slider-range"></div>
-                                                        <p id="slider-range-value" style="margin-top:10px; margin-bottom:0"></p>
-                                                    </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: -40px;">
-                                                  		<span id="sueldoMax">S/ <?php echo  $maxAuto?></span>
-                                                    </div>
-                                            	</div>
+                                            	
                                             	<div class="col-md-12">
                                             		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: 40px;">
-                                                  		<span id="minCuota">S/ <?php echo  $min_cuota?></span>
+                                                  		<span id="minCuota">S/ <?php echo  $importeMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                  		<span>S/ <?php echo  $min_cuota?></span>
+                                                  		<span>S/ <?php echo  $importeMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                  		<span>S/ <?php echo  $max_cuota?></span>
+                                                  		<span>S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
                                                     	<label for="slider-range-dias">Cuota inicial</label>
@@ -140,7 +122,7 @@
                                                         <p id="slider-range-value-dias" style="margin-top:10px; margin-bottom:0"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: -40px;">
-                                                  		<span id="maxCuota">S/ <?php echo  $max_cuota?></span>
+                                                  		<span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                             	</div>
                                             	<div class="col-md-12" style="color:black;font-size:16px;position: relative; left: -27px">
@@ -158,15 +140,15 @@
                                 				<div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ <?php echo $cantPago?></span>
+                                                		<span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
                                 					</div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Cuota Mensual*</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/ <?php echo $mensual?></span>
+                                                		<span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
                                 					</div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="cantMensPago">7%</span>
+                                                		<span style="color:#1C4485;font-size: 20px" id="cantMensPago"><?php echo $tcea?>%</span>
                                                 		<p style="color:#A9A9A9;font-size:13px">*Cuota aproximada sujeta a evaluación</p>
                                 					</div>
                                 				</div>
@@ -433,69 +415,19 @@
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();   
 	});
-    var rangeSlider = document.getElementById('slider-range');
-    var monto      = null;
-    var meses_pago = null;
-    var cuota_ini  = null;
-    var cuota_inicial  = null;
 
-    noUiSlider.create(rangeSlider, {
-      start: [ <?php echo  $iniRango?> ],
-      step: 100,
-      range: {
-        'min': [  <?php echo  $minAuto?> ],
-        'max': [ <?php echo  $maxAuto?> ]
-      },
-      connect: "lower",
-      format: wNumb({
-        decimals: 0,
-        thousand: ',',
-        prefix: ' S/ ',
-      })
-    });
 
-    var rangeSliderValueElement = document.getElementById('slider-range-value');
-
-    rangeSlider.noUiSlider.on('update', function( values, handle ) {
-      rangeSliderValueElement.innerHTML = values[handle];
-      monto = values[handle];
-      $.ajax({
-    		data  : { cantidad : values[handle],
-    			      meses    : meses_pago,
-    			      cuota_inicial : cuota_inicial},
-    		url   : 'preaprobacion/changeValuesVehiculo',
-    		type  : 'POST'
-    	}).done(function(data){
-    		try{
-    			data = JSON.parse(data);
-    			if(data.error == 0){
-					  $('#minCuota').html('S/ '+data.min_cuota);	
-					  $('#maxCuota').html('S/ '+data.max_cuota);	
-					  $('#importe').html('S/ '+data.cuota_ini);
-					  $('#sueldoMin').html('S/ '+data.minAuto);
-					  $('#sueldoMax').html('S/ '+data.maxAuto);
-					  $('#cantTotPago').html('S/ '+data.cantPago);	
-  					  $('#cantMensPago').html('S/ '+data.mensual);
-
-    			}else {
-    				return;
-    			}
-    		} catch (err){
-    			//msj('error',err.message);
-    		}
-    	});
-    });
 
     //////////
 
     var rangeSliderMeses = document.getElementById('slider-range-meses');
 
     noUiSlider.create(rangeSliderMeses, {
-      start: [ 36 ],
-      step: 12,
+      start: [ <?php echo $plazo_max ?> ],
+      step: <?php echo $plazo_step  ?>,
       range: {
-        'min': [  12 ],
-        'max': [ 36 ]
+        'min': [  <?php echo $plazo_min ?> ],
+        'max': [ <?php echo $plazo_max ?> ]
       },
       connect: "lower",
       format: wNumb({
@@ -510,33 +442,37 @@
     rangeSliderMeses.noUiSlider.on('update', function( values, handle ) {
       rangeSliderValueElementMeses.innerHTML = values[handle];
       meses_pago = values[handle];
-      $.ajax({
-    		data  : { meses    : values[handle],
-    			      cantidad : monto,
-    			      cuota_inicial : cuota_inicial},
-    		url   : 'preaprobacion/changeValues',
-    		type  : 'POST'
-    	}).done(function(data){
-    		try{
-    			data = JSON.parse(data);
-    			if(data.error == 0){
-    				cuota_ini = data.min_cuota;
-        			  $('#sueldoMin').html('S/ '+data.minAuto);
-        			  $('#sueldoMax').html('S/ '+data.maxAuto);
-        			  $('#minCuota').html('S/ '+data.min_cuota);
-        			  $('#maxCuota').html('S/ '+data.max_cuota);
-        			  $('#slider-range-value').html('S/ '+data.valor_auto);
-        			  $('#slider-range-value-dias').html('S/ '+data.min_cuota);
-  					  $('#cantTotPago').html('S/ '+data.cantPago);	
-  					  $('#cantMensPago').html('S/ '+data.mensual);	
+    });
 
-    			}else {
-    				return;
-    			}
-    		} catch (err){
-    			msj('error',err.message);
-    		}
-    	});
+    rangeSliderMeses.noUiSlider.on('change', function( values, handle ) {
+      console.log(values)
+      rangeSliderValueElementMeses.innerHTML = values[handle];
+      meses_pago = values[handle];
+      monto = $('#slider-range-value-dias').html();
+      $.ajax({
+        data  : { meses    : meses_pago,
+                cantidad : monto},
+        url   : 'preaprobacion/changeValues',
+        type  : 'POST',
+        dataType: 'json'
+      }).done(function(data){
+        $('#cantTotPago').html('S/ '+data.pagoTotal);  
+        $('#cantMensPago').html('S/ '+data.cuotaMensual); 
+        $('#cantMensPago').html('S/ '+data.tcea);  
+        /*try{
+          data = JSON.parse(data);
+          if(data.error == 0){
+            cuota_ini = data.min_cuota;
+              $('#cantTotPago').html('S/ '+data.cantPago);  
+              $('#cantMensPago').html('S/ '+data.mensual);  
+
+          }else {
+            return;
+          }
+        } catch (err){
+          msj('error',err.message);
+        }*/
+      });
     });
 
 
@@ -544,11 +480,11 @@
     var rangeSliderDias = document.getElementById('slider-range-dias');
 
     noUiSlider.create(rangeSliderDias, {
-      start: [ <?php echo  $min_cuota?>],
-      step: 100,
+      start: [ <?php echo  $importeMaximo?>],
+      step: 1000,
       range: {
-        'min': [  <?php echo  $min_cuota?> ],
-        'max': [ <?php echo  $max_cuota?> ]
+        'min': [  <?php echo  $importeMinimo?> ],
+        'max': [ <?php echo  $importeMaximo?> ]
       },
       connect: "lower",
       format: wNumb({
@@ -563,7 +499,7 @@
     rangeSliderDias.noUiSlider.on('update', function( values, handle ) {
     	rangeSliderValueElementDias.innerHTML = values[handle];
       	cuota_inicial = values[handle];
-      $.ajax({
+      /*$.ajax({
     		data  : { meses    : meses_pago,
     			      cantidad : monto,
     			      cuota_inicial : cuota_inicial},
@@ -580,7 +516,7 @@
     		} catch (err){
     			msj('error',err.message);
     		}
-    	});
+    	});*/
     });
     
 
