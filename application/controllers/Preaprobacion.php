@@ -4,6 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class preaprobacion extends CI_Controller {
     
     private $sueldo = null;
+    private $varPagoTotal = null;
+    private $varCuotaMensual = null;
+    private $glob_tea = null;
+    private $glob_tcea = null;
     
     function __construct() {
         ob_start();
@@ -119,14 +123,18 @@ class preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = $result->return->cuotaMensual;
             $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
             $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
+            $this->varCuotaMensual = $data['cuotaMensual'];
 
             $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
+            $this->varPagoTotal = $data['pagoTotal'];
 
             $data['tea'] = $result->return->tea;
             $data['tcea'] = $result->return->tea;
 
+            $this->glob_tea = $data['tea'];   
+            $this->glob_tcea = $data['tcea'];  
           }
           if($res == 0){
             //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
@@ -171,13 +179,18 @@ class preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = $result->return->cuotaMensual;
             $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
             $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2, '.','');
+            $this->varCuotaMensual = $data['cuotaMensual'];
 
             $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
+            $this->varPagoTotal = $data['pagoTotal'];
 
             $data['tea'] = $result->return->tea;
-            $data['tcea'] = $result->return->tea;            
+            $data['tcea'] = $result->return->tea;   
+
+            $this->glob_tea = $data['tea'];   
+            $this->glob_tcea = $data['tcea'];         
 
 
           }
@@ -537,6 +550,58 @@ class preaprobacion extends CI_Controller {
                              'modelo'          => $modelo);
             $this->session->set_userdata($session);
 //             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function ocultarAgencia() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $concesionaria = _post('concesionaria');
+            if($concesionaria == 'Plaza Motors S.A.C') {
+                $data['ocultar'] = 1;
+            }
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function verificarNumero() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $salario = _post('salario');
+            $nro_celular = _post('nro_celular');
+            $empleador = _post('empleador');
+            $direccion_empresa = _post('direccion_empresa');
+            $Departamento = _post('Departamento');
+            $Provincia = _post('Provincia');
+            $Distrito = _post('Distrito');
+            _log($this->varPagoTotal);
+            $pagoTot  = $this->varPagoTotal;
+            $cuotaMens  = $this->varCuotaMensual;
+            $varTea  = $this->glob_tea;
+            $varTcea  = $this->glob_tcea;
+
+            $session = array('salario'          => $salario,
+                            'nro_celular'       => $nro_celular,
+                            'empleador'         => $empleador,
+                            'direccion_empresa' => $direccion_empresa,
+                            'Departamento'      => $Departamento,
+                            'Provincia'         => $Provincia,
+                            'Distrito'          => $Distrito,
+                            'pago_total'        => $pagoTot,
+                            'cuota_mensual'     => $cuotaMens,
+                            'TEA'               => $varTea,
+                            'TCEA'              => $varTcea
+            );
+            $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

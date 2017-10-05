@@ -16,7 +16,63 @@ function addStyle() {
 }
 
 function verificarNumero() {
-	location.href = '/micash_resumen';
+	var salario     	  = $('#salario').val();
+	var nro_celular 	  = $('#nro_celular').val();
+	var empleador   	  = $('#empleador').val();
+	var direccion_empresa = $('#direccion_empresa').val();
+	var Departamento 	  = $('#Departamento').val();
+	var Provincia 		  = $('#Provincia').val();
+	var Distrito 		  = $('#Distrito').val();
+	var checkAutorizo     = $('#checkAutorizo').is('checked');
+	if(salario == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(nro_celular == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(empleador == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(direccion_empresa == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(Departamento == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(Provincia == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(Distrito == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	$.ajax({
+		data  : { salario : salario,
+				nro_celular : nro_celular,
+				empleador : empleador,
+				direccion_empresa : direccion_empresa,
+			    Departamento : Departamento,
+				Provincia : Provincia,
+				Distrito : Distrito},
+		url   : 'Preaprobacion/verificarNumero',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+				data = JSON.parse(data);
+				if(data.error == 0){
+					location.href = '/micash_resumen';
+				}else {
+				}
+			} catch (err){
+				msj('error',err.message);
+			}
+	});
 }
 
 function valida(e){
@@ -125,5 +181,28 @@ function getModelo() {
 		} catch (err){
 			msj('error',err.message);
 		}
+	});
+}
+
+function ocultarAgencia() {
+	var concesionaria = $('#concesionaria').val();
+	if(concesionaria == null) {
+		msj('error', 'Seleccione una concesionaria v&aacute;lida');
+		return;
+	}
+	$.ajax({
+		data  : { concesionaria : concesionaria},
+		url   : 'Preaprobacion/ocultarAgencia',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+				data = JSON.parse(data);
+				if(data.ocultar == 1){
+					$('#idagencia').css('display', 'none');
+				}else {
+				}
+			} catch (err){
+				msj('error',err.message);
+			}
 	});
 }

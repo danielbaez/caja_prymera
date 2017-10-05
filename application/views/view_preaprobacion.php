@@ -187,7 +187,7 @@
                                                   			    <div class="col-xs-12 p-0">
                                                   			    	<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                			<select class="form-control"  name="salario">
+                                                                			<select class="form-control" id="salario"  name="salario">
                                                                               <option value="">Salario</option>
                                                                               <option value="">Hasta 1,000 soles</option>
                                                                               <option value="">De 1,000 a 2,000 soles</option>
@@ -242,7 +242,7 @@
                                                   			    <div class="col-xs-12 text-left">
                                                   			    	<div class="checkbox">
                                                                       	<label>
-                                                                        	<input type="checkbox" name="autorizacion"> Autorizo que usen mis datos para esta oferta
+                                                                        	<input type="checkbox" id="checkAutorizo" name="autorizacion"> Autorizo que usen mis datos para esta oferta
                                                                       	</label>
                                                                     </div>
                                                   			    </div>
@@ -265,7 +265,7 @@
                                                           		</div>
                                                               <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                    <select class="form-control" name="agencias">
+                                                                    <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia()">
                                                                       <option value="">Concesionaria</option>
                                                                       <?php echo $comboConcecionaria?>
                                                                     </select>
@@ -273,7 +273,7 @@
                                                               </div>
                                                           		<div class="col-xs-12">
                                                       				<div class="form-group">
-                                                                		<select class="form-control" name="agencias">
+                                                                		<select class="form-control" id="idagencia" name="agencias">
                                                                 		  <option value="">Agencias</option>
                                                                          <?php echo $comboAgencias?>
                                                                 		</select>
