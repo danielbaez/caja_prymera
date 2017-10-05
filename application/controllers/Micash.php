@@ -11,6 +11,7 @@ class micash extends CI_Controller {
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
+        $this->load->model('M_preaprobacion');
     }
     
     public function index()
@@ -19,54 +20,72 @@ class micash extends CI_Controller {
         $this->load->view('v_micash', $dato);
     }
     
-    function solicitar(){
+    public function solicitar() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
-        try {
-            $json_service  = '{"tipo": "A","Nombre": "juan","cantidad_max": 3000}';
+
+
+        try 
+          {
+            //resultado 1 -- ok
+          //resultado 3: token
+            //resultado 2: error del servidor
+          //resultado 0 : rechazado
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+           $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_post('dni'),
+                                  'producto'=>'01'
+                    );
+
+          $result = $client->GetDatosCliente($params);
+          $res = $result->return->resultado;
+          if($res == 1){
+            $documento = $result->return->documento;
+            $importeMinimo = $result->return->rango->importeMinimo;
+            $importeMaximo = $result->return->rango->importeMaximo;
+            $plazos = $result->return->rango->plazos;
+            
+            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'Preaprobacion');
+
             $nombre        = __getTextValue('nombre');
             $apellido      = __getTextValue('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
-            $newdata       = array();
             $tipo_producto = PRODUCTO_MICASH;
-            if($dni == null || $dni == '') {
-                throw new Exception('Ingrese su DNI');
-            }
-            if(strlen($dni) != 8) {
-                throw new Exception('El DNI debe contener 8 caracteres');
-            }
-            $json = json_decode($json_service);
-            $session = array('nombre'            => $nombre,
+
+          $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,
                 'dni'               => $dni,
                 'email'             => $email,
-                'tipo_solicitud'    => $json->tipo,
-                'cantidad'          => $json->cantidad_max,
-                'tipo_producto'     => $tipo_producto
+                'tipo_solicitud'    => $res,
+                'importeMaximo'     => $importeMaximo,
+                'importeMinimo'     => $importeMinimo,
+                'tipo_producto'     => $tipo_producto,
+                'plazos'            => $plazos
             );
-            
             $this->session->set_userdata($session);
-            //             _log(_getSesion('nombre'));
-            if($dni == null) {
-                throw new Exception('Ingrese su DNI');
-            }else {
-                if($json->tipo == 'A') {
-                    if($tipo_producto == PRODUCTO_MICASH) {
-                        $data['url'] = RUTA_CAJA.'preaprobacion';
-                    }else {
-                        //$data['url'] = RUTA_CAJA.'c_marca';
-                    }
-                }else if($json->tipo == 'B') {
-                    $data['url'] = RUTA_CAJA.'micash_losentimos';
-                }else if($json->tipo == 'C') {
-                    $data['url'] = RUTA_CAJA.'micash_noencontrado';
-                }
-            }
-            $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
+            $arrayInsert = array('nombre' => $nombre,
+                'apellido'  => $apellido,
+                'email'  => $email,
+                'dni'  => $dni
+            );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
+            $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
+
+          }
+          if($res == 0){
+            $response = array('status' => 0, 'url' => RUTA_CAJA.'Micash_losentimos');
+          }
+          if($res == 2){
+            $response = array('status' => 2);
+          }
+
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        catch(Exception $e)
+        {
+           $response = array('status' => 2);
+        }
+        echo json_encode($response);
     }
 }

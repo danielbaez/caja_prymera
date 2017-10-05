@@ -24,5 +24,78 @@ class M_preaprobacion extends  CI_Model{
         return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
     }
     
+    function getConcecionaria() {
+        $sql = "SELECT *
+                  FROM concesionaria";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+    
+    function getAgencias() {
+        $sql = "SELECT agencia,
+                       UBICACION,
+                       TELEFONO
+                  FROM agencias";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+    
+    function getCod_telefono($departamento) {
+        _log($departamento);
+        if($departamento == 'LIMA') {
+            $sql = "SELECT * 
+                    FROM cod_telefono
+                   WHERE LOWER(DEPARTAMENTO) LIKE LOWER('%lima y Callao%')";
+        }ELSE {
+            $sql = "SELECT *
+                      FROM cod_telefono
+                     WHERE DEPARTAMENTO LIKE ?";
+        }
+        $result = $this->db->query($sql, array($departamento));
+        return $result->result();
+    }
+    
+    function getDepartamento() {
+        $sql = "SELECT DESC_DPTO
+                  FROM ubigeo 
+              GROUP BY DESC_DPTO";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+    
+    function getProvincia($departamento) {
+        $sql = "SELECT DESC_PROV 
+                 FROM ubigeo 
+                WHERE DESC_DPTO LIKE ? 
+             GROUP BY DESC_PROV";
+        $result = $this->db->query($sql, array($departamento));
+        return $result->result();
+    }
+    
+    function getDistrito($Provincia) {
+        $sql = "SELECT DESC_DISTRITO
+                  FROM ubigeo 
+                 WHERE DESC_PROV LIKE ?
+              GROUP BY DESC_DISTRITO";
+        $result = $this->db->query($sql, array($Provincia));
+        return $result->result();
+    }
+    
+    function getMarca() {
+        $sql = "SELECT MARCA
+                  FROM marca_modelo
+              GROUP BY MARCA";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+    
+    function getModelo($marca) {
+        $sql = "SELECT MODELO
+                  FROM marca_modelo
+                 WHERE MARCA LIKE ?
+                GROUP BY MODELO";
+        $result = $this->db->query($sql, array($marca));
+        return $result->result();
+    }
 }
     

@@ -85,7 +85,7 @@ class Login extends CI_Controller {
 
            $params = array('token'=> 'E928EUXP',
                                   'documento'=>_post('dni'),
-                                  'producto'=>'01'
+                                  'producto'=>'02'
                     );
 
           $result = $client->GetDatosCliente($params);
@@ -96,13 +96,13 @@ class Login extends CI_Controller {
             $importeMaximo = $result->return->rango->importeMaximo;
             $plazos = $result->return->rango->plazos;
             
-            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'preaprobacion');
+            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
 
             $nombre        = __getTextValue('nombre');
             $apellido      = __getTextValue('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
-            $tipo_producto = PRODUCTO_MICASH;
+            $tipo_producto = PRODUCTO_VEHICULAR;
 
           $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,

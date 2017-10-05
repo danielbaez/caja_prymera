@@ -1,12 +1,12 @@
 .color-value {
- 	background:#86af49;
- 	color:#fff;
+    background:#86af49;
+    color:#fff;
  }
  .color-data {
- 	color:#005ce6;
+    color:#005ce6;
  }
  .color-info {
-	color:#ccccb3;
+    color:#ccccb3;
  }
  
 div.picture1 {
@@ -18,40 +18,40 @@ div.picture1 {
 }
 
 .color1 {
-	color:#EC971F;
+    color:#EC971F;
 }
 
 body {
-	background-image:url(../img/fondos/Background.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
+    background-image:url(../img/fondos/Background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center; 
     padding-top: 70px;
 }
 .imagen-fondo {
-	width: 600px;
+    width: 600px;
     position: relative;
     right: 131px;
     top: -49px;
 }
 .logo {
-	max-width: 302px;
+    max-width: 302px;
 }
 
 .panel-primary,
 .panel-heading {
-	border-top-left-radius: 40px;
+    border-top-left-radius: 40px;
 }
 .panel-primary,
 .panel-body{
-	border-bottom-right-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 .navbar-right{
-	padding: 0 200px;
+    padding: 0 200px;
 }
 .button-login button{
-	background-color: #4e82bb !important;
+    background-color: #4e82bb !important;
     color: #fff;
     border-radius: 20px;
     height: 28px;
@@ -59,35 +59,34 @@ body {
     text-transform: unset;
     padding-right: 1px;
     vertical-align: middle;
-	z-index: 1000;
-	position: relative;
+    z-index: 1000;
+    position: relative;
     left: 53px;
 }
 .button-login button i{
-	background-color: #fff;
-	color: #4e82bb;
-	border-radius: 50%;
-	margin-left: 5px;
+    background-color: #fff;
+    color: #4e82bb;
+    border-radius: 50%;
+    margin-left: 5px;
 }
 .container-fluid {
-	background-color: #0060aa;
-    height: 132px;
+    background-color: #0060aa;
 }
 .container-fluid.contenedor {
-	background-color: #fff;
+    background-color: #fff;
     height: 40px;
 }
 .mdi-keyboard_arrow_right {
-	color: #005aa6;
+    color: #005aa6;
 }
 .form-control {
     margin-left: 10px;
     width: 93%;
     height: 50px;
-	
+    
 }
 .navbar-brand {
-	color: #fff;
+    color: #fff;
     font-size: 33px;
     padding: 9px;
     margin: 6px;
@@ -97,9 +96,9 @@ body {
     left: 204px;
 }
 div.text-left class1{
-	color: #fff;
-	position: relative;
-	bottom: 8px;
+    color: #fff;
+    position: relative;
+    bottom: 8px;
     right: 100px;
     top: -6px;
 }
@@ -110,11 +109,134 @@ div.text-left class1{
 }
 
 div.text-left{
-	color: #fff;
+    color: #fff;
 }
 div.checkbox label {
-	position: relative;right: -6px;color: black;
+    position: relative;right: -6px;color: black;
 }
 .input-group {
-	width: 100%
+    width: 100%
+}
+
+
+
+
+
+
+
+
+
+
+/*NUEVO DISEÑO*/
+.datos{
+    color: #9fa9a3;
+    text-align: left;
+    padding-left: 15px;
+}
+.checkbox {
+    text-align: left;
+}
+.checkbox label{
+    color: #9fa9a3;
+}
+.container-fluid>.navbar-header{
+    margin:0;
+}
+.navbar-header{
+    width: 100%;
+    padding: 0 100px;
+    -webkit-transition: padding .5s linear;
+    -moz-transition: padding .5s linear;
+    -ms-transition: padding .5s linear;
+    -o-transition: padding .5s linear;
+    transition: padding .5s linear;
+    
+}
+.contenido-header{
+    float:left;
+    max-width: 320px;
+}
+.contenido-header h1{
+    color: #FFFFFF;
+    font-size: 32px;
+    line-height: 1.2;
+}
+.imagen-header{
+    float: right;
+    padding: 15px;
+}
+.imagen-header img{
+    max-width: 250px;
+}
+.row-top{
+    margin-top: 123px;
+}
+
+@media (max-width : 850px){
+    .navbar-header{
+        padding: 0 20px;
+    }
+    .imagen-fondo{
+        display:none;
+    }
+    .row-top{
+        margin-top: 75px;
+    }
+}
+@media (max-width : 768px){
+    .formulario-1{
+        margin: auto;
+    }
+}
+@media (max-width : 700px){
+    .navbar-header{
+        padding: 0 5px;
+    }
+    .contenido-header{
+        max-width: 235px;
+    }
+    .imagen-header img{
+        max-width: 200px;
+    }
+    .contenido-header h1{
+        font-size: 24px;
+    }
+    .button-login button{
+        margin-top: -44px;
+        margin-left: 112px;
+    }
+}
+@media (max-width : 550px){
+    .imagen-header img{
+        max-width: 140px;
+    }
+    .contenido-header h1{
+        font-size: 18px;
+    }
+    .contenido-header{
+        max-width: 175px;
+    }
+    .imagen-header{
+        padding: 20px 0
+    }
+}
+@media (max-width : 420px){
+    .imagen-header img{
+        max-width: 115px;
+    }
+    .contenido-header h1{
+        font-size: 15px;
+    }
+    .contenido-header{
+        max-width: 145px;
+    }
+    .imagen-header{
+        padding: 20px 0
+    }
+    .robot,
+    .consultar{
+        width: 100%;
+        margin: 10px 0;
+        padding: 0;
+    }
 }
