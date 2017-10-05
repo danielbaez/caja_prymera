@@ -457,9 +457,9 @@
         dataType: 'json'
       }).done(function(data){
         console.log(data);
-        $('#cantTotPago').html('S/ '+data.pagoTotal);  
-        $('#cantMensPago').html('S/ '+data.cuotaMensual); 
-        $('#tcea').html('S/ '+data.tcea); 
+        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#tcea').html(data.tcea+'%'); 
       });
     });
 
@@ -487,24 +487,25 @@
     rangeSliderDias.noUiSlider.on('update', function( values, handle ) {
     	rangeSliderValueElementDias.innerHTML = values[handle];
       	cuota_inicial = values[handle];
-      /*$.ajax({
-    		data  : { meses    : meses_pago,
-    			      cantidad : monto,
-    			      cuota_inicial : cuota_inicial},
-    		url   : 'preaprobacion/changeImporte',
-    		type  : 'POST'
-    	}).done(function(data){
-    		try{
-    			data = JSON.parse(data);
-    			if(data.error == 0){
-    				$('#importe').html('S/ '+data.cuota_ini);
-    			}else {
-    				return;
-    			}
-    		} catch (err){
-    			msj('error',err.message);
-    		}
-    	});*/
+    });
+
+    rangeSliderDias.noUiSlider.on('change', function( values, handle ) {
+      console.log(values)
+      rangeSliderValueElementDias.innerHTML = values[handle];
+      monto = values[handle];
+      meses_pago = $('#slider-range-value-meses').html();
+      $.ajax({
+        data  : { meses    : meses_pago,
+                cantidad : monto},
+        url   : 'preaprobacion/changeValues',
+        type  : 'POST',
+        dataType: 'json'
+      }).done(function(data){
+        console.log(data);
+        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#tcea').html(data.tcea+'%');
+      });
     });
     
 

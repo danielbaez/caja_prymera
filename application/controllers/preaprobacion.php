@@ -112,9 +112,15 @@ class preaprobacion extends CI_Controller {
           if($res == 1){
             $documento = $result->return->documento;
             $data['cuotaMensual'] = $result->return->cuotaMensual;
+            $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
+            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
+
+            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+            $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
+            $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
+
             $data['tea'] = $result->return->tea;
             $data['tcea'] = $result->return->tea;
-            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
 
           }
           if($res == 0){
@@ -158,9 +164,16 @@ class preaprobacion extends CI_Controller {
           if($res == 1){
             $documento = $result->return->documento;
             $data['cuotaMensual'] = $result->return->cuotaMensual;
-            $data['tea'] = $result->return->tea;
-            $data['tcea'] = $result->return->tea;
+            $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
+            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2, '.','');
+
             $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
+            $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
+            $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
+
+            $data['tea'] = $result->return->tea;
+            $data['tcea'] = $result->return->tea;            
+
 
           }
           if($res == 0){
