@@ -14,6 +14,7 @@ class preaprobacion extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->library('table');
+        $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
         $this->array_datos = array(
             array(
@@ -41,9 +42,13 @@ class preaprobacion extends CI_Controller {
     {
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
-        $data['email']='jhiberico@hotmail.com';
-        $nombre = $this->session->userdata('nombre');
+        $data['email']  = _getSesion('email');
+        $nombre   = $this->session->userdata('nombre');
+        $apellido = _getSesion('apellido');
 
+        $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
+        $data['comboAgencias']      = $this->__buildComboAgencias();
+        $data['comboDepa']          = $this->__buildDepartamento();
         $importeMaximo = _getSesion('importeMaximo');
         $importeMinimo = _getSesion('importeMinimo');
         $plazos = _getSesion('plazos');
@@ -74,7 +79,7 @@ class preaprobacion extends CI_Controller {
         $valorAuto = ($minAuto+$maxAuto)/2;
         $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.' '.$apellido.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;       
         
@@ -398,6 +403,145 @@ class preaprobacion extends CI_Controller {
         //         }
         $tabla = $this->table->generate();
         return $tabla;
+    }
+
+    function __buildComboConcecionaria(){
+        $concecionaria = $this->M_preaprobacion->getConcecionaria();
+        $opt = null;
+        foreach($concecionaria as $cons){
+            $conse = str_replace(')', '',str_replace('(', '', $cons->DESC_CONCESIONARIA));
+            $opt .= '<option value="'.$conse.'"> '.$conse.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildComboAgencias(){
+        $agencias = $this->M_preaprobacion->getAgencias();
+        $opt = null;
+        foreach($agencias as $age){
+            $agen = str_replace(')', '',str_replace('(', '', $age->agencia));
+            $opt .= '<option value="'.$agen.'"> '.$agen.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildCodTelefono($departamento){
+        $codtel = $this->M_preaprobacion->getCod_telefono($departamento);
+        _logLastQuery();
+        $opt = null;
+        foreach($codtel as $cod){
+            $codi = $cod->CODIGO;
+            $opt .= '<option value="'.$codi.'"> '.$cod->CODIGO.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildDepartamento(){
+        $dpto = $this->M_preaprobacion->getDepartamento();
+        $opt = null;
+        foreach($dpto as $ubi){
+            $codi = $ubi->DESC_DPTO;
+            $opt .= '<option value="'.$codi.'"> '.$ubi->DESC_DPTO.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildProvincia($departamento){
+        $provincia = $this->M_preaprobacion->getProvincia($departamento);
+        $opt = null;
+        foreach($provincia as $ubi){
+            $codi = $ubi->DESC_PROV;
+            $opt .= '<option value="'.$codi.'"> '.$ubi->DESC_PROV.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildDistrito($Provincia){
+        $distrito = $this->M_preaprobacion->getDistrito($Provincia);
+        $opt = null;
+        foreach($distrito as $ubi){
+            $codi = $ubi->DESC_DISTRITO;
+            $opt .= '<option value="'.$codi.'"> '.$ubi->DESC_DISTRITO.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildMarca(){
+        $marca = $this->M_preaprobacion->getMarca();
+        $opt = null;
+        foreach($marca as $ubi){
+            $codi = $ubi->MARCA;
+            $opt .= '<option value="'.$codi.'"> '.$ubi->MARCA.'</option>';
+        }
+        return $opt;
+    }
+    
+    function __buildModelo($marca){
+        $modelo = $this->M_preaprobacion->getModelo($marca);
+        $opt = null;
+        foreach($modelo as $ubi){
+            $codi = $ubi->MODELO;
+            $opt .= '<option value="'.$codi.'"> '.$ubi->MODELO.'</option>';
+        }
+        return $opt;
+    }
+    
+    function getProvincia() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $departamento = _post('departamento');
+            $data['comboProvincia'] = $this->__buildProvincia($departamento);
+            $data['comboCodigo']    = $this->__buildCodTelefono($departamento);
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+    
+    function getDistrito() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $Provincia = _post('Provincia');
+            $data['comboDistrito'] = $this->__buildDistrito($Provincia);
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+    
+    function getModelo() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $marca = _post('marca');
+            $data['comboModelo'] = $this->__buildModelo($marca);
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+    
+    function guardarMarca() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $marca = _post('marca');
+            $modelo = _post('modelo');
+            $idPersona = _getSesion('idPersona');
+            $session = array('marca'            => $marca,
+                             'modelo'          => $modelo);
+            $this->session->set_userdata($session);
+//             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
     }
 }
 

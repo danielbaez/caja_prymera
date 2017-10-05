@@ -9,7 +9,7 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
+    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
@@ -70,7 +70,7 @@
   					<h2>Completa los datos:</h2>
   				<?php  } else {?>
   				<div class="col-xs-12 text-center">
-  					<h2 class="title-prestamo"><?php echo $tipo_product;?></h2>
+  					<h2 class="title-prestamo" id="titulo"><?php echo $tipo_product;?></h2>
   				</div>
   				<div class="col-xs-12">
 					<div class="container max-width-950">
@@ -161,7 +161,7 @@
                                 					<div class="col-xs-6 text-center">
                                 						<div class="container" style="position: relative;top: 30px;">
                                       						<ul class="nav nav-pills">
-                                								<li><a data-toggle="tab" style="background-color: #1C4485; color: #fff;position: relative;top: -30px;" href="#menu1" onclick="addStyle()">Siguiente</a></li>
+                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485; color: #fff;position: relative;top: -30px;" href="#menu1" onclick="addStyle()">Siguiente</a></li>
                                 							</ul>
                                 						</div>
                                                     </div>
@@ -201,13 +201,13 @@
                                                           			</div>
                                                           			<div class="col-sm-6">
                                                                   		<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular">
+                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)">
                                                                   		</div>
                                                                   	</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                   			    	<div class="form-group">
-                                                            			<input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" max-lenght="50">
+                                                            			<input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" max-lenght="50" onkeypress="return soloLetras(event)">
                                                           			</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
@@ -217,22 +217,17 @@
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                       				<div class="form-group">
-                                                            			<select class="form-control" id="Departamento" name="Departamento">
+                                                            			<select class="form-control" id="Departamento" name="Departamento" onchange="getProvincia()">
                                                                       		<option value="">Departamento</option>
+                                                                          <?php echo $comboDepa;?>
                                                             			</select>
                                                           			</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12 p-0">
                                           			    			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                			<select class="form-control" id="Provincia" name="Provincia">
+                                                                			<select class="form-control" id="Provincia" name="Provincia" onchange="getDistritos()">
                                                                           		<option value="">Provincia</option>
-                                                                              	<option value="">Surco</option>
-                                                                              	<option value="">Miraflores</option>
-                                                                              	<option value="">Surquillo</option>
-                                                                              	<option value="">Lima</option>
-                                                                              	<option value="">San miguel</option>
-                                                                              	<option value="">Villa el salvador</option>
                                                                 			</select>
                                                               			</div>
                                                           			</div>
@@ -240,12 +235,6 @@
                                                           				<div class="form-group">
                                                                 			<select class="form-control" id="Distrito" name="Distrito">
                                                                               	<option value="">Distrito</option>
-                                                                              	<option value="">Surco</option>
-                                                                              	<option value="">Miraflores</option>
-                                                                              	<option value="">Surquillo</option>
-                                                                              	<option value="">Lima</option>
-                                                                              	<option value="">San miguel</option>
-                                                                              	<option value="">Villa el salvador</option>
                                                                 			</select>
                                                               			</div>
                                                           			</div>
@@ -263,33 +252,30 @@
                                                               	<div class="col-xs-12 p-0">
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                    		<select class="form-control" name="agencias">
+                                                                    		<select class="form-control" name="codigo" id="codigo">
                                                                 		  		<option value="">C&oacute;digo</option>
                                                                     		</select>
                                                                   		</div>
                                                           			</div>
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo">
+                                                                    		<input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)">
                                                                   		</div>
                                                           			</div>
                                                           		</div>
+                                                              <div class="col-xs-12">
+                                                              <div class="form-group">
+                                                                    <select class="form-control" name="agencias">
+                                                                      <option value="">Concesionaria</option>
+                                                                      <?php echo $comboConcecionaria?>
+                                                                    </select>
+                                                                    </div>
+                                                              </div>
                                                           		<div class="col-xs-12">
                                                       				<div class="form-group">
                                                                 		<select class="form-control" name="agencias">
                                                                 		  <option value="">Agencias</option>
-                                                                          <option value="">Oficina Principal - Agencia Miraflores</option>
-                                                                          <option value="">Agencia Huacho</option>
-                                                                          <option value="">Agencia Barranca</option>
-                                                                          <option value="">Agencia Huaral</option>
-                                                                          <option value="">Agencia Plaza Norte (*)</option>
-                                                                          <option value="">Agencia Comas</option>
-                                                                          <option value="">Agencia Gran Chimú</option>
-                                                                          <option value="">Agencia Puente Piedra</option>
-                                                                          <option value="">Agencia San Juan de Miraflores</option>
-                                                                          <option value="">Agencia Villa El Salvador</option>
-                                                                          <option value="">Agencia Villa Maria del Triunfo</option>
-                                                                          <option value="">Agencia Ceres</option>
+                                                                         <?php echo $comboAgencias?>
                                                                 		</select>
                                                                   	</div>
                                                           		</div>
