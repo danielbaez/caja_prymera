@@ -54,21 +54,7 @@ class Login extends CI_Controller {
         $this->load->view('v_login', $dato);
 
 
-        $this->sendMailGmail(); 
-
-        /*$para      = 'daniel.baez@comparabien.com';
-        $titulo    = 'El título';
-        $mensaje   = 'Hola';
-        $cabeceras = 'From: webmaster@comparabien.com' . "\r\n" .
-    'Reply-To: webmaster@comparabien.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-
-        if(mail($para, $titulo, $mensaje, $cabeceras)){
-          echo 123;
-        }*/
-
-
-        exit();
+        //$this->sendMailGmail(); 
 
         //twilio enviar msn
         /*$this->load->library('twilio');
