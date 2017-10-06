@@ -81,7 +81,7 @@
 			    		<form class="text-center" action="losentimos.html" method="POST">
 			    		  <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>S/ 8,000</span>
+					          	  <span><?php echo $Importe?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">Importe: </span>
 					          	  </div>
@@ -89,7 +89,7 @@
 					      </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>36 meses</span>
+					          	  <span><?php echo $cant_meses?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">Plazo: </span>
 					          	  </div>
@@ -97,15 +97,15 @@
 					      </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>S/ 895,000</span>
+					          	  <span><?php echo $cuota_mensual?></span>
 					          	  <div class="col-xs-6">
-					          	  	<span style="">Cuota: </span>
+					          	  	<span style="">Cuota Mensual: </span>
 					          	  </div>
 					          </div>
 					      </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>20%</span>
+					          	  <span><?php echo $tcea?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">TCEA: </span>
 					          	  </div>
@@ -113,7 +113,7 @@
 					      </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>S/ 53,700</span>
+					          	  <span><?php echo $pago_total?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">Total Pr&eacute;stamo: </span>
 					          	  </div>
@@ -121,7 +121,7 @@
 					      </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>21%</span>
+					          	  <span><?php echo $tea?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">TEA: </span>
 					          	  </div>
@@ -158,7 +158,7 @@
 		    	</div>
 		    </div>
 		    <div class="col-md-8 info">
-		    	<p style="font-size:35px;font-weight: bold;">Felicidades!</p>
+		    	<p style="font-size:35px;font-weight: bold;">Felicidades <?php echo $nombre ?>!</p>
 		    	<p class="info2">tu pr&eacute;stamo ha sido</p>
 		    	<p class="info2">pre aprobado, ya est&aacute;s cerca</p>
 		    	<p class="info2">de cumplir tus sue&ntilde;os</p>

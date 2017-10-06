@@ -583,11 +583,14 @@ class preaprobacion extends CI_Controller {
             $Departamento = _post('Departamento');
             $Provincia = _post('Provincia');
             $Distrito = _post('Distrito');
-            _log($this->varPagoTotal);
-            $pagoTot  = $this->varPagoTotal;
-            $cuotaMens  = $this->varCuotaMensual;
-            $varTea  = $this->glob_tea;
-            $varTcea  = $this->glob_tcea;
+            $pagoTot  = _post('pagotot');
+            $cuotaMens  = _post('mensual');
+            $meses  = _post('meses');
+            $importe  = _post('cuotaIni');
+            //$varTea  = 
+            $varTcea  = _post('pors_tcea');
+            $varTea   = _post('pors_tea');
+            $Agencia  = _post('Agencia');
 
             $session = array('salario'          => $salario,
                             'nro_celular'       => $nro_celular,
@@ -598,8 +601,11 @@ class preaprobacion extends CI_Controller {
                             'Distrito'          => $Distrito,
                             'pago_total'        => $pagoTot,
                             'cuota_mensual'     => $cuotaMens,
-                            'TEA'               => $varTea,
-                            'TCEA'              => $varTcea
+                            'TCEA'              => $varTcea,
+                            'cant_meses'        => $meses,
+                            'Importe'           => $importe,
+                            'sess_tea'          => $varTea,
+                            'Agencia'           =>  $Agencia
             );
             $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;

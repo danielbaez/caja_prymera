@@ -84,10 +84,10 @@
 			        <div class="mdl-card__title">
                     </div>
                     <div>
-                    	<h2 class="mdl-card__title-text" ><strong>Jhonatan, Gracias por confiar en Prymera.</strong></h2>
-                        <h2 class="mdl-card__title-text" ><strong>Solitaste un cr&eacute;dito de S/. 40,000 s&oacute;les a 60 meses con una cuota de S/. 895 s&oacute;les</strong></h2><br />
-                        <h2 class="mdl-card__title-text" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s acercarte a nuestra agencia de San Juan de</h2>
-                        <h2 class="mdl-card__title-text">Miraflores junto con tus<strong> 2 &uacute;ltimas boletas de pago </strong> y <strong> el recibo de servicio</strong>(luz, agua, tel&eacute;fono) con antiguedad</h2>
+                    	<h2 class="mdl-card__title-text" ><strong><?php echo $nombre ?>, Gracias por confiar en Prymera.</strong></h2>
+                        <h2 class="mdl-card__title-text" ><strong>Solitaste un cr&eacute;dito de <?php echo $pago_total ?> s&oacute;les a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> s&oacute;les</strong></h2><br />
+                        <h2 class="mdl-card__title-text" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s acercarte a nuestra agencia de <?php echo $Agencia ?></h2>
+                        <h2 class="mdl-card__title-text">junto con tus<strong> 2 &uacute;ltimas boletas de pago </strong> y <strong> el recibo de servicio</strong>(luz, agua, tel&eacute;fono) con antiguedad</h2>
                         <h2 class="mdl-card__title-text">no mayor a dos meses, para proceder a la firma del expediente y el desembolso de tu pr&eacute;stamo.</h2>
                     </div>
                     <div class="mdl-card__supporting-text br-b">
@@ -132,14 +132,13 @@
 
         $(window).load(function() {
         	google.charts.setOnLoadCallback(drawMap);
-
         	function drawMap() {
         		var data = new google.visualization.DataTable();
       	      data.addColumn('string', 'Address');
       	      data.addColumn('string', 'Location');
 
       	      data.addRows([
-      	        ['Parque kennedy, Lima', 'Parque kennedy']
+      	        ['Parque Kennedy, Miraflores', 'Parque kennedy']
       	      ]);
 
         	    var options = {

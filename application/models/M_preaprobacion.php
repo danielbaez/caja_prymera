@@ -97,5 +97,14 @@ class M_preaprobacion extends  CI_Model{
         $result = $this->db->query($sql, array($marca));
         return $result->result();
     }
+
+    function getDireccionAgencia($agencia) {
+      $sql = "SELECT UBICACION
+                  FROM agencias
+                 WHERE AGENCIA LIKE ?
+                GROUP BY UBICACION";
+        $result = $this->db->query($sql, array($agencia));
+        return $result->result();
+    }
 }
     

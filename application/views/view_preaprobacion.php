@@ -149,6 +149,7 @@
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
                                                 		<span style="color:#1C4485;font-size: 20px" id="tcea"><?php echo $tcea?>%</span>
+                                                    <span style="display: none" id="tea"><?php echo $tea?>%</span>
                                                 		<p style="color:#A9A9A9;font-size:13px">*Cuota aproximada sujeta a evaluación</p>
                                 					</div>
                                 				</div>
@@ -400,9 +401,16 @@
 	(function($){
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();   
+      var glob_pagoTotal = null;
+      var glob_cuotaMensual = null;
+      var glob_tcea = null;
 	});
 
-
+    var meses_pago = null;
+    var cuota_inicial = null;
+    var glob_pagoTotal = null;
+    var glob_cuotaMensual = null;
+    var glob_tcea = null;
 
     //////////
 
@@ -437,7 +445,7 @@
       monto = $('#slider-range-value-dias').html();
       $.ajax({
         data  : { meses    : meses_pago,
-                cantidad : monto},
+                  cantidad : monto},
         url   : 'preaprobacion/changeValues',
         type  : 'POST',
         dataType: 'json'
@@ -446,6 +454,9 @@
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%'); 
+        glob_pagoTotal = data.pagoTotal;
+        glob_cuotaMensual = data.cuotaMensual;
+        glob_tcea = data.tcea;
       });
     });
 
@@ -491,6 +502,9 @@
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%');
+        glob_pagoTotal = data.pagoTotal;
+        glob_cuotaMensual = data.cuotaMensual;
+        glob_tcea = data.tcea;
       });
     });
     
