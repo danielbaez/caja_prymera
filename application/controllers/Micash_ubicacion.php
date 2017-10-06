@@ -27,9 +27,9 @@ class micash_ubicacion extends CI_Controller {
         $dato['Importe'] = _getSesion('Importe');
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
+        $dato['concesionaria'] = _getSesion('concesionaria');
         $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
-        $data['ubicacion'] = $direccion[0]->UBICACION;
-        //_log(print_r($this->session->all_userdata(), true));
+        $dato['ubicacion'] = $direccion[0]->UBICACION;
         $this->load->view('v_micash_ubicacion', $dato);
     }
 }

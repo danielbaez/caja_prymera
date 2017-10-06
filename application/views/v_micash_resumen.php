@@ -127,6 +127,14 @@
 					          	  </div>
 					          </div>
 					      </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">
+                        <span><?php echo $Agencia?></span>
+                        <div class="col-xs-6">
+                          <span style="">Agencia: </span>
+                        </div>
+                    </div>
+                </div>
 						  <div class="col-xs-12 text-left">
 						  	<div class="checkbox">
 						    	<label style="font-size:13px;color:#9fa9a3;">
@@ -136,19 +144,15 @@
 						  	</div>
 						  </div>
 						  <div class="col-xs-12">
-    				          <div class="col-xs-4 padding">
-                                  <select class="form-control" name="Agencia">
-                                      <option value="">Agencia</option>
-                                      <option value="">Miraflores</option>
-                                      <option value="">Mega plaza</option>
-                                      <option value="">Plaza norte</option>
-                                      <option value="">Comas</option>
-                                      <option value="">Otro</option>
-                                    </select>
-                                </div>
-                                <div class="col-xs-8 text-right">
-                                	<button type="button" class="btn btn-lg" style="" onclick="irAUbicacion()">Aceptar</button>
-                                </div>
+			          <div class="col-xs-4 padding">
+                  <select class="form-control" id="Agencia" name="Agencia">
+                      <option value="">Agencia</option>
+                      <?php echo $comboAgencias?>
+                    </select>
+                </div>
+                <div class="col-xs-8 text-right">
+                	<button type="button" class="btn btn-lg" style="" onclick="irAUbicacion()">Aceptar</button>
+                </div>
 						  </div>
 						  	<div class="col-xs-12 color-info">
             		    		<p>* La informaci&oacute;n de tu pr&eacute;stamo ha sido enviada a tu correo y a celular v&iacute;a SMS, con las instrucciones del desembolso en Agencia. </p>
