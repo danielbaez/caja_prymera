@@ -24,13 +24,31 @@ function verificarNumero() {
 	var Provincia 		  = $('#Provincia').val();
 	var Distrito 		  = $('#Distrito').val();
 	var Agencia 		  = $('#idagencia').val();
-	var checkAutorizo     = $('#checkAutorizo').is('checked');
+	var concesionaria	  = $('#concesionaria').val();
+	var tipo_pago         = $('#tipoPago').val();
+	var uno 			  = $('#uno').val();
+	var dos 			  = $('#dos').val();
+	var tres 			  = $('#tres').val();
+	var cuatro 			  = $('#cuatro').val();
+	var cinco 			  = $('#cinco').val();
+	var seis 			  = $('#seis').val();
+	var numero = uno+dos+tres+cuatro+cinco+seis;
+	console.log(numero);
+	var checkAutorizo     = $('#checkAutorizo').is(':checked');
     var pagotot = document.getElementById('cantTotPago').innerText;
     var mensual = document.getElementById('cantMensPago').innerText;
     var pors_tcea = document.getElementById('tcea').innerText;
     var meses = document.getElementById('slider-range-value-meses').innerText;
     var cuotaIni = document.getElementById('slider-range-value-dias').innerText;
     var pors_tea = document.getElementById('tea').innerText;
+    if(uno == null && dos == null && tres == null && cuatro == null && cinco == null && seis == null) {
+    	msj('error', 'Ingrese el codigo que se le envi&oacute; al celular');
+		return;
+    }
+    if(tipo_pago == null) {
+		msj('error', 'Seleccione un tipo de pago');
+		return;
+	}
 	if(salario == null) {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
@@ -59,6 +77,10 @@ function verificarNumero() {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
 	}
+	if(checkAutorizo == false) {
+		msj('error','Por favor acepte la autorizaci&oacute;n de datos');
+		  return;
+	}
 	$.ajax({
 		data  : { salario : salario,
 				nro_celular : nro_celular,
@@ -73,14 +95,24 @@ function verificarNumero() {
 			    meses : meses,
 			    cuotaIni : cuotaIni,
 			    pors_tea : pors_tea,
-				Agencia : Agencia},
+				Agencia : Agencia,
+				concesionaria : concesionaria,
+				numero : numero},
 		url   : 'Preaprobacion/verificarNumero',
 		type  : 'POST'
 	}).done(function(data){
 		try{
 				data = JSON.parse(data);
 				if(data.error == 0){
-					location.href = '/micash_resumen';
+					if(data.cambio == 1){
+						$('.ocultar').addClass( "hidden" );
+						$('#idError').css('display','block');
+						$('.otro').removeClass( "hidden" );
+						$('#confirmar').css('display', 'none');
+						$('#cambiar').css('display', 'block');
+					}else {
+						location.href = '/micash_resumen';
+					}
 				}else {
 				}
 			} catch (err){
@@ -219,4 +251,11 @@ function ocultarAgencia() {
 				msj('error',err.message);
 			}
 	});
+}
+
+function cambiarCelular() {
+	$('.ocultar').removeClass("hidden");
+	$('.otro').addClass("hidden");
+	$('#confirmar').css('display', 'block');
+	$('#cambiar').css('display', 'none');
 }

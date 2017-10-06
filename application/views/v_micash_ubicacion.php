@@ -48,7 +48,6 @@
     <body style="padding-top: 70px;" >
     
 
-
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -93,7 +92,7 @@
                     <div class="mdl-card__supporting-text br-b">
                         <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">
                         <div id="map_div" class="chart_new" style="display:block"></div>
-                        <h6 style="color:black">Agencias San Juan de Miraflores: C.C Mall del Sur.</h6>
+                        <h6 style="color:black">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h6>
                         <h6 style="color:black">Av. Los Lirios con Av. Pedro Miota. S&oacute;tano Tel&eacute;fono 2767658</h6>
                     </div>
 				</div>
@@ -129,16 +128,14 @@
 
   google.charts.load('current', {'packages':['map'],
 	   'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'});
-
         $(window).load(function() {
         	google.charts.setOnLoadCallback(drawMap);
         	function drawMap() {
         		var data = new google.visualization.DataTable();
       	      data.addColumn('string', 'Address');
       	      data.addColumn('string', 'Location');
-
       	      data.addRows([
-      	        ['Parque Kennedy, Miraflores', 'Parque kennedy']
+      	        ["<?php echo $ubicacion ?>", "<?php echo $ubicacion ?>"]
       	      ]);
 
         	    var options = {

@@ -587,12 +587,17 @@ class preaprobacion extends CI_Controller {
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');
             $importe  = _post('cuotaIni');
+            $numero  = _post('numero');
             //$varTea  = 
             $varTcea  = _post('pors_tcea');
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
-
-            $session = array('salario'          => $salario,
+            $concesionaria = _post('concesionaria');
+            if($numero != 123456) {
+                $data['mensaje'] = "El n&uacute;mero ingresado no es v&aacute;";
+                $data['cambio'] = 1;
+            }else {
+                $session = array('salario'          => $salario,
                             'nro_celular'       => $nro_celular,
                             'empleador'         => $empleador,
                             'direccion_empresa' => $direccion_empresa,
@@ -605,9 +610,13 @@ class preaprobacion extends CI_Controller {
                             'cant_meses'        => $meses,
                             'Importe'           => $importe,
                             'sess_tea'          => $varTea,
-                            'Agencia'           =>  $Agencia
-            );
-            $this->session->set_userdata($session);
+                            'Agencia'           => $Agencia,
+                            'concesionaria'     => $concesionaria
+                );
+                $this->session->set_userdata($session);
+                $data['cambio'] = 0;
+            }
+
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

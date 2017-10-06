@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -129,7 +130,6 @@
                                                     <label class="control-label col-xs-5 col-sm-5" for="email">Tipo de pago:</label>
                                                     <div class="col-xs-7 col-md-5">
                                                         <select class="form-control" name="marca" title="Selec. Tipo de pago" id="tipoPago">
-                                                            <option value="">Tipo de pago</option>
                                                             <option value="1">Simple</option>
                                                             <option value="2" disabled>Doble</option>
                                                         </select>
@@ -202,18 +202,18 @@
                                                           			</div>
                                                           			<div class="col-sm-6">
                                                                   		<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)">
+                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)" maxlength="9">
                                                                   		</div>
                                                                   	</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                   			    	<div class="form-group">
-                                                            			<input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" max-lenght="50" onkeypress="return soloLetras(event)">
+                                                            			<input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" maxlenght="50" onkeypress="return soloLetras(event)">
                                                           			</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                   			    	<div class="form-group">
-                                                            			<input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" max-lenght="50" placeholder="Direcci&oacute;n empresa">
+                                                            			<input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlenght="50" placeholder="Direcci&oacute;n empresa">
                                                           			</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
@@ -249,7 +249,7 @@
                                                   			    </div>
                                                   			</div>
                                                   			<div class="col-xs-12 col-sm-4">
-                                                              	<p><strong>Datos del contacto</strong></p>
+                                                              	<p><strong class="size">Datos del contacto</strong></p>
                                                               	<div class="col-xs-12 p-0">
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
@@ -260,7 +260,7 @@
                                                           			</div>
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)">
+                                                                    		<input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)" maxlength="7">
                                                                   		</div>
                                                           			</div>
                                                           		</div>
@@ -351,26 +351,34 @@
             </div>
             <div class="modal-body">
               <div class="bs-example">
-                <div class="table-responsive" id="tablaCronograma">
+                <div class="table-responsive ocultar" id="tablaCronograma" style="display: block;">
                 	<p style="margin-bottom: 0;font-size: 19px;color:#808080">Para poder terminar con la solicitud </p>	
               		<p style="margin-bottom: 11px;font-size: 19px;color:#808080">Por favor ingrese el c&oacute;digo de seguridad que ha sido enviado a su celular: </p>
               		<div class="center">
-              			<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+              			  <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="uno">
+                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="dos">
+                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="tres">
+                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="cuatro">
+                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="cinco">
+                  		<input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="seis">
               		</div>	
               		<br>
               		<div class="col-xs-12">
                     	<a href="" style="color: #0060aa;font-size: 15px;margin: -15px;">Enviar otro c&oacute;digo</a>
                     </div>
             </div>
+            <div class="table-responsive otro" id="idError" style="display: none;">
+                <br>
+                <br>
+                <p style="margin-bottom: 0;font-size: 19px;color:#808080">El n&uacute;mero ingresado no es v&aacute;lido</p> 
+                <br>
+                <br>
+            </div>
         </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" aria-label="Close" onclick="verificarNumero()">Confirmar</button>
+              <button type="button confirmar" class="btn btn-primary" id="confirmar" aria-label="Close" style="display: block;" onclick="verificarNumero()">Confirmar</button>
+              <button type="button cambiar" class="btn btn-primary" id="cambiar" aria-label="Close" style="display: none;" onclick="cambiarCelular()">Cambiar N&uacute;mero</button>
             </div>
           </div>
       </div>

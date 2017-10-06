@@ -22,7 +22,9 @@ panel-primary,
 .navbar-right{
 	padding: 0 200px;
 }
-
+.size {
+    font-size: 20px;
+}
 div.row.row1 {
 	background-color:#fff;
 	color:#1C4485; 
