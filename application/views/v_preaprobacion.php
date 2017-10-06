@@ -99,70 +99,66 @@
                                               <div class="col-md-6">
                                                 <select class="form-control" style="position:relative;left: 40px;top: -18px;" name="modelo" title="Selec. Tipo de pago" id="modelo">
                                                         <option value="">Modelo</option>
-                                                        <option value="Susuki">Susuki</option>
-                                                        <option value="Honda">Honda</option>
-                                                        <option value="Kia">Kia</option>
-                                                        <option value="Audi">Audi</option>
                                                   </select>
                                               </div>
                                               <div class="col-md-12">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
-                                                      <span>12m</span>
+                                                      <span><?php echo $plazo_min ?>m</span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                      <span>12m</span>
+                                                      <span><?php echo  $plazo_min?>m</span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                      <span>36m</span>
+                                                      <span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                        <label for="slider-range-meses">Plazo de pr&eacute;stamo</label>
+                                                        <label for="slider-range-plazo">Plazo de pr&eacute;stamo</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?"><i class="mdi mdi-info"></i></button>
-                                                        <div id="slider-range-meses"></div>
-                                                        <p id="slider-range-value-meses" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <div id="slider-range-plazo"></div>
+                                                        <p id="slider-range-value-plazo" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -79px;top: 45px;">
-                                                      <span>36m</span>
+                                                      <span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                               </div>
                                               <div class="col-md-12">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
-                                                      <span id="sueldoMin">S/ <?php echo  $minAuto?></span>
+                                                      <span id="sueldoMin">S/ 10000</span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                      <span >S/ <?php echo  $minAuto?></span>
+                                                      <span >S/ 10000</span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                      <span>S/ <?php echo  $maxAuto?></span>
+                                                      <span>S/ 100000</span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                      <label for="slider-range">Monto del veh&iacute;culo</label>
+                                                      <label for="slider-range-monto">Monto del veh&iacute;culo</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button>
-                                                        <div id="slider-range"></div>
-                                                        <p id="slider-range-value" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <div id="slider-range-monto"></div>
+                                                        <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -79px;top: 45px;">
-                                                      <span id="sueldoMax">S/ <?php echo  $maxAuto?></span>
+                                                      <span id="sueldoMax">S/ 100000</span>
                                                     </div>
                                               </div>
                                               <div class="col-md-12">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;top: 25px;left: 70px">
-                                                      <span id="minCuota">S/ <?php echo  $min_cuota?></span>
+                                                      <span id="minCuota">S/ <?php echo  $importeMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                      <span>S/ <?php echo  $min_cuota?></span>
+                                                      <span>S/ <?php echo  $importeMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                      <span>S/ <?php echo  $max_cuota?></span>
+                                                      <span>S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                      <label for="slider-range-dias">Cuota inicial</label>
+                                                      <label for="slider-range-cuota">Cuota inicial</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -2px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?"><i class="mdi mdi-info"></i></button>
-                                                        <div id="slider-range-dias"></div>
-                                                        <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <div id="slider-range-cuota"></div>
+                                                        <p id="slider-range-value-cuota" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -78px;top: 25px;">
-                                                      <span id="maxCuota">S/ <?php echo  $max_cuota?></span>
+                                                      <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                               </div>
                                               <div class="col-md-12" style="color:black;font-size:16px;position: relative; left: -27px">
@@ -179,24 +175,20 @@
                                             <div class="col-xs-12 col-md-6 text-center" style="color: black;font-size:16px;position: relative;left: 100px;width: 35%;">
                                         <div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
                                           <div class="col-md-12" style="margin: 10px">
-                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Importe Pr&eacute;stamo</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="importe">S/. <?php echo  $iniRango.',00'?></span>
-                                          </div>
-                                          <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ <?php echo $cantPago?></span>
+                                                    <span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ 0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Cuota Mensual*</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/ <?php echo $mensual?></span>
+                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/ 0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">7%</span>
+                                                    <span style="color:#1C4485;font-size: 20px" id="tcea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
-                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">P&oacute;liza</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">15%</span>
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto</p>
+                                                    <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
                                                     <p style="color:#A9A9A9;font-size:13px">*Cuota aproximada sujeta a evaluación</p>
                                           </div>
                                         </div>
@@ -447,69 +439,17 @@
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip();  
   });
-    var rangeSlider = document.getElementById('slider-range');
-    var monto      = null;
-    var meses_pago = null;
-    var cuota_ini  = null;
-    var cuota_inicial  = null;
-
-    noUiSlider.create(rangeSlider, {
-      start: [ <?php echo  $iniRango?> ],
-      step: 100,
-      range: {
-        'min': [  <?php echo  $minAuto?> ],
-        'max': [ <?php echo  $maxAuto?> ]
-      },
-      connect: "lower",
-      format: wNumb({
-        decimals: 0,
-        thousand: ',',
-        prefix: ' S/ ',
-      })
-    });
-
-    var rangeSliderValueElement = document.getElementById('slider-range-value');
-
-    rangeSlider.noUiSlider.on('update', function( values, handle ) {
-      rangeSliderValueElement.innerHTML = values[handle];
-      monto = values[handle];
-      $.ajax({
-        data  : { cantidad : values[handle],
-                meses    : meses_pago,
-                cuota_inicial : cuota_inicial},
-        url   : 'preaprobacion/changeValuesVehiculo',
-        type  : 'POST'
-      }).done(function(data){
-        try{
-          data = JSON.parse(data);
-          if(data.error == 0){
-            $('#minCuota').html('S/ '+data.min_cuota);  
-            $('#maxCuota').html('S/ '+data.max_cuota);  
-            $('#importe').html('S/ '+data.cuota_ini);
-            $('#sueldoMin').html('S/ '+data.minAuto);
-            $('#sueldoMax').html('S/ '+data.maxAuto);
-            $('#cantTotPago').html('S/ '+data.cantPago);  
-              $('#cantMensPago').html('S/ '+data.mensual);
-
-          }else {
-            return;
-          }
-        } catch (err){
-          //msj('error',err.message);
-        }
-      });
-    });
-
+    
     //////////
 
-    var rangeSliderMeses = document.getElementById('slider-range-meses');
+    var rangeSliderPlazo = document.getElementById('slider-range-plazo');
 
-    noUiSlider.create(rangeSliderMeses, {
-      start: [ 36 ],
-      step: 12,
+    noUiSlider.create(rangeSliderPlazo, {
+      start: [ <?php echo $plazo_max ?> ],
+      step: <?php echo $plazo_step  ?>,
       range: {
-        'min': [  12 ],
-        'max': [ 36 ]
+        'min': [  <?php echo $plazo_min ?> ],
+        'max': [ <?php echo $plazo_max ?> ]
       },
       connect: "lower",
       format: wNumb({
@@ -519,50 +459,60 @@
       })
     });
 
-    var rangeSliderValueElementMeses = document.getElementById('slider-range-value-meses');
+    var rangeSliderValueElementPlazos = document.getElementById('slider-range-value-plazo');
 
-    rangeSliderMeses.noUiSlider.on('update', function( values, handle ) {
-      rangeSliderValueElementMeses.innerHTML = values[handle];
+    rangeSliderPlazo.noUiSlider.on('update', function( values, handle ) {
+      rangeSliderValueElementPlazos.innerHTML = values[handle];
       meses_pago = values[handle];
-      $.ajax({
-        data  : { meses    : values[handle],
-                cantidad : monto,
-                cuota_inicial : cuota_inicial},
-        url   : 'preaprobacion/changeValues',
-        type  : 'POST'
-      }).done(function(data){
-        try{
-          data = JSON.parse(data);
-          if(data.error == 0){
-            cuota_ini = data.min_cuota;
-                $('#sueldoMin').html('S/ '+data.minAuto);
-                $('#sueldoMax').html('S/ '+data.maxAuto);
-                $('#minCuota').html('S/ '+data.min_cuota);
-                $('#maxCuota').html('S/ '+data.max_cuota);
-                $('#slider-range-value').html('S/ '+data.valor_auto);
-                $('#slider-range-value-dias').html('S/ '+data.min_cuota);
-              $('#cantTotPago').html('S/ '+data.cantPago);  
-              $('#cantMensPago').html('S/ '+data.mensual);  
+    });
 
-          }else {
-            return;
-          }
-        } catch (err){
-          msj('error',err.message);
+    rangeSliderPlazo.noUiSlider.on('change', function( values, handle ) {
+      rangeSliderValueElementPlazos.innerHTML = values[handle];
+      meses_pago = values[handle];
+      monto = $('#slider-range-value-monto').html();
+      cuota = $('#slider-range-value-cuota').html();
+      marca = $('#marca option:selected').val();
+      modelo= $('#modelo option:selected').val();
+
+      m = monto.replace(/[^0-9.]/g, "");
+      c = cuota.replace(/[^0-9.]/g, "");
+
+      if(parseFloat(m) < parseFloat(c)){
+        alert('El monto no puede ser menor que la cuota inicial')
+      }else{
+        if(modelo != ''){
+          $.ajax({
+            data  : { meses    : meses_pago,
+                    cuota : cuota,
+                    monto: monto,
+                    marca: marca,
+                    modelo: modelo
+                  },
+            url   : 'C_preaprobacion/changeValues',
+            type  : 'POST',
+            dataType: 'json'
+          }).done(function(data){
+            console.log(data);
+            $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+            $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+            $('#tcea').html(data.tcea+'%');
+            $('#seguroAuto').html('S/ '+data.seguroAuto); 
+          });
         }
-      });
+      }
     });
 
 
-    //dias
-    var rangeSliderDias = document.getElementById('slider-range-dias');
+    //
 
-    noUiSlider.create(rangeSliderDias, {
-      start: [ <?php echo  $min_cuota?>],
-      step: 100,
+    var rangeSliderMonto = document.getElementById('slider-range-monto');
+
+    noUiSlider.create(rangeSliderMonto, {
+      start: [ 100000 ],
+      step: 1000,
       range: {
-        'min': [  <?php echo  $min_cuota?> ],
-        'max': [ <?php echo  $max_cuota?> ]
+        'min': [  10000 ],
+        'max': [ 100000 ]
       },
       connect: "lower",
       format: wNumb({
@@ -572,29 +522,121 @@
       })
     });
 
-    var rangeSliderValueElementDias = document.getElementById('slider-range-value-dias');
+    var rangeSliderValueElementMonto = document.getElementById('slider-range-value-monto');
 
-    rangeSliderDias.noUiSlider.on('update', function( values, handle ) {
-      rangeSliderValueElementDias.innerHTML = values[handle];
+    rangeSliderMonto.noUiSlider.on('update', function( values, handle ) {
+      rangeSliderValueElementMonto.innerHTML = values[handle];
+      meses_pago = values[handle];
+    });
+
+    rangeSliderMonto.noUiSlider.on('change', function( values, handle ) {
+
+      console.log(values)
+      rangeSliderValueElementMonto.innerHTML = values[handle];
+      
+      meses = $('#slider-range-value-plazo').html();
+      monto = values[handle];
+      cuota = $('#slider-range-value-cuota').html();
+      marca = $('#marca option:selected').val();
+      modelo= $('#modelo option:selected').val();
+
+      m = monto.replace(/[^0-9.]/g, "");
+      c = cuota.replace(/[^0-9.]/g, "");
+
+      if(parseFloat(m) < parseFloat(c)){
+        alert('El monto no puede ser menor que la cuota inicial');
+        rangeSliderMonto.noUiSlider.set(100000);
+        monto = 'S/ 100000';
+      }
+      if(modelo != ''){
+        $.ajax({
+          data  : { meses    : meses,
+                  cuota : cuota,
+                  monto: monto,
+                  marca: marca,
+                  modelo: modelo
+                },
+          url   : 'C_preaprobacion/changeValues',
+          type  : 'POST',
+          dataType: 'json'
+        }).done(function(data){
+          console.log(data);
+          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+          $('#tcea').html(data.tcea+'%');
+          $('#seguroAuto').html('S/ '+data.seguroAuto);
+        });
+      }
+      
+    });
+
+    //
+
+
+    //dias
+    var rangeSliderCuota = document.getElementById('slider-range-cuota');
+
+    noUiSlider.create(rangeSliderCuota, {
+      start: [ <?php echo  $importeMaximo?>],
+      step: 1000,
+      range: {
+        'min': [  <?php echo  $importeMinimo?> ],
+        'max': [ <?php echo  $importeMaximo?> ]
+      },
+      connect: "lower",
+      format: wNumb({
+        decimals: 0,
+        thousand: ',',
+        prefix: ' S/ ',
+      })
+    });
+
+    var rangeSliderValueElementCuotas = document.getElementById('slider-range-value-cuota');
+
+    rangeSliderCuota.noUiSlider.on('update', function( values, handle ) {
+      rangeSliderValueElementCuotas.innerHTML = values[handle];
         cuota_inicial = values[handle];
-      $.ajax({
-        data  : { meses    : meses_pago,
-                cantidad : monto,
-                cuota_inicial : cuota_inicial},
-        url   : 'preaprobacion/changeImporte',
-        type  : 'POST'
-      }).done(function(data){
-        try{
-          data = JSON.parse(data);
-          if(data.error == 0){
-            $('#importe').html('S/ '+data.cuota_ini);
-          }else {
-            return;
-          }
-        } catch (err){
-          msj('error',err.message);
-        }
-      });
+    });
+
+    rangeSliderCuota.noUiSlider.on('change', function( values, handle ) {
+      console.log(values)
+      rangeSliderValueElementCuotas.innerHTML = values[handle];
+      
+      meses_pago = $('#slider-range-value-plazo').html();
+      monto = $('#slider-range-value-monto').html();
+      cuota = values[handle];
+      marca = $('#marca option:selected').val();
+      modelo= $('#modelo option:selected').val();
+
+      m = monto.replace(/[^0-9.]/g, "");
+      c = cuota.replace(/[^0-9.]/g, "");
+
+      if(parseFloat(m) < parseFloat(c)){
+        alert('El monto no puede ser menor que la cuota inicial');
+        rangeSliderMonto.noUiSlider.set(100000);
+        monto = 'S/ 100000';
+      }
+      if(modelo != ''){
+        //alert($('#slider-range-value-plazo').html())
+        $.ajax({
+          data  : { meses    : meses_pago,
+                  cuota : cuota,
+                  monto: monto,
+                  marca: marca,
+                  modelo: modelo
+                },
+          url   : 'C_preaprobacion/changeValues',
+          type  : 'POST',
+          dataType: 'json'
+        }).done(function(data){
+          console.log(data);
+          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+          $('#tcea').html(data.tcea+'%');
+          $('#seguroAuto').html('S/ '+data.seguroAuto);
+        });
+      }
+      
     });
     
 
@@ -625,7 +667,7 @@
       var fecha_pago = $('#fechaPago').val();
       var tipoPago   = $('#tipoPago').val();
       /*$.ajax({
-      data  : { cantidad : monto,
+      data  : { cuota : monto,
               meses    : meses_pago,
               fecha    : fecha_pago,
               tipoPago : tipoPago },
@@ -647,6 +689,35 @@
           }
         });*/
     });
+
+    $('#modelo').on('change', function() {
+      //alert( $(this).find(":selected").val() );
+
+      meses_pago = $('#slider-range-value-plazo').html();
+      monto = $('#slider-range-value-monto').html();
+      cuota = $('#slider-range-value-cuota').html();
+      marca = $('#marca option:selected').val();
+      modelo= $('#modelo option:selected').val();
+      $.ajax({
+        data  : { meses    : meses_pago,
+                cuota : cuota,
+                monto: monto,
+                marca: marca,
+                modelo: modelo
+              },
+        url   : 'C_preaprobacion/changeValues',
+        type  : 'POST',
+        dataType: 'json'
+      }).done(function(data){
+        console.log(data);
+        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#tcea').html(data.tcea+'%');
+        $('#seguroAuto').html('S/ '+data.seguroAuto);
+      });
+
+  })
+
 
   })(jQuery);
 
