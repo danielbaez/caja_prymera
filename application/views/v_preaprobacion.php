@@ -123,13 +123,13 @@
                                               </div>
                                               <div class="col-md-12">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
-                                                      <span id="sueldoMin">S/ 10000</span>
+                                                      <span id="sueldoMin">S/ <?php echo  $montoMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                      <span >S/ 10000</span>
+                                                      <span >S/ <?php echo  $montoMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                      <span>S/ 100000</span>
+                                                      <span>S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
                                                       <label for="slider-range-monto">Monto del veh&iacute;culo</label>
@@ -138,18 +138,18 @@
                                                         <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -79px;top: 45px;">
-                                                      <span id="sueldoMax">S/ 100000</span>
+                                                      <span id="sueldoMax">S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                               </div>
                                               <div class="col-md-12">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;top: 25px;left: 70px">
-                                                      <span id="minCuota">S/ <?php echo  $importeMinimo?></span>
+                                                      <span id="minCuota">S/ <?php echo  $cuotaMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
-                                                      <span>S/ <?php echo  $importeMinimo?></span>
+                                                      <span>S/ <?php echo  $cuotaMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-sm-6 text-right">
-                                                      <span>S/ <?php echo  $importeMaximo?></span>
+                                                      <span>S/ <?php echo  $cuotaMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
                                                       <label for="slider-range-cuota">Cuota inicial</label>
@@ -158,7 +158,7 @@
                                                         <p id="slider-range-value-cuota" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -78px;top: 25px;">
-                                                      <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
+                                                      <span id="maxCuota">S/ <?php echo  $cuotaMaximo?></span>
                                                     </div>
                                               </div>
                                               <div class="col-md-12" style="color:black;font-size:16px;position: relative; left: -27px">
@@ -486,13 +486,37 @@
                     cuota : cuota,
                     monto: monto,
                     marca: marca,
-                    modelo: modelo
+                    modelo: modelo,
+                    action: 'plazo'
                   },
             url   : 'C_preaprobacion/changeValues',
             type  : 'POST',
             dataType: 'json'
           }).done(function(data){
             console.log(data);
+
+            $('#sueldoMin').html('S/ '+data.montoMinimo);
+            $('#sueldoMax').html('S/ '+data.montoMaximo);
+
+            $('#minCuota').html('S/ '+data.cuotaMinimo);
+            $('#maxCuota').html('S/ '+data.cuotaMaximo);
+
+            rangeSliderMonto.noUiSlider.updateOptions({
+                range: {
+                    'min': data.montoMinimo,
+                    'max': data.montoMaximo
+                },
+                start: data.montoMaximo/2
+            });
+
+            rangeSliderCuota.noUiSlider.updateOptions({
+                range: {
+                    'min': data.cuotaMinimo,
+                    'max': data.cuotaMaximo
+                },
+                start: data.cuotaMinimo
+            });
+
             $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
             $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
             $('#tcea').html(data.tcea+'%');
@@ -507,20 +531,20 @@
 
     var rangeSliderMonto = document.getElementById('slider-range-monto');
 
-    noUiSlider.create(rangeSliderMonto, {
-      start: [ 100000 ],
-      step: 1000,
-      range: {
-        'min': [  10000 ],
-        'max': [ 100000 ]
-      },
-      connect: "lower",
-      format: wNumb({
-        decimals: 0,
-        thousand: ',',
-        prefix: ' S/ ',
-      })
-    });
+      noUiSlider.create(rangeSliderMonto, {
+        start: [ <?php echo  $montoMaximo/2?>],
+        step: 100,
+        range: {
+          'min': [  <?php echo  $montoMinimo?> ],
+          'max': [ <?php echo  $montoMaximo?> ]
+        },
+        connect: "lower",
+        format: wNumb({
+          decimals: 0,
+          thousand: ',',
+          prefix: ' S/ ',
+        })
+      });
 
     var rangeSliderValueElementMonto = document.getElementById('slider-range-value-monto');
 
@@ -561,6 +585,18 @@
           dataType: 'json'
         }).done(function(data){
           console.log(data);
+
+          $('#minCuota').html('S/ '+data.cuotaMinimo);
+          $('#maxCuota').html('S/ '+data.cuotaMaximo);
+
+          rangeSliderCuota.noUiSlider.updateOptions({
+              range: {
+                  'min': data.cuotaMinimo,
+                  'max': data.cuotaMaximo
+              },
+              start: data.cuotaMinimo
+          });
+
           $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
           $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
@@ -577,11 +613,11 @@
     var rangeSliderCuota = document.getElementById('slider-range-cuota');
 
     noUiSlider.create(rangeSliderCuota, {
-      start: [ <?php echo  $importeMaximo?>],
-      step: 1000,
+      start: [ <?php echo  $cuotaMinimo?>],
+      step: 100,
       range: {
-        'min': [  <?php echo  $importeMinimo?> ],
-        'max': [ <?php echo  $importeMaximo?> ]
+        'min': [  <?php echo  $cuotaMinimo?> ],
+        'max': [ <?php echo  $cuotaMaximo?> ]
       },
       connect: "lower",
       format: wNumb({
@@ -618,6 +654,7 @@
       }
       if(modelo != ''){
         //alert($('#slider-range-value-plazo').html())
+        //alert(meses_pago)
         $.ajax({
           data  : { meses    : meses_pago,
                   cuota : cuota,

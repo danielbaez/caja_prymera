@@ -15,23 +15,26 @@ class C_preaprobacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
-        $this->array_datos = array(
-                                    array(
-                                        "plazo" => 12,
-                                        "mont_min" => 10000,
-                                        "mont_max" => 50000
-                                    ),
-                                    array(
-                                        "plazo" => 24,
-                                        "mont_min" => 50000,
-                                        "mont_max" => 100000
-                                    ),
-                                    array(
-                                        "plazo" => 36,
-                                        "mont_min" => 100000,
-                                        "mont_max" => 200000
-                                    )
-                                );
+        // $this->array_datos = array(
+        //                             array(
+        //                                 "plazo" => 12,
+        //                                 "mont_min" => 10000,
+        //                                 "mont_max" => 50000
+        //                             ),
+        //                             array(
+        //                                 "plazo" => 24,
+        //                                 "mont_min" => 50000,
+        //                                 "mont_max" => 100000
+        //                             ),
+        //                             array(
+        //                                 "plazo" => 36,
+        //                                 "mont_min" => 100000,
+        //                                 "mont_max" => 200000
+        //                             )
+        //                         );
+
+
+
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
         if (! isset($_COOKIE[__getCookieName()])) {
@@ -42,6 +45,7 @@ class C_preaprobacion extends CI_Controller {
     
     public function index()
     {
+
         if(_getSesion("nombre") == null && _getSesion("email") == null) {
             header("Location: ".RUTA_CAJA, true, 301);
         }
@@ -75,34 +79,104 @@ class C_preaprobacion extends CI_Controller {
         $cantPago           = 100000;
         $minIniPorc         = $this->minIniPorc;
         $maxIniPorc         = $this->maxIniPorc;
-        $arr                = $this->array_datos;
-        foreach ($arr as $row) {
+        //$arr                = $this->array_datos;
+
+        /*foreach ($arr as $row) {
+            print_r($row);
              $plazo = $row['plazo'];
              $minPrestamo = $row['mont_min'];
              $maxPrestamo = $row['mont_max'];
              $minAuto = $minPrestamo/(1-$minIniPorc);
              $maxAuto = $maxPrestamo/(1-$maxIniPorc);
+        }*/
+        
+        
+        $array_datos = array(
+                            array(
+                                "plazo" => array(12,24,36),
+                                "mont_min" => 1000,
+                                "mont_max" => 5000
+                            ),
+                            array(
+                                "plazo" => array(12,24),
+                                "mont_min" => 5000,
+                                "mont_max" => 10000
+                            ),
+                            array(
+                                "plazo" => array(36),
+                                "mont_min" => 10000,
+                                "mont_max" => 15000
+                            )
+                        );
+
+        $plazos = [];
+        foreach ($array_datos as $key => $value) {
+            $plazos = array_merge($plazos, $value['plazo']);
+
         }
+        $plazos = array_unique($plazos);
+        
+        $arr_end = [];
+        foreach ($plazos as $key => $value) {
+            $arr_end[$value] = [];
+            $mmax = [];
+            $mmin = [];
+            foreach ($array_datos as $key2 => $value2) {
+                if(in_array($value, $value2['plazo'])){
+                     array_push($mmin, $value2['mont_min']);
+                     array_push($mmax, $value2['mont_max']);
+                }
+            }
+            $arr_end[$value] = array('mont_min' => min($mmin), 'mont_max' => max($mmax));
+        }
+
+        /*print_r($arr_end);
+        exit();*/
+
+        $plazo_max = max($plazos);
+        $arr_max = $arr_end[$plazo_max];
+
+        //$this->session->set_userdata(array('plazosss' => $plazos, 'arr_end' => $arr_end));
+
+
+        $this->session->set_userdata(array('arr_end' => $arr_end));
+
+        //print_r($arr_max);  
+
+        $minAuto = $arr_max['mont_min']/(1-$minIniPorc);      
+        $maxAuto = $arr_max['mont_max']/(1-$maxIniPorc);
+        
+
         $valorAuto = ($minAuto+$maxAuto)/2;
-        $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
-        $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
+        /*$maxInicial = max($valorAuto-$arr_max['mont_max'],$valorAuto*$minIniPorc);
+        $minInicial = min($valorAuto-$arr_max['mont_min'],$valorAuto*$maxIniPorc);*/
+
+        $minInicial = max($valorAuto-$arr_max['mont_max'],$valorAuto*$minIniPorc);
+        $maxInicial = min($valorAuto-$arr_max['mont_min'],$valorAuto*$maxIniPorc);
+       
+
+        /*$minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
+        $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);*/
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.' '.$apellido.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
 
-        $data['plazo_max']      = $plazos_explode[count($plazos_explode)-1];
-        $data['plazo_min']      = $plazos_explode[0];
+        $data['plazo_max']      = $plazos[count($plazos)-1];
+        $data['plazo_min']      = $plazos[0];
 
-        $count = count($plazos_explode);
+        $count = count($plazos);
         if($count == 2){
             $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
         }
         elseif($count >= 3) {
-            $data['plazo_step'] = $plazos_explode[1] - $plazos_explode[0];
+            $data['plazo_step'] = $plazos[1] - $plazos[0];
         }
 
-        $data['importeMaximo']      = $importeMaximo;
-        $data['importeMinimo']      = $importeMinimo;
+        $data['montoMaximo']      = round($maxAuto/100)*100;
+        $data['montoMinimo']      = round($minAuto/100)*100;
+
+        $data['cuotaMaximo']      = round($maxInicial/100)*100;
+        $data['cuotaMinimo']      = round($minInicial/100)*100;
 
         /*try 
           {
@@ -167,9 +241,44 @@ class C_preaprobacion extends CI_Controller {
     
     function changeValues() {
 
+        $minIniPorc         = $this->minIniPorc;
+        $maxIniPorc         = $this->maxIniPorc;
+
+        $meses = preg_replace("/[^0-9]/","",_post('meses'));
+
+        $arr_max = _getSesion('arr_end');
+
+        $arr_max = $arr_max[$meses];
+        //print_r($arr_max);
+
+        $minAuto = $arr_max['mont_min']/(1-$minIniPorc);      
+        $maxAuto = $arr_max['mont_max']/(1-$maxIniPorc);
+        
+        $monto = preg_replace("/[^0-9]/","",_post('monto'));
+
+        if(_post('action') == 'plazo')
+        {
+            $valorAuto = ($minAuto+$maxAuto)/2;
+        }else{
+            $valorAuto = $monto;
+        }
+
+
+        $minInicial = max($valorAuto-$arr_max['mont_max'],$valorAuto*$minIniPorc);
+        $maxInicial = min($valorAuto-$arr_max['mont_min'],$valorAuto*$maxIniPorc);
+       
+        $data['montoMaximo']      = round($maxAuto/100)*100;
+        $data['montoMinimo']      = round($minAuto/100)*100;
+
+        $data['cuotaMaximo']      = round($maxInicial/100)*100;
+        $data['cuotaMinimo']      = round($minInicial/100)*100;
+
+        /*echo json_encode($data);
+        exit();*/
+
         try 
           {
-            $monto = preg_replace("/[^0-9]/","",_post('monto'));
+            
             $meses = preg_replace("/[^0-9]/","",_post('meses'));
             $cuota = preg_replace("/[^0-9]/","",_post('cuota'));
             $marca = _post('marca');
@@ -181,7 +290,18 @@ class C_preaprobacion extends CI_Controller {
           //resultado 0 : rechazado
           $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
-           $params = array('token'=> 'E928EUXP',
+          if(_post('action') == 'plazo')
+          {
+                $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_getSesion('dni'),
+                                  'importeAuto'=> $data['montoMaximo']/2,
+                                  'plazo' => $meses,
+                                  'cuotaInicial' => $data['cuotaMinimo'],
+                                  'marca' => $marca,
+                                  'modelo' => $modelo
+                    );
+          }else{
+                $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
                                   'importeAuto'=> $monto,
                                   'plazo' => $meses,
@@ -189,9 +309,13 @@ class C_preaprobacion extends CI_Controller {
                                   'marca' => $marca,
                                   'modelo' => $modelo
                     );
+          }
+
+           
 
 
           $result = $client->GetDatosCreditoVehicular($params);
+   
           $res = $result->return->resultado;
           if($res == 1){
 
@@ -213,14 +337,18 @@ class C_preaprobacion extends CI_Controller {
 
             $data['seguroAuto'] = $result->return->seguroAuto;
             $data['seguroAuto'] = str_replace( ',', '', $data['seguroAuto']);
-            $data['seguroAuto'] = number_format($data['seguroAuto'], 2);            
+            $data['seguroAuto'] = number_format($data['seguroAuto'], 2);
+
+            $data['status'] = 1;            
 
 
           }
           if($res == 0){
+            $data['status'] = 0;
             //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
           }
           if($res == 2){
+            $data['status'] = 2;
             //$response = array('status' => 2);
           }
 
