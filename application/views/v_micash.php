@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12">
-                                <p style="font-size: 12px;color: #9fa9a3;margin-top:10px;">*El cr&eacute;dito Consumo "Mi Cash" est&acute; sujeto a evaluaci&oacute;n</p>
+                                <p style="font-size: 12px;color: #9fa9a3;margin-top:10px;">*El cr&eacute;dito Consumo "Mi Cash" est&aacute; sujeto a evaluaci&oacute;n</p>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             <li><a data-toggle="tab" href="#menus1">Requisitos</a></li>
                             <li><a data-toggle="tab" href="#menus2">Documentos</a></li>
                             <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
-                            <li><a data-toggle="tab" href="#menus3">Seguros</a></li>
+                            <li><a data-toggle="tab" href="#menus4">Documentos</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -241,7 +241,7 @@
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>Ingresos m&iacute;nimo: 2,000 soles.</p>
+                                    <p>Ingresos m&iacute;nimo: 1,000 soles.</p>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -249,17 +249,296 @@
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>Edad: m&iacute;nimo 24 años.</p>
+                                    <p>Edad: M&iacute;nimo 23 a&ntilde;os y M&aacute;ximo 70 a&ntilde;os.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Calificaci&oacute;n Normal (RCC) en los &uacute;ltimos 6 meses o score de aprobaci&oacute;n seg&uacute;n la evaluaci&oacute;n del &aacute;rea de Riesgos.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Persona con nacionalidad peruana.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Puede ser cliente nuevo y cliente recurrente de Prymera; en este &uacute;ltimo caso, cuando se tenga cr&eacute;dito vigente, se tramitar&aacute; ampliaci&oacute;n de cr&eacute;dito, siempre que cuente con 03 cuotas pagadas como m&iacute;nimo.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo Caja Prymera.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>En caso de tener conyugue se registra sus datos (nombres, apellidos y DNI)</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>No deben ser clientes vinculados, familiares del personal de la Caja (1&deg; y 2&deg; grado) y no deben pertenecer a la base de alertas.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>No deben ser clientes que se han registrado en la base de datos INDECOPI (No Molestar); aplica para el personal de Telemarketing.</p>
                                 </div>
                             </div>
                         </div>
                         <div id="menus2" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            <h3><strong>El cliente debe proporcionar los siguientes documentos:</strong></h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Documentos de identificaci&oacute;n: copia de DNI vigente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Copia de &uacute;ltimo recibo de servicios del titular (m&aacute;ximo antig&uring;edad de 2 meses)</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Sustento de ingresos: 3 &uacute;ltimas boletas de pago, si el cliente cuenta con ingresos variables y 1 &uacute;ltima boleta, si el cliente cuenta con ingresos fijos (s&oacute;lo en caso solicite un monto mayor al pre-aprobado)</p>
+                                </div>
+                            </div><br>
+                            <h3><strong>El expediente debe considerar los siguientes documentos:</strong></h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Resumen del Cr&eacute;dito firmada por el cliente.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Resoluci&oacute;n del Cr&eacute;dito firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Orden de Desembolso firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Contrato del Cr&eacute;dito firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Hoja Resumen firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Pagar&eacute;  firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Documentos de identificaci&oacute;n: copia de DNI o Ficha RENIEC</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Copia de &uacute;ltimo recibo de servicios (m&aacute;ximo antig&uring;edad de 2 meses).</p>
+                                </div>
+                            </div><br>
+                            <h3>Adicional, para cr&eacute;ditos mayores al monto pre-aprobado se debe adjuntar:</h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Sustento de ingresos: 1 &uacute;ltima boletas de pago; si el colaborador cuenta con ingresos variables se solicitara las 3 &uacute;ltimas boletas de pago y se utilizar&aacute; del ingreso promedio de estas 3 boletas para la evaluación del cr&eacute;dito.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Reporte ESSSALUD.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Correo electr&oacute;nico impreso de la respuesta del &aacute;rea de Riesgos (en caso el monto desembolsado haya sido mayor al aprobado).</p>
+                                </div>
+                            </div>
                         </div>
                         <div id="menus3" class="tab-pane fade">
-                            <h3>Menu 3</h3>
-                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <h3>Preguntas Frecuentes/h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</p>
+                                    <p>Si, usted podrá hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</p>
+                                    <p>Si, usted podr&aacute; hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</p>
+                                    <p>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:</p><br>
+                                    <p>- Pago Total del Cr&eacute;dito: amortiza el total de la deuda con reducci&oacute;n de comisiones e intereses al d&iacute;a de pago.</p>
+                                    <p>- Prepago con Reducci&oacute;n del Plazo: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, el monto de las cuotas se mantiene y reduce el plazo del cr&eacute;dito.</p>
+                                    <p>- Prepago con Reducci&oacute;n de Cuota: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, reduciendo el monto de la cuota del mes y manteniendo el plazo del cr&eacute;dito.</p>
+                                    <p>- Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</p>
+                                    <p>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) días de realizado el pago. 
+                                    En cualquiera de los casos y a su solicitud, Prymera le har&aacute; entrega del cronograma de pagos modificado dentro de los 7 d&iacute;as calendarios posteriores a la presentaci&oacute;n de su solicitud.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Qu&eacute; sucede si me atraso en pagar las cuotas?</p>
+                                    <p>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menus4" class="tab-pane fade">
+                            <h3>El cliente debe proporcionar los siguientes documentos:/h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</p>
+                                    <p>Si, usted podrá hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</p>
+                                    <p>Si, usted podr&aacute; hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</p>
+                                    <p>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:</p><br>
+                                    <p>- Pago Total del Cr&eacute;dito: amortiza el total de la deuda con reducci&oacute;n de comisiones e intereses al d&iacute;a de pago.</p>
+                                    <p>- Prepago con Reducci&oacute;n del Plazo: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, el monto de las cuotas se mantiene y reduce el plazo del cr&eacute;dito.</p>
+                                    <p>- Prepago con Reducci&oacute;n de Cuota: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, reduciendo el monto de la cuota del mes y manteniendo el plazo del cr&eacute;dito.</p>
+                                    <p>- Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</p>
+                                    <p>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) días de realizado el pago. 
+                                    En cualquiera de los casos y a su solicitud, Prymera le har&aacute; entrega del cronograma de pagos modificado dentro de los 7 d&iacute;as calendarios posteriores a la presentaci&oacute;n de su solicitud.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>&iquest;Qu&eacute; sucede si me atraso en pagar las cuotas?</p>
+                                    <p>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

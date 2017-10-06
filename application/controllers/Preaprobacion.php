@@ -593,10 +593,6 @@ class preaprobacion extends CI_Controller {
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
             $concesionaria = _post('concesionaria');
-            $this->sendMailGmail();
-            _log('pasa');
-            _log($numero);
-            _log(_getSesion('codigo_ver'));
             if($numero != _getSesion('codigo_ver')) {
                 $data['mensaje'] = "El n&uacute;mero ingresado no es v&aacute;";
                 $data['cambio'] = 1;
@@ -619,6 +615,7 @@ class preaprobacion extends CI_Controller {
                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
+                $this->sendMailGmail();
             }
 
             $data['error'] = EXIT_SUCCESS;
@@ -630,7 +627,7 @@ class preaprobacion extends CI_Controller {
 
     function enviarMail() {
         //twilio enviar msn
-        $aleatorio = rand ( 100000 , 999999 );
+       $aleatorio = rand ( 100000 , 999999 );
         $numero = _post('nro_celular');
         $this->load->library('twilio');
         $from = '786-220-7333';
@@ -650,7 +647,6 @@ class preaprobacion extends CI_Controller {
     {
        //cargamos la libreria email de ci
        $this->load->library("email");
-       _log('asda');
        //configuracion para gmail
        $configGmail = array(
        'protocol' => 'smtp',
@@ -672,8 +668,8 @@ class preaprobacion extends CI_Controller {
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
        $this->email->from('daniel.baez@comparabien.com');
-       $this->email->to("daniel_bg19@hotmail.com");
-       $this->email->subject('Bienvenido/a a uno-de-piera.com');
+       $this->email->to(_getSesion('email'));
+       $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
        $this->email->message('
         <h1><strong>Mi Cash</strong></h1>
@@ -704,7 +700,7 @@ class preaprobacion extends CI_Controller {
         ');
        $this->email->send();
        //con esto podemos ver el resultado
-       var_dump($this->email->print_debugger());
+       //var_dump($this->email->print_debugger());
      }
 }
 
