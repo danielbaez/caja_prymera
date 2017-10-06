@@ -33,7 +33,6 @@ function verificarNumero() {
 	var cinco 			  = $('#cinco').val();
 	var seis 			  = $('#seis').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
-	console.log(numero);
 	var checkAutorizo     = $('#checkAutorizo').is(':checked');
     var pagotot = document.getElementById('cantTotPago').innerText;
     var mensual = document.getElementById('cantMensPago').innerText;
@@ -103,14 +102,17 @@ function verificarNumero() {
 	}).done(function(data){
 		try{
 				data = JSON.parse(data);
+				console.log(data);
 				if(data.error == 0){
+					console.log(data.cambio);
 					if(data.cambio == 1){
 						$('.ocultar').addClass( "hidden" );
 						$('#idError').css('display','block');
 						$('.otro').removeClass( "hidden" );
 						$('#confirmar').css('display', 'none');
 						$('#cambiar').css('display', 'block');
-					}else {
+					}else if(data.cambio == 0){
+						alert('cambio');
 						location.href = '/micash_resumen';
 					}
 				}else {
@@ -261,6 +263,21 @@ function cambiarCelular() {
 }
 
 function enviarMail() {
+	var nro_celular = $('#nro_celular').val();
+	$.ajax({
+		data  : { nro_celular : nro_celular},
+		url   : 'Preaprobacion/enviarMail',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+		   	//data = JSON.parse(data);
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
+}
+
+function reenviarEmail() {
 	var nro_celular = $('#nro_celular').val();
 	$.ajax({
 		data  : { nro_celular : nro_celular},

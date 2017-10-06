@@ -364,7 +364,7 @@
               		</div>	
               		<br>
               		<div class="col-xs-12">
-                    	<a href="" style="color: #0060aa;font-size: 15px;margin: -15px;">Enviar otro c&oacute;digo</a>
+                    	<a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" onclick="reenviarEmail()">Enviar otro c&oacute;digo</a>
                     </div>
             </div>
             <div class="table-responsive otro" id="idError" style="display: none;">
