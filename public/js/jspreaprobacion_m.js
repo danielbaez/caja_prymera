@@ -32,6 +32,7 @@ function verificarNumero() {
 	var cuatro 			  = $('#cuatro').val();
 	var cinco 			  = $('#cinco').val();
 	var seis 			  = $('#seis').val();
+	var fijo			  = $('#nro_fijo').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
 	var checkAutorizo     = $('#checkAutorizo').is(':checked');
     var pagotot = document.getElementById('cantTotPago').innerText;
@@ -56,6 +57,10 @@ function verificarNumero() {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
 	}
+	if(nro_celular.length <9) {
+		msj('error', 'Ingrese un celular de 9 d&iacute;gitos');
+		return;
+	}
 	if(empleador == null) {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
@@ -74,6 +79,10 @@ function verificarNumero() {
 	}
 	if(Distrito == null) {
 		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}
+	if(fijo.length <7) {
+		msj('error', 'Ingrese un n&uacute;mero de 7 d&iacute;gitos');
 		return;
 	}
 	if(checkAutorizo == false) {
