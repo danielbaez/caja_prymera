@@ -49,9 +49,18 @@ class C_preaprobacion extends CI_Controller {
         $data['comboAgencias']      = $this->__buildComboAgencias();
         $data['comboDepa']          = $this->__buildDepartamento();
         $data['comboMarca']         = $this->__buildMarca();
-        $data['nombreDato'] =':D';
-        $data['nombre']     = _getSesion('nombre');
-        $data['email']      = _getSesion('email');
+        
+        $data['nombreDato']=':D';
+        $data['nombre'] = _getSesion('nombre');
+        $data['email']='jhiberico@hotmail.com';
+        $nombre = $this->session->userdata('nombre');
+
+        $importeMaximo = _getSesion('importeMaximo');
+        $importeMinimo = _getSesion('importeMinimo');
+        $plazos = _getSesion('plazos');
+
+        $plazos_explode = explode(',', $plazos);
+
         $apellido           = _getSesion('apellido');
         $nombre             = $this->session->userdata('nombre');
         $sueldo             = $this->sueldo;
@@ -80,18 +89,150 @@ class C_preaprobacion extends CI_Controller {
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.' '.$apellido.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
-        $data['iniRango']     = round($valorAuto/100)*100;
-        $data['minAuto']      = round($minAuto/100)*100;
-        $data['maxAuto']      = round($maxAuto/100)*100;
-        $data['max_cuota']    = round($maxInicial/100)*100;
-        $data['min_cuota']    = round($minInicial/100)*100;
-        $data['cantPago']     = round($maxInicial/100)*100;
-        $data['mensual']      = round($minInicial/100)*100;
+
+        $data['plazo_max']      = $plazos_explode[count($plazos_explode)-1];
+        $data['plazo_min']      = $plazos_explode[0];
+
+        $count = count($plazos_explode);
+        if($count == 2){
+            $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
+        }
+        elseif($count >= 3) {
+            $data['plazo_step'] = $plazos_explode[1] - $plazos_explode[0];
+        }
+
+        $data['importeMaximo']      = $importeMaximo;
+        $data['importeMinimo']      = $importeMinimo;
+
+        /*try 
+          {
+            //resultado 1 -- ok
+          //resultado 3: token
+            //resultado 2: error del servidor
+          //resultado 0 : rechazado
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+           $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_getSesion('dni'),
+                                  'importeAuto'=> $importeMaximo,
+                                  'plazo' => $data['plazo_max'],
+                                  'cuotaInicial' => 62400,
+                                  'marca' => 'Audi',
+                                  'modelo' => '80 2.0 E'
+                    );
+
+           print_r($params);
+
+          $result = $client->GetDatosCreditoVehicular($params);         
+
+          $res = $result->return->resultado;
+          if($res == 1){
+            $documento = $result->return->documento;
+            $data['cuotaMensual'] = $result->return->cuotaMensual;
+            $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
+            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
+
+
+            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+            $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
+            $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
+
+            $data['seguroAuto'] = $result->return->seguroAuto;
+            $data['seguroAuto'] = str_replace( ',', '', $data['seguroAuto']);
+            $data['seguroAuto'] = number_format($data['seguroAuto'], 2);
+
+            $data['tea'] = $result->return->tea;
+            $data['tcea'] = $result->return->tea;
+
+          }
+          if($res == 0){
+            //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
+          }
+          if($res == 2){
+            //$response = array('status' => 2);
+          }
+
+        }
+        catch(Exception $e)
+        {
+           //$response = array('status' => 2);
+        }*/
+
+        //print_r($data);
+        //exit();
+
+
         $this->load->view('v_preaprobacion', $data);
     }
     
     function changeValues() {
-        $data['error'] = EXIT_ERROR;
+
+        try 
+          {
+            $monto = preg_replace("/[^0-9]/","",_post('monto'));
+            $meses = preg_replace("/[^0-9]/","",_post('meses'));
+            $cuota = preg_replace("/[^0-9]/","",_post('cuota'));
+            $marca = _post('marca');
+            $modelo = _post('modelo');
+
+            //resultado 1 -- ok
+          //resultado 3: token
+            //resultado 2: error del servidor
+          //resultado 0 : rechazado
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+           $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_getSesion('dni'),
+                                  'importeAuto'=> $monto,
+                                  'plazo' => $meses,
+                                  'cuotaInicial' => $cuota,
+                                  'marca' => $marca,
+                                  'modelo' => $modelo
+                    );
+
+
+          $result = $client->GetDatosCreditoVehicular($params);
+          $res = $result->return->resultado;
+          if($res == 1){
+
+
+            // print_r($result);
+            // exit();
+
+            $documento = $result->return->documento;
+            $data['cuotaMensual'] = $result->return->cuotaMensual;
+            $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
+            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2, '.','');
+
+            $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
+            $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
+            $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
+
+            $data['tea'] = $result->return->tea;
+            $data['tcea'] = $result->return->tea;
+
+            $data['seguroAuto'] = $result->return->seguroAuto;
+            $data['seguroAuto'] = str_replace( ',', '', $data['seguroAuto']);
+            $data['seguroAuto'] = number_format($data['seguroAuto'], 2);            
+
+
+          }
+          if($res == 0){
+            //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
+          }
+          if($res == 2){
+            //$response = array('status' => 2);
+          }
+
+        }
+        catch(Exception $e)
+        {
+           //$response = array('status' => 2);
+        }
+
+        echo json_encode($data);
+
+        /*$data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
             $cantPago    = null;
@@ -139,7 +280,7 @@ class C_preaprobacion extends CI_Controller {
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode(array_map('utf8_encode', $data));*/
     }
     
     function changeValuesVehiculo() {
