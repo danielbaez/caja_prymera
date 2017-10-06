@@ -251,7 +251,6 @@
                                 <div class="col-xs-10">
                                     <p>Edad: M&iacute;nimo 23 a&ntilde;os y M&aacute;ximo 70 a&ntilde;os.</p>
                                 </div>
-                                </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
@@ -259,7 +258,6 @@
                                 </div>
                                 <div class="col-xs-10">
                                     <p>Calificaci&oacute;n Normal (RCC) en los &uacute;ltimos 6 meses o score de aprobaci&oacute;n seg&uacute;n la evaluaci&oacute;n del &aacute;rea de Riesgos.</p>
-                                </div>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -269,7 +267,6 @@
                                 <div class="col-xs-10">
                                     <p>Persona con nacionalidad peruana.</p>
                                 </div>
-                                </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
@@ -277,7 +274,6 @@
                                 </div>
                                 <div class="col-xs-10">
                                     <p>Puede ser cliente nuevo y cliente recurrente de Prymera; en este &uacute;ltimo caso, cuando se tenga cr&eacute;dito vigente, se tramitar&aacute; ampliaci&oacute;n de cr&eacute;dito, siempre que cuente con 03 cuotas pagadas como m&iacute;nimo.</p>
-                                </div>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -287,7 +283,6 @@
                                 <div class="col-xs-10">
                                     <p>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</p>
                                 </div>
-                                </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
@@ -295,7 +290,6 @@
                                 </div>
                                 <div class="col-xs-10">
                                     <p>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo Caja Prymera.</p>
-                                </div>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -305,7 +299,6 @@
                                 <div class="col-xs-10">
                                     <p>En caso de tener conyugue se registra sus datos (nombres, apellidos y DNI)</p>
                                 </div>
-                                </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
@@ -313,7 +306,6 @@
                                 </div>
                                 <div class="col-xs-10">
                                     <p>No deben ser clientes vinculados, familiares del personal de la Caja (1° y 2° grado) y no deben pertenecer a la base de alertas.</p>
-                                </div>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -323,8 +315,8 @@
                                 <div class="col-xs-10">
                                     <p>No deben ser clientes que se han registrado en la base de datos INDECOPI (No Molestar); aplica para el personal de Telemarketing.</p>
                                 </div>
-                                </div>
                             </div>
+                        </div>
                         <div id="menus2" class="tab-pane fade">
                             <h3>Menu 2</h3>
                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
