@@ -477,10 +477,11 @@
       m = monto.replace(/[^0-9.]/g, "");
       c = cuota.replace(/[^0-9.]/g, "");
 
-      if(parseFloat(m) < parseFloat(c)){
+      /*if(parseFloat(m) < parseFloat(c)){
         alert('El monto no puede ser menor que la cuota inicial')
-      }else{
+      }else{*/
         if(modelo != ''){
+          rangeSliderCuota.removeAttribute('disabled');
           $.ajax({
             data  : { meses    : meses_pago,
                     cuota : cuota,
@@ -523,7 +524,7 @@
             $('#seguroAuto').html('S/ '+data.seguroAuto); 
           });
         }
-      }
+      //}
     });
 
 
@@ -567,18 +568,18 @@
       m = monto.replace(/[^0-9.]/g, "");
       c = cuota.replace(/[^0-9.]/g, "");
 
-      if(parseFloat(m) < parseFloat(c)){
+      /*if(parseFloat(m) < parseFloat(c)){
         alert('El monto no puede ser menor que la cuota inicial');
         rangeSliderMonto.noUiSlider.set(100000);
         monto = 'S/ 100000';
-      }
+      }*/
       if(modelo != ''){
         $.ajax({
           data  : { meses    : meses,
                   cuota : cuota,
                   monto: monto,
                   marca: marca,
-                  modelo: modelo
+                  modelo: modelo, action: 'monto'
                 },
           url   : 'C_preaprobacion/changeValues',
           type  : 'POST',
@@ -589,6 +590,13 @@
           $('#minCuota').html('S/ '+data.cuotaMinimo);
           $('#maxCuota').html('S/ '+data.cuotaMaximo);
 
+          if(data.cuotaMinimo == data.cuotaMaximo){
+            $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+            rangeSliderCuota.setAttribute('disabled', true);  
+          }else{
+            rangeSliderCuota.removeAttribute('disabled');
+          }
+
           rangeSliderCuota.noUiSlider.updateOptions({
               range: {
                   'min': data.cuotaMinimo,
@@ -596,6 +604,10 @@
               },
               start: data.cuotaMinimo
           });
+
+
+
+          
 
           $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
           $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
@@ -647,11 +659,11 @@
       m = monto.replace(/[^0-9.]/g, "");
       c = cuota.replace(/[^0-9.]/g, "");
 
-      if(parseFloat(m) < parseFloat(c)){
+      /*if(parseFloat(m) < parseFloat(c)){
         alert('El monto no puede ser menor que la cuota inicial');
         rangeSliderMonto.noUiSlider.set(100000);
         monto = 'S/ 100000';
-      }
+      }*/
       if(modelo != ''){
         //alert($('#slider-range-value-plazo').html())
         //alert(meses_pago)

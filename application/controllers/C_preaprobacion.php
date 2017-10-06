@@ -18,18 +18,18 @@ class C_preaprobacion extends CI_Controller {
         // $this->array_datos = array(
         //                             array(
         //                                 "plazo" => 12,
-        //                                 "mont_min" => 10000,
-        //                                 "mont_max" => 50000
+        //                                 "importeMinimo" => 10000,
+        //                                 "importeMaximo" => 50000
         //                             ),
         //                             array(
         //                                 "plazo" => 24,
-        //                                 "mont_min" => 50000,
-        //                                 "mont_max" => 100000
+        //                                 "importeMinimo" => 50000,
+        //                                 "importeMaximo" => 100000
         //                             ),
         //                             array(
         //                                 "plazo" => 36,
-        //                                 "mont_min" => 100000,
-        //                                 "mont_max" => 200000
+        //                                 "importeMinimo" => 100000,
+        //                                 "importeMaximo" => 200000
         //                             )
         //                         );
 
@@ -63,8 +63,6 @@ class C_preaprobacion extends CI_Controller {
         $importeMinimo = _getSesion('importeMinimo');
         $plazos = _getSesion('plazos');
 
-        $plazos_explode = explode(',', $plazos);
-
         $apellido           = _getSesion('apellido');
         $nombre             = $this->session->userdata('nombre');
         $sueldo             = $this->sueldo;
@@ -84,34 +82,40 @@ class C_preaprobacion extends CI_Controller {
         /*foreach ($arr as $row) {
             print_r($row);
              $plazo = $row['plazo'];
-             $minPrestamo = $row['mont_min'];
-             $maxPrestamo = $row['mont_max'];
+             $minPrestamo = $row['importeMinimo'];
+             $maxPrestamo = $row['importeMaximo'];
              $minAuto = $minPrestamo/(1-$minIniPorc);
              $maxAuto = $maxPrestamo/(1-$maxIniPorc);
         }*/
         
         
-        $array_datos = array(
+        /*$array_datos = array(
                             array(
                                 "plazo" => array(12,24,36),
-                                "mont_min" => 1000,
-                                "mont_max" => 5000
+                                "importeMinimo" => 1000,
+                                "importeMaximo" => 5000
                             ),
                             array(
                                 "plazo" => array(12,24),
-                                "mont_min" => 5000,
-                                "mont_max" => 10000
+                                "importeMinimo" => 5000,
+                                "importeMaximo" => 10000
                             ),
                             array(
                                 "plazo" => array(36),
-                                "mont_min" => 10000,
-                                "mont_max" => 15000
+                                "importeMinimo" => 10000,
+                                "importeMaximo" => 15000
                             )
-                        );
+                        );*/
+
+        $array_datos = _getSesion('arrDatos');
+
+        //print_r($array_datos);
 
         $plazos = [];
         foreach ($array_datos as $key => $value) {
-            $plazos = array_merge($plazos, $value['plazo']);
+            print_r($value);
+            
+            $plazos = array_merge($plazos, (array)$value['plazo']);
 
         }
         $plazos = array_unique($plazos);
@@ -123,11 +127,11 @@ class C_preaprobacion extends CI_Controller {
             $mmin = [];
             foreach ($array_datos as $key2 => $value2) {
                 if(in_array($value, $value2['plazo'])){
-                     array_push($mmin, $value2['mont_min']);
-                     array_push($mmax, $value2['mont_max']);
+                     array_push($mmin, $value2['importeMinimo']);
+                     array_push($mmax, $value2['importeMaximo']);
                 }
             }
-            $arr_end[$value] = array('mont_min' => min($mmin), 'mont_max' => max($mmax));
+            $arr_end[$value] = array('importeMinimo' => min($mmin), 'importeMaximo' => max($mmax));
         }
 
         /*print_r($arr_end);
@@ -143,16 +147,16 @@ class C_preaprobacion extends CI_Controller {
 
         //print_r($arr_max);  
 
-        $minAuto = $arr_max['mont_min']/(1-$minIniPorc);      
-        $maxAuto = $arr_max['mont_max']/(1-$maxIniPorc);
+        $minAuto = $arr_max['importeMinimo']/(1-$minIniPorc);      
+        $maxAuto = $arr_max['importeMaximo']/(1-$maxIniPorc);
         
 
         $valorAuto = ($minAuto+$maxAuto)/2;
-        /*$maxInicial = max($valorAuto-$arr_max['mont_max'],$valorAuto*$minIniPorc);
-        $minInicial = min($valorAuto-$arr_max['mont_min'],$valorAuto*$maxIniPorc);*/
+        /*$maxInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
+        $minInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);*/
 
-        $minInicial = max($valorAuto-$arr_max['mont_max'],$valorAuto*$minIniPorc);
-        $maxInicial = min($valorAuto-$arr_max['mont_min'],$valorAuto*$maxIniPorc);
+        $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
+        $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
        
 
         /*$minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
@@ -251,8 +255,8 @@ class C_preaprobacion extends CI_Controller {
         $arr_max = $arr_max[$meses];
         //print_r($arr_max);
 
-        $minAuto = $arr_max['mont_min']/(1-$minIniPorc);      
-        $maxAuto = $arr_max['mont_max']/(1-$maxIniPorc);
+        $minAuto = $arr_max['importeMinimo']/(1-$minIniPorc);      
+        $maxAuto = $arr_max['importeMaximo']/(1-$maxIniPorc);
         
         $monto = preg_replace("/[^0-9]/","",_post('monto'));
 
@@ -264,8 +268,8 @@ class C_preaprobacion extends CI_Controller {
         }
 
 
-        $minInicial = max($valorAuto-$arr_max['mont_max'],$valorAuto*$minIniPorc);
-        $maxInicial = min($valorAuto-$arr_max['mont_min'],$valorAuto*$maxIniPorc);
+        $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
+        $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
        
         $data['montoMaximo']      = round($maxAuto/100)*100;
         $data['montoMinimo']      = round($minAuto/100)*100;
@@ -300,7 +304,20 @@ class C_preaprobacion extends CI_Controller {
                                   'marca' => $marca,
                                   'modelo' => $modelo
                     );
-          }else{
+          }
+
+          elseif(_post('action') == 'monto')
+          {
+                $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_getSesion('dni'),
+                                  'importeAuto'=> $monto,
+                                  'plazo' => $meses,
+                                  'cuotaInicial' => $data['cuotaMinimo'],
+                                  'marca' => $marca,
+                                  'modelo' => $modelo
+                    );
+          }
+          else{
                 $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
                                   'importeAuto'=> $monto,
@@ -311,7 +328,7 @@ class C_preaprobacion extends CI_Controller {
                     );
           }
 
-           
+           //print_r($params);
 
 
           $result = $client->GetDatosCreditoVehicular($params);
@@ -333,7 +350,9 @@ class C_preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
 
             $data['tea'] = $result->return->tea;
+            $data['tea'] = $data['tea']*100;
             $data['tcea'] = $result->return->tea;
+            $data['tcea'] = $data['tcea']*100;
 
             $data['seguroAuto'] = $result->return->seguroAuto;
             $data['seguroAuto'] = str_replace( ',', '', $data['seguroAuto']);
@@ -385,8 +404,8 @@ class C_preaprobacion extends CI_Controller {
                 $meses_pago = intval(str_replace(' ', '',str_replace('meses', '',$meses)));
                 foreach ($arr as $row) {
                     if($meses_pago == $row['plazo']) {
-                        $minPrestamo = $row['mont_min'];
-                        $maxPrestamo = $row['mont_max'];
+                        $minPrestamo = $row['importeMinimo'];
+                        $maxPrestamo = $row['importeMaximo'];
                         $minAuto = $minPrestamo/(1-$minIniPorc);
                         $maxAuto = $maxPrestamo/(1-$maxIniPorc);
                     }
@@ -439,8 +458,8 @@ class C_preaprobacion extends CI_Controller {
             if($meses != null) {
                 foreach ($arr as $row) {
                     if($meses_pago == $row['plazo']) {
-                        $minPrestamo = $row['mont_min'];
-                        $maxPrestamo = $row['mont_max'];
+                        $minPrestamo = $row['importeMinimo'];
+                        $maxPrestamo = $row['importeMaximo'];
                         $minAuto = $minPrestamo/(1-$minIniPorc);
                         $maxAuto = $maxPrestamo/(1-$maxIniPorc);
                     }
@@ -493,8 +512,8 @@ class C_preaprobacion extends CI_Controller {
         if($meses != null) {
             foreach ($arr as $row) {
                 if($meses_pago == $row['plazo']) {
-                    $minPrestamo = $row['mont_min'];
-                    $maxPrestamo = $row['mont_max'];
+                    $minPrestamo = $row['importeMinimo'];
+                    $maxPrestamo = $row['importeMaximo'];
                     $minAuto = $minPrestamo/(1-$minIniPorc);
                     $maxAuto = $maxPrestamo/(1-$maxIniPorc);
                 }

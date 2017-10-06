@@ -94,6 +94,27 @@ class Login extends CI_Controller {
             $documento = $result->return->documento;
             $importeMinimo = $result->return->rango->importeMinimo;
             $importeMaximo = $result->return->rango->importeMaximo;
+            
+            $arr = (array)$result->return;
+
+            //print_r($arr);
+            $arrDatos = [];
+            foreach ($arr as $key => $value) {
+              if($key == 'rango'){
+                //print_r($value); 
+                $value->plazos = explode(',', $value->plazos); 
+
+                $arrDatos[] = array('importeMinimo' => $value->importeMinimo, 'importeMaximo' => $value->importeMaximo, 'plazo' => $value->plazos);
+                //echo "<hr>";
+              }
+               
+               
+            }
+
+            //print_r($arrDatos);
+
+            //exit();
+
             $plazos = $result->return->rango->plazos;
             
             $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
@@ -112,7 +133,8 @@ class Login extends CI_Controller {
                 'importeMaximo'     => $importeMaximo,
                 'importeMinimo'     => $importeMinimo,
                 'tipo_producto'     => $tipo_producto,
-                'plazos'            => $plazos
+                'plazos'            => $plazos,
+                'arrDatos'          => $arrDatos
             );
             $this->session->set_userdata($session);
             $arrayInsert = array('nombre' => $nombre,
