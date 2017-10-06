@@ -117,7 +117,7 @@
                                                   		<span>S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                    	<label for="slider-range-dias">Cuota inicial</label>
+                                                    	<label for="slider-range-dias">Monto</label>
                                                     	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -5px;left: -160px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-dias"></div>
                                                         <p id="slider-range-value-dias" style="margin-top:10px; margin-bottom:0"></p>

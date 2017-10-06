@@ -259,3 +259,18 @@ function cambiarCelular() {
 	$('#confirmar').css('display', 'block');
 	$('#cambiar').css('display', 'none');
 }
+
+function enviarMail() {
+	var nro_celular = $('#nro_celular').val();
+	$.ajax({
+		data  : { nro_celular : nro_celular},
+		url   : 'Preaprobacion/enviarMail',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+		   	//data = JSON.parse(data);
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
+}
