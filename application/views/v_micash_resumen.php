@@ -146,7 +146,7 @@
 						  <div class="col-xs-12">
 			          <div class="col-xs-4 padding">
                   <select class="form-control" id="Agencia" name="Agencia">
-                      <option value="">Agencia</option>
+                      <option value="">Cambiar Agencia</option>
                       <?php echo $comboAgencias?>
                     </select>
                 </div>

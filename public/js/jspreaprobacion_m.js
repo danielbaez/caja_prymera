@@ -121,7 +121,6 @@ function verificarNumero() {
 						$('#confirmar').css('display', 'none');
 						$('#cambiar').css('display', 'block');
 					}else if(data.cambio == 0){
-						alert('cambio');
 						location.href = '/micash_resumen';
 					}
 				}else {

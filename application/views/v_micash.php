@@ -34,7 +34,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <div class="contenido-header">
-                        <h1 class="title-header">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!* </h1>
+                        <h1 class="title-header">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!* </h1>
                     </div>
                     <div class="imagen-header">
                         <img alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">

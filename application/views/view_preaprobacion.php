@@ -24,12 +24,12 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-preaprobacion.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
   </head>
     <body style="padding-top: 70px;" >
     
@@ -86,7 +86,7 @@
                 		    			<form class="text-center form-horizontal">
                             				<div class="col-xs-12 col-md-6" style="color:black;font-size:16px;position: relative;top: 30px;">
                                             	<div class="col-md-12">
-                                            		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: 40px;">
+                                            		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
                                                   		<span><?php echo $plazo_min ?>m</span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
@@ -96,39 +96,39 @@
                                                   		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                    	<label for="slider-range-meses">Plazo de pr&eacute;stamo</label>
-                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: -107px;" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button>
+                                                    	<label for="slider-range-meses" style="margin-right: 22px;position: relative;top: 20px;">Plazo de pr&eacute;stamo</label>
+                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -8px;l;left: 76px;" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-meses"></div>
-                                                        <p id="slider-range-value-meses" style="margin-top:10px; margin-bottom:0"></p>
+                                                        <p id="slider-range-value-meses" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: -40px;">
+                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 22px;top: 45px;">
                                                   		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                             	</div>
                                             	
-                                            	<div class="col-md-12">
-                                            		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: 40px;">
+                                            	<div class="col-md-12" style="margin-left: -34px;">
+                                            		<div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;top: 25px;left: 107px;">
                                                   		<span id="minCuota">S/ <?php echo  $importeMinimo?></span>
                                                     </div>
-                                                    <div class="visible-xs col-xs-6 text-left">
+                                                    <div class="visible-xs col-xs-5 text-left">
                                                   		<span>S/ <?php echo  $importeMinimo?></span>
                                                     </div>
-                                                    <div class="visible-xs col-sm-6 text-right">
+                                                    <div class="visible-xs col-sm-5 text-right">
                                                   		<span>S/ <?php echo  $importeMaximo?></span>
                                                     </div>
-                                                    <div class="col-xs-12 col-sm-6">
-                                                    	<label for="slider-range-dias">Monto</label>
-                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -5px;left: -160px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
-                                                        <div id="slider-range-dias"></div>
-                                                        <p id="slider-range-value-dias" style="margin-top:10px; margin-bottom:0"></p>
+                                                    <div class="col-xs-12 col-sm-4">
+                                                    	<label for="slider-range-dias" style="margin-left: -15px;">Monto</label>
+                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -2px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
+                                                        <div id="slider-range-dias" class="agrandar"></div>
+                                                        <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
                                                     </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px; position: relative;left: -40px;">
+                                                    <div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;left: 58px;top: 25px;">
                                                   		<span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                             	</div>
-                                            	<div class="col-md-12" style="color:black;font-size:16px;position: relative; left: -27px">
+                                            	<div class="col-md-12 hidden" style="color:black;font-size:16px;position: relative; left: -27px">
                                                     <label class="control-label col-xs-5 col-sm-5" for="email">Tipo de pago:</label>
-                                                    <div class="col-xs-7 col-md-5">
+                                                    <div class="col-xs-7 col-md-5 hidden" style="display: none">
                                                         <select class="form-control" name="marca" title="Selec. Tipo de pago" id="tipoPago">
                                                             <option value="1">Simple</option>
                                                             <option value="2" disabled>Doble</option>
@@ -150,19 +150,19 @@
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
                                                 		<span style="color:#1C4485;font-size: 20px" id="tcea"><?php echo $tcea?>%</span>
                                                     <span style="display: none" id="tea"><?php echo $tea?>%</span>
-                                                		<p style="color:#A9A9A9;font-size:13px">*Cuota aproximada sujeta a evaluación</p>
+                                                		<p style="color:#A9A9A9;font-size: 12px;">*Cuota aproximada sujeta a evaluación</p>
                                 					</div>
                                 				</div>
-                                				<div class="col-md-6" style="position: relative;top: 15px;">
+                                				<div class="col-md-6" style="position: relative;top: 15px;right: 29px;">
                                 					<div class="col-xs-6 text-center">
-                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff" data-toggle="modal" data-target="#myModal" id="generarCronograma">Desea Ampliar</button>
+                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff;font-size: 14px;width: 125px;height: 51px;" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
                                                     </div>
                                 				</div>
-                                				<div class="col-md-6" style="position: relative;top: 15px;">
+                                				<div class="col-md-6" style="position: relative;top: 15px;right: 37px;">
                                 					<div class="col-xs-6 text-center">
                                 						<div class="container" style="position: relative;top: 30px;">
                                       						<ul class="nav nav-pills">
-                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485; color: #fff;position: relative;top: -30px;" href="#menu1" onclick="addStyle()">Siguiente</a></li>
+                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;" href="#menu1" onclick="addStyle()">Siguiente</a></li>
                                 							</ul>
                                 						</div>
                                                     </div>
@@ -186,7 +186,7 @@
                                                 			<div class="col-xs-12 col-sm-8">  
                                                   				<p style="font-weight: bold;font-size:20px;color:#1C4485;border-radius:10px"><strong>Datos laborales</strong></p>
                                                   			    <div class="col-xs-12 p-0">
-                                                  			    	<div class="col-sm-6">
+                                                  			    	<div class="col-sm-12">
                                                           				<div class="form-group">
                                                                 			<select class="form-control" id="salario"  name="salario">
                                                                               <option value="">Salario</option>
@@ -200,11 +200,6 @@
                                                             				</select>
                                                           				</div>
                                                           			</div>
-                                                          			<div class="col-sm-6">
-                                                                  		<div class="form-group">
-                                                                    		<input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)" maxlength="9">
-                                                                  		</div>
-                                                                  	</div>
                                                   			    </div>
                                                   			    <div class="col-xs-12">
                                                   			    	<div class="form-group">
@@ -251,6 +246,11 @@
                                                   			<div class="col-xs-12 col-sm-4">
                                                               	<p><strong class="size">Datos del contacto</strong></p>
                                                               	<div class="col-xs-12 p-0">
+                                                                <div class="col-sm-12">
+                                                                      <div class="form-group">
+                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)" maxlength="9">
+                                                                      </div>
+                                                                    </div>
                                                           			<div class="col-sm-6">
                                                           				<div class="form-group">
                                                                     		<select class="form-control" name="codigo" id="codigo">
@@ -291,7 +291,7 @@
                                             								<li id="remove" class="remove"><a data-toggle="tab" style="background-color: #005aa6; color: #fff;position: relative;top: 15px;" href="#home" onclick="addStyle()">Regresar</a></li>
                                             							</ul>
                                             						</div>
-                                                              		<button type="button" data-toggle="modal" data-target="#myModaltelef" class="btn btn-primary btn-lg selector" onclick="enviarMail()">Aceptar</button>
+                                                              		<button type="button" style="background-color: #005aa6;color: #fff;font-weight: lighter;font-size: 16px;" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg selector" id="btnAceptar" onclick="enviarMail()">Aceptar</button>
                                                               	</div>
 															</div>
                                                 		</div>
@@ -364,8 +364,9 @@
               		</div>	
               		<br>
               		<div class="col-xs-12">
-                    	<a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" onclick="reenviarEmail()">Enviar otro c&oacute;digo</a>
-                    </div>
+                  	<a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" onclick="reenviarEmail()">Enviar otro c&oacute;digo</a>
+                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;">Cambiar Celular</a>
+                  </div>
             </div>
             <div class="table-responsive otro" id="idError" style="display: none;">
                 <br>
@@ -378,7 +379,7 @@
             </div>
             <div class="modal-footer">
               <button type="button confirmar" class="btn btn-primary" id="confirmar" aria-label="Close" style="display: block;" onclick="verificarNumero()">Confirmar</button>
-              <button type="button cambiar" class="btn btn-primary" id="cambiar" aria-label="Close" style="display: none;" onclick="cambiarCelular()">Cambiar N&uacute;mero</button>
+              <button type="button cambiar" class="btn btn-primary" id="cambiar" aria-label="Close" style="display: none;" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>
             </div>
           </div>
       </div>

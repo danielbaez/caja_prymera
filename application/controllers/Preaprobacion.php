@@ -83,7 +83,7 @@ class preaprobacion extends CI_Controller {
         $valorAuto = ($minAuto+$maxAuto)/2;
         $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.' '.$apellido.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;       
         
@@ -130,11 +130,10 @@ class preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
             $this->varPagoTotal = $data['pagoTotal'];
 
-            $data['tea'] = $result->return->tea;
-            $data['tcea'] = $result->return->tea;
-
-            $this->glob_tea = $data['tea'];   
-            $this->glob_tcea = $data['tcea'];  
+            $datos_tea = $result->return->tea;
+            $data['tea'] = $datos_tea*100;
+            $datos_tcea = $result->return->tea;
+            $data['tcea'] = $datos_tcea*100;  
           }
           if($res == 0){
             //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
@@ -186,12 +185,10 @@ class preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
             $this->varPagoTotal = $data['pagoTotal'];
 
-            $data['tea'] = $result->return->tea;
-            $data['tcea'] = $result->return->tea;   
-
-            $this->glob_tea = $data['tea'];   
-            $this->glob_tcea = $data['tcea'];         
-
+             $datos_tea = $result->return->tea;
+            $data['tea'] = $datos_tea*100;
+            $datos_tcea = $result->return->tea;
+            $data['tcea'] = $datos_tcea*100;    
 
           }
           if($res == 0){

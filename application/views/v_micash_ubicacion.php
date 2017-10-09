@@ -84,7 +84,7 @@
                     </div>
                     <div>
                     	<h2 class="mdl-card__title-text" ><strong><?php echo $nombre ?>, Gracias por confiar en Prymera.</strong></h2>
-                        <h2 class="mdl-card__title-text" ><strong>Solitaste un cr&eacute;dito de <?php echo $pago_total ?> s&oacute;les a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> s&oacute;les</strong></h2><br />
+                        <h2 class="mdl-card__title-text" ><strong>Solicitaste un cr&eacute;dito de <?php echo $pago_total ?> s&oacute;les a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> s&oacute;les</strong></h2><br />
                         <h2 class="mdl-card__title-text" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s acercarte a nuestra agencia de <?php echo $Agencia ?></h2>
                         <h2 class="mdl-card__title-text">junto con tus<strong> 2 &uacute;ltimas boletas de pago </strong> y <strong> el recibo de servicio</strong>(luz, agua, tel&eacute;fono) con antiguedad</h2>
                         <h2 class="mdl-card__title-text">no mayor a dos meses, para proceder a la firma del expediente y el desembolso de tu pr&eacute;stamo.</h2>
@@ -140,7 +140,7 @@
 
         	    var options = {
             	          mapType: 'styledMap',
-            	          zoomLevel: 12,
+            	          zoomLevel: 14,
             	          showTooltip: true,
             	          showInfoWindow: true,
             	          useMapTypeControl: true,

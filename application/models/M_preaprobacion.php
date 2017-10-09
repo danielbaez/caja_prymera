@@ -44,14 +44,12 @@ class M_preaprobacion extends  CI_Model{
         _log($departamento);
         if($departamento == 'LIMA') {
             $sql = "SELECT * 
-                    FROM cod_telefono
-                   WHERE LOWER(DEPARTAMENTO) LIKE LOWER('%lima y Callao%')";
+                    FROM cod_telefono";
         }ELSE {
             $sql = "SELECT *
-                      FROM cod_telefono
-                     WHERE DEPARTAMENTO LIKE ?";
+                      FROM cod_telefono";
         }
-        $result = $this->db->query($sql, array($departamento));
+        $result = $this->db->query($sql, array());
         return $result->result();
     }
     
