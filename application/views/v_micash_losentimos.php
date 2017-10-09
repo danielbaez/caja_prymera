@@ -71,7 +71,7 @@
                 	</div>
                 	<div class="col-md-8" style="margin-left: 80px;margin-top: -50px;width: 100%;">
                 		<div class="col-xs-10 col-sm-4" style="cursor:pointer">
-                          <div style="background-color: #1069ab;color:white;padding:25px 0 10px 0;font-size:18px;width: 248%;border-radius: 4px;" onclick="location.href = 'http://www.prymera.com.pe/contactenos1.html';">Agencias
+                          <div style="background-color: #1069ab;color:white;padding:25px 0 10px 0;font-size:18px;width: 251%;border-radius: 4px;padding: 16px;" onclick="location.href = 'http://www.prymera.com.pe/contactenos1.html';">Agencias
                           </div>
                         </div>
                 	</div>
@@ -82,7 +82,7 @@
                 	</div>
                 	<div class="col-md-8" style="margin-left: 91px;top: -38px;width: 162%;">
                 		<div class="col-xs-10 col-sm-4" style="cursor:pointer">
-                          <div style="color:white;padding:25px 0 10px 0;font-size:18px;width: 130%;border-radius: 4px;background-color: #1069ab;" onclick="location.href = 'http://www.prymera.com.pe';">Web Prymera
+                          <div style="color:white;padding:25px 0 10px 0;font-size:18px;width: 130%;border-radius: 4px;background-color: #1069ab;padding: 16px;" onclick="location.href = 'http://www.prymera.com.pe';">Web Prymera
                            </div>
                         </div>
                 	</div>

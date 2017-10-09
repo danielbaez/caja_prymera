@@ -131,9 +131,9 @@ class preaprobacion extends CI_Controller {
             $this->varPagoTotal = $data['pagoTotal'];
 
             $datos_tea = $result->return->tea;
-            $data['tea'] = $datos_tea*100;
+            $data['tea'] = round($datos_tea*10000)/100;
             $datos_tcea = $result->return->tea;
-            $data['tcea'] = $datos_tcea*100;  
+            $data['tcea'] = round($datos_tcea*10000)/100;  
           }
           if($res == 0){
             //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');

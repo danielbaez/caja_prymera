@@ -57,12 +57,13 @@
     		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
 		    	<div class="panel panel-primary" style="">
 		    		<div class="panel-heading" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">
-		    			<h1 class="panel-title" style="font-size:25px;">Lo sentimos, en estos momentos no contamos con una oferta que</h1>
-		    			<h1 style="font-size:25px;margin: 0px;text-align: center;">se ajuste a tus necesidades.</h1>
+		    			<h1 class="panel-title" style="font-size:25px;">Lo sentimos, en estos momentos no contamos con una oferta</h1>
+		    			<h1 style="font-size:25px;margin: 0px;text-align: center;">que se ajuste a tus necesidades.</h1>
 		    		</div>
 			    	<div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 60%;position: relative;left: 132px;">
               <div class="row text-center" style="color:#22B25E">
-                <h2 style="margin:8px 0 15px 0;text-align: center;font-size: 26px;color: #808080;">Tus Opciones</h2>
+                <h2 style="margin: 8px 0 22px 0;text-align: center;font-size: 26px;color: #808080;position: relative;
+                  left: 26px;">Tus opciones</h2>
                 <div class="col-md-12">
                 	<div class="col-md-12" style="margin: 10px;margin-top: -4px;">
                 	<div class="col-md-4" style="margin-left: 12px;">
@@ -70,7 +71,7 @@
                 	</div>
                 	<div class="col-md-8" style="margin-left: 80px;margin-top: -50px;width: 100%;">
                 		<div class="col-xs-10 col-sm-4" style="cursor:pointer">
-                          <div style="background-color: #1069ab;color:white;padding:25px 0 10px 0;font-size:18px;width: 192%;border-radius: 4px;" onclick="location.href = 'http://www.prymera.com.pe';">Agencias
+                          <div style="background-color: #1069ab;color:white;padding:25px 0 10px 0;font-size:18px;width: 251%;border-radius: 4px;padding: 16px;" onclick="location.href = 'http://www.prymera.com.pe/contactenos1.html';">Agencias
                           </div>
                         </div>
                 	</div>
@@ -81,7 +82,7 @@
                 	</div>
                 	<div class="col-md-8" style="margin-left: 91px;top: -38px;width: 162%;">
                 		<div class="col-xs-10 col-sm-4" style="cursor:pointer">
-                          <div style="background-color: #1069ab;color:white;padding:25px 0 10px 0;font-size:18px;" onclick="location.href = 'http://www.prymera.com.pe';">Web Prymera
+                          <div style="color:white;padding:25px 0 10px 0;font-size:18px;width: 130%;border-radius: 4px;background-color: #1069ab;padding: 16px;" onclick="location.href = 'http://www.prymera.com.pe';">Web Prymera
                            </div>
                         </div>
                 	</div>
