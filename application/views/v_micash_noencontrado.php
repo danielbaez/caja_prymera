@@ -25,7 +25,7 @@
 
     <body>
     
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -51,7 +51,7 @@
   </nav>
 
     <div class="container">
-    	<div class="row" style="margin-top:30px">
+    	<div class="row" style="margin-top: -50px">
     		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
 		    	<div class="panel panel-primary" style="">
 		    		<div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">

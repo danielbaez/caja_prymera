@@ -324,7 +324,7 @@
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-          <p style="text-align: center;font-size: 16px;">Aplicacion de credito</p>
+          <p style="text-align: center;font-size: 16px;">Desea ampliar?</p>
         </div>
         <div class="modal-body">
           <div class="bs-example">

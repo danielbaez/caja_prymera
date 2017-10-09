@@ -9,7 +9,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
-	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
@@ -52,45 +52,19 @@
   </nav>
 
     <div class="container">
-      <div class="row" style="margin-top: 50px">
+      <div class="row" style="margin-top:30px">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
           <div class="panel panel-primary" style="">
             <div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">
-              <h1 class="panel-title" style="font-size:25px;color: #005aa6;"><strong>Lo sentimos, en estos momentos no contamos con una</strong></h1>
-              <h1 style="font-size:25px;color:#005aa6;margin:0px;margin-left: 27px;"><strong>oferta que se ajuste a tus necesidades</strong> y nos gustar&iacute;a</h1>
-              <h1 style="font-size:25px;color:#005aa6;margin:0px;text-align: center">ponernos en contacto contigo</h1>
+              <div class="col-xs-12" style="margin-top: 75px;">
+                    <h1 class="panel-title" style="font-size:25px;position: relative; top: 8px;bottom: 98px;left: 17px;"><strong>Eres importante para nosotros!!!</strong></h1><br>
+                </div>
+                <div>
+                    <br>
+                    <h1>Gracias por confiar en Prymera, en breve un agente de servicio se pondr&aacute; en contacto contigo.</h1>
+                </div>
             </div>
-            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 60%;position: relative;left: 132px;">
-              <div class="row text-center" style="color:#EF484E">
-                <h2 style="margin:8px 0 15px 0;text-align: center;font-size: 26px;color: #808080;">Confirma tus datos:</h2>
-                <div class="col-md-12">
-                  <div class="col-md-12" style="margin-left: 60px;width: 70%;">
-                    <div class="form-group">
-                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="">
-                        </div>
-                  </div>
-                  <div class="col-md-12" style="margin-left: 60px;width: 70%;">
-                    <div class="form-group">
-                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="6" style="">
-                        </div>
-                  </div>
-                </div>
-                <div class="col-md-12" style="margin-left: -17px;">
-                  <div class="col-md-2">
-                    <div class="checkbox" style="margin-left: 66px;margin-top: 3px;">
-                        <input type="checkbox" class="checkbox" style="" id="aceptar">
-                      </div>
-                  </div>
-                  <div class="col-md-10">
-                    <p style="color:#808080;font-size: 13px;">Autorizo que usen mis datos para contactarme</p>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <form class="text-center" action="/C_vehicular_mensaje" type="POST">
-                    <button type="submit" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;">Aceptar</button>
-                  </form>
-                </div>
-              </div>
+            <div class="panel-body" style="width: 60%;position: relative;left: 132px;">
             </div>
           </div>
         </div>
@@ -99,10 +73,10 @@
 
     <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
-	<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-	<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
   </body>
 </html>

@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
+                                            <input type="checkbox" class="checkbox" style="font-size:13px;position: relative;left: 17px;color:#9fa9a3;" id="acepto"> Acepto 
                                             <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -2px;" data-toggle="modal" data-target="#myModal">t&eacute;rminos y condiciones</button>
                                         </label>
                                     </div>
@@ -169,7 +169,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <p>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</p>
+                                        <p>M&iacute;nimo 12% - M&aacute;ximo 20%.</p>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -241,7 +241,7 @@
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>Ingresos m&iacute;nimo: 1,000 soles.</p>
+                                    <p>Ingresos m&iacute;nimo: 2,000 soles.</p>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -273,7 +273,7 @@
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>Puede ser cliente nuevo y cliente recurrente de Prymera; en este &uacute;ltimo caso, cuando se tenga cr&eacute;dito vigente, se tramitar&aacute; ampliaci&oacute;n de cr&eacute;dito, siempre que cuente con 03 cuotas pagadas como m&iacute;nimo.</p>
+                                    <p>Cliente nuevo y/o recurrente de Prymera; si es cliente recurrente y tiene un crédito vigente, se considera como un crédito paralelo.</p>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -297,33 +297,272 @@
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>En caso de tener conyugue se registra sus datos (nombres, apellidos y DNI)</p>
+                                    <p>No deben encontrarse registrados en la base de alertas del sistema Microbank.</p>
                                 </div>
                             </div>
+                            <h3><strong>Sobre la Tasaci&oacute;n:</strong></h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>No deben ser clientes vinculados, familiares del personal de la Caja (1° y 2° grado) y no deben pertenecer a la base de alertas.</p>
+                                    <p>Aplica para vehículos nuevos (la tasación se actualiza cada año, luego del primer año). Costo es asumido por el cliente.</p>
                                 </div>
                             </div>
-                            <div class="col-xs-12">
+                            <h3><strong>Sobre la Garantía Vehicular:</strong></h3>
+                               <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>No deben ser clientes que se han registrado en la base de datos INDECOPI (No Molestar); aplica para el personal de Telemarketing.</p>
+                                    <p>El vehículo a adquirir debe constituirse como garantía a favor de Prymera
+                                        El Costo del servicio de toma de firmas y/o recojo de documentos es asumido por el cliente, lo cual incluye los gastos notariales y registrales, según valor del vehiculo
+                                        Documentación:
+                                        Contrato de Garantía firmado por representante legal de Prymera y cliente.
+                                        Carta de Características del Vehículo proporcionada por el cliente</p>
                                 </div>
-                            </div>
-                        </div>
+                            </div>                     </div>
                         <div id="menus2" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            <h3><strong>El cliente debe proporcionar los siguientes documentos:</strong></h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Documentos de identificación: copia de DNI vigente.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Copia de último recibo de servicios (luz / Agua) del titular (máximo antigüedad de 2 meses)</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Sustento de ingresos: 3 últimas boletas de pago, si el cliente cuenta con ingresos variables y 2 últimas boletas, si el cliente cuenta con ingresos fijos (sólo en caso solicite un monto mayor al pre-aprobado).</p>
+                                </div>
+                            </div>
+                            <h3><strong>El expediente debe considerar los siguientes documentos:</strong></h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Solicitud del Crédito Vehicular firmada por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Resumen del Crédito </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Resolución del Crédito </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Orden de Desembolso firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Contrato del Crédito firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Contrato de Garantía firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Hoja Resumen firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Pagaré  firmado por el cliente</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Póliza de Seguro (en caso el cliente endose seguro a favor de Prymera)</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Documentos de identificación: copia de DNI vigente o Ficha RENIEC o Carné de Extranjería vigente.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Copia de último recibo de servicios (luz / Agua) del titular (máximo antigüedad de 2 meses)</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Impresión de las centrales de riesgo de la SBS (RCC) y de las centrales privadas de acuerdo a normativa vigente.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Sustento de ingresos: 3 últimas boletas de pago, si el cliente cuenta con ingresos variables y 2 últimas boletas, si el cliente cuenta con ingresos fijos.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Reporte ESSSALUD</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Cotización del vehículo a adquirirse con una antigüedad no mayor de 15 días de la fecha de evaluación.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Constancia del abono de la cuota inicial.</p>
+                                </div>
+                            </div>
                         </div>
                         <div id="menus3" class="tab-pane fade">
-                            <h3>Menu 3</h3>
-                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <h3>¿Puedo realizar pagos anticipados o adelantar cuotas de mi crédito?</h3>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>Si, usted podrá hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</p>
+                                </div>
+
+                                <h3>¿Cuál el procedimiento de pagos anticipados o adelantos de cuotas?</h3>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Si usted opta por esta opción, una vez realizado el pago deberá comunicar inmediatamente por escrito a Prymera sobre la elección que usted ha tomado y que podría ser:</p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Pago Total del Crédito: amortiza el total de la deuda con reducción de comisiones e intereses al día de pago.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Prepago con Reducción del Plazo: amortiza capital, reduce intereses, comisiones y gastos al día de pago, el monto de las cuotas se mantiene y reduce el plazo del </p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Prepago con Reducción de Cuota: amortiza capital, reduce intereses, comisiones y gastos al día de pago, reduciendo el monto de la cuota del mes y manteniendo el plazo del crédito.</p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.</p>
+                                    </div>
+                                </div>
+                                <h3>¿Qué pasa si realizo el pago anticipado y no comunico sobre mi elección?</h3>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerará como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elección o un tercero realice dicho pago por Usted, Prymera reducirá el número de cuotas, dentro de los quince (15) días de realizado el pago. 
+                                        En cualquiera de los casos y a su solicitud, Prymera le hará entrega del cronograma de pagos modificado dentro de los 7 días calendarios posteriores a la presentación de su solicitud.</p>
+                                    </div>
+                                </div>
+                                <h3>Qué sucede si me atraso en pagar las cuotas?</h3>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Si el Cliente incumpliera con el pago oportuno de una o más de las cuotas previstas en el cronograma de pagos, se devengarán automáticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constitución en mora será automática. Asimismo, se procederá a realizar el reporte correspondiente a las Centrales de Riesgo.</p>
+                                    </div>
+                                </div>
+                                <h3>Si he otorgado una garantía a Prymera, ¿qué trámites tengo que realizar una vez cancele mi crédito?</h3>
+                                <div class="col-xs-12">
+                                    <div class="col-xs-2">
+                                        <i class="mdi mdi-keyboard_arrow_right"></i>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <p>Deberás acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:
+                                        - Solicitud de liberación de la garantía (hipotecaria y/o mobiliaria).
+                                        - Copia del documento de identidad del solicitante (titular de crédito y/o propietario).
+                                        - Copia del Testimonio de constitución de garantía.
+                                        - Copia literal actualizada y/o certificado de gravamen actualizado (no mayor de 30 días de emitido)
+                                        Este trámite no está sujeto al pago de comisión.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

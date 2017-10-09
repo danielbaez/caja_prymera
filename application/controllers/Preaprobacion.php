@@ -612,7 +612,7 @@ class preaprobacion extends CI_Controller {
                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
-                $this->sendMailGmail();
+                //$this->sendMailGmail();
             }
 
             $data['error'] = EXIT_SUCCESS;
@@ -640,7 +640,7 @@ class preaprobacion extends CI_Controller {
           exit('Sent message to ' . $to);
     }
 
-    function sendMailGmail()
+    /*function sendMailGmail()
     {
        //cargamos la libreria email de ci
        $this->load->library("email");
@@ -698,6 +698,6 @@ class preaprobacion extends CI_Controller {
        $this->email->send();
        //con esto podemos ver el resultado
        //var_dump($this->email->print_debugger());
-     }
+     }*/
 }
 

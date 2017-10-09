@@ -18,7 +18,7 @@ class C_login extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
-        $this->load->view('login', $dato);
+        $this->load->view('v_login', $dato);
     }
     
     public function solicitar() {

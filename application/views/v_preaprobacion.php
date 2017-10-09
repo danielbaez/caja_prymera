@@ -162,8 +162,8 @@
                                                     </div>
                                               </div>
                                               <div class="col-md-12" style="color:black;font-size:16px;position: relative; left: -27px">
-                                                    <label class="control-label col-xs-5 col-sm-5" for="email">Tipo de pago:</label>
-                                                    <div class="col-xs-7 col-md-5">
+                                                    <label class="control-label col-xs-5 col-sm-5 hidden" for="email">Tipo de pago:</label>
+                                                    <div class="col-xs-7 col-md-5 hidden">
                                                         <select class="form-control" name="marca" title="Selec. Tipo de pago" id="tipoPago">
                                                             <option value="">Tipo de pago</option>
                                                             <option value="1">Simple</option>
@@ -189,7 +189,7 @@
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto</p>
                                                     <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
-                                                    <p style="color:#A9A9A9;font-size:13px">*Cuota aproximada sujeta a evaluación</p>
+                                                    <p style="color:#A9A9A9;font-size:12px">*Cuota aproximada sujeta a evaluación</p>
                                           </div>
                                         </div>
                                         <div class="col-md-6" style="position: relative;top: 15px;">
@@ -225,7 +225,7 @@
                                                       <div class="col-xs-12 col-sm-8">  
                                                           <p style="font-weight: bold;font-size:20px;color:#1C4485;border-radius:10px"><strong>Datos laborales</strong></p>
                                                             <div class="col-xs-12 p-0">
-                                                              <div class="col-sm-6">
+                                                              <div class="col-sm-12">
                                                                   <div class="form-group">
                                                                       <select class="form-control"  name="salario" id="salario">
                                                                               <option value="">Salario</option>
@@ -239,11 +239,6 @@
                                                                     </select>
                                                                   </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
-                                                                      <div class="form-group">
-                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" maxlength="9" onkeypress="return valida(event)">
-                                                                      </div>
-                                                                    </div>
                                                             </div>
                                                             <div class="col-xs-12">
                                                               <div class="form-group">
@@ -290,6 +285,11 @@
                                                         <div class="col-xs-12 col-sm-4">
                                                                 <p style="font-size: 19px;"><strong>Datos del contacto</strong></p>
                                                                 <div class="col-xs-12 p-0">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                      <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" maxlength="9" onkeypress="return valida(event)">
+                                                                    </div>
+                                                                  </div>
                                                                 <div class="col-sm-6">
                                                                   <div class="form-group">
                                                                         <select class="form-control" name="codigo" id="codigo">
@@ -363,7 +363,7 @@
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-          <p style="text-align: center;font-size: 16px;">Aplicacion de credito</p>
+          <p style="text-align: center;font-size: 16px;">Desea ampliar?</p>
         </div>
         <div class="modal-body">
           <div class="bs-example">

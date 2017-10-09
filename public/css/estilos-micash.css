@@ -27,7 +27,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center; 
-    padding-top: 70px;
 }
 .imagen-fondo {
     width: 600px;
@@ -49,6 +48,9 @@ body {
 }
 .navbar-right{
     padding: 0 200px;
+}
+.navbar {
+    margin-bottom: 0;
 }
 .button-login button{
     background-color: #4e82bb !important;
@@ -169,7 +171,7 @@ div.checkbox label {
     max-width: 302px;
 }
 .row-top{
-    margin-top: 123px;
+    margin-top: 50px;
 }
 
 @media (max-width : 850px){

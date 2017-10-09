@@ -136,12 +136,6 @@
                     </div>
                 </div>
 						  <div class="col-xs-12 text-left">
-						  	<div class="checkbox">
-						    	<label style="font-size:13px;color:#9fa9a3;">
-						      		<input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
-						      		<button type="button" class="btn btn-link" style="" data-toggle="modal" data-target="#myModal2">t&eacute;rminos y condiciones</button>
-						    	</label>
-						  	</div>
 						  </div>
 						  <div class="col-xs-12">
 			          <div class="col-xs-4 padding">
