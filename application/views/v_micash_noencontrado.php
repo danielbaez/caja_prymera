@@ -63,30 +63,30 @@
               <div class="row text-center" style="color:#EF484E">
                 <h2 style="margin:8px 0 15px 0;text-align: center;font-size: 26px;color: #808080;">Confirma tus datos:</h2>
                 <div class="col-md-12">
-              		<div class="col-md-6">
+              		<div class="col-md-12" style="margin-left: 60px;width: 70%;">
               			<div class="form-group">
-                          <input class="form-control" type="text" id="nro_cel" placeholder="N&uacute;mero Celular" maxlength="9" style="">
+                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="">
                         </div>
               		</div>
-              		<div class="col-md-6">
+              		<div class="col-md-12" style="margin-left: 60px;width: 70%;">
               			<div class="form-group">
-                          <input type="text" class="form-control" id="nro_fijo" placeholder="N&uacute;mero Fijo" maxlength="6" style="">
+                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="6" style="">
                         </div>
               		</div>
               	</div>
-              	<div class="col-md-12">
+              	<div class="col-md-12" style="margin-left: -17px;">
               		<div class="col-md-2">
-              			<div class="checkbox" style="margin-left: 83px;margin-top: 3px;">
-                  			<input type="checkbox">
+              			<div class="checkbox" style="margin-left: 66px;margin-top: 3px;">
+                  			<input type="checkbox" class="checkbox" style="" id="aceptar">
                   		</div>
               		</div>
               		<div class="col-md-10">
-              			<p style="color:#808080">Autorizo que usen mis datos para contactarme</p>
+              			<p style="color:#808080;font-size: 13px;">Autorizo que usen mis datos para contactarme</p>
               		</div>
               	</div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <form class="text-center" action="/c_mensaje" type="POST">
-                    <button type="submit" class="btn btn-lg" style="width:40%;font-weight:bold;background-color: #005aa6;width: 60%;color: #fff;">Aceptar</button>
+                  <form class="text-center" action="/C_mensaje" type="POST">
+                    <button type="submit" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;">Aceptar</button>
                   </form>
                 </div>
               </div>

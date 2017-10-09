@@ -3,10 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class logearse extends CI_Controller {
     
+    function __construct() {
+        parent::__construct();
+        $this->output->set_header(CHARSET_ISO_8859_1);
+        $this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
+        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+        $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
+        $this->output->set_header('Pragma: no-cache');
+        $this->load->helper('cookie');
+        $this->load->helper("url");
+        $this->load->model('M_preaprobacion');
+    }
+    
     public function index()
     {
         $dato['nombreDato']=':D';
-        $this->load->view('v_login', $dato);
+        $this->load->view('v_logearse', $dato);
     }
     
     function logear() {
@@ -54,6 +66,40 @@ class logearse extends CI_Controller {
             }else if($user != 'usuario' && $password != '123' || $user != 'administrador' && $password != '123') {
                 return;
             }
+        }  catch(Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function goToVehicular() {
+        $data['error'] = EXIT_ERROR;
+        try{
+            $user        = __getTextValue('user');
+            $password    = json_decode(__getTextValue('pass'));
+            $remember    = json_decode(_post('check'));
+            $session = array('user'            => $user,
+                             'password'          => $password
+                            );
+            $this->session->set_userdata($session);
+            $data['error'] = EXIT_SUCCESS;
+        }  catch(Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function goToMicash() {
+        $data['error'] = EXIT_ERROR;
+        try{
+            $user     = __getTextValue('user');
+            $password = json_decode(__getTextValue('pass'));
+            $remember = json_decode(_post('check'));
+            $session  = array('user'   => $user,
+                             'password'=> $password
+                             );
+            $this->session->set_userdata($session);
+            $data['error'] = EXIT_SUCCESS;
         }  catch(Exception $e){
             $data['msj'] = $e->getMessage();
         }

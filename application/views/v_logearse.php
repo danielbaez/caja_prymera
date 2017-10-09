@@ -41,7 +41,7 @@
           </div>
         </nav>
         <section id="principal">
-            <div class="mdl-card mdl-card-login" style="position: relative;top: 30px;">
+            <div class="mdl-card mdl-card-login" style="margin-top: 120px;">
                 <div class="mdl-card__title p-b-0" style="text-align: center">
                     <h3 style="color: #0060aa;font-size: 32px;">Bienvenido</h3>
                 </div>
@@ -49,13 +49,13 @@
                     <div class="col-sm-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="text" id="txtEmail" onkeyup="login()">
-                            <label class="mdl-textfield__label" for="txtEmail">Email</label>
+                            <label class="mdl-textfield__label" for="txtEmail">Usuario</label>
                         </div>
                     </div>  
                     <div class="col-sm-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="password" id="txtPassword" onkeyup="login()">
-                            <label class="mdl-textfield__label" for="txtPassword">Password</label>
+                            <label class="mdl-textfield__label" for="txtPassword">Contrase&ntilde;a</label>
                         </div>
                     </div>   
                     <div class="col-sm-12 m-t-15">
@@ -65,7 +65,17 @@
                         </label>
                     </div>
                     <div class="col-sm-12 m-t-20">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 100%;background: #0060aa;color: #fff;" onclick="logear()">Ingresar</button>
+                        <div class="col-xs-12">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 100%;background: #0060aa;color: #fff;" onclick="logear()">Dashboard</button>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-6">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 125%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -14px;" onclick="goToVehicular()">Vehicular</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 118%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -1px;" onclick="goToMicash()">MiCash</button>
+                            </div>
+                        </div>
                     </div> 
                     <div class="col-sm-12 m-t-20">
                     	<div class="col-xs-8 col-md-8">

@@ -103,19 +103,19 @@
 					          	  </div>
 					          </div>
 					      </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">
+                        <span><?php echo $pago_total?></span>
+                        <div class="col-xs-6">
+                          <span style="">Pago Total: </span>
+                        </div>
+                    </div>
+                </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $tcea?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">TCEA: </span>
-					          	  </div>
-					          </div>
-					      </div>
-					      <div class="col-xs-12">
-					          <div class="form-group" style="">
-					          	  <span><?php echo $pago_total?></span>
-					          	  <div class="col-xs-6">
-					          	  	<span style="">Total Pr&eacute;stamo: </span>
 					          	  </div>
 					          </div>
 					      </div>

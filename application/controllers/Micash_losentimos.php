@@ -6,7 +6,7 @@ class micash_losentimos extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
-        $this->load->view('v_micash_losentimos', $dato);
+        $this->load->view('v_micash_noencontrado', $dato);
     }
     
 }

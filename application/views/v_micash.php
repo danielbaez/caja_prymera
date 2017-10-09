@@ -114,25 +114,12 @@
                             <li><a data-toggle="tab" href="#menus1">Requisitos</a></li>
                             <li><a data-toggle="tab" href="#menus2">Documentos</a></li>
                             <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
-                            <li><a data-toggle="tab" href="#menus4">Documentos</a></li>
+                            <li><a data-toggle="tab" href="#menus4">Seguros</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div id="homes" class="tab-pane fade in active">
                             <div class="col-xs-12">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>PORCENTAJE INICIAL: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</p>
-                                    </div>
-                                </div>
                                 <div class="col-xs-12">
                                     <div class="col-xs-6">
                                         <div class="col-xs-2">
@@ -152,11 +139,11 @@
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
                                         <div class="col-xs-10">
-                                            <p><strong>PLAZOS: </strong></p>
+                                            <p><strong>MONEDA: </strong></p>
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <p>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</p>
+                                        <p>Soles</p>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -165,11 +152,11 @@
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
                                         <div class="col-xs-10">
-                                            <p><strong>TEA: </strong></p>
+                                            <p><strong>TEA-TCEA: </strong></p>
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <p>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</p>
+                                        <p>M&iacute;nimo 25% - m&aacute;ximo 63%.</p>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -204,11 +191,11 @@
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
                                         <div class="col-xs-10">
-                                            <p><strong>DESTINO DE CR&Eacute;DITO: </strong></p>
+                                            <p><strong>DESTINO DEL CR&Eacute;DITO: </strong></p>
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <p>Compra de auto nuevo.</p>
+                                        <p>Libre disponibilidad.</p>
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -217,11 +204,11 @@
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
                                         <div class="col-xs-10">
-                                            <p><strong>MODALIDAD: </strong></p>
+                                            <p><strong>GARANT&Iacute;A: </strong></p>
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
-                                        <p>Convencional - Compra inteligente.</p>
+                                        <p>Ninguna.</p>
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +220,7 @@
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
                                 </div>
                                 <div class="col-xs-10">
-                                    <p>Personas dependientes (m&iacute;nimo 1 a&ntilde;o de antiguedad laboral).</p>
+                                    <p>Personas dependientes (m&iacute;nimo 6 meses de antig&uring;edad laboral).</p>
                                 </div>
                             </div>
                             <div class="col-xs-12">
@@ -274,6 +261,14 @@
                                 </div>
                                 <div class="col-xs-10">
                                     <p>Puede ser cliente nuevo y cliente recurrente de Prymera; en este &uacute;ltimo caso, cuando se tenga cr&eacute;dito vigente, se tramitar&aacute; ampliaci&oacute;n de cr&eacute;dito, siempre que cuente con 03 cuotas pagadas como m&iacute;nimo.</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <i class="mdi mdi-keyboard_arrow_right"></i>
+                                </div>
+                                <div class="col-xs-10">
+                                    <p>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</p>
                                 </div>
                             </div>
                             <div class="col-xs-12">
