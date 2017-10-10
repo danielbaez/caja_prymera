@@ -165,13 +165,21 @@ class C_preaprobacion extends CI_Controller {
         
         $data['tipo_product'] = $titulo;
 
-        $data['plazo_max']      = $plazos[count($plazos)-1];
-        $data['plazo_min']      = $plazos[0];
+        
         $count = count($plazos);
+        if($count == 1){
+            $data['plazo_max']      = $plazos[0];
+            $data['plazo_min']      = $plazos[0];
+            $data['plazo_step'] = 0;
+        }
         if($count == 2){
+            $data['plazo_max']      = $plazos[count($plazos)-1];
+            $data['plazo_min']      = $plazos[0];
             $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
         }
         elseif($count >= 3) {
+            $data['plazo_max']      = $plazos[count($plazos)-1];
+            $data['plazo_min']      = $plazos[0];
             $data['plazo_step'] = $plazos[1] - $plazos[0];
         }
 
