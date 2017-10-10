@@ -455,6 +455,10 @@
       })
     });
 
+    if(<?php echo $plazo_min ?> == <?php echo $plazo_max ?>){
+      rangeSliderPlazo.setAttribute('disabled', true);
+    }
+
     var rangeSliderValueElementPlazos = document.getElementById('slider-range-value-plazo');
 
     rangeSliderPlazo.noUiSlider.on('update', function( values, handle ) {
