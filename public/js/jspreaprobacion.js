@@ -6,13 +6,18 @@ var flg_active = 1;
 function addStyle() {
 	var marca  = $('#marca').val();
 	var modelo = $('#modelo').val();
+	var pagotot = document.getElementById('cantTotPago').innerText;
+    var mensual = document.getElementById('cantMensPago').innerText;
+    var pors_tcea = document.getElementById('tcea').innerText;
+    var meses = document.getElementById('slider-range-value-plazo').innerText;
+    var cuotaIni = document.getElementById('slider-range-value-cuota').innerText;
+    var monto = document.getElementById('slider-range-value-monto').innerText;
+    var pors_tea = document.getElementById('tea').innerText;
 	if(marca == '' && modelo == '') {
 		$("#remove1 a").removeAttr("href");
 		msj('error', 'Seleccione la marca y el modelo');
 		return;
 	}else if(marca != '' && modelo != '') {
-		$("#remove1 a").attr("href", "#menu1");
-		$("#remove1").trigger("click");
 		if(flg_active == 1) {
 			$('#titulo').html('Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos');
 			flg_active++;
@@ -20,16 +25,27 @@ function addStyle() {
 			$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre aprobado');
 			flg_active = 1;
 		}
-		$('#remove1').removeClass("active");
-		$('#remove').removeClass("active");
+		location.href = '/C_confirmacion';
 		$.ajax({
 			data  : { marca : marca,
-					  modelo : modelo},
-			url   : 'C_preaprobacion/guardarMarca',
+					  modelo : modelo,
+					 pagotot : pagotot,
+			    	mensual : mensual,
+				    pors_tcea : pors_tcea,
+				    meses : meses,
+				    cuotaIni : cuotaIni,
+				    pors_tea : pors_tea,
+					monto    : monto},
+				url   : 'C_preaprobacion/guardarMarca',
 			type  : 'POST',
 			dataType : 'json'
 		}).done(function(data){
 			try{
+				data = JSON.parse(data);
+				if(data.error == 0){
+					location.href = '/C_confirmacion';
+				}else {
+				}
 			} catch (err){
 				msj('error',err.message);
 			}

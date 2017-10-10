@@ -33,8 +33,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <h6>Cr&eacute;dito vehicular</h6>
-        <h3>Auto de Caja Prymera</h3>
+        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+          <h6>Cr&eacute;dito vehicular</h6>
+          <h3>Auto de Caja Prymera</h3>
+        <?php } else { ?>
+            <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 95px;">Cr&eacute;dito Consumo</h6>
+            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px;">Mi Cash</h3>
+        <?php } ?>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -86,7 +91,7 @@
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <form class="text-center" action="/C_vehicular_mensaje" type="POST">
+                  <form class="text-center" action="/C_mensaje" type="POST">
                     <button type="submit" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;">Aceptar</button>
                   </form>
                 </div>

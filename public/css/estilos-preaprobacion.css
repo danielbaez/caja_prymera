@@ -38,11 +38,11 @@ h1{
 h6 {
 	color: #fff;
     font-size: 16px;
-    /* margin: 2px; */
+    /*margin: 2px;*/
     text-align: center;
     position: relative;
     top: 10px;
-    right: 32px;
+    right: 8px;
 }
 .container-fluid {
     background-color: #0060aa;
@@ -74,9 +74,13 @@ h3 {
 }
 
 /*ESTILOS-GENERALES*/
-h2.title-prestamo{
+.title-prestamo{
 	font-size: 36px;
 	color: #015FA9;
+    font-family: 'quicksandbold';
+}
+label {
+    font-family: 'quicksandlight';
 }
 .card-border{
 	border: 2px solid #015FA9;

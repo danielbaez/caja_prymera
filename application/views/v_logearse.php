@@ -70,10 +70,10 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="col-xs-6">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 125%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -14px;" onclick="goToVehicular()">Vehicular</button>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 125%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -14px;" onclick="goToVehicular(1)">Vehicular</button>
                             </div>
                             <div class="col-xs-6">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 118%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -1px;" onclick="goToMicash()">MiCash</button>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 118%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -1px;" onclick="goToMicash(2)">MiCash</button>
                             </div>
                         </div>
                     </div> 

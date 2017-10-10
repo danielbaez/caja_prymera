@@ -4,6 +4,12 @@ function confirmarDatos() {
 
 var flg_active = 1; 
 function addStyle() {
+	var pagotot = document.getElementById('cantTotPago').innerText;
+    var mensual = document.getElementById('cantMensPago').innerText;
+    var pors_tcea = document.getElementById('tcea').innerText;
+    var meses = document.getElementById('slider-range-value-meses').innerText;
+    var cuotaIni = document.getElementById('slider-range-value-dias').innerText;
+    var pors_tea = document.getElementById('tea').innerText;
 	if(flg_active == 1) {
 		$('#titulo').html('Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos');
 		flg_active++;
@@ -11,8 +17,37 @@ function addStyle() {
 		$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre aprobado');
 		flg_active = 1;
 	}
-	$('#remove1').removeClass("active");
-	$('#remove').removeClass("active");
+	$.ajax({
+		data  : { pagotot : pagotot,
+			    mensual : mensual,
+			    pors_tcea : pors_tcea,
+			    meses : meses,
+			    cuotaIni : cuotaIni,
+			    pors_tea : pors_tea},
+		url   : 'Preaprobacion/setearDatos',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+				data = JSON.parse(data);
+				if(data.error == 0){
+					if(data.cambio == 1){
+						$('.ocultar').addClass( "hidden" );
+						$('#idError').css('display','block');
+						$('.otro').removeClass( "hidden" );
+						$('#confirmar').css('display', 'none');
+						$('#cambiar').css('display', 'block');
+					}else if(data.cambio == 0){
+						location.href = '/C_confirmacion';
+					}
+				}else {
+				}
+			} catch (err){
+				msj('error',err.message);
+			}
+	});
+	/*$('#remove1').removeClass("active");
+	$('#remove').removeClass("active");*/
+	location.href = '/C_confirmacion';
 }
 
 function verificarNumero() {

@@ -54,7 +54,7 @@ function login() {
 	}
 }
 
-function goToVehicular() {
+function goToVehicular(dato) {
 	var email = $('#txtEmail').val();
 	var pass  = $('#txtPassword').val();
 	var check = '0';
@@ -73,7 +73,8 @@ function goToVehicular() {
 		$.ajax({
 			data  : { user  : email,
 					  pass  : JSON.stringify(pass),
-					  check : JSON.stringify(check)},
+					  check : JSON.stringify(check),
+					  tipo_prod  : dato},
 			url   : 'logearse/goToVehicular',
 			type  : 'POST'
 		}).done(function(data){
@@ -96,7 +97,7 @@ function goToVehicular() {
 	}
 }
 
-function goToMicash() {
+function goToMicash(dato) {
 	var email = $('#txtEmail').val();
 	var pass  = $('#txtPassword').val();
 	var check = '0';
@@ -115,7 +116,8 @@ function goToMicash() {
 		$.ajax({
 			data  : { user  : email,
 					  pass  : JSON.stringify(pass),
-					  check : JSON.stringify(check)},
+					  check : JSON.stringify(check),
+					  tipo_prod  : dato},
 			url   : 'logearse/goToMicash',
 			type  : 'POST'
 		}).done(function(data){

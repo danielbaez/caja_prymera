@@ -30,7 +30,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <div class="contenido-header">
@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="checkbox" style="font-size:13px;position: relative;left: 17px;color:#9fa9a3;" id="acepto"> Acepto 
+                                            <input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
                                             <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -2px;" data-toggle="modal" data-target="#myModal">t&eacute;rminos y condiciones</button>
                                         </label>
                                     </div>
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 button-login text-center">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="font-weight: bold;" onclick="goToLogin()">Log in<i style="color: #4e82bb" class="mdi mdi-person"></i></button>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect hidden" style="font-weight: bold;" onclick="goToLogin()">Log in<i style="color: #4e82bb" class="mdi mdi-person"></i></button>
                     <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
                 </div>
                 <div class="row-fluid" style="position: relative;width: 107%;right: 0;top:-49px;">

@@ -75,7 +75,7 @@ class micash extends CI_Controller {
 
           }
           if($res == 0){
-            $response = array('status' => 0, 'url' => RUTA_CAJA.'Micash_losentimos');
+            $response = array('status' => 0, 'url' => RUTA_CAJA.'C_losentimos');
           }
           if($res == 2){
             $response = array('status' => 2);

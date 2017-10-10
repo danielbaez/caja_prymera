@@ -162,7 +162,7 @@
                                 					<div class="col-xs-6 text-center">
                                 						<div class="container" style="position: relative;top: 30px;">
                                       						<ul class="nav nav-pills">
-                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;" href="#menu1" onclick="addStyle()">Siguiente</a></li>
+                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;" onclick="addStyle()">Siguiente</a></li>
                                 							</ul>
                                 						</div>
                                                     </div>
@@ -475,7 +475,7 @@
 
     noUiSlider.create(rangeSliderDias, {
       start: [ <?php echo  $importeMaximo?>],
-      step: 1000,
+      step: 100,
       range: {
         'min': [  <?php echo  $importeMinimo?> ],
         'max': [ <?php echo  $importeMaximo?> ]

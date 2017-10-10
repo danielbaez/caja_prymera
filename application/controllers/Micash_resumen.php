@@ -18,6 +18,7 @@ class micash_resumen extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
+        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $dato['pago_total'] = _getSesion('pago_total');
         $dato['nombre'] = _getSesion('nombre');
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
@@ -25,6 +26,7 @@ class micash_resumen extends CI_Controller {
         $dato['cant_meses'] = _getSesion('cant_meses');
         $dato['Importe'] = _getSesion('Importe');
         $dato['tea'] = _getSesion('sess_tea');
+        _log(_getSesion('sess_tea'));
         $dato['Agencia'] = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
         $this->load->view('v_micash_resumen', $dato);

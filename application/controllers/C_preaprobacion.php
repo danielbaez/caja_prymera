@@ -56,7 +56,7 @@ class C_preaprobacion extends CI_Controller {
         
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
-        $data['email']='jhiberico@hotmail.com';
+        $data['email']=_getSesion('email');
         $nombre = $this->session->userdata('nombre');
 
         $importeMaximo = _getSesion('importeMaximo');
@@ -167,7 +167,6 @@ class C_preaprobacion extends CI_Controller {
 
         $data['plazo_max']      = $plazos[count($plazos)-1];
         $data['plazo_min']      = $plazos[0];
-
         $count = count($plazos);
         if($count == 2){
             $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
@@ -238,7 +237,6 @@ class C_preaprobacion extends CI_Controller {
 
         //print_r($data);
         //exit();
-
 
         $this->load->view('v_preaprobacion', $data);
     }
@@ -349,10 +347,12 @@ class C_preaprobacion extends CI_Controller {
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
 
-            $data['tea'] = $result->return->tea;
-            $data['tea'] = $data['tea']*100;
-            $data['tcea'] = $result->return->tea;
-            $data['tcea'] = $data['tcea']*100;
+            $datos_tea = $result->return->tea;
+            _log($datos_tea);
+            $data['tea'] = round($datos_tea*10000)/100;
+            $datos_tcea = $result->return->tcea;
+            _log($datos_tcea);
+            $data['tcea'] = round($datos_tcea*10000)/100;  
 
             $data['seguroAuto'] = $result->return->seguroAuto;
             $data['seguroAuto'] = str_replace( ',', '', $data['seguroAuto']);
@@ -749,11 +749,36 @@ class C_preaprobacion extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
+            _log('123');
             $marca = _post('marca');
             $modelo = _post('modelo');
             $idPersona = _getSesion('idPersona');
-            $session = array('marca'            => $marca,
-                             'modelo'          => $modelo);
+            $salario = _post('salario');
+            $nro_celular = _post('nro_celular');
+            $empleador = _post('empleador');
+            $direccion_empresa = _post('direccion_empresa');
+            $Departamento = _post('Departamento');
+            $Provincia = _post('Provincia');
+            $Distrito = _post('Distrito');
+            $pagoTot  = _post('pagotot');
+            $cuotaMens  = _post('mensual');
+            $meses  = _post('meses');
+            $importe  = _post('cuotaIni');
+            $numero  = _post('numero');
+            $varTcea  = _post('pors_tcea');
+            $varTea   = _post('pors_tea');
+            $Agencia  = _post('Agencia');
+            $concesionaria = _post('concesionaria');
+            $session = array(
+                        'pago_total'        => $pagoTot,
+                        'cuota_mensual'     => $cuotaMens,
+                        'TCEA'              => $varTcea,
+                        'cant_meses'        => $meses,
+                        'Importe'           => $importe,
+                        'sess_tea'          => $varTea,
+                        'marca'            => $marca,
+                        'modelo'          => $modelo
+                            );
             $this->session->set_userdata($session);
 //             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;

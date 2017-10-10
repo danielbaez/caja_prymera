@@ -132,7 +132,7 @@ class preaprobacion extends CI_Controller {
 
             $datos_tea = $result->return->tea;
             $data['tea'] = round($datos_tea*10000)/100;
-            $datos_tcea = $result->return->tea;
+            $datos_tcea = $result->return->tcea;
             $data['tcea'] = round($datos_tcea*10000)/100;  
           }
           if($res == 0){
@@ -185,10 +185,10 @@ class preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
             $this->varPagoTotal = $data['pagoTotal'];
 
-             $datos_tea = $result->return->tea;
-            $data['tea'] = $datos_tea*100;
-            $datos_tcea = $result->return->tea;
-            $data['tcea'] = $datos_tcea*100;    
+            $datos_tea = $result->return->tea;
+            $data['tea'] = round($datos_tea*10000)/100;
+            $datos_tcea = $result->return->tcea;
+            $data['tcea'] = round($datos_tcea*10000)/100;   
 
           }
           if($res == 0){
@@ -699,5 +699,44 @@ class preaprobacion extends CI_Controller {
        //con esto podemos ver el resultado
        //var_dump($this->email->print_debugger());
      }*/
+
+     function setearDatos() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $salario = _post('salario');
+            $nro_celular = _post('nro_celular');
+            $empleador = _post('empleador');
+            $direccion_empresa = _post('direccion_empresa');
+            $Departamento = _post('Departamento');
+            $Provincia = _post('Provincia');
+            $Distrito = _post('Distrito');
+            $pagoTot  = _post('pagotot');
+            $cuotaMens  = _post('mensual');
+            $meses  = _post('meses');
+            $importe  = _post('cuotaIni');
+            $numero  = _post('numero');
+            //$varTea  = 
+            $varTcea  = _post('pors_tcea');
+            $varTea   = _post('pors_tea');
+            $Agencia  = _post('Agencia');
+            $concesionaria = _post('concesionaria');
+            $session = array(
+                        'pago_total'        => $pagoTot,
+                        'cuota_mensual'     => $cuotaMens,
+                        'TCEA'              => $varTcea,
+                        'cant_meses'        => $meses,
+                        'Importe'           => $importe,
+                        'sess_tea'          => $varTea
+                            );
+            $this->session->set_userdata($session);
+            $data['cambio'] = 0;
+
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+     }
 }
 

@@ -1,3 +1,33 @@
+@font-face {
+   font-family: 'quicksandregular';
+   src: url('quicksand/Quicksand-Regular.otf');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'quicksandheavy';
+   src: url('quicksand/Quicksand-Heavy.otf');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'quicksandheavyitalic';
+   src: url('quicksand/Quicksand-HeavyItalic.otf');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'quicksandbold';
+   src: url('quicksand/Quicksand-Bold.otf');
+   font-weight: normal;
+   font-style: normal;
+}
+@font-face {
+   font-family: 'quicksandlight';
+   src: url('quicksand/Quicksand-Light.otf');
+   font-weight: normal;
+   font-style: normal;
+}
 h1 {
 	font-family: Quicksand;
 	font-size: 24px;

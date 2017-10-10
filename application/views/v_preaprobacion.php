@@ -8,8 +8,8 @@
     <title>Caja Prymera</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
+    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap_select/css/bootstrap-select.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
@@ -17,20 +17,13 @@
   <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
   <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-preaprobacion.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
-    
   </head>
     <body style="padding-top: 70px;" >
     
@@ -76,7 +69,7 @@
             <h2>Completa los datos:</h2>
           <?php  } else {?>
           <div class="col-xs-12 text-center">
-            <h2 class="title-prestamo" id="titulo"><?php echo $tipo_product;?></h2>
+            <h1 class="title-prestamo" id="titulo"><?php echo $tipo_product;?></h1>
           </div>
           <div class="col-xs-12">
           <div class="container max-width-950">
@@ -185,6 +178,7 @@
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
                                                     <span style="color:#1C4485;font-size: 20px" id="tcea">0%</span>
+                                                    <span style="display: none" id="tea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto</p>
@@ -435,7 +429,6 @@
 
   <script>
   (function($){
-
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip();  
   });
@@ -446,7 +439,7 @@
 
     noUiSlider.create(rangeSliderPlazo, {
       start: [ <?php echo $plazo_max ?> ],
-      step: <?php echo $plazo_step  ?>,
+      step: <?php echo $plazo_step?>,
       range: {
         'min': [  <?php echo $plazo_min ?> ],
         'max': [ <?php echo $plazo_max ?> ]
@@ -521,6 +514,7 @@
             $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
             $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
             $('#tcea').html(data.tcea+'%');
+            $('#tea').html(data.tea+'%');
             $('#seguroAuto').html('S/ '+data.seguroAuto); 
           });
         }
@@ -612,6 +606,7 @@
           $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
           $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
+          $('#tea').html(data.tea+'%');
           $('#seguroAuto').html('S/ '+data.seguroAuto);
         });
       }
@@ -682,6 +677,7 @@
           $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
           $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
+          $('#tea').html(data.tea+'%');
           $('#seguroAuto').html('S/ '+data.seguroAuto);
         });
       }
@@ -762,6 +758,7 @@
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%');
+        $('#tea').html(data.tea+'%');
         $('#seguroAuto').html('S/ '+data.seguroAuto);
       });
 

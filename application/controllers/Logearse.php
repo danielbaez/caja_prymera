@@ -79,7 +79,8 @@ class logearse extends CI_Controller {
             $password    = json_decode(__getTextValue('pass'));
             $remember    = json_decode(_post('check'));
             $session = array('user'            => $user,
-                             'password'          => $password
+                             'password'          => $password,
+                             'TIPO_PROD'        =>PRODUCTO_VEHICULAR
                             );
             $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;
@@ -96,7 +97,8 @@ class logearse extends CI_Controller {
             $password = json_decode(__getTextValue('pass'));
             $remember = json_decode(_post('check'));
             $session  = array('user'   => $user,
-                             'password'=> $password
+                             'password'=> $password,
+                             'TIPO_PROD' =>PRODUCTO_MICASH
                              );
             $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;
