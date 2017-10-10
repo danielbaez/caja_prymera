@@ -48,6 +48,7 @@ class preaprobacion extends CI_Controller {
         $data['nombre'] = _getSesion('nombre');
         $data['email']  = _getSesion('email');
         $nombre   = $this->session->userdata('nombre');
+        $data['tipo_producto'] = _getSesion("TIPO_PROD");
         $apellido = _getSesion('apellido');
 
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();

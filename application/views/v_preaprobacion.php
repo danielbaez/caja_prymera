@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Caja Prymera</title>
-
+    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      <title>Cr&eacute;dito Mi Auto</title>
+    <?php } else { ?>
+        <title>Cr&eacute;dito Mi Cash</title>
+    <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
@@ -82,19 +85,19 @@
                             <div class="row" style="margin-top:30px">
                             <div class="col-xs-12">
                               <form class="text-center form-horizontal">
-                                    <div class="col-xs-12 col-md-6" style="color:black;font-size:16px;position: relative;top: 30px;">
+                                    <div class="col-xs-12 col-md-6 m-t-30" style="color:black;font-size:16px;">
                                               <div class="col-md-6">
-                                                <select class="form-control" style="position:relative;left: 40px;top: -18px;" name="marca" title="Selec. Tipo de pago" id="marca" onchange="getModelo()">
+                                                <select class="form-control" style="position:relative;left: 40px;top: -18px;font-family: 'quicksandlight';" name="marca" title="Selec. Tipo de pago" id="marca" onchange="getModelo()">
                                                         <option value="">Marca</option>
                                                         <?php echo $comboMarca?>
                                                   </select>
                                               </div>
                                               <div class="col-md-6">
-                                                <select class="form-control" style="position:relative;left: 40px;top: -18px;" name="modelo" title="Selec. Tipo de pago" id="modelo">
+                                                <select class="form-control" style="position:relative;left: 40px;top: -18px;font-family: 'quicksandlight';" name="modelo" title="Selec. Tipo de pago" id="modelo">
                                                         <option value="">Modelo</option>
                                                   </select>
                                               </div>
-                                              <div class="col-md-12">
+                                              <div class="col-md-12 m-l-62 m-t-15">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
                                                       <span><?php echo $plazo_min ?>m</span>
                                                     </div>
@@ -104,17 +107,17 @@
                                                     <div class="visible-xs col-sm-6 text-right">
                                                       <span><?php echo $plazo_max ?>m</span>
                                                     </div>
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <label for="slider-range-plazo">Plazo de pr&eacute;stamo</label>
+                                                    <div class="col-xs-12 col-sm-6 ">
+                                                        <label for="slider-range-plazo" style="position: relative;top: 4px;">Plazo de pr&eacute;stamo</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-plazo"></div>
-                                                        <p id="slider-range-value-plazo" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <p id="slider-range-value-plazo" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -79px;top: 45px;">
+                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 9px;top: 45px;">
                                                       <span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                               </div>
-                                              <div class="col-md-12">
+                                              <div class="col-md-12 m-l-62">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
                                                       <span id="sueldoMin">S/ <?php echo  $montoMinimo?></span>
                                                     </div>
@@ -125,17 +128,17 @@
                                                       <span>S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                      <label for="slider-range-monto">Monto del veh&iacute;culo</label>
+                                                      <label for="slider-range-monto" style="position: relative;top: 4px;">Monto del veh&iacute;culo</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-monto"></div>
-                                                        <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -79px;top: 45px;">
+                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 0px;top: 45px;">
                                                       <span id="sueldoMax">S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                               </div>
-                                              <div class="col-md-12">
-                                                <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;top: 25px;left: 70px">
+                                              <div class="col-md-12 m-l-62 p-t-17">
+                                                <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;top: 67px;left: 70px">
                                                       <span id="minCuota">S/ <?php echo  $cuotaMinimo?></span>
                                                     </div>
                                                     <div class="visible-xs col-xs-6 text-left">
@@ -145,12 +148,12 @@
                                                       <span>S/ <?php echo  $cuotaMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                      <label for="slider-range-cuota">Cuota inicial</label>
-                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -2px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?"><i class="mdi mdi-info"></i></button>
+                                                      <label for="slider-range-cuota" class="m-16" style="position: relative;left: -33px;top: 15px;">Cuota inicial</label>
+                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -28px;left: 33px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-cuota"></div>
-                                                        <p id="slider-range-value-cuota" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <p id="slider-range-value-cuota" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: -78px;top: 25px;">
+                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 0px;top: 67px;">
                                                       <span id="maxCuota">S/ <?php echo  $cuotaMaximo?></span>
                                                     </div>
                                               </div>
@@ -183,19 +186,19 @@
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto</p>
                                                     <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
-                                                    <p style="color:#A9A9A9;font-size:12px">*Cuota aproximada sujeta a evaluación</p>
+                                                    <p style="color:#A9A9A9;font-size:11px">*Cuota aproximada sujeta a evaluación</p>
                                           </div>
                                         </div>
-                                        <div class="col-md-6" style="position: relative;top: 15px;">
+                                        <div class="col-md-6" style="margin-top: 15px;margin-left: -28px;">
                                           <div class="col-xs-6 text-center">
-                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff" data-toggle="modal" data-target="#myModal" id="generarCronograma">Desea Ampliar</button>
+                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff;font-size: 15px;width: 125px;height: 51px;font-family: 'quicksandbold';padding: 1px;" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
                                                     </div>
                                         </div>
                                         <div class="col-md-6" style="position: relative;top: 15px;">
                                           <div class="col-xs-6 text-center">
                                             <div class="container" style="position: relative;top: 30px;">
                                                   <ul class="nav nav-pills">
-                                                <li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #005aa6; color: #fff;position: relative;top: -30px;" onclick="addStyle()" href="">Siguiente</a></li>
+                                                <li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;font-family: 'quicksandbold';" onclick="addStyle()">Siguiente</a></li>
                                               </ul>
                                             </div>
                                                     </div>

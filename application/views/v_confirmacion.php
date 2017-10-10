@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Caja Prymera</title>
-
+    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      <title>Cr&eacute;digo Mi Auto</title>
+    <?php } else { ?>
+        <title>Cr&eacute;digo Mi Cash</title>
+    <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
@@ -31,11 +34,11 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   </head>
-    <body style="padding-top: 70px;" >
+    <body style="" >
     
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -98,7 +101,7 @@
                                                             <div class="col-xs-12 p-0">
                                                               <div class="col-sm-12">
                                                                   <div class="form-group">
-                                                                      <select class="form-control" id="salario"  name="salario">
+                                                                      <select class="form-control" id="salario"  name="salario" onchange="habilitarCampo()">
                                                                               <option value="">Salario</option>
                                                                               <option value="">Hasta 1,000 soles</option>
                                                                               <option value="">De 1,000 a 2,000 soles</option>
@@ -113,17 +116,17 @@
                                                             </div>
                                                             <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                  <input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" maxlenght="50" onkeypress="return soloLetras(event)">
+                                                                  <input type="search" class="form-control" id="empleador" name="empleador" placeholder="Empleador" onchange="habilitarCampo()" maxlenght="50" onkeypress="return soloLetras(event)">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                  <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlenght="50" placeholder="Direcci&oacute;n empresa">
+                                                                  <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlenght="50" onchange="habilitarCampo()" placeholder="Direcci&oacute;n empresa">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                  <select class="form-control" id="Departamento" name="Departamento" onchange="getProvincia()">
+                                                                  <select class="form-control" id="Departamento" name="Departamento" onchange="getProvincia();habilitarCampo()">
                                                                           <option value="">Departamento</option>
                                                                           <?php echo $comboDepa;?>
                                                                   </select>
@@ -132,14 +135,14 @@
                                                             <div class="col-xs-12 p-0">
                                                           <div class="col-sm-6">
                                                                   <div class="form-group">
-                                                                      <select class="form-control" id="Provincia" name="Provincia" onchange="getDistritos()">
+                                                                      <select class="form-control" id="Provincia" name="Provincia" onchange="getDistritos();habilitarCampo()">
                                                                               <option value="">Provincia</option>
                                                                       </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                   <div class="form-group">
-                                                                      <select class="form-control" id="Distrito" name="Distrito">
+                                                                      <select class="form-control" id="Distrito" name="Distrito" onchange="habilitarCampo()">
                                                                                 <option value="">Distrito</option>
                                                                       </select>
                                                                     </div>
@@ -148,7 +151,7 @@
                                                             <div class="col-xs-12 text-left">
                                                               <div class="checkbox">
                                                                         <label>
-                                                                          <input type="checkbox" id="checkAutorizo" name="autorizacion"> Autorizo que usen mis datos para esta oferta
+                                                                          <input type="checkbox" id="checkAutorizo" onchange="habilitarCampo()" name="autorizacion"> Autorizo que usen mis datos para esta oferta
                                                                         </label>
                                                                     </div>
                                                             </div>
@@ -158,33 +161,44 @@
                                                                 <div class="col-xs-12 p-0">
                                                                 <div class="col-sm-12">
                                                                       <div class="form-group">
-                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)" maxlength="9">
+                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="Nro. Celular" onkeypress="return valida(event)" onchange="habilitarCampo()" maxlength="9">
                                                                       </div>
                                                                     </div>
                                                                 <div class="col-sm-6">
                                                                   <div class="form-group">
-                                                                        <select class="form-control" name="codigo" id="codigo">
+                                                                        <select class="form-control" onchange="habilitarCampo()" name="codigo" id="codigo">
                                                                           <option value="">C&oacute;digo</option>
                                                                         </select>
                                                                       </div>
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                   <div class="form-group">
-                                                                        <input type="text" class="form-control" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)" maxlength="7">
+                                                                        <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)" maxlength="7">
                                                                       </div>
                                                                 </div>
                                                               </div>
+                                                              <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+                                                                <div class="col-xs-12">
+                                                                  <div class="form-group">
+                                                                        <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
+                                                                          <option value="">Concesionaria</option>
+                                                                          <?php echo $comboConcecionaria?>
+                                                                        </select>
+                                                                        </div>
+                                                                  </div>
+                                                              <?php } else { ?>
+                                                                  <div class="col-xs-12 hidden">
+                                                                  <div class="form-group">
+                                                                        <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
+                                                                          <option value="">Concesionaria</option>
+                                                                          <?php echo $comboConcecionaria?>
+                                                                        </select>
+                                                                        </div>
+                                                                  </div>
+                                                              <?php } ?>
                                                               <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                    <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia()">
-                                                                      <option value="">Concesionaria</option>
-                                                                      <?php echo $comboConcecionaria?>
-                                                                    </select>
-                                                                    </div>
-                                                              </div>
-                                                              <div class="col-xs-12">
-                                                              <div class="form-group">
-                                                                    <select class="form-control" id="idagencia" name="agencias">
+                                                                    <select class="form-control" id="idagencia" name="agencias" onchange="habilitarCampo()">
                                                                       <option value="">Agencias</option>
                                                                          <?php echo $comboAgencias?>
                                                                     </select>
@@ -192,16 +206,16 @@
                                                               </div>
                                                                 <div class="col-xs-12">
                                                                   <div class="form-group">
-                                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email?>">
+                                                                    <input type="text" class="form-control" id="email" onchange="habilitarCampo()" name="email" placeholder="Email" value="<?php echo $email?>">
                                                                   </div>
                                                                 </div>  
                                                                 <div class="col-xs-12 m-t-50 text-right">
-                                                                  <div class="container" style="position: relative;top: 30px;">
+                                                                  <div class="container" style="position: relative;top: -53px;left: -10px;">
                                                               <ul class="nav nav-pills">
-                                                            <li id="remove" class="remove"><a style="background-color: #005aa6; color: #fff;position: relative;top: 15px;" href="http://localhost:8080/C_preaprobacion">Regresar</a></li>
+                                                            <li id="remove" class="remove"><a style="background-color: #005aa6;color: #fff;position: relative;top: 17px;font-family: 'quicksandlight';font-size: 15px;border-radius: 7px;" href="http://localhost:8080/C_preaprobacion">Regresar</a></li>
                                                           </ul>
                                                         </div>
-                                                                  <button type="button" style="background-color: #005aa6;color: #fff;font-weight: lighter;font-size: 16px;" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg selector" id="btnAceptar" onclick="enviarMail()">Aceptar</button>
+                                                                  <button type="button" style="background-color: #005aa6;color: #fff;font-weight: lighter;font-size: 16px;position: relative;top: -81px;font-family: 'quicksandlight'" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg selector" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
                                                                 </div>
                               </div>
                                                     </div>
@@ -256,7 +270,8 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
+limpiarCampos
+              <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" onclick="limpiarCampos()"><span style="color:#fff" aria-hidden="true">&times;</span></button>
               <p style="text-align: center;font-size: 18px">Validar celular</p>
             </div>
             <div class="modal-body">
@@ -275,7 +290,7 @@
                   <br>
                   <div class="col-xs-12">
                     <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" onclick="reenviarEmail()">Enviar otro c&oacute;digo</a><br>
-                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" data-dismiss="modal">Cambiar celular</a>
+                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar celular</a>
                   </div>
             </div>
             <div class="table-responsive otro" id="idError" style="display: none;">
@@ -315,8 +330,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
   <script>
+    $(document).ready(function(){
+      $('#uno').keypress(function() {
+        $(this).next(':input').focus();
+      });
+      $('#dos').keypress(function() {
+        $(this).next(':input').focus();
+      });
+      $('#tres').keypress(function() {
+        $(this).next(':input').focus();
+      });
+      $('#cuatro').keypress(function() {
+        $(this).next(':input').focus();
+      });
+      $('#cinco').keypress(function() {
+        $(this).next(':input').focus();
+      });
+    });
   </script>
   </body>
 </html>

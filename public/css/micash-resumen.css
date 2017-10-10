@@ -41,8 +41,11 @@ h6 {
     position: relative;
     top: 10px;
     left: 182px;
+    font-family: 'quicksandlight';
 }
-
+p {
+    font-family: 'quicksandregular';
+}
 h3 {
 	color: #fff;
     font-size: 36px;
@@ -50,6 +53,7 @@ h3 {
     text-align: center;
     position: relative;
     left: 180px;
+    font-family: 'quicksandlight';
 }
 div.form-group {
 	background: white; 
@@ -57,6 +61,7 @@ div.form-group {
 	border-radius: 3px; 
 	padding: 6px 6px; 
 	border-bottom: 1px solid #dadada;
+    font-family: 'quicksandregular';
 }
 .form-control {
 	width: 153%;

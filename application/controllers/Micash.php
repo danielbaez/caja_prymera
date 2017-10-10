@@ -17,6 +17,7 @@ class micash extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
+        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $this->load->view('v_micash', $dato);
     }
     

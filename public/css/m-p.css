@@ -290,7 +290,9 @@
 .m-t-0 {
 	margin-top: 0px !important;
 }
-
+.m-t-23 {
+	margin-top: -23px !important;
+}
 .m-r-0 {
 	margin-right: 0px !important;
 }
@@ -322,7 +324,9 @@
 .m-10 {
 	margin: 10px !important;
 }
-
+.m-16 {
+	margin: 16px !important;
+}
 .m-b-10 {
 	margin-bottom: 10px !important;
 }
@@ -446,6 +450,9 @@
 
 .m-l-50 {
 	margin-left: 50px !important;
+}
+.m-l-62 {
+	margin-left: 62px !important;
 }
 
 /* Size fonts */

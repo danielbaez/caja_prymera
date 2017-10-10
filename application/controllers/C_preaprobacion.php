@@ -58,6 +58,7 @@ class C_preaprobacion extends CI_Controller {
         $data['nombre'] = _getSesion('nombre');
         $data['email']=_getSesion('email');
         $nombre = $this->session->userdata('nombre');
+        $data['tipo_producto'] = _getSesion("TIPO_PROD");
 
         $importeMaximo = _getSesion('importeMaximo');
         $importeMinimo = _getSesion('importeMinimo');

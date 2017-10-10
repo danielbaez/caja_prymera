@@ -13,7 +13,11 @@
         <meta name="author"                 content="webking.pe">
         <meta name="language"               content="es">
         <meta name="theme-color"            content="#FFFFFF">
-        <title>Caja Prymera</title>
+        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+          <title>Cr&eacute;dito Mi Auto</title>
+        <?php } else { ?>
+            <title>Cr&eacute;dito Mi Cash</title>
+        <?php } ?>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>

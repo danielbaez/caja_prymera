@@ -137,6 +137,7 @@ div.checkbox label {
 }
 .checkbox {
     text-align: left;
+    margin-left: 33px;
 }
 .checkbox label{
     color: #9fa9a3;

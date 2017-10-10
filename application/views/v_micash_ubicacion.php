@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Pre aprobaci&oacute;n</title>
-
+    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      <title>Cr&eacute;digo Mi Auto</title>
+    <?php } else { ?>
+        <title>Cr&eacute;digo Mi Cash</title>
+    <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
@@ -33,7 +36,7 @@
             .chart_new {
                 width:100%;
                 min-height:280px;
-            	margin: auto;
+            	  margin: auto;
             }
             
             svg:first-child > g > text[text-anchor~=middle]{
@@ -45,10 +48,10 @@
             }
     	</style>
   </head>
-    <body style="padding-top: 70px;" >
+    <body style="" >
     
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -83,17 +86,17 @@
 			        <div class="mdl-card__title">
                     </div>
                     <div>
-                    	<h2 class="mdl-card__title-text" ><strong><?php echo $nombre ?>, Gracias por confiar en Prymera.</strong></h2>
-                        <h2 class="mdl-card__title-text" ><strong>Solicitaste un cr&eacute;dito de <?php echo $pago_total ?> s&oacute;les a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> s&oacute;les</strong></h2><br />
-                        <h2 class="mdl-card__title-text" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s acercarte a nuestra agencia de <?php echo $Agencia ?></h2>
-                        <h2 class="mdl-card__title-text">junto con tus<strong> 2 &uacute;ltimas boletas de pago </strong> y <strong> el recibo de servicio</strong>(luz, agua, tel&eacute;fono) con antiguedad</h2>
-                        <h2 class="mdl-card__title-text">no mayor a dos meses, para proceder a la firma del expediente y el desembolso de tu pr&eacute;stamo.</h2>
+                    	<h1 class="p-0 m-0" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
+                        <h1 class="ajustar" ><b>Solicitaste un cr&eacute;dito de <?php echo $pago_total ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> soles</b></h1><br />
+                        <h1 class="p-0 m-0" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s acercarte a nuestra agencia de <?php echo $Agencia ?></h1>
+                        <h1 class="m-t-0">junto con tus <span class="negrita"> 2 &uacute;ltimas boletas de pago </span> y <span class="negrita"> el recibo de servicio</span>(luz, agua, tel&eacute;fono) con antiguedad</h1>
+                        <h1 class="p-0 m-t-23">no mayor a dos meses, para proceder a la firma del expediente y el desembolso de tu pr&eacute;stamo.</h1>
                     </div>
-                    <div class="mdl-card__supporting-text br-b">
+                    <div class="mdl-card__supporting-text br-b" style="width: 100%;">
                         <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">
                         <div id="map_div" class="chart_new" style="display:block"></div>
-                        <h6 style="color:black">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h6>
-                        <h6 style="color:black">Av. Los Lirios con Av. Pedro Miota. S&oacute;tano Tel&eacute;fono 2767658</h6>
+                        <h5 style="color:#a3a4a6;text-align: center;font-size: 15px;font-family: quicksandlight;">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h5>
+                        <h5 style="color:#a3a4a6;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandlight;">Av. Los Lirios con Av. Pedro Miota. S&oacute;tano Tel&eacute;fono 2767658</h5>
                     </div>
 				</div>
             </div>
@@ -140,7 +143,7 @@
 
         	    var options = {
             	          mapType: 'styledMap',
-            	          zoomLevel: 14,
+            	          zoomLevel: 18,
             	          showTooltip: true,
             	          showInfoWindow: true,
             	          useMapTypeControl: true,

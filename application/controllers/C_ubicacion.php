@@ -22,6 +22,7 @@ class C_ubicacion extends CI_Controller {
             header("Location: ".RUTA_CAJA, true, 301);
         }
         $dato['nombreDato']=':D';
+        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $dato['nombre'] = _getSesion("nombre");
         $this->load->view('v_ubicacion', $dato);
     }

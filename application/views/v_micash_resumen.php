@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Caja Prymera</title>
-
+    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      <title>Cr&eacute;digo Mi Auto</title>
+    <?php } else { ?>
+        <title>Cr&eacute;digo Mi Cash</title>
+    <?php } ?>
     <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>">
@@ -30,11 +33,8 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
   </head>
-    <body style="">
-    
-
-
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <body style="padding: 0px;">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -145,12 +145,12 @@
 						  <div class="col-xs-12">
 			          <div class="col-xs-4 padding">
                   <select class="form-control" id="Agencia" name="Agencia">
-                      <option value="">Cambiar Agencia</option>
+                      <option value="" style="font-family: 'quicksandlight';">Cambiar Agencia</option>
                       <?php echo $comboAgencias?>
                     </select>
                 </div>
                 <div class="col-xs-8 text-right">
-                	<button type="button" class="btn btn-lg" style="" onclick="irAUbicacion()">Aceptar</button>
+                	<button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
                 </div>
 						  </div>
 						  	<div class="col-xs-12 color-info">

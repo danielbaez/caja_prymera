@@ -23,6 +23,7 @@ class micash_ubicacion extends CI_Controller {
         $dato['nombre'] = _getSesion('nombre');
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
         $dato['tcea'] = _getSesion('TCEA');
+        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $dato['cant_meses'] = _getSesion('cant_meses');
         $dato['Importe'] = _getSesion('Importe');
         $dato['tea'] = _getSesion('sess_tea');

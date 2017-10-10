@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Caja Prymera</title>
+    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      <title>Cr&eacute;dito Mi Auto</title>
+    <?php } else { ?>
+        <title>Cr&eacute;dito Mi Cash</title>
+    <?php } ?>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,18 +28,12 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-preaprobacion.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   </head>
-    <body style="padding-top: 70px;" >
+    <body style="" >
     
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -96,17 +94,17 @@
                                                   		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                    	<label for="slider-range-meses" style="margin-right: 22px;position: relative;top: 20px;">Plazo de pr&eacute;stamo</label>
-                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -8px;l;left: 76px;" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button>
+                                                    	<label for="slider-range-meses" style="margin-right: 22px;position: relative;top: 5px;">Plazo de pr&eacute;stamo</label>
+                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -20px;l;left: 76px;" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-meses"></div>
-                                                        <p id="slider-range-value-meses" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <p id="slider-range-value-meses" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 22px;top: 45px;">
                                                   		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                             	</div>
                                             	
-                                            	<div class="col-md-12" style="margin-left: -34px;">
+                                            	<div class="col-md-12" style="margin-left: -34px;margin-top: 30px;">
                                             		<div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;top: 25px;left: 107px;">
                                                   		<span id="minCuota">S/ <?php echo  $importeMinimo?></span>
                                                     </div>
@@ -117,10 +115,10 @@
                                                   		<span>S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-4">
-                                                    	<label for="slider-range-dias" style="margin-left: -15px;">Monto</label>
-                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -2px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
+                                                    	<label for="slider-range-dias" style="margin-left: -15px;position: relative;top: -19px;">Monto</label>
+                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -21px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-dias" class="agrandar"></div>
-                                                        <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;"></p>
+                                                        <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
                                                     <div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;left: 58px;top: 25px;">
                                                   		<span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
@@ -140,29 +138,29 @@
                                 				<div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
+                                                		<span style="color:#1C4485;font-size: 24px" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
                                 					</div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Cuota Mensual*</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
+                                                		<span style="color:#1C4485;font-size: 24px" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
                                 					</div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
-                                                		<span style="color:#1C4485;font-size: 20px" id="tcea"><?php echo $tcea?>%</span>
+                                                		<span style="color:#1C4485;font-size: 24px" id="tcea"><?php echo $tcea?>%</span>
                                                     <span style="display: none" id="tea"><?php echo $tea?>%</span>
-                                                		<p style="color:#A9A9A9;font-size: 12px;">*Cuota aproximada sujeta a evaluación</p>
+                                                		<p style="color:#A9A9A9;font-size: 11px;">*Cuota aproximada sujeta a evaluación</p>
                                 					</div>
                                 				</div>
                                 				<div class="col-md-6" style="position: relative;top: 15px;right: 29px;">
                                 					<div class="col-xs-6 text-center">
-                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff;font-size: 14px;width: 125px;height: 51px;" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
+                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff;font-size: 15px;width: 125px;height: 51px;font-family: 'quicksandbold';padding: 1px;" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
                                                     </div>
                                 				</div>
                                 				<div class="col-md-6" style="position: relative;top: 15px;right: 37px;">
                                 					<div class="col-xs-6 text-center">
                                 						<div class="container" style="position: relative;top: 30px;">
                                       						<ul class="nav nav-pills">
-                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;" onclick="addStyle()">Siguiente</a></li>
+                                								<li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;font-family: 'quicksandbold';" onclick="addStyle()">Siguiente</a></li>
                                 							</ul>
                                 						</div>
                                                     </div>
