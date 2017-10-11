@@ -373,22 +373,21 @@ class C_confirmacion extends CI_Controller {
 
     function enviarMail() {
         //twilio enviar msn
-       $aleatorio = rand ( 100000 , 999999 );
+        $aleatorio = rand ( 100000 , 999999 );
         $numero = _post('nro_celular');
-        _log($aleatorio);
-        /*$this->load->library('twilio');
+        $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '.$numero;
-        $message = 'Tu código de verificación es '.$aleatorio;*/
+        $message = 'Tu código de verificación es '.$aleatorio;
         $session = array('codigo_ver' => $aleatorio,
                          'nro_celular' => $to);
         $this->session->set_userdata($session);
-        //$response = $this->twilio->sms($from, $to, $message);
+        $response = $this->twilio->sms($from, $to, $message);
         //_log(print_r($response, true));
-        /*if($response->IsError)
+        if($response->IsError)
           exit('Error: ' . $response->ErrorMessage);
         else
-          exit('Sent message to ' . $to);*/
+          exit('Sent message to ' . $to);
     }
 
     /*function sendMailGmail()
