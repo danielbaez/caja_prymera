@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <title>Cr&eacute;digo Mi Auto</title>
+      <title>Cr&eacute;dito Mi Auto</title>
     <?php } else { ?>
-        <title>Cr&eacute;digo Mi Cash</title>
+        <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -287,7 +287,7 @@
                   </div>  
                   <br>
                   <div class="col-xs-12">
-                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" onclick="reenviarEmail()">Enviar otro c&oacute;digo</a><br>
+                    <a style="color: #0060aa;font-size: 15px;margin: -15px;" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
                     <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar celular</a>
                   </div>
             </div>

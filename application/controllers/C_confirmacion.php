@@ -327,6 +327,8 @@ class C_confirmacion extends CI_Controller {
             $importe  = _post('cuotaIni');
             $numero  = _post('numero');
             $monto  = _post('monto');
+            $tipo_product = _getSesion("TIPO_PROD");
+            $idPersona         = _getSesion('idPersona');
             //$varTea  = 
             $varTcea  = _getSesion('TCEA');
             $varTea   = _post('sess_tea');
@@ -349,9 +351,20 @@ class C_confirmacion extends CI_Controller {
                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
-                //$this->sendMailGmail();
+                $this->enviarMail();
             }
-
+            /*
+            $arrayUpdt = array('nro_celular' => $nro_celular,
+                                'salario'    => $salario,
+                                'nro_celular' => $nro_celular,
+                                'tipo_solicitud' => tipo_product);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'usuario');*/
+            /*$arrayInsert = array('nombre' => utf8_decode($nombre),
+                                 'apellido'  => utf8_decode($apellido),
+                                 'email'  => $email,
+                                 'dni'  => $dni
+            );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');*/
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -364,7 +377,6 @@ class C_confirmacion extends CI_Controller {
        $aleatorio = rand ( 100000 , 999999 );
         $numero = _post('nro_celular');
         $this->load->library('twilio');
-        _log($aleatorio);
         $from = '786-220-7333';
         $to = '+51 '.$numero;
         $message = 'Tu código de verificación es '.$aleatorio;
@@ -372,7 +384,7 @@ class C_confirmacion extends CI_Controller {
                          'nro_celular' => $to);
         $this->session->set_userdata($session);
         $response = $this->twilio->sms($from, $to, $message);
-        print_r($response);
+        //_log(print_r($response, true));
         if($response->IsError)
           exit('Error: ' . $response->ErrorMessage);
         else
