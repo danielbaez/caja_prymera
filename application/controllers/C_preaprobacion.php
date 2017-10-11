@@ -275,9 +275,9 @@ class C_preaprobacion extends CI_Controller {
             $valorAuto = $monto;
         }
 
-        $data['a'] = $data['montoMinimo'];
-        $data['b'] = $data['montoMaximo'];
-        $data['c'] = $valorAuto;
+        // $data['a'] = $data['montoMinimo'];
+        // $data['b'] = $data['montoMaximo'];
+        // $data['c'] = $valorAuto;
 
         /*print_r($minAuto);
         echo "<br>";
@@ -345,6 +345,8 @@ class C_preaprobacion extends CI_Controller {
 
            //print_r($params);
 
+          //$data['params'] = $params;
+
 
           $result = $client->GetDatosCreditoVehicular($params);
    
@@ -359,6 +361,9 @@ class C_preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = $result->return->cuotaMensual;
             $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
             $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2, '.','');
+
+            $data['params'] = $params;
+            $data['rrr'] = $result->return->cuotaMensual;
 
             $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
