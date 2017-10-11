@@ -114,7 +114,6 @@ class C_preaprobacion extends CI_Controller {
 
         $plazos = [];
         foreach ($array_datos as $key => $value) {
-            print_r($value);
             
             $plazos = array_merge($plazos, (array)$value['plazo']);
 

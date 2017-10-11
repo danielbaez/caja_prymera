@@ -28,12 +28,12 @@
 
   <!-- Custom fonts for this template -->
   </head>
-    <body style="padding-top: 70px;" >
+    <body style="" >
     
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <nav class="navbar navbar-default" style="margin: 0px;">
+    <div class="container-fluid" style="margin-top: -30px;">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
