@@ -275,9 +275,9 @@ class C_preaprobacion extends CI_Controller {
             $valorAuto = $monto;
         }
 
-        /*$data['a'] = $data['montoMinimo'];
+        $data['a'] = $data['montoMinimo'];
         $data['b'] = $data['montoMaximo'];
-        $data['c'] = $valorAuto;*/
+        $data['c'] = $valorAuto;
 
         /*print_r($minAuto);
         echo "<br>";
@@ -343,7 +343,7 @@ class C_preaprobacion extends CI_Controller {
                     );
           }
 
-           // print_r($params);
+           //print_r($params);
 
 
           $result = $client->GetDatosCreditoVehicular($params);
