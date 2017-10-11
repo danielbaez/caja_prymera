@@ -149,8 +149,14 @@ class C_preaprobacion extends CI_Controller {
 
         $minAuto = $arr_max['importeMinimo']/(1-$minIniPorc);      
         $maxAuto = $arr_max['importeMaximo']/(1-$maxIniPorc);
+
+        // print_r($minAuto);
+        // echo "<br>";
+        // print_r($maxAuto); 
         
         $valorAuto = ($minAuto+$maxAuto)/2;
+
+        //print_r($valorAuto);
 
         $data['montoMaximo']      = round($maxAuto/100)*100;
         $data['montoMinimo']      = round($minAuto/100)*100;
@@ -278,7 +284,9 @@ class C_preaprobacion extends CI_Controller {
         // $data['b'] = $data['montoMaximo'];
         // $data['c'] = $valorAuto;
 
-        /*print_r($minAuto);
+        /*print_r($valorAuto);
+
+        print_r($minAuto);
         echo "<br>";
         print_r($maxAuto);*/
 
