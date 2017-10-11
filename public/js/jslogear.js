@@ -140,3 +140,8 @@ function goToMicash(dato) {
 		});
 	}
 }
+
+$(".redirect").on("click", function(){
+    //alert($(this).data('value'));
+    $('input[name="redirect"]').val($(this).data('value'));
+});

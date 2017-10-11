@@ -24,7 +24,7 @@ ob_start();
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = $_SERVER['SERVER_ADDR'];
+$config['base_url'] = '/';
 
 /*
 |--------------------------------------------------------------------------

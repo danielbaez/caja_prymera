@@ -19,7 +19,13 @@ class C_main extends CI_Controller {
     
     public function index()
     {
-        $data['nombre_completo'] = _getSesion("nombre");
+        $this->load->model('M_usuario');
+
+        $data['nombre'] = _getSesion("nombre");
+
+        
+        $data['personales'] = $this->M_usuario->getPersonal();
+
         _log(print_r($this->session->all_userdata('deliverdata') , true));
 //         if(_getSesion("nombre") == null && _getSesion("email") == null) {
 //             header("Location: ".RUTA_KOPLAN, true, 301);

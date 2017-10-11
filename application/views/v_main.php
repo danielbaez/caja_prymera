@@ -1,1 +1,207 @@
-<p>hola :)</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Caja prymera</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
+        <meta http-equiv="refresh"          content="36000">
+        <meta name="viewport"               content="width=device-width, initial-scale=1">
+        <meta name="keywords"               content="A fast online advisory service for academical and professional targets">
+        <meta name="robots"                 content="index,follow">
+        <meta name="date"                   content="September 03, 2017">
+        <meta name="author"                 content="softhy.pe">
+        <meta name="language"               content="es">
+        <meta name="theme-color"            content="#FFFFFF">
+        <meta name="description"            content="Koplan - Your way to success">
+        <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.css?v=<?php echo time();?>">
+      <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+      <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+        </style>  
+    </head>
+    <body>
+      <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+            </div>
+            <ul class="nav navbar-nav">
+            </ul>
+          </div>
+        </nav>
+
+    <div class="container">
+    	<div class="row text-center">
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-3"></div>
+          <div class="col-xs-12 col-sm-6">
+            <h1 style="font-size:25px;">Bienvenido <?php echo $nombre ?></h1>            
+          </div>
+          <div class="col-xs-12 col-sm-3 text-right">
+            <a href="">Asignar Supervisor</a><br>
+            <a href="">Nueva Solicitud</a><br>
+            <a href="">Ver Reportes</a><br>
+          </div>
+          
+          <div class="col-xs-12 col-md-6">
+            <h3>Personal</h3>
+            <div class="table-responsive" style="height: 250px; overflow: scroll;">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="text-center">Nombres</th>
+                    <th class="text-center">Rol</th>
+                    <th class="text-center">Agencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($personales as $personal){
+                    ?>
+                  <tr>
+                    <td><?php echo $personal->nombre ?></td>
+                    <td><?php echo $personal->rol ?></td>
+                    <td>Miraflores</td>
+                  </tr>
+                <?php                 
+                } ?>                
+                   
+                </tbody>
+              </table>
+          </div>  
+          </div>
+
+          <div class="col-xs-12 col-md-6">
+            <h3>Administrar Perfiles</h3>
+            <form class="text-center" action="pantalla2.html" method="POST">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                </div>
+                <div class="form-group" style="padding-top: 13px;">
+                  <select class="form-control" name="sexo">
+                    <option value="">Sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="password" name="password" placeholder="Cotraseña (dni)" disabled>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Usuario (email)" disabled>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" name="rol">
+                    <option value="">Rol</option>
+                    <option value="jefe_agencia">Jefe de Agencia</option>
+                    <option value="agente">Agente</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" name="rol_superior">
+                    <option>Rol Superior</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Zuzuki">Zuzuki</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="nombres" name="apellidos" placeholder="Apellidos">
+                </div>
+                <div class="form-group text-left">
+                  <label class="form-label">Fecha de Nacimiento</label>
+                  <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+                </div>
+                <div class="form-group text-left">
+                  <label class="form-label">Fecha de Entrada</label>
+                  <input type="date" class="form-control" id="fecha_entrada" name="fecha_entrada">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="email" name="email" placeholder="Correo">
+                </div>
+                
+                <div class="form-group text-left">
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="micash" name="permiso">Mi Cash</label>
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox" value="vehicular" name="permiso">Vehicular</label>
+                  </div>
+                  <div class="checkbox disabled">
+                    <label><input type="checkbox" value="inactivo" name="permiso" disabled>Inactivo</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
+                </div>
+                <div class="form-group">
+                  <div class="form-control" style="height: 100px; overflow-y: scroll; text-align: left;">
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group col-xs-6 text-left">
+                  <a href="">Limpiar pantalla</a>
+                </div>
+                <div class="form-group col-xs-6 text-right">
+                  <input type="submit" name="" class="btn btn-primary" value="Guardar">
+                </div>
+              </div>
+            </form>
+          </div>  
+
+        </div>
+      </div>
+      <br>
+    </div>
+
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
+        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
+      <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
+        <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
+      <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
+      <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+    </body>
+</html>

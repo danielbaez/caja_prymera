@@ -114,5 +114,13 @@ class M_preaprobacion extends  CI_Model{
         $result = $this->db->query($sql, array());
         return $result->result();
     }
+    function login($usuario) {
+        $sql = "SELECT * 
+                  FROM usuario 
+                 WHERE 
+                  email = ?";
+        $result = $this->db->query($sql, array($usuario));
+        return $result->result();
+    }
 }
     
