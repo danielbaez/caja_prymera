@@ -20,6 +20,7 @@
     	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
     	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
@@ -43,46 +44,46 @@
         <section id="principal">
             <div class="mdl-card mdl-card-login" style="margin-top: 120px;">
                 <div class="mdl-card__title p-b-0" style="text-align: center">
-                    <h3 style="color: #0060aa;font-size: 32px;">Bienvenido</h3>
+                    <h3 style="color: #0060aa;font-size: 32px;font-family: quicksandbold">Bienvenido</h3>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="col-sm-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="text" id="txtEmail" onkeyup="login()">
-                            <label class="mdl-textfield__label" for="txtEmail">Usuario</label>
+                            <label class="mdl-textfield__label" for="txtEmail style="font-family: quicksandbold">Usuario</label>
                         </div>
                     </div>  
                     <div class="col-sm-12">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <input class="mdl-textfield__input" type="password" id="txtPassword" onkeyup="login()">
-                            <label class="mdl-textfield__label" for="txtPassword">Contrase&ntilde;a</label>
+                            <label class="mdl-textfield__label" for="txtPassword" style="font-family: quicksandbold">Contrase&ntilde;a</label>
                         </div>
                     </div>   
                     <div class="col-sm-12 m-t-15">
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-                        	<span class="mdl-checkbox__label">Recordarme</span>
+                        	<span class="mdl-checkbox__label" style="font-family: quicksandbold">Recordarme</span>
                             <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
                         </label>
                     </div>
                     <div class="col-sm-12 m-t-20">
                         <div class="col-xs-12">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 100%;background: #0060aa;color: #fff;" onclick="logear()">Dashboard</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 100%;background: #007ac0;color: #fff;font-family: quicksandbold" onclick="logear()">Dashboard</button>
                         </div>
                         <div class="col-xs-12">
                             <div class="col-xs-6">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 125%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -14px;" onclick="goToVehicular(1)">Vehicular</button>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 125%;background: #007ac0;color: #fff;margin-top: 10px;margin-left: -14px;font-family: quicksandbold" onclick="goToVehicular(1)">Vehicular</button>
                             </div>
                             <div class="col-xs-6">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 118%;background: #0060aa;color: #fff;margin-top: 10px;margin-left: -1px;" onclick="goToMicash(2)">MiCash</button>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 118%;background: #007ac0;color: #fff;margin-top: 10px;margin-left: -1px;font-family: quicksandbold" onclick="goToMicash(2)">MiCash</button>
                             </div>
                         </div>
                     </div> 
                     <div class="col-sm-12 m-t-20">
                     	<div class="col-xs-8 col-md-8">
-                    		<p>Olvid&oacute; su contrase&ntilde;a?</p>
+                    		<p style="font-family: quicksandlight;font-size: 12px">Olvid&oacute; su contrase&ntilde;a?</p>
                     	</div>
-                    	<div class="col-xs-4 col-md-4" style="padding: 3px;margin-left: -16px;">
-                    		<a href="" style="font-size: 13px;">Ingrese aqu&iacute;</a>
+                    	<div class="col-xs-4 col-md-4" style="padding: 3px;margin-left: -16px;margin-top: -2px;">
+                    		<a href="" style="font-size: 12px; font-family: quicksandlight">Ingrese aqu&iacute;</a>
                     	</div>
                     </div>
                 </div>
