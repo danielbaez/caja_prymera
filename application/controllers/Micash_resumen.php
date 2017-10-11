@@ -52,6 +52,7 @@ class micash_resumen extends CI_Controller {
                 $this->session->set_userdata($session);
             }
             $this->sendMailGmail();
+            $this->enviarMail();
 //             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
@@ -66,14 +67,10 @@ class micash_resumen extends CI_Controller {
        //configuracion para gmail
        $configGmail = array(
        'protocol' => 'smtp',
-       // 'smtp_host' => 'ssl://smtp.gmail.com',
-       // 'smtp_port' => 465,
-       // 'smtp_user' => 'daniel.baez@comparabien.com',
-       // 'smtp_pass' => 'compara@daniel',
-       'smtp_host' => 'smtp.pepipost.com',
+       'smtp_host' => 'correo.prymera.com.pe',
        'smtp_port' => 25,
-       'smtp_user' => 'comparabien',
-       'smtp_pass' => 'Compara123',
+       'smtp_user' => 'userauto@prymera.com.pe',
+       'smtp_pass' => 'zuxUst?4Eyup',
        'mailtype' => 'html',
        'charset' => 'utf-8',
        'newline' => "\r\n"
@@ -83,7 +80,7 @@ class micash_resumen extends CI_Controller {
        $this->email->initialize($configGmail);
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
-       $this->email->from('daniel.baez@comparabien.com');
+       $this->email->from('userauto@prymera.com.pe');
        $this->email->to(_getSesion('email'));
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
@@ -118,5 +115,19 @@ class micash_resumen extends CI_Controller {
        //con esto podemos ver el resultado
        //var_dump($this->email->print_debugger());
      }
+
+     function enviarMail() {
+        //twilio enviar msn
+        $this->load->library('twilio');
+        $from = '786-220-7333';
+        $to = _getSesion('nro_celular');
+        $message = 'Gracias por confiar en Prymera';
+        $response = $this->twilio->sms($from, $to, $message);
+        print_r($response);
+        if($response->IsError)
+          exit('Error: ' . $response->ErrorMessage);
+        else
+          exit('Sent message to ' . $to);
+    }
 }
 

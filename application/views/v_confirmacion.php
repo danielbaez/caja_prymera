@@ -269,9 +269,7 @@
 <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-limpiarCampos
-              <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" onclick="limpiarCampos()"><span style="color:#fff" aria-hidden="true">&times;</span></button>
+            <div class="modal-header"><button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" onclick="limpiarCampos()"><span style="color:#fff" aria-hidden="true">&times;</span></button>
               <p style="text-align: center;font-size: 18px">Validar celular</p>
             </div>
             <div class="modal-body">
