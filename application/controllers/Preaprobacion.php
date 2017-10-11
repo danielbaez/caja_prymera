@@ -92,6 +92,11 @@ class preaprobacion extends CI_Controller {
         $data['plazo_min']      = $plazos_explode[0];
 
         $count = count($plazos_explode);
+        if($count == 1){
+            $data['plazo_max']      = $plazos_explode[0];
+            $data['plazo_min']      = $plazos_explode[0];
+            $data['plazo_step'] = 0;
+        }
         if($count == 2){
             $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
         }

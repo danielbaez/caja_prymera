@@ -438,6 +438,10 @@
       })
     });
 
+    if(<?php echo $plazo_min ?> == <?php echo $plazo_max ?>){
+      rangeSliderMeses.setAttribute('disabled', true);
+    }
+
     var rangeSliderValueElementMeses = document.getElementById('slider-range-value-meses');
 
     rangeSliderMeses.noUiSlider.on('update', function( values, handle ) {

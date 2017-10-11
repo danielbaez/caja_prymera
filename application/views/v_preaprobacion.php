@@ -507,7 +507,7 @@
                     'min': data.montoMinimo,
                     'max': data.montoMaximo
                 },
-                start: data.montoMaximo/2
+                start: (data.montoMinimo+data.montoMaximo)/2
             });
 
             rangeSliderCuota.noUiSlider.updateOptions({
@@ -534,7 +534,7 @@
     var rangeSliderMonto = document.getElementById('slider-range-monto');
 
       noUiSlider.create(rangeSliderMonto, {
-        start: [ <?php echo  $montoMaximo/2?>],
+        start: [ <?php echo  ($montoMinimo+$montoMaximo)/2?>],
         step: 100,
         range: {
           'min': [  <?php echo  $montoMinimo?> ],
