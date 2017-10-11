@@ -33,7 +33,11 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
   </head>
-    <body style="padding: 0px;">
+  <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Vehicular-2.jpg);">
+    <?php } else { ?>
+        <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Consumo-2.jpg);">
+    <?php } ?>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->

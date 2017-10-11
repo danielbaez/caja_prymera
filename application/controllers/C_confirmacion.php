@@ -368,7 +368,8 @@ class C_confirmacion extends CI_Controller {
         $from = '786-220-7333';
         $to = '+51 '.$numero;
         $message = 'Tu código de verificación es '.$aleatorio;
-        $session = array('codigo_ver' => $aleatorio);
+        $session = array('codigo_ver' => $aleatorio,
+                         'nro_celular' => $to);
         $this->session->set_userdata($session);
         $response = $this->twilio->sms($from, $to, $message);
         print_r($response);
