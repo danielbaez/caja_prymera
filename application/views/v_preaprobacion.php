@@ -762,6 +762,29 @@
         dataType: 'json'
       }).done(function(data){
         console.log(data);
+
+        $('#sueldoMin').html('S/ '+data.montoMinimo);
+        $('#sueldoMax').html('S/ '+data.montoMaximo);
+
+        $('#minCuota').html('S/ '+data.cuotaMinimo);
+        $('#maxCuota').html('S/ '+data.cuotaMaximo);
+
+        rangeSliderMonto.noUiSlider.updateOptions({
+            range: {
+                'min': data.montoMinimo,
+                'max': data.montoMaximo
+            },
+            start: (data.montoMinimo+data.montoMaximo)/2
+        });
+
+        rangeSliderCuota.noUiSlider.updateOptions({
+            range: {
+                'min': data.cuotaMinimo,
+                'max': data.cuotaMaximo
+            },
+            start: data.cuotaMinimo
+        });
+    
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%');
