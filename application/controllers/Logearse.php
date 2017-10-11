@@ -32,6 +32,7 @@ class logearse extends CI_Controller {
             $nombreComp  = null;
             $rol         = null;
             ($remember == '0' ? $check = '0' : $check = '1');
+            $datos = $this->M_preaprobacion->verificarDatos();
             if($user == null && $password == null) {
                 $data['error'] = '<p style="font-size: 12px;color:#f44336;margin-right:-8px">
             				          <label style="float:left">Ingrese usuario y/o contrase&ntilde;a</label>

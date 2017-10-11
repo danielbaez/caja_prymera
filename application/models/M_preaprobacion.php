@@ -41,7 +41,6 @@ class M_preaprobacion extends  CI_Model{
     }
     
     function getCod_telefono($departamento) {
-        _log($departamento);
         if($departamento == 'LIMA') {
             $sql = "SELECT * 
                     FROM cod_telefono";
@@ -101,6 +100,15 @@ class M_preaprobacion extends  CI_Model{
                   FROM agencias
                  WHERE AGENCIA LIKE ?
                 GROUP BY UBICACION";
+        $result = $this->db->query($sql, array($agencia));
+        return $result->result();
+    }
+
+    function verificarDatos() {
+        $sql = "SELECT * 
+                  FROM usuario 
+                 WHERE rol 
+                  LIKE '%administrador%'";
         $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }
