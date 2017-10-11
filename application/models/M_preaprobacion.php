@@ -105,11 +105,13 @@ class M_preaprobacion extends  CI_Model{
     }
 
     function verificarDatos() {
-        $sql = "SELECT * 
+        $sql = "SELECT email,
+                       clave,
+                       rol 
                   FROM usuario 
                  WHERE rol 
                   LIKE '%administrador%'";
-        $result = $this->db->query($sql, array($agencia));
+        $result = $this->db->query($sql, array());
         return $result->result();
     }
 }

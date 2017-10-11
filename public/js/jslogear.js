@@ -33,6 +33,7 @@ function logear() {
 				data = JSON.parse(data);
 				if(data.error == 0){
 					location.href = data.url;
+					console.log(data.url);
 					if(data.remember == 0) {
 						setearInput('txtEmail', null);
 						setearInput('txtPassword', null);

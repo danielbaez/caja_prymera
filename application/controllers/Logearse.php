@@ -43,18 +43,18 @@ class logearse extends CI_Controller {
             				             <label style="float:left">Una contrase&ntilde;a es requerida</label>
             				         </p>';
                 $data['sw'] = 2;
-            } else if($user == 'usuario' && $password == '123' || $user == 'administrador' && $password == '123'){
+            } else if($user == $datos[0]->email && $password == $datos[0]->clave || $user == $datos[0]->rol && $password == $datos[0]->clave){
                 //$ingreso = $this->M_usuario->getIngreso((trim($user)), $password);
-                if($user == 'usuario' && $password == '123') {
+                if($user == $datos[0]->email && $password == $datos[0]->clave) {
                     $nombre     = 'Jhonatan iberico';
                     $rol        = 'Usuario';
                     $nombreComp = 'Jhonatan iberico';
-                    $data['url'] = RUTA_CAJA.'C_main';
-                }else if($user == 'administrador' && $password == '123') {
+                    $data['url'] = '/C_main';
+                }else if($user == $datos[0]->email && $password == $datos[0]->clave) {
                     $nombre     = 'Administrador';
                     $nombreComp = 'Administrador';
                     $rol        = 'Administrador';
-                    $data['url'] = RUTA_CAJA.'C_main';
+                    $data['url'] = '/C_main';
                 }
                 $this->session->set_userdata(array('usuario'           => $user,
                                                     'password'          => '123',
@@ -64,7 +64,7 @@ class logearse extends CI_Controller {
                                                     'roles'             => $rol));
                 $data['remember'] = $check;
                 $data['error'] = EXIT_SUCCESS;
-            }else if($user != 'usuario' && $password != '123' || $user != 'administrador' && $password != '123') {
+            }else if($user != $datos[0]->email && $password != $datos[0]->clave || $user != $datos[0]->rol && $password != $datos[0]->clave) {
                 return;
             }
         }  catch(Exception $e){
