@@ -151,17 +151,14 @@ class C_preaprobacion extends CI_Controller {
         $minAuto = $arr_max['importeMinimo']/(1-$minIniPorc);      
         $maxAuto = $arr_max['importeMaximo']/(1-$maxIniPorc);
         
-
         $valorAuto = ($minAuto+$maxAuto)/2;
-        /*$maxInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
-        $minInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);*/
+
+        $data['montoMaximo']      = round($maxAuto/100)*100;
+        $data['montoMinimo']      = round($minAuto/100)*100;
 
         $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
        
-
-        /*$minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
-        $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);*/
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
@@ -183,9 +180,6 @@ class C_preaprobacion extends CI_Controller {
             $data['plazo_min']      = $plazos[0];
             $data['plazo_step'] = $plazos[1] - $plazos[0];
         }
-
-        $data['montoMaximo']      = round($maxAuto/100)*100;
-        $data['montoMinimo']      = round($minAuto/100)*100;
 
         $data['cuotaMaximo']      = round($maxInicial/100)*100;
         $data['cuotaMinimo']      = round($minInicial/100)*100;
@@ -267,19 +261,33 @@ class C_preaprobacion extends CI_Controller {
         
         $monto = preg_replace("/[^0-9]/","",_post('monto'));
 
+        $data['montoMaximo']      = round($maxAuto/100)*100;
+        $data['montoMinimo']      = round($minAuto/100)*100;
+
         if(_post('action') == 'plazo')
         {
-            $valorAuto = ($minAuto+$maxAuto)/2;
+            // $valorAuto = ($minAuto+$maxAuto)/2;
+
+            //$valorAuto = round((($minAuto+$maxAuto)/2)/100)*100;
+
+            $valorAuto = round((($data['montoMinimo']+$data['montoMaximo'])/2)/100)*100;
         }else{
             $valorAuto = $monto;
         }
+
+        /*$data['a'] = $data['montoMinimo'];
+        $data['b'] = $data['montoMaximo'];
+        $data['c'] = $valorAuto;*/
+
+        /*print_r($minAuto);
+        echo "<br>";
+        print_r($maxAuto);*/
 
 
         $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
        
-        $data['montoMaximo']      = round($maxAuto/100)*100;
-        $data['montoMinimo']      = round($minAuto/100)*100;
+        
 
         $data['cuotaMaximo']      = round($maxInicial/100)*100;
         $data['cuotaMinimo']      = round($minInicial/100)*100;
@@ -305,7 +313,7 @@ class C_preaprobacion extends CI_Controller {
           {
                 $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
-                                  'importeAuto'=> $data['montoMaximo']/2,
+                                  'importeAuto'=> round((($data['montoMinimo']+$data['montoMaximo'])/2)/100)*100,
                                   'plazo' => $meses,
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
@@ -335,7 +343,7 @@ class C_preaprobacion extends CI_Controller {
                     );
           }
 
-           //print_r($params);
+           // print_r($params);
 
 
           $result = $client->GetDatosCreditoVehicular($params);
