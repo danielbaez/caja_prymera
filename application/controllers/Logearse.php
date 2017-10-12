@@ -134,7 +134,7 @@ class logearse extends CI_Controller {
                             redirect('C_reporte/index');    
                         }
                         elseif($datos[0]->rol == 'asesor'){
-                            redirect('C_reporte/index');    
+                            redirect('C_reporteAsesor/asesorCliente');    
                         }
                         
                     }else if($redirect == PERMISO_MICASH) {
@@ -147,7 +147,15 @@ class logearse extends CI_Controller {
                         redirect('Login');
                     }
                 }else{
-                    redirect('C_main');
+                    if($datos[0]->rol == 'administrador'){
+                        redirect('C_main');    
+                    }
+                    elseif($datos[0]->rol == 'jefe_agencia'){
+                        redirect('C_reporte/index');    
+                    }
+                    elseif($datos[0]->rol == 'asesor'){
+                        redirect('C_reporteAsesor/asesorCliente');    
+                    }
                 }
                     
             }else{
