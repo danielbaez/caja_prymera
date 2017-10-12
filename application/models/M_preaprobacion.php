@@ -114,12 +114,26 @@ class M_preaprobacion extends  CI_Model{
         $result = $this->db->query($sql, array());
         return $result->result();
     }
+
     function login($usuario) {
-        $sql = "SELECT * 
-                  FROM usuario 
-                 WHERE 
-                  email = ?";
-        $result = $this->db->query($sql, array($usuario));
+        $sql = "SELECT * FROM usuario WHERE rol LIKE '%administrador%'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
+    function getAgenciasId($agencia) {
+        $sql = "SELECT *
+                FROM agencias
+               WHERE AGENCIA LIKE ?";
+        $result = $this->db->query($sql, array($agencia));
+        return $result->result();
+    }
+
+    function getConcecionariaId($concecionaria) {
+      $sql = "SELECT *
+                FROM concesionaria
+               WHERE DESC_CONCESIONARIA LIKE ?";
+        $result = $this->db->query($sql, array($concecionaria));
         return $result->result();
     }
 }

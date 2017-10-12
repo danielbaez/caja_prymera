@@ -321,6 +321,9 @@ class C_confirmacion extends CI_Controller {
             $Departamento = _post('Departamento');
             $Provincia = _post('Provincia');
             $Distrito = _post('Distrito');
+            $codigo = _post('codigo');
+            $nro_fijo = _post('nro_fijo');
+            $telefono = '0'.$codigo.$nro_fijo;
             $pagoTot  = _post('pagotot');
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');
@@ -328,17 +331,23 @@ class C_confirmacion extends CI_Controller {
             $numero  = _post('numero');
             $monto  = _post('monto');
             $tipo_product = _getSesion("TIPO_PROD");
-            $idPersona         = _getSesion('idPersona');
-            //$varTea  = 
+            $idPersona  = _getSesion('idPersona');
             $varTcea  = _getSesion('TCEA');
             $varTea   = _post('sess_tea');
+            $concesionaria = null;
             $Agencia  = _post('Agencia');
-            $concesionaria = _post('concesionaria');
+            if($tipo_product == PRODUCTO_VEHICULAR) {
+                $concesionaria = _post('concesionaria');
+                $concecionaria = $this->M_preaprobacion->getConcecionariaId($concesionaria);
+                $concesionaria = $concecionaria[0]->id;
+            }
             if($numero != _getSesion('codigo_ver')) {
                 $data['mensaje'] = "El n&uacute;mero ingresado no es v&aacute;";
                 $data['cambio'] = 1;
+                $arrayUpdt = array('validar_celular' => 2);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }else {
-                $session = array('salario'          => $salario,
+                $session = array('salario'      => $salario,
                             'nro_celular'       => $nro_celular,
                             'empleador'         => $empleador,
                             'direccion_empresa' => $direccion_empresa,
@@ -346,24 +355,26 @@ class C_confirmacion extends CI_Controller {
                             'Provincia'         => $Provincia,
                             'Distrito'          => $Distrito,
                             'Agencia'           => $Agencia,
-                            'concesionaria'     => $concesionaria,
                             'monto'             => $monto
                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
             }
-            /*
-            $arrayUpdt = array('nro_celular' => $nro_celular,
-                                'salario'    => $salario,
-                                'nro_celular' => $nro_celular,
-                                'tipo_solicitud' => tipo_product);
-            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'usuario');*/
-            /*$arrayInsert = array('nombre' => utf8_decode($nombre),
-                                 'apellido'  => utf8_decode($apellido),
-                                 'email'  => $email,
-                                 'dni'  => $dni
-            );
-            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');*/
+            $agencia = $this->M_preaprobacion->getAgenciasId($Agencia);
+            $arrayUpdt = array('salario'        => $salario,
+                            'celular'           => $nro_celular,
+                            'empleador'         => $empleador,
+                            'dir_empleador'     => $direccion_empresa,
+                            'departamento'      => $Departamento,
+                            'provincia'         => $Provincia,
+                            'distrito'          => $Distrito,
+                            'nro_fijo'          => $telefono,
+                            'cod_concecionaria'     => $concesionaria,
+                            'cod_agencia'       => $agencia[0]->id,
+                            'validar_celular'   => 1,
+                            'timestamp_datos'   => date("Y-m-d H:i:s")
+                );
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -375,6 +386,7 @@ class C_confirmacion extends CI_Controller {
         //twilio enviar msn
         $aleatorio = rand ( 100000 , 999999 );
         $numero = _post('nro_celular');
+        _log($aleatorio);
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '.$numero;

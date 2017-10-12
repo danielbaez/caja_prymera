@@ -123,9 +123,9 @@
                     </div>
                     <div class="form-group"> 
                       <div class="col-center">
-                        <button type="submit" class="btn btn-primary redirect" data-value="C_main">Dashboard</button>
-                        <button type="submit" class="btn btn-primary redirect" data-value="Micash">Cash</button>
-                        <button type="submit" class="btn btn-primary redirect" data-value="C_login">Vehicular</button>
+                        <button type="submit" class="btn btn-primary redirect" data-value="1">Dashboard</button>
+                        <button type="submit" class="btn btn-primary redirect" data-value="2">Cash</button>
+                        <button type="submit" class="btn btn-primary redirect" data-value="3">Vehicular</button>
                         <input type="hidden" name="redirect">
                       </div>
                     </div>

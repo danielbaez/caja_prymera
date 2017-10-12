@@ -64,12 +64,19 @@ class C_login extends CI_Controller {
                     $data['url'] = RUTA_CAJA.'c_noencontrado';
                 }
             }
-            $arrayInsert = array('nombre' => utf8_decode($nombre),
-                                 'apellido'  => utf8_decode($apellido),
-                                 'email'  => $email,
-                                 'dni'  => $dni
-            );
-            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
+            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
+                                'nombre' => $nombre,
+                                'apellido'  => $apellido,
+                                'email'  => $email,
+                                'dni'  => $dni,
+                                'id_tipo_prod' => _getSesion('permiso_prod'),
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'check_autorizo'    => $check,
+                                'ws_error'          => $res,
+                                'ws_resultado'      => json_encode($result),
+                                'ws_timestamp'        => date("Y-m-d H:i:s")
+                                );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

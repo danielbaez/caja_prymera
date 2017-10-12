@@ -778,17 +778,9 @@ class C_preaprobacion extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            _log('123');
             $marca = _post('marca');
             $modelo = _post('modelo');
             $idPersona = _getSesion('idPersona');
-            $salario = _post('salario');
-            $nro_celular = _post('nro_celular');
-            $empleador = _post('empleador');
-            $direccion_empresa = _post('direccion_empresa');
-            $Departamento = _post('Departamento');
-            $Provincia = _post('Provincia');
-            $Distrito = _post('Distrito');
             $pagoTot  = _post('pagotot');
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');
@@ -797,6 +789,7 @@ class C_preaprobacion extends CI_Controller {
             $varTcea  = _post('pors_tcea');
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
+            $seguro   = _post('seguro');
             $concesionaria = _post('concesionaria');
             $session = array(
                         'pago_total'        => $pagoTot,
@@ -804,12 +797,21 @@ class C_preaprobacion extends CI_Controller {
                         'TCEA'              => $varTcea,
                         'cant_meses'        => $meses,
                         'Importe'           => $importe,
-                        'sess_tea'          => $varTea,
-                        'marca'            => $marca,
-                        'modelo'          => $modelo
+                        'sess_tea'          => $varTea
                             );
             $this->session->set_userdata($session);
-//             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
+            $arrayUpdt = array(
+                                'cuota_mensual' => $cuotaMens,
+                                'tcea'          => $varTcea,
+                                'plazo'         => $meses,
+                                'monto'         => $importe,
+                                'tea'           => $varTea,
+                                'ws2_timestamp' => date("Y-m-d H:i:s"),
+                                'marca'            => $marca,
+                                'modelo'          => $modelo,
+                                'costo_seguro'  => $seguro
+                            );
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

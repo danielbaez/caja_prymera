@@ -443,7 +443,6 @@ class preaprobacion extends CI_Controller {
     
     function __buildCodTelefono($departamento){
         $codtel = $this->M_preaprobacion->getCod_telefono($departamento);
-        _logLastQuery();
         $opt = null;
         foreach($codtel as $cod){
             $codi = $cod->CODIGO;
@@ -710,23 +709,20 @@ class preaprobacion extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $salario = _post('salario');
-            $nro_celular = _post('nro_celular');
-            $empleador = _post('empleador');
-            $direccion_empresa = _post('direccion_empresa');
-            $Departamento = _post('Departamento');
-            $Provincia = _post('Provincia');
-            $Distrito = _post('Distrito');
             $pagoTot  = _post('pagotot');
+            $marca  = _post('marca');
+            $modelo  = _post('modelo');
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');
             $importe  = _post('cuotaIni');
+            $monto  = _post('monto');
             $numero  = _post('numero');
-            //$varTea  = 
             $varTcea  = _post('pors_tcea');
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
-            $concesionaria = _post('concesionaria');
+            $seguro  = _post('seguro');
+            _log($seguro);
+            $idPersona = _getSesion('idPersona');
             $session = array(
                         'pago_total'        => $pagoTot,
                         'cuota_mensual'     => $cuotaMens,
@@ -736,6 +732,18 @@ class preaprobacion extends CI_Controller {
                         'sess_tea'          => $varTea
                             );
             $this->session->set_userdata($session);
+            $arrayUpdt = array(
+                                'cuota_mensual' => $cuotaMens,
+                                'tcea'          => $varTcea,
+                                'plazo'         => $meses,
+                                'cuota_inicial' => $importe,
+                                'monto' => $importe,
+                                'tea'           => $varTea,
+                                'ws2_timestamp' => date("Y-m-d H:i:s"),
+                                'marca'         => $marca,
+                                'modelo'        => $modelo                                
+                            );
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['cambio'] = 0;
 
             $data['error'] = EXIT_SUCCESS;

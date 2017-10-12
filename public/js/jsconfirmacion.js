@@ -25,6 +25,8 @@ function verificarNumero() {
 	var Provincia 		  = $('#Provincia').val();
 	var Distrito 		  = $('#Distrito').val();
 	var Agencia 		  = $('#idagencia').val();
+	var codigo 			  = $('#codigo').val();
+	var nro_fijo     	  = $('#nro_fijo').val();
 	var concesionaria	  = $('#concesionaria').val();
 	var tipo_pago         = $('#tipoPago').val();
 	var uno 			  = $('#uno').val();
@@ -90,7 +92,9 @@ function verificarNumero() {
 				Distrito : Distrito,
 				Agencia : Agencia,
 				concesionaria : concesionaria,
-				numero : numero},
+				numero : numero,
+				codigo : codigo,
+				nro_fijo : nro_fijo},
 		url   : 'C_confirmacion/verificarNumero',
 		type  : 'POST'
 	}).done(function(data){
