@@ -61,11 +61,11 @@
                       <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
                         <div class="panel-body" style="margin-top: 15px; margin-bottom: 20px">
                           <div class="col-xs-12 col-sm-6">
-                            <a href="/miCash" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
+                            <a href="/C_login" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
                             <h5>Vehicular</h5>
                           </div>
                           <div class="col-xs-12 col-sm-6">
-                            <a href="/C_login" style="color:black"><i class="fa fa-money fa-5x" aria-hidden="true"></i></a><br>
+                            <a href="/Micash" style="color:black"><i class="fa fa-money fa-5x" aria-hidden="true"></i></a><br>
                             <h5>Mi Cash</h5>
                           </div>
                         </div>
