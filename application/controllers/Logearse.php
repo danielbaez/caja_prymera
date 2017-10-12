@@ -13,6 +13,7 @@ class logearse extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        $this->load->model('M_usuario');
     }
     
     public function index()
@@ -115,7 +116,7 @@ class logearse extends CI_Controller {
         $password = _post('password');
         $redirect = _post('redirect');
 
-        $datos = $this->M_preaprobacion->login($usuario);
+        $datos = $this->M_usuario->login($usuario);
         if(count($datos)){
             if($this->validate_pass($datos[0]->password, $password)){
                 $productos = explode(',', $datos[0]->permiso);

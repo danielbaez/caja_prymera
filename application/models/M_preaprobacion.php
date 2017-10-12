@@ -115,12 +115,6 @@ class M_preaprobacion extends  CI_Model{
         return $result->result();
     }
 
-    function login($usuario) {
-        $sql = "SELECT * FROM usuario WHERE rol LIKE '%administrador%'";
-        $result = $this->db->query($sql, array());
-        return $result->result();
-    }
-
     function getAgenciasId($agencia) {
         $sql = "SELECT *
                 FROM agencias

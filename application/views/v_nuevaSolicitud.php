@@ -52,7 +52,7 @@
                   </div>
                   <div class="col-xs-12 col-sm-3 text-right">
                     <a href="/C_main">Ver Usuarios</a><br>
-                    <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                    <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
                     <a href="/C_reporte/index">Ver Reportes</a><br>
                   </div>
 

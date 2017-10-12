@@ -5,10 +5,16 @@ class M_usuario extends  CI_Model{
         parent::__construct();
     }
 
+    function login($usuario) {
+        $sql = "SELECT * FROM usuario WHERE usuario = ?";
+        $result = $this->db->query($sql, array($usuario));
+        return $result->result();
+    }
+
     function getPersonal() {
         $sql = "SELECT * 
                   FROM usuario 
-                 WHERE activo = ?";
+                 WHERE estado = ?";
         $result = $this->db->query($sql, array(1));
         return $result->result();
     }
