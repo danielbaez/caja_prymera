@@ -721,7 +721,6 @@ class preaprobacion extends CI_Controller {
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
             $seguro  = _post('seguro');
-            _log($seguro);
             $idPersona = _getSesion('idPersona');
             $session = array(
                         'pago_total'        => $pagoTot,
@@ -736,8 +735,7 @@ class preaprobacion extends CI_Controller {
                                 'cuota_mensual' => $cuotaMens,
                                 'tcea'          => $varTcea,
                                 'plazo'         => $meses,
-                                'cuota_inicial' => $importe,
-                                'monto' => $importe,
+                                'monto'         => $importe,
                                 'tea'           => $varTea,
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'         => $marca,

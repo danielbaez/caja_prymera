@@ -46,9 +46,13 @@ class micash_resumen extends CI_Controller {
         $data['msj']   = null;
         try {
             $agencia = _post('agencia');
+            $idPersona  = _getSesion('idPersona');
             if($agencia != null) {
                 $session = array('Agencia' => $agencia);
                 $this->session->set_userdata($session);
+                $agencia = $this->M_preaprobacion->getAgenciasId($agencia);
+                $arrayUpdt = array('cod_agencia' => $agencia[0]->id);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
             $validacion = $this->sendMailGmail();
             $celular = $this->enviarMail();
@@ -133,11 +137,13 @@ class micash_resumen extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
+          $tipo_cred = null;
+        _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
           //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '._getSesion('nro_celular');
-        $message = 'Gracias por confiar en Prymera';
+        $message = 'Ud. Solicitó un crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'. Su cuota es de '._getSesion('cuota_mensual').' Revise correo con condiciones.'.;
         $response = $this->twilio->sms($from, $to, $message);
         //_log(print_r($response, true));
         if($response->IsError) {
@@ -150,7 +156,7 @@ class micash_resumen extends CI_Controller {
               $data['error'] = EXIT_SUCCESS;
             }    
         }catch (Exception $e){
-      }
+        }
       return json_encode(array_map('utf8_encode', $data));
     }
 }

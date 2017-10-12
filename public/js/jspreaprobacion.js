@@ -19,13 +19,6 @@ function addStyle() {
 		msj('error', 'Seleccione la marca y el modelo');
 		return;
 	}else if(marca != '' && modelo != '') {
-		if(flg_active == 1) {
-			$('#titulo').html('Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos');
-			flg_active++;
-		}else {
-			$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre aprobado');
-			flg_active = 1;
-		}
 		location.href = '/C_confirmacion';
 		$.ajax({
 			data  : { marca : marca,

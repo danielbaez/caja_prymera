@@ -54,7 +54,7 @@ class C_confirmacion extends CI_Controller {
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
         $data['comboDepa']          = $this->__buildDepartamento();
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos' : $titulo = '';
         
         $data['tipo_product'] = $titulo; 
        /*$importeMaximo = _getSesion('importeMaximo');
@@ -383,7 +383,10 @@ class C_confirmacion extends CI_Controller {
     }
 
     function enviarMail() {
-        //twilio enviar msn
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            //twilio enviar msn
         $aleatorio = rand ( 100000 , 999999 );
         $numero = _post('nro_celular');
         _log($aleatorio);
@@ -396,10 +399,14 @@ class C_confirmacion extends CI_Controller {
         $this->session->set_userdata($session);
         $response = $this->twilio->sms($from, $to, $message);
         //_log(print_r($response, true));
-        if($response->IsError)
-          exit('Error: ' . $response->ErrorMessage);
-        else
-          exit('Sent message to ' . $to);
+        if($response->IsError) {
+          $data['error'] = EXIT_SUCCESS;
+        }
+        else {
+        }
+        }catch (Exception $e){
+        }
+        echo json_encode(array_map('utf8_encode', $data));
     }
 
     /*function sendMailGmail()

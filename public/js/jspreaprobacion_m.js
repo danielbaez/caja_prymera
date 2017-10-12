@@ -9,14 +9,7 @@ function addStyle() {
     var pors_tcea = document.getElementById('tcea').innerText;
     var meses = document.getElementById('slider-range-value-meses').innerText;
     var cuotaIni = document.getElementById('slider-range-value-dias').innerText;
-    var pors_tea = document.getElementById('tea').innerText;
-	if(flg_active == 1) {
-		$('#titulo').html('Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos');
-		flg_active++;
-	}else {
-		$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre aprobado');
-		flg_active = 1;
-	}
+    var pors_tea = document.getElementById('tea').innerText;cantMensPago
 	$.ajax({
 		data  : { pagotot : pagotot,
 			    mensual : mensual,
