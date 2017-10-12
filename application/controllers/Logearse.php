@@ -108,5 +108,59 @@ class logearse extends CI_Controller {
         }
         echo json_encode(array_map('utf8_encode', $data));
     }
+
+    function login()
+    {
+        $usuario = _post('usuario');
+        $password = _post('password');
+        $redirect = _post('redirect');
+
+        $datos = $this->M_preaprobacion->login($usuario);
+        if(count($datos)){
+            if($this->validate_pass($datos[0]->clave, $password)){
+                $this->session->set_userdata(array('usuario'           => $usuario,
+                                                    'nombre'       => $datos[0]->nombre,
+                                                    'apellido'   => $datos[0]->apellido,
+                                                    'rol'             => $datos[0]->rol));
+
+                $datos[0]->productos = 'Micash,C_main';
+                $productos = explode(',', $datos[0]->productos);
+
+                if(in_array($redirect, $productos)){
+                    redirect($redirect);
+                }else{
+                    redirect('C_main');
+                }
+                    
+            }else{
+                
+                $this->session->set_flashdata('error', 'Datos invalidos');
+                redirect('/');
+
+            }
+        }
+       
+    }
+
+    function get_hash($password, $cost = 11) {
+        // Genera sal de forma aleatoria
+        $salt=substr(base64_encode(openssl_random_pseudo_bytes(17)),0,22);
+        // reemplaza caracteres no permitidos
+        $salt=str_replace("+",".",$salt);
+        // genera una cadena con la configuración del algoritmo
+        $param='$'.implode('$',array(
+                "2y", // versión más segura de blowfish (>=PHP 5.3.7)
+                str_pad($cost,2,"0",STR_PAD_LEFT), // costo del algoritmo
+                $salt // añade la sal
+        ));
+       
+        // obtiene el hash de la contraseña
+        return crypt($password,$param);
+    }
+
+    function validate_pass($hash, $pass) {
+        // verifica la contraseña con el hash
+        return crypt($pass, $hash) == $hash;
+    }
 }
 

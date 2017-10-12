@@ -3,11 +3,11 @@ body{
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	background-image:url(../img/fondos/Background.jpg);
+	/*background-image:url(../img/fondos/Background.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
     background-attachment: fixed; 
-    background-position: center; 
+    background-position: center; */
     padding-top: 70px;
 }
 .logo {

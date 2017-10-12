@@ -41,7 +41,7 @@
             </ul>
           </div>
         </nav>
-        <section id="principal">
+        <!-- <section id="principal">
             <div class="mdl-card mdl-card-login" style="margin-top: 120px;">
                 <div class="mdl-card__title p-b-0" style="text-align: center">
                     <h3 style="color: #0060aa;font-size: 32px;font-family: quicksandbold">Bienvenido</h3>
@@ -95,7 +95,65 @@
                 </div>
             </div>
             <p class="text-center"></p>
-        </section>
+        </section> -->
+
+        <div class="container">
+            <div class="row text-center">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+              <h1 style="font-size:25px;">Bienvenido Usuario</h1>
+            <div class="panel panel-primary" style="rgba(255,255,255,0.6); border-radius:8px">
+                <!-- <div class="panel-heading" style="background-color:#1C4485;border:0">
+                  <h1 class="panel-title" style="font-size:25px;">Bienvenido Usuario</h1>
+                </div> -->
+                <div class="panel-body">
+                  <form class="form-horizontal" action="logearse/login" method="post">
+                    <br>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="email">Usuario:</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" name="usuario" id="email" placeholder="Enter email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-sm-3" for="pwd">Contrase&ntilde;a:</label>
+                      <div class="col-sm-9"> 
+                        <input type="password" class="form-control" name="password" id="pwd" placeholder="Enter password">
+                      </div>
+                    </div>
+                    <div class="form-group"> 
+                      <div class="col-center">
+                        <button type="submit" class="btn btn-primary redirect" data-value="C_main">Dashboard</button>
+                        <button type="submit" class="btn btn-primary redirect" data-value="Micash">Cash</button>
+                        <button type="submit" class="btn btn-primary redirect" data-value="C_login">Vehicular</button>
+                        <input type="hidden" name="redirect">
+                      </div>
+                    </div>
+                    <div class="form-group"> 
+                      <div class="col-center">
+                        Olvid&oacute; su contrase&ntilde;a? <a href="resetear_password.html">Ingrese aqu&iacute;</a>
+                      </div>
+                    </div>
+                            
+                        <?php
+                        $error = $this->session->flashdata('error');
+                        if(isset($error)) {
+                        ?>
+                        <div class="form-group"> 
+                                <div class="alert alert-danger">
+                                    <?php echo $error; ?>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                        
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
