@@ -127,7 +127,16 @@ class logearse extends CI_Controller {
                                                                   
                 if(in_array($redirect, $productos)){
                     if($redirect == PERMISO_ADMINISTRADOR) {
-                        redirect('C_main');
+                        if($datos[0]->rol == 'administrador'){
+                            redirect('C_main');    
+                        }
+                        elseif($datos[0]->rol == 'jefe_agencia'){
+                            redirect('C_reporte/index');    
+                        }
+                        elseif($datos[0]->rol == 'asesor'){
+                            redirect('C_reporte/index');    
+                        }
+                        
                     }else if($redirect == PERMISO_MICASH) {
                         $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
                                                            'permiso_prod' => PERMISO_MICASH));
