@@ -51,6 +51,7 @@ class Login extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
+        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $this->load->view('v_login', $dato);
 
 
@@ -124,6 +125,12 @@ class Login extends CI_Controller {
             $dni           = _post('dni');
             $email         = _post('email');
             $tipo_producto = PRODUCTO_VEHICULAR;
+            $check = _post('check');
+            if($check == true) {
+              $check = 1;//aceptó
+           }else {
+              $check = 2;//no aceptó
+           }
 
           $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,
@@ -137,12 +144,19 @@ class Login extends CI_Controller {
                 'arrDatos'          => $arrDatos
             );
             $this->session->set_userdata($session);
-            $arrayInsert = array('nombre' => $nombre,
-                'apellido'  => $apellido,
-                'email'  => $email,
-                'dni'  => $dni
-            );
-            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
+            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
+                                'nombre' => $nombre,
+                                'apellido'  => $apellido,
+                                'email'  => $email,
+                                'dni'  => $dni,
+                                'id_tipo_prod' => _getSesion('permiso_prod'),
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'check_autorizo'    => $check,
+                                'ws_error'          => $res,
+                                'ws_resultado'      => json_encode($result),
+                                'ws_timestamp'        => date("Y-m-d H:i:s")
+                                );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
 
           }

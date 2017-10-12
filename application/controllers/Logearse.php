@@ -117,17 +117,25 @@ class logearse extends CI_Controller {
 
         $datos = $this->M_preaprobacion->login($usuario);
         if(count($datos)){
-            if($this->validate_pass($datos[0]->clave, $password)){
-                $this->session->set_userdata(array('usuario'           => $usuario,
-                                                    'nombre'       => $datos[0]->nombre,
-                                                    'apellido'   => $datos[0]->apellido,
-                                                    'rol'             => $datos[0]->rol));
-
-                $datos[0]->productos = 'Micash,C_main';
-                $productos = explode(',', $datos[0]->productos);
-
+            if($this->validate_pass($datos[0]->password, $password)){
+                $productos = explode(',', $datos[0]->permiso);
+                $this->session->set_userdata(array('usuario'          => $usuario,
+                                                    'rol'             => $datos[0]->rol,
+                                                    'id_usuario'      =>$datos[0]->id
+                                                    ));
+                                                                  
                 if(in_array($redirect, $productos)){
-                    redirect($redirect);
+                    if($redirect == PERMISO_ADMINISTRADOR) {
+                        redirect('C_main');
+                    }else if($redirect == PERMISO_MICASH) {
+                        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
+                                                           'permiso_prod' => PERMISO_MICASH));
+                        redirect('Micash');
+                    }else if($redirect == PERMISO_VEHICULAR) {
+                        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
+                                                           'permiso_prod' => PERMISO_VEHICULAR));
+                        redirect('Login');
+                    }
                 }else{
                     redirect('C_main');
                 }

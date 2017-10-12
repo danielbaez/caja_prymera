@@ -26,7 +26,6 @@ class micash_resumen extends CI_Controller {
         $dato['cant_meses'] = _getSesion('cant_meses');
         $dato['Importe'] = _getSesion('Importe');
         $dato['tea'] = _getSesion('sess_tea');
-        _log(_getSesion('sess_tea'));
         $dato['Agencia'] = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
         $this->load->view('v_micash_resumen', $dato);
@@ -51,8 +50,8 @@ class micash_resumen extends CI_Controller {
                 $session = array('Agencia' => $agencia);
                 $this->session->set_userdata($session);
             }
-            $this->sendMailGmail();
-            $this->enviarMail();
+            $validacion = $this->sendMailGmail();
+            $celular = $this->enviarMail();
 //             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
@@ -62,7 +61,10 @@ class micash_resumen extends CI_Controller {
     }
 
     function sendMailGmail(){
-       //cargamos la libreria email de ci
+      $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+      try {
+          //cargamos la libreria email de ci
        $this->load->library("email");
        //configuracion para gmail
        $configGmail = array(
@@ -112,22 +114,44 @@ class micash_resumen extends CI_Controller {
         <p>T&eacute;rminos y condiciones:” Seg&uacute;n lo especificado por legal”</p>
         ');
        $this->email->send();
+       $arrayUpdt = array('envio_email' => 1,);
+       $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        //con esto podemos ver el resultado
        //var_dump($this->email->print_debugger());
+        $data['error'] = EXIT_SUCCESS;
+      }catch (Exception $e){
+            $arrayUpdt = array('envio_email' => 2);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+            //$data['msj'] = $e->getMessage();
+            //return json_encode(array_map('utf8_encode', array(1)));
+      }
+      return json_encode(array_map('utf8_encode', $data));
      }
 
      function enviarMail() {
-        //twilio enviar msn
+      //_log('456');
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+          //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';
-        $to = _getSesion('nro_celular');
+        $to = '+51 '._getSesion('nro_celular');
         $message = 'Gracias por confiar en Prymera';
         $response = $this->twilio->sms($from, $to, $message);
-        print_r($response);
-        if($response->IsError)
-          exit('Error: ' . $response->ErrorMessage);
-        else
-          exit('Sent message to ' . $to);
+        //_log(print_r($response, true));
+        if($response->IsError) {
+          $arrayUpdt = array('envio_sms' => 2);
+          $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+        }
+        else {
+              $arrayUpdt = array('envio_sms' => 1);
+              $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+              $data['error'] = EXIT_SUCCESS;
+            }    
+        }catch (Exception $e){
+      }
+      return json_encode(array_map('utf8_encode', $data));
     }
 }
 

@@ -13,6 +13,7 @@ function addStyle() {
     var cuotaIni = document.getElementById('slider-range-value-cuota').innerText;
     var monto = document.getElementById('slider-range-value-monto').innerText;
     var pors_tea = document.getElementById('tea').innerText;
+    var seguro = document.getElementById('seguroAuto').innerText;
 	if(marca == '' && modelo == '') {
 		$("#remove1 a").removeAttr("href");
 		msj('error', 'Seleccione la marca y el modelo');
@@ -35,7 +36,8 @@ function addStyle() {
 				    meses : meses,
 				    cuotaIni : cuotaIni,
 				    pors_tea : pors_tea,
-					monto    : monto},
+					monto    : monto,
+					seguro   : seguro},
 				url   : 'C_preaprobacion/guardarMarca',
 			type  : 'POST',
 			dataType : 'json'

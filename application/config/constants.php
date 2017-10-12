@@ -102,6 +102,11 @@ defined('RUTA_CAJA') OR define('RUTA_CAJA', 'http://'.(isset($_SERVER['HTTP_HOST
 defined('PRODUCTO_MICASH')   OR define('PRODUCTO_MICASH'  ,'mi_cash');
 defined('PRODUCTO_VEHICULAR')   OR define('PRODUCTO_VEHICULAR'  ,'vehicular');
 
+//PERMISOS
+defined('PERMISO_ADMINISTRADOR')   OR define('PERMISO_ADMINISTRADOR'  , 1);
+defined('PERMISO_MICASH')   OR define('PERMISO_MICASH'  , 2);
+defined('PERMISO_VEHICULAR')   OR define('PERMISO_VEHICULAR'  ,3);
+
 //MENSAJES DE ERROR,CONFIRMACION Y EDICION
 defined('MSJ_INS') OR define('MSJ_INS', 'Se Registr&oacute; Correctamente');
 defined('MSJ_UPT') OR define('MSJ_UPT', 'Se Edit&oacute; Correctamente');

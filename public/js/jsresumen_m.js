@@ -4,13 +4,9 @@ function irAUbicacion() {
 		$.ajax({
 			data  : { agencia : agencia},
 			url   : 'Micash_resumen/setearAgencia',
-			type  : 'POST',
-			dataType : 'json'
+			type  : 'POST'
 		}).done(function(data){
-			try{
-				location.href = '/micash_ubicacion';
-			} catch (err){
-				msj('error',err.message);
-			}
+			console.log(data);
+			location.href = '/micash_ubicacion';
 		});
 }
