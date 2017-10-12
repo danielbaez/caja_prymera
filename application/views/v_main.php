@@ -26,6 +26,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <style>
@@ -47,139 +48,142 @@
         <div class="col-xs-12">
           <div class="col-xs-12 col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
-            <h1 style="font-size:25px;">Bienvenido <?php echo $nombre ?></h1>            
+            <h1 class="titulo-vista">Bienvenido <?php echo $nombre ?></h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
-            <a href="">Nueva Solicitud</a><br>
-            <a href="">Ver Reportes</a><br>
+            <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
+            <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+            <a href="/C_reporte/index">Ver Reportes</a><br>
           </div>
           
-          <div class="col-xs-12 col-md-6">
-            <h3>Personal</h3>
-            <div class="table-responsive" style="height: 250px; overflow: scroll;">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="text-center">Nombres</th>
-                    <th class="text-center">Rol</th>
-                    <th class="text-center">Agencia</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach($personales as $personal){
-                    ?>
-                  <tr>
-                    <td><?php echo $personal->nombre ?></td>
-                    <td><?php echo $personal->rol ?></td>
-                    <td>Miraflores</td>
-                  </tr>
-                <?php                 
-                } ?>                
-                   
-                </tbody>
-              </table>
-          </div>  
+          <div class="col-xs-12 col-md-6 col-seccion">
+            <div class="col-xs-12 div-seccion">
+              <h4>Personal</h4>
+              <div class="table-responsive" style="height: 250px; overflow: scroll;">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="text-center">Nombres</th>
+                      <th class="text-center">Rol</th>
+                      <th class="text-center">Agencia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach($personales as $personal){
+                      ?>
+                    <tr>
+                      <td><?php echo $personal->nombre ?></td>
+                      <td><?php echo $personal->rol ?></td>
+                      <td>Miraflores</td>
+                    </tr>
+                  <?php                 
+                  } ?>                
+                     
+                  </tbody>
+                </table>
+              </div>
+            </div>  
           </div>
 
-          <div class="col-xs-12 col-md-6">
-            <h3>Administrar Perfiles</h3>
-            <form class="text-center" action="usuario/registrar" method="POST">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <i class="fa fa-user fa-5x" aria-hidden="true"></i>
-                </div>
-                <div class="form-group" style="padding-top: 13px;">
-                  <select class="form-control" name="sexo">
-                    <option value="">Sexo</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                  </select>
-                </div>
-                
-                <div class="form-group">
-                  <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="password" name="password" placeholder="Contraseña (dni)" disabled>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Usuario (email)" disabled>
-                </div>
-                <div class="form-group">
-                  <select class="form-control" name="rol">
-                    <option value="">Rol</option>
-                    <option value="jefe_agencia">Jefe de Agencia</option>
-                    <option value="agente">Agente</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <select class="form-control" name="rol_superior">
-                    <option>Rol Superior</option>
-                    <option value="Ford">Ford</option>
-                    <option value="Zuzuki">Zuzuki</option>
-                  </select>
-                </div>
+          <div class="col-xs-12 col-md-6 col-seccion">
+            <div class="col-xs-12 div-seccion">
+              <h4>Administrar Perfiles</h4>
+              <form class="text-center" action="usuario/registrar" method="POST">
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                  </div>
+                  <div class="form-group div-sexo">
+                    <select class="form-control" name="sexo">
+                      <option value="">Sexo</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Contraseña (dni)" disabled>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Usuario (email)" disabled>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control" name="rol">
+                      <option value="">Rol</option>
+                      <option value="jefe_agencia">Jefe de Agencia</option>
+                      <option value="agente">Agente</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control" name="rol_superior">
+                      <option>Rol Superior</option>
+                      <option value="Ford">Ford</option>
+                      <option value="Zuzuki">Zuzuki</option>
+                    </select>
+                  </div>
 
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres">
                 </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="nombres" name="apellidos" placeholder="Apellidos">
-                </div>
-                <div class="form-group text-left">
-                  <label class="form-label">Fecha de Nacimiento</label>
-                  <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
-                </div>
-                <div class="form-group text-left">
-                  <label class="form-label">Fecha de Ingreso</label>
-                  <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Correo">
-                </div>
-                
-                <div class="form-group text-left">
-                  <div class="checkbox">
-                    <label><input type="checkbox" value="micash" name="permiso[]">Mi Cash</label>
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres">
                   </div>
-                  <div class="checkbox">
-                    <label><input type="checkbox" value="vehicular" name="permiso[]">Vehicular</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="nombres" name="apellidos" placeholder="Apellidos">
                   </div>
-                  <div class="checkbox disabled">
-                    <label><input type="checkbox" value="inactivo" name="permiso[]">Inactivo</label>
+                  <div class="form-group text-left">
+                    <label class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
                   </div>
-                </div>
+                  <div class="form-group text-left">
+                    <label class="form-label">Fecha de Ingreso</label>
+                    <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Correo">
+                  </div>
+                  
+                  <div class="form-group text-left">
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="micash" name="permiso[]">Mi Cash</label>
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="vehicular" name="permiso[]">Vehicular</label>
+                    </div>
+                    <div class="checkbox disabled">
+                      <label><input type="checkbox" value="inactivo" name="permiso[]">Inactivo</label>
+                    </div>
+                  </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
-                </div>
-                <div class="form-group">
-                  <div class="form-control" style="height: 100px; overflow-y: scroll; text-align: left;">
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
+                  </div>
+                  <div class="form-group">
+                    <div class="form-control div-agencia">
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-xs-12">
-                <div class="form-group col-xs-6 text-left">
-                  <a href="">Limpiar pantalla</a>
+                <div class="col-xs-12">
+                  <div class="form-group col-xs-6 text-left">
+                    <a href="">Limpiar pantalla</a>
+                  </div>
+                  <div class="form-group col-xs-6 text-right">
+                    <input type="submit" name="" class="btn btn-primary" value="Guardar">
+                  </div>
                 </div>
-                <div class="form-group col-xs-6 text-right">
-                  <input type="submit" name="" class="btn btn-primary" value="Guardar">
-                </div>
-              </div>
-            </form>
+              </form>
           </div>  
 
         </div>

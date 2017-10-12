@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_usuario extends CI_Controller {
+class C_reporte extends CI_Controller {
     
     function __construct() {
         parent::__construct();
@@ -14,17 +14,25 @@ class C_usuario extends CI_Controller {
 
     }
     
-    public function asignarSupervisor()
+    public function index()
+    {      
+        $this->load->view('v_reporte', []);
+    }
+
+    public function agenteCliente()
     {
-
-        $this->load->model('M_usuario');        
-        $data['personales'] = $this->M_usuario->getPersonal();
-        $this->load->view('v_asignarSupervisor', $data);
+        $this->load->view('v_agenteCliente', []);
     }
 
-    public function nuevaSolicitud()
-    {       
-        $this->load->view('v_nuevaSolicitud', []);
+    public function historialSolicitud()
+    {
+        $this->load->view('v_historialSolicitud', []);
     }
+
+    public function solicitudRechazada()
+    {
+        $this->load->view('v_solicitudRechazada', []);
+    }
+    
 }
 

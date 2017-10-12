@@ -162,5 +162,10 @@ class logearse extends CI_Controller {
         // verifica la contraseña con el hash
         return crypt($pass, $hash) == $hash;
     }
+
+    function olvidoPassword(){
+
+        $this->load->view('v_recuperarPassword', []);
+    }
 }
 

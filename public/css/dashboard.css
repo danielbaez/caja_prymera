@@ -1,0 +1,97 @@
+.titulo-vista{
+	font-size: 22px;
+	color: #286090
+}
+
+.col-seccion{
+	margin-top: 20px
+}
+
+.div-seccion{
+	border:1px solid #286090
+}
+
+.div-sexo{
+	padding-top: 13px;
+}
+
+.div-agencia{
+	height: 150px !important; overflow-y: scroll; text-align: left;
+}
+
+.tabla-personal{
+	height: 250px; overflow: scroll;
+}
+
+.widht-opt-select{
+	width: 10px
+}
+
+.div-agregar-personal-link{
+	margin-top: 15px; margin-bottom: 15px
+}
+
+.form-asignar-supervisor{
+	margin-top:20px; margin-bottom: 45px
+}
+
+.div-personales-agregados{
+	margin-top: 60px; padding-bottom: 30px
+}
+
+.col-personales-agregados{
+	height:120px !important; overflow-y: scroll; text-align: left;
+}
+
+.panel-login-recuperar-password-solicitud{
+	border-radius: 4px !important;
+	border-color: #286090 !important;
+
+}
+
+.modal-recuperar-password-titulo{
+	color:#286090; font-size: 18px
+}
+
+.nav-active-a{
+	color: white !important; background: #286090 !important;
+	border-radius: 0 !important;
+    border: 1px solid #286090 !important;
+}
+
+.col-border-filtros-reporte{
+	border:2px solid #286090; border-bottom: none
+}
+
+.col-border-filtros-resultado-reporte{
+	border:2px solid #286090; border-top:none
+}
+
+.tr-header-reporte{
+	background: #286090; color: white
+}
+
+.reporte-texto-total{
+	font-size: 16px;
+	margin-top: 10px; padding-right: 15px
+}
+
+.tabla-reporte{
+	height: 150px;overflow: scroll;
+}
+
+.tr-cursor-pointer{
+	cursor: pointer;
+}
+
+.modal-reporte-informacion-solicitud-titulo{
+	color: #286090
+}
+
+.modal-reporte-informacion-solicitud p{
+	font-size: 15px
+}
+
+.modal-reporte-informacion-solicitud span{
+	font-weight: bold
+}

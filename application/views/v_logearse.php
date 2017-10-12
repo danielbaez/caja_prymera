@@ -26,6 +26,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <style>
@@ -100,13 +101,13 @@
         <div class="container">
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-              <h1 style="font-size:25px;">Bienvenido Usuario</h1>
-            <div class="panel panel-primary" style="rgba(255,255,255,0.6); border-radius:8px">
+              <h1 class="titulo-vista">Bienvenido Usuario</h1>
+            <div class="panel panel-primary panel-login-recuperar-password-solicitud">
                 <!-- <div class="panel-heading" style="background-color:#1C4485;border:0">
                   <h1 class="panel-title" style="font-size:25px;">Bienvenido Usuario</h1>
                 </div> -->
                 <div class="panel-body">
-                  <form class="form-horizontal" action="logearse/login" method="post">
+                  <form class="form-horizontal" action="/logearse/login" method="post">
                     <br>
                     <div class="form-group">
                       <label class="control-label col-sm-3" for="email">Usuario:</label>
@@ -130,7 +131,7 @@
                     </div>
                     <div class="form-group"> 
                       <div class="col-center">
-                        Olvid&oacute; su contrase&ntilde;a? <a href="resetear_password.html">Ingrese aqu&iacute;</a>
+                        Olvid&oacute; su contrase&ntilde;a? <a href="/Logearse/olvidoPassword">Ingrese aqu&iacute;</a>
                       </div>
                     </div>
                             

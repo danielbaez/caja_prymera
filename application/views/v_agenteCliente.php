@@ -48,85 +48,127 @@
         <div class="col-xs-12">
           <div class="col-xs-12 col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
-            <h1 class="titulo-vista">Asignacion de Asesores</h1>            
+            <h1 class="titulo-vista">Vista Reportes</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="/C_main">Ver Usuarios</a><br>
+            <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
             <a href="/C_reporte/index">Ver Reportes</a><br>
           </div>
-          
-          <div class="col-xs-12 col-md-6 col-seccion">
-            <div class="col-xs-12 div-seccion">
-              <h4>Personal</h4>
-              <br>
-              <div class="table-responsive tabla-personal">
-                
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th class="text-center widht-opt-select">Opt</th>
-                      <th class="text-center">Nombres</th>
-                      <th class="text-center">Rol</th>
-                      <th class="text-center">Agencia</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach($personales as $personal){
-                      ?>
-                    <tr>
-                      <td>
-                        <input type="checkbox" value="">
-                      </td>                    
-                      <td><?php echo $personal->nombre ?></td>
-                      <td><?php echo $personal->rol ?></td>
-                      <td>Miraflores</td>
-                    </tr>
-                  <?php                 
-                  } ?>                
-                     
-                  </tbody>
-                </table>
-              </div>
-              <div class="text-right div-agregar-personal-link">
-                <a href="" >Agregar ></a>  
-              </div>
-            </div>
+
+          <div class="col-xs-12">
+            <ul class="nav nav-tabs">
+              <li><a href="/C_reporte/index">Solicitudes</a></li>
+              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - CLiente</a></li>
+              <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
+              <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
+            </ul>
           </div>
 
-          <div class="col-xs-12 col-md-6 col-seccion">
-            <div class="col-xs-12 div-seccion">
-              <form class="form-horizontal form-asignar-supervisor">
-                <div class="form-group">
-                  <label class="control-label col-sm-4" for="supervisor">Supervisor:</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" name="supervisor" id="supervisor">
+          <div class="col-xs-12">
+            <div class="col-xs-12 col-border-filtros-reporte">
+              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
+              <form class="form-horizontal">
+                <div class="col-xs-12 col-sm-4">
+                  <div class="form-group" style="margin-top: 13px">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                      <select name="agencia" class="form-control" id="agencia">
+                        <option>Agencia</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>  
+                  </div>
+                  <div class="form-group"> 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                      <select name="tipo_credito" class="form-control" id="tipo_credito">
+                        <option value="">Tipo de Crédito</option>
+                        <option value="">Mi Cash</option>
+                        <option value="">Vehicular</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group"> 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                      <select name="status" class="form-control" id="status">
+                        <option value="">Status</option>
+                        <option value="">Abierto</option>
+                        <option value="">Cerrado</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-                 <!-- <div class="form-group">
-                  <div class="col-sm-12 col-md-6 col-md-offset-3">
-                    <textarea class="form-control" name="personal" id="personal"></textarea>
+                <div class="col-xs-12 col-sm-4">
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="email">Desde:</label>
+                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                    </div>
                   </div>
-                </div> -->
-                
-                <div class="form-group div-personales-agregados">
-                  <div class="col-sm-offset-3 col-sm-6 col-personales-agregados">
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="email">Hasta:</label>
+                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group"> 
-                  <div class="col-sm-offset-2 col-sm-8">
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                <div class="col-xs-12 col-sm-4" style="margin-top: 50px">
+                  <div class="form-group"> 
+                      <button type="submit" class="btn btn-primary btn-lg">Mostrar</button>
                   </div>
                 </div>
               </form>
             </div>
-          </div>  
-
+            <div class="col-xs-12 col-border-filtros-resultado-reporte">
+              <div class="table-responsive tabla-reporte">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr class="tr-header-reporte">
+                      <th class="text-center">Fecha</th>
+                      <th class="text-center">Nro sol.</th>
+                      <th class="text-center">Cliente</th>
+                      <th class="text-center">Agencia</th>
+                      <th class="text-center">Tipo</th>
+                      <th class="text-center">Status</th>
+                      <th class="text-center">Monto</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>10/07/2017</td>
+                      <td>300</td>
+                      <td>jose perez</td>
+                      <td>Snata anita</td>
+                      <td>micash</td>
+                      <td>Cerrada</td>
+                      <td>S/ 30433</td>
+                    </tr>
+                    <tr>
+                      <td>10/07/2017</td>
+                      <td>300</td>
+                      <td>jose perez</td>
+                      <td>Snata anita</td>
+                      <td>micash</td>
+                      <td>Cerrada</td>
+                      <td>S/ 30433</td>
+                    </tr>
+                    <tr>
+                      <td>10/07/2017</td>
+                      <td>300</td>
+                      <td>jose perez</td>
+                      <td>Snata anita</td>
+                      <td>micash</td>
+                      <td>Cerrada</td>
+                      <td>S/ 30433</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="text-right reporte-texto-total">Total de S/323</p>
+            </div>
+          </div>
         </div>
       </div>
       <br>
