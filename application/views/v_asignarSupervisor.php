@@ -47,7 +47,7 @@
         <div class="col-xs-12">
           <div class="col-xs-12 col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
-            <h1 style="font-size:25px;">Bienvenido <?php echo $nombre ?></h1>            
+            <h1 style="font-size:25px;">Asignacion de Asesores</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
             <a href="C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
@@ -61,6 +61,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
+                    <th class="text-center">Seleccionar</th>
                     <th class="text-center">Nombres</th>
                     <th class="text-center">Rol</th>
                     <th class="text-center">Agencia</th>
@@ -70,6 +71,12 @@
                   <?php foreach($personales as $personal){
                     ?>
                   <tr>
+                    <td>
+                      <div class="checkbox">
+                        <label><input type="checkbox" value=""></label>
+                      </div>
+                    </td>
+                    
                     <td><?php echo $personal->nombre ?></td>
                     <td><?php echo $personal->rol ?></td>
                     <td>Miraflores</td>
