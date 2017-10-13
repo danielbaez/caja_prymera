@@ -130,5 +130,13 @@ class M_preaprobacion extends  CI_Model{
         $result = $this->db->query($sql, array($concecionaria));
         return $result->result();
     }
+
+    function getDatosPersByRol($rol) {
+      $sql = "SELECT *
+                FROM usuario
+               WHERE rol LIKE ?";
+        $result = $this->db->query($sql, array($rol));
+        return $result->result();
+    }
 }
     

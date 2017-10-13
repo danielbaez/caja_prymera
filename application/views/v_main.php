@@ -81,8 +81,8 @@
                     <?php foreach($personales as $personal){
                       ?>
                     <tr>
-                      <td><?php echo $personal->nombre ?></td>
-                      <td><?php echo $personal->rol ?></td>
+                      <td onclick="setearCampos()"><?php echo $personal->nombre ?></td>
+                      <td id="rol_pers"><?php echo $personal->rol ?></td>
                       <td>Miraflores</td>
                     </tr>
                   <?php                 
@@ -97,13 +97,13 @@
           <div class="col-xs-12 col-md-6 col-seccion">
             <div class="col-xs-12 div-seccion">
               <h4>Administrar Perfiles</h4>
-              <form class="text-center" action="usuario/registrar" method="POST">
+              <form class="text-center" action="C_main/registrar" method="POST">
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <i class="fa fa-user fa-5x" aria-hidden="true"></i>
                   </div>
                   <div class="form-group div-sexo">
-                    <select class="form-control" name="sexo">
+                    <select class="form-control" id="sexo" name="sexo">
                       <option value="">Sexo</option>
                       <option value="Masculino">Masculino</option>
                       <option value="Femenino">Femenino</option>
@@ -111,27 +111,27 @@
                   </div>
                   
                   <div class="form-group">
-                    <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI">
+                    <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" onkeypress="return valida(event)" maxlength="8">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="password" name="password" placeholder="Contraseña (dni)" disabled>
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Contrase&ntilde;a (dni)" disabled>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel">
+                    <input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel" onkeypress="return valida(event)" maxlength="9">
                   </div>
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Usuario (email)" disabled>
                   </div>
                   <div class="form-group">
-                    <select class="form-control" name="rol">
+                    <select class="form-control" id="rol" name="rol" onchange="verificarRol()">
                       <option value="">Rol</option>
                       <option value="jefe_agencia">Jefe de Agencia</option>
                       <option value="agente">Agente</option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <select class="form-control" name="rol_superior">
-                      <option>Rol Superior</option>
+                    <select class="form-control ocultar" id="rol_superior" name="rol_superior">
+                      <option value="">Rol Superior</option>
                       <option value="Ford">Ford</option>
                       <option value="Zuzuki">Zuzuki</option>
                     </select>
@@ -140,10 +140,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
-                    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres">
+                    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" onkeypress="return soloLetras(event)" maxlength="50">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="nombres" name="apellidos" placeholder="Apellidos">
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" onkeypress="return soloLetras(event)" maxlength="100">
                   </div>
                   <div class="form-group text-left">
                     <label class="form-label">Fecha de Nacimiento</label>
@@ -154,7 +154,7 @@
                     <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Correo">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Correo" onchange="validaCorreo()">
                   </div>
                   
                   <div class="form-group text-left">
@@ -169,7 +169,7 @@
                     </div>
                   </div>
 
-                  <!-- <div class="form-group">
+                  <div class="form-group">
                     <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
                   </div>
                   <div class="form-group">
@@ -182,11 +182,11 @@
                       <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
                       <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
                     </div>
-                  </div> -->
+                  </div>
                 </div>
                 <div class="col-xs-12">
                   <div class="form-group col-xs-6 text-left">
-                    <a href="">Limpiar pantalla</a>
+                    <a onclick="limpiar()">Limpiar pantalla</a>
                   </div>
                   <div class="form-group col-xs-6 text-right">
                     <input type="submit" name="" class="btn btn-primary" value="Guardar">
@@ -214,7 +214,7 @@
       <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsmain.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     </body>
 </html>
