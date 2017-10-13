@@ -72,6 +72,7 @@ class micash extends CI_Controller {
                 'plazos'            => $plazos
             );
             $this->session->set_userdata($session);
+            //$agencia = $this->M_preaprobacion->getAgenciaPersonal(_getSesion('id_usuario'));
             $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
                                 'nombre' => $nombre,
                                 'apellido'  => $apellido,

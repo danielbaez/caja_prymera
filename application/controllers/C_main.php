@@ -23,7 +23,7 @@ class C_main extends CI_Controller {
         $this->load->model('M_usuario');
 
         $data['nombre'] = _getSesion("nombre");
-
+        $data['comboAgencias']      = $this->__buildComboAgencias();
         
         $data['personales'] = $this->M_usuario->getPersonal();
 
@@ -95,6 +95,16 @@ class C_main extends CI_Controller {
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function __buildComboAgencias(){
+        $agencias = $this->M_preaprobacion->getAgencias();
+        $opt = null;
+        foreach($agencias as $age){
+            $agen = str_replace(')', '',str_replace('(', '', $age->agencia));
+            $opt .= '<option data-tokens="'.$agen.'"> '.$agen.'</option>';
+        }
+        return $opt;
     }
 }
 

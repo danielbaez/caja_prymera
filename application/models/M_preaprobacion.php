@@ -146,5 +146,11 @@ class M_preaprobacion extends  CI_Model{
         $result = $this->db->query($sql, array($rol));
         return $result->result();
     }
+
+    function getDatosPersByRol($rol) {
+      $sql = "";
+        $result = $this->db->query($sql, array($rol));
+        return $result->result();
+    }
 }
     

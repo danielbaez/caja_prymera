@@ -374,7 +374,7 @@ class C_confirmacion extends CI_Controller {
                             'distrito'          => $Distrito,
                             'nro_fijo'          => $telefono,
                             'cod_concecionaria' => $concesionaria,
-                            'cod_agencia'       => $agencia[0]->id,
+                            'agencia_desembolso' => $agencia[0]->id,
                             'validar_celular'   => 1,
                             'timestamp_datos'   => date("Y-m-d H:i:s"),
                             'estado_civil'      => $estado_civil,

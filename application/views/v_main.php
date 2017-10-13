@@ -17,6 +17,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap_select/css/bootstrap-select.min.css?v=<?php echo time();?>">
       <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
       <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
@@ -168,22 +169,11 @@
                       <label><input type="checkbox" value="inactivo" name="permiso[]">Inactivo</label>
                     </div>
                   </div>
-
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
+                  <div class="col-xs-12">
+                    <select class="selectpicker" data-live-search="true" title="Agencia" multiple>
+                      <?php echo $comboAgencias?>
+                    </select>
                   </div>
-                  <div class="form-group">
-                    <div class="form-control div-agencia">
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                      <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    </div>
-                  </div>
-                </div>
                 <div class="col-xs-12">
                   <div class="form-group col-xs-6 text-left">
                     <a onclick="limpiar()">Limpiar pantalla</a>
@@ -208,6 +198,7 @@
         <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
         <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap_select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
