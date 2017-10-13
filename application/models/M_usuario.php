@@ -18,5 +18,13 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array(1));
         return $result->result();
     }
+
+    function buscarAsesor($asesor) {
+        $sql = "SELECT * 
+                  FROM usuario 
+                 WHERE nombre LIKE '%$asesor%'";
+        $result = $this->db->query($sql);
+        return $result->result();
+    }
 }
     

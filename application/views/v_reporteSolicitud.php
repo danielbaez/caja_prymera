@@ -74,25 +74,59 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">Reporte Consolidado Solicitudes de Clientes</h4>
-              <form class="form-horizontal">
+              <form class="form-horizontal" method="POST" action="/C_reporte/solicitudes">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group" style="margin-top: 35px">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
                       <select name="agencia" class="form-control" id="agencia">
-                        <option>Agencia</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                        <option value="">Agencia</option>
+                        <?php foreach ($agencias as $agencia) {
+                          if(isset($id_agencia)){
+                            if($id_agencia == $agencia->id){
+                          ?>
+                          <option selected value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+                          <?php
+                            }
+                            else{
+                            ?>
+                            <option value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+                            <?php
+                            }
+                          }
+                          else
+                          {
+                          ?>
+                            <option value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+                          <?php
+                          }   
+                        } ?>
                       </select>
                     </div>  
                   </div>
                   <div class="form-group"> 
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
                       <select name="tipo_credito" class="form-control" id="tipo_credito">
-                        <option value="">Tipo de Crédito</option>
-                        <option value="">Mi Cash</option>
-                        <option value="">Vehicular</option>
+                        <option value="">Tipo de Cr&eacute;dito</option>
+                        <?php foreach ($productos as $producto) {
+                          if(isset($id_tipo_credito)){
+                            if($id_tipo_credito == $producto->id){
+                          ?>
+                          <option selected value="<?php echo $producto->id ?>"><?php echo $producto->descripcion ?></option>
+                          <?php
+                            }
+                            else{
+                            ?>
+                            <option value="<?php echo $producto->id ?>"><?php echo $producto->descripcion ?></option>
+                            <?php
+                            }
+                          }
+                          else
+                          {
+                          ?>
+                            <option value="<?php echo $producto->id ?>"><?php echo $producto->descripcion ?></option>
+                          <?php
+                          }   
+                        } ?>
                       </select>
                     </div>
                   </div>
@@ -101,18 +135,35 @@
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Desde:</label>
-                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <?php if(isset($desde)){ ?>
+                          <input type="date" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
+                        <?php }
+                        else{
+                        ?>
+                        <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <?php
+                        }
+                        ?>                      
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Hasta:</label>
-                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                      <?php if(isset($hasta)){ ?>
+                          <input type="date" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
+                        <?php }
+                        else{
+                        ?>
+                        <input type="date" name="fecha_hasta" class="form-control" id="fecha_hasta">
+                        <?php
+                        }
+                        ?>
                     </div>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-4" style="margin-top: 50px">
-                  <div class="form-group"> 
+                  <div class="form-group">
+                      <input type="hidden" name="action" value="obtenerSolicitudes"> 
                       <button type="submit" class="btn btn-primary btn-lg">Mostrar</button>
                   </div>
                 </div>
@@ -134,36 +185,25 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>juan jose</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>juan jose</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>juan jose</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
+                    <?php  ?>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <tr>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->AGENCIA ?></td>
+                        <td><?php echo $solicitud->descripcion ?></td>
+                        <td><?php echo $solicitud->asesor ?></td>
+                        <td><?php echo $solicitud->status_sol ?></td>
+                        <td><?php echo $solicitud->monto ?></td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -174,8 +214,6 @@
       </div>
       <br>
     </div>
-
-
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
