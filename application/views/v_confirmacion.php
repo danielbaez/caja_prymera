@@ -208,7 +208,28 @@
                                                                   <div class="form-group">
                                                                     <input type="text" class="form-control" id="email" onchange="habilitarCampo()" name="email" placeholder="Email" value="<?php echo $email?>">
                                                                   </div>
-                                                                </div>  
+                                                                </div>
+                                                                <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+                                                                  <div class="col-xs-12">
+                                                                     <div class="form-group">
+                                                                          <select class="form-control" id="estado_civil" name="estado_civil" onchange="mostrarEstadoCivil()">
+                                                                            <option value="">Estado Civil</option>
+                                                                            <option value="soltero">Soltero</option>
+                                                                            <option value="casado">Casado</option>
+                                                                          </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 oculto hidden">
+                                                                      <div class="form-group">
+                                                                        <input type="text" class="form-control" id="nombre_conyugue" name="nombre_conyugue" placeholder="Nombre del Conyugue" maxlength="50" onkeypress="return soloLetras(event)">
+                                                                      </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 oculto hidden">
+                                                                      <div class="form-group">
+                                                                        <input type="text" class="form-control" id="dni_conyugue" name="dni_conyugue" placeholder="DNI del Conyugue" maxlength="8" onkeypress="return valida(event)">
+                                                                      </div>
+                                                                    </div>
+                                                                <?php } ?>
                                                                 <div class="col-xs-12 m-t-50 text-right">
                                                                   <div class="container" style="position: relative;top: -53px;left: -10px;">
                                                               <ul class="nav nav-pills">

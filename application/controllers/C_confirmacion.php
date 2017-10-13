@@ -334,6 +334,9 @@ class C_confirmacion extends CI_Controller {
             $idPersona  = _getSesion('idPersona');
             $varTcea  = _getSesion('TCEA');
             $varTea   = _post('sess_tea');
+            $estado_civil   = _post('estado_civil');
+            $nombre_conyugue   = _post('nombre_conyugue');
+            $dni_conyugue   = _post('dni_conyugue');
             $concesionaria = null;
             $Agencia  = _post('Agencia');
             if($tipo_product == PRODUCTO_VEHICULAR) {
@@ -355,7 +358,8 @@ class C_confirmacion extends CI_Controller {
                             'Provincia'         => $Provincia,
                             'Distrito'          => $Distrito,
                             'Agencia'           => $Agencia,
-                            'monto'             => $monto
+                            'monto'             => $monto,
+                            'estado_civil'      => $estado_civil
                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
@@ -372,7 +376,10 @@ class C_confirmacion extends CI_Controller {
                             'cod_concecionaria'     => $concesionaria,
                             'cod_agencia'       => $agencia[0]->id,
                             'validar_celular'   => 1,
-                            'timestamp_datos'   => date("Y-m-d H:i:s")
+                            'timestamp_datos'   => date("Y-m-d H:i:s"),
+                            'estado_civil'      => $estado_civil,
+                            'nombre_conyugue'   => $nombre_conyugue,
+                            'dni_conyugue'      => $dni_conyugue
                 );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;

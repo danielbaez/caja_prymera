@@ -84,7 +84,6 @@ class C_main extends CI_Controller {
         try {
             $rol = _post('rol');
             $datos = $this->M_preaprobacion->getDatosPersByRol($rol);
-            _log(print_r($datos, true));
             $data['dni'] = $datos[0]->dni;
             $data['nombre'] = $datos[0]->nombre;
             $data['fecha_nac'] = $datos[0]->fecha_nac;

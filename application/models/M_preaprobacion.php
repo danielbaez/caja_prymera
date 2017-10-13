@@ -132,7 +132,15 @@ class M_preaprobacion extends  CI_Model{
     }
 
     function getDatosPersByRol($rol) {
-      $sql = "SELECT *
+      $sql = "SELECT nombre,
+                     DATE_FORMAT(fecha_nac, '%m/%d/%Y') AS fecha_nac,
+                     rol, 
+                     apellido, 
+                     DATE_FORMAT(fecha_ingreso, '%m/%d/%Y') AS fecha_ingreso, 
+                     sexo, 
+                     celular, 
+                     dni,
+                     permiso
                 FROM usuario
                WHERE rol LIKE ?";
         $result = $this->db->query($sql, array($rol));

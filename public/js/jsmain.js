@@ -98,6 +98,9 @@ function setearCampos() {
           $('#nombres').val(data.nombre);
           $('#dni').val(data.dni);
           $('#apellidos').val("administrador");
+          $('#fecha_nacimiento').val(data.fecha_nac);
+          $('#celular').val(data.celular);
+          $('#email').val();
         }else {
         }
       } catch (err){

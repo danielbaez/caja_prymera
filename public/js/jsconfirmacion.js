@@ -36,6 +36,9 @@ function verificarNumero() {
 	var cinco 			  = $('#cinco').val();
 	var seis 			  = $('#seis').val();
 	var fijo			  = $('#nro_fijo').val();
+	var estado_civil      = $('#estado_civil').val();
+	var nombre_conyugue   = $('#nombre_conyugue').val();
+	var dni_conyugue      = $('#dni_conyugue').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
 	var checkAutorizo     = $('#checkAutorizo').is(':checked');
     if(uno == null && dos == null && tres == null && cuatro == null && cinco == null && seis == null) {
@@ -82,6 +85,20 @@ function verificarNumero() {
 		msj('error','Por favor acepte la autorizaci&oacute;n de datos');
 		  return;
 	}
+	if(estado_civil == null) {
+		msj('error', 'Ingrese un estado civil');
+		return;
+	}
+	if(estado_civil == "casado") {
+		if(nombre_conyugue == null) {
+			msj('error', 'Ingrese el nombre de su conyugue');
+			return;
+		}
+		if(dni_conyugue == null) {
+			msj('error', 'Ingrese el dni de su conyugue');
+			return;
+		}
+	}
 	$.ajax({
 		data  : { salario : salario,
 				nro_celular : nro_celular,
@@ -94,7 +111,10 @@ function verificarNumero() {
 				concesionaria : concesionaria,
 				numero : numero,
 				codigo : codigo,
-				nro_fijo : nro_fijo},
+				nro_fijo : nro_fijo,
+			    estado_civil : estado_civil,
+			    nombre_conyugue : nombre_conyugue,
+				dni_conyugue : dni_conyugue},
 		url   : 'C_confirmacion/verificarNumero',
 		type  : 'POST'
 	}).done(function(data){
@@ -311,11 +331,19 @@ function habilitarCampo() {
 }
 
 function limpiarCampos() {
-	console.log('entra');
 	$('#uno').val(null);
 	$('#dos').val(null);
 	$('#tres').val(null);
 	$('#cuatro').val(null);
 	$('#cinco').val(null);
 	$('#seis').val(null);
+}
+
+function mostrarEstadoCivil() {
+	var estado_civil = $('#estado_civil').val();
+	if(estado_civil == "casado") {
+		$('.oculto').removeClass('hidden');
+	}else {
+		$('.oculto').addClass('hidden');
+	}
 }
