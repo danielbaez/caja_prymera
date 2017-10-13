@@ -51,14 +51,20 @@
             <h1 class="titulo-vista">Vista Reportes</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
-            <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-            <a href="/C_main">Ver Usuarios</a><br>
+            <?php if(_getSesion('rol') == 'administrador'){ ?>
+              <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
+              <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+              <a href="/C_main">Ver Usuarios</a><br>
+            <?php }
+                elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+                <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                <a href="/C_main">Ver Usuarios</a><br>
+            <?php } ?>
           </div>
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li><a href="/C_reporte/index">Solicitudes</a></li>
+              <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
               <li><a href="/C_reporte/agenteCliente">Agente - CLiente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li class="active"><a href="/C_reporte/solicitudRechazada" class="nav-active-a">Solicitudes Rechazadas</a></li>

@@ -51,9 +51,18 @@
             <h1 class="titulo-vista">Bienvenido <?php echo $nombre ?></h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
+            
+
+            <?php if(_getSesion('rol') == 'administrador'){ ?>
+                <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-            <a href="/C_reporte/index">Ver Reportes</a><br>
+            <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
+              <?php }
+                  elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+                  <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                  <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
+              <?php } ?>
+
           </div>
           
           <div class="col-xs-12 col-md-6 col-seccion">
@@ -160,7 +169,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
                   </div>
                   <div class="form-group">
@@ -173,7 +182,7 @@
                       <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
                       <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-xs-12">
                   <div class="form-group col-xs-6 text-left">

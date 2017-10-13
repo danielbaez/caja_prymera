@@ -51,42 +51,36 @@
             <h1 class="titulo-vista">Vista Reportes</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-            <a href="/C_main">Ver Usuarios</a><br>
           </div>
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="/C_reporte/index" class="nav-active-a">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Agente - CLiente</a></li>
-              <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
-              <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
+              <li class="active"><a href="/C_reporteAsesor/agenteCliente" class="nav-active-a">Agente - CLiente</a></li>
+              <li><a href="/C_reporteAsesor/agenteHistorialSolicitud">Historial Solicitud</a></li>
             </ul>
           </div>
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
-              <h4 class="titulo-vista">Reporte Consolidado Solicitudes de Clientes</h4>
+              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
               <form class="form-horizontal">
-                <div class="col-xs-12 col-sm-4">
-                  <div class="form-group" style="margin-top: 35px">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
-                      <select name="agencia" class="form-control" id="agencia">
-                        <option>Agencia</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
-                    </div>  
-                  </div>
+                <div class="col-xs-12 col-sm-4" style="margin-top: 30px">
                   <div class="form-group"> 
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
                       <select name="tipo_credito" class="form-control" id="tipo_credito">
                         <option value="">Tipo de Crédito</option>
                         <option value="">Mi Cash</option>
                         <option value="">Vehicular</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group"> 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                      <select name="status" class="form-control" id="status">
+                        <option value="">Status</option>
+                        <option value="">Abierto</option>
+                        <option value="">Cerrado</option>
                       </select>
                     </div>
                   </div>
@@ -122,7 +116,6 @@
                       <th class="text-center">Cliente</th>
                       <th class="text-center">Agencia</th>
                       <th class="text-center">Tipo</th>
-                      <th class="text-center">Asesor</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Monto</th>
                     </tr>
@@ -134,7 +127,6 @@
                       <td>jose perez</td>
                       <td>Snata anita</td>
                       <td>micash</td>
-                      <td>juan jose</td>
                       <td>Cerrada</td>
                       <td>S/ 30433</td>
                     </tr>
@@ -144,7 +136,6 @@
                       <td>jose perez</td>
                       <td>Snata anita</td>
                       <td>micash</td>
-                      <td>juan jose</td>
                       <td>Cerrada</td>
                       <td>S/ 30433</td>
                     </tr>
@@ -154,7 +145,6 @@
                       <td>jose perez</td>
                       <td>Snata anita</td>
                       <td>micash</td>
-                      <td>juan jose</td>
                       <td>Cerrada</td>
                       <td>S/ 30433</td>
                     </tr>
