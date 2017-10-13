@@ -169,7 +169,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <input type="text" class="form-control" id="agencia" name="agencia" placeholder="Agencia">
                   </div>
                   <div class="form-group">
@@ -182,7 +182,7 @@
                       <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
                       <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-xs-12">
                   <div class="form-group col-xs-6 text-left">
