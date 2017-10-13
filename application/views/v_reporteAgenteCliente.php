@@ -51,13 +51,23 @@
             <h1 class="titulo-vista">Vista Reportes</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+            <?php if(_getSesion('rol') == 'administrador'){ ?>
+              <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
+              <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+              <a href="/C_main">Ver Usuarios</a><br>
+            <?php }
+                elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+                <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                <a href="/C_main">Ver Usuarios</a><br>
+            <?php } ?>
           </div>
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="/C_reporteAsesor/asesorCliente" class="nav-active-a">Agente - CLiente</a></li>
-              <li><a href="/C_reporteAsesor/asesorHistorialSolicitud">Historial Solicitud</a></li>
+              <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
+              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - CLiente</a></li>
+              <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
+              <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
           </div>
 
@@ -65,7 +75,18 @@
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
               <form class="form-horizontal">
-                <div class="col-xs-12 col-sm-4" style="margin-top: 30px">
+                <div class="col-xs-12 col-sm-4">
+                  <div class="form-group" style="margin-top: 13px">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                      <select name="agencia" class="form-control" id="agencia">
+                        <option>Agencia</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>  
+                  </div>
                   <div class="form-group"> 
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
                       <select name="tipo_credito" class="form-control" id="tipo_credito">

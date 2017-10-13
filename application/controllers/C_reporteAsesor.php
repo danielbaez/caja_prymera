@@ -14,12 +14,12 @@ class C_reporteAsesor extends CI_Controller {
 
     }
     
-    public function asesorCliente()
+    public function agenteCliente()
     {      
-        $this->load->view('v_asesorAsesorCliente', []);
+        $this->load->view('v_asesorAgenteCliente', []);
     }
 
-    public function asesorHistorialSolicitud()
+    public function agenteHistorialSolicitud()
     {
         $this->load->view('v_asesorHistorialSolicitud', []);
     }

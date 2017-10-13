@@ -14,24 +14,24 @@ class C_reporte extends CI_Controller {
 
     }
     
-    public function index()
+    public function solicitudes()
     {      
-        $this->load->view('v_reporte', []);
+        $this->load->view('v_reporteSolicitud', []);
     }
 
     public function agenteCliente()
     {
-        $this->load->view('v_agenteCliente', []);
+        $this->load->view('v_reporteAgenteCliente', []);
     }
 
     public function historialSolicitud()
     {
-        $this->load->view('v_historialSolicitud', []);
+        $this->load->view('v_reporteHistorialSolicitud', []);
     }
 
     public function solicitudRechazada()
     {
-        $this->load->view('v_solicitudRechazada', []);
+        $this->load->view('v_reporteSolicitudRechazada', []);
     }
     
 }

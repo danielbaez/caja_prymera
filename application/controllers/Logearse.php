@@ -122,7 +122,8 @@ class logearse extends CI_Controller {
                 $productos = explode(',', $datos[0]->permiso);
                 $this->session->set_userdata(array('usuario'          => $usuario,
                                                     'rol'             => $datos[0]->rol,
-                                                    'id_usuario'      =>$datos[0]->id
+                                                    'id_usuario'      =>$datos[0]->id,
+                                                    'nombre'          =>$datos[0]->nombre
                                                     ));
                                                                   
                 if(in_array($redirect, $productos)){
@@ -131,10 +132,10 @@ class logearse extends CI_Controller {
                             redirect('C_main');    
                         }
                         elseif($datos[0]->rol == 'jefe_agencia'){
-                            redirect('C_reporte/index');    
+                            redirect('C_reporte/solicitudes');    
                         }
                         elseif($datos[0]->rol == 'asesor'){
-                            redirect('C_reporteAsesor/asesorCliente');    
+                            redirect('C_reporteAsesor/agenteCliente');    
                         }
                         
                     }else if($redirect == PERMISO_MICASH) {
@@ -151,10 +152,10 @@ class logearse extends CI_Controller {
                         redirect('C_main');    
                     }
                     elseif($datos[0]->rol == 'jefe_agencia'){
-                        redirect('C_reporte/index');    
+                        redirect('C_reporte/solicitudes');    
                     }
                     elseif($datos[0]->rol == 'asesor'){
-                        redirect('C_reporteAsesor/asesorCliente');    
+                        redirect('C_reporteAsesor/agenteCliente');    
                     }
                 }
                     

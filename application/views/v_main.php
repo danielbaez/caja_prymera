@@ -51,9 +51,18 @@
             <h1 class="titulo-vista">Bienvenido <?php echo $nombre ?></h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
-            <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
+            
+
+            <?php if(_getSesion('rol') == 'administrador'){ ?>
+                <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-            <a href="/C_reporte/index">Ver Reportes</a><br>
+            <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
+              <?php }
+                  elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+                  <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                  <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
+              <?php } ?>
+
           </div>
           
           <div class="col-xs-12 col-md-6 col-seccion">
