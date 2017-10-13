@@ -347,7 +347,7 @@ class C_confirmacion extends CI_Controller {
             if($numero != _getSesion('codigo_ver')) {
                 $data['mensaje'] = "El n&uacute;mero ingresado no es v&aacute;";
                 $data['cambio'] = 1;
-                $arrayUpdt = array('validar_celular' => 2);
+                $arrayUpdt = array('validar_celular' => 0);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }else {
                 $session = array('salario'      => $salario,
@@ -373,13 +373,14 @@ class C_confirmacion extends CI_Controller {
                             'provincia'         => $Provincia,
                             'distrito'          => $Distrito,
                             'nro_fijo'          => $telefono,
-                            'cod_concecionaria'     => $concesionaria,
+                            'cod_concecionaria' => $concesionaria,
                             'cod_agencia'       => $agencia[0]->id,
                             'validar_celular'   => 1,
                             'timestamp_datos'   => date("Y-m-d H:i:s"),
                             'estado_civil'      => $estado_civil,
                             'nombre_conyugue'   => $nombre_conyugue,
-                            'dni_conyugue'      => $dni_conyugue
+                            'dni_conyugue'      => $dni_conyugue,
+                            'status_sol'        => 0
                 );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
