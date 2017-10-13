@@ -53,9 +53,39 @@ class C_reporte extends CI_Controller {
 
     public function agenteCliente()
     {
-        $data['agencias'] = $this->M_agencia->getAgencias();
         $data['productos'] = $this->M_producto->getProductos();
-        $this->load->view('v_reporteAgenteCliente', $data);
+
+        $action = _post('action');
+        if(isset($action) and  $action == 'obtenerAgenteCliente') {
+            $id_asesor = _post('id_asesor');
+            $asesor = _post('asesor');
+            $tipo_credito = _post('tipo_credito');
+            $status = _post('status');
+            $fecha_desde = _post('fecha_desde');
+            $fecha_hasta = _post('fecha_hasta');
+            $filtros = array(
+                        'id_asesor' => $id_asesor,
+                        'tipo_credito' => $tipo_credito,
+                        'status' => $status,
+                        'fecha_desde' => $fecha_desde,
+                        'fecha_hasta' => $fecha_hasta
+                    );
+
+            $data['solicitudes'] = $this->M_solicitud->obtenerAgenteCliente($filtros);
+
+            $data['id_asesor'] = $id_asesor;
+            $data['asesor'] = $asesor;
+            $data['id_tipo_credito'] = $tipo_credito;
+            $data['status'] = $status;
+            $data['desde'] = $fecha_desde;
+            $data['hasta'] = $fecha_hasta;
+
+            $this->load->view('v_reporteAgenteCliente', $data);
+        }
+        else
+        {        
+            $this->load->view('v_reporteAgenteCliente', $data);
+        }
     }
 
     public function autocompleteGetAsesor()

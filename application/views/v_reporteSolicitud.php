@@ -185,7 +185,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php  ?>
                     <?php
                     if(isset($solicitudes) and count($solicitudes)){
                       foreach ($solicitudes as $solicitud) {
@@ -197,7 +196,7 @@
                         <td><?php echo $solicitud->AGENCIA ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
                         <td><?php echo $solicitud->asesor ?></td>
-                        <td><?php echo $solicitud->status_sol ?></td>
+                        <td><?php echo $solicitud->status_sol == 0 ? 'Abierto' : 'Cerrado' ?></td>
                         <td><?php echo $solicitud->monto ?></td>
                       </tr>
                       <?php
@@ -207,7 +206,18 @@
                   </tbody>
                 </table>
               </div>
-              <p class="text-right reporte-texto-total">Total de S/323</p>
+              <?php if(isset($solicitudes) and count($solicitudes)){
+                $total = 0;
+                foreach ($solicitudes as $solicitud) {
+                  
+                  $total .= $solicitud->monto;
+                }
+                ?>
+                  <p class="text-right reporte-texto-total">Total de <?php echo $total ?></p>
+                <?php
+                }
+                ?>
+              
             </div>
           </div>
         </div>
