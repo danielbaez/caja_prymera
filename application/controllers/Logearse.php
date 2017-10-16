@@ -116,18 +116,40 @@ class logearse extends CI_Controller {
         $password = _post('password');
         $redirect = _post('redirect');
 
-        $datos = $this->M_usuario->login($usuario);
-        if(count($datos)){
-            if($this->validate_pass($datos[0]->password, $password)){
-                $productos = explode(',', $datos[0]->permiso);
-                $this->session->set_userdata(array('usuario'          => $usuario,
-                                                    'rol'             => $datos[0]->rol,
-                                                    'id_usuario'      =>$datos[0]->id,
-                                                    'nombre'          =>$datos[0]->nombre
-                                                    ));
-                                                                  
-                if(in_array($redirect, $productos)){
-                    if($redirect == PERMISO_ADMINISTRADOR) {
+        if($usuario != '' OR $password != '')
+        {
+            $datos = $this->M_usuario->login($usuario);
+            if(count($datos)){
+                if($this->validate_pass($datos[0]->password, $password)){
+                    $productos = explode(',', $datos[0]->permiso);
+                    $this->session->set_userdata(array('usuario'          => $usuario,
+                                                        'rol'             => $datos[0]->rol,
+                                                        'id_usuario'      =>$datos[0]->id,
+                                                        'nombre'          =>$datos[0]->nombre
+                                                        ));
+                                                                      
+                    if(in_array($redirect, $productos)){
+                        if($redirect == PERMISO_ADMINISTRADOR) {
+                            if($datos[0]->rol == 'administrador'){
+                                redirect('C_main');    
+                            }
+                            elseif($datos[0]->rol == 'jefe_agencia'){
+                                redirect('C_reporte/solicitudes');    
+                            }
+                            elseif($datos[0]->rol == 'asesor'){
+                                redirect('C_reporteAsesor/agenteCliente');    
+                            }
+                            
+                        }else if($redirect == PERMISO_MICASH) {
+                            $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
+                                                               'permiso_prod' => PERMISO_MICASH));
+                            redirect('Micash');
+                        }else if($redirect == PERMISO_VEHICULAR) {
+                            $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
+                                                               'permiso_prod' => PERMISO_VEHICULAR));
+                            redirect('Login');
+                        }
+                    }else{
                         if($datos[0]->rol == 'administrador'){
                             redirect('C_main');    
                         }
@@ -137,30 +159,18 @@ class logearse extends CI_Controller {
                         elseif($datos[0]->rol == 'asesor'){
                             redirect('C_reporteAsesor/agenteCliente');    
                         }
+                    }
                         
-                    }else if($redirect == PERMISO_MICASH) {
-                        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
-                                                           'permiso_prod' => PERMISO_MICASH));
-                        redirect('Micash');
-                    }else if($redirect == PERMISO_VEHICULAR) {
-                        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
-                                                           'permiso_prod' => PERMISO_VEHICULAR));
-                        redirect('Login');
-                    }
                 }else{
-                    if($datos[0]->rol == 'administrador'){
-                        redirect('C_main');    
-                    }
-                    elseif($datos[0]->rol == 'jefe_agencia'){
-                        redirect('C_reporte/solicitudes');    
-                    }
-                    elseif($datos[0]->rol == 'asesor'){
-                        redirect('C_reporteAsesor/agenteCliente');    
-                    }
-                }
                     
-            }else{
-                
+                    $this->session->set_flashdata('error', 'Datos invalidos');
+                    redirect('/');
+
+                }
+            }
+            else
+            {
+                    
                 $this->session->set_flashdata('error', 'Datos invalidos');
                 redirect('/');
 
@@ -168,10 +178,8 @@ class logearse extends CI_Controller {
         }
         else
         {
-                
-            $this->session->set_flashdata('error', 'Datos invalidos');
-            redirect('/');
-
+            $this->session->set_flashdata('error', 'Ingrese sus datos');
+                redirect('/');
         }
        
     }
