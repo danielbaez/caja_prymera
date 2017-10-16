@@ -156,3 +156,7 @@ $("#imgInp").change(function(){
 function actualizarDatos() {
 
 }
+
+$('#blah').on('click', function () {
+    $( "#imgInp" ).trigger( "click" );
+});

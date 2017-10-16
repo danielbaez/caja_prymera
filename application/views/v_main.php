@@ -102,7 +102,7 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
                     <img id="blah" src="<?php echo RUTA_IMG?>fondos/user.png" width="100" height="100" />
-                    <input type='file' id="imgInp"/>
+                    <input type='file' id="imgInp" class="hidden"/>
                   </div>
                   <div class="form-group div-sexo">
                     <select class="form-control" id="sexo" name="sexo">

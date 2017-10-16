@@ -67,14 +67,14 @@ class micash_resumen extends CI_Controller {
     function sendMailGmail(){
       $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
-      try {
+      try {  
           //cargamos la libreria email de ci
        $this->load->library("email");
        //configuracion para gmail
        $configGmail = array(
        'protocol' => 'smtp',
-       'smtp_host' => 'correo.prymera.pe',
-       'smtp_port' => 25,
+       'smtp_host' => 'ssl://smtp.gmail.com',
+       'smtp_port' => 465,
        'smtp_user' => 'miauto@prymera.pe',
        'smtp_pass' => '8hUpuv6da_@v',
        'mailtype' => 'html',
@@ -87,13 +87,15 @@ class micash_resumen extends CI_Controller {
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
        $this->email->from('userauto@prymera.com.pe');
-       $this->email->to(_getSesion('email'));
+       $this->email->to('jhonatan.iberico@comparabien.com');
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
+       $tipo_cred = null;
+       _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
        $this->email->message('
         <h1><strong>Mi Cash</strong></h1>
         <h4>'.$nombre.' Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n detallamos las condiciones del cr&eacute;dito “MI CASH” </h4>
+        <h4>A continuaci&oacute;n detallamos las condiciones del cr&eacute;dito '.$tipo_cred.' </h4>
         <h4>que solicitaste:</h4>
 
         <p>Monto: '._getSesion('pago_total').' </p>
@@ -118,7 +120,8 @@ class micash_resumen extends CI_Controller {
         <p>T&eacute;rminos y condiciones:” Seg&uacute;n lo especificado por legal”</p>
         ');
        $this->email->send();
-       _log(print_r($this->email->send(), true));
+       
+      _log(print_r($this->email->print_debugger(), true));
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        //con esto podemos ver el resultado
