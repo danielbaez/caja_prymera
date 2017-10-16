@@ -93,6 +93,9 @@ class C_main extends CI_Controller {
             $rol = _post('rol');
             $nombre = _post('nombre');
             $agencia = _post('agencia');
+            if($rol == 'administrador') {
+                $datos = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, null);
+            }
             $id_agencia = $this->M_preaprobacion->getidByAgencia($agencia);
             //_log(print_r($id_agencia, true));
             $datos = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, $id_agencia[0]->id);

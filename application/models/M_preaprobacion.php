@@ -133,7 +133,26 @@ class M_preaprobacion extends  CI_Model{
     }
 
     function getDatosPersByRol($rol, $nombre, $agencia) {
-      $sql = "SELECT u.nombre, 
+      if($rol == 'administrador') {
+        $sql = "SELECT u.nombre, 
+                     DATE_FORMAT(u.fecha_nac, '%m/%d/%Y') AS fecha_nac,
+                     u.rol, 
+                     u.apellido, 
+                     DATE_FORMAT(u.fecha_ingreso, '%m/%d/%Y') AS fecha_ingreso, 
+                     u.sexo, 
+                     u.celular, 
+                     u.dni, 
+                     u.permiso,
+                     u.email,
+                     u.id,
+                     u.rol
+                FROM usuario u,
+                     agencias a
+               WHERE u.id = a.id
+                 AND rol LIKE '%".$rol."%' 
+                 AND u.nombre LIKE '%".$nombre."%'";
+      }else {
+          $sql = "SELECT u.nombre, 
                      DATE_FORMAT(u.fecha_nac, '%m/%d/%Y') AS fecha_nac,
                      u.rol, 
                      u.apellido, 
@@ -151,6 +170,8 @@ class M_preaprobacion extends  CI_Model{
                  AND rol LIKE '%".$rol."%' 
                  AND u.nombre LIKE '%".$nombre."%'
                  AND id_agencia = ".$agencia."";
+      }
+      
         $result = $this->db->query($sql, array());
         return $result->result();
     }
