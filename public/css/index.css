@@ -35,6 +35,9 @@ body{
 .iphone-margin{
 	-webkit-margin-before: -50px !important; 
 }
+.bootstrap-select>button {
+	border: 1px solid #E2E2E2 !important;
+}
 #nav-icon3 span{
 	display: block;
 	position: absolute;
