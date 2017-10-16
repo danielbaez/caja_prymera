@@ -149,15 +149,24 @@ class M_preaprobacion extends  CI_Model{
                      agencias a
                WHERE u.id = a.id
                  AND rol LIKE '%".$rol."%' 
-                 AND u.nombre LIKE '%".$nombre."%'";
+                 AND u.nombre LIKE '%".$nombre."%'
+                 AND id_agencia = ".$agencia."";
         $result = $this->db->query($sql, array());
         return $result->result();
     }
 
-    /*function getDatosPersByRol($rol) {
-      $sql = "";
-        $result = $this->db->query($sql, array($rol));
+    function getidByAgencia($agencia) {
+      if($agencia == "Miraflores") {
+        $sql = "SELECT id
+              FROM agencias
+             WHERE AGENCIA LIKE '".$agencia."'";
+      }
+      $sql = "SELECT id
+              FROM agencias
+             WHERE AGENCIA LIKE '%".$agencia."%'";
+        $result = $this->db->query($sql, array());
+        //_logLastQuery();
         return $result->result();
-    }*/
+    }
 }
     

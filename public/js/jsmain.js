@@ -107,11 +107,14 @@ function verificarRol() {
       }
     });
 }
+
 var flg_updt = 1;
-function setearCampos() {
-  var rol = document.getElementById('rol_pers').innerText;
-  var nombre = document.getElementById('nombre_pers').innerText;
-  var agencia = document.getElementById('agencia_pers').innerText;
+function setearCampos(dato, contador) {
+  var id = dato.id;
+  var rol = document.getElementById('rol_pers_'+contador).innerText;
+  var nombre = document.getElementById(id).innerText;
+  var agencia = document.getElementById('agencia_pers_'+contador).innerText;
+  console.log(agencia);
   $.ajax({
     data  : { rol : rol,
               nombre : nombre,

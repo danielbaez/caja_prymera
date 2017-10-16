@@ -12,9 +12,12 @@ class M_usuario extends  CI_Model{
     }
 
     function getPersonal() {
-        $sql = "SELECT * 
-                  FROM usuario 
-                 WHERE estado = 1";
+        $sql = "SELECT u.*,
+                a.AGENCIA
+         FROM usuario u,
+              agencias a
+        WHERE u.id = a.id
+          AND u.estado = 1";
         $result = $this->db->query($sql, array());
         return $result->result();
     }

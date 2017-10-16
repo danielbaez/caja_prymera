@@ -82,9 +82,9 @@
                     <?php foreach($personales as $personal){
                       ?>
                     <tr>
-                      <td onclick="setearCampos()" id="nombre_pers"><?php echo $personal->nombre ?></td>
-                      <td id="rol_pers"><?php echo $personal->rol ?></td>
-                      <td id="agencia_pers">Miraflores</td>
+                      <td onclick="setearCampos(this, <?php echo $personal->id ?>)" id="nombre_pers_<?php echo $personal->id ?>"><?php echo $personal->nombre ?></td>
+                      <td id="rol_pers_<?php echo $personal->id ?>"><?php echo $personal->rol ?></td>
+                      <td id="agencia_pers_<?php echo $personal->id ?>"><?php echo $personal->AGENCIA ?></td>
                     </tr>
                   <?php                 
                   } ?>                
