@@ -115,7 +115,7 @@ class M_solicitud extends  CI_Model{
             $a = "solicitud.id_usuario = ?";
             $d = array($filtros['id_asesor']);
         }
-        if($filtros['id_asesor'] == '' and $filtros['fecha_desde'] == '' and $filtros['fecha_hasta'] == '' and $filtros['agencia'] != ''){
+        elseif($filtros['id_asesor'] == '' and $filtros['fecha_desde'] == '' and $filtros['fecha_hasta'] == '' and $filtros['agencia'] != ''){
             $a = "agencias.id = ?";
             $d = array($filtros['agencia']);
         }
