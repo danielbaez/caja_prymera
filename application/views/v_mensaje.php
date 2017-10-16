@@ -38,7 +38,7 @@
           <h6>Cr&eacute;dito Consumo</h6>
           <h3>Mi Cash</h3>
         <?php } else { ?>
-            <h6 style=" color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 15px;">Cr&eacute;dito vehicular/h6>
+            <h6 style=" color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 15px;">Cr&eacute;dito vehicular</h6>
             <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px;">Auto de Caja Prymera</h3>
         <?php } ?>
       </div>
