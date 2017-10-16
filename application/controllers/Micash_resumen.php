@@ -73,10 +73,10 @@ class micash_resumen extends CI_Controller {
        //configuracion para gmail
        $configGmail = array(
        'protocol' => 'smtp',
-       'smtp_host' => 'correo.prymera.com.pe',
+       'smtp_host' => 'correo.prymera.pe',
        'smtp_port' => 25,
-       'smtp_user' => 'userauto@prymera.com.pe',
-       'smtp_pass' => 'zuxUst?4Eyup',
+       'smtp_user' => 'miauto@prymera.pe',
+       'smtp_pass' => '8hUpuv6da_@v',
        'mailtype' => 'html',
        'charset' => 'utf-8',
        'newline' => "\r\n"
@@ -118,6 +118,7 @@ class micash_resumen extends CI_Controller {
         <p>T&eacute;rminos y condiciones:” Seg&uacute;n lo especificado por legal”</p>
         ');
        $this->email->send();
+       _log(print_r($this->email->send(), true));
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        //con esto podemos ver el resultado
@@ -143,7 +144,7 @@ class micash_resumen extends CI_Controller {
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '._getSesion('nro_celular');
-        $message = 'Ud. Solicitó un crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'. Su cuota es de '._getSesion('cuota_mensual').' Revise correo con condiciones.';
+        $message = 'Solicitó un Crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'.Su cuota es '._getSesion('cuota_mensual').' Revise correo con condiciones';
         $response = $this->twilio->sms($from, $to, $message);
         //_log(print_r($response, true));
         if($response->IsError) {

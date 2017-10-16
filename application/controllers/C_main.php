@@ -12,6 +12,7 @@ class C_main extends CI_Controller {
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
         $this->load->model('M_preaprobacion');
+        $this->load->helper("url");
 //         if (! isset($_COOKIE[__getCookieName()])) {
 //             header("Location: ".RUTA_KOPLAN, true, 301);
 //             //redirect(RUTA_VEHIKMANT, 'location');
@@ -27,7 +28,7 @@ class C_main extends CI_Controller {
         
         $data['personales'] = $this->M_usuario->getPersonal();
 
-        _log(print_r($this->session->all_userdata('deliverdata') , true));
+        //_log(print_r($this->session->all_userdata('deliverdata') , true));
 //         if(_getSesion("nombre") == null && _getSesion("email") == null) {
 //             header("Location: ".RUTA_KOPLAN, true, 301);
 //         }
@@ -45,7 +46,10 @@ class C_main extends CI_Controller {
         $email        = _post('email');
         $rol          = _post('rol');
         $rol_superior = _post('rol_superior');
-
+        $checkPermiso = _post('permiso');
+        $agencia      = _post('agencia');
+        $nombre_img      = _post('nombre_img');
+        $permiso = implode(",",$checkPermiso);
         $arrayInsert = array('nombre' => $nombres,
                             'apellido'  => $apellidos,
                             'email'  => $email,
@@ -56,10 +60,14 @@ class C_main extends CI_Controller {
                             'fecha_nac' => $fecha_nacimiento,
                             'fecha_ingreso'    => $fecha_ingreso,
                             'celular'          => $celular,
-                            'rol'      => $rol
+                            'rol'              => $rol,
+                            'usuario'          => $rol_superior,
+                            'permiso'          => $permiso,
+                            'estado'           => 1,
+                            'imagen'           => $nombre_img
                             );
         $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
-        redirect('C_main');
+        redirect('/C_main');
     }
 
     function get_hash($password, $cost = 11) {
@@ -83,13 +91,18 @@ class C_main extends CI_Controller {
         $data['msj']   = null;
         try {
             $rol = _post('rol');
-            $datos = $this->M_preaprobacion->getDatosPersByRol($rol);
+            $nombre = _post('nombre');
+            $agencia = _post('agencia');
+            $datos = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, $agencia);
+            //_logLastQuery();
             $data['dni'] = $datos[0]->dni;
             $data['nombre'] = $datos[0]->nombre;
             $data['fecha_nac'] = $datos[0]->fecha_nac;
             $data['sexo'] = $datos[0]->sexo;
             $data['fecha_ingreso'] = $datos[0]->fecha_ingreso;
             $data['celular'] = $datos[0]->celular;
+            $data['email'] = $datos[0]->email;
+            $data['apellido'] = $datos[0]->apellido;
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -105,6 +118,34 @@ class C_main extends CI_Controller {
             $opt .= '<option data-tokens="'.$agen.'"> '.$agen.'</option>';
         }
         return $opt;
+    }
+
+    function verificarRol() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $rol = _post('rol');
+            $datos = $this->M_preaprobacion->verificarDatos($rol);
+            $data['nombre_complet'] = $datos['0']->nombres;
+         $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function updateDatos() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $rol = _post('rol');
+            $datos = $this->M_preaprobacion->verificarDatos($rol);
+            $data['nombre_complet'] = $datos['0']->nombres;
+         $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
     }
 }
 

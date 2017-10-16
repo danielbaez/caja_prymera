@@ -106,8 +106,9 @@ class M_preaprobacion extends  CI_Model{
 
     function verificarDatos() {
         $sql = "SELECT email,
-                       clave,
-                       rol 
+                       password,
+                       rol,
+                       CONCAT(nombre, ' ', apellido) AS nombres
                   FROM usuario 
                  WHERE rol 
                   LIKE '%administrador%'";
@@ -131,26 +132,31 @@ class M_preaprobacion extends  CI_Model{
         return $result->result();
     }
 
-    function getDatosPersByRol($rol) {
-      $sql = "SELECT nombre,
-                     DATE_FORMAT(fecha_nac, '%m/%d/%Y') AS fecha_nac,
-                     rol, 
-                     apellido, 
-                     DATE_FORMAT(fecha_ingreso, '%m/%d/%Y') AS fecha_ingreso, 
-                     sexo, 
-                     celular, 
-                     dni,
-                     permiso
-                FROM usuario
-               WHERE rol LIKE ?";
-        $result = $this->db->query($sql, array($rol));
+    function getDatosPersByRol($rol, $nombre, $agencia) {
+      $sql = "SELECT u.nombre, 
+                     DATE_FORMAT(u.fecha_nac, '%m/%d/%Y') AS fecha_nac,
+                     u.rol, 
+                     u.apellido, 
+                     DATE_FORMAT(u.fecha_ingreso, '%m/%d/%Y') AS fecha_ingreso, 
+                     u.sexo, 
+                     u.celular, 
+                     u.dni, 
+                     u.permiso,
+                     u.email,
+                     u.id 
+                FROM usuario u,
+                     agencias a
+               WHERE u.id = a.id
+                 AND rol LIKE '%".$rol."%' 
+                 AND u.nombre LIKE '%".$nombre."%'";
+        $result = $this->db->query($sql, array());
         return $result->result();
     }
 
-    function getDatosPersByRol($rol) {
+    /*function getDatosPersByRol($rol) {
       $sql = "";
         $result = $this->db->query($sql, array($rol));
         return $result->result();
-    }
+    }*/
 }
     

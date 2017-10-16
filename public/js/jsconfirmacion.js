@@ -85,20 +85,6 @@ function verificarNumero() {
 		msj('error','Por favor acepte la autorizaci&oacute;n de datos');
 		  return;
 	}
-	if(estado_civil == null) {
-		msj('error', 'Ingrese un estado civil');
-		return;
-	}
-	if(estado_civil == "casado") {
-		if(nombre_conyugue == null) {
-			msj('error', 'Ingrese el nombre de su conyugue');
-			return;
-		}
-		if(dni_conyugue == null) {
-			msj('error', 'Ingrese el dni de su conyugue');
-			return;
-		}
-	}
 	$.ajax({
 		data  : { salario : salario,
 				nro_celular : nro_celular,

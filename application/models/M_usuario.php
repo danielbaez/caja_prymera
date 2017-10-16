@@ -14,8 +14,8 @@ class M_usuario extends  CI_Model{
     function getPersonal() {
         $sql = "SELECT * 
                   FROM usuario 
-                 WHERE estado = ?";
-        $result = $this->db->query($sql, array(1));
+                 WHERE estado = 1";
+        $result = $this->db->query($sql, array());
         return $result->result();
     }
 

@@ -1,3 +1,4 @@
+var global_img = null;
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
 
@@ -83,12 +84,35 @@ function verificarRol() {
   }else {
     $(".ocultar").removeClass("hidden");
   }
-}
-
-function setearCampos() {
-  var rol = document.getElementById('rol_pers').innerText;
   $.ajax({
     data  : { rol : rol},
+    url   : 'C_main/verificarRol',
+    type  : 'POST'
+  }).done(function(data){
+      try{
+        data = JSON.parse(data);
+        if(data.error == 0){
+            if(rol == "asesor") {
+              $('#rol_superior').html('');
+              $('#rol_superior').append('<option value="">Rol Superior</option>');
+              $('#rol_superior').append('<option value="'+data.nombre_complet+'">'+data.nombre_complet+'</option>');
+            }
+        }else {
+        }
+      } catch (err){
+        msj('error',err.message);
+      }
+    });
+}
+var flg_updt = 1;
+function setearCampos() {
+  var rol = document.getElementById('rol_pers').innerText;
+  var nombre = document.getElementById('nombre_pers').innerText;
+  var agencia = document.getElementById('agencia_pers').innerText;
+  $.ajax({
+    data  : { rol : rol,
+              nombre : nombre,
+              agencia : agencia},
     url   : 'C_main/getDatosPers',
     type  : 'POST'
   }).done(function(data){
@@ -97,14 +121,38 @@ function setearCampos() {
         if(data.error == 0){
           $('#nombres').val(data.nombre);
           $('#dni').val(data.dni);
-          $('#apellidos').val("administrador");
-          $('#fecha_nacimiento').val(data.fecha_nac);
+          $('#apellidos').val(data.apellido);
+          $('#fecha_nacimiento').html(data.fecha_nac);
           $('#celular').val(data.celular);
-          $('#email').val();
+          $('#email').val(data.email);
+          $('.oculto').addClass('hidden');
+          $('.aparece').removeClass('hidden');
+          $('.disabled').removeAttr("disabled");
         }else {
         }
       } catch (err){
         msj('error',err.message);
       }
     });
+}
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+        var name_file = input.files[0].name;
+        $('#nombre_img').val(name_file);
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+function actualizarDatos() {
+
 }

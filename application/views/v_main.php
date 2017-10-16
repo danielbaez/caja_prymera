@@ -82,9 +82,9 @@
                     <?php foreach($personales as $personal){
                       ?>
                     <tr>
-                      <td onclick="setearCampos()"><?php echo $personal->nombre ?></td>
+                      <td onclick="setearCampos()" id="nombre_pers"><?php echo $personal->nombre ?></td>
                       <td id="rol_pers"><?php echo $personal->rol ?></td>
-                      <td>Miraflores</td>
+                      <td id="agencia_pers">Miraflores</td>
                     </tr>
                   <?php                 
                   } ?>                
@@ -101,7 +101,8 @@
               <form class="text-center" action="C_main/registrar" method="POST">
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group">
-                    <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                    <img id="blah" src="<?php echo RUTA_IMG?>fondos/user.png" width="100" height="100" />
+                    <input type='file' id="imgInp"/>
                   </div>
                   <div class="form-group div-sexo">
                     <select class="form-control" id="sexo" name="sexo">
@@ -126,15 +127,13 @@
                   <div class="form-group">
                     <select class="form-control" id="rol" name="rol" onchange="verificarRol()">
                       <option value="">Rol</option>
-                      <option value="jefe_agencia">Jefe de Agencia</option>
-                      <option value="agente">Agente</option>
+                      <option value="jefe_agencia">Jefe de agencia</option>
+                      <option value="asesor">asesor</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <select class="form-control ocultar" id="rol_superior" name="rol_superior">
                       <option value="">Rol Superior</option>
-                      <option value="Ford">Ford</option>
-                      <option value="Zuzuki">Zuzuki</option>
                     </select>
                   </div>
 
@@ -157,20 +156,23 @@
                   <div class="form-group">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Correo" onchange="validaCorreo()">
                   </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control hidden" id="nombre_img" name="nombre_img">
+                  </div>
                   
                   <div class="form-group text-left">
                     <div class="checkbox">
-                      <label><input type="checkbox" value="micash" name="permiso[]">Mi Cash</label>
+                      <label><input type="checkbox" value="2" name="permiso[]">Mi Cash</label>
                     </div>
                     <div class="checkbox">
-                      <label><input type="checkbox" value="vehicular" name="permiso[]">Vehicular</label>
+                      <label><input type="checkbox" value="3" name="permiso[]">Vehicular</label>
                     </div>
                     <div class="checkbox disabled">
-                      <label><input type="checkbox" value="inactivo" name="permiso[]">Inactivo</label>
+                      <label><input type="checkbox" class="disabled" value="0" name="permiso[]" disabled="">Inactivo</label>
                     </div>
                   </div>
                   <div class="col-xs-12">
-                    <select class="selectpicker" data-live-search="true" title="Agencia" multiple>
+                    <select class="selectpicker" data-live-search="true" title="Agencia" id="agencia" name="agencia[]" multiple>
                       <?php echo $comboAgencias?>
                     </select>
                   </div>
@@ -179,7 +181,8 @@
                     <a onclick="limpiar()">Limpiar pantalla</a>
                   </div>
                   <div class="form-group col-xs-6 text-right">
-                    <input type="submit" name="" class="btn btn-primary" value="Guardar">
+                    <input type="submit" name="" class="btn btn-primary oculto" value="Guardar">
+                    <input type="button" name="" class="btn btn-primary aparece hidden" onclick="actualizarDatos()" value="Actualizar">
                   </div>
                 </div>
               </form>
