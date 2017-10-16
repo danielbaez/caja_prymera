@@ -166,6 +166,13 @@ class logearse extends CI_Controller {
 
             }
         }
+        else
+        {
+                
+            $this->session->set_flashdata('error', 'Datos invalidos');
+            redirect('/');
+
+        }
        
     }
 

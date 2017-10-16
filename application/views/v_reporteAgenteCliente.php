@@ -75,12 +75,12 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
-              <form class="form-horizontal">
+              <form class="form-horizontal" method="POST" action="/C_reporte/agenteCliente">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group" style="margin-top: 13px">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
-                      <input type="text" class="form-control" name="asesor" id="asesor" placeholder="Asesor">
-                      <input type="hidden" class="form-control" name="id_asesor">
+                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
+                      <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
                   </div>
                   <div class="form-group"> 
@@ -114,8 +114,34 @@
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
                       <select name="status" class="form-control" id="status">
                         <option value="">Status</option>
-                        <option value="S">Abierto</option>
-                        <option value="N">Cerrado</option>
+                        <?php if(isset($status)){
+                          if($status == ''){
+                          ?>
+                          <option value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                          <?php
+                          }
+                          elseif($status == 0){
+                          ?>
+                          <option selected value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                          <?php
+                          }
+                          elseif($status == 1){
+                          ?>
+                          <option value="0">Abierto</option>
+                          <option selected value="1">Cerrado</option>
+                          <?php
+                          }
+
+                        }
+                        else
+                        {
+                        ?>
+                          <option value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                        <?php
+                        } ?>
                       </select>
                     </div>
                   </div>
@@ -152,6 +178,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4" style="margin-top: 50px">
                   <div class="form-group"> 
+                      <input type="hidden" name="action" value="obtenerAgenteCliente">
                       <button type="submit" class="btn btn-primary btn-lg">Mostrar</button>
                   </div>
                 </div>
@@ -172,15 +199,23 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <tr>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->AGENCIA ?></td>
+                        <td><?php echo $solicitud->descripcion ?></td>
+                        <td><?php echo $solicitud->status_sol ?></td>
+                        <td><?php echo $solicitud->monto ?></td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
