@@ -39,17 +39,7 @@ class micash extends CI_Controller {
                                   'producto'=>'01'
                     );
 
-          $result = $client->GetDatosCliente($params);
-          $res = $result->return->resultado;
-          if($res == 1){
-            $documento = $result->return->documento;
-            $importeMinimo = $result->return->rango->importeMinimo;
-            $importeMaximo = $result->return->rango->importeMaximo;
-            $plazos = $result->return->rango->plazos;
-            
-            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'Preaprobacion');
-
-            $nombre        = __getTextValue('nombre');
+          $nombre        = __getTextValue('nombre');
             $apellido      = __getTextValue('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
@@ -60,6 +50,15 @@ class micash extends CI_Controller {
            }else {
               $check = 2;//no aceptó
            }
+          $result = $client->GetDatosCliente($params);
+          $res = $result->return->resultado;
+          if($res == 1){
+            $documento = $result->return->documento;
+            $importeMinimo = $result->return->rango->importeMinimo;
+            $importeMaximo = $result->return->rango->importeMaximo;
+            $plazos = $result->return->rango->plazos;
+            
+            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'Preaprobacion');
 
           $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,
@@ -90,6 +89,29 @@ class micash extends CI_Controller {
 
           }
           if($res == 0){
+            $session = array('nombre'  => $nombre,
+                'apellido'          => $apellido,
+                'dni'               => $dni,
+                'email'             => $email,
+                'tipo_solicitud'    => $res,
+                'tipo_producto'     => $tipo_producto
+            );
+            $this->session->set_userdata($session);
+            //$agencia = $this->M_preaprobacion->getAgenciaPersonal(_getSesion('id_usuario'));
+            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
+                                'nombre' => $nombre,
+                                'apellido'  => $apellido,
+                                'email'  => $email,
+                                'dni'  => $dni,
+                                'id_tipo_prod' => _getSesion('permiso_prod'),
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'check_autorizo'    => $check,
+                                'ws_error'          => $res,
+                                'ws_resultado'      => json_encode($result),
+                                'ws_timestamp'        => date("Y-m-d H:i:s")
+                                );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
+            $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
             $response = array('status' => 0, 'url' => RUTA_CAJA.'C_losentimos');
           }
           if($res == 2){

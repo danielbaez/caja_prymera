@@ -74,7 +74,7 @@ class micash_resumen extends CI_Controller {
        $configGmail = array(
        'protocol' => 'smtp',
        'smtp_host' => 'ssl://smtp.gmail.com',
-       'smtp_port' => 465,
+       'smtp_port' => 25,
        'smtp_user' => 'miauto@prymera.pe',
        'smtp_pass' => '8hUpuv6da_@v',
        'mailtype' => 'html',
@@ -86,8 +86,8 @@ class micash_resumen extends CI_Controller {
        $this->email->initialize($configGmail);
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
-       $this->email->from('userauto@prymera.com.pe');
-       $this->email->to('jhonatan.iberico@comparabien.com');
+       $this->email->from('userauto@prymera.com');
+       $this->email->to('claudiachumbe@gmail.com');
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
        $tipo_cred = null;

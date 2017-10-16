@@ -95,9 +95,7 @@
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                  <form class="text-center" action="/C_mensaje" type="POST">
-                    <button type="submit" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;font-family: 'quicksandbold';">Aceptar</button>
-                  </form>
+                    <button type="button" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;font-family: 'quicksandbold';" onclick="guardarDatos()">Aceptar</button>
                 </div>
               </div>
             </div>
@@ -112,6 +110,7 @@
 	<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
 	<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+  <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslosentimos.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
   </body>
 </html>
