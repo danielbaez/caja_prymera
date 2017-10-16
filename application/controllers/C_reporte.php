@@ -57,8 +57,12 @@ class C_reporte extends CI_Controller {
 
         $action = _post('action');
         if(isset($action) and  $action == 'obtenerAgenteCliente') {
-            $id_asesor = _post('id_asesor');
             $asesor = _post('asesor');
+            $id_asesor = _post('id_asesor');    
+            if($asesor == ''){
+                $id_asesor = '';
+            }
+
             $tipo_credito = _post('tipo_credito');
             $status = _post('status');
             $fecha_desde = _post('fecha_desde');
@@ -97,13 +101,123 @@ class C_reporte extends CI_Controller {
 
     public function historialSolicitud()
     {
-        $this->load->view('v_reporteHistorialSolicitud', []);
+        $action = _post('action');
+        if(isset($action) and  $action == 'obtenerHistorialSolicitud') {
+            $nro_solicitud = _post('nro_solicitud');
+            $cliente = _post('cliente');
+            $dni = _post('dni');
+            $fecha = _post('fecha');
+            $filtros = array(
+                        'nro_solicitud' => $nro_solicitud,
+                        'cliente' => $cliente,
+                        'dni' => $dni,
+                        'fecha' => $fecha
+                    );
+
+            $data['solicitudes'] = $this->M_solicitud->obtenerHistorialSolicitud($filtros);
+
+            $data['nro_solicitud'] = $nro_solicitud;
+            $data['cliente'] = $cliente;
+            $data['dni'] = $dni;
+            $data['fecha'] = $fecha;
+
+            $this->load->view('v_reporteHistorialSolicitud', $data);
+        }
+        else
+        {        
+            $this->load->view('v_reporteHistorialSolicitud', []);
+        }
+    }
+
+    public function modalInformacionSolicitud()
+    {
+        $id = _post('id');
+        $detalle = $this->M_solicitud->obtenerDetalleSolicitud($id);
+        echo json_encode($detalle);
+    }
+
+    public function actualizarEstadoSolicitud()
+    {
+        $id = _post('id');
+        $status = _post('status');
+        $response = $this->M_solicitud->actualizarEstadoSolicitud($id, $status);
+        echo json_encode(array('response'=>$response));
     }
 
     public function solicitudRechazada()
     {
-        $this->load->view('v_reporteSolicitudRechazada', []);
+
+        //print_r($this->sendMailGmail());
+        //exit();
+
+        $data['agencias'] = $this->M_agencia->getAgencias();
+
+        $action = _post('action');
+        if(isset($action) and  $action == 'obtenerSolicitudRechazada') {
+            $asesor = _post('asesor');
+            $id_asesor = _post('id_asesor');    
+            if($asesor == ''){
+                $id_asesor = '';
+            }           
+            
+            $agencia = _post('agencia');
+            $fecha_desde = _post('fecha_desde');
+            $fecha_hasta = _post('fecha_hasta');
+            $filtros = array(
+                        'id_asesor' => $id_asesor,
+                        'agencia' => $agencia,
+                        'fecha_desde' => $fecha_desde,
+                        'fecha_hasta' => $fecha_hasta
+                    );
+
+            $data['solicitudes'] = $this->M_solicitud->obtenerSolicitudRechazada($filtros);
+
+            $data['id_asesor'] = $id_asesor;
+            $data['asesor'] = $asesor;
+            $data['id_agencia'] = $agencia;
+            $data['desde'] = $fecha_desde;
+            $data['hasta'] = $fecha_hasta;
+
+            $this->load->view('v_reporteSolicitudRechazada', $data);
+        }
+        else
+        {        
+            $this->load->view('v_reporteSolicitudRechazada', $data);
+        }
     }
+
+    public function sendMailGmail()
+    {
+       //cargamos la libreria email de ci
+       $this->load->library("email");
+       
+       //configuracion para gmail
+       $configGmail = array(
+       'protocol' => 'smtp',
+       'smtp_host' => 'ssl://smtp.gmail.com',
+       'smtp_port' => 465,
+       'smtp_user' => 'miauto@prymera.pe',
+       'smtp_pass' => '8hUpuv6da_@v',
+       /*'smtp_host' => 'smtp.pepipost.com',
+       'smtp_port' => 25,
+       'smtp_user' => 'comparabien',
+       'smtp_pass' => 'Compara123',*/
+       'mailtype' => 'html',
+       'charset' => 'utf-8',
+       'newline' => "\r\n"
+       );    
+       
+       //cargamos la configuración para enviar con gmail
+       $this->email->initialize($configGmail);
+       
+       $this->email->from('danielestiphenbaezgaray@gmail.com');
+       $this->email->to("daniel_bg19@hotmail.com");
+       $this->email->subject('Bienvenido/a a uno-de-piera.com');
+       $this->email->message('<h2>Email enviado con codeigniter haciendo uso del smtp de gmail</h2><hr><br> Bienvenido al blog');
+       $this->email->send();
+       //con esto podemos ver el resultado
+       var_dump($this->email->print_debugger());
+     }
     
 }
 

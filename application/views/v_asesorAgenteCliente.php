@@ -23,6 +23,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
@@ -44,14 +45,16 @@
         </nav>
 
     <div class="container">
-    	<div class="row text-center">
+      <div class="row text-center">
         <div class="col-xs-12">
           <div class="col-xs-12 col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
             <h1 class="titulo-vista">Vista Reportes</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
+            
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                
           </div>
 
           <div class="col-xs-12">
@@ -64,14 +67,33 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
-              <form class="form-horizontal">
-                <div class="col-xs-12 col-sm-4" style="margin-top: 30px">
-                  <div class="form-group"> 
+              <form class="form-horizontal" method="POST" action="/C_reporteAsesor/agenteCliente">
+                <div class="col-xs-12 col-sm-4">
+                  
+                  <div class="form-group" style="margin-top: 30px"> 
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
                       <select name="tipo_credito" class="form-control" id="tipo_credito">
-                        <option value="">Tipo de Crédito</option>
-                        <option value="">Mi Cash</option>
-                        <option value="">Vehicular</option>
+                        <option value="">Tipo de Cr&eacute;dito</option>
+                        <?php foreach ($productos as $producto) {
+                          if(isset($id_tipo_credito)){
+                            if($id_tipo_credito == $producto->id){
+                          ?>
+                          <option selected value="<?php echo $producto->id ?>"><?php echo $producto->descripcion ?></option>
+                          <?php
+                            }
+                            else{
+                            ?>
+                            <option value="<?php echo $producto->id ?>"><?php echo $producto->descripcion ?></option>
+                            <?php
+                            }
+                          }
+                          else
+                          {
+                          ?>
+                            <option value="<?php echo $producto->id ?>"><?php echo $producto->descripcion ?></option>
+                          <?php
+                          }   
+                        } ?>
                       </select>
                     </div>
                   </div>
@@ -79,8 +101,34 @@
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
                       <select name="status" class="form-control" id="status">
                         <option value="">Status</option>
-                        <option value="">Abierto</option>
-                        <option value="">Cerrado</option>
+                        <?php if(isset($status)){
+                          if($status == ''){
+                          ?>
+                          <option value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                          <?php
+                          }
+                          elseif($status == 0){
+                          ?>
+                          <option selected value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                          <?php
+                          }
+                          elseif($status == 1){
+                          ?>
+                          <option value="0">Abierto</option>
+                          <option selected value="1">Cerrado</option>
+                          <?php
+                          }
+
+                        }
+                        else
+                        {
+                        ?>
+                          <option value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                        <?php
+                        } ?>
                       </select>
                     </div>
                   </div>
@@ -89,18 +137,35 @@
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Desde:</label>
-                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <?php if(isset($desde)){ ?>
+                          <input type="date" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
+                        <?php }
+                        else{
+                        ?>
+                        <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <?php
+                        }
+                        ?>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Hasta:</label>
-                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                      <?php if(isset($hasta)){ ?>
+                          <input type="date" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
+                        <?php }
+                        else{
+                        ?>
+                        <input type="date" name="fecha_hasta" class="form-control" id="fecha_hasta">
+                        <?php
+                        }
+                        ?>
                     </div>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-4" style="margin-top: 50px">
                   <div class="form-group"> 
+                      <input type="hidden" name="action" value="obtenerAgenteCliente">
                       <button type="submit" class="btn btn-primary btn-lg">Mostrar</button>
                   </div>
                 </div>
@@ -121,33 +186,23 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
-                    <tr>
-                      <td>10/07/2017</td>
-                      <td>300</td>
-                      <td>jose perez</td>
-                      <td>Snata anita</td>
-                      <td>micash</td>
-                      <td>Cerrada</td>
-                      <td>S/ 30433</td>
-                    </tr>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <tr>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->AGENCIA ?></td>
+                        <td><?php echo $solicitud->descripcion ?></td>
+                        <td><?php echo $solicitud->status_sol ?></td>
+                        <td><?php echo $solicitud->monto ?></td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -160,12 +215,12 @@
     </div>
 
 
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
+        
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
@@ -175,5 +230,9 @@
       <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+      <script type="text/javascript">
+          
+
+      </script>
     </body>
 </html>

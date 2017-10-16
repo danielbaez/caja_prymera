@@ -23,6 +23,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
@@ -74,17 +75,26 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">B&uacute;squeda Consolidado - Total Solicitudes Rechazadas</h4>
-              <form class="form-horizontal">
+              <form class="form-horizontal" method="POST" action="/C_reporte/solicitudRechazada">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
-                      <input type="text" class="form-control" name="asesor" placeholder="Asesor">
+                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
+                      <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Desde:</label>
-                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <?php if(isset($desde)){ ?>
+                          <input type="date" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
+                        <?php }
+                        else{
+                        ?>
+                        <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <?php
+                        }
+                        ?>
                     </div>
                   </div>
                 </div>
@@ -92,23 +102,48 @@
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
                       <select name="agencia" class="form-control" id="agencia">
-                        <option>Agencia</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                        <option value="">Agencia</option>
+                        <?php foreach ($agencias as $agencia) {
+                          if(isset($id_agencia)){
+                            if($id_agencia == $agencia->id){
+                          ?>
+                          <option selected value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+                          <?php
+                            }
+                            else{
+                            ?>
+                            <option value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+                            <?php
+                            }
+                          }
+                          else
+                          {
+                          ?>
+                            <option value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+                          <?php
+                          }   
+                        } ?>
                       </select>
                     </div>  
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Hasta:</label>
-                      <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                      <?php if(isset($hasta)){ ?>
+                          <input type="date" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
+                        <?php }
+                        else{
+                        ?>
+                        <input type="date" name="fecha_hasta" class="form-control" id="fecha_hasta">
+                        <?php
+                        }
+                        ?>
                     </div>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-4" style="margin-top: 50px">
                   <div class="form-group"> 
+                    <input type="hidden" name="action" value="obtenerSolicitudRechazada">
                       <button type="submit" class="btn btn-primary btn-lg">Mostrar</button>
                   </div>
                 </div>
@@ -127,27 +162,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="tr-cursor-pointer" data-toggle="modal" data-target="#modalInformacionSolicitud">
-                      <td>10/07/2017</td>
-                      <td>jose perez</td>
-                      <td>dwdw</td> 
-                      <td>Vehiuclar</td> 
-                      <td>Abierto</td>                      
-                    </tr>
-                    <tr class="tr-cursor-pointer" data-toggle="modal" data-target="#modalInformacionSolicitud">
-                      <td>10/07/2017</td>
-                      <td>jose perez</td>
-                      <td>dwdw</td> 
-                      <td>Vehiuclar</td> 
-                      <td>Abierto</td>                      
-                    </tr>
-                    <tr class="tr-cursor-pointer" data-toggle="modal" data-target="#modalInformacionSolicitud">
-                      <td>10/07/2017</td>
-                      <td>jose perez</td>
-                      <td>dwdw</td> 
-                      <td>Vehiuclar</td> 
-                      <td>Abierto</td>                      
-                    </tr>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
+                      <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>                        
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->agencia ?></td>
+                        <td><?php echo $solicitud->producto ?></td>
+                        <td>Rechazado</td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -168,22 +198,10 @@
               </div>
               <div class="modal-body text-center modal-reporte-informacion-solicitud">
                 <div class="row">
-                  <div class="col-xs-12 col-sm-4 col-sm-offset-1 text-left">
-                    <h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>
-                    <p><span>Titular:</span> fefe bnaez</p>
-                    <p><span>DNI Titular:</span> 323223</p>
-                    <p><span>e-mail:</span> dad@dewde.dd</p>
-                    <p><span>Nro Cel:</span> 323232</p>
-                    <p><span>Fijo:</span> 5344334</p>
+                  <div class="col-xs-12 col-sm-4 col-sm-offset-1 text-left div-datos-cliente">
                   </div>
                   
-                  <div class="col-xs-12 col-sm-4 col-sm-offset-2 text-left">
-                    <h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>
-                    <p><span>Nro Solicitud:</span> 323</p>
-                    <p><span>Fecha Solicitud:</span> 12/12/2121</p>
-                    <p><span>Hora:</span> 3:</span>00 pm</p>
-                    <p><span>Agencia:</span> Mall de Sur</p>
-                    <p><span>Asesor:</span> fewf ewfw</p>
+                  <div class="col-xs-12 col-sm-4 col-sm-offset-2 text-left div-datos-solicitud">
                   </div>
                 </div>             
              
@@ -194,11 +212,12 @@
 
 
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
+        
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
@@ -208,5 +227,82 @@
       <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+      <script type="text/javascript">
+          
+
+
+        var options = {
+
+          url: function() {
+            return "/C_reporte/autocompleteGetAsesor";
+          },
+
+          getValue: function(element) {
+            return element.nombre;
+          },
+
+          ajaxSettings: {
+            dataType: "json",
+            method: "POST",
+            data: {
+              dataType: "json"
+            }
+          },
+
+          preparePostData: function(data) {
+            data.asesor = $("#asesor").val();
+            return data;
+          },
+
+          list: {
+            onClickEvent: function(data) {
+              var value = $("#asesor").getSelectedItemData();
+              console.log(value)
+              $('input[name="id_asesor"]').val(value.id);
+            } 
+            /*onSelectItemEvent: function() {
+              var value = $("#asesor").getSelectedItemData()
+              alert(1)
+              console.log(value)
+            }*/
+          },
+
+          requestDelay: 400
+        };
+
+        $("#asesor").easyAutocomplete(options);
+
+        $(".tr-ver-info-solicitud").click(function() {
+            $.ajax({
+                data:  {id: $(this).attr('data-idSolicitud')},
+                url:   '/C_reporte/modalInformacionSolicitud',
+                type:  'post',
+                dataType: 'json',
+                success:  function (response) {
+                  $('#modalInformacionSolicitud').modal('show');
+                  console.log(response[0])
+                  var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
+                  dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
+                  dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
+                  dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
+                  dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
+                  dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
+                  $('.div-datos-cliente').html(dCliente);
+
+                  var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
+                  dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
+                  dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
+                  dSolicitud += '<p><span>Hora:</span> '+response[0].timestamp_final+'</p>';
+                  dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
+                  dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
+
+                  $('.div-datos-solicitud').html(dSolicitud);
+
+                }
+            });
+             
+        });
+
+      </script>
     </body>
 </html>
