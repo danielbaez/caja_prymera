@@ -16,7 +16,7 @@ class M_usuario extends  CI_Model{
                 a.AGENCIA
          FROM usuario u,
               agencias a
-        WHERE u.id = a.id
+        WHERE u.id_agencia = a.id
           AND u.estado = 1";
         $result = $this->db->query($sql, array());
         return $result->result();
