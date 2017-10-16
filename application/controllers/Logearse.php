@@ -116,7 +116,7 @@ class logearse extends CI_Controller {
         $password = _post('password');
         $redirect = _post('redirect');
 
-        if($usuario == '' OR $password == '')
+        if($usuario != '' OR $password != '')
         {
             $datos = $this->M_usuario->login($usuario);
             if(count($datos)){
