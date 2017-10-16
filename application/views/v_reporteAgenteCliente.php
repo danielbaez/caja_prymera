@@ -115,13 +115,19 @@
                       <select name="status" class="form-control" id="status">
                         <option value="">Status</option>
                         <?php if(isset($status)){
-                          if($status == 0){
+                          if($status == ''){
+                          ?>
+                          <option value="0">Abierto</option>
+                          <option value="1">Cerrado</option>
+                          <?php
+                          }
+                          elseif($status == 0){
                           ?>
                           <option selected value="0">Abierto</option>
                           <option value="1">Cerrado</option>
                           <?php
                           }
-                          if($status == 1){
+                          elseif($status == 1){
                           ?>
                           <option value="0">Abierto</option>
                           <option selected value="1">Cerrado</option>
