@@ -13,6 +13,9 @@ function valida(e){
     return patron.test(tecla_final);
 }
 
+$( document ).ready(function() {
+    limpiar();
+});
 function soloLetras(e){
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLowerCase();
@@ -125,6 +128,8 @@ function setearCampos() {
           $('#fecha_nacimiento').html(data.fecha_nac);
           $('#celular').val(data.celular);
           $('#email').val(data.email);
+          $('#rol').html(null);
+          $('#rol').append('<option value="'+data.rol+'">'+data.rol+'</option>');
           $('.oculto').addClass('hidden');
           $('.aparece').removeClass('hidden');
           $('.disabled').removeAttr("disabled");
@@ -154,7 +159,44 @@ $("#imgInp").change(function(){
 });
 
 function actualizarDatos() {
-
+  var nombres = $('#nombres').val();
+  var apellidos = $('#apellidos').val();
+  var sexo = $('#sexo').val();
+  var fecha_nacimiento = $('#fecha_nacimiento').val();
+  var dni = $('#dni').val();
+  var fecha_ingreso = $('#fecha_ingreso').val();
+  var celular = $('#celular').val();
+  var email = $('#email').val();
+  var rol = $('#rol').val();
+  var rol_superior = $('#rol_superior').val();
+  var nombre_img = $('#nombre_img').val();
+  $.ajax({
+    data  : { rol : rol,
+              nombres : nombres,
+              apellidos : apellidos,
+              sexo : sexo,
+              fecha_nacimiento : fecha_nacimiento,
+              dni : dni,
+              fecha_ingreso : fecha_ingreso,
+              celular : celular,
+              email : email,
+              rol : rol,
+              rol_superior : rol_superior,
+              nombre_img : nombre_img},
+    url   : 'C_main/actualizarDatos',
+    type  : 'POST'
+  }).done(function(data){
+      try{
+        data = JSON.parse(data);
+        if(data.error == 0){
+            msj('error', 'Se actualizaron sus datos');
+            setTimeout(function(){ location.reload(); }, 1000);
+        }else {
+        }
+      } catch (err){
+        msj('error',err.message);
+      }
+    });
 }
 
 $('#blah').on('click', function () {

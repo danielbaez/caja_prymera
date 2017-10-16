@@ -162,13 +162,13 @@
                   
                   <div class="form-group text-left">
                     <div class="checkbox">
-                      <label><input type="checkbox" value="2" name="permiso[]">Mi Cash</label>
+                      <label><input type="checkbox" value="2" name="permiso[]" id="permiso">Mi Cash</label>
                     </div>
                     <div class="checkbox">
-                      <label><input type="checkbox" value="3" name="permiso[]">Vehicular</label>
+                      <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Vehicular</label>
                     </div>
                     <div class="checkbox disabled">
-                      <label><input type="checkbox" class="disabled" value="0" name="permiso[]" disabled="">Inactivo</label>
+                      <label><input type="checkbox" class="disabled" value="0" name="permiso[]" disabled="" id="estado">Inactivo</label>
                     </div>
                   </div>
                   <div class="col-xs-12">

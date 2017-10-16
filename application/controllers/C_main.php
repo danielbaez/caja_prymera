@@ -103,6 +103,7 @@ class C_main extends CI_Controller {
             $data['celular'] = $datos[0]->celular;
             $data['email'] = $datos[0]->email;
             $data['apellido'] = $datos[0]->apellido;
+            $data['rol'] = $datos[0]->rol;
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -147,5 +148,44 @@ class C_main extends CI_Controller {
         }
         echo json_encode(array_map('utf8_encode', $data));
     }
+
+    function actualizarDatos() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $nombres   = __getTextValue('nombres');
+            $apellidos = __getTextValue('apellidos');
+            $sexo      = _post('sexo');
+            $fecha_nacimiento = _post('fecha_nacimiento');
+            $dni           = _post('dni');
+            $fecha_ingreso = _post('fecha_ingreso');
+            $celular      = _post('celular');
+            $email        = _post('email');
+            $rol          = _post('rol');
+            $rol_superior = _post('rol_superior');
+            //$checkPermiso = _post('permiso');
+            //_log(print_r($checkPermiso, true));
+            $agencia      = _post('agencia');
+            //$permiso = implode(",",$checkPermiso);
+            $nombre_img      = _post('nombre_img');
+            $id = $this->M_preaprobacion->getDatosPersByRol($rol, $nombres, null);
+            $arrayUpdt = array('celular' => $celular,
+                                'nombre' => $nombres,
+                                'sexo' => $sexo,
+                                'fecha_nac' => $fecha_nacimiento,
+                                'dni' => $dni,
+                                'fecha_ingreso' => $fecha_ingreso,
+                                'email' => $email,
+                                'usuario' => $email,
+                                'rol' => $rol,
+                                'imagen' => $nombre_img,
+                                'apellido' => $apellidos);
+         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$id[0]->id , 'usuario');
+         $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }    
 }
 

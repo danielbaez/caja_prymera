@@ -89,6 +89,17 @@ class Login extends CI_Controller {
                                   'producto'=>'02'
                     );
 
+          $nombre        = __getTextValue('nombre');
+            $apellido      = __getTextValue('apellido');
+            $dni           = _post('dni');
+            $email         = _post('email');
+            $tipo_producto = PRODUCTO_VEHICULAR;
+            $check = _post('check');
+            if($check == true) {
+              $check = 1;//aceptó
+           }else {
+              $check = 2;//no aceptó
+           }
           $result = $client->GetDatosCliente($params);
           $res = $result->return->resultado;
           if($res == 1){
@@ -120,18 +131,6 @@ class Login extends CI_Controller {
             
             $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
 
-            $nombre        = __getTextValue('nombre');
-            $apellido      = __getTextValue('apellido');
-            $dni           = _post('dni');
-            $email         = _post('email');
-            $tipo_producto = PRODUCTO_VEHICULAR;
-            $check = _post('check');
-            if($check == true) {
-              $check = 1;//aceptó
-           }else {
-              $check = 2;//no aceptó
-           }
-
           $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,
                 'dni'               => $dni,
@@ -149,7 +148,7 @@ class Login extends CI_Controller {
                                 'apellido'  => $apellido,
                                 'email'  => $email,
                                 'dni'  => $dni,
-                                'id_tipo_prod' => _getSesion('permiso_prod'),
+                                'id_tipo_prod' => 2,
                                 'fec_estado' => date("Y-m-d H:i:s"),
                                 'check_autorizo'    => $check,
                                 'ws_error'          => $res,
@@ -161,6 +160,29 @@ class Login extends CI_Controller {
 
           }
           if($res == 0){
+            $session = array('nombre'  => $nombre,
+                'apellido'          => $apellido,
+                'dni'               => $dni,
+                'email'             => $email,
+                'tipo_solicitud'    => $res,
+                'tipo_producto'     => $tipo_producto
+            );
+            $this->session->set_userdata($session);
+            //$agencia = $this->M_preaprobacion->getAgenciaPersonal(_getSesion('id_usuario'));
+            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
+                                'nombre' => $nombre,
+                                'apellido'  => $apellido,
+                                'email'  => $email,
+                                'dni'  => $dni,
+                                'id_tipo_prod' => 2,
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'check_autorizo'    => $check,
+                                'ws_error'          => $res,
+                                'ws_resultado'      => json_encode($result),
+                                'ws_timestamp'        => date("Y-m-d H:i:s")
+                                );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
+            $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
             $response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
           }
           if($res == 2){

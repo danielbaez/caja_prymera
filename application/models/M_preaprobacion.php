@@ -143,7 +143,8 @@ class M_preaprobacion extends  CI_Model{
                      u.dni, 
                      u.permiso,
                      u.email,
-                     u.id 
+                     u.id,
+                     u.rol
                 FROM usuario u,
                      agencias a
                WHERE u.id = a.id
