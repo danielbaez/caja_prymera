@@ -189,5 +189,14 @@ class M_preaprobacion extends  CI_Model{
         //_logLastQuery();
         return $result->result();
     }
+
+    function getAgencia($id) {
+      $sql = "SELECT * 
+              FROM usuario 
+             WHERE id = ?";
+        $result = $this->db->query($sql, array($id));
+        //_logLastQuery();
+        return $result->result();
+    }
 }
     
