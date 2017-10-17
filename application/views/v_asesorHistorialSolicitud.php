@@ -243,7 +243,7 @@
                   var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
                   dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
                   dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
-                  dSolicitud += '<p><span>Hora:</span> '+response[0].timestamp_final+'</p>';
+                  dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
                   dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
                   dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
 

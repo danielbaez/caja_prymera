@@ -83,7 +83,8 @@ class micash extends CI_Controller {
                                 'check_autorizo'    => $check,
                                 'ws_error'          => $res,
                                 'ws_resultado'      => json_encode($result),
-                                'ws_timestamp'        => date("Y-m-d H:i:s")
+                                'ws_timestamp'        => date("Y-m-d H:i:s"),
+                                'cod_agencia' => $agencia_user[0]->id_agencia
                                 );
             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));

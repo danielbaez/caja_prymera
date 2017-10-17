@@ -125,7 +125,8 @@ class logearse extends CI_Controller {
                     $this->session->set_userdata(array('usuario'          => $usuario,
                                                         'rol'             => $datos[0]->rol,
                                                         'id_usuario'      =>$datos[0]->id,
-                                                        'nombre'          =>$datos[0]->nombre
+                                                        'nombre'          =>$datos[0]->nombre,
+                                                        'id_agencia'          =>$datos[0]->id_agencia
                                                         ));
                                                                       
                     if(in_array($redirect, $productos)){

@@ -377,6 +377,7 @@ class C_confirmacion extends CI_Controller {
                             'agencia_desembolso' => $agencia[0]->id,
                             'validar_celular'   => 1,
                             'timestamp_datos'   => date("Y-m-d H:i:s"),
+                            'timestamp_final'   => date("Y-m-d H:i:s"),
                             'estado_civil'      => $estado_civil,
                             'nombre_conyugue'   => $nombre_conyugue,
                             'dni_conyugue'      => $dni_conyugue,
