@@ -260,6 +260,7 @@
 
 					$('#agencias').attr('multiple','multiple');
 					$('#agencias').attr('disabled', true)
+					$('input[name="action"]').val('save');
 				}
 			});
 
