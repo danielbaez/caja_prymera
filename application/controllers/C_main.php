@@ -22,11 +22,16 @@ class C_main extends CI_Controller {
     public function index()
     {
         $this->load->model('M_usuario');
+        $this->load->model('M_agencia');
 
         $data['nombre'] = _getSesion("nombre");
         $data['comboAgencias']      = $this->__buildComboAgencias();
         
-        $data['personales'] = $this->M_usuario->getPersonal();
+        $id = _getSesion('id_usuario');
+        $data['personales'] = $this->M_usuario->getPersonal($id);
+
+        $data['superiores'] = $this->M_usuario->getSuperiores();
+        $data['agencias'] = $this->M_agencia->getAgencias();
 
         //_log(print_r($this->session->all_userdata('deliverdata') , true));
 //         if(_getSesion("nombre") == null && _getSesion("email") == null) {
@@ -36,6 +41,11 @@ class C_main extends CI_Controller {
     }
 
     function registrar() {
+
+        $this->load->model('M_usuario');
+
+        /*print_r(_post('agencia'));
+        exit();*/
         $nombres   = __getTextValue('nombres');
         $apellidos = __getTextValue('apellidos');
         $sexo      = _post('sexo');
@@ -48,9 +58,39 @@ class C_main extends CI_Controller {
         $rol_superior = _post('rol_superior');
         $checkPermiso = _post('permiso');
         $agencia      = _post('agencia');
-        $nombre_img      = _post('nombre_img');
+        
         $permiso = implode(",",$checkPermiso);
-        $arrayInsert = array('nombre' => $nombres,
+
+if($_FILES["imagen"]["name"]){
+    $img_file = $_FILES["imagen"]["name"];
+    $folderName = "public/img/usuarios/";
+
+    $array = explode('.', $_FILES['imagen']['name']);
+    $ext = end($array);
+     
+    // Generate a unique name for the image 
+    // to prevent overwriting the existing image
+
+    $name_image = rand(10000, 990000). '_'. time().'.'.$ext;
+    $filePath = $folderName.$name_image;
+     
+    if ( move_uploaded_file( $_FILES["imagen"]["tmp_name"], $filePath)) {
+ 
+  } else {
+  }
+}
+else
+{
+    $name_image = '';
+}
+
+
+        
+
+        //$datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
+        if($rol == 'jefe_agencia')
+        {
+            $arrayInsert = array('nombre' => $nombres,
                             'apellido'  => $apellidos,
                             'email'  => $email,
                             'usuario' => $email,
@@ -61,12 +101,33 @@ class C_main extends CI_Controller {
                             'fecha_ingreso'    => $fecha_ingreso,
                             'celular'          => $celular,
                             'rol'              => $rol,
-                            'usuario'          => $rol_superior,
                             'permiso'          => $permiso,
                             'estado'           => 1,
-                            'imagen'           => $nombre_img
+                            'imagen'           => $name_image
                             );
-        $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
+          $this->M_usuario->crearUsuario($arrayInsert, 'usuario', $agencia);  
+        }
+        elseif($rol == 'asesor')
+        {
+
+            $arrayInsert = array('nombre' => $nombres,
+                            'apellido'  => $apellidos,
+                            'email'  => $email,
+                            'usuario' => $email,
+                            'password' => $this->get_hash($dni),
+                            'dni'  => $dni,
+                            'sexo' => $sexo,
+                            'fecha_nac' => $fecha_nacimiento,
+                            'fecha_ingreso'    => $fecha_ingreso,
+                            'celular'          => $celular,
+                            'rol'              => $rol,
+                            'permiso'          => $permiso,
+                            'estado'           => 1,
+                            'imagen'           => $name_image,
+                            'id_agencia' => $agencia[0]
+                            );
+          $this->M_usuario->crearUsuario($arrayInsert, 'usuario', false);  
+        }
         redirect('/C_main');
     }
 

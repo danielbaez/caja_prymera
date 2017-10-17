@@ -11,13 +11,12 @@ class C_usuario extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
+        $this->load->model('M_usuario');
 
     }
     
     public function asignarSupervisor()
-    {
-
-        $this->load->model('M_usuario');        
+    {       
         $data['personales'] = $this->M_usuario->getPersonal();
         $this->load->view('v_asignarSupervisor', $data);
     }
@@ -25,6 +24,13 @@ class C_usuario extends CI_Controller {
     public function nuevaSolicitud()
     {       
         $this->load->view('v_nuevaSolicitud', []);
+    }
+
+    public function detalleUsuario()
+    {
+        $id = _post('id');
+        $detalle = $this->M_usuario->detalleUsuario($id);
+        echo json_encode($detalle);
     }
 }
 
