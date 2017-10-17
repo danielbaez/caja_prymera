@@ -28,7 +28,8 @@ class C_main extends CI_Controller {
         $data['comboAgencias']      = $this->__buildComboAgencias();
         
         $id = _getSesion('id_usuario');
-        $data['personales'] = $this->M_usuario->getPersonal($id);
+        $rol = _getSesion('rol');
+        $data['personales'] = $this->M_usuario->getPersonal($id, $rol);
 
         $data['superiores'] = $this->M_usuario->getSuperiores();
         $data['agencias'] = $this->M_agencia->getAgencias();
@@ -252,6 +253,16 @@ else
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
-    }    
+    }   
+
+    function getAgencias()
+    {
+        $id = _post('id');
+        $action = _post('action');
+        $this->load->model('M_agencia');
+        $agencias = $this->M_agencia->getAgenciasBySup($id, $action);
+        echo json_encode($agencias);
+
+    } 
 }
 

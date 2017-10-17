@@ -33,5 +33,20 @@ class M_agencia extends  CI_Model{
     //     $result = $this->db->query($sql, array());
     //     return $result->result();
     // }
+
+    function getAgenciasBySup($id, $action)
+    {   
+        if($action == 'asesor')
+        {
+            $sql = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
+            $result = $this->db->query($sql, array($id));    
+        }
+        elseif($action == 'jefe')
+        {
+            $sql = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL";
+            $result = $this->db->query($sql, array());    
+        }
+        return $result->result();
+    }
 }
     

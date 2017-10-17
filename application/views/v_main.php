@@ -194,7 +194,7 @@
 					<!-- <select class="selectpicker" data-live-search="true" title="Agencia" id="agencia" name="agencia[]" multiple> 
 					  <?php //echo $comboAgencias?>
 					</select>-->
-					<select multiple="" name="agencia[]" class="form-control" id="agencias">
+					<select multiple="" name="agencia[]" class="form-control" id="agencias" disabled>
     			     <?php foreach ($agencias as $key => $value) {
                         ?>
                             <option value="<?php echo $value->id ?>"><?php echo $value->AGENCIA ?></option>
@@ -238,13 +238,77 @@
 	  <script>
 
         $(".cambio-rol").change(function() {
+
+        	$('#rol_superior').attr('disabled', false)
             if($(this).val() == 'jefe_agencia'){
                 $('.div-rol-superior').hide();
+                
+
+                $.ajax({
+				data:  {id: $(this).val(), action: 'jefe'},
+				url:   '/C_main/getAgencias',
+				type:  'post',
+				dataType: 'json',
+				success:  function (response) {
+					console.log(response)
+					var append = '';
+					for(var i = 0; i<response.length; i++){
+						append +="<option value="+response[i].id+">"+response[i].AGENCIA+"</option>";
+					}
+
+					$('#agencias').html(append);
+
+					$('#agencias').attr('multiple','multiple');
+
+
+
+					$('#agencias').attr('disabled', false)
+
+				}
+				})
+
             }
             else if($(this).val() == 'asesor'){
                 $('.div-rol-superior').show();
+                $('#agencias').attr('disabled', true)
+
+            }
+            else{
+            	$('#agencias').attr('disabled', true)
+            	$('#rol_superior').attr('disabled', true)
             }
         });
+
+
+        $("#rol_superior").change(function() {
+            if($(this).val() != "" && $('#rol').val() != ""){
+            	//alert($(this).val())
+            	$.ajax({
+				data:  {id: $(this).val(), action: 'asesor'},
+				url:   '/C_main/getAgencias',
+				type:  'post',
+				dataType: 'json',
+				success:  function (response) {
+					console.log(response)
+					var append = '';
+					for(var i = 0; i<response.length; i++){
+						append +="<option value="+response[i].id+">"+response[i].AGENCIA+"</option>";
+					}
+
+					$('#agencias').html(append);
+					$("#agencias").removeAttr('multiple');
+
+					$('#agencias').attr('disabled', false)
+
+				}
+				})
+
+            }else{
+            	$('#agencias').html('');
+
+            }
+        });
+
 		$(".detalle-usuario").click(function() {
 			$.ajax({
 				data:  {id: $(this).attr('data-idUsuario')},

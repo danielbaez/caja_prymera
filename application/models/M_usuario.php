@@ -11,44 +11,56 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
-    function getPersonal($id) {
+    function getPersonal($id, $rol) {
 
-        //$sql = "SELECT * FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE usuario.rol = 'asesor' AND agencias.id_sup_agencia = ?";
+        if($rol == 'administrador')
+        {
 
-        //$sql = "SELECT * FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id";
-        $sql = "SELECT usuario.id as id, agencias.id as id_agencia, usuario.nombre, usuario.apellido, agencias.AGENCIA, usuario.rol FROM usuario LEFT JOIN agencias ON usuario.id_agencia = agencias.id";
+            $sql = "SELECT usuario.id as id, agencias.id as id_agencia, usuario.nombre, usuario.apellido, agencias.AGENCIA, usuario.rol FROM usuario LEFT JOIN agencias ON usuario.id_agencia = agencias.id";
 
-
-        $result = $this->db->query($sql, array());
-
+            $result = $this->db->query($sql, array());
 
             $res = [];
-        foreach ($result->result() as $key => $value) {
-            if($value->rol == 'jefe_agencia')
-            {
-                $sql = "SELECT GROUP_CONCAT(AGENCIA) as agencia FROM agencias where id_sup_agencia = $value->id GROUP BY id_sup_agencia";
-                $agencias = $this->db->query($sql, array());
-                $a = $agencias->result();
-                $value->AGENCIA = $a[0]->agencia;
-                
+            foreach ($result->result() as $key => $value) {
+                if($value->rol == 'jefe_agencia')
+                {
+                    $sql = "SELECT GROUP_CONCAT(AGENCIA) as agencia FROM agencias where id_sup_agencia = $value->id GROUP BY id_sup_agencia";
+                    $agencias = $this->db->query($sql, array());
+                    $a = $agencias->result();
+                    $value->AGENCIA = $a[0]->agencia;
+                    
+                }
+                elseif($value->rol == 'administrador')
+                {
+                	$value->AGENCIA = 'Todos';
+                }
+                $res[] = $value;              
             }
-            elseif($value->rol == 'administrador')
-            {
-            	$value->AGENCIA = 'Todos';
+
+            return $res;
+
+        } 
+        elseif ($rol == 'jefe_agencia')
+        {
+            $sql = "SELECT GROUP_CONCAT(id) as cant FROM agencias WHERE id_sup_agencia = ? ";
+            $result = $this->db->query($sql, array(_getSesion('id_usuario')));
+
+            $res = [];
+            foreach ($result->result() as $key => $value) {
+                $agencias = $value->cant;
             }
-            $res[] = $value;              
-        }
 
-        return $res;
+            //echo $agencias;exit();
+            $agencias = explode(',', $agencias);
+            /*print_r($agencias);
+            exit();*/
+ 
+            $sql = "SELECT usuario.id as id, agencias.id as id_agencia, usuario.nombre, usuario.apellido, agencias.AGENCIA, usuario.rol FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE usuario.id_agencia IN ?";
 
-        /*$sql = "SELECT u.*,
-                a.AGENCIA
-         FROM usuario u,
-              agencias a
-        WHERE u.id_agencia = a.id
-          AND u.estado = 1";
-        $result = $this->db->query($sql, array());*/
-        //return $result->result();
+            $result = $this->db->query($sql, array($agencias));
+
+            return $result->result();
+        }  
     }
 
     function detalleUsuario($id)
