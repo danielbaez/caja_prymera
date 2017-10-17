@@ -62,34 +62,35 @@ class C_main extends CI_Controller {
         $checkPermiso = _post('permiso');
         $agencia      = _post('agencia');
         
-        $permiso = implode(",",$checkPermiso);
+        
 
-if($_FILES["imagen"]["name"]){
-    $img_file = $_FILES["imagen"]["name"];
-    $folderName = "public/img/usuarios/";
+        if($_FILES["imagen"]["name"]){
+            $img_file = $_FILES["imagen"]["name"];
+            $folderName = "public/img/usuarios/";
 
-    $array = explode('.', $_FILES['imagen']['name']);
-    $ext = end($array);
-     
-    // Generate a unique name for the image 
-    // to prevent overwriting the existing image
+            $array = explode('.', $_FILES['imagen']['name']);
+            $ext = end($array);
+             
+            // Generate a unique name for the image 
+            // to prevent overwriting the existing image
 
-    $name_image = rand(10000, 990000). '_'. time().'.'.$ext;
-    $filePath = $folderName.$name_image;
-     
-    if ( move_uploaded_file( $_FILES["imagen"]["tmp_name"], $filePath)) {
- 
-  } else {
-  }
-}
-else
-{
-    $name_image = '';
-}
+            $name_image = rand(10000, 990000). '_'. time().'.'.$ext;
+            $filePath = $folderName.$name_image;
+             
+            if ( move_uploaded_file( $_FILES["imagen"]["tmp_name"], $filePath)) {
+         
+          } else {
+          }
+        }
+        else
+        {
+            $name_image = '';
+        }
 
 
         if($action == 'save')
         {
+            $permiso = implode(",",$checkPermiso);
             //$datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
             if($rol == 'jefe_agencia')
             {
@@ -135,15 +136,19 @@ else
 
         if($action == 'update')
         {
-            $rol_db = _post('rol_db');
+            $password = trim(_post('password'));
+            $rol_user = _post('rol_user');
             $id_usuario = _post('id_usuario');
-            if($rol_db == 'administrador')
+            if($rol_user == 'administrador')
             {
-                $arrayUpdate = array('nombre' => $nombres,
+
+                if(!$rol) //administrador
+                {
+                    $arrayUpdate = array('nombre' => $nombres,
                                 'apellido'  => $apellidos,
                                 'email'  => $email,
                                 'usuario' => $email,
-                                //'password' => $this->get_hash($dni),
+                                'password' => $this->get_hash($password),
                                 'dni'  => $dni,
                                 'sexo' => $sexo,
                                 'fecha_nac' => $fecha_nacimiento,
@@ -153,20 +158,29 @@ else
                                 //'permiso'          => $permiso,
                                 //'estado'           => 1,
                                 'imagen'           => $name_image
-                                );
-                if($name_image == '')
-                {
-                    unset($arrayUpdate['imagen']);
+                                );    
+
+                    if($name_image == '')
+                    {
+                        unset($arrayUpdate['imagen']);
+                    }
+
+
+                    if($password == '')
+                    {
+                        unset($arrayUpdate['password']);
+                    }
+
+                    $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);  
                 }
-              $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);  
-            }
-            elseif($rol == 'jefe_agencia')
-            {
-                $arrayUpdate = array('nombre' => $nombres,
+                elseif($rol == 'jefe_agencia')
+                {
+                    $permiso = implode(",",$checkPermiso);
+                    $arrayUpdate = array('nombre' => $nombres,
                                 'apellido'  => $apellidos,
                                 'email'  => $email,
                                 'usuario' => $email,
-                                //'password' => $this->get_hash($dni),
+                                'password' => $this->get_hash($password),
                                 'dni'  => $dni,
                                 'sexo' => $sexo,
                                 'fecha_nac' => $fecha_nacimiento,
@@ -176,21 +190,29 @@ else
                                 'permiso'          => $permiso,
                                 'estado'           => in_array(0, $checkPermiso) ? 0 : 1,
                                 'imagen'           => $name_image
-                                );
-                if($name_image == '')
-                {
-                    unset($arrayUpdate['imagen']);
-                }
-              $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', $agencia, $id_usuario);  
-            }
-            elseif($rol == 'asesor')
-            {
+                                );  
 
-                $arrayUpdate = array('nombre' => $nombres,
+                    if($name_image == '')
+                    {
+                        unset($arrayUpdate['imagen']);
+                    }
+
+
+                    if($password == '')
+                    {
+                        unset($arrayUpdate['password']);
+                    }
+
+                    $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', $agencia, $id_usuario);  
+                }
+                elseif($rol == 'asesor')
+                {
+                    $permiso = implode(",",$checkPermiso);
+                    $arrayUpdate = array('nombre' => $nombres,
                                 'apellido'  => $apellidos,
                                 'email'  => $email,
                                 'usuario' => $email,
-                                //'password' => $this->get_hash($dni),
+                                'password' => $this->get_hash($password),
                                 'dni'  => $dni,
                                 'sexo' => $sexo,
                                 'fecha_nac' => $fecha_nacimiento,
@@ -202,12 +224,37 @@ else
                                 'imagen'           => $name_image,
                                 'id_agencia' => $agencia[0]
                                 );
-                if($name_image == '')
-                {
-                    unset($arrayUpdate['imagen']);
+
+                    if($name_image == '')
+                    {
+                        unset($arrayUpdate['imagen']);
+                    }
+
+
+                    if($password == '')
+                    {
+                        unset($arrayUpdate['password']);
+                    }
+
+                    $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario); 
+
                 }
-              $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);  
+                
             }
+
+            if($rol_user == 'jefe_agencia')
+            {
+                $arrayUpdate = array(
+                                'password' => $this->get_hash($password),
+                                );
+                if($password == '')
+                {
+                    unset($arrayUpdate['password']);
+                }
+
+                $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);
+            }
+
         }
         redirect('/C_main');
     }

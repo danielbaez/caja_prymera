@@ -17,14 +17,32 @@ class C_reporte extends CI_Controller {
         $this->load->model('M_usuario');
 
     }
+
+    public function ExportFile($records) {
+
+      $heading = false;
+      if(!empty($records))
+        foreach($records as $row) {
+        $row = (array) $row;
+        if(!$heading) {
+          // display field/column names as a first row
+          echo implode("\t", array_keys($row)) . "\n";
+          $heading = true;
+        }
+        echo implode("\t", array_values($row)) . "\n";
+        }
+      exit;
+    }
     
     public function solicitudes()
     {             
-        $data['agencias'] = $this->M_agencia->getAgencias();
+        $data['agencias'] = $this->M_agencia->getAgencias('reporte');
         $data['productos'] = $this->M_producto->getProductos();
 
         $action = _post('action');
+        $reporte = _post('reporte');
         if(isset($action) and  $action == 'obtenerSolicitudes') {
+
             $agencia = _post('agencia');
             $tipo_credito = _post('tipo_credito');
             $fecha_desde = _post('fecha_desde');
@@ -37,6 +55,15 @@ class C_reporte extends CI_Controller {
                     );
 
             $data['solicitudes'] = $this->M_solicitud->obtenerSolicitudes($filtros);
+
+            if($reporte == 'excel')
+            {
+                $filename = "reporte.xls";     
+                header("Content-Type: application/vnd.ms-excel");
+                header("Content-Disposition: attachment; filename=\"$filename\"");
+                $this->ExportFile($data['solicitudes']);
+                $this->load->view('v_reporteSolicitud', $data);
+            }
 
             $data['id_agencia'] = $agencia;
             $data['id_tipo_credito'] = $tipo_credito;
