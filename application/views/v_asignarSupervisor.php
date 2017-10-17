@@ -102,6 +102,11 @@
                   <div class="col-sm-6">
                     <input type="text" class="form-control" name="supervisor" id="supervisor">
                   </div>
+                  <div class="col-sm-6" style="margin-left: 178px;margin-top: 12px;">
+                    <select class="form-control cambio-rol" id="agencias" name="agencias">
+                      <option value="">Agencias</option>
+                    </select>
+                  </div>
                 </div>
                  <!-- <div class="form-group">
                   <div class="col-sm-12 col-md-6 col-md-offset-3">
@@ -115,7 +120,7 @@
                 </div>
                 <div class="form-group"> 
                   <div class="col-sm-offset-2 col-sm-8">
-                    <button type="button" class="btn btn-primary" onclick="guardatAsesoresAsignados()">Aceptar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardatAsesoresAsignados()">Asignar</button>
                   </div>
                 </div>
               </form>
@@ -171,7 +176,7 @@
             onClickEvent: function(data) {
               var value = $("#supervisor").val();
               //console.log(value);
-              /*$.ajax({
+              $.ajax({
                 data  : { nombre  : value},
                 url   : '/C_usuario/actualizarTabla',
                 type  : 'POST'
@@ -179,15 +184,18 @@
                 try{
                   data = JSON.parse(data);
                   if(data.error == 0){
-                    $('.agregar').html('');
-                    $('.agregar').append(data.html);
+                    $('#agencias').html('');
+                    $('#agencias').append('<option value="">Agencias</option>');
+                    $('#agencias').append(data.comboAgencias);
+                    /*$('.agregar').html('');
+                    $('.agregar').append(data.html);*/
                   }else {
                     return;
                   }
                 } catch (err){
                   msj('error',err.message);
                 }
-              });*/
+              });
             } 
           },
 

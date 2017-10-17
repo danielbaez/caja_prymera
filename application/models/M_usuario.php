@@ -234,5 +234,15 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array());
         return $result->result();
     }
+
+    function getAgenciasSupervisor($nombre) {
+        $sql = "SELECT a.*
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id_sup_agencia = u.id
+                   AND u.nombre LIKE '%".$nombre."%'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
 }
     

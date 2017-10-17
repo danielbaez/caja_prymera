@@ -46,6 +46,8 @@ class C_usuario extends CI_Controller {
         try {
             $html = null;
             $nombre = __getTextValue('nombre');
+            $session = array('nombre_jefe'  => $nombre);
+            $this->session->set_userdata($session);
             if($nombre == null) {
                 throw new Exception("Ingrese el nombre", 1);
             }
@@ -62,6 +64,7 @@ class C_usuario extends CI_Controller {
                           </tr>';
             }
             $data['html'] = $html;
+            $data['comboAgencias'] = $this->__buildComboAgencias($nombre);
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -74,10 +77,12 @@ class C_usuario extends CI_Controller {
         $data['msj']   = null;
         try {
             $datos = _post('personalAsignado');
+            $id_asesor = '';
             $asesores = explode("-", $datos);
             foreach ($asesores as $key) {
                 if($key != "null") {
-                    _log($key);
+                    $id_asesor = '';
+                    //crear query que traiga el id de esas personas y actualizar en la tabla usuario
                 }
             }
             $data['error'] = EXIT_SUCCESS;
@@ -85,6 +90,17 @@ class C_usuario extends CI_Controller {
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
+    }
+
+
+    function __buildComboAgencias($nombre){
+        $agencias = $this->M_usuario->getAgenciasSupervisor($nombre);
+        $opt = null;
+        foreach($agencias as $age){
+            $agen = str_replace(')', '',str_replace('(', '', $age->AGENCIA));
+            $opt .= '<option value="'.$agen.'"> '.$agen.'</option>';
+        }
+        return $opt;
     }
 }
 
