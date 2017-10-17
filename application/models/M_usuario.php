@@ -191,5 +191,48 @@ class M_usuario extends  CI_Model{
         return true;
         
     }
+
+    function getPersonalByRol() {
+        $sql = "SELECT u.* , a.AGENCIA AS agencia
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND u.rol LIKE '%asesor%'
+                   AND u.estado = 1";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
+    function buscarSupervisor($nombre) {
+        $sql = "SELECT *
+                  FROM usuario
+                 WHERE estado = 1
+                   AND rol LIKE '%jefe_agencia%'
+                   AND nombre LIKE '%".$nombre."%'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
+    function getDatosTablaAsesor($id_agencia) {
+        $sql = "SELECT u.*, a.AGENCIA AS agencia
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND u.estado = 1
+                   AND u.rol LIKE '%asesor%'
+                   AND a.id_sup_agencia = ?";
+        $result = $this->db->query($sql, array($id_agencia));
+        return $result->result();
+    }
+
+    function getIdUsuarioByNombre($nombre) {
+        $sql = "SELECT id 
+                  FROM usuario
+                 WHERE nombre LIKE '%".$nombre."%'
+                   AND estado = 1
+                   AND rol LIKE 'jefe_agencia'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
 }
     

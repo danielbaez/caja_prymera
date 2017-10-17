@@ -29,6 +29,8 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
         <style>
         </style>  
     </head>
@@ -71,25 +73,23 @@
                       <th class="text-center">Agencia</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="agregar">
                     <?php foreach($personales as $personal){
                       ?>
                     <tr>
                       <td>
-                        <input type="checkbox" value="">
+                        <input type="checkbox" id="check_<?php echo $personal->id ?>" name="id_asesor[]" value="<?php echo $personal->nombre ?>">
                       </td>                    
                       <td><?php echo $personal->nombre ?></td>
                       <td><?php echo $personal->rol ?></td>
-                      <td>Miraflores</td>
+                      <td><?php echo $personal->agencia ?></td>
                     </tr>
-                  <?php                 
-                  } ?>                
-                     
+                  <?php } ?>                
                   </tbody>
                 </table>
               </div>
               <div class="text-right div-agregar-personal-link">
-                <a href="" >Agregar ></a>  
+                <a onclick="agregarPersonal()">Agregar ></a>  
               </div>
             </div>
           </div>
@@ -110,17 +110,12 @@
                 </div> -->
                 
                 <div class="form-group div-personales-agregados">
-                  <div class="col-sm-offset-3 col-sm-6 col-personales-agregados">
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
-                    <p>adadas <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>
+                  <div class="col-sm-offset-3 col-sm-6 col-personales-agregados" style="background: #dadada;" id="personalAsignado">
                   </div>
                 </div>
                 <div class="form-group"> 
                   <div class="col-sm-offset-2 col-sm-8">
-                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                    <button type="button" class="btn btn-primary" onclick="guardatAsesoresAsignados()">Aceptar</button>
                   </div>
                 </div>
               </form>
@@ -133,12 +128,11 @@
     </div>
 
 
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
+
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
@@ -146,7 +140,62 @@
       <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
+      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsasignarsupervisor.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+      <script type="text/javascript">
+        
+        var options = {
+
+          url: function() {
+            return "/C_usuario/autocompleteGetJefe";
+          },
+
+          getValue: function(element) {
+            return element.nombre;
+          },
+
+          ajaxSettings: {
+            dataType: "json",
+            method: "POST",
+            data: {
+              dataType: "json"
+            }
+          },
+
+          preparePostData: function(data) {
+            data.supervisor = $("#supervisor").val();
+            return data;
+          },
+
+          list: {
+            onClickEvent: function(data) {
+              var value = $("#supervisor").val();
+              //console.log(value);
+              /*$.ajax({
+                data  : { nombre  : value},
+                url   : '/C_usuario/actualizarTabla',
+                type  : 'POST'
+              }).done(function(data){
+                try{
+                  data = JSON.parse(data);
+                  if(data.error == 0){
+                    $('.agregar').html('');
+                    $('.agregar').append(data.html);
+                  }else {
+                    return;
+                  }
+                } catch (err){
+                  msj('error',err.message);
+                }
+              });*/
+            } 
+          },
+
+          requestDelay: 400
+        };
+
+        $("#supervisor").easyAutocomplete(options);
+
+      </script>
     </body>
 </html>
