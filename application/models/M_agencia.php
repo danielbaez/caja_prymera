@@ -5,11 +5,16 @@ class M_agencia extends  CI_Model{
         parent::__construct();
     }
 
-    function getAgencias() {
+    function getAgencias($action = false) {
         $rol = _getSesion('rol');
         $id = _getSesion('id_usuario');
         if($rol == 'administrador'){
-            $sql = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL";
+            if($action == 'reporte'){
+                $sql = "SELECT * FROM agencias";
+            }else{
+                $sql = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL";    
+            }
+            
             $result = $this->db->query($sql, array($id));
         }
         if($rol == 'jefe_agencia'){

@@ -164,6 +164,7 @@
                 <div class="col-xs-12 col-sm-4" style="margin-top: 50px">
                   <div class="form-group">
                       <input type="hidden" name="action" value="obtenerSolicitudes"> 
+                      <input type="hidden" name="reporte" value=""> 
                       <button type="submit" class="btn btn-primary btn-lg">Mostrar</button>
                   </div>
                 </div>
@@ -217,19 +218,23 @@
                 <?php
                 }
                 ?>
+                <div class="col-xs-12 text-right" style="margin-top: 20px; margin-bottom: 15px">
+                  <a class="export-excel" style="color:black"><i class="fa fa-print fa-3x" aria-hidden="true"></i></a> 
+                  <a class="export-excel" style="color:green; margin-left: 20px"><i class="fa fa-file-excel-o fa-3x" aria-hidden="true"></i></a>    
+                </div>
               
             </div>
+
           </div>
         </div>
       </div>
       <br>
     </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-        <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
@@ -239,5 +244,14 @@
       <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+      <script type="text/javascript">
+        
+        $('.export-excel').click(function(){
+          
+          $('input[name="reporte"]').val('excel');
+          $('form').submit();
+        })
+
+      </script>
     </body>
 </html>

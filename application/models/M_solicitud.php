@@ -28,6 +28,7 @@ class M_solicitud extends  CI_Model{
             $result = $this->db->query($sql, $d);
 
         return $result->result();
+        //return $result->result_array();
     }
 
     function obtenerAgenteCliente($filtros)

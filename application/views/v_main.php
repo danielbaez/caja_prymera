@@ -117,7 +117,8 @@
 					<img id="blah" src="<?php echo RUTA_IMG?>fondos/user.png" width="100" height="100" />
 					<input type='file' id="imgInp" name="imagen" class="hidden"/>
 				  </div>
-				  <div class="form-group div-sexo">
+				  <div class="form-group div-sexo text-left">
+				  	<label class="form-label">Sexo</label>
 					<select class="form-control" id="sexo" name="sexo">
 					  <option value="">Sexo</option>
 					  <option value="Masculino">Masculino</option>
@@ -125,19 +126,26 @@
 					</select>
 				  </div>
 				  
-				  <div class="form-group">
+				  <div class="form-group text-left">
+				  	<label class="form-label">DNI</label>
 					<input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" onkeypress="return valida(event)" maxlength="8">
 				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" id="password" name="password" placeholder="Contrase&ntilde;a (dni)" disabled>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel" onkeypress="return valida(event)" maxlength="9">
-				  </div>
-				  <div class="form-group">
+				  <div class="form-group div-usuario-as-email">
 					<input type="text" class="form-control" placeholder="Usuario (email)" disabled>
 				  </div>
-				  <div class="form-group div-rol">
+				  <div class="form-group text-left">
+				  	<label class="form-label">Password</label>
+					<input type="text" class="form-control input-password-as-dni" placeholder="Contrase&ntilde;a (dni)" disabled>
+					<input type="text" class="form-control" style="display: none" id="password" name="password">
+				  </div>
+
+				  <div class="form-group text-left">
+				  	<label class="form-label">Celular</label>
+					<input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel" onkeypress="return valida(event)" maxlength="9">
+				  </div>
+				  
+				  <div class="form-group div-rol text-left">
+				  	<label class="form-label">Rol</label>
 					<!-- <select class="form-control" id="rol" name="rol" onchange="verificarRol()"> -->
                     <select class="form-control cambio-rol" id="rol" name="rol">
 					  <option value="">Rol</option>
@@ -145,7 +153,8 @@
 					  <option value="asesor">asesor</option>
 					</select>
 				  </div>
-				  <div class="form-group div-rol-superior">
+				  <div class="form-group div-rol-superior text-left">
+				  	<label class="form-label">Superior</label>
 					<select class="form-control ocultar" id="rol_superior" name="rol_superior">
 					  <option value="">Rol Superior</option>
 					  <?php   foreach ($superiores as $key => $value) {
@@ -158,10 +167,12 @@
 
 				</div>
 				<div class="col-xs-12 col-sm-6">
-				  <div class="form-group">
+				  <div class="form-group text-left">
+				  	<label class="form-label">Nombres</label>
 					<input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" onkeypress="return soloLetras(event)" maxlength="50">
 				  </div>
-				  <div class="form-group">
+				  <div class="form-group text-left">
+				  	<label class="form-label">Apellidos</label>
 					<input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" onkeypress="return soloLetras(event)" maxlength="100">
 				  </div>
 				  <div class="form-group text-left">
@@ -172,7 +183,8 @@
 					<label class="form-label">Fecha de Ingreso</label>
 					<input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso">
 				  </div>
-				  <div class="form-group">
+				  <div class="form-group text-left">
+				  	<label class="form-label">Email</label>
 					<input type="text" class="form-control" id="email" name="email" placeholder="Correo" onchange="validaCorreo()">
 				  </div>
 				  <div class="form-group">
@@ -180,7 +192,9 @@
 				  </div>
 				  
 				  <div class="form-group text-left div-permisos">
+				  	<label class="form-label">Permisos</label>
 					<div class="checkbox">
+
 					  <label><input type="checkbox" value="2" name="permiso[]" id="permiso">Mi Cash</label>
 					</div>
 					<div class="checkbox">
@@ -194,6 +208,7 @@
 					<!-- <select class="selectpicker" data-live-search="true" title="Agencia" id="agencia" name="agencia[]" multiple> 
 					  <?php //echo $comboAgencias?>
 					</select>-->
+					<label class="form-label">Agencias</label>
 					<select multiple="" name="agencia[]" class="form-control" id="agencias" disabled>
     			     <?php foreach ($agencias as $key => $value) {
                         ?>
@@ -208,11 +223,18 @@
 					<a onclick="limpiar()" class="limpiar-form">Limpiar pantalla</a>
 				  </div>
 				  <div class="form-group col-xs-6 text-right">
-					<input type="submit" name="" class="btn btn-primary oculto" value="Guardar">
+					
 					<input type="hidden" name="action" value="save">
 					<input type="hidden" name="id_usuario" value="">
 					<input type="hidden" name="rol_db" value="">
-					<input type="button" name="" class="btn btn-primary aparece hidden" onclick="actualizarDatos()" value="Actualizar">
+					<input type="hidden" name="rol_user" value="<?php echo _getSesion('rol') ?>">
+					<?php if(_getSesion('rol') == 'administrador'){ ?>
+						<input type="submit" name="" class="btn btn-primary btn-action" value="Guardar">
+					<?php } ?>
+				<?php if(_getSesion('rol') == 'jefe_agencia'){ ?>
+						<input type="submit" name="" class="btn btn-primary btn-only-upd" value="Actualizar" style="display: none">
+					<?php } ?>
+					<!-- <input type="button" name="" class="btn btn-primary aparece hidden" onclick="actualizarDatos()" value="Actualizar"> -->
 				  </div>
 				</div>
 			  </form>
@@ -240,29 +262,71 @@
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 	  <script>
 
+	  	var rol_user = $('input[name="rol_user"]').val();
+
+	  	if(rol_user == 'jefe_agencia'){
+	  		$('#nombres').attr('disabled', true)
+            $('#sexo').attr('disabled', true)
+            $('#apellidos').attr('disabled', true)
+            $('#fecha_ingreso').attr('disabled', true)
+            $('#fecha_nacimiento').attr('disabled', true)
+            $('#dni').attr('disabled', true)
+            $('#email').attr('disabled', true)
+            $('#celular').attr('disabled', true)
+            $('#rol').attr('disabled', true)
+            $('#rol_superior').attr('disabled', true)
+            $('#agencias').attr('disabled', true)
+            $('input[name="permiso[]"]').attr('disabled', true)
+	  	}	  					
+
 	  	$('.limpiar-form').click(function() {
-	  		$('input[type="submit"]').val('Guardar');
-	  		$("input[name='permiso[]']").prop("checked", false);
-	  		$('.div-rol-superior').show();
 
-	  		$.ajax({
-				data:  {},
-				url:   '/C_main/getDefaultAgencias',
-				type:  'post',
-				dataType: 'json',
-				success:  function (response) {
-					var append = '';
-					for(var i = 0; i<response.length; i++){
-						append +="<option value="+response[i].id+">"+response[i].AGENCIA+"</option>";
+	  		var rol_user = $('input[name="rol_user"]').val();
+
+
+            if(rol_user == 'jefe_agencia'){
+            	$('.btn-only-upd').hide();
+            	
+            	$('#nombres').attr('disabled', true)
+	            $('#sexo').attr('disabled', true)
+	            $('#apellidos').attr('disabled', true)
+	            $('#fecha_ingreso').attr('disabled', true)
+	            $('#fecha_nacimiento').attr('disabled', true)
+	            $('#dni').attr('disabled', true)
+	            $('#email').attr('disabled', true)
+	            $('#celular').attr('disabled', true)
+	            $('#rol').attr('disabled', true)
+	            $('#rol_superior').attr('disabled', true)
+	            $('#agencias').attr('disabled', true)
+	            $('input[name="permiso[]"]').attr('disabled', true)
+            }
+            else
+            {
+
+		  		//$('input[type="submit"]').val('Guardar');
+		  		$('.btn-action').val('Guardar');
+		  		$("input[name='permiso[]']").prop("checked", false);
+		  		$('.div-rol-superior').show();
+
+		  		$.ajax({
+					data:  {},
+					url:   '/C_main/getDefaultAgencias',
+					type:  'post',
+					dataType: 'json',
+					success:  function (response) {
+						var append = '';
+						for(var i = 0; i<response.length; i++){
+							append +="<option value="+response[i].id+">"+response[i].AGENCIA+"</option>";
+						}
+
+						$('#agencias').html(append);
+
+						$('#agencias').attr('multiple','multiple');
+						$('#agencias').attr('disabled', true)
+						$('input[name="action"]').val('save');
 					}
-
-					$('#agencias').html(append);
-
-					$('#agencias').attr('multiple','multiple');
-					$('#agencias').attr('disabled', true)
-					$('input[name="action"]').val('save');
-				}
-			});
+				});
+	  		}
 
 
 	  	});
@@ -356,7 +420,8 @@
 					$('input[name="rol_db"]').val(response[0].rol);
 
 
-					$('input[type="submit"]').val('Actualizar');
+					//$('input[type="submit"]').val('Actualizar');
+					$('.btn-action').val('Actualizar');
 
 					var cargarAgencias = response[0].cargarAgencias;
 					var append = '';
@@ -382,13 +447,99 @@
                         $('#blah').attr('src', '/public/img/usuarios/'+response[0].imagen);
                     }
 
-					if(response[0].rol == 'administrador'){
+                    var rol_user = $('input[name="rol_user"]').val();
+
+
+                    if(rol_user == 'jefe_agencia'){
+                    	$('.btn-only-upd').show();
+                    }
+
+					if(rol_user == 'administrador' && response[0].rol == 'administrador'){
 						$('.div-rol').hide();
 						$('.div-rol-superior').hide();
 						$('.div-agencias').hide();
 						$('.div-permisos').hide();
+
+						$('.div-usuario-as-email').hide();
+						$('.input-password-as-dni').hide();
+						$('input[name="password"]').show();
+
 					}
-					else if(response[0].rol == 'jefe_agencia'){
+
+
+					else if(rol_user == 'administrador' && response[0].rol == 'jefe_agencia'){
+
+						$('.div-usuario-as-email').hide();
+						$('.input-password-as-dni').hide();
+						$('input[name="password"]').show();
+
+
+						$('.div-agencias').show();
+						$('.div-rol').show();
+						$('.div-permisos').show();
+						$('#rol').val(response[0].rol);
+						$('.div-rol-superior').hide();
+						$('#rol_superior').val(response[0].rol_superior);
+
+                        $("#agencias").val(response[0].id_agencia.split(','));
+
+					}
+
+					else if(rol_user == 'administrador' && response[0].rol == 'asesor'){
+
+						$('.div-usuario-as-email').hide();
+						$('.input-password-as-dni').hide();
+						$('input[name="password"]').show();
+
+                        $('.div-agencias').show();
+						  $('.div-rol').show();
+						  $('.div-permisos').show();
+						  $('.div-rol-superior').show();
+						$('#rol').val(response[0].rol);
+						$('#rol_superior').val(response[0].rol_superior);
+
+                        $("#agencias").val([response[0].id_agencia]);
+
+                        $("#agencias").removeAttr('multiple');
+
+					}
+
+					else if(rol_user == 'jefe_agencia' && response[0].rol == 'asesor'){
+
+						$('.div-usuario-as-email').hide();
+						$('.input-password-as-dni').hide();
+						$('input[name="password"]').show();
+
+                        $('.div-agencias').show();
+						  $('.div-rol').show();
+						  $('.div-permisos').show();
+						  $('.div-rol-superior').show();
+						$('#rol').val(response[0].rol);
+						$('#rol_superior').val(response[0].rol_superior);
+
+                        $("#agencias").val([response[0].id_agencia]);
+
+                        $("#agencias").removeAttr('multiple');
+
+
+                        $('#nombres').attr('disabled', true)
+                        $('#sexo').attr('disabled', true)
+                        $('#apellidos').attr('disabled', true)
+                        $('#fecha_ingreso').attr('disabled', true)
+                        $('#fecha_nacimiento').attr('disabled', true)
+                        $('#dni').attr('disabled', true)
+                        $('#email').attr('disabled', true)
+                        $('#celular').attr('disabled', true)
+                        $('#rol').attr('disabled', true)
+                        $('#rol_superior').attr('disabled', true)
+                        $('#agencias').attr('disabled', true)
+                        $('input[name="permiso[]"]').attr('disabled', true)
+
+
+					}
+
+
+					/*else if(response[0].rol == 'jefe_agencia'){
 						$('.div-agencias').show();
 					  $('.div-rol').show();
 					  $('.div-permisos').show();
@@ -397,10 +548,6 @@
 						$('#rol_superior').val(response[0].rol_superior);
 
                         $("#agencias").val(response[0].id_agencia.split(','));
-
-                            /*$("#multipleSelect :selected").map(function(i, el) {
-    return $(el).val();
-});*/
 
 					}
 					else if(response[0].rol == 'asesor'){
@@ -415,7 +562,7 @@
 
                         $("#agencias").removeAttr('multiple');
 						
-					}
+					}*/
 
 					console.log(response[0].permiso)
 
