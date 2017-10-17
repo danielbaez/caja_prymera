@@ -43,6 +43,8 @@ class C_main extends CI_Controller {
 
     function registrar() {
 
+        $action = _post('action');
+
         $this->load->model('M_usuario');
 
         /*print_r(_post('agencia'));
@@ -86,48 +88,126 @@ else
 }
 
 
-        
-
-        //$datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
-        if($rol == 'jefe_agencia')
+        if($action == 'save')
         {
-            $arrayInsert = array('nombre' => $nombres,
-                            'apellido'  => $apellidos,
-                            'email'  => $email,
-                            'usuario' => $email,
-                            'password' => $this->get_hash($dni),
-                            'dni'  => $dni,
-                            'sexo' => $sexo,
-                            'fecha_nac' => $fecha_nacimiento,
-                            'fecha_ingreso'    => $fecha_ingreso,
-                            'celular'          => $celular,
-                            'rol'              => $rol,
-                            'permiso'          => $permiso,
-                            'estado'           => 1,
-                            'imagen'           => $name_image
-                            );
-          $this->M_usuario->crearUsuario($arrayInsert, 'usuario', $agencia);  
+            //$datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
+            if($rol == 'jefe_agencia')
+            {
+                $arrayInsert = array('nombre' => $nombres,
+                                'apellido'  => $apellidos,
+                                'email'  => $email,
+                                'usuario' => $email,
+                                'password' => $this->get_hash($dni),
+                                'dni'  => $dni,
+                                'sexo' => $sexo,
+                                'fecha_nac' => $fecha_nacimiento,
+                                'fecha_ingreso'    => $fecha_ingreso,
+                                'celular'          => $celular,
+                                'rol'              => $rol,
+                                'permiso'          => $permiso,
+                                'estado'           => 1,
+                                'imagen'           => $name_image
+                                );
+              $this->M_usuario->crearUsuario($arrayInsert, 'usuario', $agencia);  
+            }
+            elseif($rol == 'asesor')
+            {
+
+                $arrayInsert = array('nombre' => $nombres,
+                                'apellido'  => $apellidos,
+                                'email'  => $email,
+                                'usuario' => $email,
+                                'password' => $this->get_hash($dni),
+                                'dni'  => $dni,
+                                'sexo' => $sexo,
+                                'fecha_nac' => $fecha_nacimiento,
+                                'fecha_ingreso'    => $fecha_ingreso,
+                                'celular'          => $celular,
+                                'rol'              => $rol,
+                                'permiso'          => $permiso,
+                                'estado'           => 1,
+                                'imagen'           => $name_image,
+                                'id_agencia' => $agencia[0]
+                                );
+              $this->M_usuario->crearUsuario($arrayInsert, 'usuario', false);  
+            }
         }
-        elseif($rol == 'asesor')
-        {
 
-            $arrayInsert = array('nombre' => $nombres,
-                            'apellido'  => $apellidos,
-                            'email'  => $email,
-                            'usuario' => $email,
-                            'password' => $this->get_hash($dni),
-                            'dni'  => $dni,
-                            'sexo' => $sexo,
-                            'fecha_nac' => $fecha_nacimiento,
-                            'fecha_ingreso'    => $fecha_ingreso,
-                            'celular'          => $celular,
-                            'rol'              => $rol,
-                            'permiso'          => $permiso,
-                            'estado'           => 1,
-                            'imagen'           => $name_image,
-                            'id_agencia' => $agencia[0]
-                            );
-          $this->M_usuario->crearUsuario($arrayInsert, 'usuario', false);  
+        if($action == 'update')
+        {
+            $rol_db = _post('rol_db');
+            $id_usuario = _post('id_usuario');
+            if($rol_db == 'administrador')
+            {
+                $arrayUpdate = array('nombre' => $nombres,
+                                'apellido'  => $apellidos,
+                                'email'  => $email,
+                                'usuario' => $email,
+                                //'password' => $this->get_hash($dni),
+                                'dni'  => $dni,
+                                'sexo' => $sexo,
+                                'fecha_nac' => $fecha_nacimiento,
+                                'fecha_ingreso'    => $fecha_ingreso,
+                                'celular'          => $celular,
+                                //'rol'              => $rol,
+                                //'permiso'          => $permiso,
+                                //'estado'           => 1,
+                                'imagen'           => $name_image
+                                );
+                if($name_image == '')
+                {
+                    unset($arrayUpdate['imagen']);
+                }
+              $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);  
+            }
+            elseif($rol == 'jefe_agencia')
+            {
+                $arrayUpdate = array('nombre' => $nombres,
+                                'apellido'  => $apellidos,
+                                'email'  => $email,
+                                'usuario' => $email,
+                                //'password' => $this->get_hash($dni),
+                                'dni'  => $dni,
+                                'sexo' => $sexo,
+                                'fecha_nac' => $fecha_nacimiento,
+                                'fecha_ingreso'    => $fecha_ingreso,
+                                'celular'          => $celular,
+                                'rol'              => $rol,
+                                'permiso'          => $permiso,
+                                'estado'           => in_array(0, $checkPermiso) ? 0 : 1,
+                                'imagen'           => $name_image
+                                );
+                if($name_image == '')
+                {
+                    unset($arrayUpdate['imagen']);
+                }
+              $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', $agencia, $id_usuario);  
+            }
+            elseif($rol == 'asesor')
+            {
+
+                $arrayUpdate = array('nombre' => $nombres,
+                                'apellido'  => $apellidos,
+                                'email'  => $email,
+                                'usuario' => $email,
+                                //'password' => $this->get_hash($dni),
+                                'dni'  => $dni,
+                                'sexo' => $sexo,
+                                'fecha_nac' => $fecha_nacimiento,
+                                'fecha_ingreso'    => $fecha_ingreso,
+                                'celular'          => $celular,
+                                'rol'              => $rol,
+                                'permiso'          => $permiso,
+                                'estado'           => in_array(0, $checkPermiso) ? 0 : 1,
+                                'imagen'           => $name_image,
+                                'id_agencia' => $agencia[0]
+                                );
+                if($name_image == '')
+                {
+                    unset($arrayUpdate['imagen']);
+                }
+              $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);  
+            }
         }
         redirect('/C_main');
     }
@@ -261,6 +341,14 @@ else
         $action = _post('action');
         $this->load->model('M_agencia');
         $agencias = $this->M_agencia->getAgenciasBySup($id, $action);
+        echo json_encode($agencias);
+
+    }
+
+    function getDefaultAgencias()
+    {
+        $this->load->model('M_agencia');
+        $agencias = $this->M_agencia->getAgenciasDefault();
         echo json_encode($agencias);
 
     } 

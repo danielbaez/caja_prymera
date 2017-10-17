@@ -179,18 +179,18 @@
 					<input type="text" class="form-control hidden" id="nombre_img" name="nombre_img">
 				  </div>
 				  
-				  <div class="form-group text-left">
+				  <div class="form-group text-left div-permisos">
 					<div class="checkbox">
 					  <label><input type="checkbox" value="2" name="permiso[]" id="permiso">Mi Cash</label>
 					</div>
 					<div class="checkbox">
 					  <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Vehicular</label>
 					</div>
-					<div class="checkbox disabled">
-					  <label><input type="checkbox" class="disabled" value="0" name="permiso[]" disabled="" id="estado">Inactivo</label>
+					<div class="checkbox">
+					  <label><input type="checkbox" class="inactivo" value="0" name="permiso[]" disabled>Inactivo</label>
 					</div>
 				  </div>
-				  <div class="form-group text-left">
+				  <div class="form-group text-left div-agencias">
 					<!-- <select class="selectpicker" data-live-search="true" title="Agencia" id="agencia" name="agencia[]" multiple> 
 					  <?php //echo $comboAgencias?>
 					</select>-->
@@ -205,10 +205,13 @@
                 </div>
 				<div class="col-xs-12">
 				  <div class="form-group col-xs-6 text-left">
-					<a onclick="limpiar()">Limpiar pantalla</a>
+					<a onclick="limpiar()" class="limpiar-form">Limpiar pantalla</a>
 				  </div>
 				  <div class="form-group col-xs-6 text-right">
 					<input type="submit" name="" class="btn btn-primary oculto" value="Guardar">
+					<input type="hidden" name="action" value="save">
+					<input type="hidden" name="id_usuario" value="">
+					<input type="hidden" name="rol_db" value="">
 					<input type="button" name="" class="btn btn-primary aparece hidden" onclick="actualizarDatos()" value="Actualizar">
 				  </div>
 				</div>
@@ -236,6 +239,32 @@
 	  <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsmain.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 	  <script>
+
+	  	$('.limpiar-form').click(function() {
+	  		$('input[type="submit"]').val('Guardar');
+	  		$("input[name='permiso[]']").prop("checked", false);
+	  		$('.div-rol-superior').show();
+
+	  		$.ajax({
+				data:  {},
+				url:   '/C_main/getDefaultAgencias',
+				type:  'post',
+				dataType: 'json',
+				success:  function (response) {
+					var append = '';
+					for(var i = 0; i<response.length; i++){
+						append +="<option value="+response[i].id+">"+response[i].AGENCIA+"</option>";
+					}
+
+					$('#agencias').html(append);
+
+					$('#agencias').attr('multiple','multiple');
+					$('#agencias').attr('disabled', true)
+				}
+			});
+
+
+	  	});
 
         $(".cambio-rol").change(function() {
 
@@ -319,6 +348,15 @@
 					
 					console.log(response)
 
+					$('.inactivo').attr('disabled', false)
+
+					$('input[name="action"]').val('update');
+					$('input[name="id_usuario"]').val(response[0].id);
+					$('input[name="rol_db"]').val(response[0].rol);
+
+
+					$('input[type="submit"]').val('Actualizar');
+
 					var cargarAgencias = response[0].cargarAgencias;
 					var append = '';
 					for(var i = 0; i<cargarAgencias.length; i++){
@@ -326,6 +364,9 @@
 					}
 
 					$('#agencias').html(append);
+
+					$('#agencias').attr('disabled', false)
+					$('#agencias').attr('multiple','multiple');
 
 					$('#nombres').val(response[0].nombre);
 					$('#apellidos').val(response[0].apellido);
@@ -343,9 +384,13 @@
 					if(response[0].rol == 'administrador'){
 						$('.div-rol').hide();
 						$('.div-rol-superior').hide();
+						$('.div-agencias').hide();
+						$('.div-permisos').hide();
 					}
 					else if(response[0].rol == 'jefe_agencia'){
+						$('.div-agencias').show();
 					  $('.div-rol').show();
+					  $('.div-permisos').show();
 						$('#rol').val(response[0].rol);
 						$('.div-rol-superior').hide();
 						$('#rol_superior').val(response[0].rol_superior);
@@ -358,12 +403,16 @@
 
 					}
 					else if(response[0].rol == 'asesor'){
+						$('.div-agencias').show();
 						  $('.div-rol').show();
+						  $('.div-permisos').show();
 						  $('.div-rol-superior').show();
 						$('#rol').val(response[0].rol);
 						$('#rol_superior').val(response[0].rol_superior);
 
                         $("#agencias").val([response[0].id_agencia]);
+
+                        $("#agencias").removeAttr('multiple');
 						
 					}
 

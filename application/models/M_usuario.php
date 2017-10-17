@@ -97,9 +97,19 @@ class M_usuario extends  CI_Model{
             }
             elseif($res[0]->rol == 'asesor')
             { 
-                $sqlAg = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL OR id = ?";
+                //$sqlAg = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL OR id = ?";
+                /*$sqlAg = "SELECT * FROM agencias WHERE id = ?";
                 $rrr = $this->db->query($sqlAg, array($res[0]->id_agencia));
+                $res[0]->cargarAgencias =  $rrr->result();*/
+
+
+                $sqlAg = "SELECT * FROM agencias WHERE id_sup_agencia IN(SELECT id_sup_agencia FROM agencias WHERE id = ?)";
+                $rrr = $this->db->query($sqlAg, array($res[0]->id_agencia));
+
                 $res[0]->cargarAgencias =  $rrr->result();
+
+
+
             }
             else
             {
@@ -157,6 +167,29 @@ class M_usuario extends  CI_Model{
         }
         return true;
     	
+    }
+
+    function actualizarUsuario($arrayUpdate, $tabla, $agencias, $id_usuario){
+        $this->db->where('id', $id_usuario);
+        $this->db->update($tabla, $arrayUpdate); 
+
+        if($agencias != false)
+        {
+            $sql = "UPDATE agencias set id_sup_agencia = NULL WHERE id_sup_agencia = ?";
+            $result = $this->db->query($sql, array($id_usuario));
+            $sql = "UPDATE agencias set id_sup_agencia = ? WHERE id IN ?";
+            $result = $this->db->query($sql, array($id_usuario, $agencias));
+
+            if(!empty($result)){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+        
     }
 }
     
