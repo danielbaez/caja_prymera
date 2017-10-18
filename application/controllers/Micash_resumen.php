@@ -138,7 +138,7 @@ class micash_resumen extends CI_Controller {
 
      function enviarMail() {
       //_log('456');
-        $data['error'] = EXIT_ERROR;
+        $data['error'] = EXIT_SUCCESS;
         $data['msj']   = null;
         try {
           $tipo_cred = null;
@@ -149,7 +149,7 @@ class micash_resumen extends CI_Controller {
         $to = '+51 '._getSesion('nro_celular');
         $message = 'Solicitó un Crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'.Su cuota es '._getSesion('cuota_mensual').' Revise correo con condiciones';
         $response = $this->twilio->sms($from, $to, $message);
-        //_log(print_r($response, true));
+        _log(print_r($response, true));
         if($response->IsError) {
           $arrayUpdt = array('envio_sms' => 2);
           $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
@@ -157,9 +157,10 @@ class micash_resumen extends CI_Controller {
         else {
               $arrayUpdt = array('envio_sms' => 1);
               $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-              $data['error'] = EXIT_SUCCESS;
+              $data['error'] = EXIT_ERROR;
             }    
         }catch (Exception $e){
+          $data['error'] = EXIT_ERROR;
         }
       return json_encode(array_map('utf8_encode', $data));
     }
