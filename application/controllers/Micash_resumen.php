@@ -51,7 +51,7 @@ class micash_resumen extends CI_Controller {
                 $session = array('Agencia' => $agencia);
                 $this->session->set_userdata($session);
                 $agencia = $this->M_preaprobacion->getAgenciasId($agencia);
-                $arrayUpdt = array('cod_agencia' => $agencia[0]->id);
+                $arrayUpdt = array('agencia_desembolso' => $agencia[0]->id);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
             $validacion = $this->sendMailGmail();

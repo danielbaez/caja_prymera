@@ -78,7 +78,7 @@
                       ?>
                     <tr>
                       <td>
-                        <input type="checkbox" id="check_<?php echo $personal->id ?>" name="id_asesor[]" value="<?php echo $personal->nombre ?>">
+                        <input type="checkbox" id="check_<?php echo $personal->id ?>" data-nombre="<?php echo $personal->nombre ?>" name="id_asesor[]" value="<?php echo $personal->id ?>">
                       </td>                    
                       <td><?php echo $personal->nombre ?></td>
                       <td><?php echo $personal->rol ?></td>

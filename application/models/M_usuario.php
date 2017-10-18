@@ -213,15 +213,14 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
-    function getDatosTablaAsesor($id_agencia) {
+    function getDatosTablaAsesor() {
         $sql = "SELECT u.*, a.AGENCIA AS agencia
                   FROM usuario u,
                        agencias a
                  WHERE a.id = u.id_agencia
                    AND u.estado = 1
-                   AND u.rol LIKE '%asesor%'
-                   AND a.id_sup_agencia = ?";
-        $result = $this->db->query($sql, array($id_agencia));
+                   AND u.rol LIKE '%asesor%'";
+        $result = $this->db->query($sql, array());
         return $result->result();
     }
 
@@ -243,6 +242,23 @@ class M_usuario extends  CI_Model{
                    AND u.nombre LIKE '%".$nombre."%'";
         $result = $this->db->query($sql, array());
         return $result->result();
+    }
+
+    function getIdByNombre($tabla, $columna, $nombre) {
+        $sql = "SELECT id
+                  FROM ".$tabla."
+                 WHERE ".$columna." LIKE '".$nombre."'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
+    function updateDatosAsesor($arrayData, $idAsesor, $tabla){
+        $this->db->where_in('id'  , $idAsesor);
+        $this->db->update($tabla, $arrayData);
+        if ($this->db->affected_rows() != 0) {
+            throw new Exception('No se pudo actualizar los datos');
+        }
+        return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
     }
 }
     

@@ -12,6 +12,7 @@ class C_usuario extends CI_Controller {
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
         $this->load->model('M_usuario');
+        $this->load->model('M_preaprobacion');
 
     }
     
@@ -51,7 +52,7 @@ class C_usuario extends CI_Controller {
             if($nombre == null) {
                 throw new Exception("Ingrese el nombre", 1);
             }
-            $id    = $this->M_usuario->getIdUsuarioByNombre($nombre);
+            /*$id    = $this->M_usuario->getIdUsuarioByNombre($nombre);
             $datos = $this->M_usuario->getDatosTablaAsesor($id[0]->id);
             foreach ($datos as $key) {
                 $html .= '<tr>
@@ -63,7 +64,7 @@ class C_usuario extends CI_Controller {
                             <td>'.$key->agencia.'</td>
                           </tr>';
             }
-            $data['html'] = $html;
+            $data['html'] = $html;*/
             $data['comboAgencias'] = $this->__buildComboAgencias($nombre);
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
@@ -77,15 +78,31 @@ class C_usuario extends CI_Controller {
         $data['msj']   = null;
         try {
             $datos = _post('personalAsignado');
-            $id_asesor = '';
+            $agencia = _post('agencia');
+            $array_asesores = array();
             $asesores = explode("-", $datos);
+            $html = null;
             foreach ($asesores as $key) {
-                if($key != "null") {
-                    $id_asesor = '';
-                    //crear query que traiga el id de esas personas y actualizar en la tabla usuario
+                if($key != 'null') {
+                    array_push($array_asesores, $key);
                 }
             }
-            $data['error'] = EXIT_SUCCESS;
+            $datosAsesor = $this->M_usuario->getDatosTablaAsesor();
+            foreach ($datosAsesor as $key) {
+                        $html .= '<tr>
+                                    <td>
+                                       <input type="checkbox" id="check_'.$key->id.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                    </td>                    
+                                    <td>'.$key->nombre.'</td>
+                                    <td>'.$key->rol.'</td>
+                                    <td>'.$key->agencia.'</td>
+                                  </tr>';
+            }
+            $arrayUpdt = array('id_agencia' => $agencia);
+            $mensajes = $this->M_usuario->updateDatosAsesor($arrayUpdt,$array_asesores , 'usuario');
+            $data['html'] = $html;
+            $data['msj'] = $mensajes['msj'];
+            $data['error'] = $mensajes['error'];
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
@@ -98,7 +115,7 @@ class C_usuario extends CI_Controller {
         $opt = null;
         foreach($agencias as $age){
             $agen = str_replace(')', '',str_replace('(', '', $age->AGENCIA));
-            $opt .= '<option value="'.$agen.'"> '.$agen.'</option>';
+            $opt .= '<option value="'.$age->id.'"> '.$agen.'</option>';
         }
         return $opt;
     }
