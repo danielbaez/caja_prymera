@@ -55,11 +55,11 @@
             <?php if(_getSesion('rol') == 'administrador'){ ?>
               <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
               <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-              <a href="/C_main">Ver Usuarios</a><br>
+              <a href="/C_main">Editar Perfil</a><br>
             <?php }
                 elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                 <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-                <a href="/C_main">Ver Usuarios</a><br>
+                <a href="/C_main">Editar Perfil</a><br>
             <?php } ?>
           </div>
 
@@ -247,7 +247,7 @@
           },
 
           getValue: function(element) {
-            return element.nombre;
+            return element.nombre+' '+element.apellido;
           },
 
           ajaxSettings: {

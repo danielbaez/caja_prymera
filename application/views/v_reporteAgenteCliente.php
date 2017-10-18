@@ -55,11 +55,11 @@
             <?php if(_getSesion('rol') == 'administrador'){ ?>
               <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
               <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-              <a href="/C_main">Ver Usuarios</a><br>
+              <a href="/C_main">Editar Perfil</a><br>
             <?php }
                 elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                 <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-                <a href="/C_main">Ver Usuarios</a><br>
+                <a href="/C_main">Editar Perfil</a><br>
             <?php } ?>
           </div>
 
@@ -193,6 +193,7 @@
                       <th class="text-center">Nro sol.</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center">Agencia</th>
+                      <th class="text-center">Agencia de Transmisi&oacute;n</th>
                       <th class="text-center">Tipo</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Monto</th>
@@ -208,6 +209,7 @@
                         <td><?php echo $solicitud->id_solicitud ?></td>
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         <td><?php echo $solicitud->AGENCIA ?></td>
+                        <td><?php echo $solicitud->agencia_desembolso ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
                         <td><?php echo $solicitud->status_sol ?></td>
                         <td><?php echo $solicitud->monto ?></td>
@@ -223,10 +225,10 @@
                 $total = 0;
                 foreach ($solicitudes as $solicitud) {
                   
-                  $total .= $solicitud->monto;
+                  $total += (float)$solicitud->monto;
                 }
                 ?>
-                  <p class="text-right reporte-texto-total">Total de <?php echo $total ?></p>
+                  <p class="text-right reporte-texto-total">Total de S/ <?php echo $total ?></p>
                 <?php
                 }
                 ?>
@@ -274,7 +276,7 @@
           },
 
           getValue: function(element) {
-            return element.nombre;
+            return element.nombre+' '+element.apellido;
           },
 
           ajaxSettings: {
