@@ -6,7 +6,7 @@ class M_usuario extends  CI_Model{
     }
 
     function login($usuario) {
-        $sql = "SELECT * FROM usuario WHERE usuario = ?";
+        $sql = "SELECT * FROM usuario WHERE email = ?";
         $result = $this->db->query($sql, array($usuario));
         return $result->result();
     }
