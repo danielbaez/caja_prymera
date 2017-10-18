@@ -172,7 +172,7 @@
             </div>
             <div class="col-xs-12 col-border-filtros-resultado-reporte">
               <div class="table-responsive tabla-reporte">
-                <table class="table table-bordered">
+                <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
                       <th class="text-center">Fecha</th>
@@ -218,10 +218,13 @@
                 <?php
                 }
                 ?>
+                <?php
+                  if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right" style="margin-top: 20px; margin-bottom: 15px">
-                  <a class="export-excel" style="color:black"><i class="fa fa-print fa-3x" aria-hidden="true"></i></a> 
+                  <a style="color:black"><i class="fa fa-print fa-3x" aria-hidden="true"></i></a> 
                   <a class="export-excel" style="color:green; margin-left: 20px"><i class="fa fa-file-excel-o fa-3x" aria-hidden="true"></i></a>    
                 </div>
+                <?php } ?>
               
             </div>
 
@@ -242,14 +245,25 @@
       <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+
+      <script src="<?php echo RUTA_PLUGINS?>table2excel/table2excel.js"></script>
+
       <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
       <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
       <script type="text/javascript">
         
         $('.export-excel').click(function(){
-          
-          $('input[name="reporte"]').val('excel');
-          $('form').submit();
+
+          /*$('#tabla-solicitudes tbody').append('<tr class="text-right"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>dwdw</td></tr>');
+
+
+          $('#tabla-solicitudes').find('tr:last').hide();*/
+
+          $("#tabla-solicitudes").table2excel({
+              filename: "reporte.xls"
+          });
+          /*$('input[name="reporte"]').val('excel');
+          $('form').submit();*/
         })
 
       </script>

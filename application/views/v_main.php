@@ -303,6 +303,10 @@
             else
             {
 
+            	$('.div-usuario-as-email').show();
+						$('.input-password-as-dni').show();
+						$('input[name="password"]').hide();
+
 		  		//$('input[type="submit"]').val('Guardar');
 		  		$('.btn-action').val('Guardar');
 		  		$("input[name='permiso[]']").prop("checked", false);

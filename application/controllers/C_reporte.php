@@ -177,7 +177,7 @@ class C_reporte extends CI_Controller {
         //print_r($this->sendMailGmail());
         //exit();
 
-        $data['agencias'] = $this->M_agencia->getAgencias();
+        $data['agencias'] = $this->M_agencia->getAgencias('reporte');
 
         $action = _post('action');
         if(isset($action) and  $action == 'obtenerSolicitudRechazada') {
