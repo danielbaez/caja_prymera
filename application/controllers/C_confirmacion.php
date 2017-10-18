@@ -392,7 +392,7 @@ class C_confirmacion extends CI_Controller {
     }
 
     function enviarMail() {
-        $data['error'] = EXIT_ERROR;
+        $data['error'] = EXIT_SUCCESS;
         $data['msj']   = null;
         try {
             //twilio enviar msn
@@ -409,11 +409,12 @@ class C_confirmacion extends CI_Controller {
         $response = $this->twilio->sms($from, $to, $message);
         //_log(print_r($response, true));
         if($response->IsError) {
-          $data['error'] = EXIT_SUCCESS;
+          $data['error'] = EXIT_ERROR;
         }
         else {
         }
         }catch (Exception $e){
+            $data['error'] = EXIT_ERROR;
         }
         echo json_encode(array_map('utf8_encode', $data));
     }
