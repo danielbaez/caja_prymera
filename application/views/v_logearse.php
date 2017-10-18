@@ -135,7 +135,7 @@
                       </div>
                     </div>
                             
-                        <?php
+                        <!-- <?php
                         $error = $this->session->flashdata('error');
                         if(isset($error)) {
                         ?>
@@ -146,7 +146,7 @@
                             </div>
                         <?php
                         }
-                        ?>
+                        ?> -->
                         
                   </form>
                 </div>
@@ -170,5 +170,15 @@
     	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
     	<script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
     	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+
+        <script type="text/javascript">
+            
+            var a = "<?php echo $this->session->flashdata('error'); ?>";
+
+                if(a){
+                    msj("error", a);
+                }
+
+        </script>
     </body>
 </html>

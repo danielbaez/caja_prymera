@@ -132,6 +132,7 @@ class C_main extends CI_Controller {
                                 );
               $this->M_usuario->crearUsuario($arrayInsert, 'usuario', false);  
             }
+            $this->session->set_flashdata('msg', 'Se creo el usuario correctamente');
         }
 
         if($action == 'update')
@@ -254,6 +255,8 @@ class C_main extends CI_Controller {
 
                 $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);
             }
+
+            $this->session->set_flashdata('msg', 'Se actualizo el usuario correctamente');
 
         }
         redirect('/C_main');
