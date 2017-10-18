@@ -224,6 +224,39 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
+    function getDatosNuevosTablaAsesor($array) {
+        if(count($array[0]) == 1) {
+           $sql = "SELECT u.*, a.AGENCIA AS agencia
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND u.estado = 1
+                   AND u.rol LIKE '%asesor%'"; 
+        }else if(count($array[0]) > 1) {
+            $sql = "SELECT u.*, a.AGENCIA AS agencia
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND u.estado = 1
+                   AND u.rol LIKE '%asesor%'
+                   AND u.id NOT IN ?";
+        }
+        $result = $this->db->query($sql, array($array));
+        return $result->result();
+    }
+
+    function getDatosInTablaAsesor($array) {
+        $sql = "SELECT u.*, a.AGENCIA AS agencia
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND u.estado = 1
+                   AND u.rol LIKE '%asesor%'
+                   AND u.id IN ?";
+        $result = $this->db->query($sql, array($array));
+        return $result->result();
+    }
+
     function getIdUsuarioByNombre($nombre) {
         $sql = "SELECT id 
                   FROM usuario
@@ -251,6 +284,15 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array());
         return $result->result();
     }
+
+    function getDatosById($tabla, $columna, $id) {
+        $sql = "SELECT *
+                  FROM ".$tabla."
+                 WHERE ".$columna." = '".$id."'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
 
     function updateDatosAsesor($arrayData, $idAsesor, $tabla){
         $this->db->where_in('id'  , $idAsesor);

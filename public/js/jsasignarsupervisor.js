@@ -13,12 +13,26 @@ function agregarPersonal() {
 	    if(this.checked == true) {
 	    	dato = $(this).val();
 	    	nombre = $(this).attr('data-nombre');
-	    	console.log(nombre)
 	    	glob_personalAsignado += '-'+$(this).val();
-	    	$('#personalAsignado').append('<p>'+nombre+' <i class="fa fa-minus-circle fa-1x" aria-hidden="true"></i></p>')
+	    	$('#personalAsignado').append("<p id='id_nombre_pers'>"+nombre+" <i class='fa fa-minus-circle fa-1x' data-nombres="+nombre+" aria-hidden='true' onclick='borrarAsignados("+$(this).val()+", this)'></i></p>");
 	    }
 	});
-	//console.log(dato);
+	$.ajax({
+		data  : { personalAsignado : glob_personalAsignado},
+		url   : '/C_usuario/actualizarTablas',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+			data = JSON.parse(data);
+			//console.log(data);
+			if(data.error == 0) {
+				$('.agregar').html('');
+            	$('.agregar').append(data.html);
+			}
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
 }
 
 function guardatAsesoresAsignados() {
@@ -44,6 +58,31 @@ function guardatAsesoresAsignados() {
             	$('.agregar').append(data.html);
 			}
 			msj('success', data.msj);
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
+}
+
+function borrarAsignados(id_pers, nombre) {
+	console.log(id_pers);
+	//var nombres = $('#id_nombre_pers');
+	//console.log(data);
+	$.ajax({
+		data  : { id_asesor : id_pers,
+				  personalAsignado : glob_personalAsignado},
+		url   : '/C_usuario/borrarAsignados',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+			data = JSON.parse(data);
+			if(data.error == 0) {
+				$('#personalAsignado').html('');
+				$('#personalAsignado').append(data.p);
+				$('.agregar').html('');
+            	$('.agregar').append(data.html);
+			}
+			//msj('success', data.msj);
 		} catch (err){
 			msj('error',err.message);
 		}

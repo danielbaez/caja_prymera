@@ -119,5 +119,80 @@ class C_usuario extends CI_Controller {
         }
         return $opt;
     }
+
+    function borrarAsignados() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $id_asesor = _post('id_asesor');
+            $nombres = _post('personalAsignado');
+            $asesores = explode("-", $nombres);
+            $array_glob = array();
+            $html = "";
+            $p = "";
+            foreach ($asesores as $key) {
+                if($key != 'null' && $key != $id_asesor) {
+                    array_push($array_glob, $key);
+                }
+            }
+            $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
+            foreach ($datosAsesor as $key) {
+                        $html .= '<tr>
+                                    <td>
+                                       <input type="checkbox" id="check_'.$key->id.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                    </td>                    
+                                    <td>'.$key->nombre.'</td>
+                                    <td>'.$key->rol.'</td>
+                                    <td>'.$key->agencia.'</td>
+                                  </tr>';
+            }
+            $datosAsesor = $this->M_usuario->getDatosInTablaAsesor($array_glob);
+            foreach ($datosAsesor as $row) {
+                $p .= '<p id="id_nombre_pers">'.$row->nombre.' <i class="fa fa-minus-circle fa-1x" data-nombres='.$row->nombre.' aria-hidden="true" onclick="borrarAsignados('.$row->id.',this)"></i></p>';
+            }
+            _log(count($array_glob));
+            if(count($array_glob) == 1) {
+                $data['p'] = '';
+            }
+            $data['p'] = $p;
+            $data['html'] = $html;
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function actualizarTablas() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $nombres = _post('personalAsignado');
+            $asesores = explode("-", $nombres);
+            $array_glob = array();
+            $html = "";
+            foreach ($asesores as $key) {
+                if($key != 'null') {
+                    array_push($array_glob, $key);
+                }
+            }
+            $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
+            foreach ($datosAsesor as $key) {
+                        $html .= '<tr>
+                                    <td>
+                                       <input type="checkbox" id="check_'.$key->id.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                    </td>                    
+                                    <td>'.$key->nombre.'</td>
+                                    <td>'.$key->rol.'</td>
+                                    <td>'.$key->agencia.'</td>
+                                  </tr>';
+            }
+            $data['html'] = $html;
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
 }
 
