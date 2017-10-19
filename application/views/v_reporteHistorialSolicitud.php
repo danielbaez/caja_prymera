@@ -194,15 +194,12 @@
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
-      
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>     
+<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
 <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
@@ -215,183 +212,174 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
 
-      <script type="text/javascript">
+<script type="text/javascript">
 
-      $(document).ready(function() {
+$(document).ready(function() {
 
-        var table = $('#tabla-solicitudes').DataTable( {
+  var table = $('#tabla-solicitudes').DataTable( {
 
-            lengthChange: false,
-            buttons: [
-              {
-                  extend:    'pdf',
-                  text:      '<i class="fa fa-print fa-3x"></i>',
-                  titleAttr: 'PDF',
-                  title: 'Busqueda Solicitud - Filtros',
-                  orientation: 'landscape',
-                  pageSize: 'LEGAL',
-                  filename: 'reporte',
-                  customize: function (doc) {
-                    doc.content[1].table.widths = 
-                        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-                  }
-              },
-              {
-                  extend:    'excel',
-                  text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-                  messageTop: 'Busqueda Solicitud - Filtros',
-                  titleAttr: 'Excel',
-                  title: '',
-                  filename: 'reporte',
-                  header: true,
-                  customize: function( xlsx ) {
-                      var sheet = xlsx.xl.worksheets['sheet1.xml'];
+      lengthChange: false,
+      buttons: [
+        {
+            extend:    'pdf',
+            text:      '<i class="fa fa-print fa-3x"></i>',
+            titleAttr: 'PDF',
+            title: 'Busqueda Solicitud - Filtros',
+            orientation: 'landscape',
+            pageSize: 'LEGAL',
+            filename: 'reporte',
+            customize: function (doc) {
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+            }
+        },
+        {
+            extend:    'excel',
+            text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
+            messageTop: 'Busqueda Solicitud - Filtros',
+            titleAttr: 'Excel',
+            title: '',
+            filename: 'reporte',
+            header: true,
+            customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                //$('row c[r^="A"]', sheet).attr( 's', '2');
+            }
+        },
+      ],
+      "language": {
+        "search": "Buscar:",
+        "emptyTable": "No hay registros disponibles",
+        "paginate": {
+            "first":        "Primero",
+            "previous":     "Anterior",
+            "next":         "Siguiente",
+            "last":         "Ultimo"
+        },
+        "info":             "_START_ a _END_ de _TOTAL_ entradas",
+
+        "infoEmpty":        "0 de 0 of 0 entradas",
+        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+        "zeroRecords":      "No se encontraron registros",
+      },
+      "pageLength": 5,
+      lengthMenu: [
+          [ 5, 15, 25, 50, -1 ],
+          [ '5', '15', '25', '50', 'Total' ]
+      ]
+  } );
+
+  table.buttons().container()
+  //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
+  .appendTo( '.buttons-export' );
+
+  $(".tr-ver-info-solicitud").click(function() {
+    $.ajax({
+        data:  {id: $(this).attr('data-idSolicitud')},
+        url:   '/C_reporte/modalInformacionSolicitud',
+        type:  'post',
+        dataType: 'json',
+        success:  function (response) {
+          $('#modalInformacionSolicitud').modal('show');
+          console.log(response[0])
+          var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
+          dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
+          dCliente += '<p><span>Conyuge:</span> '+response[0].nombre_conyugue+'</p>';
+          dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
+          dCliente += '<p><span>DNI Conyuge:</span> '+response[0].dni_conyugue+'</p>';
+          dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
+          dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
+          dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
+          $('.div-datos-cliente').html(dCliente);
+
+
+          var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
+          if(response[0].id_producto == 1){
+            dPrestamo += '<p><span>Monto:</span> '+response[0].monto+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';
+          }
+          if(response[0].id_producto == 2){
+            dPrestamo += '<p><span>Auto:</span> '+response[0].marca+'</p>';
+            dPrestamo += '<p><span>Modelo:</span> '+response[0].modelo+'</p>';
+            dPrestamo += '<p><span>Importe:</span> '+response[0].valor_auto+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';  
+          }
+          
+          $('.div-datos-prestamo').html(dPrestamo);
+
+          var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
+          
+          dEmpleo += '<p><span>Empresa:</span> '+response[0].empleador+'</p>';
+          dEmpleo += '<p><span>Ingreso Mensual:</span> '+response[0].salario+'</p>';
+          dEmpleo += '<p><span>Direccion:</span> '+response[0].dir_empleador+'</p>';
+          
+          $('.div-datos-empleo').html(dEmpleo);
+
+          var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
+          dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
+          dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
+          dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
+          dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
+          dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
+
+          
+
+          dSolicitud += '<select name="status" class="form-control" id="status">';
+          dSolicitud += '<option value="">Status</option>';
+          if(response[0].status_sol == 0){
+            dSolicitud += '<option selected value="0">Abierto</option>';
+            dSolicitud += '<option value="1">Cerrada</option>';
+          }
+          if(response[0].status_sol == 1){
+            dSolicitud += '<option value="0">Abierto</option>';
+            dSolicitud += '<option selected value="1">Cerrada</option>';
+          }
+          
+          dSolicitud += '</select>';
+          $('.div-datos-solicitud').html(dSolicitud);
+
+          $('.btn-actualizar-estado').attr('data-idSolicitud', response[0].id_solicitud);
+
+        }
+    });
        
-                      //$('row c[r^="A"]', sheet).attr( 's', '2');
-                  }
-              },
-            ],
-            "language": {
-              "search": "Buscar:",
-              "emptyTable": "No hay registros disponibles",
-              "paginate": {
-                  "first":        "Primero",
-                  "previous":     "Anterior",
-                  "next":         "Siguiente",
-                  "last":         "Ultimo"
-              },
-              "info":             "_START_ a _END_ de _TOTAL_ entradas",
+  });
 
-              "infoEmpty":        "0 de 0 of 0 entradas",
-              "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
-              "zeroRecords":      "No se encontraron registros",
-            },
-            "pageLength": 5,
-            lengthMenu: [
-                [ 5, 15, 25, 50, -1 ],
-                [ '5', '15', '25', '50', 'Total' ]
-            ]
-        } );
-     
-        table.buttons().container()
-        //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
-        .appendTo( '.buttons-export' );
+  $(".btn-actualizar-estado").click(function() {
+    var status = $('#status option:selected').val();
+    if(status !== ''){
+      $.ajax({
+        data:  {status: status, id: $(this).attr('data-idSolicitud')},
+        url:   '/C_reporte/actualizarEstadoSolicitud',
+        type:  'post',
+        dataType: 'json',
+        success:  function (response) {
+          console.log(response)
+          if(response.response){
+            $('#modalInformacionSolicitud').modal('hide');
+          }else{
+            alert('Hubo un problema, no se pudo actualizar el estado.')
+          }
+        }
+      });
+    }else{
+      alert('Por favor elige un estado')
+    }
+  });
+  // data-dismiss="modal"
 
 
 } );
           
 
-        $(".tr-ver-info-solicitud").click(function() {
-            $.ajax({
-                data:  {id: $(this).attr('data-idSolicitud')},
-                url:   '/C_reporte/modalInformacionSolicitud',
-                type:  'post',
-                dataType: 'json',
-                success:  function (response) {
-                  $('#modalInformacionSolicitud').modal('show');
-                  console.log(response[0])
-                  var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
-                  dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
-                  dCliente += '<p><span>Conyuge:</span> '+response[0].nombre_conyugue+'</p>';
-                  dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
-                  dCliente += '<p><span>DNI Conyuge:</span> '+response[0].dni_conyugue+'</p>';
-                  dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
-                  dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
-                  dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
-                  $('.div-datos-cliente').html(dCliente);
-
-
-                  var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
-                  if(response[0].id_producto == 1){
-                    dPrestamo += '<p><span>Monto:</span> '+response[0].monto+'</p>';
-                    dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
-                    dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
-                    dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
-                    dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';
-                  }
-                  if(response[0].id_producto == 2){
-                    dPrestamo += '<p><span>Auto:</span> '+response[0].marca+'</p>';
-                    dPrestamo += '<p><span>Modelo:</span> '+response[0].modelo+'</p>';
-                    dPrestamo += '<p><span>Importe:</span> '+response[0].valor_auto+'</p>';
-                    dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
-                    dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
-                    dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
-                    dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';  
-                  }
-                  
-                  $('.div-datos-prestamo').html(dPrestamo);
-
-                  var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
-                  
-                  dEmpleo += '<p><span>Empresa:</span> '+response[0].empleador+'</p>';
-                  dEmpleo += '<p><span>Ingreso Mensual:</span> '+response[0].salario+'</p>';
-                  dEmpleo += '<p><span>Direccion:</span> '+response[0].dir_empleador+'</p>';
-                  
-                  $('.div-datos-empleo').html(dEmpleo);
-
-                  var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-                  dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
-                  dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
-                  dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
-                  dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
-                  dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
-
-                  
-
-                  dSolicitud += '<select name="status" class="form-control" id="status">';
-                  dSolicitud += '<option value="">Status</option>';
-                  if(response[0].status_sol == 0){
-                    dSolicitud += '<option selected value="0">Abierto</option>';
-                    dSolicitud += '<option value="1">Cerrada</option>';
-                  }
-                  if(response[0].status_sol == 1){
-                    dSolicitud += '<option value="0">Abierto</option>';
-                    dSolicitud += '<option selected value="1">Cerrada</option>';
-                  }
-                  
-                  dSolicitud += '</select>';
-                  $('.div-datos-solicitud').html(dSolicitud);
-
-                  $('.btn-actualizar-estado').attr('data-idSolicitud', response[0].id_solicitud);
-
-                }
-            });
-             
-        });
-
-        $(".btn-actualizar-estado").click(function() {
-          var status = $('#status option:selected').val();
-          if(status !== ''){
-            $.ajax({
-              data:  {status: status, id: $(this).attr('data-idSolicitud')},
-              url:   '/C_reporte/actualizarEstadoSolicitud',
-              type:  'post',
-              dataType: 'json',
-              success:  function (response) {
-                console.log(response)
-                if(response.response){
-                  $('#modalInformacionSolicitud').modal('hide');
-                }else{
-                  alert('Hubo un problema, no se pudo actualizar el estado.')
-                }
-              }
-            });
-          }else{
-            alert('Por favor elige un estado')
-          }
-        });
-        // data-dismiss="modal"
-
-        $('.export-excel').click(function(){
-
-          $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="3">Búsqueda Solicitud - Filtros</td></tr>').find('tr:first').hide();
-
-          $("#tabla-solicitudes").table2excel({
-              filename: "reporte.xls"
-          });
-          /*$('input[name="reporte"]').val('excel');
-          $('form').submit();*/
-        })
+        
 
 
       </script>

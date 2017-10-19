@@ -30,6 +30,14 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
         <style>
         </style>  
     </head>
@@ -150,7 +158,7 @@
               </form>
             </div>
             <div class="col-xs-12 col-border-filtros-resultado-reporte">
-              <div class="table-responsive tabla-reporte">
+              <div class="table-responsive">
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
@@ -183,9 +191,7 @@
               </div>
               <?php
                   if(isset($solicitudes) and count($solicitudes)){ ?>
-                <div class="col-xs-12 text-right" style="margin-top: 20px; margin-bottom: 15px">
-                  <a style="color:black"><i class="fa fa-print fa-3x" aria-hidden="true"></i></a> 
-                  <a class="export-excel" style="color:green; margin-left: 20px"><i class="fa fa-file-excel-o fa-3x" aria-hidden="true"></i></a>    
+                <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
                 <?php } ?>
             </div>
@@ -216,146 +222,205 @@
       </div>
     </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
+<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+<script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
-        
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
-      <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-        <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
-      <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+<script type="text/javascript">
 
-      <script src="<?php echo RUTA_PLUGINS?>table2excel/table2excel.js"></script>
+$(document).ready(function() {
 
-      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
-      <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-      <script type="text/javascript">
-          
+  var table = $('#tabla-solicitudes').DataTable( {
 
-
-        var options = {
-
-          url: function() {
-            return "/C_reporte/autocompleteGetAsesor";
-          },
-
-          getValue: function(element) {
-            return element.nombre+' '+element.apellido;
-          },
-
-          ajaxSettings: {
-            dataType: "json",
-            method: "POST",
-            data: {
-              dataType: "json"
+      lengthChange: false,
+      buttons: [
+        {
+            extend:    'pdf',
+            text:      '<i class="fa fa-print fa-3x"></i>',
+            titleAttr: 'PDF',
+            title: 'Busqueda Consolidado - Total Solicitudes Rechazadas',
+            orientation: 'landscape',
+            pageSize: 'LEGAL',
+            filename: 'reporte',
+            customize: function (doc) {
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
             }
-          },
+        },
+        {
+            extend:    'excel',
+            text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
+            messageTop: 'Busqueda Consolidado - Total Solicitudes Rechazadas',
+            titleAttr: 'Excel',
+            title: '',
+            filename: 'reporte',
+            header: true,
+            customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                //$('row c[r^="A"]', sheet).attr( 's', '2');
+            }
+        },
+      ],
+      "language": {
+        "search": "Buscar:",
+        "emptyTable": "No hay registros disponibles",
+        "paginate": {
+            "first":        "Primero",
+            "previous":     "Anterior",
+            "next":         "Siguiente",
+            "last":         "Ultimo"
+        },
+        "info":             "_START_ a _END_ de _TOTAL_ entradas",
 
-          preparePostData: function(data) {
-            data.asesor = $("#asesor").val();
-            return data;
-          },
+        "infoEmpty":        "0 de 0 of 0 entradas",
+        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+        "zeroRecords":      "No se encontraron registros",
+      },
+      "pageLength": 5,
+      lengthMenu: [
+          [ 5, 15, 25, 50, -1 ],
+          [ '5', '15', '25', '50', 'Total' ]
+      ]
+  } );
 
-          list: {
-            onClickEvent: function(data) {
-              var value = $("#asesor").getSelectedItemData();
-              console.log(value)
-              $('input[name="id_asesor"]').val(value.id);
+  table.buttons().container()
+  //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
+  .appendTo( '.buttons-export' );
 
-              $.ajax({
-                data:  {id_asesor: value.id},
-                url:   '/C_reporte/getAgenciaByAsesor',
-                type:  'post',
-                dataType: 'json',
-                success:  function (response) {
-                  $('#agencia').html('').append('<option value="">Agencia</option><option selected value="'+response[0].id+'">'+response[0].AGENCIA+'</option>')
-                }
-              });
 
-            } 
-            /*onSelectItemEvent: function() {
-              var value = $("#asesor").getSelectedItemData()
-              alert(1)
-              console.log(value)
-            }*/
-          },
+  var options = {
 
-          requestDelay: 400
-        };
+    url: function() {
+      return "/C_reporte/autocompleteGetAsesor";
+    },
 
-        $("#asesor").easyAutocomplete(options);
+    getValue: function(element) {
+      return element.nombre+' '+element.apellido;
+    },
 
-        $('#agencia').change(function() {
-          if($(this).val() == '' && $('#asesor').val() != ''){
-            $('#asesor').val('');
-            $('input[name="id_asesor"]').val('');
+    ajaxSettings: {
+      dataType: "json",
+      method: "POST",
+      data: {
+        dataType: "json"
+      }
+    },
 
-            $.ajax({
-              data:  {},
-              url:   '/C_reporte/getAgenciaByAsesor',
-              type:  'post',
-              dataType: 'json',
-              success:  function (response) {
-                var opt = '<option value="">Agencia</option>';
-                for(var i = 0; i<response.length; i++){
-                  opt += '<option value="'+response[i].id+'">'+response[i].AGENCIA+'</option>';
-                }
-                $('#agencia').html('').append(opt)
-              }
-            });
+    preparePostData: function(data) {
+      data.asesor = $("#asesor").val();
+      return data;
+    },
 
+    list: {
+      onClickEvent: function(data) {
+        var value = $("#asesor").getSelectedItemData();
+        console.log(value)
+        $('input[name="id_asesor"]').val(value.id);
+
+        $.ajax({
+          data:  {id_asesor: value.id},
+          url:   '/C_reporte/getAgenciaByAsesor',
+          type:  'post',
+          dataType: 'json',
+          success:  function (response) {
+            $('#agencia').html('').append('<option value="">Agencia</option><option selected value="'+response[0].id+'">'+response[0].AGENCIA+'</option>')
           }
-        })
-
-        $(".tr-ver-info-solicitud").click(function() {
-            $.ajax({
-                data:  {id: $(this).attr('data-idSolicitud')},
-                url:   '/C_reporte/modalInformacionSolicitud',
-                type:  'post',
-                dataType: 'json',
-                success:  function (response) {
-                  $('#modalInformacionSolicitud').modal('show');
-                  console.log(response[0])
-                  var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
-                  dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
-                  dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
-                  dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
-                  dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
-                  dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
-                  $('.div-datos-cliente').html(dCliente);
-
-                  var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-                  dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
-                  dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
-                  dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
-                  dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
-                  dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
-
-                  $('.div-datos-solicitud').html(dSolicitud);
-
-                }
-            });
-             
         });
 
-        $('.export-excel').click(function(){
+      } 
+      /*onSelectItemEvent: function() {
+        var value = $("#asesor").getSelectedItemData()
+        alert(1)
+        console.log(value)
+      }*/
+    },
 
-          $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="5">Búsqueda Consolidado - Total Solicitudes Rechazadas</td></tr>').find('tr:first').hide();
+    requestDelay: 400
+  };
 
-          $("#tabla-solicitudes").table2excel({
-              filename: "reporte.xls"
-          });
-          /*$('input[name="reporte"]').val('excel');
-          $('form').submit();*/
-        })
+  $("#asesor").easyAutocomplete(options);
 
-      </script>
+  $('#agencia').change(function() {
+    if($(this).val() == '' && $('#asesor').val() != ''){
+      $('#asesor').val('');
+      $('input[name="id_asesor"]').val('');
+
+      $.ajax({
+        data:  {},
+        url:   '/C_reporte/getAgenciaByAsesor',
+        type:  'post',
+        dataType: 'json',
+        success:  function (response) {
+          var opt = '<option value="">Agencia</option>';
+          for(var i = 0; i<response.length; i++){
+            opt += '<option value="'+response[i].id+'">'+response[i].AGENCIA+'</option>';
+          }
+          $('#agencia').html('').append(opt)
+        }
+      });
+
+    }
+  })
+
+  $(".tr-ver-info-solicitud").click(function() {
+      $.ajax({
+          data:  {id: $(this).attr('data-idSolicitud')},
+          url:   '/C_reporte/modalInformacionSolicitud',
+          type:  'post',
+          dataType: 'json',
+          success:  function (response) {
+            $('#modalInformacionSolicitud').modal('show');
+            console.log(response[0])
+            var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
+            dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
+            dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
+            dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
+            dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
+            dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
+            $('.div-datos-cliente').html(dCliente);
+
+            var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
+            dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
+            dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
+            dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
+            dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
+            dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
+
+            $('.div-datos-solicitud').html(dSolicitud);
+
+          }
+      });
+       
+  });
+
+  $('.export-excel').click(function(){
+
+    $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="5">Búsqueda Consolidado - Total Solicitudes Rechazadas</td></tr>').find('tr:first').hide();
+
+    $("#tabla-solicitudes").table2excel({
+        filename: "reporte.xls"
+    });
+    /*$('input[name="reporte"]').val('excel');
+    $('form').submit();*/
+  })
+  
+} );
+
+</script>
     </body>
 </html>

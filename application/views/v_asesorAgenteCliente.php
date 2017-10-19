@@ -238,15 +238,12 @@
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
-      
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>    
+<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+<script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
 <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
@@ -259,103 +256,79 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
 
-      <script type="text/javascript">
+<script type="text/javascript">
 
-      $(document).ready(function() {
-        /*$('#tabla-solicitudes').DataTable( {
-            dom: 'Bfrtip',
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pdfHtml5'
-            ]
-        } );*/
+$(document).ready(function() {
+  /*$('#tabla-solicitudes').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copyHtml5',
+          'excelHtml5',
+          'csvHtml5',
+          'pdfHtml5'
+      ]
+  } );*/
 
-        var table = $('#tabla-solicitudes').DataTable( {
+  var table = $('#tabla-solicitudes').DataTable( {
 
-            lengthChange: false,
-            buttons: [
-              {
-                  extend:    'pdf',
-                  text:      '<i class="fa fa-print fa-3x"></i>',
-                  titleAttr: 'PDF',
-                  title: 'Reporte Consolidado Solicitudes por Asesor',
-                  orientation: 'landscape',
-                  pageSize: 'LEGAL',
-                  filename: 'reporte',
-                  customize: function (doc) {
-                    doc.content[1].table.widths = 
-                        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-                  }
-              },
-              {
-                  extend:    'excel',
-                  text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-                  messageTop: 'Reporte Consolidado Solicitudes por Asesor',
-                  titleAttr: 'Excel',
-                  title: '',
-                  filename: 'reporte',
-                  header: true,
-                  customize: function( xlsx ) {
-                      var sheet = xlsx.xl.worksheets['sheet1.xml'];
-       
-                      //$('row c[r^="A"]', sheet).attr( 's', '2');
-                  }
-              },
-            ],
-            "language": {
-              "search": "Buscar:",
-              "emptyTable": "No hay registros disponibles",
-              "paginate": {
-                  "first":        "Primero",
-                  "previous":     "Anterior",
-                  "next":         "Siguiente",
-                  "last":         "Ultimo"
-              },
-              "info":             "_START_ a _END_ de _TOTAL_ entradas",
+      lengthChange: false,
+      buttons: [
+        {
+            extend:    'pdf',
+            text:      '<i class="fa fa-print fa-3x"></i>',
+            titleAttr: 'PDF',
+            title: 'Reporte Consolidado Solicitudes por Asesor',
+            orientation: 'landscape',
+            pageSize: 'LEGAL',
+            filename: 'reporte',
+            customize: function (doc) {
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+            }
+        },
+        {
+            extend:    'excel',
+            text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
+            messageTop: 'Reporte Consolidado Solicitudes por Asesor',
+            titleAttr: 'Excel',
+            title: '',
+            filename: 'reporte',
+            header: true,
+            customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                //$('row c[r^="A"]', sheet).attr( 's', '2');
+            }
+        },
+      ],
+      "language": {
+        "search": "Buscar:",
+        "emptyTable": "No hay registros disponibles",
+        "paginate": {
+            "first":        "Primero",
+            "previous":     "Anterior",
+            "next":         "Siguiente",
+            "last":         "Ultimo"
+        },
+        "info":             "_START_ a _END_ de _TOTAL_ entradas",
 
-              "infoEmpty":        "0 de 0 of 0 entradas",
-              "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
-              "zeroRecords":      "No se encontraron registros",
-            },
-            "pageLength": 5,
-            lengthMenu: [
-                [ 5, 15, 25, 50, -1 ],
-                [ '5', '15', '25', '50', 'Total' ]
-            ]
-        } );
-     
-        table.buttons().container()
-        //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
-        .appendTo( '.buttons-export' );
+        "infoEmpty":        "0 de 0 of 0 entradas",
+        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+        "zeroRecords":      "No se encontraron registros",
+      },
+      "pageLength": 5,
+      lengthMenu: [
+          [ 5, 15, 25, 50, -1 ],
+          [ '5', '15', '25', '50', 'Total' ]
+      ]
+  } );
+
+  table.buttons().container()
+  //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
+  .appendTo( '.buttons-export' );
 
 
 } );
-
-    //   $('#tabla-solicitudes').DataTable( {
-    //     dom: 'Bfrtip',
-    //     buttons: [
-    //         {
-    //             extend: 'pdfHtml5',
-    //             message: 'PDF created by PDFMake with Buttons for DataTables.'
-    //         }
-    //     ]
-    // } );
-          
-          $('.export-excel').click(function(){
-
-          $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="7">Reporte Consolidado Solicitudes por Asesor</td></tr>').find('tr:first').hide();
-
-          $("#tabla-solicitudes").table2excel({
-              filename: "reporte.xls"
-          });
-          /*$('input[name="reporte"]').val('excel');
-          $('form').submit();*/
-        })
-
-
-
-      </script>
+</script>
     </body>
 </html>
