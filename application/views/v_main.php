@@ -50,7 +50,7 @@
 
 	<div class="container">
 		<div class="row text-center">
-		<div class="col-xs-12">
+		<div class="col-xs-12" style="margin-bottom: 10px">
 		  <div class="col-xs-12 col-sm-3"></div>
 		  <div class="col-xs-12 col-sm-6">
 			<h1 class="titulo-vista">Bienvenido <?php echo $nombre ?></h1>            
@@ -119,7 +119,7 @@
 			  <h4>Administrar Perfiles</h4>
 			  <form class="text-center" action="C_main/registrar" method="POST" enctype="multipart/form-data">
 				<div class="col-xs-12 col-sm-6">
-				  <div class="form-group">
+				  <div class="">
 					<img id="blah" src="<?php echo RUTA_IMG?>fondos/user.png" width="100" height="100" />
 					<input type='file' id="imgInp" name="imagen" class="hidden"/>
 				  </div>
@@ -161,7 +161,7 @@
 				  </div>
 				  <div class="form-group div-rol-superior text-left">
 				  	<label class="form-label">Superior</label>
-					<select class="form-control ocultar" id="rol_superior" name="rol_superior">
+					<select disabled class="form-control ocultar" id="rol_superior" name="rol_superior">
 					  <option value="">Rol Superior</option>
 					  <?php   foreach ($superiores as $key => $value) {
 						?>
@@ -245,10 +245,8 @@
 				</div>
 			  </form>
 		  </div>  
-
 		</div>
 	  </div>
-	  <br>
 	</div>
 
 
@@ -342,6 +340,9 @@
   		var rol_user = $('input[name="rol_user"]').val();
 
 	  	if(rol_user == 'jefe_agencia'){
+
+	  		$("#blah").off('click');
+
 	  		$('#nombres').attr('disabled', true)
             $('#sexo').attr('disabled', true)
             $('#apellidos').attr('disabled', true)
@@ -363,6 +364,10 @@
 
             if(rol_user == 'jefe_agencia'){
             	$('.btn-only-upd').hide();
+
+            	$("#blah").off('click');
+
+            	//$("#blah").bind('click', alert(1));
             	
             	$('#nombres').attr('disabled', true)
 	            $('#sexo').attr('disabled', true)
@@ -379,7 +384,14 @@
             }
             else
             {
-
+            	$('#blah').on('click', function () {
+				    $( "#imgInp" ).trigger( "click" );
+				});
+				
+            	$('#rol_superior').attr('disabled', true)
+            	$('.div-permisos').show();
+            	$('.div-rol').show();
+            	$('.div-agencias').show();
             	$('.div-usuario-as-email').show();
 						$('.input-password-as-dni').show();
 						$('input[name="password"]').hide();
@@ -408,6 +420,12 @@
 					}
 				});
 	  		}
+
+	  		$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', false).prop('checked', false);
+	  		$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', false).prop('checked', false);
+	  		$('input:checkbox[name="permiso[]"][value="0"]').prop('disabled', true).prop('checked', false);
+
+	  		$('#blah').attr('src', '/public/img/fondos/user.png');
 
 
 	  	});
@@ -527,6 +545,8 @@
 
                     if(response[0].imagen){
                         $('#blah').attr('src', '/public/img/usuarios/'+response[0].imagen);
+                    }else{
+                    	$('#blah').attr('src', '/public/img/fondos/user.png');
                     }
 
                     var rol_user = $('input[name="rol_user"]').val();
@@ -537,6 +557,7 @@
                     }
 
 					if(rol_user == 'administrador' && response[0].rol == 'administrador'){
+						$("#rol option[value='']").attr("selected", "selected");
 						$('.div-rol').hide();
 						$('.div-rol-superior').hide();
 						$('.div-agencias').hide();
@@ -587,6 +608,9 @@
 					}
 
 					else if(rol_user == 'jefe_agencia' && response[0].rol == 'asesor'){
+
+						//$("#blah").unbind("click")
+						$("#blah").off('click');
 
 						$('.div-usuario-as-email').hide();
 						$('.input-password-as-dni').hide();

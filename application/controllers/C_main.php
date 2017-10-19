@@ -186,7 +186,8 @@ class C_main extends CI_Controller {
                                 'rol'              => $rol,
                                 'permiso'          => $permiso,
                                 'estado'           => in_array(0, $checkPermiso) ? 0 : 1,
-                                'imagen'           => $name_image
+                                'imagen'           => $name_image,
+                                'id_agencia'       => NULL
                                 );  
 
                     if($name_image == '')
