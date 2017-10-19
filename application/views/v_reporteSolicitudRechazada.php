@@ -389,6 +389,16 @@ $(document).ready(function() {
           type:  'post',
           dataType: 'json',
           success:  function (response) {
+
+            var producto = '';
+          if(response[0].id_producto == 1){
+            producto = 'Mi Cash';
+          }
+          else if(response[0].id_producto == 2){
+            producto = 'Vehicular';
+          }
+          $('.modal-title').html('Resumen Solicitud - '+producto);
+
             $('#modalInformacionSolicitud').modal('show');
             console.log(response[0])
             var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';

@@ -102,3 +102,7 @@
 }
 
 #tabla-usuarios_paginate {text-align: center !important}
+
+#tabla-usuarios tr{
+	cursor: pointer;
+}

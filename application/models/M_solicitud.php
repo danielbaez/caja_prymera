@@ -205,7 +205,7 @@ class M_solicitud extends  CI_Model{
             $id_usuario = _getSesion('id_usuario');
             if($rol == 'administrador')
             {
-                $sql = "SELECT DATE_FORMAT(timestamp_final,'%d-%m-%Y') as fecha_solicitud, id as id_solicitud, nombre, apellido FROM solicitud WHERE $where";    
+                $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto FROM solicitud INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id WHERE $where";    
             }
             elseif($rol == 'jefe_agencia')
             {

@@ -136,6 +136,7 @@
                     <tr class="tr-header-reporte">
                       <th class="text-center">Fecha</th>
                       <th class="text-center">Cliente</th>
+                      <th class="text-center">Tipo</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
                   </thead>
@@ -148,6 +149,7 @@
                       <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
                         <td><?php echo $solicitud->fecha_solicitud ?></td>                        
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->producto ?></td>
                         <td><?php echo $solicitud->id_solicitud ?></td>
                       </tr>
                       <?php

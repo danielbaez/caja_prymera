@@ -71,7 +71,7 @@
 		  </div>
 
 
-		    <!-- <?php
+		    <?php
             $msg = $this->session->flashdata('msg');
             if(isset($msg)) {
             ?>
@@ -82,7 +82,7 @@
 	          </div>
             <?php
             }
-            ?> -->
+            ?>
             
 		  
 		  <div class="col-xs-12 col-md-6 col-seccion">
@@ -97,19 +97,6 @@
 					  <th class="text-center">Agencia</th>
 					</tr>
 				  </thead>
-				  <!-- <tbody>
-					<?php foreach($personales as $personal){
-					  ?>
-					<tr>
-					  <td onclick="setearCampos(this, <?php echo $personal->id ?>)" id="nombre_pers_<?php echo $personal->id ?>"><?php echo $personal->nombre ?></td>
-					  <td id="rol_pers_<?php echo $personal->id ?>"><?php echo $personal->rol ?></td>
-					  <td id="agencia_pers_<?php echo $personal->id ?>"><?php echo $personal->AGENCIA ?></td>
-					</tr>
-				  <?php                 
-				  } ?>                
-					 
-				  </tbody> -->
-
 				  <tbody>
 					<?php foreach($personales as $personal){
 					  ?>
@@ -344,7 +331,7 @@
         "zeroRecords":      "No se encontraron registros",
       },
       "bInfo" : false,
-      "pageLength": 8,
+      "pageLength": 15,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
@@ -497,7 +484,8 @@
             }
         });
 
-		$(".detalle-usuario").click(function() {
+        $('#tabla-usuarios tbody').on('click', 'tr', function () {
+		//$(".detalle-usuario").click(function() {
 			$.ajax({
 				data:  {id: $(this).attr('data-idUsuario')},
 				url:   '/C_usuario/detalleUsuario',
@@ -678,8 +666,24 @@
 	var a = "<?php echo $this->session->flashdata('msg'); ?>";
 
 	if(a){
-		msj("success", a);
+		//msj("success", a);
 	}
+
+
+	$('input[name="permiso[]"]').change(function() {
+		
+        if($(this).is(":checked")) {
+        	if($(this).val() == 0){
+        		$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', true).prop('checked', false);
+        		$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', true).prop('checked', false);
+        	}
+        }else{
+        	$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', false).prop('checked', false);
+    		$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', false).prop('checked', false);
+        }
+        
+    });
+
 
 
 });
