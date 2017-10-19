@@ -60,6 +60,7 @@
             <h1 class="titulo-vista">Vista Reportes</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
+            <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
             <?php if(_getSesion('rol') == 'administrador'){ ?>
               <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
               <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
@@ -312,11 +313,13 @@ $(document).ready(function() {
         "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
         "zeroRecords":      "No se encontraron registros",
       },
+      "bInfo" : false,
       "pageLength": 5,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
-      ]
+      ],
+      "dom": 'rtp'
   } );
 
   table.buttons().container()

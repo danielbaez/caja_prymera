@@ -129,6 +129,7 @@ class logearse extends CI_Controller {
                                                             'rol'             => $datos[0]->rol,
                                                             'id_usuario'      =>$datos[0]->id,
                                                             'nombre'          =>$datos[0]->nombre,
+                                                            'nombreCompleto'          =>$datos[0]->nombre.' '.$datos[0]->apellido,
                                                             'id_agencia'          =>$datos[0]->id_agencia
                                                             ));
                                                                           

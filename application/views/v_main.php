@@ -27,9 +27,13 @@
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
 		<style>
 		</style>  
 	</head>
@@ -84,10 +88,10 @@
 		  <div class="col-xs-12 col-md-6 col-seccion">
 			<div class="col-xs-12 div-seccion">
 			  <h4>Personal</h4>
-			  <div class="table-responsive" style="height: 250px; overflow: scroll;">
-				<table class="table table-bordered">
+			  <div class="table-responsive">
+				<table class="table table-bordered" id="tabla-usuarios">
 				  <thead>
-					<tr>
+					<tr class="tr-header-reporte">
 					  <th class="text-center">Nombres</th>
 					  <th class="text-center">Rol</th>
 					  <th class="text-center">Agencia</th>
@@ -275,9 +279,80 @@
 	  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 	  <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsmain.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+
+	  <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
+
 	  <script>
 
-	  	var rol_user = $('input[name="rol_user"]').val();
+	  	$(document).ready(function() {
+
+  var table = $('#tabla-usuarios').DataTable( {
+
+      lengthChange: false,
+      buttons: [
+        {
+            extend:    'pdf',
+            text:      '<i class="fa fa-print fa-3x"></i>',
+            titleAttr: 'PDF',
+            title: 'Busqueda Solicitud - Filtros',
+            orientation: 'landscape',
+            pageSize: 'LEGAL',
+            filename: 'reporte',
+            customize: function (doc) {
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+            }
+        },
+        {
+            extend:    'excel',
+            text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
+            messageTop: 'Busqueda Solicitud - Filtros',
+            titleAttr: 'Excel',
+            title: '',
+            filename: 'reporte',
+            header: true,
+            customize: function( xlsx ) {
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                //$('row c[r^="A"]', sheet).attr( 's', '2');
+            }
+        },
+      ],
+      "language": {
+        "search": "Buscar:",
+        "emptyTable": "No hay registros disponibles",
+        "paginate": {
+            "first":        "Primero",
+            "previous":     "Anterior",
+            "next":         "Siguiente",
+            "last":         "Ultimo"
+        },
+        "info":             "_START_ a _END_ de _TOTAL_ entradas",
+
+
+        "infoEmpty":        "0 de 0 of 0 entradas",
+        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+        "zeroRecords":      "No se encontraron registros",
+      },
+      "bInfo" : false,
+      "pageLength": 8,
+      lengthMenu: [
+          [ 5, 15, 25, 50, -1 ],
+          [ '5', '15', '25', '50', 'Total' ]
+      ],
+      "dom": 'rtp'
+  } );
+
+  		var rol_user = $('input[name="rol_user"]').val();
 
 	  	if(rol_user == 'jefe_agencia'){
 	  		$('#nombres').attr('disabled', true)
@@ -605,6 +680,11 @@
 	if(a){
 		msj("success", a);
 	}
+
+
+});
+
+	  	
 
 	  </script>
 	</body>

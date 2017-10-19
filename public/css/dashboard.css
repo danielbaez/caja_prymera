@@ -95,3 +95,10 @@
 .modal-reporte-informacion-solicitud span{
 	font-weight: bold
 }
+
+.usuario-logueado{
+	font-weight: bold;
+	font-size: 17px
+}
+
+#tabla-usuarios_paginate {text-align: center !important}
