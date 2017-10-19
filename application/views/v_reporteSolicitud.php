@@ -75,7 +75,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li class="active"><a href="/C_reporte/solicitudes" class="nav-active-a">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Agente - CLiente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
@@ -86,8 +86,9 @@
               <h4 class="titulo-vista">Reporte Consolidado Solicitudes de Clientes</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/solicitudes">
                 <div class="col-xs-12 col-sm-4">
-                  <div class="form-group" style="margin-top: 35px">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                    <label for="agencia">* Agencia:</label>                
                       <select name="agencia" class="form-control" id="agencia">
                         <option value="">Agencia</option>
                         <?php foreach ($agencias as $agencia) {
@@ -114,7 +115,8 @@
                     </div>  
                   </div>
                   <div class="form-group"> 
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                    <label for="agencia">Tipo de Cr&eacute;dito:</label>                 
                       <select name="tipo_credito" class="form-control" id="tipo_credito">
                         <option value="">Tipo de Cr&eacute;dito</option>
                         <?php foreach ($productos as $producto) {
@@ -144,7 +146,7 @@
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="email">Desde:</label>
+                      <label for="email">* Desde:</label>
                         <?php if(isset($desde)){ ?>
                           <input type="date" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
                         <?php }
@@ -158,7 +160,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="email">Hasta:</label>
+                      <label for="email">* Hasta:</label>
                       <?php if(isset($hasta)){ ?>
                           <input type="date" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
                         <?php }
@@ -314,12 +316,12 @@ $(document).ready(function() {
         "zeroRecords":      "No se encontraron registros",
       },
       "bInfo" : false,
-      "pageLength": 5,
+      "pageLength": 10,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
       ],
-      "dom": 'rtp'
+      
   } );
 
   table.buttons().container()

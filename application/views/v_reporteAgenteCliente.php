@@ -75,7 +75,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - CLiente</a></li>
+              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
@@ -86,14 +86,16 @@
               <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/agenteCliente">
                 <div class="col-xs-12 col-sm-4">
-                  <div class="form-group" style="margin-top: 13px">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="email">* Asesor:</label>                
                       <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
                       <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
                   </div>
                   <div class="form-group"> 
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">      
+                      <label for="email">Tipo de Cr&eacute;dito:</label>           
                       <select name="tipo_credito" class="form-control" id="tipo_credito">
                         <option value="">Tipo de Cr&eacute;dito</option>
                         <?php foreach ($productos as $producto) {
@@ -120,7 +122,8 @@
                     </div>
                   </div>
                   <div class="form-group"> 
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">      
+                      <label for="status">Status:</label>           
                       <select name="status" class="form-control" id="status">
                         <option value="">Status</option>
                         <?php if(isset($status)){
@@ -220,7 +223,7 @@
                         <td><?php echo $solicitud->AGENCIA ?></td>
                         <td><?php echo $solicitud->agencia_desembolso ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
-                        <td><?php echo $solicitud->status_sol ?></td>
+                        <td><?php echo $solicitud->status_sol == 0 ? 'Abierto' : 'Cerrado' ?></td>
                         <td><?php echo $solicitud->monto ?></td>
                       </tr>
                       <?php
@@ -323,7 +326,8 @@ $(document).ready(function() {
         "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
         "zeroRecords":      "No se encontraron registros",
       },
-      "pageLength": 5,
+      "bInfo" : false,
+      "pageLength": 10,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]

@@ -51,7 +51,7 @@ class M_solicitud extends  CI_Model{
                 }
             }
 
-            $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.agencia_desembolso, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA, tipo_producto.descripcion, usuario.nombre as asesor, solicitud.status_sol, solicitud.monto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN usuario ON usuario.id = solicitud.id_usuario INNER JOIN tipo_producto ON tipo_producto.id = solicitud.id_tipo_prod WHERE $where AND solicitud.ws_error = 1";
+            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.agencia_desembolso, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA, tipo_producto.descripcion, usuario.nombre as asesor, solicitud.status_sol, solicitud.monto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN usuario ON usuario.id = solicitud.id_usuario INNER JOIN tipo_producto ON tipo_producto.id = solicitud.id_tipo_prod WHERE $where AND solicitud.ws_error = 1";
 
             $result = $this->db->query($sql, $filtros);
 
@@ -129,7 +129,7 @@ class M_solicitud extends  CI_Model{
                 }
             }
 
-            $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.agencia_desembolso, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA, tipo_producto.descripcion, usuario.nombre as asesor, solicitud.status_sol, solicitud.monto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN usuario ON usuario.id = solicitud.id_usuario INNER JOIN tipo_producto ON tipo_producto.id = solicitud.id_tipo_prod WHERE $where AND solicitud.ws_error = 1";
+            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.agencia_desembolso, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA, tipo_producto.descripcion, usuario.nombre as asesor, solicitud.status_sol, solicitud.monto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN usuario ON usuario.id = solicitud.id_usuario INNER JOIN tipo_producto ON tipo_producto.id = solicitud.id_tipo_prod WHERE $where AND solicitud.ws_error = 1";
 
             $result = $this->db->query($sql, $filtros);
 
@@ -205,11 +205,11 @@ class M_solicitud extends  CI_Model{
             $id_usuario = _getSesion('id_usuario');
             if($rol == 'administrador')
             {
-                $sql = "SELECT timestamp_final as fecha_solicitud, id as id_solicitud, nombre, apellido FROM solicitud WHERE $where";    
+                $sql = "SELECT DATE_FORMAT(timestamp_final,'%d-%m-%Y') as fecha_solicitud, id as id_solicitud, nombre, apellido FROM solicitud WHERE $where";    
             }
             elseif($rol == 'jefe_agencia')
             {
-                $sql = "SELECT timestamp_final as fecha_solicitud, id as id_solicitud, nombre, apellido FROM solicitud WHERE $where AND cod_agencia = (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";    
+                $sql = "SELECT DATE_FORMAT(timestamp_final,'%d-%m-%Y') as fecha_solicitud, id as id_solicitud, nombre, apellido FROM solicitud WHERE $where AND cod_agencia = (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";    
             }            
 
             $result = $this->db->query($sql, $filtros);
@@ -224,7 +224,7 @@ class M_solicitud extends  CI_Model{
 
     function obtenerDetalleSolicitud($id)
     {
-        $sql = "SELECT usuario.nombre as usuario_nombre, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_solicitud, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE solicitud.id = ?";
+        $sql = "SELECT usuario.nombre as usuario_nombre, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE solicitud.id = ?";
 
         $result = $this->db->query($sql, array($id));
        
@@ -309,7 +309,7 @@ class M_solicitud extends  CI_Model{
         }
         
 
-        $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA as agencia, tipo_producto.descripcion as producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
+        $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA as agencia, tipo_producto.descripcion as producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
 
         $result = $this->db->query($sql, $filtros);
 

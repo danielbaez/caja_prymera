@@ -75,7 +75,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Agente - CLiente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li class="active"><a href="/C_reporte/historialSolicitud" class="nav-active-a">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
@@ -86,13 +86,15 @@
               <h4 class="titulo-vista">B&uacute;squeda Solicitud - Filtros</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/historialSolicitud">
                 <div class="col-xs-12 col-sm-4">
-                  <div class="form-group" style="margin-top: 25px">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="cliente">Nro. Solicitud:</label>                
                       <input type="text" class="form-control" name="nro_solicitud" value="<?php echo isset($nro_solicitud) ? $nro_solicitud : '' ?>" id="nro_solicitud" placeholder="Nro. Solicitud">
                     </div>  
                   </div>
                   <div class="form-group"> 
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                    <label for="cliente">* Nombre Cliente:</label>                 
                       <input type="text" class="form-control" name="cliente" value="<?php echo isset($cliente) ? $cliente : '' ?>" id="cliente" placeholder="Nombre Cliente">
                     </div>
                   </div>
@@ -100,7 +102,7 @@
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="email">Fecha Solicitud:</label>
+                      <label for="fecha">Fecha Solicitud:</label>
                       <?php if(isset($fecha)){ ?>
                         <input type="date" name="fecha" class="form-control" value="<?php echo $fecha ?>" id="fecha">
                       <?php }
@@ -114,6 +116,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="dni">DNI:</label>
                       <input type="text" class="form-control" name="dni" value="<?php echo isset($dni) ? $dni : '' ?>" id="dni" placeholder="DNI Cliente">
                     </div>
                   </div>
@@ -264,7 +267,8 @@ $(document).ready(function() {
         "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
         "zeroRecords":      "No se encontraron registros",
       },
-      "pageLength": 5,
+      "bInfo" : false,
+      "pageLength": 10,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
@@ -275,20 +279,37 @@ $(document).ready(function() {
   //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
   .appendTo( '.buttons-export' );
 
-  $(".tr-ver-info-solicitud").click(function() {
+  $('#tabla-solicitudes tbody').on('click', 'tr', function () {
+        //var data = table.row( this ).data();
+      //  alert( 'You clicked on '+data[0]+'\'s row' );
+    //} );
     $.ajax({
         data:  {id: $(this).attr('data-idSolicitud')},
         url:   '/C_reporte/modalInformacionSolicitud',
         type:  'post',
         dataType: 'json',
         success:  function (response) {
+
+          var producto = '';
+          if(response[0].id_producto == 1){
+            producto = 'Mi Cash';
+          }
+          else if(response[0].id_producto == 2){
+            producto = 'Vehicular';
+          }
+          $('.modal-title').html('Resumen Solicitud - '+producto);
+
           $('#modalInformacionSolicitud').modal('show');
           console.log(response[0])
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
-          dCliente += '<p><span>Conyuge:</span> '+response[0].nombre_conyugue+'</p>';
+          if(response[0].id_producto == 2){
+            dCliente += '<p><span>Conyuge:</span> '+response[0].nombre_conyugue+'</p>';  
+          }          
           dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
-          dCliente += '<p><span>DNI Conyuge:</span> '+response[0].dni_conyugue+'</p>';
+          if(response[0].id_producto == 2){
+            dCliente += '<p><span>DNI Conyuge:</span> '+response[0].dni_conyugue+'</p>'; 
+          }
           dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
           dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
           dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
@@ -306,7 +327,7 @@ $(document).ready(function() {
           if(response[0].id_producto == 2){
             dPrestamo += '<p><span>Auto:</span> '+response[0].marca+'</p>';
             dPrestamo += '<p><span>Modelo:</span> '+response[0].modelo+'</p>';
-            dPrestamo += '<p><span>Importe:</span> '+response[0].valor_auto+'</p>';
+            dPrestamo += '<p><span>Importe:</span> '+response[0].monto+'</p>';
             dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
             dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
             dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';

@@ -75,7 +75,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Agente - CLiente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li class="active"><a href="/C_reporte/solicitudRechazada" class="nav-active-a">Solicitudes Rechazadas</a></li>
             </ul>
@@ -87,14 +87,15 @@
               <form class="form-horizontal" method="POST" action="/C_reporte/solicitudRechazada">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="asesor">Asesor:</label>                
                       <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
                       <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="email">Desde:</label>
+                      <label for="desde">Desde:</label>
                         <?php if(isset($desde)){ ?>
                           <input type="date" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
                         <?php }
@@ -109,7 +110,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                    <label for="agencia">Agencia:</label>                
                       <select name="agencia" class="form-control" id="agencia">
                         <option value="">Agencia</option>
                         <?php foreach ($agencias as $agencia) {
@@ -137,7 +139,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="email">Hasta:</label>
+                      <label for="hasta">Hasta:</label>
                       <?php if(isset($hasta)){ ?>
                           <input type="date" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
                         <?php }
@@ -292,7 +294,8 @@ $(document).ready(function() {
         "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
         "zeroRecords":      "No se encontraron registros",
       },
-      "pageLength": 5,
+      "bInfo" : false,
+      "pageLength": 10,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
@@ -378,7 +381,8 @@ $(document).ready(function() {
     }
   })
 
-  $(".tr-ver-info-solicitud").click(function() {
+  $('#tabla-solicitudes tbody').on('click', 'tr', function () {
+  //$(".tr-ver-info-solicitud").click(function() {
       $.ajax({
           data:  {id: $(this).attr('data-idSolicitud')},
           url:   '/C_reporte/modalInformacionSolicitud',
