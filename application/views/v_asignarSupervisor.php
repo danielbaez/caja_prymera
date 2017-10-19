@@ -53,6 +53,7 @@
             <h1 class="titulo-vista">Asignacion de Asesores</h1>            
           </div>
           <div class="col-xs-12 col-sm-3 text-right">
+            <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
             <a href="/C_main">Ver Usuarios</a><br>
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
             <a href="/C_reporte/solicitudes">Ver Reportes</a><br>

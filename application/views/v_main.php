@@ -57,7 +57,7 @@
 		  </div>
 		  <div class="col-xs-12 col-sm-3 text-right">
 			
-
+		  	<span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
 			<?php if(_getSesion('rol') == 'administrador'){ ?>
 				<a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
 			<a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
