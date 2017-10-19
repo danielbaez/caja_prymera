@@ -253,14 +253,15 @@ class M_usuario extends  CI_Model{
     }
 
     function getDatosNuevosTablaAsesor($array) {
-        if(count($array[0]) == 1) {
+        $sql = '';
+        if(count($array) == 1) {
            $sql = "SELECT u.*, a.AGENCIA AS agencia
                   FROM usuario u,
                        agencias a
                  WHERE a.id = u.id_agencia
                    AND u.estado = 1
                    AND u.rol LIKE '%asesor%'"; 
-        }else if(count($array[0]) > 1) {
+        }else if(count($array) > 1) {
             $sql = "SELECT u.*, a.AGENCIA AS agencia
                   FROM usuario u,
                        agencias a

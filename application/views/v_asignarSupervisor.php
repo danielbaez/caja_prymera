@@ -77,9 +77,9 @@
                   <tbody class="agregar">
                     <?php foreach($personales as $personal){
                       ?>
-                    <tr>
+                    <tr id="check_<?php echo $personal->id ?>">
                       <td>
-                        <input type="checkbox" id="check_<?php echo $personal->id ?>" data-nombre="<?php echo $personal->nombre ?>" name="id_asesor[]" value="<?php echo $personal->id ?>">
+                        <input type="checkbox" data-nombre="<?php echo $personal->nombre ?>" data-rol="<?php echo $personal->rol ?>" data-agencia="<?php echo $personal->agencia ?>" name="id_asesor[]" value="<?php echo $personal->id ?>">
                       </td>                    
                       <td><?php echo $personal->nombre ?></td>
                       <td><?php echo $personal->rol ?></td>
@@ -99,7 +99,7 @@
             <div class="col-xs-12 div-seccion">
               <form class="form-horizontal form-asignar-supervisor">
                 <div class="form-group">
-                  <label class="control-label col-sm-4" for="supervisor">Supervisor:</label>
+                  <label class="control-label col-sm-4" for="supervisor">Jefe de Agencia:</label>
                   <div class="col-sm-6">
                     <input type="text" class="form-control" name="supervisor" id="supervisor">
                   </div>

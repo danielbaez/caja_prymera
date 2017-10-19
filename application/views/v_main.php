@@ -59,7 +59,7 @@
 			
 		  	<span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
 			<?php if(_getSesion('rol') == 'administrador'){ ?>
-				<a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
+				<a href="/C_usuario/asignarSupervisor">Asignar Asesores</a><br>
 			<a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
 			<a href="/C_reporte/solicitudes">Ver Reportes</a><br>
 			  <?php }

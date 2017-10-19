@@ -83,15 +83,15 @@ class C_usuario extends CI_Controller {
             $asesores = explode("-", $datos);
             $html = null;
             foreach ($asesores as $key) {
-                if($key != 'null') {
+                if($key != null || $key != '') {
                     array_push($array_asesores, $key);
                 }
             }
             $datosAsesor = $this->M_usuario->getDatosTablaAsesor();
             foreach ($datosAsesor as $key) {
-                        $html .= '<tr>
+                        $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" id="check_'.$key->id.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->nombre.'">
                                     </td>                    
                                     <td>'.$key->nombre.'</td>
                                     <td>'.$key->rol.'</td>
@@ -120,7 +120,7 @@ class C_usuario extends CI_Controller {
         return $opt;
     }
 
-    function borrarAsignados() {
+    /*function borrarAsignados() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
@@ -137,9 +137,9 @@ class C_usuario extends CI_Controller {
             }
             $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
             foreach ($datosAsesor as $key) {
-                        $html .= '<tr>
+                        $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" id="check_'.$key->id.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->nombre.'">
                                     </td>                    
                                     <td>'.$key->nombre.'</td>
                                     <td>'.$key->rol.'</td>
@@ -148,9 +148,8 @@ class C_usuario extends CI_Controller {
             }
             $datosAsesor = $this->M_usuario->getDatosInTablaAsesor($array_glob);
             foreach ($datosAsesor as $row) {
-                $p .= '<p id="id_nombre_pers">'.$row->nombre.' <i class="fa fa-minus-circle fa-1x" data-nombres='.$row->nombre.' aria-hidden="true" onclick="borrarAsignados('.$row->id.',this)"></i></p>';
+                $p .= '<p id="id_nombre_pers_'.$row->id.'">'.$row->nombre.' <i class="fa fa-minus-circle fa-1x" data-nombres='.$row->nombre.'  data-rol='.$row->rol.' data-agencia='.$row->agencia.' aria-hidden="true" onclick="borrarAsignados('.$row->id.',this)"></i></p>';
             }
-            _log(count($array_glob));
             if(count($array_glob) == 1) {
                 $data['p'] = '';
             }
@@ -161,9 +160,9 @@ class C_usuario extends CI_Controller {
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
-    }
+    }*/
 
-    function actualizarTablas() {
+    /*function actualizarTablas() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
@@ -178,9 +177,9 @@ class C_usuario extends CI_Controller {
             }
             $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
             foreach ($datosAsesor as $key) {
-                        $html .= '<tr>
+                        $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" id="check_'.$key->id.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->nombre.'">
                                     </td>                    
                                     <td>'.$key->nombre.'</td>
                                     <td>'.$key->rol.'</td>
@@ -193,6 +192,6 @@ class C_usuario extends CI_Controller {
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
-    }
+    }*/
 }
 
