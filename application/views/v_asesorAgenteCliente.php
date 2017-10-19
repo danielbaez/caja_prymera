@@ -30,6 +30,14 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
         <style>
         </style>  
     </head>
@@ -172,7 +180,7 @@
               </form>
             </div>
             <div class="col-xs-12 col-border-filtros-resultado-reporte">
-              <div class="table-responsive tabla-reporte">
+              <div class="table-responsive">
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
@@ -210,18 +218,16 @@
                 $total = 0;
                 foreach ($solicitudes as $solicitud) {
                   
-                  $total .= $solicitud->monto;
+                  $total += (float)$solicitud->monto;
                 }
                 ?>
-                  <p class="text-right reporte-texto-total">Total de <?php echo $total ?></p>
+                  <p class="text-right reporte-texto-total">Total de S/ <?php echo $total ?></p>
                 <?php
                 }
                 ?>
                 <?php
                   if(isset($solicitudes) and count($solicitudes)){ ?>
-                <div class="col-xs-12 text-right" style="margin-top: 20px; margin-bottom: 15px">
-                  <a style="color:black"><i class="fa fa-print fa-3x" aria-hidden="true"></i></a> 
-                  <a class="export-excel" style="color:green; margin-left: 20px"><i class="fa fa-file-excel-o fa-3x" aria-hidden="true"></i></a>    
+                <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
                 <?php } ?>
             </div>
@@ -237,27 +243,109 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>
-        
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+      
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
       <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-      <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
-      <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-        <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
-      <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 
-      <script src="<?php echo RUTA_PLUGINS?>table2excel/table2excel.js"></script>
+<script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
-      <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
-      <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+
       <script type="text/javascript">
+
+      $(document).ready(function() {
+        /*$('#tabla-solicitudes').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        } );*/
+
+        var table = $('#tabla-solicitudes').DataTable( {
+
+            lengthChange: false,
+            buttons: [
+              {
+                  extend:    'pdf',
+                  text:      '<i class="fa fa-print fa-3x"></i>',
+                  titleAttr: 'PDF',
+                  title: 'Reporte Consolidado Solicitudes por Asesor',
+                  orientation: 'landscape',
+                  pageSize: 'LEGAL',
+                  filename: 'reporte',
+                  customize: function (doc) {
+                    doc.content[1].table.widths = 
+                        Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                  }
+              },
+              {
+                  extend:    'excel',
+                  text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
+                  messageTop: 'Reporte Consolidado Solicitudes por Asesor',
+                  titleAttr: 'Excel',
+                  title: '',
+                  filename: 'reporte',
+                  header: true,
+                  customize: function( xlsx ) {
+                      var sheet = xlsx.xl.worksheets['sheet1.xml'];
+       
+                      //$('row c[r^="A"]', sheet).attr( 's', '2');
+                  }
+              },
+            ],
+            "language": {
+              "search": "Buscar:",
+              "emptyTable": "No hay registros disponibles",
+              "paginate": {
+                  "first":        "Primero",
+                  "previous":     "Anterior",
+                  "next":         "Siguiente",
+                  "last":         "Ultimo"
+              },
+              "info":             "_START_ a _END_ de _TOTAL_ entradas",
+
+              "infoEmpty":        "0 de 0 of 0 entradas",
+              "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+              "zeroRecords":      "No se encontraron registros",
+            },
+            "pageLength": 5,
+            lengthMenu: [
+                [ 5, 15, 25, 50, -1 ],
+                [ '5', '15', '25', '50', 'Total' ]
+            ]
+        } );
+     
+        table.buttons().container()
+        //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
+        .appendTo( '.buttons-export' );
+
+
+} );
+
+    //   $('#tabla-solicitudes').DataTable( {
+    //     dom: 'Bfrtip',
+    //     buttons: [
+    //         {
+    //             extend: 'pdfHtml5',
+    //             message: 'PDF created by PDFMake with Buttons for DataTables.'
+    //         }
+    //     ]
+    // } );
           
           $('.export-excel').click(function(){
 
-          /*$('#tabla-solicitudes tbody').append('<tr class="text-right"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>dwdw</td></tr>');
-
-
-          $('#tabla-solicitudes').find('tr:last').hide();*/
+          $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="7">Reporte Consolidado Solicitudes por Asesor</td></tr>').find('tr:first').hide();
 
           $("#tabla-solicitudes").table2excel({
               filename: "reporte.xls"
@@ -265,6 +353,8 @@
           /*$('input[name="reporte"]').val('excel');
           $('form').submit();*/
         })
+
+
 
       </script>
     </body>

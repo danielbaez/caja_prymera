@@ -268,6 +268,17 @@
               var value = $("#asesor").getSelectedItemData();
               console.log(value)
               $('input[name="id_asesor"]').val(value.id);
+
+              $.ajax({
+                data:  {id_asesor: value.id},
+                url:   '/C_reporte/getAgenciaByAsesor',
+                type:  'post',
+                dataType: 'json',
+                success:  function (response) {
+                  $('#agencia').html('').append('<option value="">Agencia</option><option selected value="'+response[0].id+'">'+response[0].AGENCIA+'</option>')
+                }
+              });
+
             } 
             /*onSelectItemEvent: function() {
               var value = $("#asesor").getSelectedItemData()
@@ -280,6 +291,28 @@
         };
 
         $("#asesor").easyAutocomplete(options);
+
+        $('#agencia').change(function() {
+          if($(this).val() == '' && $('#asesor').val() != ''){
+            $('#asesor').val('');
+            $('input[name="id_asesor"]').val('');
+
+            $.ajax({
+              data:  {},
+              url:   '/C_reporte/getAgenciaByAsesor',
+              type:  'post',
+              dataType: 'json',
+              success:  function (response) {
+                var opt = '<option value="">Agencia</option>';
+                for(var i = 0; i<response.length; i++){
+                  opt += '<option value="'+response[i].id+'">'+response[i].AGENCIA+'</option>';
+                }
+                $('#agencia').html('').append(opt)
+              }
+            });
+
+          }
+        })
 
         $(".tr-ver-info-solicitud").click(function() {
             $.ajax({
@@ -314,10 +347,7 @@
 
         $('.export-excel').click(function(){
 
-          /*$('#tabla-solicitudes tbody').append('<tr class="text-right"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>dwdw</td></tr>');
-
-
-          $('#tabla-solicitudes').find('tr:last').hide();*/
+          $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="5">Búsqueda Consolidado - Total Solicitudes Rechazadas</td></tr>').find('tr:first').hide();
 
           $("#tabla-solicitudes").table2excel({
               filename: "reporte.xls"

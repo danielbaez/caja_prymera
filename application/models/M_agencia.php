@@ -5,22 +5,54 @@ class M_agencia extends  CI_Model{
         parent::__construct();
     }
 
-    function getAgencias($action = false) {
+    function getAgencias($action = false, $id_agencia = false) {
         $rol = _getSesion('rol');
         $id = _getSesion('id_usuario');
-        if($rol == 'administrador'){
-            if($action == 'reporte'){
-                $sql = "SELECT * FROM agencias";
-            }else{
-                $sql = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL";    
+
+        if($action == 'agenciaByAgente')
+        {
+            if($id_agencia)
+            {
+                $sql = "SELECT * FROM agencias WHERE id = ?";
+                $result = $this->db->query($sql, array($id_agencia)); 
             }
-            
-            $result = $this->db->query($sql, array($id));
+            else
+            {
+                if($rol == 'administrador')
+                {
+                    $sql = "SELECT * FROM agencias";
+                    $result = $this->db->query($sql);
+                }
+                if($rol == 'jefe_agencia')
+                {
+                    $sql = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
+                    $result = $this->db->query($sql, array($id));
+                }
+            }            
         }
-        if($rol == 'jefe_agencia'){
-            $sql = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
-            $result = $this->db->query($sql, array($id));
+        else
+        {
+            if($rol == 'administrador')
+            {
+                if($action == 'reporte')
+                {
+                    $sql = "SELECT * FROM agencias";
+                    $result = $this->db->query($sql);
+                }
+                else
+                {
+                    $sql = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL";
+                    $result = $this->db->query($sql, array($id));    
+                }            
+                
+            }
+            if($rol == 'jefe_agencia')
+            {
+                $sql = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
+                $result = $this->db->query($sql, array($id));
+            }
         }        
+
         return $result->result();
     }
 

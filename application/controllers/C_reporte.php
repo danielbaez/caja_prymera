@@ -126,6 +126,12 @@ class C_reporte extends CI_Controller {
         //echo '[{"name": "Afghanistan", "code": "AF"}]';
     }
 
+    public function getAgenciaByAsesor()
+    {
+        $asesores = $this->M_usuario->getAgenciaByAsesor(_post('id_asesor'));
+        echo json_encode($asesores);
+    }
+
     public function historialSolicitud()
     {
         $action = _post('action');
@@ -177,7 +183,7 @@ class C_reporte extends CI_Controller {
         //print_r($this->sendMailGmail());
         //exit();
 
-        $data['agencias'] = $this->M_agencia->getAgencias('reporte');
+        
 
         $action = _post('action');
         if(isset($action) and  $action == 'obtenerSolicitudRechazada') {
@@ -205,10 +211,24 @@ class C_reporte extends CI_Controller {
             $data['desde'] = $fecha_desde;
             $data['hasta'] = $fecha_hasta;
 
+            if($id_asesor == '' and $agencia == '')
+            {
+                $data['agencias'] = $this->M_agencia->getAgencias('reporte');
+            }
+            elseif($id_asesor == '' and $agencia != '')
+            {
+                $data['agencias'] = $this->M_agencia->getAgencias('agenciaByAgente', false);
+            }
+            else
+            {
+                $data['agencias'] = $this->M_agencia->getAgencias('agenciaByAgente', $agencia);
+            }            
+
             $this->load->view('v_reporteSolicitudRechazada', $data);
         }
         else
         {        
+            $data['agencias'] = $this->M_agencia->getAgencias('reporte');
             $this->load->view('v_reporteSolicitudRechazada', $data);
         }
     }

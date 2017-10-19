@@ -133,9 +133,37 @@ class M_usuario extends  CI_Model{
             $result = $this->db->query($sql);
         }
         if($rol == 'jefe_agencia'){
-            $sql = "SELECT usuario.id as id, usuario.nombrem usuario.apellido FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id_sup_agencia = ? AND usuario.nombre LIKE '%$asesor%' AND usuario.rol = 'asesor'";
+            $sql = "SELECT usuario.id as id, usuario.nombre, usuario.apellido FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id_sup_agencia = ? AND (usuario.nombre LIKE '%$asesor%' OR usuario.apellido LIKE '%$asesor%') AND usuario.rol = 'asesor'";
             $result = $this->db->query($sql, array($id));
         }    
+        
+        return $result->result();
+    }
+
+    function getAgenciaByAsesor($id_asesor)
+    {
+        $rol = _getSesion('rol');
+        $id = _getSesion('id_usuario');
+        if($id_asesor)
+        {
+            $sql = "SELECT usuario.id_agencia as id, agencias.AGENCIA FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE usuario.id = ?";
+            $result = $this->db->query($sql, array($id_asesor));
+        }
+        else
+        {
+            if($rol == 'administrador')
+            {
+                $sql = "SELECT * FROM agencias";
+                $result = $this->db->query($sql);           
+            }
+            if($rol == 'jefe_agencia')
+            {
+                $sql = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
+                $result = $this->db->query($sql, array($id));
+            } 
+        }
+        
+            
         
         return $result->result();
     }

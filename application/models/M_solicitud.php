@@ -8,7 +8,7 @@ class M_solicitud extends  CI_Model{
     function obtenerSolicitudes($filtros)
     {
 
-        if($filtros['agencia'] != '' OR $filtros['fecha_desde'] != '' OR $filtros['fecha_hasta'] != '')
+        if($filtros['agencia'] != '' and $filtros['fecha_desde'] != '' and $filtros['fecha_hasta'] != '')
         {
             foreach($filtros as $key=>$value)
             {
@@ -55,16 +55,20 @@ class M_solicitud extends  CI_Model{
 
             $result = $this->db->query($sql, $filtros);
 
-            foreach ($result->result() as $key => $value)
+            $res = [];
+            if($result->result())
             {
-                if($value->agencia_desembolso != '')
+                foreach ($result->result() as $key => $value)
                 {
-                    $sql = "SELECT AGENCIA FROM agencias where id = ?";
-                    $agencias = $this->db->query($sql, array($value->agencia_desembolso));
-                    $a = $agencias->result();
-                    $value->agencia_desembolso = $a[0]->AGENCIA;                    
+                    if($value->agencia_desembolso != '')
+                    {
+                        $sql = "SELECT AGENCIA FROM agencias where id = ?";
+                        $agencias = $this->db->query($sql, array($value->agencia_desembolso));
+                        $a = $agencias->result();
+                        $value->agencia_desembolso = $a[0]->AGENCIA;                    
+                    }
+                    $res[] = $value;              
                 }
-                $res[] = $value;              
             }
             return $res;
         }
@@ -129,16 +133,20 @@ class M_solicitud extends  CI_Model{
 
             $result = $this->db->query($sql, $filtros);
 
-            foreach ($result->result() as $key => $value)
+            $res = [];
+            if($result->result())
             {
-                if($value->agencia_desembolso != '')
+                foreach ($result->result() as $key => $value)
                 {
-                    $sql = "SELECT AGENCIA FROM agencias where id = ?";
-                    $agencias = $this->db->query($sql, array($value->agencia_desembolso));
-                    $a = $agencias->result();
-                    $value->agencia_desembolso = $a[0]->AGENCIA;                    
+                    if($value->agencia_desembolso != '')
+                    {
+                        $sql = "SELECT AGENCIA FROM agencias where id = ?";
+                        $agencias = $this->db->query($sql, array($value->agencia_desembolso));
+                        $a = $agencias->result();
+                        $value->agencia_desembolso = $a[0]->AGENCIA;                    
+                    }
+                    $res[] = $value;              
                 }
-                $res[] = $value;              
             }
             return $res;
         }
@@ -257,7 +265,7 @@ class M_solicitud extends  CI_Model{
                     $a = "solicitud.id_usuario = ?";                    
                     break;
                 case 'agencia':
-                    $a = "agencias.id = ?";
+                    $a = "solicitud.cod_agencia = ?";
                     break;
                 case 'fecha_desde':
                     $a = "solicitud.timestamp_final >= ?";
@@ -281,7 +289,27 @@ class M_solicitud extends  CI_Model{
             }
         }
 
-        $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA as agencia, tipo_producto.descripcion as producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where AND ws_error = 0";
+        $rol = _getSesion('rol');
+        $id_usuario = _getSesion('id_usuario');
+        if($where != '')
+        {
+            $where .= " AND ws_error = 0";    
+        }
+        else
+        {
+            if($rol == 'administrador')
+            {
+                $where .= "ws_error = 0";
+            }
+            elseif($rol == 'jefe_agencia')
+            {
+                $where .= "ws_error = 0 AND solicitud.cod_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
+            }
+            
+        }
+        
+
+        $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA as agencia, tipo_producto.descripcion as producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
 
         $result = $this->db->query($sql, $filtros);
 
@@ -290,57 +318,122 @@ class M_solicitud extends  CI_Model{
 
     function obtenerAsesorAgenteCliente($filtros)
     {
-        if($filtros['tipo_credito'] == '' and $filtros['status'] == ''){
-            $a = "solicitud.id_usuario = ? AND solicitud.timestamp_final >= ? AND solicitud.timestamp_final <= ?";
-            $d = array($filtros['id_asesor'], $filtros['fecha_desde'], $filtros['fecha_hasta']);
-        }
-        else if($filtros['tipo_credito'] == ''){
-            $a = "solicitud.id_usuario = ? AND solicitud.status_sol = ? AND solicitud.timestamp_final >= ? AND solicitud.timestamp_final <= ?";
-            $d = array($filtros['id_asesor'], $filtros['status'], $filtros['fecha_desde'], $filtros['fecha_hasta']);
-        }
-        elseif($filtros['status'] == ''){
-            $a = "solicitud.id_usuario = ? AND solicitud.id_tipo_prod = ? AND solicitud.timestamp_final >= ? AND solicitud.timestamp_final <= ?";
-            $d = array($filtros['id_asesor'], $filtros['tipo_credito'], $filtros['fecha_desde'], $filtros['fecha_hasta']);
-        }else{
-            $a = "solicitud.id_usuario = ? AND solicitud.id_tipo_prod = ? AND solicitud.status_sol = ? AND solicitud.timestamp_final >= ? AND solicitud.timestamp_final <= ?";
-            $d = array($filtros['id_asesor'], $filtros['tipo_credito'], $filtros['status'], $filtros['fecha_desde'], $filtros['fecha_hasta']);
-        }
+        if($filtros['id_asesor'] != '')
+        {
+            foreach($filtros as $key=>$value)
+            {
+                if(is_null($value) || $value == '')
+                    unset($filtros[$key]);
+            }
 
-        $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA, tipo_producto.descripcion, usuario.nombre as asesor, solicitud.status_sol, solicitud.monto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN usuario ON usuario.id = solicitud.id_usuario INNER JOIN tipo_producto ON tipo_producto.id = solicitud.id_tipo_prod WHERE $a";
+            $where = '';
+            $cont = 0;
+            foreach($filtros as $key=>$value)
+            {
+                $cont++;
+                switch ($key) {
 
-        $result = $this->db->query($sql, $d);
-       
-        return $result->result();
+                    case 'id_asesor':
+                        $a = "solicitud.id_usuario = ?";                    
+                        break;
+                    case 'tipo_credito':
+                        $a = "solicitud.id_tipo_prod = ?";
+                        break;
+                    case 'status':
+                        $a = "solicitud.status_sol = ?";
+                        break;
+                    case 'fecha_desde':
+                        $a = "solicitud.timestamp_final >= ?";
+                        break;
+                    case 'fecha_hasta':
+                        $a = "solicitud.timestamp_final <= ?";
+                        break;
+                    
+                    default:
+                        # code...
+                        break;
+                }
+
+                if($cont == 1)
+                {
+                    $where .= $a;
+                }
+                elseif($cont > 1)
+                {
+                    $where .= " AND ".$a;
+                }
+            }
+
+            $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA, tipo_producto.descripcion, usuario.nombre as asesor, solicitud.status_sol, solicitud.monto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN usuario ON usuario.id = solicitud.id_usuario INNER JOIN tipo_producto ON tipo_producto.id = solicitud.id_tipo_prod WHERE $where AND solicitud.ws_error = 1";
+
+            $result = $this->db->query($sql, $filtros);
+           
+            return $result->result();
+        }
+        else
+        {
+            return [];
+        }
     }
 
     function obtenerAsesorHistorialSolicitud($filtros)
     {
-        if($filtros['nro_solicitud'] == '' and $filtros['dni'] == ''  and $filtros['fecha'] == '' and $filtros['cliente'] != ''){
-            $a = "id_usuario = ? AND apellido LIKE '%".$filtros['cliente']."%'";
-            $d = array($filtros['id_asesor']);
-        }
-        elseif($filtros['nro_solicitud'] == '' and $filtros['dni'] == '' and $filtros['fecha'] != '' and $filtros['cliente'] != ''){
-            $a = "id_usuario = ? AND apellido LIKE '%".$filtros['cliente']."%' AND date(timestamp_final) = ?";
-            $d = array($filtros['id_asesor'], $filtros['fecha']);
-        }
-        elseif($filtros['nro_solicitud'] == '' and $filtros['fecha'] == '' and $filtros['dni'] != '' and $filtros['cliente'] != ''){
-            $a = "id_usuario = ? AND apellido LIKE '%".$filtros['cliente']."%' AND dni = ?";
-            $d = array($filtros['id_asesor'], $filtros['dni']);
-        }
-        elseif($filtros['dni'] == '' and $filtros['fecha'] == '' and $filtros['nro_solicitud'] != '' and $filtros['cliente'] != ''){
-            $a = "id_usuario = ? AND apellido LIKE '%".$filtros['cliente']."%' AND id = ?";
-            $d = array($filtros['id_asesor'], $filtros['nro_solicitud']);
-        }
-        else{
-            $a = "id_usuario = ? AND id = ? AND apellido LIKE '%".$filtros['cliente']."%' AND dni = ? AND date(timestamp_final) = ?";
-            $d = array($filtros['id_asesor'], $filtros['nro_solicitud'], $filtros['dni'], $filtros['fecha']);
-        }
+        if($filtros['cliente'] != '')
+        {
+            foreach($filtros as $key=>$value)
+            {
+                if(is_null($value) || $value == '')
+                    unset($filtros[$key]);
+            }
 
-        $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido FROM solicitud WHERE $a";
 
-        $result = $this->db->query($sql, $d);
-       
-        return $result->result();
+            $where = '';
+            $cont = 0;
+            foreach($filtros as $key=>$value)
+            {
+                $cont++;
+                switch ($key) {
+                    case 'id_asesor':
+                        $a = "id_usuario = ?";
+                        break;
+                    case 'nro_solicitud':
+                        $a = "id = ?";
+                        break;
+                    case 'cliente':
+                        $a = "(nombre LIKE '%".$filtros['cliente']."%' OR apellido LIKE '%".$filtros['cliente']."%')";
+                        unset($filtros['cliente']);
+                        break;
+                    case 'dni':
+                        $a = "dni = ?";
+                        break;                    
+                    case 'fecha':
+                        $a = "date(timestamp_final) = ?";
+                        break;                    
+                    default:
+                        # code...
+                        break;
+                }
+
+                if($cont == 1)
+                {
+                    $where .= $a;
+                }
+                elseif($cont > 1)
+                {
+                    $where .= " AND ".$a;
+                }
+            }
+
+            $sql = "SELECT solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido FROM solicitud WHERE $where AND solicitud.ws_error = 1";
+
+            $result = $this->db->query($sql, $filtros);
+           
+            return $result->result();
+        }
+        else
+        {
+            return [];
+        }
     }
 
     function actualizarNotaSolicitud($id, $nota, $id_nota, $id_asesor)
