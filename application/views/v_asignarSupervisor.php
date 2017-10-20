@@ -239,7 +239,7 @@
           },
 
           getValue: function(element) {
-            return element.nombre;
+            return element.nombre+' '+element.apellido;
           },
 
           ajaxSettings: {
@@ -257,10 +257,13 @@
 
           list: {
             onClickEvent: function(data) {
-              var value = $("#supervisor").val();
+
+              var value = $("#supervisor").getSelectedItemData();
+
+              //var value = $("#supervisor").val();
               //console.log(value);
               $.ajax({
-                data  : { nombre  : value},
+                data  : { id  : value.id},
                 url   : '/C_usuario/actualizarTabla',
                 type  : 'POST'
               }).done(function(data){
