@@ -47,21 +47,21 @@
         <div class="container">
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-              <h1 class="titulo-vista">Resetear Password</h1>
+              <h1 class="titulo-vista">Restaurar Contrase&ntilde;a</h1>
             <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
-                <p>Olvido su contraseña?</p>
-                <p>Ingrese su usuario o dirección de correo para ayudarlo a resetear su contraseña</p>
+                <p>Olvid&oacute; su contrase&ntilde;a?</p>
+                <p>Ingrese su usuario o direcci&oacute;n de correo para ayudarlo a resetear su contrase&ntilde;a</p>
                 <div class="panel-body">
                   <form class="form-horizontal">
                     <div class="form-group">
                       <label class="control-label col-sm-3" for="email">Usuario:</label>
                       <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email" placeholder="Ingresar email">
+                        <input type="email" class="form-control" id="email" placeholder="Ingresar email" maxlength="50">
                       </div>
                     </div>
                     <div class="form-group"> 
                       <div class="col-center">
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Resetear Password</a>
+                        <a class="btn btn-primary" onclick="recuperarPass()">Restaurar Contrase&ntilde;a</a>
                       </div>
                     </div>
                   </form>
@@ -82,8 +82,8 @@
                   <div class="modal-body text-center">
                   <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i><br>
                    <h4>Revisa tu correo</h4>
-                 <p>Hemos enviado un enlace a d.......@ho...pe, para restablecer su contraseña.</p>
-                 <p>Revisa tu buzón de correo electronico, si no recibes el email, por favor revisa tambien su bandeja de span.</p>
+                 <p>Hemos enviado un enlace a <span id="correo_cambio"></span>, para restablecer su contrase&ntilde;a.</p>
+                 <p>Revisa tu buz&oacute;n de correo electr&oacute;nico, si no recibes el email, por favor revisa tambien su bandeja de span.</p>
                   </div>
                   <div class="modal-footer" style="text-align: center">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
@@ -92,7 +92,6 @@
           </div>
         </div>
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
         <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
@@ -104,7 +103,7 @@
         <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-        <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
+        <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsrecuperarPass.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     </body>
 </html>

@@ -377,3 +377,13 @@ footer p{
 		font-size: 33px;
 	}
 }
+.modal-title.modal-recuperar-password-titulo {
+	text-align: center;
+    font-family: 'quicksandbold';
+}
+.modal-body.text-center h4{
+	font-family: 'quicksandlight';
+}
+.modal-body.text-center p{
+	font-family: 'quicksandlight';
+}

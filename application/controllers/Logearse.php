@@ -238,5 +238,75 @@ class logearse extends CI_Controller {
 
         $this->load->view('v_recuperarPassword', []);
     }
+
+    function recuperarPass() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj'] = "";
+        try{
+            $email = __getTextValue('email');
+            if($email == null) {
+                throw new Exception("Ingrese su correo electr&oacute;nico", 1);
+            }
+            $id_pers = $this->M_usuario->getIdRecuperarPassword($email);
+            $session = array('id_pers_recuperar' => $id_pers[0]->id,
+                             'fecha_recupear' => date("Y-m-d"),
+                             'estado_recuperar' => 1);
+            $this->session->set_userdata($session);
+            $arrayUpdt = array('estado_recuperar' => 1);
+            $this->M_usuario->updateDatosAsesor($arrayUpdt,$id_pers[0]->id , 'usuario');
+            $id_encrypt = base64_encode($id_pers[0]->id);
+            $validacion = $this->sendMailGmail($email, $id_encrypt);
+            $data['error'] = EXIT_SUCCESS;
+        }  catch(Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function encrypt($text) 
+        { 
+            return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, SALT, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)))); 
+        } 
+
+    function sendMailGmail($email, $id_encrypt){
+      $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+      try {  
+          //cargamos la libreria email de ci
+       $this->load->library("email");
+       //configuracion para gmail
+       $configGmail = array(
+       'protocol' => 'smtp',
+       'smtp_host' => 'ssl://smtp.gmail.com',
+       'smtp_port' => 465,
+       'smtp_user' => 'miauto@prymera.pe',
+       'smtp_pass' => '8hUpuv6da_@v',
+       'mailtype' => 'html',
+       'charset' => 'utf-8',
+       'newline' => "\r\n"
+       );    
+       //cargamos la configuración para enviar con gmail
+       $this->email->initialize($configGmail);
+       $this->email->from('userauto@prymera.com');
+       $this->email->to($email);
+       $this->email->subject('Bienvenido/a a Caja Prymera-Restaurar Contrase&ntilde;a');
+       $this->email->message('
+        <h1><strong>Mi Cash</strong></h1>
+        <h4>Te damos la bienvenida a Prymera!</h4>
+        <h4>A continuaci&oacute;n le enviamos el enlase para que pueda cambiar su contrase&ntilde;a</h4>
+        <h4>que solicitaste:</h4>
+
+        <p>Usuario: <a href="/C_cambiarPassword/?a='.$id_encrypt.'">cambie su contrase&ntilde;a aqu&iacute;</a></p>
+        ');
+       $this->email->send();
+       //con esto podemos ver el resultado
+       //var_dump($this->email->print_debugger());
+        $data['error'] = EXIT_SUCCESS;
+      }catch (Exception $e){
+            //$data['msj'] = $e->getMessage();
+            //return json_encode(array_map('utf8_encode', array(1)));
+      }
+      return json_encode(array_map('utf8_encode', $data));
+     }
 }
 

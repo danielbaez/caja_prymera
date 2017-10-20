@@ -15,26 +15,6 @@ class C_preaprobacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
-        // $this->array_datos = array(
-        //                             array(
-        //                                 "plazo" => 12,
-        //                                 "importeMinimo" => 10000,
-        //                                 "importeMaximo" => 50000
-        //                             ),
-        //                             array(
-        //                                 "plazo" => 24,
-        //                                 "importeMinimo" => 50000,
-        //                                 "importeMaximo" => 100000
-        //                             ),
-        //                             array(
-        //                                 "plazo" => 36,
-        //                                 "importeMinimo" => 100000,
-        //                                 "importeMaximo" => 200000
-        //                             )
-        //                         );
-
-
-
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
         if (! isset($_COOKIE[__getCookieName()])) {
@@ -78,39 +58,8 @@ class C_preaprobacion extends CI_Controller {
         $cantPago           = 100000;
         $minIniPorc         = $this->minIniPorc;
         $maxIniPorc         = $this->maxIniPorc;
-        //$arr                = $this->array_datos;
-
-        /*foreach ($arr as $row) {
-            print_r($row);
-             $plazo = $row['plazo'];
-             $minPrestamo = $row['importeMinimo'];
-             $maxPrestamo = $row['importeMaximo'];
-             $minAuto = $minPrestamo/(1-$minIniPorc);
-             $maxAuto = $maxPrestamo/(1-$maxIniPorc);
-        }*/
-        
-        
-        /*$array_datos = array(
-                            array(
-                                "plazo" => array(12,24,36),
-                                "importeMinimo" => 1000,
-                                "importeMaximo" => 5000
-                            ),
-                            array(
-                                "plazo" => array(12,24),
-                                "importeMinimo" => 5000,
-                                "importeMaximo" => 10000
-                            ),
-                            array(
-                                "plazo" => array(36),
-                                "importeMinimo" => 10000,
-                                "importeMaximo" => 15000
-                            )
-                        );*/
 
         $array_datos = _getSesion('arrDatos');
-
-        //print_r($array_datos);
 
         $plazos = [];
         foreach ($array_datos as $key => $value) {
@@ -294,10 +243,8 @@ class C_preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
 
             $datos_tea = $result->return->tea;
-            _log($datos_tea);
             $data['tea'] = round($datos_tea*10000)/100;
             $datos_tcea = $result->return->tcea;
-            _log($datos_tcea);
             $data['tcea'] = round($datos_tcea*10000)/100;  
 
             $data['seguroAuto'] = $result->return->seguroAuto;
@@ -715,6 +662,9 @@ class C_preaprobacion extends CI_Controller {
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
             $seguro   = _post('seguro');
+            $monto = preg_replace("/[^0-9]/","",_post('monto'));
+            $cuota_nueva = preg_replace("/[^0-9]/","",$importe);
+            $importe_auto = $monto-$cuota_nueva;
             $concesionaria = _post('concesionaria');
             $session = array(
                         'pago_total'        => $pagoTot,
@@ -729,7 +679,7 @@ class C_preaprobacion extends CI_Controller {
                                 'cuota_mensual' => $cuotaMens,
                                 'tcea'          => $varTcea,
                                 'plazo'         => $meses,
-                                'monto'         => $importe,
+                                'monto'         => $importe_auto,
                                 'tea'           => $varTea,
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'            => $marca,

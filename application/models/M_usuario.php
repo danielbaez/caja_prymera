@@ -334,5 +334,14 @@ class M_usuario extends  CI_Model{
         }
         return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
     }
+
+    function getIdRecuperarPassword($email) {
+        $sql = "SELECT id
+                  FROM usuario
+                 WHERE estado = 1
+                   AND email LIKE '%".$email."%'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
 }
     

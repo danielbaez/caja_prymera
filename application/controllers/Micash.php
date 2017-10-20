@@ -91,7 +91,6 @@ class micash extends CI_Controller {
 
           }
           if($res == 0){
-            _log($agencia_user[0]->id_agencia);
             $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,
                 'dni'               => $dni,

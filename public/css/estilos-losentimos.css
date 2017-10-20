@@ -63,3 +63,18 @@ h3 {
     position: relative;
     left: 81px;
 }
+.usuario-logeado {
+	float: right;
+    margin-top: -90px;
+    margin-right: -220px;
+    font-family: 'quicksandbold';
+    font-size: 17px;
+}
+.logo_nuevo {
+    height: 97px;
+    width: 302px;
+    position: relative;
+    top: 10px;
+    right: 347px;
+    max-width: 302px;
+}
