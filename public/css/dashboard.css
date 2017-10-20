@@ -101,8 +101,8 @@
 	font-size: 17px
 }
 
-#tabla-usuarios_paginate {text-align: center !important}
+#tabla-usuarios_paginate, #tabla-personal_paginate {text-align: center !important}
 
-#tabla-usuarios tr{
+#tabla-usuarios, #tabla-personal tr{
 	cursor: pointer;
 }

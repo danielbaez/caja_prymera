@@ -165,6 +165,7 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
+                      <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center">Agencia</th>
@@ -179,6 +180,7 @@
                       ?>
                       <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
                       <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>                        
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         <td><?php echo $solicitud->agencia ?></td>
@@ -248,6 +250,12 @@
 $(document).ready(function() {
 
   var table = $('#tabla-solicitudes').DataTable( {
+
+    "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
+
+      columnDefs: [
+         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
+     ],
 
       lengthChange: false,
       buttons: [
@@ -390,31 +398,33 @@ $(document).ready(function() {
           dataType: 'json',
           success:  function (response) {
 
+            var detalle = response.detalle[0];
+
             var producto = '';
-          if(response[0].id_producto == 1){
+          if(detalle.id_producto == 1){
             producto = 'Mi Cash';
           }
-          else if(response[0].id_producto == 2){
+          else if(detalle.id_producto == 2){
             producto = 'Vehicular';
           }
           $('.modal-title').html('Resumen Solicitud - '+producto);
 
             $('#modalInformacionSolicitud').modal('show');
-            console.log(response[0])
+            console.log(detalle)
             var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
-            dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
-            dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
-            dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
-            dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
-            dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
+            dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
+            dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
+            dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
+            dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
+            dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
             $('.div-datos-cliente').html(dCliente);
 
             var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-            dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
-            dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
-            dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
-            dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
-            dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
+            dSolicitud += '<p><span>Nro Solicitud:</span> '+detalle.id_solicitud+'</p>';
+            dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
+            dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
+            dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
+            dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+'</p>';
 
             $('.div-datos-solicitud').html(dSolicitud);
 

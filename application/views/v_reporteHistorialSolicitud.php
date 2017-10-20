@@ -83,6 +83,7 @@
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
+               <div class="alert alert-msg" style="display:none; font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px;"></div>
               <h4 class="titulo-vista">B&uacute;squeda Solicitud - Filtros</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/historialSolicitud">
                 <div class="col-xs-12 col-sm-4">
@@ -134,6 +135,7 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
+                      <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center">Tipo</th>
@@ -147,6 +149,7 @@
                       ?>
                       <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
                       <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>                        
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         <td><?php echo $solicitud->producto ?></td>
@@ -224,6 +227,12 @@ $(document).ready(function() {
 
   var table = $('#tabla-solicitudes').DataTable( {
 
+    "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
+
+      columnDefs: [
+         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
+     ],
+
       lengthChange: false,
       buttons: [
         {
@@ -291,85 +300,101 @@ $(document).ready(function() {
         type:  'post',
         dataType: 'json',
         success:  function (response) {
+          console.log(response)
 
+          var detalle = response.detalle[0];
+          var asignar = response.asignar;
           var producto = '';
-          if(response[0].id_producto == 1){
+          if(detalle.id_producto == 1){
             producto = 'Mi Cash';
           }
-          else if(response[0].id_producto == 2){
+          else if(detalle.id_producto == 2){
             producto = 'Vehicular';
           }
           $('.modal-title').html('Resumen Solicitud - '+producto);
 
           $('#modalInformacionSolicitud').modal('show');
-          console.log(response[0])
+          
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
-          dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
-          if(response[0].id_producto == 2){
-            dCliente += '<p><span>Conyuge:</span> '+response[0].nombre_conyugue+'</p>';  
+          dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
+          if(detalle.id_producto == 2){
+            dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
           }          
-          dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
-          if(response[0].id_producto == 2){
-            dCliente += '<p><span>DNI Conyuge:</span> '+response[0].dni_conyugue+'</p>'; 
+          dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
+          if(detalle.id_producto == 2){
+            dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
           }
-          dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
-          dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
-          dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
+          dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
+          dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
+          dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
           $('.div-datos-cliente').html(dCliente);
 
 
           var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
-          if(response[0].id_producto == 1){
-            dPrestamo += '<p><span>Monto:</span> '+response[0].monto+'</p>';
-            dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
-            dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
-            dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';
+          if(detalle.id_producto == 1){
+            dPrestamo += '<p><span>Monto:</span> '+detalle.monto+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+detalle.cuota_mensual+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'</p>';
           }
-          if(response[0].id_producto == 2){
-            dPrestamo += '<p><span>Auto:</span> '+response[0].marca+'</p>';
-            dPrestamo += '<p><span>Modelo:</span> '+response[0].modelo+'</p>';
-            dPrestamo += '<p><span>Importe:</span> '+response[0].monto+'</p>';
-            dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
-            dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
-            dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';  
+          if(detalle.id_producto == 2){
+            dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
+            dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
+            dPrestamo += '<p><span>Importe:</span> '+detalle.monto+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+detalle.cuota_mensual+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'</p>';  
           }
           
           $('.div-datos-prestamo').html(dPrestamo);
 
           var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
           
-          dEmpleo += '<p><span>Empresa:</span> '+response[0].empleador+'</p>';
-          dEmpleo += '<p><span>Ingreso Mensual:</span> '+response[0].salario+'</p>';
-          dEmpleo += '<p><span>Direccion:</span> '+response[0].dir_empleador+'</p>';
+          dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
+          dEmpleo += '<p><span>Ingreso Mensual:</span> '+detalle.salario+'</p>';
+          dEmpleo += '<p><span>Direccion:</span> '+detalle.dir_empleador+'</p>';
+          dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
+          dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
+          dEmpleo += '<p><span>distrito:</span> '+detalle.distrito+'</p>';
           
           $('.div-datos-empleo').html(dEmpleo);
 
           var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-          dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
-          dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
-          dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
-          dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
-          dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
+          dSolicitud += '<p><span>Nro Solicitud:</span> '+detalle.id_solicitud+'</p>';
+          dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
+          dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
+          dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
+          dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
           
 
           dSolicitud += '<select name="status" class="form-control" id="status">';
           dSolicitud += '<option value="">Status</option>';
-          if(response[0].status_sol == 0){
+          if(detalle.status_sol == 0){
             dSolicitud += '<option selected value="0">Abierto</option>';
             dSolicitud += '<option value="1">Cerrada</option>';
           }
-          if(response[0].status_sol == 1){
+          if(detalle.status_sol == 1){
             dSolicitud += '<option value="0">Abierto</option>';
             dSolicitud += '<option selected value="1">Cerrada</option>';
           }
           
           dSolicitud += '</select>';
+
+
+          dSolicitud += '<select style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
+          dSolicitud += '<option value="">Asignar Asesor</option>';
+          console.log(asignar)
+          for (var j = 0; j < asignar.length; j++) {
+            dSolicitud += '<option value="'+asignar[j].asignar_id+'">'+asignar[j].asignar_nombre+' '+asignar[j].asignar_apellido+'</option>';
+          }                    
+          dSolicitud += '</select>';
+
           $('.div-datos-solicitud').html(dSolicitud);
 
-          $('.btn-actualizar-estado').attr('data-idSolicitud', response[0].id_solicitud);
+          $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
 
         }
     });
@@ -380,17 +405,22 @@ $(document).ready(function() {
     var status = $('#status option:selected').val();
     if(status !== ''){
       $.ajax({
-        data:  {status: status, id: $(this).attr('data-idSolicitud')},
+        data:  {status: status, id: $(this).attr('data-idSolicitud'), id_asignar: $("#asesor option:selected").val()},
         url:   '/C_reporte/actualizarEstadoSolicitud',
         type:  'post',
         dataType: 'json',
         success:  function (response) {
-          console.log(response)
-          if(response.response){
-            $('#modalInformacionSolicitud').modal('hide');
+          $('.alert-msg').removeClass('alert-success');
+          $('.alert-msg').removeClass('alert-danger');
+
+          $('#modalInformacionSolicitud').modal('hide');
+          if(response.response){            
+            $('.alert-msg').addClass('alert-success').html('La solicitud ha sido actualizada correctamente').show();
+
           }else{
-            alert('Hubo un problema, no se pudo actualizar el estado.')
+            $('.alert-msg').addClass('alert-danger').html('La solicitud no ha sido actualizada correctamente').show();
           }
+          $('html').animate({scrollTop:0},500);
         }
       });
     }else{
