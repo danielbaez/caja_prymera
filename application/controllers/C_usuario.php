@@ -121,6 +121,13 @@ class C_usuario extends CI_Controller {
         return $opt;
     }
 
+    function logout()
+    {
+        $this->load->helper("url");
+        $this->session->sess_destroy();
+        redirect('/');  
+    }
+
     /*function borrarAsignados() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;

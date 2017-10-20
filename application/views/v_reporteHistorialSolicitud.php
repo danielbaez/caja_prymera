@@ -70,6 +70,7 @@
                 <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
                 <a href="/C_main">Editar Perfil</a><br>
             <?php } ?>
+            <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>
           </div>
 
           <div class="col-xs-12">
@@ -332,20 +333,20 @@ $(document).ready(function() {
 
           var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
           if(detalle.id_producto == 1){
-            dPrestamo += '<p><span>Monto:</span> '+detalle.monto+'</p>';
-            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+'</p>';
-            dPrestamo += '<p><span>Cuota:</span> '+detalle.cuota_mensual+'</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
-            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'</p>';
+            dPrestamo += '<p><span>Monto:</span> S/ '+detalle.monto+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+detalle.cuota_mensual+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
           }
           if(detalle.id_producto == 2){
             dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
             dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-            dPrestamo += '<p><span>Importe:</span> '+detalle.monto+'</p>';
-            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+'</p>';
-            dPrestamo += '<p><span>Cuota:</span> '+detalle.cuota_mensual+'</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
-            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'</p>';  
+            dPrestamo += '<p><span>Importe:</span> S/ '+detalle.monto+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+'Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+detalle.cuota_mensual+' Meses</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
           }
           
           $('.div-datos-prestamo').html(dPrestamo);
@@ -353,7 +354,7 @@ $(document).ready(function() {
           var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
           
           dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
-          dEmpleo += '<p><span>Ingreso Mensual:</span> '+detalle.salario+'</p>';
+          dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
           dEmpleo += '<p><span>Direccion:</span> '+detalle.dir_empleador+'</p>';
           dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
           dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
@@ -368,29 +369,37 @@ $(document).ready(function() {
           dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
           dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
-          
+          if("<?php echo _getSesion('rol') ?>" == 'jefe_agencia'){
+            
+              dSolicitud += '<select name="status" class="form-control" id="status">';
+            dSolicitud += '<option value="">Status</option>';
+            if(detalle.status_sol == 0){
+              dSolicitud += '<option selected value="0">Abierto</option>';
+              dSolicitud += '<option value="1">Cerrada</option>';
+            }
+            if(detalle.status_sol == 1){
+              dSolicitud += '<option value="0">Abierto</option>';
+              dSolicitud += '<option selected value="1">Cerrada</option>';
+            }
+            
+            dSolicitud += '</select>';
 
-          dSolicitud += '<select name="status" class="form-control" id="status">';
-          dSolicitud += '<option value="">Status</option>';
-          if(detalle.status_sol == 0){
-            dSolicitud += '<option selected value="0">Abierto</option>';
-            dSolicitud += '<option value="1">Cerrada</option>';
+
+            dSolicitud += '<select style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
+            dSolicitud += '<option value="">Asignar Asesor</option>';
+            console.log(asignar)
+            for (var j = 0; j < asignar.length; j++) {
+              dSolicitud += '<option value="'+asignar[j].asignar_id+'">'+asignar[j].asignar_nombre+' '+asignar[j].asignar_apellido+'</option>';
+            }                    
+            dSolicitud += '</select>';
+
           }
-          if(detalle.status_sol == 1){
-            dSolicitud += '<option value="0">Abierto</option>';
-            dSolicitud += '<option selected value="1">Cerrada</option>';
+          else
+          {
+            $('.btn-actualizar-estado').hide();
           }
+
           
-          dSolicitud += '</select>';
-
-
-          dSolicitud += '<select style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
-          dSolicitud += '<option value="">Asignar Asesor</option>';
-          console.log(asignar)
-          for (var j = 0; j < asignar.length; j++) {
-            dSolicitud += '<option value="'+asignar[j].asignar_id+'">'+asignar[j].asignar_nombre+' '+asignar[j].asignar_apellido+'</option>';
-          }                    
-          dSolicitud += '</select>';
 
           $('.div-datos-solicitud').html(dSolicitud);
 
