@@ -187,6 +187,7 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
+                      <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha</th>
                       <th class="text-center">Nro sol.</th>
                       <th class="text-center">Cliente</th>
@@ -204,13 +205,14 @@
                       foreach ($solicitudes as $solicitud) {
                       ?>
                       <tr>
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>
                         <td><?php echo $solicitud->id_solicitud ?></td>
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         <td><?php echo $solicitud->AGENCIA ?></td>
                         <td><?php echo $solicitud->agencia_desembolso ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
-                        <td><?php echo $solicitud->asesor ?></td>
+                        <td><?php echo $solicitud->asesor_nombre.' '.$solicitud->asesor_apellido ?></td>
                         <td><?php echo $solicitud->status_sol == 0 ? 'Abierto' : 'Cerrado' ?></td>
                         <td><?php echo $solicitud->monto ?></td>
                       </tr>
@@ -268,7 +270,15 @@
 
 $(document).ready(function() {
 
+  
+
   var table = $('#tabla-solicitudes').DataTable( {
+
+      "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
+
+      columnDefs: [
+         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
+     ],
 
       lengthChange: false,
       buttons: [
@@ -323,6 +333,17 @@ $(document).ready(function() {
       ],
       
   } );
+
+
+  //$('#tabla-solicitudes').find("th:eq(1)").off("click.DT").order( [ 0, 1, 2, 3, 4, 5 ], true );
+
+
+  /*$('#tabla-solicitudes').find("th:eq(1)").click(function(e){
+    e.stopPropagation();
+    //alert('hello');
+    $(this).off("click.DT");
+  });*/
+
 
   table.buttons().container()
   //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );

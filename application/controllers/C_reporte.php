@@ -173,7 +173,8 @@ class C_reporte extends CI_Controller {
     {
         $id = _post('id');
         $status = _post('status');
-        $response = $this->M_solicitud->actualizarEstadoSolicitud($id, $status);
+        $id_asignar = _post('id_asignar');
+        $response = $this->M_solicitud->actualizarEstadoSolicitud($id, $status, $id_asignar);
         echo json_encode(array('response'=>$response));
     }
 
