@@ -205,8 +205,11 @@ class M_usuario extends  CI_Model{
         {
             $sql = "UPDATE agencias set id_sup_agencia = NULL WHERE id_sup_agencia = ?";
             $result = $this->db->query($sql, array($id_usuario));
-            $sql = "UPDATE agencias set id_sup_agencia = ? WHERE id IN ?";
-            $result = $this->db->query($sql, array($id_usuario, $agencias));
+
+            if($arrayUpdate['estado'] == 1){
+                $sql = "UPDATE agencias set id_sup_agencia = ? WHERE id IN ?";
+                $result = $this->db->query($sql, array($id_usuario, $agencias));
+            }           
 
             if(!empty($result)){
                 return true;
