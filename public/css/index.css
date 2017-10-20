@@ -390,3 +390,12 @@ footer p{
 a {
     cursor:pointer; cursor: hand
 }
+.titulo-vista {
+	font-family: 'quicksandbold';
+}
+.tipo_letra_gruesa {
+	font-family: 'quicksandbold';
+}
+.tipo_letra_delgada {
+	font-family: 'quicksandlight';
+}

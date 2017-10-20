@@ -29,6 +29,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <style>
         </style>  
     </head>
@@ -103,7 +104,7 @@
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
               <h1 class="titulo-vista">Bienvenido Usuario</h1>
-            <div class="panel panel-primary panel-login-recuperar-password-solicitud">
+            <div class="panel panel-primary" style="border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;">
                 <!-- <div class="panel-heading" style="background-color:#1C4485;border:0">
                   <h1 class="panel-title" style="font-size:25px;">Bienvenido Usuario</h1>
                 </div> -->
@@ -111,28 +112,28 @@
                   <form class="form-horizontal" action="/logearse/login" method="post">
                     <br>
                     <div class="form-group">
-                      <label class="control-label col-sm-3" for="email">Usuario:</label>
+                      <label class="control-label col-sm-3 tipo_letra_gruesa" for="email">Usuario:</label>
                       <div class="col-sm-9">
-                        <input type="email" class="form-control" name="usuario" id="email" placeholder="Enter email">
+                        <input type="email" class="form-control tipo_letra_delgada" style="width: 80%;" name="usuario" id="email" placeholder="Enter email">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-sm-3" for="pwd">Contrase&ntilde;a:</label>
+                      <label class="control-label col-sm-3 tipo_letra_gruesa" for="pwd">Contrase&ntilde;a:</label>
                       <div class="col-sm-9"> 
-                        <input type="password" class="form-control" name="password" id="pwd" placeholder="Enter password">
+                        <input type="password" class="form-control tipo_letra_delgada" style="width: 80%;" name="password" id="pwd" placeholder="Enter password">
                       </div>
                     </div>
                     <div class="form-group"> 
-                      <div class="col-center" style="margin-left: 46px">
-                        <button type="submit" class="btn btn-primary redirect" data-value="1">Dashboard</button>
-                        <button type="submit" class="btn btn-primary redirect" data-value="2">Mi Cash</button>
-                        <button type="submit" class="btn btn-primary redirect" data-value="3">Auto Prymera</button>
+                      <div class="col-center" style="margin-left: 63px">
+                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="1">Dashboard</button>
+                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="2">Mi Cash</button>
+                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="3">Auto Prymera</button>
                         <input type="hidden" name="redirect">
                       </div>
                     </div>
                     <div class="form-group"> 
                       <div class="col-center">
-                        Olvid&oacute; su contrase&ntilde;a? <a href="/Logearse/olvidoPassword">Ingrese aqu&iacute;</a>
+                        <small class="tipo_letra_delgada" style="font-size: 14px;">Olvid&oacute; su contrase&ntilde;a?</small> <a href="/Logearse/olvidoPassword" class="tipo_letra_delgada">Ingrese aqu&iacute;</a>
                       </div>
                     </div>
                             

@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12">
-                        <label class="" style="color: #fff">M&aacute;s caracter&iacute;sticas</label>
+                        <label class="letra_gruesa" style="color: #fff">M&aacute;s caracter&iacute;sticas</label>
                         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="moreText()">
                             <i class="mdi mdi-play_circle_filled" style="color: #fff"></i>
                         </button>
@@ -123,9 +123,9 @@
                     </div>
                     <div class="tab-content">
                         <div id="homes" class="tab-pane fade in active">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12" style="margin-top: 15px;">
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -151,7 +151,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -190,7 +190,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -203,7 +203,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-6 apegar">
                                         <div class="col-xs-2">
                                             <i class="mdi mdi-keyboard_arrow_right"></i>
                                         </div>
@@ -218,7 +218,7 @@
                             </div>
                         </div>
                         <div id="menus1" class="tab-pane fade">
-                            <h3>Requisitos m&iacute;nimos que debe tener un cliente:</h3>
+                            <h3 class="alinear">Requisitos m&iacute;nimos que debe tener un cliente:</h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
@@ -309,7 +309,7 @@
                             </div>
                         </div>
                         <div id="menus2" class="tab-pane fade">
-                            <h3><strong>El cliente debe proporcionar los siguientes documentos:</strong></h3>
+                            <h3 class="alinear"><strong>El cliente debe proporcionar los siguientes documentos:</strong></h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
@@ -334,7 +334,7 @@
                                     <p>Sustento de ingresos: 3 &uacute;ltimas boletas de pago, si el cliente cuenta con ingresos variables y 1 &uacute;ltima boleta, si el cliente cuenta con ingresos fijos (s&oacute;lo en caso solicite un monto mayor al pre-aprobado)</p>
                                 </div>
                             </div><br>
-                            <h3><strong>El expediente debe considerar los siguientes documentos:</strong></h3>
+                            <h3 class="alinear"><strong>El expediente debe considerar los siguientes documentos:</strong></h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
@@ -399,7 +399,7 @@
                                     <p>Copia de &uacute;ltimo recibo de servicios (m&aacute;ximo antig&uring;edad de 2 meses).</p>
                                 </div>
                             </div><br>
-                            <h3 class="negrita">Adicional, para cr&eacute;ditos mayores al monto pre-aprobado se debe adjuntar:</h3>
+                            <h3 class="negrita alinear">Adicional, para cr&eacute;ditos mayores al monto pre-aprobado se debe adjuntar:</h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
@@ -426,7 +426,7 @@
                             </div>
                         </div>
                         <div id="menus3" class="tab-pane fade">
-                            <h3>Preguntas Frecuentes</h3>
+                            <h3 class="alinear">Preguntas Frecuentes</h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
@@ -479,7 +479,7 @@
                             </div>
                         </div>
                         <div id="menus4" class="tab-pane fade">
-                            <h3>El producto "MI CASH" esta afecto el seguro desgravamen</h3>
+                            <h3 class="alinear">El producto "MI CASH" esta afecto el seguro desgravamen</h3>
                             <div class="col-xs-12">
                                 <div class="col-xs-2">
                                     <i class="mdi mdi-keyboard_arrow_right"></i>
@@ -525,7 +525,7 @@
     <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="terminosYcondiciones" style="color:#1C4485">Uso de Datos Personales</h3>
+            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#1C4485">Uso de Datos Personales</h3>
           </div>
           <div class="modal-body">
             <p class="tipo_letra">
