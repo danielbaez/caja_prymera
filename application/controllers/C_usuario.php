@@ -47,10 +47,10 @@ class C_usuario extends CI_Controller {
         $data['msj']   = null;
         try {
             $html = null;
-            $nombre = __getTextValue('nombre');
-            $session = array('nombre_jefe'  => $nombre);
-            $this->session->set_userdata($session);
-            if($nombre == null) {
+            $id = _post('id');
+            //$session = array('nombre_jefe'  => $nombre);
+            //$this->session->set_userdata($session);
+            if($id == null) {
                 throw new Exception("Ingrese el nombre", 1);
             }
             /*$id    = $this->M_usuario->getIdUsuarioByNombre($nombre);
@@ -66,7 +66,7 @@ class C_usuario extends CI_Controller {
                           </tr>';
             }
             $data['html'] = $html;*/
-            $data['comboAgencias'] = $this->__buildComboAgencias($nombre);
+            $data['comboAgencias'] = $this->__buildComboAgencias($id);
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -111,14 +111,21 @@ class C_usuario extends CI_Controller {
     }
 
 
-    function __buildComboAgencias($nombre){
-        $agencias = $this->M_usuario->getAgenciasSupervisor($nombre);
+    function __buildComboAgencias($id){
+        $agencias = $this->M_usuario->getAgenciasSupervisor($id);
         $opt = null;
         foreach($agencias as $age){
             $agen = str_replace(')', '',str_replace('(', '', $age->AGENCIA));
             $opt .= '<option value="'.$age->id.'"> '.$agen.'</option>';
         }
         return $opt;
+    }
+
+    function logout()
+    {
+        $this->load->helper("url");
+        $this->session->sess_destroy();
+        redirect('/');  
     }
 
     /*function borrarAsignados() {

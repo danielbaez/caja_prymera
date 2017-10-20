@@ -239,8 +239,9 @@ class M_usuario extends  CI_Model{
                   FROM usuario
                  WHERE estado = 1
                    AND rol LIKE '%jefe_agencia%'
-                   AND nombre LIKE '%".$nombre."%'";
+                   AND (nombre LIKE '%".$nombre."%' OR apellido LIKE '%".$nombre."%')";
         $result = $this->db->query($sql, array());
+
         return $result->result();
     }
 
@@ -299,13 +300,13 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
-    function getAgenciasSupervisor($nombre) {
+    function getAgenciasSupervisor($id) {
         $sql = "SELECT a.*
                   FROM usuario u,
                        agencias a
                  WHERE a.id_sup_agencia = u.id
-                   AND u.nombre LIKE '%".$nombre."%'";
-        $result = $this->db->query($sql, array());
+                   AND u.id = ?";
+        $result = $this->db->query($sql, array($id));
         return $result->result();
     }
 

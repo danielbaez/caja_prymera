@@ -62,6 +62,7 @@
           <div class="col-xs-12 col-sm-3 text-right">
             <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
             <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+            <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>
                 
           </div>
 

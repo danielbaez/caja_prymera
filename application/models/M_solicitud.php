@@ -174,17 +174,17 @@ class M_solicitud extends  CI_Model{
                 $cont++;
                 switch ($key) {
                     case 'nro_solicitud':
-                        $a = "id = ?";
+                        $a = "solicitud.id = ?";
                         break;
                     case 'cliente':
-                        $a = "(nombre LIKE '%".$filtros['cliente']."%' OR apellido LIKE '%".$filtros['cliente']."%')";
+                        $a = "(solicitud.nombre LIKE '%".$filtros['cliente']."%' OR solicitud.apellido LIKE '%".$filtros['cliente']."%')";
                         unset($filtros['cliente']);
                         break;
                     case 'dni':
-                        $a = "dni = ?";
+                        $a = "solicitud.dni = ?";
                         break;                    
                     case 'fecha':
-                        $a = "date(timestamp_final) = ?";
+                        $a = "date(solicitud.timestamp_final) = ?";
                         break;                    
                     default:
                         # code...
@@ -235,16 +235,20 @@ class M_solicitud extends  CI_Model{
         {
             $sql2 = "SELECT id as asignar_id, nombre as asignar_nombre, apellido as asignar_apellido FROM usuario WHERE id_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = ?)";
             $result2 = $this->db->query($sql2, array($id_usuario));
-        }
 
-        if($result2->result())
-        {
-            $result2 = $result2->result(); 
+            if($result2->result())
+            {
+                $result2 = $result2->result(); 
+            }
+            else
+            {
+                $result2 = [];
+            }  
         }
         else
         {
             $result2 = [];
-        }   
+        }  
 
         //$a = $result->result()->$result2;
         return ['detalle' => $result->result(), 'asignar' => $result2]; 
