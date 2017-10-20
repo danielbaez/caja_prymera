@@ -3,6 +3,7 @@ var glob_personalAsignado = null;
 function agregarPersonal() {
 	var dato = "";
 	var nombre = "";
+	var apellido = "";
 	var rol = "";
 	var agencia = "";
 	var supervisor = $('#supervisor').val();
@@ -15,10 +16,11 @@ function agregarPersonal() {
 	    if(this.checked == true) {
 	    	dato = $(this).val();
 	    	nombre = $(this).attr('data-nombre');
+	    	apellido = $(this).attr('data-apellido');
 	    	rol = $(this).attr('data-rol');
 	    	agencia = $(this).attr('data-agencia');
 	    	glob_personalAsignado += '-'+$(this).val();
-	    	$('#personalAsignado').append("<p id='id_nombre_pers_"+dato+"' data-id="+dato+">"+nombre+" <i class='fa fa-minus-circle fa-1x' data-nombres="+nombre+" data-rol="+rol+" data-id_user="+dato+" data-agencias='"+agencia+"' aria-hidden='true' onclick='borrarAsignados("+$(this).val()+", this)'></i></p>");
+	    	$('#personalAsignado').append("<p id='id_nombre_pers_"+dato+"' data-id="+dato+">"+nombre+" <i class='fa fa-minus-circle fa-1x' data-nombres="+nombre+" data-apellido="+apellido+" data-rol="+rol+" data-id_user="+dato+" data-agencias='"+agencia+"' aria-hidden='true' onclick='borrarAsignados("+$(this).val()+", this)'></i></p>");
 	    	$('#check_'+dato).remove();
 	    }
 	});
@@ -50,8 +52,11 @@ function guardatAsesoresAsignados() {
 		try{
 			data = JSON.parse(data);
 			if(data.error == 0) {
+				$('#supervisor').val('');
 				$('.agregar').html('');
             	$('.agregar').append(data.html);
+            	$('#agencias').html('');
+            	$('#agencias').append('<option value="">Agencias</option>');
             	$('#personalAsignado').html('');
 			}
 			msj('success', data.msj);
@@ -63,14 +68,15 @@ function guardatAsesoresAsignados() {
 
 function borrarAsignados(id_pers, element) {
 	var nombre = $(element).attr('data-nombres');
+	var apellido = $(element).attr('data-apellido');
 	var rol = $(element).attr('data-rol');
 	var agencia = $(element).attr('data-agencias');
 	$('#id_nombre_pers_'+id_pers).remove();
 	$('.agregar').append('<tr id="check_'+id_pers+'">'+
                                     '<td>'+
-                                       '<input type="checkbox" data-nombre="'+nombre+'" data-rol="'+rol+'" data-agencia="'+agencia+'" name="id_asesor[]" value="'+id_pers+'">'+
+                                       '<input type="checkbox" data-nombre="'+nombre+'" data-nombre="'+apellido+'" data-rol="'+rol+'" data-agencia="'+agencia+'" name="id_asesor[]" value="'+id_pers+'">'+
                                     '</td>'+                    
-                                    '<td>'+nombre+'</td>'+
+                                    '<td>'+nombre+' '+apellido+'</td>'+
                                     '<td>'+rol+'</td>'+
                                     '<td>'+agencia+'</td>'+
                                   '</tr>');
