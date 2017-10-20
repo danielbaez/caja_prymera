@@ -35,7 +35,7 @@ class C_preaprobacion extends CI_Controller {
         $data['comboMarca']         = $this->__buildMarca();
         
         $data['nombreDato']=':D';
-        $data['nombre'] = _getSesion('nombre');
+        $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']=_getSesion('email');
         $nombre = $this->session->userdata('nombre');
         $data['tipo_producto'] = _getSesion("TIPO_PROD");
@@ -45,7 +45,7 @@ class C_preaprobacion extends CI_Controller {
         $plazos = _getSesion('plazos');
 
         $apellido           = _getSesion('apellido');
-        $nombre             = $this->session->userdata('nombre');
+        $nombre             = ucfirst($this->session->userdata('nombre'));
         $sueldo             = $this->sueldo;
         $minAuto            = null;
         $maxAuto            = null;
@@ -116,7 +116,7 @@ class C_preaprobacion extends CI_Controller {
         $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
        
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
 

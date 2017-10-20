@@ -387,3 +387,6 @@ footer p{
 .modal-body.text-center p{
 	font-family: 'quicksandlight';
 }
+a {
+    cursor:pointer; cursor: hand
+}

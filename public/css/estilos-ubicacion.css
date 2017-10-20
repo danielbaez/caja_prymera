@@ -63,3 +63,6 @@ h3 {
     position: relative;
     left: 79px;
 }
+a {
+    cursor:pointer; cursor: hand
+}

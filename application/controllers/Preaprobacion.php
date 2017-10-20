@@ -45,7 +45,7 @@ class preaprobacion extends CI_Controller {
     public function index()
     {
         $data['nombreDato']=':D';
-        $data['nombre'] = _getSesion('nombre');
+        $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']  = _getSesion('email');
         $nombre   = $this->session->userdata('nombre');
         $data['tipo_producto'] = _getSesion("TIPO_PROD");
@@ -84,7 +84,7 @@ class preaprobacion extends CI_Controller {
         $valorAuto = ($minAuto+$maxAuto)/2;
         $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
         
         $data['tipo_product'] = $titulo;       
         

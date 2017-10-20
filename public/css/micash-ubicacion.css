@@ -74,3 +74,6 @@ h3 {
     left: 180px;
     font-family: 'quicksandlight';
 }
+a {
+    cursor:pointer; cursor: hand
+}

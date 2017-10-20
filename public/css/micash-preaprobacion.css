@@ -110,3 +110,6 @@ p {
 span {
     font-family: 'quicksandlight';
 }
+a {
+    cursor:pointer; cursor: hand
+}

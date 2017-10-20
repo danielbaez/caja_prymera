@@ -47,21 +47,22 @@ div.row.row1 {
 }
 h6 {
 	color: #fff;
-    font-size: 16px;
-    margin: 23px;
+    font-size: 34px;
+    margin: 12px;
     text-align: center;
     position: relative;
-    top: 10px;
-    left: 15px;
+    left: 81px;
+    font-family: 'quicksandregular';
 }
 
 h3 {
-	color: #fff;
-	font-size: 30px;
-	margin: 12px;
-	text-align: center;
+    color: #fff;
+    font-size: 34px;
+    margin: 12px;
+    text-align: center;
     position: relative;
     left: 81px;
+    font-family: 'quicksandregular';
 }
 .usuario-logeado {
 	float: right;
@@ -77,4 +78,7 @@ h3 {
     top: 10px;
     right: 347px;
     max-width: 302px;
+}
+a {
+    cursor:pointer; cursor: hand
 }

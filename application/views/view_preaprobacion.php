@@ -83,6 +83,27 @@
                     				<div class="col-xs-12">
                 		    			<form class="text-center form-horizontal">
                             				<div class="col-xs-12 col-md-6" style="color:black;font-size:16px;position: relative;top: 30px;">
+                                              <div class="col-md-12" style="margin-left: -34px;margin-top: 30px;">
+                                                <div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;top: 25px;left: 107px;">
+                                                      <span id="minCuota">S/ <?php echo  $importeMinimo?></span>
+                                                    </div>
+                                                    <div class="visible-xs col-xs-5 text-left">
+                                                      <span>S/ <?php echo  $importeMinimo?></span>
+                                                    </div>
+                                                    <div class="visible-xs col-sm-5 text-right">
+                                                      <span>S/ <?php echo  $importeMaximo?></span>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4">
+                                                      <label for="slider-range-dias" style="margin-left: -15px;position: relative;top: -19px;">Monto</label>
+                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -21px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
+                                                        <div id="slider-range-dias" class="agrandar"></div>
+                                                        <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
+                                                    </div>
+                                                    <div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;left: 58px;top: 25px;">
+                                                      <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
+                                                    </div>
+                                              </div>
+
                                             	<div class="col-md-12">
                                             		<div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
                                                   		<span><?php echo $plazo_min ?>m</span>
@@ -101,27 +122,6 @@
                                                     </div>
                                                     <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 22px;top: 45px;">
                                                   		<span><?php echo $plazo_max ?>m</span>
-                                                    </div>
-                                            	</div>
-                                            	
-                                            	<div class="col-md-12" style="margin-left: -34px;margin-top: 30px;">
-                                            		<div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;top: 25px;left: 107px;">
-                                                  		<span id="minCuota">S/ <?php echo  $importeMinimo?></span>
-                                                    </div>
-                                                    <div class="visible-xs col-xs-5 text-left">
-                                                  		<span>S/ <?php echo  $importeMinimo?></span>
-                                                    </div>
-                                                    <div class="visible-xs col-sm-5 text-right">
-                                                  		<span>S/ <?php echo  $importeMaximo?></span>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-4">
-                                                    	<label for="slider-range-dias" style="margin-left: -15px;position: relative;top: -19px;">Monto</label>
-                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -21px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
-                                                        <div id="slider-range-dias" class="agrandar"></div>
-                                                        <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
-                                                    </div>
-                                                    <div class="hidden-xs col-sm-4 text-center" style="padding: 25px;position: relative;left: 58px;top: 25px;">
-                                                  		<span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
                                                     </div>
                                             	</div>
                                             	<div class="col-md-12 hidden" style="color:black;font-size:16px;position: relative; left: -27px">

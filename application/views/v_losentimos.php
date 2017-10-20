@@ -28,7 +28,7 @@
   </head>
     <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default" style="margin-top: -20px;">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -41,8 +41,8 @@
           <h6>Cr&eacute;dito vehicular</h6>
           <h3>Auto de Caja Prymera</h3>
         <?php } else { ?>
-            <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 95px;">Cr&eacute;dito Consumo</h6>
-            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px;">Mi Cash</h3>
+            <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 87px;font-family: 'quicksandlight';">Cr&eacute;dito Consumo</h6>
+            <h3 style="color: #fff;font-size: 36px;margin: 12px;text-align: center;position: relative;left: 81px;font-family: 'quicksandlight';">Mi Cash</h3>
         <?php } ?>
       </div>
 
@@ -61,34 +61,34 @@
   </nav>
 
     <div class="container">
-      <div class="row" style="margin-top: 50px">
+      <div class="row" style="margin-top: -50px">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
           <div class="panel panel-primary" style="">
             <div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">
-              <h1 class="panel-title" style="font-size:25px;color: #005aa6;"><strong>Lo sentimos, en estos momentos no contamos con una</strong></h1>
-              <h1 style="font-size:25px;color:#005aa6;margin:0px;margin-left: 27px;"><strong>oferta que se ajuste a tus necesidades</strong> y nos gustar&iacute;a</h1>
-              <h1 style="font-size:25px;color:#005aa6;margin:0px;text-align: center">ponernos en contacto contigo</h1>
+              <h1 class="panel-title" style="font-size:24px;color: #005aa6;">Lo sentimos, en estos momentos no contamos con una</h1>
+              <h1 style="font-size:24px;color:#005aa6;margin:0px;margin-left: 27px;">oferta que se ajuste a tus necesidades <strong>y nos gustar&iacute;a</strong></h1>
+              <h1 style="font-size:24px;color:#005aa6;margin:0px;text-align: center"><strong>ponernos en contacto contigo</strong></h1>
             </div>
             <div class="usuario-logeado">
               <span><?php echo $nombreCompleto?></span>
             </div>
-            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 60%;position: relative;left: 132px;">
-              <div class="row text-center" style="color:#EF484E">
+            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 60%;position: relative;left: 132px;top: 20px;">
+              <div class="row text-center" style="color:#EF484E;padding: 0px;margin: 0px;">
                 <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';">Confirma tus datos</h1>
                 <div class="col-md-12">
                   <div class="col-xs-6" style="margin-left: 8px">
                     <div class="form-group">
-                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="">
+                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="font-family: 'quicksandlight';">
                         </div>
                   </div>
                   <div class="col-xs-6" style="margin-left: 191px;margin-top: -49px;">
                     <div class="form-group">
-                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="">
+                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="font-family: 'quicksandlight';">
                         </div>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <button type="button" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;font-family: 'quicksandbold';" onclick="guardarDatos()">Aceptar</button>
+                    <button type="button" class="btn btn-lg" style="font-weight: lighter;background-color: #005aa6;color: #fff;font-family: 'quicksandbold';width: 160px;margin-top: 5px;" onclick="guardarDatos()">Aceptar</button>
                 </div>
               </div>
             </div>

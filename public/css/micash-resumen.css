@@ -125,3 +125,6 @@ span {
 	color: #1069ab;
 	font-size: 30px;
 }
+a {
+    cursor:pointer; cursor: hand
+}

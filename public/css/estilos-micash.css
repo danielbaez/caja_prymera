@@ -278,3 +278,6 @@ a {
 .negrita {
     font-family: 'quicksandbold';
 }
+a {
+    cursor:pointer; cursor: hand
+}

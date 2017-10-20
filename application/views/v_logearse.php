@@ -36,9 +36,10 @@
     	<nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
           <div class="container-fluid">
             <div class="navbar-header">
-            	<a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+            	<a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 10px;height: 128px;" href="#"><img class="img-responsive logo" style="max-width: 302px;float: right;margin-right: 182px" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
             </div>
             <ul class="nav navbar-nav">
+                <h3 style="position: absolute;top: -45px;left: 119px;color: #fff;font-family: 'quicksandregular';">Sistema de cr&eacute;ditos Web</h3>
             </ul>
           </div>
         </nav>
