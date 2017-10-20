@@ -243,3 +243,38 @@ div.checkbox label {
         padding: 0;
     }
 }
+.estilos_tabs {
+    color: #fff;
+    background-color: #007ac0;
+    font-family: 'quicksandlight';
+}
+.juntar {
+    padding-left: 0px;
+    margin-left: -49px;
+}
+.unir {
+    margin-left: -340px;
+}
+.ml-170 {
+   margin-left: -170px;
+   margin-top: -3px;
+}
+
+a {
+    color: #fff;
+    font-weight: 500;
+    background-color: #007ac0;
+}
+
+.tipo_letra {
+    font-family: 'quicksandlight';
+}
+.modal-title {
+    text-align: center;
+    color: #007ac0 !important;
+    font-size: 15px;
+    font-family: 'quicksandbold';
+}
+.negrita {
+    font-family: 'quicksandbold';
+}

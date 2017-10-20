@@ -12,7 +12,7 @@
     <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
+    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap_select/css/bootstrap-select.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
@@ -128,7 +128,7 @@
                                                       <span>S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                      <label for="slider-range-monto" style="position: relative;top: 4px;">Monto del veh&iacute;culo</label>
+                                                      <label for="slider-range-monto" style="position: relative;top: 4px;">Valor del veh&iacute;culo</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-monto"></div>
                                                         <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
@@ -170,6 +170,10 @@
                                     </div>
                                             <div class="col-xs-12 col-md-6 text-center" style="color: black;font-size:16px;position: relative;left: 100px;width: 35%;">
                                         <div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
+                                          <div class="col-md-12" style="margin: 10px">
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Importe de pr&eacute;stamo</p>
+                                                    <span style="color:#1C4485;font-size: 20px" id="importePrestamo">S/ 0</span>
+                                          </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
                                                     <span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ 0</span>
@@ -750,6 +754,8 @@
       cuota = $('#slider-range-value-cuota').html();
       marca = $('#marca option:selected').val();
       modelo= $('#modelo option:selected').val();
+      console.log(monto);
+      console.log(cuota);
       $.ajax({
         data  : { meses    : meses_pago,
                 cuota : cuota,
@@ -761,8 +767,7 @@
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
-        console.log(data);
-
+        $('#importePrestamo').html('S/ '+data.importe_prest)
         $('#sueldoMin').html('S/ '+data.montoMinimo);
         $('#sueldoMax').html('S/ '+data.montoMaximo);
 

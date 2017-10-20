@@ -253,6 +253,7 @@ class C_preaprobacion extends CI_Controller {
 
         $minIniPorc         = $this->minIniPorc;
         $maxIniPorc         = $this->maxIniPorc;
+        $importe_prest = null;
 
         $meses = preg_replace("/[^0-9]/","",_post('meses'));
 
@@ -309,6 +310,10 @@ class C_preaprobacion extends CI_Controller {
             $cuota = preg_replace("/[^0-9]/","",_post('cuota'));
             $marca = _post('marca');
             $modelo = _post('modelo');
+            _log($monto);
+            _log($cuota);
+            $data['importe_prest'] = $monto-$cuota;
+
 
             //resultado 1 -- ok
           //resultado 3: token
@@ -377,10 +382,8 @@ class C_preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
 
             $datos_tea = $result->return->tea;
-            _log($datos_tea);
             $data['tea'] = round($datos_tea*10000)/100;
             $datos_tcea = $result->return->tcea;
-            _log($datos_tcea);
             $data['tcea'] = round($datos_tcea*10000)/100;  
 
             $data['seguroAuto'] = $result->return->seguroAuto;
@@ -675,7 +678,6 @@ class C_preaprobacion extends CI_Controller {
     
     function __buildCodTelefono($departamento){
         $codtel = $this->M_preaprobacion->getCod_telefono($departamento);
-        _logLastQuery();
         $opt = null;
         foreach($codtel as $cod){
             $codi = $cod->CODIGO;
@@ -785,11 +787,15 @@ class C_preaprobacion extends CI_Controller {
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');
             $importe  = _post('cuotaIni');
+            $monto  = _post('monto');
             $numero  = _post('numero');
             $varTcea  = _post('pors_tcea');
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
             $seguro   = _post('seguro');
+            $nuevo_monto = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$monto))));
+            $nuevo_importe = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$importe))));
+            $importe_vehic = $nuevo_monto-$nuevo_importe;
             $concesionaria = _post('concesionaria');
             $session = array(
                         'pago_total'        => $pagoTot,
@@ -804,7 +810,7 @@ class C_preaprobacion extends CI_Controller {
                                 'cuota_mensual' => $cuotaMens,
                                 'tcea'          => $varTcea,
                                 'plazo'         => $meses,
-                                'monto'         => $importe,
+                                'monto'         => $importe_vehic,
                                 'tea'           => $varTea,
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'            => $marca,
