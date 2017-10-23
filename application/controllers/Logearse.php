@@ -295,7 +295,7 @@ class logearse extends CI_Controller {
         <h4>A continuaci&oacute;n le enviamos el enlase para que pueda cambiar su contrase&ntilde;a</h4>
         <h4>que solicitaste:</h4>
 
-        <p>Usuario: <a href="/C_cambiarPassword/?a='.$id_encrypt.'">cambie su contrase&ntilde;a aqu&iacute;</a></p>
+        <p>Usuario: <a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambie su contrase&ntilde;a aqu&iacute;</a></p>
         ');
        $this->email->send();
        //con esto podemos ver el resultado

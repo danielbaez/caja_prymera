@@ -94,10 +94,12 @@
                     </div>
                     <div>
                     	<h1 class="p-0 m-0" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
-                        <h1 class="ajustar" ><b>Solicitaste un cr&eacute;dito de <?php echo $Importe ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> soles</b></h1><br />
+                        <h1 class="ajustar" ><b>Solicitaste un cr&eacute;dito de <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?> <?php echo $Importe ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> soles</b></h1><br />
                         <h1 class="p-0 m-0" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
                         <h1 class="m-t-0">con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span>(luz, agua, tel&eacute;fono) con antiguedad</h1>
-                        <h1 class="p-0 m-t-23">no mayor a dos meses. Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago. &#33;No dejes pasar la oportunidad  de cumplir tus sue&ntilde;os!</h1>
+                        <h1 class="p-0 m-t-23">no mayor a dos meses.
+                         Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago.<?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> Un representante de Prymera se contactar&aacute; con Ud. para indicarle el proceso a seguir para la toma de firmas, el dep&oacute;sito del porcentaje de la inicial y el desembolso de su c&eacute;dito. <?php } ?> <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>  </br>&#33;No deje pasar la oportunidad de cumplir sus sue&ntilde;os!<?php } ?></h1>
+                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><h1 class="p-0 m-t-23">Si desea un monto mayor al pre aprobado, adicional, debe proporcionarnos los estados de cuenta de sus cr&eacute;ditos o tarjetas de cr&eacute;dito vigentes para que el &aacute;rea de riesgos lo pueda evaluar.</br> &#33;No deje pasar la oportunidad de cumplir sus sue&ntilde;os!</h1><?php } ?>
                     </div>
                     <div class="mdl-card__supporting-text br-b" style="width: 100%;">
                         <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">

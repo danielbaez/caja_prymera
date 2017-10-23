@@ -118,7 +118,7 @@
                 <?php } ?>
 			    		  <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span>S/ <?php echo $Importe?></span>
+					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?><?php echo $Importe?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Importe Pr&eacute;stamo: </span>
 					          	  </div>
