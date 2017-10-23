@@ -118,64 +118,69 @@
                     <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
                 </div>
                 
-                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block; margin-bottom: 20px; font-family: 'quicksand'">
+                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block; margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;">
                     
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#homes">Caracter&iacute;sticas</a></li>
                         <li><a data-toggle="tab" href="#menus1">Requisitos</a></li>
                         <li><a data-toggle="tab" href="#menus2">Documentos</a></li>
                         <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
-                        <li><a data-toggle="tab" href="#menus3">Seguros</a></li>
+                        <li><a data-toggle="tab" href="#menus4">Seguros</a></li>
                     </ul>
                     
                     <div class="tab-content" style="margin-top: 15px">
                         <div id="homes" class="tab-pane fade in active">                            
                             
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PORCENTAJE INICIAL:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</span>
                             </div>
-                            
-                            <div class="col-xs-6 col-sm-3 text-left ">
+                            <div class="col-xs-12"></div>                            
+                            <div class="col-xs-6 col-sm-3 text-left resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONTO A FINANCIAR:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left ">
+                            <div class="col-xs-12"></div>
+                            <div class="col-xs-6 col-sm-3 text-left resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PLAZOS:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left ">
+                            <div class="col-xs-12"></div>
+                            <div class="col-xs-6 col-sm-3 text-left resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>TEA:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 12% - M&aacute;ximo 20%.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left ">
+                            <div class="col-xs-12"></div>
+                            <div class="col-xs-6 col-sm-3 text-left resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERIODO DE GRACIA:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Hasta 60 d&iacute;as.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
+                            <div class="col-xs-12"></div>
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERICIDAD DE PAGO:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Mensual</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
+                            <div class="col-xs-12"></div>
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>DESTINO DE CR&Eacute;DITO:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Compra de auto nuevo.</span>
                             </div>
-
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
+                            <div class="col-xs-12"></div>
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MODALIDAD:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
@@ -203,7 +208,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Persona con nacionalidad peruana.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cliente nuevo y/o recurrente de Prymera; si es cliente recurrente y tiene un crÈdito vigente, se considera como un crÈdito paralelo.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cliente nuevo y/o recurrente de Prymera; si es cliente recurrente y tiene un cr&eacute;dito vigente, se considera como un cr&eacute;dito paralelo.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</span>
@@ -218,17 +223,17 @@
                                 <span><strong>Sobre la Tasaci&oacute;n:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Aplica para vehÌculos nuevos (la tasaciÛn se actualiza cada aÒo, luego del primer aÒo). Costo es asumido por el cliente.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Aplica para veh&iacute;culos nuevos (la tasaci&oacute;n se actualiza cada a&ntilde;o, luego del primer a&ntilde;o). Costo es asumido por el cliente.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <span><strong>Sobre la GarantÌa Vehicular:</strong></span>
+                                <span><strong>Sobre la Garant&iacute;a Vehicular:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El vehÌculo a adquirir debe constituirse como garantÌa a favor de Prymera
-                                        El Costo del servicio de toma de firmas y/o recojo de documentos es asumido por el cliente, lo cual incluye los gastos notariales y registrales, seg˙n valor del vehiculo
-                                        DocumentaciÛn:
-                                        Contrato de GarantÌa firmado por representante legal de Prymera y cliente.
-                                        Carta de CaracterÌsticas del VehÌculo proporcionada por el cliente</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El veh&iacute;culo a adquirir debe constituirse como garant&iacute;a a favor de Prymera
+                                        El Costo del servicio de toma de firmas y/o recojo de documentos es asumido por el cliente, lo cual incluye los gastos notariales y registrales, seg&uacute;n valor del vehiculo
+                                        Documentaci&oacute;n:
+                                        Contrato de Garant&iacute;a firmado por representante legal de Prymera y cliente.
+                                        Carta de Caracter&iacute;sticas del Veh&iacute;culo proporcionada por el cliente</span>
                             </div>
                         </div>
                         <div id="menus2" class="tab-pane fade">
@@ -237,62 +242,62 @@
                                 <span><strong>El cliente debe proporcionar los siguientes documentos:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Documentos de identificaciÛn: copia de DNI vigente.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Documentos de identificaci&oacute;n: copia de DNI vigente.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Copia de ˙ltimo recibo de servicios (luz / Agua) del titular (m·ximo antig¸edad de 2 meses)</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Copia de &uacute;ltimo recibo de servicios (luz / Agua) del titular (m&aacute;ximo antiguedad de 2 meses)</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 ˙ltimas boletas de pago, si el cliente cuenta con ingresos variables y 2 ˙ltimas boletas, si el cliente cuenta con ingresos fijos (sÛlo en caso solicite un monto mayor al pre-aprobado).</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 &uacute;ltimas boletas de pago, si el cliente cuenta con ingresos variables y 2 &uacute;ltimas boletas, si el cliente cuenta con ingresos fijos (s&oacute;lo en caso solicite un monto mayor al pre-aprobado).</span>
                             </div>
 
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span><strong>El expediente debe considerar los siguientes documentos:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Solicitud del CrÈdito Vehicular firmada por el cliente</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Solicitud del Cr&eacute;dito Vehicular firmada por el cliente</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Resumen del CrÈdito</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Resumen del Cr&eacute;dito</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>ResoluciÛn del CrÈdito</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Resoluci&oacute;n del Cr&eacute;dito</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Orden de Desembolso firmado por el cliente</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Contrato del CrÈdito firmado por el cliente</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Contrato del Cr&eacute;dito firmado por el cliente</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Contrato de GarantÌa firmado por el cliente</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Contrato de Garant&iacute;a firmado por el cliente</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Hoja Resumen firmado por el cliente</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>PagarÈ  firmado por el cliente</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Pagar&eacute;  firmado por el cliente</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>PÛliza de Seguro (en caso el cliente endose seguro a favor de Prymera)</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>P&oacute;liza de Seguro (en caso el cliente endose seguro a favor de Prymera)</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Documentos de identificaciÛn: copia de DNI vigente o Ficha RENIEC o CarnÈ de ExtranjerÌa vigente.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Documentos de identificaci&oacute;n: copia de DNI vigente o Ficha RENIEC o Carn&eacute; de Extranjer&iacute;a vigente.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Copia de ˙ltimo recibo de servicios (luz / Agua) del titular (m·ximo antig¸edad de 2 meses)</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Copia de &uacute;ltimo recibo de servicios (luz / Agua) del titular (m&aacute;ximo antiguedad de 2 meses)</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>ImpresiÛn de las centrales de riesgo de la SBS (RCC) y de las centrales privadas de acuerdo a normativa vigente.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Impresi&oacute;n de las centrales de riesgo de la SBS (RCC) y de las centrales privadas de acuerdo a normativa vigente.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 ˙ltimas boletas de pago, si el cliente cuenta con ingresos variables y 2 ˙ltimas boletas, si el cliente cuenta con ingresos fijos.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 &uacute;ltimas boletas de pago, si el cliente cuenta con ingresos variables y 2 &uacute;ltimas boletas, si el cliente cuenta con ingresos fijos.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Reporte ESSSALUD</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>CotizaciÛn del vehÌculo a adquirirse con una antig¸edad no mayor de 15 dÌas de la fecha de evaluaciÛn.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cotizaci&oacute;n del veh&iacute;culo a adquirirse con una antiguedad no mayor de 15 d&iacute;as de la fecha de evaluaci&oacute;n.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Constancia del abono de la cuota inicial.</span>
@@ -303,77 +308,107 @@
 
                         </div>
                         <div id="menus3" class="tab-pane fade">
-
-                            <div class="col-xs-12">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</span>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debiÈndolo endosar a favor de Prymera.</br></span>
+                                <span>Si, usted podr&aacute; hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:<br>
+                                - Pago Total del Cr&eacute;dito: amortiza el total de la deuda con reducci&oacute;n de comisiones e intereses al d&iacute;a de pago.<br>
+- Prepago con Reducci&oacute;n del Plazo: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, el monto de las cuotas se mantiene y reduce el plazo del cr&eacute;dito.<br>
+- Prepago con Reducci&oacute;n de Cuota: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, reduciendo el monto de la cuota del mes y manteniendo el plazo del cr&eacute;dito.<br>
+- Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.
+                                </span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) d&iacute;as de realizado el pago. 
+En cualquiera de los casos y a su solicitud, Prymera le har&aacute; entrega del cronograma de pagos modificado dentro de los 7 d&iacute;as calendarios posteriores a la presentaci&oacute;n de su solicitud.
+                                </span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.
+                                </span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garant&iacute;a a Prymera, &#191;qu&eacute; tr&aacute;mites tengo que realizar una vez cancele mi cr&eacute;dito?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Deber&aacute;s acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:<br>- Solicitud de liberaci&oacute;n de la garant&iacute;a (hipotecaria y/o mobiliaria).<br>
+- Copia del documento de identidad del solicitante (titular de cr&eacute;dito y/o propietario).<br>
+- Copia del Testimonio de constituci&oacute;n de garant&iacute;a.<br>
+- Copia literal actualizada y/o certificado de gravamen actualizado (no mayor de 30 d&iacute;as de emitido)<br>
+Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
+
+                                </span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;nto tiempo demora el tr&aacute;mite de levantamiento de garant&iacute;a?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Una vez recibida su solicitud de liberaci&oacute;n de garant&iacute;a, Prymera proceder&aacute; con la evaluaci&oacute;n de su solicitud y de ser procedente, le entregar&aacute; la minuta de levantamiento de garant&iacute;a respectiva. El plazo para realizar esta gesti&oacute;n es de hasta 30 d&iacute;as calendario desde que se recibe la solicitud hasta la entrega de la minuta de levantamiento solicitada.
+
+                                </span>
+                            </div>
+                        </div>
+                        <div id="menus4" class="tab-pane fade">
+
+                            <div class="col-xs-12">
+                                <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debiÈndolo endosar a favor de Prymera.</br>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br>
                                 -Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>øQuÈ es el seguro de desgravamen?</span>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; es el seguro de desgravamen?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <span>Es un seguro de vida de car·cter obligatorio que adquiere cuando solicita su crÈdito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica sÛlo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deber· presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
+                                <span>Es un seguro de vida de car&aacute;cter obligatorio que adquiere cuando solicita su cr&eacute;dito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica s&oacute;lo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deber&aacute; presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>øEs obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un crÈdito?</span>
+                                <span>No, el cliente tiene derecho a elegir entre la contrataci&oacute;n del seguro ofrecido por Prymera o un seguro contratado directamente por el cliente, siempre que cumpla previamente con las siguientes condiciones:</br>
+                                        a. Acreditar haber contratado por su cuenta un seguro que brinde cobertura similar o mayor al seguro ofrecido por Prymera y por los plazos iguales o mayores, para ello deber&aacute; adjuntar copia de la p&oacute;liza del seguro.</br>
+                                        b. Endosar las p&oacute;lizas a favor de Prymera en un plazo no mayor al d&iacute;a h&aacute;bil de suscrito el  Contrato. En el endoso deber&aacute; constar la declaraci&oacute;n de la Compa&ntilde;&iacute;a de Seguros en el sentido que, Prymera es el &uacute;nico beneficiario de la indemnizaci&oacute;n hasta por el monto pendiente del pago total del cr&eacute;dito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas p&oacute;lizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, &eacute;ste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del Pr&eacute;stamo, m&aacute;s los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes se&ntilde;alada, no generar&aacute; para &eacute;l responsabilidad alguna.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del cr&eacute;dito, &#191;Qu&eacute; deber&aacute; presentar el apoderado?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <span>No, el cliente tiene derecho a elegir entre la contrataciÛn del seguro ofrecido por Prymera o un seguro contratado directamente por el cliente, siempre que cumpla previamente con las siguientes condiciones:</br>
-                                        a. Acreditar haber contratado por su cuenta un seguro que brinde cobertura similar o mayor al seguro ofrecido por Prymera y por los plazos iguales o mayores, para ello deber· adjuntar copia de la pÛliza del seguro.</br>
-                                        b. Endosar las pÛlizas a favor de Prymera en un plazo no mayor al dÌa h·bil de suscrito el  Contrato. En el endoso deber· constar la declaraciÛn de la CompaÒÌa de Seguros en el sentido que, Prymera es el ˙nico beneficiario de la indemnizaciÛn hasta por el monto pendiente del pago total del crÈdito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas pÛlizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, Èste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del PrÈstamo, m·s los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes seÒalada, no generar· para Èl responsabilidad alguna.</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del crÈdito, øQuÈ deber· presentar el apoderado?</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <span>- Copias certificadas de Partida y Certificado de DefunciÛn.</br>
-                                            - Atestado policial, protocolo de necropsia, an·lisis toxicolÛgico y de alcoholemia en caso de muerte por accidente.</br>
+                                <span>- Copias certificadas de Partida y Certificado de Defunci&oacute;n.</br>
+                                            - Atestado policial, protocolo de necropsia, an&aacute;lisis toxicol&oacute;gico y de alcoholemia en caso de muerte por accidente.</br>
                                             - Copia del Documento de Identidad del asegurado fallecido.</br>
-                                            - Informe completo y detallado del mÈdico tratante que sustente el estado del paciente e indique la fecha de inicio de la Invalidez, en caso de Invalidez total y permanente.</br>
-                                            - El tiempo lÌmite m·ximo para declarar el fallecimiento o la invalidez total y permanente es de 180 dÌas posteriores a la ocurrencia</br>
-                                            - Mayor informaciÛn en caso la CompaÒÌa de Seguro lo requiera.</span>
+                                            - Informe completo y detallado del m&eacute;dico tratante que sustente el estado del paciente e indique la fecha de inicio de la Invalidez, en caso de Invalidez total y permanente.</br>
+                                            - El tiempo l&iacute;mite m&aacute;ximo para declarar el fallecimiento o la invalidez total y permanente es de 180 d&iacute;as posteriores a la ocurrencia</br>
+                                            - Mayor informaci&oacute;n en caso la Compa&ntilde;&iacute;a de Seguro lo requiera.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;En cu&aacute;ntos d&iacute;as obtendr&eacute; respuesta de la aseguradora ante un siniestro?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del crÈdito, øQuÈ deber· presentar el apoderado?</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <span>La aseguradora tiene un plazo m·ximo de 30 dÌas h·biles para enviarte una respuesta.<br>Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>øQuÈ pasa si realizo el pago anticipado y no comunico sobre mi elecciÛn?</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar· como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecciÛn o un tercero realice dicho pago por Usted, Prymera reducir· el n˙mero de cuotas, dentro de los quince (15) dÌas de realizado el pago. 
-                                        En cualquiera de los casos y a su solicitud, Prymera le har· entrega del cronograma de pagos modificado dentro de los 7 dÌas calendarios posteriores a la presentaciÛn de su solicitud.</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>QuÈ sucede si me atraso en pagar las cuotas?</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <span>Si el Cliente incumpliera con el pago oportuno de una o m·s de las cuotas previstas en el cronograma de pagos, se devengar·n autom·ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituciÛn en mora ser· autom·tica. Asimismo, se proceder· a realizar el reporte correspondiente a las Centrales de Riesgo.</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garantÌa a Prymera, øquÈ tr·mites tengo que realizar una vez cancele mi crÈdito?</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <span>Deber·s acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:
-                                        - Solicitud de liberaciÛn de la garantÌa (hipotecaria y/o mobiliaria).
-                                        - Copia del documento de identidad del solicitante (titular de crÈdito y/o propietario).
-                                        - Copia del Testimonio de constituciÛn de garantÌa.
-                                        - Copia literal actualizada y/o certificado de gravamen actualizado (no mayor de 30 dÌas de emitido)
-                                        Este tr·mite no est· sujeto al pago de comisiÛn.</span>
+                                <span>La aseguradora tiene un plazo m&aacute;ximo de 30 d&iacute;as h&aacute;biles para enviarte una respuesta.</span>
                             </div>
                         </div>
                     </div>
@@ -392,47 +427,47 @@
           </div>
           <div class="modal-body">
             <p class="tipo_letra">
-               ìEl cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequÌvoco e informado para que (por sÌ mismo o a travÈs de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaciÛn tanto proporcionada, como recopilada a travÈs de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
+               ‚ÄúEl cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequ&iacute;voco e informado para que (por s&iacute; mismo o a trav&eacute;s de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaci&oacute;n tanto proporcionada, como recopilada a trav&eacute;s de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
             </p>
 
             <p class="tipo_letra">
-            (i) Otorgarle el producto y/o servicio solicitado; enviarle informaciÛn ofertas comerciales y publicidad relacionada al producto y/o servicio; y/o<br> 
+            (i) Otorgarle el producto y/o servicio solicitado; enviarle informaci&oacute;n ofertas comerciales y publicidad relacionada al producto y/o servicio; y/o<br> 
             </p>
 
             <p class="tipo_letra">
-               (ii) Ofrecerle otros productos y/o servicios y/o ofertas, y/o publicidad e informaciÛn en general, entre otros, de PRYMERA y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo econÛmico al que pertenece PRYMERA, domiciliada o no en el paÌs, (directamente y/o a travÈs de terceras vinculadas o no vinculadas); y/o<br> 
+               (ii) Ofrecerle otros productos y/o servicios y/o ofertas, y/o publicidad e informaci&oacute;n en general, entre otros, de PRYMERA y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo econ&oacute;mico al que pertenece PRYMERA, domiciliada o no en el pa&iacute;s, (directamente y/o a trav&eacute;s de terceras vinculadas o no vinculadas); y/o<br> 
             </p>
 
             <p class="tipo_letra">
-               (iii) Evaluar su calidad crediticia y capacidad de pago, asÌ como de ser el caso, efectuar las gestiones de recuperaciÛn o cobranza; y/o<br> 
+               (iii) Evaluar su calidad crediticia y capacidad de pago, as&iacute; como de ser el caso, efectuar las gestiones de recuperaci&oacute;n o cobranza; y/o<br> 
             </p>
 
             <p class="tipo_letra">
-              (iv) Evaluar cualquier solicitud que efect˙e en el presente y/o futuro y/o;<br>  
+              (iv) Evaluar cualquier solicitud que efect&uacute;e en el presente y/o futuro y/o;<br>  
             </p>
 
             <p class="tipo_letra">
-               (v) Almacenar y tratar sus datos personales, con fines estadÌsticos y/o histÛricos para PRYMERA o terceras vinculadas o no vinculadas y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo econÛmico que pertenece PRYMERA.<br> 
+               (v) Almacenar y tratar sus datos personales, con fines estad&iacute;sticos y/o hist&oacute;ricos para PRYMERA o terceras vinculadas o no vinculadas y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo econ&oacute;mico que pertenece PRYMERA.<br> 
             </p>
 
             <p class="tipo_letra">
-              Esta autorizaciÛn es por tiempo indefinido y estar· vigente inclusive despuÈs del vencimiento de las operaciones, y/o de las relaciones contractuales y/o comerciales que el Cliente mantenga o pudiera mantener con PRYMERA. El Cliente, declara haber sido informado de que en caso no otorgue este consentimiento, su informaciÛn solo ser· utilizada (tratada) para la ejecuciÛn (desarrollo) y cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA.<br>  
+              Esta autorizaci&oacute;n es por tiempo indefinido y estar&aacute; vigente inclusive despu&eacute;s del vencimiento de las operaciones, y/o de las relaciones contractuales y/o comerciales que el Cliente mantenga o pudiera mantener con PRYMERA. El Cliente, declara haber sido informado de que en caso no otorgue este consentimiento, su informaci&oacute;n solo ser&aacute; utilizada (tratada) para la ejecuci&oacute;n (desarrollo) y cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA.<br>  
             </p>
 
             <p class="tipo_letra">
-              PRYMERA se reserva el derecho de poder compartir y/o usar y/o almacenar y/o transferir la informaciÛn a terceras personas vinculadas o no a PRYMERA, sean estos socios comerciales o no de PRYMERA, nacionales o extranjeros, p˙blicos o privados, con el objeto de realizar actividades relacionadas al cumplimiento de las finalidades indicadas anteriormente.<br>
+              PRYMERA se reserva el derecho de poder compartir y/o usar y/o almacenar y/o transferir la informaci&oacute;n a terceras personas vinculadas o no a PRYMERA, sean estos socios comerciales o no de PRYMERA, nacionales o extranjeros, p&uacute;blicos o privados, con el objeto de realizar actividades relacionadas al cumplimiento de las finalidades indicadas anteriormente.<br>
             </p>
              
             <p class="tipo_letra">
-               El Cliente declara que ha sido informado(a) que podr· revocar en cualquier momento su consentimiento, comunicando su decisiÛn por escrito en cualquiera de las Agencias de PRYMERA, la cual no afectar· el uso de sus datos ni el contenido de las Bases de Datos (Banco de Datos) para la ejecuciÛn y/o cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA, adicional a ello, PRYMERA podr· informarle a travÈs de su p·gina web u otros medios de comunicaciÛn, sobre otros canales para que el Cliente pueda hacer efectiva su revocatoria.<br> 
+               El Cliente declara que ha sido informado(a) que podr&aacute; revocar en cualquier momento su consentimiento, comunicando su decisi&oacute;n por escrito en cualquiera de las Agencias de PRYMERA, la cual no afectar&aacute; el uso de sus datos ni el contenido de las Bases de Datos (Banco de Datos) para la ejecuci&oacute;n y/o cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA, adicional a ello, PRYMERA podr&aacute; informarle a trav&eacute;s de su p&aacute;gina web u otros medios de comunicaci&oacute;n, sobre otros canales para que el Cliente pueda hacer efectiva su revocatoria.<br> 
             </p>
 
             <p class="tipo_letra">
-               Asimismo, el Cliente declara que ha sido informado que podr· ejercer sus derechos de informaciÛn, acceso, rectificaciÛn, cancelaciÛn y oposiciÛn de acuerdo a lo dispuesto por la Ley de ProtecciÛn de Datos Personales vigente y su Reglamento. PRYMERA podr· informarle a travÈs de su p·gina web u otros medios de comunicaciÛn, sobre otros canales para que el Cliente pueda hacer efectivo el ejercicio de sus derechos.<br><br> 
+               Asimismo, el Cliente declara que ha sido informado que podr&aacute; ejercer sus derechos de informaci&oacute;n, acceso, rectificaci&oacute;n, cancelaci&oacute;n y oposici&oacute;n de acuerdo a lo dispuesto por la Ley de Protecci&oacute;n de Datos Personales vigente y su Reglamento. PRYMERA podr&aacute; informarle a trav&eacute;s de su p&aacute;gina web u otros medios de comunicaci&oacute;n, sobre otros canales para que el Cliente pueda hacer efectivo el ejercicio de sus derechos.<br><br> 
             </p>
 
             <p class="tipo_letra">
-               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaciÛn, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposiciÛn de recurso, nivel de protecciÛn adecuado, conforme a las disposiciones de la Ley de ProtecciÛn de Datos vigente en Per˙.î<br><br> 
+               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protecci&oacute;n de Datos vigente en Per&uacute;.‚Äù<br><br> 
             </p>    
           </div>
           <div class="modal-footer">

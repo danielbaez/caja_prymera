@@ -19,6 +19,7 @@ class C_login extends CI_Controller {
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $this->load->view('v_login', $dato);
+        //$this->load->view('v_login', $dato);
     }
     
     public function solicitar() {
