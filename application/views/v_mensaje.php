@@ -38,8 +38,8 @@
           <h6 style="cursor:pointer; cursor: hand;" onclick="goToHome(1)">Cr&eacute;dito Consumo</h6>
           <h3 style="cursor:pointer; cursor: hand;" onclick="goToHome(1)">Mi Cash</h3>
         <?php } else { ?>
-            <h6 style=" color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 15px; cursor:pointer; cursor: hand;" onclick="goToHome(2)">Cr&eacute;dito vehicular</h6>
-            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px; cursor:pointer; cursor: hand;" onclick="goToHome(2)">Auto de Caja Prymera</h3>
+            <h6 style="color: #fff;font-size: 18px;margin: 23px;text-align: center;position: relative;top: 10px;left: 42px;cursor:pointer;cursor: hand;font-family: 'quicksandregular';" onclick="goToHome(2)">Cr&eacute;dito vehicular</h6>
+            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px; cursor:pointer; cursor: hand;font-family: 'quicksandregular';" onclick="goToHome(2)">Auto de Prymera</h3>
         <?php } ?>
       </div>
 

@@ -47,7 +47,7 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-flg = 1;
+/*flg = 1;
 $(function() {
     $('#nombres').keyup(function() {
         if(flg == 1) {
@@ -65,7 +65,7 @@ $(function() {
             flg2++;
         }
     });
-});
+});*/
 
 function limpiar() {
   $('#nombres').val(null);

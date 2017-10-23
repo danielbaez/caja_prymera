@@ -111,7 +111,7 @@ function verificarNumero() {
 						$('#confirmar').css('display', 'none');
 						$('#cambiar').css('display', 'block');
 					}else if(data.cambio == 0){
-						location.href = '/micash_resumen';
+						location.href = '/Resumen';
 					}
 				}else {
 				}
@@ -258,6 +258,12 @@ function cambiarCelular() {
 	$('.otro').addClass("hidden");
 	$('#confirmar').css('display', 'block');
 	$('#cambiar').css('display', 'none');
+	$('#uno').val('');
+	$('#dos').val('');
+	$('#tres').val('');
+	$('#cuatro').val('');
+	$('#cinco').val('');
+	$('#seis').val('');
 }
 
 function enviarMail() {

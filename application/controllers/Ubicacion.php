@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class micash_ubicacion extends CI_Controller {
+class Ubicacion extends CI_Controller {
     
 	//construct : $this->load->model('M_preaprobacion');
 	function __construct() {

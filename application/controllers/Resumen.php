@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class micash_resumen extends CI_Controller {
+class Resumen extends CI_Controller {
     
     function __construct() {
         ob_start();
