@@ -112,7 +112,7 @@ div.text-left class1{
 }
 
 div.text-left{
-    color: #fff;
+    /*color: #fff;*/
 }
 div.checkbox label {
     position: relative;right: -6px;color: black;

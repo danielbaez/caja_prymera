@@ -103,11 +103,24 @@ div.text-left class1{
 }
 
 div.text-left{
-	color: #fff;
+	/*color: #fff;*/
 }
 div.checkbox label {
 	position: relative;right: -6px;color: black;
 }
 .input-group {
 	width: 100%
+}
+
+.flecha-caracteristicas{
+    color:#005aa6
+}
+
+.espacio-top-bottom{
+    padding-top: 5px; padding-bottom: 5px;
+}
+
+.espacio-top{
+    padding-bottom: 5px;
+    padding-top: 0px;
 }

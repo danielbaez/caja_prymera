@@ -17,7 +17,7 @@ class micash_resumen extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
-        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
+        $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total'] = _getSesion('pago_total');
         $dato['nombre'] = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
@@ -27,6 +27,7 @@ class micash_resumen extends CI_Controller {
         $dato['tcea'] = _getSesion('TCEA');
         $dato['cant_meses'] = _getSesion('cant_meses');
         $dato['Importe'] = _getSesion('Importe');
+        $dato['cuota_inicial'] = _getSesion('cuota_inicial');
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
@@ -94,8 +95,8 @@ class micash_resumen extends CI_Controller {
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
        $tipo_cred = null;
-       _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Mi auto';
-       _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
+       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Mi auto';
+       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        $this->email->message('
         <h1><strong>'.$tipo_cred.'</strong></h1>
         <h4>'.ucfirst($nombre).' Te damos la bienvenida a Prymera!</h4>
@@ -146,7 +147,7 @@ class micash_resumen extends CI_Controller {
         $data['msj']   = null;
         try {
           $tipo_cred = null;
-        _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
+        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
           //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';

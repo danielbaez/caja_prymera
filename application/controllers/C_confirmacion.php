@@ -46,7 +46,7 @@ class C_confirmacion extends CI_Controller {
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
         $data['email']  = _getSesion('email');
-        $data['tipo_producto'] = _getSesion("TIPO_PROD");
+        $data['tipo_producto'] = _getSesion("tipo_producto");
         $nombre   = $this->session->userdata('nombre');
         $apellido = _getSesion('apellido');
 
@@ -329,7 +329,7 @@ class C_confirmacion extends CI_Controller {
             $importe  = _post('cuotaIni');
             $numero  = _post('numero');
             $monto  = _post('monto');
-            $tipo_product = _getSesion("TIPO_PROD");
+            $tipo_product = _getSesion("tipo_producto");
             $idPersona  = _getSesion('idPersona');
             $varTcea  = _getSesion('TCEA');
             $varTea   = _post('sess_tea');

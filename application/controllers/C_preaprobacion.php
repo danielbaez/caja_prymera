@@ -672,6 +672,7 @@ class C_preaprobacion extends CI_Controller {
                         'TCEA'              => $varTcea,
                         'cant_meses'        => $meses,
                         'Importe'           => $importe_auto,
+                        'cuota_inicial'     => $importe,
                         'sess_tea'          => $varTea,
                         'seguro'            => $seguro,
                         'valor_auto'        => $monto_vehic,

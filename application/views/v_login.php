@@ -25,6 +25,9 @@
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
+
+        <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
@@ -32,6 +35,8 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
+
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>">
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -110,222 +115,120 @@
                     <button class="mdl-button mdl-js-button mdl-js-ripple-effect hidden" style="font-weight: bold;" onclick="goToLogin()">Log in<i style="color: #4e82bb" class="mdi mdi-person"></i></button>
                     <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
                 </div>
-                <div class="row-fluid" style="position: relative;width: 107%;right: 0;top:-49px;">
+                
                 <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block;">
-                    <div class="container-fluid contenedor" style="">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#homes">Caracter&iacute;sticas</a></li>
-                            <li><a data-toggle="tab" href="#menus1">Requisitos</a></li>
-                            <li><a data-toggle="tab" href="#menus2">Documentos</a></li>
-                            <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
-                            <li><a data-toggle="tab" href="#menus3">Seguros</a></li>
-                        </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div id="homes" class="tab-pane fade in active">
-                            <div class="col-xs-12">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>PORCENTAJE INICIAL: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>MONTO A FINANCIAR: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>PLAZOS: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>TEA: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>M&iacute;nimo 12% - M&aacute;ximo 20%.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>PERIODO DE GRACIA: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>Hasta 60 d&iacute;as.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>PERICIDAD DE PAGO: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>Mensual.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>DESTINO DE CR&Eacute;DITO: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>Compra de auto nuevo.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-6">
-                                        <div class="col-xs-2">
-                                            <i class="mdi mdi-keyboard_arrow_right"></i>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <p><strong>MODALIDAD: </strong></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <p>Convencional - Compra inteligente.</p>
-                                    </div>
-                                </div>
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#homes">Caracter&iacute;sticas</a></li>
+                        <li><a data-toggle="tab" href="#menus1">Requisitos</a></li>
+                        <li><a data-toggle="tab" href="#menus2">Documentos</a></li>
+                        <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
+                        <li><a data-toggle="tab" href="#menus3">Seguros</a></li>
+                    </ul>
+                    
+                    <div class="tab-content" style="margin-top: 15px">
+                        <div id="homes" class="tab-pane fade in active">                            
+                            
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PORCENTAJE INICIAL:</strong></span>
                             </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</p>
+                            </div>
+                            
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONTO A FINANCIAR:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PLAZOS:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>TEA:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>M&iacute;nimo 12% - M&aacute;ximo 20%.</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERIODO DE GRACIA:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>Hasta 60 d&iacute;as.</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERICIDAD DE PAGO:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>Mensual</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>DESTINO DE CR&Eacute;DITO:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>Compra de auto nuevo.</p>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-3 text-left">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MODALIDAD:</strong></span>
+                            </div>
+                            <div class="col-xs-6 col-sm-9 text-left">
+                                <p>Convencional - Compra inteligente.</p>
+                            </div>                           
                         </div>
+
                         <div id="menus1" class="tab-pane fade">
-                            <h3>Requisitos m&iacute;nimos que debe tener un cliente:</h3>
                             <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Personas dependientes (m&iacute;nimo 1 a&ntilde;o de antiguedad laboral).</p>
-                                </div>
+                                <span><strong>Requisitos m&iacute;nimos que debe tener un cliente:</strong></span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Ingresos m&iacute;nimo: 2,000 soles.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Personas dependientes (m&iacute;nimo 1 a&ntilde;o de antiguedad laboral).</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Edad: M&iacute;nimo 23 a&ntilde;os y M&aacute;ximo 70 a&ntilde;os.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Ingresos m&iacute;nimo: 2,000 soles.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Calificaci&oacute;n Normal (RCC) en los &uacute;ltimos 6 meses o score de aprobaci&oacute;n seg&uacute;n la evaluaci&oacute;n del &aacute;rea de Riesgos.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Edad: M&iacute;nimo 23 a&ntilde;os y M&aacute;ximo 70 a&ntilde;os.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Persona con nacionalidad peruana.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Calificaci&oacute;n Normal (RCC) en los &uacute;ltimos 6 meses o score de aprobaci&oacute;n seg&uacute;n la evaluaci&oacute;n del &aacute;rea de Riesgos.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Cliente nuevo y/o recurrente de Prymera; si es cliente recurrente y tiene un crédito vigente, se considera como un crédito paralelo.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Persona con nacionalidad peruana.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cliente nuevo y/o recurrente de Prymera; si es cliente recurrente y tiene un crédito vigente, se considera como un crédito paralelo.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo Caja Prymera.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>No deben encontrarse registrados en la base de alertas del sistema Microbank.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo Caja Prymera.</span>
                             </div>
-                            <h3><strong>Sobre la Tasaci&oacute;n:</strong></h3>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Aplica para vehículos nuevos (la tasación se actualiza cada año, luego del primer año). Costo es asumido por el cliente.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben encontrarse registrados en la base de alertas del sistema Microbank.</span>
                             </div>
-                            <h3><strong>Sobre la Garantía Vehicular:</strong></h3>
-                               <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>El vehículo a adquirir debe constituirse como garantía a favor de Prymera
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span><strong>Sobre la Tasaci&oacute;n:</strong></span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Aplica para vehículos nuevos (la tasación se actualiza cada año, luego del primer año). Costo es asumido por el cliente.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span><strong>Sobre la Garantía Vehicular:</strong></span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El vehículo a adquirir debe constituirse como garantía a favor de Prymera
                                         El Costo del servicio de toma de firmas y/o recojo de documentos es asumido por el cliente, lo cual incluye los gastos notariales y registrales, según valor del vehiculo
                                         Documentación:
                                         Contrato de Garantía firmado por representante legal de Prymera y cliente.
-                                        Carta de Características del Vehículo proporcionada por el cliente</p>
-                                </div>
-                            </div>                     </div>
+                                        Carta de Características del Vehículo proporcionada por el cliente</span>
+                            </div>
+                        </div>
                         <div id="menus2" class="tab-pane fade">
                             <h3><strong>El cliente debe proporcionar los siguientes documentos:</strong></h3>
                             <div class="col-xs-12">

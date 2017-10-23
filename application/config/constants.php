@@ -93,7 +93,7 @@ defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTT
 defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/js/');
 defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/public/plugins/');
 
-defined('CHARSET_ISO_8859_1') OR define('CHARSET_ISO_8859_1', 'Content-Type: text/html; charset=ISO-8859-1');
+//defined('CHARSET_ISO_8859_1') OR define('CHARSET_ISO_8859_1', 'Content-Type: text/html; charset=ISO-8859-1');
 defined('PROYECTO_NAME')      OR define('PROYECTO_NAME','caja_prymera');
 //¿¿defined('RUTA_CAJA') OR define('RUTA_CAJA', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/'.PROYECTO_NAME.'/');
 
