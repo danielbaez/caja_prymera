@@ -46,7 +46,7 @@
           <h6>Cr&eacute;dito Vehicular</h6>
         </div>
         <div class="text-left">
-          <h1>Mi Auto Prymera</h1>
+          <h1>Auto de Prymera</h1>
         </div>
       </div>
 
@@ -109,7 +109,7 @@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
                                                       <label for="slider-range-monto" style="position: relative;top: 4px;">Valor del veh&iacute;culo</label>
-                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button>
+                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual es el precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-monto"></div>
                                                         <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>

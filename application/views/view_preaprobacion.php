@@ -95,7 +95,7 @@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-4">
                                                       <label for="slider-range-dias" style="margin-left: -15px;position: relative;top: -19px;">Monto</label>
-                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -21px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Primera inicial para el pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
+                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -21px;left: -5px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Importe del pr&eacute;stamo a solicitar"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-dias" class="agrandar"></div>
                                                         <p id="slider-range-value-dias" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
@@ -115,7 +115,7 @@
                                                   		<span><?php echo $plazo_max ?>m</span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                    	<label for="slider-range-meses" style="margin-right: 22px;position: relative;top: 5px;">Plazo de pr&eacute;stamo</label>
+                                                    	<label for="slider-range-meses" style="margin-right: 22px;position: relative;top: 5px;">Plazo de Pr&eacute;stamo</label>
                                                     	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -20px;l;left: 76px;" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-meses"></div>
                                                         <p id="slider-range-value-meses" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
@@ -144,6 +144,10 @@
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Cuota Mensual*</p>
                                                 		<span style="color:#1C4485;font-size: 24px" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
                                 					</div>
+                                          <div class="col-md-12" style="margin: 10px">
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TEA</p>
+                                                    <span style="color:#1C4485;font-size: 24px" id="tea"><?php echo $tea?>%</span>
+                                          </div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
                                                 		<span style="color:#1C4485;font-size: 24px" id="tcea"><?php echo $tcea?>%</span>

@@ -40,7 +40,7 @@
     </head>
     <body>
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+            <div class="container-fluid" style="margin-top: -70px;">
                 <div class="navbar-header">
                     <div class="contenido-header">
                         <h1 class="title-header">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="panel-body" style="background-color: #fff;">
                             <form class="text-center">
-                                <p style="margin-top: -15px;font-size:15px;color: #a3a4a6;">Cr&eacute;dito Mi Auto de Prymera</p>
+                                <p style="margin-top: -15px;font-size:15px;color: #a3a4a6;">Cr&eacute;dito Auto de Prymera</p>
                                 <p class="datos">Ingresa tus datos</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event)">
