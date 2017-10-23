@@ -467,7 +467,7 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
             </p>
 
             <p class="tipo_letra">
-               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protecci&oacute;n de Datos vigente en Per&uacute;.”<br><br> 
+               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protección de Datos vigente en Per&uacute;.”<br><br> 
             </p>    
           </div>
           <div class="modal-footer">
