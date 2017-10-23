@@ -94,7 +94,7 @@
                     </div>
                     <div>
                     	<h1 class="p-0 m-0" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
-                        <h1 class="ajustar" ><b>Solicitaste un cr&eacute;dito de S/ <?php echo number_format($Importe, 2) ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> soles</b></h1><br />
+                        <h1 class="ajustar" ><b>Solicitaste un cr&eacute;dito de <?php echo $Importe ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> soles</b></h1><br />
                         <h1 class="p-0 m-0" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
                         <h1 class="m-t-0">con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span>(luz, agua, tel&eacute;fono) con antiguedad</h1>
                         <h1 class="p-0 m-t-23">no mayor a dos meses. Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago. &#33;No dejes pasar la oportunidad  de cumplir tus sue&ntilde;os!</h1>

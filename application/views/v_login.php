@@ -40,6 +40,7 @@
     </head>
     <body>
         <nav class="navbar navbar-default">
+
             <div class="container-fluid" style="margin-top: -70px">
                 
                 <div class="navbar-header">

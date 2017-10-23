@@ -58,6 +58,7 @@ class preaprobacion extends CI_Controller {
         $plazos = _getSesion('plazos');
 
         $plazos_explode = explode(',', $plazos);
+        _log(print_r($plazos_explode, true));
 
 
         $sueldo = $this->sueldo;
@@ -116,9 +117,9 @@ class preaprobacion extends CI_Controller {
           $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
            $params = array('token'=> 'E928EUXP',
-                                  'documento'=>_getSesion('dni'),
-                                  'Importe'=> $importeMaximo,
-                                  'plazo' => $data['plazo_max']
+                          'documento'=>_getSesion('dni'),
+                          'Importe'=> $importeMaximo,
+                          'plazo' => $data['plazo_max']
                     );
 
           $result = $client->GetDatosCreditoCash($params);
@@ -126,15 +127,12 @@ class preaprobacion extends CI_Controller {
           if($res == 1){
             $documento = $result->return->documento;
             $data['cuotaMensual'] = $result->return->cuotaMensual;
-            $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
-            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
+            $data['cuotaMensual'] = $data['cuotaMensual'];
             $this->varCuotaMensual = $data['cuotaMensual'];
-
-            $data['pagoTotal'] = round(($data['cuotaMensual']*100)/100) * $data['plazo_max'];
-            _log($data['cuotaMensual']);
-            _log($data['plazo_max']);
+            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
+            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
             $this->varPagoTotal = $data['pagoTotal'];
 
             $datos_tea = $result->return->tea;

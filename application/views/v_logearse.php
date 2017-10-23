@@ -127,7 +127,7 @@
                       <div class="col-center" style="margin-left: 63px">
                         <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="1">Dashboard</button>
                         <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="2">Mi Cash</button>
-                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="3">Auto Prymera</button>
+                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="3">Auto de Prymera</button>
                         <input type="hidden" name="redirect">
                       </div>
                     </div>

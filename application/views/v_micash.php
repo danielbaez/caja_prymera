@@ -77,7 +77,7 @@
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
-                                            <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -1px;" data-toggle="modal" data-target="#myModal">uso de datos personales</button>
+                                            <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -1px;" data-toggle="modal" data-target="#myModal">Uso de datos personales</button>
                                         </label>
                                     </div>
                                 </div>

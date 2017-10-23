@@ -30,6 +30,7 @@ class micash_resumen extends CI_Controller {
         $dato['cuota_inicial'] = _getSesion('cuota_inicial');
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
+        _log(_getSesion('Agencia'));
         $dato['comboAgencias'] = $this->__buildComboAgencias();
         $this->load->view('v_micash_resumen', $dato);
     }
@@ -95,12 +96,12 @@ class micash_resumen extends CI_Controller {
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
        $tipo_cred = null;
-       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Mi auto';
+       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        $this->email->message('
         <h1><strong>'.$tipo_cred.'</strong></h1>
         <h4>'.ucfirst($nombre).' Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n detallamos las condiciones del cr&eacute;dito '.$tipo_cred.' que solicitaste:</h4>
+        <h4>A continuaci&oacute;n detallamos las condiciones del '.$tipo_cred.' que solicitaste:</h4>
 
         <p>Importe del pr&eacute;stamo: '._getSesion('Importe').' </p>
         <p>Plazo: '._getSesion('cant_meses').'</p>
@@ -109,7 +110,7 @@ class micash_resumen extends CI_Controller {
         <p>TCEA: '._getSesion('TCEA').'</p>
         '.$poliza.'
 
-        <h2><strong>Quiero desembolsar mi cr&eacute;dito pre aprobado &iquest;Qu&eacute; debo hacer?</strong></h2>
+        <h3><strong>Quiero gestionar mi cr&eacute;dito pre aprobado &iquest;Qu&eacute; debo hacer?</strong></h3>
         <p>Acércate a la agencia: “'._getSesion('Agencia').'” ubicada en '.$ubicacion.'.</p>
 
         <h3><strong>&iquest;Qu&eacute; debo presentar?</strong></h3>
