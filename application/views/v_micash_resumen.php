@@ -94,7 +94,7 @@
                   <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $valor_auto?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-7">
                           <span style="">Valor Veh&iacute;culo: </span>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                 <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $marca?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-7">
                           <span style="">Marca: </span>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                 <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $modelo?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-7">
                           <span style="">Modelo: </span>
                         </div>
                     </div>
@@ -118,9 +118,9 @@
                 <?php } ?>
 			    		  <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $Importe?></span>
-					          	  <div class="col-xs-6">
-					          	  	<span style="">Importe: </span>
+					          	  <span>S/ <?php echo $Importe?></span>
+					          	  <div class="col-xs-7">
+					          	  	<span style="">Importe Pr&eacute;stamo: </span>
 					          	  </div>
 					          </div>
 					      </div>
@@ -128,7 +128,7 @@
                 <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $cuota_inicial?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-7">
                           <span style="">Cuota Inicial: </span>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $cant_meses?></span>
-					          	  <div class="col-xs-6">
+					          	  <div class="col-xs-7">
 					          	  	<span style="">Plazo: </span>
 					          	  </div>
 					          </div>
@@ -145,7 +145,7 @@
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $cuota_mensual?></span>
-					          	  <div class="col-xs-6">
+					          	  <div class="col-xs-7">
 					          	  	<span style="">Cuota Mensual: </span>
 					          	  </div>
 					          </div>
@@ -153,7 +153,7 @@
                 <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $pago_total?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-7">
                           <span style="">Pago Total: </span>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                 <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $tea?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-7">
                           <span style="">TEA: </span>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $tcea?></span>
-					          	  <div class="col-xs-6">
+					          	  <div class="col-xs-7">
 					          	  	<span style="">TCEA: </span>
 					          	  </div>
 					          </div>
@@ -177,7 +177,7 @@
                 <div class="col-xs-12">
                     <div class="form-group" style="">
                         <span><?php echo $Agencia?></span>
-                        <div class="col-xs-6">
+                        <div class="col-xs-4">
                           <span style="">Agencia: </span>
                         </div>
                     </div>
@@ -230,49 +230,33 @@
             <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#1C4485;text-align: center;font-size: 15px; margin-left: -315px;font-family: 'quicksandbold'">T&eacute;rminos y Condiciones</h3>
           </div>
           <div class="modal-body">
+          <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>
             <p class="tipo_letra">
-               “El cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequívoco e informado para que (por sí mismo o a través de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su información tanto proporcionada, como recopilada a través de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
+               “La oferta pre-aprobada cumplirá las siguientes condiciones:
+                CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.<br><br> 
             </p>
 
             <p class="tipo_letra">
-            (i) Otorgarle el producto y/o servicio solicitado; enviarle información ofertas comerciales y publicidad relacionada al producto y/o servicio; y/o<br> 
+            Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web <a href="http://www.prymera.com.pe">www.prymera.com.pe</a>. Todas las operaciones relacionadas están afectas al ITF 0.005%. La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si retiras S/ 2,000 a 36 meses, pagarás lo siguiente: 36 cuotas mensuales de S/ 111.22, total de intereses S/ 1,935.63, monto total de seguro S/ 68.87, TCEA 65.8%. La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros.”<br> 
+            </p>
+            <?php } ?>
+            <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <p class="tipo_letra">
+               “La oferta pre-aprobada cumplirá las siguientes condiciones:
+                CRÉDITO AUTO DE PRYMERA, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO AUTO DE PRYMERA, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.<br><br> 
             </p>
 
             <p class="tipo_letra">
-               (ii) Ofrecerle otros productos y/o servicios y/o ofertas, y/o publicidad e información en general, entre otros, de PRYMERA y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo económico al que pertenece PRYMERA, domiciliada o no en el país, (directamente y/o a través de terceras vinculadas o no vinculadas); y/o<br> 
+            <strong>Financiamiento Regular</strong>. Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia hasta el 90% del valor del vehículo, Financiamiento Min S/10,000 o USD $ 4,500 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Financiamiento entre 12 y Máx. a 60 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo, No aplica para financiar cuatrimotos, motos lineales o acuáticas o mototaxis (afines). <br> 
             </p>
 
             <p class="tipo_letra">
-               (iii) Evaluar su calidad crediticia y capacidad de pago, así como de ser el caso, efectuar las gestiones de recuperación o cobranza; y/o<br> 
-            </p>
+            <strong>Financiamiento Compra Inteligente</strong>. Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia en 36 cuotas mensuales hasta el 100% del valor del vehículo, donde el 60% del valor se reparten en 35 cuotas mensuales de igual monto y el 40% en la última cuota (36) incluyendo los intereses correspondientes, con la opción de poder pagar la última cuota (40%) o pagar el saldo del crédito a 24 cuotas adicionales, según lo acordado en el crédito vehicular. Monto del crédito Min S/75,000 o USD $ 25,000 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo y sólo de gama media – alta.<br> 
 
             <p class="tipo_letra">
-              (iv) Evaluar cualquier solicitud que efectúe en el presente y/o futuro y/o;<br>  
+            Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. El monto del seguro vehicular es referencial dependerá de la marca y modelo que el cliente elija, pudiendo variar en caso el cliente opte por un seguro vehicular particular y no el de Prymera.  La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si se desembolsa S/ xx,000 a xx meses, pagarás lo siguiente: xx cuotas mensuales de S/ xxxxxx, total de intereses S/ xxxxxxxx, monto total de seguro desgravamen xxxxx, y monto total de seguro xxxxx TCEA xxxxx% La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros. “<br> 
             </p>
-
-            <p class="tipo_letra">
-               (v) Almacenar y tratar sus datos personales, con fines estadísticos y/o históricos para PRYMERA o terceras vinculadas o no vinculadas y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo económico que pertenece PRYMERA.<br> 
-            </p>
-
-            <p class="tipo_letra">
-              Esta autorización es por tiempo indefinido y estará vigente inclusive después del vencimiento de las operaciones, y/o de las relaciones contractuales y/o comerciales que el Cliente mantenga o pudiera mantener con PRYMERA. El Cliente, declara haber sido informado de que en caso no otorgue este consentimiento, su información solo será utilizada (tratada) para la ejecución (desarrollo) y cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA.<br>  
-            </p>
-
-            <p class="tipo_letra">
-              PRYMERA se reserva el derecho de poder compartir y/o usar y/o almacenar y/o transferir la información a terceras personas vinculadas o no a PRYMERA, sean estos socios comerciales o no de PRYMERA, nacionales o extranjeros, públicos o privados, con el objeto de realizar actividades relacionadas al cumplimiento de las finalidades indicadas anteriormente.<br>
-            </p>
-             
-            <p class="tipo_letra">
-               El Cliente declara que ha sido informado(a) que podrá revocar en cualquier momento su consentimiento, comunicando su decisión por escrito en cualquiera de las Agencias de PRYMERA, la cual no afectará el uso de sus datos ni el contenido de las Bases de Datos (Banco de Datos) para la ejecución y/o cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA, adicional a ello, PRYMERA podrá informarle a través de su página web u otros medios de comunicación, sobre otros canales para que el Cliente pueda hacer efectiva su revocatoria.<br> 
-            </p>
-
-            <p class="tipo_letra">
-               Asimismo, el Cliente declara que ha sido informado que podrá ejercer sus derechos de información, acceso, rectificación, cancelación y oposición de acuerdo a lo dispuesto por la Ley de Protección de Datos Personales vigente y su Reglamento. PRYMERA podrá informarle a través de su página web u otros medios de comunicación, sobre otros canales para que el Cliente pueda hacer efectivo el ejercicio de sus derechos.<br><br> 
-            </p>
-
-            <p class="tipo_letra">
-               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la información, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposición de recurso, nivel de protección adecuado, conforme a las disposiciones de la Ley de Protección de Datos vigente en Perú.”<br><br> 
-            </p>    
+            <?php } ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Salir</button>

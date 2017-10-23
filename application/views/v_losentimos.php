@@ -28,7 +28,7 @@
   </head>
     <body>
 
-    <nav class="navbar navbar-default" style="margin-top: -20px;">
+    <nav class="navbar navbar-default" style="margin-top: 0px;">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -39,7 +39,7 @@
         </button>
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
           <h6>Cr&eacute;dito vehicular</h6>
-          <h3>Mi Auto Prymera</h3>
+          <h3>Auto de Prymera</h3>
         <?php } else { ?>
             <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 87px;font-family: 'quicksandlight';">Cr&eacute;dito Consumo</h6>
             <h3 style="color: #fff;font-size: 36px;margin: 12px;text-align: center;position: relative;left: 81px;font-family: 'quicksandlight';">Mi Cash</h3>

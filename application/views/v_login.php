@@ -427,7 +427,7 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
           </div>
           <div class="modal-body">
             <p class="tipo_letra">
-               ‚ÄúEl cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequ&iacute;voco e informado para que (por s&iacute; mismo o a trav&eacute;s de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaci&oacute;n tanto proporcionada, como recopilada a trav&eacute;s de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
+               ìEl cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequ&iacute;voco e informado para que (por s&iacute; mismo o a trav&eacute;s de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaci&oacute;n tanto proporcionada, como recopilada a trav&eacute;s de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
             </p>
 
             <p class="tipo_letra">
@@ -467,7 +467,7 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
             </p>
 
             <p class="tipo_letra">
-               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protecci&oacute;n de Datos vigente en Per&uacute;.‚Äù<br><br> 
+               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protecci&oacute;n de Datos vigente en Per&uacute;.î<br><br> 
             </p>    
           </div>
           <div class="modal-footer">
