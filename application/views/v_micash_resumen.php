@@ -34,9 +34,9 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Vehicular-2.jpg);">
+      <body style="padding: 0px;background-image:url(../public/img/fondos/Car-Sunset.jpg);">
     <?php } else { ?>
-        <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Consumo-2.jpg);">
+        <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);">
     <?php } ?>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -88,9 +88,35 @@
 		    		</div>
 			    	<div class="panel-body">
 			    		<form class="text-center" action="losentimos.html" method="POST">
+                <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+                  <div class="col-xs-12">
+                    <div class="form-group" style="">
+                        <span><?php echo $valor_auto?></span>
+                        <div class="col-xs-6">
+                          <span style="">Valor Veh&iacute;culo: </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">
+                        <span><?php echo $marca?></span>
+                        <div class="col-xs-6">
+                          <span style="">Marca: </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">
+                        <span><?php echo $modelo?></span>
+                        <div class="col-xs-6">
+                          <span style="">Modelo: </span>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
 			    		  <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $Importe?></span>
+					          	  <span>S/ <?php echo $Importe?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">Importe: </span>
 					          	  </div>
@@ -120,19 +146,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">
+                        <span><?php echo $tea?></span>
+                        <div class="col-xs-6">
+                          <span style="">TEA: </span>
+                        </div>
+                    </div>
+                </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $tcea?></span>
 					          	  <div class="col-xs-6">
 					          	  	<span style="">TCEA: </span>
-					          	  </div>
-					          </div>
-					      </div>
-					      <div class="col-xs-12">
-					          <div class="form-group" style="">
-					          	  <span><?php echo $tea?></span>
-					          	  <div class="col-xs-6">
-					          	  	<span style="">TEA: </span>
 					          	  </div>
 					          </div>
 					      </div>
@@ -144,6 +170,16 @@
                         </div>
                     </div>
                 </div>
+                <form class="text-center">
+                  <div class="form-group">
+                      <div class="checkbox" style="margin-left: 24px">
+                          <label>
+                              <input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
+                              <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -1px;" onclick="abrirModal()">Consideraciones</button>
+                          </label>
+                      </div>
+                  </div>
+              </form>
 						  <div class="col-xs-12 text-left">
 						  </div>
 						  <div class="col-xs-12">
@@ -158,7 +194,7 @@
                 </div>
 						  </div>
 						  	<div class="col-xs-12 color-info">
-            		    		<p>* La informaci&oacute;n de tu pr&eacute;stamo ha sido enviada a tu correo y a celular v&iacute;a SMS, con las instrucciones del desembolso en Agencia. </p>
+            		    		<p>* La solicitud de tu cr&eacute;dito vehicular ha sido enviada al correo electr&oacute;nico y al n&uacute;mero de celular que  proporcion&oacute; indicando las instrucciones  a seguir para el desembolso</p>
             		   		</div>
 						</form>
 			    	</div>
@@ -174,31 +210,75 @@
     </div>
     
 	<!-- Modal -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-    	      <div class="modal-header">
-    	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    	        <h3 class="modal-title" id="terminosYcondiciones" style="color:#1C4485">T&eacute;rminos y Condiciones</h3>
-    	      </div>
-    	      <div class="modal-body">
-    	        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut purus odio. Donec nec vehicula est. Duis aliquet lorem sed fermentum elementum. Cras luctus nec ante nec sodales. Morbi feugiat eget erat consectetur egestas. Donec tempus, est vitae fermentum cursus, tortor ligula maximus enim, vel mattis nulla ante vel augue. Aliquam tincidunt suscipit nisi nec mattis. Pellentesque ac semper velit.
-    
-    			Etiam et ligula egestas, accumsan purus ut, pellentesque augue. Aenean vulputate accumsan tortor, quis egestas quam tempor eu. Maecenas volutpat turpis a nisi placerat, id volutpat velit fringilla. Sed scelerisque quis ante sed mattis. Cras lacus libero, varius ut consequat ut, mollis sed odio. Donec quis dignissim dui. Maecenas ac rutrum nunc. Phasellus elementum nunc quis mi laoreet mattis.
-    
-    			Proin efficitur, turpis eu malesuada aliquam, odio lacus tempor odio, non vehicula turpis enim sed justo. Vestibulum maximus euismod lectus, quis pulvinar dolor euismod eget. Praesent condimentum commodo dolor, ut accumsan risus consectetur et. Curabitur elementum, odio pharetra pulvinar hendrerit, metus diam ullamcorper purus, a scelerisque risus leo nec urna. Integer lobortis purus ac sodales suscipit. Ut lacus urna, consectetur in mi eget, commodo sagittis dui. Donec ac aliquet leo, tempor cursus ligula. Curabitur ut enim purus. Nunc at lacinia ligula. Quisque dictum tempor lacus tempus sodales. Proin quis risus ipsum. Integer a nisi eget quam pulvinar cursus. Nulla sollicitudin posuere tortor, sed placerat diam pharetra non. Curabitur volutpat commodo tempor.
-    
-                Phasellus sodales accumsan finibus. Duis nisi urna, euismod vel quam vitae, faucibus gravida elit. Aliquam id ornare nibh. Nullam in dignissim quam. Mauris sed venenatis arcu. Fusce quis arcu massa. Proin finibus metus at nunc accumsan sodales. Duis eu eros urna. Praesent pellentesque lobortis dolor sit amet placerat. Vivamus euismod nisi vel condimentum auctor.
-                
-                Quisque consequat ac purus eu rhoncus. Phasellus ullamcorper vel lectus non imperdiet. Cras ut purus blandit, pulvinar est ut, aliquam tellus. Donec in augue sit amet risus vehicula convallis. Fusce iaculis magna sed est tincidunt, gravida varius quam lacinia. Quisque congue sagittis est, et dictum nibh. Etiam pretium dapibus diam vel lacinia. Proin pretium libero in nunc fermentum, a porta neque sollicitudin. Morbi felis felis, laoreet vitae leo nec, gravida ultricies urna.
-                
-                Donec id bibendum libero. Vestibulum in porta lacus. Sed sit amet fringilla orci. In malesuada tellus libero. Etiam sagittis justo et imperdiet eleifend. Fusce nec eros purus. Vestibulum varius interdum dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc aliquet nunc sit amet ligula egestas sodales.
-    	      </div>
-    	      <div class="modal-footer">
-    	      </div>
-    	    </div>
-      </div>
-    </div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#1C4485;text-align: center;font-size: 15px; margin-left: -315px;font-family: 'quicksandbold'">Consideraciones</h3>
+          </div>
+          <div class="modal-body">
+            <p class="tipo_letra">
+               “El cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequívoco e informado para que (por sí mismo o a través de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su información tanto proporcionada, como recopilada a través de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
+            </p>
+
+            <p class="tipo_letra">
+            (i) Otorgarle el producto y/o servicio solicitado; enviarle información ofertas comerciales y publicidad relacionada al producto y/o servicio; y/o<br> 
+            </p>
+
+            <p class="tipo_letra">
+               (ii) Ofrecerle otros productos y/o servicios y/o ofertas, y/o publicidad e información en general, entre otros, de PRYMERA y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo económico al que pertenece PRYMERA, domiciliada o no en el país, (directamente y/o a través de terceras vinculadas o no vinculadas); y/o<br> 
+            </p>
+
+            <p class="tipo_letra">
+               (iii) Evaluar su calidad crediticia y capacidad de pago, así como de ser el caso, efectuar las gestiones de recuperación o cobranza; y/o<br> 
+            </p>
+
+            <p class="tipo_letra">
+              (iv) Evaluar cualquier solicitud que efectúe en el presente y/o futuro y/o;<br>  
+            </p>
+
+            <p class="tipo_letra">
+               (v) Almacenar y tratar sus datos personales, con fines estadísticos y/o históricos para PRYMERA o terceras vinculadas o no vinculadas y/o cualquier otra empresa que pertenezca o que pueda pertenecer en el futuro al Grupo económico que pertenece PRYMERA.<br> 
+            </p>
+
+            <p class="tipo_letra">
+              Esta autorización es por tiempo indefinido y estará vigente inclusive después del vencimiento de las operaciones, y/o de las relaciones contractuales y/o comerciales que el Cliente mantenga o pudiera mantener con PRYMERA. El Cliente, declara haber sido informado de que en caso no otorgue este consentimiento, su información solo será utilizada (tratada) para la ejecución (desarrollo) y cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA.<br>  
+            </p>
+
+            <p class="tipo_letra">
+              PRYMERA se reserva el derecho de poder compartir y/o usar y/o almacenar y/o transferir la información a terceras personas vinculadas o no a PRYMERA, sean estos socios comerciales o no de PRYMERA, nacionales o extranjeros, públicos o privados, con el objeto de realizar actividades relacionadas al cumplimiento de las finalidades indicadas anteriormente.<br>
+            </p>
+             
+            <p class="tipo_letra">
+               El Cliente declara que ha sido informado(a) que podrá revocar en cualquier momento su consentimiento, comunicando su decisión por escrito en cualquiera de las Agencias de PRYMERA, la cual no afectará el uso de sus datos ni el contenido de las Bases de Datos (Banco de Datos) para la ejecución y/o cumplimiento de las relaciones contractuales y/o comerciales que mantenga con PRYMERA, adicional a ello, PRYMERA podrá informarle a través de su página web u otros medios de comunicación, sobre otros canales para que el Cliente pueda hacer efectiva su revocatoria.<br> 
+            </p>
+
+            <p class="tipo_letra">
+               Asimismo, el Cliente declara que ha sido informado que podrá ejercer sus derechos de información, acceso, rectificación, cancelación y oposición de acuerdo a lo dispuesto por la Ley de Protección de Datos Personales vigente y su Reglamento. PRYMERA podrá informarle a través de su página web u otros medios de comunicación, sobre otros canales para que el Cliente pueda hacer efectivo el ejercicio de sus derechos.<br><br> 
+            </p>
+
+            <p class="tipo_letra">
+               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la información, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposición de recurso, nivel de protección adecuado, conforme a las disposiciones de la Ley de Protección de Datos vigente en Perú.”<br><br> 
+            </p>    
+
+            <p class="tipo_letra">
+               Para pantalla final de resumen de crédito agregarle la aceptación de “Términos y Condiciones” y debe mostrar el siguiente texto:<br> 
+            </p>
+
+             <p class="tipo_letra">
+                “La oferta pre-aprobada cumplirá las siguientes condiciones:
+                CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
+                Valido sólo para personas naturales con edad Min. 23 años y Max. 70 años con condición de Trabajadores Dependientes con Min. 6 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 6 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Monto Mín. del crédito: S/ 1000 y Máx. S/ 15000. No aplica para compra de deuda. Crédito otorgado sólo en moneda nacional. Financiamiento entre 06 y Máx. a 36 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado en cualquiera de las agencias de Prymera.<br>
+                Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si retiras S/ 2,000 a 36 meses, pagarás lo siguiente: 36 cuotas mensuales de S/ 111.22, total de intereses S/ 1,935.63, monto total de seguro S/ 68.87, TCEA 65.8%. La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros.”<br> 
+             </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Salir</button>
+          </div>
+        </div>
+  </div>
+</div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

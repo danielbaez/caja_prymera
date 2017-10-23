@@ -20,7 +20,7 @@ class micash_ubicacion extends CI_Controller {
     {
         $dato['nombreDato']=':D';
         $dato['pago_total'] = _getSesion('pago_total');
-        $dato['nombre'] = _getSesion('nombre');
+        $dato['nombre'] = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
         $dato['tcea'] = _getSesion('TCEA');
         $dato['tipo_producto'] = _getSesion("TIPO_PROD");

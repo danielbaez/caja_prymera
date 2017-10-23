@@ -131,7 +131,9 @@ class preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
             $this->varCuotaMensual = $data['cuotaMensual'];
 
-            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+            $data['pagoTotal'] = round(($data['cuotaMensual']*100)/100) * $data['plazo_max'];
+            _log($data['cuotaMensual']);
+            _log($data['plazo_max']);
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
             $this->varPagoTotal = $data['pagoTotal'];

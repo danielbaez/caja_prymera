@@ -34,12 +34,12 @@ div.row.row1 {
 }
 h6 {
 	color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     /* margin: 2px; */
     text-align: center;
     position: relative;
     top: 10px;
-    left: 182px;
+    left: 72px;
     font-family: 'quicksandlight';
 }
 p {
@@ -127,4 +127,7 @@ span {
 }
 a {
     cursor:pointer; cursor: hand
+}
+.form-control {
+    font-family: 'quicksandlight';
 }

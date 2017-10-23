@@ -663,6 +663,7 @@ class C_preaprobacion extends CI_Controller {
             $Agencia  = _post('Agencia');
             $seguro   = _post('seguro');
             $monto = preg_replace("/[^0-9]/","",_post('monto'));
+            $monto_vehic = _post('monto');
             $cuota_nueva = preg_replace("/[^0-9]/","",$importe);
             $importe_auto = $monto-$cuota_nueva;
             $concesionaria = _post('concesionaria');
@@ -671,8 +672,12 @@ class C_preaprobacion extends CI_Controller {
                         'cuota_mensual'     => $cuotaMens,
                         'TCEA'              => $varTcea,
                         'cant_meses'        => $meses,
-                        'Importe'           => $importe,
-                        'sess_tea'          => $varTea
+                        'Importe'           => $importe_auto,
+                        'sess_tea'          => $varTea,
+                        'seguro'            => $seguro,
+                        'valor_auto'        => $monto_vehic,
+                        'marca'             => $marca,
+                        'modelo'            => $modelo
                             );
             $this->session->set_userdata($session);
             $arrayUpdt = array(

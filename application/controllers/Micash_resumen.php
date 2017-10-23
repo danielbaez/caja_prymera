@@ -20,8 +20,11 @@ class micash_resumen extends CI_Controller {
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $dato['pago_total'] = _getSesion('pago_total');
-        $dato['nombre'] = _getSesion('nombre');
+        $dato['nombre'] = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
+        $dato['marca'] = _getSesion('marca');
+        $dato['modelo'] = _getSesion('modelo');
+        $dato['valor_auto'] = _getSesion('valor_auto');
         $dato['tcea'] = _getSesion('TCEA');
         $dato['cant_meses'] = _getSesion('cant_meses');
         $dato['Importe'] = _getSesion('Importe');
@@ -81,6 +84,7 @@ class micash_resumen extends CI_Controller {
        'charset' => 'utf-8',
        'newline' => "\r\n"
        );    
+       $poliza = null;
        
        //cargamos la configuración para enviar con gmail
        $this->email->initialize($configGmail);
@@ -91,20 +95,21 @@ class micash_resumen extends CI_Controller {
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $nombre = _getSesion('nombre');
        $tipo_cred = null;
-       _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
+       _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Mi auto';
+       _getSesion("TIPO_PROD") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        $this->email->message('
-        <h1><strong>Mi Cash</strong></h1>
-        <h4>'.$nombre.' Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n detallamos las condiciones del cr&eacute;dito '.$tipo_cred.' </h4>
-        <h4>que solicitaste:</h4>
+        <h1><strong>'.$tipo_cred.'</strong></h1>
+        <h4>'.ucfirst($nombre).' Te damos la bienvenida a Prymera!</h4>
+        <h4>A continuaci&oacute;n detallamos las condiciones del cr&eacute;dito '.$tipo_cred.' que solicitaste:</h4>
 
-        <p>Monto: '._getSesion('pago_total').' </p>
+        <p>Importe del pr&eacute;stamo: '._getSesion('Importe').' </p>
         <p>Plazo: '._getSesion('cant_meses').'</p>
         <p>Cuota: '._getSesion('cuota_mensual').'</p>
         <p>TEA: '._getSesion('sess_tea').'</p>
         <p>TCEA: '._getSesion('TCEA').'</p>
+        '.$poliza.'
 
-        <h1><strong>Quiero desembolsar mi cr&eacute;dito pre aprobado &iquest;Qu&eacute; debo hacer?</strong></h1>
+        <h2><strong>Quiero desembolsar mi cr&eacute;dito pre aprobado &iquest;Qu&eacute; debo hacer?</strong></h2>
         <p>Acércate a la agencia: “'._getSesion('Agencia').'” ubicada en '.$ubicacion.'.</p>
 
         <h3><strong>&iquest;Qu&eacute; debo presentar?</strong></h3>
@@ -121,7 +126,7 @@ class micash_resumen extends CI_Controller {
         ');
        $this->email->send();
        
-      _log(print_r($this->email->print_debugger(), true));
+      //_log(print_r($this->email->print_debugger(), true));
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        //con esto podemos ver el resultado
@@ -147,7 +152,7 @@ class micash_resumen extends CI_Controller {
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '._getSesion('nro_celular');
-        $message = 'Solicitó un Crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'.Su cuota es '._getSesion('cuota_mensual').' Revise correo con condiciones';
+        $message = 'Solicitó Crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'.Su cuota es '._getSesion('cuota_mensual').' Revise correo con condiciones';
         $response = $this->twilio->sms($from, $to, $message);
         _log(print_r($response, true));
         if($response->IsError) {

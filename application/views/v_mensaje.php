@@ -35,11 +35,11 @@
           <span class="icon-bar"></span>
         </button>
         <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>
-          <h6>Cr&eacute;dito Consumo</h6>
-          <h3>Mi Cash</h3>
+          <h6 style="cursor:pointer; cursor: hand;" onclick="goToHome(1)">Cr&eacute;dito Consumo</h6>
+          <h3 style="cursor:pointer; cursor: hand;" onclick="goToHome(1)">Mi Cash</h3>
         <?php } else { ?>
-            <h6 style=" color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 15px;">Cr&eacute;dito vehicular</h6>
-            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px;">Auto de Caja Prymera</h3>
+            <h6 style=" color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 15px; cursor:pointer; cursor: hand;" onclick="goToHome(2)">Cr&eacute;dito vehicular</h6>
+            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px; cursor:pointer; cursor: hand;" onclick="goToHome(2)">Auto de Caja Prymera</h3>
         <?php } ?>
       </div>
 
@@ -80,6 +80,7 @@
   <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
   <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
   <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+  <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsmensaje.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
   </body>

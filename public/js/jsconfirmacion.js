@@ -40,7 +40,7 @@ function verificarNumero() {
 	var nombre_conyugue   = $('#nombre_conyugue').val();
 	var dni_conyugue      = $('#dni_conyugue').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
-	var checkAutorizo     = $('#checkAutorizo').is(':checked');
+	//var checkAutorizo     = $('#checkAutorizo').is(':checked');
     if(uno == null && dos == null && tres == null && cuatro == null && cinco == null && seis == null) {
     	msj('error', 'Ingrese el codigo que se le envi&oacute; al celular');
 		return;
@@ -77,14 +77,10 @@ function verificarNumero() {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
 	}
-	if(fijo.length <7) {
-		msj('error', 'Ingrese un n&uacute;mero de 7 d&iacute;gitos');
-		return;
-	}
-	if(checkAutorizo == false) {
+	/*if(checkAutorizo == false) {
 		msj('error','Por favor acepte la autorizaci&oacute;n de datos');
 		  return;
-	}
+	}*/
 	$.ajax({
 		data  : { salario : salario,
 				nro_celular : nro_celular,
@@ -106,7 +102,6 @@ function verificarNumero() {
 	}).done(function(data){
 		try{
 				data = JSON.parse(data);
-				console.log(data);
 				if(data.error == 0){
 					console.log(data.cambio);
 					if(data.cambio == 1){
@@ -309,9 +304,9 @@ function habilitarCampo() {
 	var Agencia 		  = $('#idagencia').val();
 	var concesionaria	  = $('#concesionaria').val();
 	var email 			  = $('#email').val();
-	var checkAutorizo     = $('#checkAutorizo').is(':checked');
+	//var checkAutorizo     = $('#checkAutorizo').is(':checked');
 	if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
-		&& Provincia != '' && Distrito != '' && Agencia != '' && email != '' && nro_fijo != '' && codigo != '' && checkAutorizo != false) {
+		&& Provincia != '' && Distrito != '' && Agencia != '' && email != ''/* && nro_fijo != '' && codigo != ''*/ /*&& checkAutorizo != false*/) {
 		$('#btnAceptar').removeAttr("disabled");
 	}
 }

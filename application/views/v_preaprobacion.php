@@ -12,7 +12,7 @@
     <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
+    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap_select/css/bootstrap-select.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
@@ -46,7 +46,7 @@
           <h6>Cr&eacute;dito Vehicular</h6>
         </div>
         <div class="text-left">
-          <h1>Auto de Caja Prymera</h1>
+          <h1>Mi Auto Prymera</h1>
         </div>
       </div>
 
@@ -97,26 +97,6 @@
                                                         <option value="">Modelo</option>
                                                   </select>
                                               </div>
-                                              <div class="col-md-12 m-l-62 m-t-15">
-                                                <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
-                                                      <span><?php echo $plazo_min ?>m</span>
-                                                    </div>
-                                                    <div class="visible-xs col-xs-6 text-left">
-                                                      <span><?php echo  $plazo_min?>m</span>
-                                                    </div>
-                                                    <div class="visible-xs col-sm-6 text-right">
-                                                      <span><?php echo $plazo_max ?>m</span>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6 ">
-                                                        <label for="slider-range-plazo" style="position: relative;top: 4px;">Plazo de pr&eacute;stamo</label>
-                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?"><i class="mdi mdi-info"></i></button>
-                                                        <div id="slider-range-plazo"></div>
-                                                        <p id="slider-range-value-plazo" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
-                                                    </div>
-                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 9px;top: 45px;">
-                                                      <span><?php echo $plazo_max ?>m</span>
-                                                    </div>
-                                              </div>
                                               <div class="col-md-12 m-l-62">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
                                                       <span id="sueldoMin">S/ <?php echo  $montoMinimo?></span>
@@ -128,7 +108,7 @@
                                                       <span>S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
-                                                      <label for="slider-range-monto" style="position: relative;top: 4px;">Monto del veh&iacute;culo</label>
+                                                      <label for="slider-range-monto" style="position: relative;top: 4px;">Valor del veh&iacute;culo</label>
                                                       <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-monto"></div>
                                                         <p id="slider-range-value-monto" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
@@ -157,6 +137,26 @@
                                                       <span id="maxCuota">S/ <?php echo  $cuotaMaximo?></span>
                                                     </div>
                                               </div>
+                                              <div class="col-md-12 m-l-62 m-t-15">
+                                                <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 78px;top: 45px;">
+                                                      <span><?php echo $plazo_min ?>m</span>
+                                                    </div>
+                                                    <div class="visible-xs col-xs-6 text-left">
+                                                      <span><?php echo  $plazo_min?>m</span>
+                                                    </div>
+                                                    <div class="visible-xs col-sm-6 text-right">
+                                                      <span><?php echo $plazo_max ?>m</span>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 ">
+                                                        <label for="slider-range-plazo" style="position: relative;top: 4px;">Plazo de pr&eacute;stamo</label>
+                                                      <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -26px;left: 87px;" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?"><i class="mdi mdi-info"></i></button>
+                                                        <div id="slider-range-plazo"></div>
+                                                        <p id="slider-range-value-plazo" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
+                                                    </div>
+                                                    <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;left: 9px;top: 45px;">
+                                                      <span><?php echo $plazo_max ?>m</span>
+                                                    </div>
+                                              </div>
                                               <div class="col-md-12" style="color:black;font-size:16px;position: relative; left: -27px">
                                                     <label class="control-label col-xs-5 col-sm-5 hidden" for="email">Tipo de pago:</label>
                                                     <div class="col-xs-7 col-md-5 hidden">
@@ -172,15 +172,19 @@
                                         <div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Importe del Pr&eacute;stamo</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="importePrestamo">S/ 0</span>
+                                                    <span style="color:#1C4485;font-size: 20px" id="importePrestamo">S/0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/ 0</span>
+                                                    <span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Cuota Mensual*</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/ 0</span>
+                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/0</span>
+                                          </div>
+                                          <div class="col-md-12" style="margin: 10px">
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TEA</p>
+                                                    <span style="color:#1C4485;font-size: 20px" id="tea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
@@ -188,7 +192,7 @@
                                                     <span style="display: none" id="tea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
-                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto</p>
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar"><i class="mdi mdi-info"></i></button></p>
                                                     <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
                                                     <p style="color:#A9A9A9;font-size:11px">*Cuota aproximada sujeta a evaluación</p>
                                           </div>
@@ -369,10 +373,10 @@
         <div class="modal-body">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-              <p style="color:#808080">Para ampliar su oferta, complete la solicitud con el valor</p>
-                <p style="color:#808080">m&aacute;ximo permitido, luego dirijase a la agencia para</p>
-                <p style="color:#808080">evaluar su solicitud en Riesgos y proceder a la firma del</p>
-                <p style="color:#808080">Expediente</p>
+                <p style="color:#808080">"Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+                <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+                <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
+                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.”</p>
           </div>
       </div>
         </div>
@@ -614,9 +618,9 @@
 
 
           
-          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+          $('#importePrestamo').html('S/'+currency(data.importeeeeee));
+          $('#cantTotPago').html('S/'+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/'+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
           $('#tea').html(data.tea+'%');
           $('#seguroAuto').html('S/ '+data.seguroAuto);
@@ -686,9 +690,9 @@
           dataType: 'json'
         }).done(function(data){
           console.log(data);
-          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+          $('#importePrestamo').html('S/'+currency(data.importeeeeee));
+          $('#cantTotPago').html('S/'+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/'+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
           $('#tea').html(data.tea+'%');
           $('#seguroAuto').html('S/ '+data.seguroAuto);
@@ -791,9 +795,9 @@
             start: data.cuotaMinimo
         });
     
-        $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#importePrestamo').html('S/'+currency(data.importeeeeee));
+        $('#cantTotPago').html('S/'+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/'+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%');
         $('#tea').html(data.tea+'%');
         $('#seguroAuto').html('S/ '+data.seguroAuto);

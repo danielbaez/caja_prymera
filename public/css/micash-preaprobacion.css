@@ -111,5 +111,12 @@ span {
     font-family: 'quicksandlight';
 }
 a {
-    cursor:pointer; cursor: hand
+    cursor:pointer; cursor: hand;
+    font-family: 'quicksandlight';
+}
+.form-group {
+    font-family: 'quicksandlight';
+}
+.btn.btn-primary {
+    font-family: 'quicksandlight';
 }

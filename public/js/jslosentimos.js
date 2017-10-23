@@ -1,7 +1,6 @@
 function guardarDatos() {
 	var nro_cel = $('#nro_cel').val();
 	var nro_fijo = $('#nro_fijo').val();
-	console.log(nro_fijo);
 	if(nro_cel == null) {
 		msj('error', 'Ingrese su n&uacute;,mero de celular');
 		return;
@@ -18,7 +17,6 @@ function guardarDatos() {
 		}).done(function(data){
 			try{
 				data = JSON.parse(data);
-				console.log(data);
 				if(data.error == 0){
 					location.href = '/C_mensaje';
 				}else {

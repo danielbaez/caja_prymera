@@ -88,9 +88,9 @@
                     <div>
                     	<h1 class="p-0 m-0" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
                         <h1 class="ajustar" ><b>Solicitaste un cr&eacute;dito de <?php echo $pago_total ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?> soles</b></h1><br />
-                        <h1 class="p-0 m-0" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s acercarte a nuestra agencia de <?php echo $Agencia ?></h1>
-                        <h1 class="m-t-0">junto con tus <span class="negrita"> 2 &uacute;ltimas boletas de pago </span> y <span class="negrita"> el recibo de servicio</span>(luz, agua, tel&eacute;fono) con antiguedad</h1>
-                        <h1 class="p-0 m-t-23">no mayor a dos meses, para proceder a la firma del expediente y el desembolso de tu pr&eacute;stamo.</h1>
+                        <h1 class="p-0 m-0" >Para proceder al desembolso de tu pr&eacute;stamo deber&aacute;s te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
+                        <h1 class="m-t-0">con tu <span class="negrita"> DNI </span> y <span class="negrita"> y un recibo de servicio</span>(luz, agua, tel&eacute;fono) con antiguedad</h1>
+                        <h1 class="p-0 m-t-23">no mayor a dos meses. Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago. &#33;No dejes pasar la oportunidad  de cumplir tus sue&ntilde;os!</h1>
                     </div>
                     <div class="mdl-card__supporting-text br-b" style="width: 100%;">
                         <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">

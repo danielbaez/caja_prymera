@@ -13,7 +13,7 @@
     <?php } ?>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
+    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
@@ -148,13 +148,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xs-12 text-left">
+                                                      <!--      <div class="col-xs-12 text-left">
                                                               <div class="checkbox">
                                                                         <label>
                                                                           <input type="checkbox" id="checkAutorizo" onchange="habilitarCampo()" name="autorizacion"> Autorizo que usen mis datos para esta oferta
                                                                         </label>
                                                                     </div>
-                                                            </div>
+                                                            </div>-->
                                                         </div>
                                                         <div class="col-xs-12 col-sm-4">
                                                                 <p><strong class="size">Datos del contacto</strong></p>
@@ -181,7 +181,7 @@
                                                                 <div class="col-xs-12">
                                                                   <div class="form-group">
                                                                         <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
-                                                                          <option value="">Concesionaria</option>
+                                                                          <option value="">Concesionario</option>
                                                                           <?php echo $comboConcecionaria?>
                                                                         </select>
                                                                         </div>
