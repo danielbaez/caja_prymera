@@ -40,7 +40,9 @@
     </head>
     <body>
         <nav class="navbar navbar-default">
-            <div class="container-fluid" style="margin-top: -70px;">
+
+            <div class="container-fluid" style="margin-top: -70px">
+                
                 <div class="navbar-header">
                     <div class="contenido-header">
                         <h1 class="title-header">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
@@ -116,7 +118,7 @@
                     <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
                 </div>
                 
-                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block;">
+                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block; margin-bottom: 20px; font-family: 'quicksand'">
                     
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#homes">Caracter&iacute;sticas</a></li>
@@ -129,55 +131,55 @@
                     <div class="tab-content" style="margin-top: 15px">
                         <div id="homes" class="tab-pane fade in active">                            
                             
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PORCENTAJE INICIAL:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</span>
                             </div>
                             
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left ">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONTO A FINANCIAR:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left ">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PLAZOS:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left ">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>TEA:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>M&iacute;nimo 12% - M&aacute;ximo 20%.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>M&iacute;nimo 12% - M&aacute;ximo 20%.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left ">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERIODO DE GRACIA:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>Hasta 60 d&iacute;as.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>Hasta 60 d&iacute;as.</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERICIDAD DE PAGO:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>Mensual</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>Mensual</span>
                             </div>
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>DESTINO DE CR&Eacute;DITO:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>Compra de auto nuevo.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>Compra de auto nuevo.</span>
                             </div>
 
-                            <div class="col-xs-6 col-sm-3 text-left">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MODALIDAD:</strong></span>
                             </div>
-                            <div class="col-xs-6 col-sm-9 text-left">
-                                <p>Convencional - Compra inteligente.</p>
+                            <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
+                                <span>Convencional - Compra inteligente.</span>
                             </div>                           
                         </div>
 
@@ -230,257 +232,148 @@
                             </div>
                         </div>
                         <div id="menus2" class="tab-pane fade">
-                            <h3><strong>El cliente debe proporcionar los siguientes documentos:</strong></h3>
+
                             <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Documentos de identificación: copia de DNI vigente.</p>
-                                </div>
+                                <span><strong>El cliente debe proporcionar los siguientes documentos:</strong></span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Copia de último recibo de servicios (luz / Agua) del titular (máximo antigüedad de 2 meses)</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Documentos de identificación: copia de DNI vigente.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Sustento de ingresos: 3 últimas boletas de pago, si el cliente cuenta con ingresos variables y 2 últimas boletas, si el cliente cuenta con ingresos fijos (sólo en caso solicite un monto mayor al pre-aprobado).</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Copia de último recibo de servicios (luz / Agua) del titular (máximo antigüedad de 2 meses)</span>
                             </div>
-                            <h3><strong>El expediente debe considerar los siguientes documentos:</strong></h3>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Solicitud del Crédito Vehicular firmada por el cliente</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 últimas boletas de pago, si el cliente cuenta con ingresos variables y 2 últimas boletas, si el cliente cuenta con ingresos fijos (sólo en caso solicite un monto mayor al pre-aprobado).</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Resumen del Crédito </p>
-                                </div>
+
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span><strong>El expediente debe considerar los siguientes documentos:</strong></span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Resolución del Crédito </p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Solicitud del Crédito Vehicular firmada por el cliente</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Orden de Desembolso firmado por el cliente</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Resumen del Crédito</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Contrato del Crédito firmado por el cliente</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Resolución del Crédito</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Contrato de Garantía firmado por el cliente</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Orden de Desembolso firmado por el cliente</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Hoja Resumen firmado por el cliente</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Contrato del Crédito firmado por el cliente</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Pagaré  firmado por el cliente</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Contrato de Garantía firmado por el cliente</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Póliza de Seguro (en caso el cliente endose seguro a favor de Prymera)</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Hoja Resumen firmado por el cliente</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Documentos de identificación: copia de DNI vigente o Ficha RENIEC o Carné de Extranjería vigente.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Pagaré  firmado por el cliente</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Copia de último recibo de servicios (luz / Agua) del titular (máximo antigüedad de 2 meses)</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Póliza de Seguro (en caso el cliente endose seguro a favor de Prymera)</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Impresión de las centrales de riesgo de la SBS (RCC) y de las centrales privadas de acuerdo a normativa vigente.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Documentos de identificación: copia de DNI vigente o Ficha RENIEC o Carné de Extranjería vigente.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Sustento de ingresos: 3 últimas boletas de pago, si el cliente cuenta con ingresos variables y 2 últimas boletas, si el cliente cuenta con ingresos fijos.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Copia de último recibo de servicios (luz / Agua) del titular (máximo antigüedad de 2 meses)</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Reporte ESSSALUD</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Impresión de las centrales de riesgo de la SBS (RCC) y de las centrales privadas de acuerdo a normativa vigente.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Cotización del vehículo a adquirirse con una antigüedad no mayor de 15 días de la fecha de evaluación.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 últimas boletas de pago, si el cliente cuenta con ingresos variables y 2 últimas boletas, si el cliente cuenta con ingresos fijos.</span>
                             </div>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Constancia del abono de la cuota inicial.</p>
-                                </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Reporte ESSSALUD</span>
                             </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cotización del vehículo a adquirirse con una antigüedad no mayor de 15 días de la fecha de evaluación.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Constancia del abono de la cuota inicial.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Constancia del abono de la cuota inicial.</span>
+                            </div>
+
                         </div>
                         <div id="menus3" class="tab-pane fade">
-                            <h3>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></br>
-                                -Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debiéndolo endosar a favor de Prymera.</br>
-                                -Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</h3>
-                            <h3>¿Qué es el seguro de desgravamen?</h3>
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <i class="mdi mdi-keyboard_arrow_right"></i>
-                                </div>
-                                <div class="col-xs-10">
-                                    <p>Es un seguro de vida de carácter obligatorio que adquiere cuando solicita su crédito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica sólo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deberá presentar los documentos requeridos en cualquiera de nuestra red de agencias.</p>
-                                </div>
 
-                                <h3>¿Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un crédito?</h3>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>No, el cliente tiene derecho a elegir entre la contratación del seguro ofrecido por Prymera o un seguro contratado directamente por el cliente, siempre que cumpla previamente con las siguientes condiciones:</br>
+                            <div class="col-xs-12">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debiéndolo endosar a favor de Prymera.</br></span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debiéndolo endosar a favor de Prymera.</br>
+                                -Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>¿Qué es el seguro de desgravamen?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Es un seguro de vida de carácter obligatorio que adquiere cuando solicita su crédito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica sólo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deberá presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>¿Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un crédito?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>No, el cliente tiene derecho a elegir entre la contratación del seguro ofrecido por Prymera o un seguro contratado directamente por el cliente, siempre que cumpla previamente con las siguientes condiciones:</br>
                                         a. Acreditar haber contratado por su cuenta un seguro que brinde cobertura similar o mayor al seguro ofrecido por Prymera y por los plazos iguales o mayores, para ello deberá adjuntar copia de la póliza del seguro.</br>
-                                        b. Endosar las pólizas a favor de Prymera en un plazo no mayor al día hábil de suscrito el  Contrato. En el endoso deberá constar la declaración de la Compañía de Seguros en el sentido que, Prymera es el único beneficiario de la indemnización hasta por el monto pendiente del pago total del crédito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas pólizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, éste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del Préstamo, más los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes señalada, no generará para él responsabilidad alguna.</p>
-                                    </div>
-                                </div>
-                                <h3>En caso siniestro del titular del crédito, ¿Qué deberá presentar el apoderado?</h3>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>- Copias certificadas de Partida y Certificado de Defunción.</br>
+                                        b. Endosar las pólizas a favor de Prymera en un plazo no mayor al día hábil de suscrito el  Contrato. En el endoso deberá constar la declaración de la Compañía de Seguros en el sentido que, Prymera es el único beneficiario de la indemnización hasta por el monto pendiente del pago total del crédito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas pólizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, éste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del Préstamo, más los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes señalada, no generará para él responsabilidad alguna.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del crédito, ¿Qué deberá presentar el apoderado?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>- Copias certificadas de Partida y Certificado de Defunción.</br>
                                             - Atestado policial, protocolo de necropsia, análisis toxicológico y de alcoholemia en caso de muerte por accidente.</br>
                                             - Copia del Documento de Identidad del asegurado fallecido.</br>
                                             - Informe completo y detallado del médico tratante que sustente el estado del paciente e indique la fecha de inicio de la Invalidez, en caso de Invalidez total y permanente.</br>
                                             - El tiempo límite máximo para declarar el fallecimiento o la invalidez total y permanente es de 180 días posteriores a la ocurrencia</br>
-                                            - Mayor información en caso la Compañía de Seguro lo requiera.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p></p>
-                                    </div>
-                                </div>
-                                 <h3>En caso siniestro del titular del crédito, ¿Qué deberá presentar el apoderado?</h3>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>La aseguradora tiene un plazo máximo de 30 días hábiles para enviarte una respuesta.</p>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.</p>
-                                    </div>
-                                </div>
-                                <h3>¿Qué pasa si realizo el pago anticipado y no comunico sobre mi elección?</h3>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerará como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elección o un tercero realice dicho pago por Usted, Prymera reducirá el número de cuotas, dentro de los quince (15) días de realizado el pago. 
-                                        En cualquiera de los casos y a su solicitud, Prymera le hará entrega del cronograma de pagos modificado dentro de los 7 días calendarios posteriores a la presentación de su solicitud.</p>
-                                    </div>
-                                </div>
-                                <h3>Qué sucede si me atraso en pagar las cuotas?</h3>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>Si el Cliente incumpliera con el pago oportuno de una o más de las cuotas previstas en el cronograma de pagos, se devengarán automáticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constitución en mora será automática. Asimismo, se procederá a realizar el reporte correspondiente a las Centrales de Riesgo.</p>
-                                    </div>
-                                </div>
-                                <h3>Si he otorgado una garantía a Prymera, ¿qué trámites tengo que realizar una vez cancele mi crédito?</h3>
-                                <div class="col-xs-12">
-                                    <div class="col-xs-2">
-                                        <i class="mdi mdi-keyboard_arrow_right"></i>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <p>Deberás acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:
+                                            - Mayor información en caso la Compañía de Seguro lo requiera.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del crédito, ¿Qué deberá presentar el apoderado?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>La aseguradora tiene un plazo máximo de 30 días hábiles para enviarte una respuesta.<br>Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>¿Qué pasa si realizo el pago anticipado y no comunico sobre mi elección?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerará como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elección o un tercero realice dicho pago por Usted, Prymera reducirá el número de cuotas, dentro de los quince (15) días de realizado el pago. 
+                                        En cualquiera de los casos y a su solicitud, Prymera le hará entrega del cronograma de pagos modificado dentro de los 7 días calendarios posteriores a la presentación de su solicitud.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qué sucede si me atraso en pagar las cuotas?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Si el Cliente incumpliera con el pago oportuno de una o más de las cuotas previstas en el cronograma de pagos, se devengarán automáticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constitución en mora será automática. Asimismo, se procederá a realizar el reporte correspondiente a las Centrales de Riesgo.</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garantía a Prymera, ¿qué trámites tengo que realizar una vez cancele mi crédito?</span>
+                            </div>
+                            <div class="col-xs-12 espacio-top-bottom">
+                                <span>Deberás acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:
                                         - Solicitud de liberación de la garantía (hipotecaria y/o mobiliaria).
                                         - Copia del documento de identidad del solicitante (titular de crédito y/o propietario).
                                         - Copia del Testimonio de constitución de garantía.
                                         - Copia literal actualizada y/o certificado de gravamen actualizado (no mayor de 30 días de emitido)
-                                        Este trámite no está sujeto al pago de comisión.</p>
-                                    </div>
-                                </div>
+                                        Este trámite no está sujeto al pago de comisión.</span>
                             </div>
                         </div>
                     </div>
