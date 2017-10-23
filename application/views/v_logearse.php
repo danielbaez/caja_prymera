@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Caja prymera</title>
-        <meta charset="utf-8">
+        <meta charset="ISO-8859-1">
         <meta http-equiv="X-UA-Compatible"  content="IE=edge">
         <meta http-equiv="refresh"          content="36000">
         <meta name="viewport"               content="width=device-width, initial-scale=1">

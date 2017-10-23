@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -194,7 +194,7 @@
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar"><i class="mdi mdi-info"></i></button></p>
                                                     <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
-                                                    <p style="color:#A9A9A9;font-size:11px">*Cuota aproximada sujeta a evaluación</p>
+                                                    <p style="color:#A9A9A9;font-size:11px">*Cuota aproximada sujeta a evaluaci&oacute;n</p>
                                           </div>
                                         </div>
                                         <div class="col-md-6" style="margin-top: 15px;margin-left: -28px;">
