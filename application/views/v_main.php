@@ -53,7 +53,7 @@
 		<div class="col-xs-12" style="margin-bottom: 10px">
 		  <div class="col-xs-12 col-sm-3"></div>
 		  <div class="col-xs-12 col-sm-6">
-			<h1 class="titulo-vista">Bienvenido <?php echo $nombre ?></h1>            
+			<h1 class="titulo-vista">Bienvenido(a) <?php echo $nombre ?></h1>            
 		  </div>
 		  <div class="col-xs-12 col-sm-3 text-right">
 			
@@ -117,7 +117,9 @@
 		  <div class="col-xs-12 col-md-6 col-seccion">
 			<div class="col-xs-12 div-seccion">
 			  <h4>Administrar Perfiles</h4>
-			  <form class="text-center" action="C_main/registrar" method="POST" enctype="multipart/form-data">
+			  <div class="alert alert-danger alert-form" style="font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px; display: none">Ingrese datos correctos al formulario
+	            </div>
+			  <form class="text-center" id="form-create-edit-user" action="C_main/registrar" method="POST" enctype="multipart/form-data" autocomplete="false">
 				<div class="col-xs-12 col-sm-6">
 				  <div class="">
 					<img id="blah" src="<?php echo RUTA_IMG?>fondos/user.png" width="100" height="100" />
@@ -142,7 +144,8 @@
 				  <div class="form-group text-left">
 				  	<label class="form-label">Password</label>
 					<input type="text" class="form-control input-password-as-dni" placeholder="Contrase&ntilde;a (dni)" disabled>
-					<input type="text" class="form-control" style="display: none" id="password" name="password">
+					<input type="password" name="password_fake" id="password_fake" value="" style="display:none;" />
+					<input type="password" class="form-control" style="display: none" id="password" name="password">
 				  </div>
 
 				  <div class="form-group text-left">
@@ -175,11 +178,11 @@
 				<div class="col-xs-12 col-sm-6">
 				  <div class="form-group text-left">
 				  	<label class="form-label">Nombres</label>
-					<input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" onkeypress="return soloLetras(event)" maxlength="50">
+					<input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres">
 				  </div>
 				  <div class="form-group text-left">
 				  	<label class="form-label">Apellidos</label>
-					<input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" onkeypress="return soloLetras(event)" maxlength="100">
+					<input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos">
 				  </div>
 				  <div class="form-group text-left">
 					<label class="form-label">Fecha de Nacimiento</label>
@@ -191,7 +194,7 @@
 				  </div>
 				  <div class="form-group text-left">
 				  	<label class="form-label">Email</label>
-					<input type="text" class="form-control" id="email" name="email" placeholder="Correo" onchange="validaCorreo()">
+					<input type="text" class="form-control" id="email" name="email" placeholder="Correo">
 				  </div>
 				  <div class="form-group">
 					<input type="text" class="form-control hidden" id="nombre_img" name="nombre_img">
@@ -254,15 +257,15 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-	  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap_select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
-	  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-	  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-	  <script charset="UTF-8" type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
+	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap_select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
+	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
 		<script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-	  <script charset="UTF-8" type="text/javascript" async src="<?php echo RUTA_JS?>jsmain.js?v=<?php echo time();?>"></script>
+	  <script type="text/javascript" async src="<?php echo RUTA_JS?>jsmain.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 
 	  <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -358,6 +361,8 @@
 	  	}	  					
 
 	  	$('.limpiar-form').click(function() {
+
+	  		$('.alert-form').hide();
 
 	  		var rol_user = $('input[name="rol_user"]').val();
 
@@ -590,6 +595,8 @@
 
 					else if(rol_user == 'administrador' && response[0].rol == 'asesor'){
 
+						$('#rol_superior').attr('disabled', false)
+
 						$('.div-usuario-as-email').hide();
 						$('.input-password-as-dni').hide();
 						$('input[name="password"]').show();
@@ -707,6 +714,70 @@
         }
         
     });
+
+    function isOneChecked() {
+	    return ($('[name="permiso[]"]:checked').length > 0);
+	}
+
+
+    $("#form-create-edit-user").submit(function(e){
+
+    	var action = $('input[name="action"]').val()
+    	
+    	var nombres = $('#nombres').val()
+	    var apellidos = $('#apellidos').val()
+	    var sexo = $('#sexo').val()
+	    var fecha_nacimiento = $('#fecha_nacimiento').val()
+	    var fecha_ingreso = $('#fecha_ingreso').val()
+	    var dni = $('#dni').val()
+	    var email = validateEmail($('#email').val())
+	    var celular = $('#celular').val()
+	    var rol = $('#rol').val()
+	    var rol_superior = $('#rol_superior').val()
+	    var permiso = isOneChecked()
+
+	    var rol_db = $('input[name="rol_db"]').val()
+
+	    var rol_user = $('input[name="rol_user"]').val()
+
+    	if(action == 'save' || action == 'update'){
+
+    		if(rol_user == 'administrador'){
+
+	    		if(rol_db == 'administrador' && action == 'update'){
+	    			if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != ''){
+		    			this.submit();
+	    			}else{
+	    				$('.alert-form').show();
+	    				$('html').animate({scrollTop:0},500);
+				    	return false;
+				    }
+	    		}else{
+		    		if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != '' && permiso){
+				    	if(rol == 'asesor'){
+				    		if(rol_superior != ''){
+				    			this.submit();
+				    		}else{
+				    			$('.alert-form').show();
+				    			$('html').animate({scrollTop:0},500);
+				    			return false;
+				    		}
+				    	}else{
+				    		this.submit();		    		
+				    	}
+				    }else{
+				    	$('.alert-form').show();
+				    	$('html').animate({scrollTop:0},500);
+				    	return false;
+				    }
+				}
+			}else if(rol_user == 'jefe_agencia'){
+	    		this.submit();		 
+			}
+    	}  
+
+	    return false;
+	});
 
 
 

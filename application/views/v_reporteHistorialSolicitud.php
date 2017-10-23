@@ -333,19 +333,19 @@ $(document).ready(function() {
 
           var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
           if(detalle.id_producto == 1){
-            dPrestamo += '<p><span>Monto:</span> S/ '+detalle.monto+'</p>';
+            dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto).toFixed(2))+'</p>';
             dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
-            dPrestamo += '<p><span>Cuota:</span> S/ '+detalle.cuota_mensual+'</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual*detalle.plazo).toFixed(2))+'</p>';
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
           }
           if(detalle.id_producto == 2){
             dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
             dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-            dPrestamo += '<p><span>Importe:</span> S/ '+detalle.monto+'</p>';
-            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+'Meses</p>';
-            dPrestamo += '<p><span>Cuota:</span> '+detalle.cuota_mensual+' Meses</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+(detalle.cuota_mensual*detalle.plazo)+'</p>';
+            dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual).toFixed(2))+' Meses</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual*detalle.plazo).toFixed(2))+'</p>';
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
           }
           
@@ -356,9 +356,9 @@ $(document).ready(function() {
           dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
           dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
           dEmpleo += '<p><span>Direccion:</span> '+detalle.dir_empleador+'</p>';
-          dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
-          dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
           dEmpleo += '<p><span>distrito:</span> '+detalle.distrito+'</p>';
+          dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
+          dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
           
           $('.div-datos-empleo').html(dEmpleo);
 
@@ -386,7 +386,7 @@ $(document).ready(function() {
 
 
             dSolicitud += '<select style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
-            dSolicitud += '<option value="">Asignar Asesor</option>';
+            dSolicitud += '<option value="">Asignar nuevo asesor</option>';
             console.log(asignar)
             for (var j = 0; j < asignar.length; j++) {
               dSolicitud += '<option value="'+asignar[j].asignar_id+'">'+asignar[j].asignar_nombre+' '+asignar[j].asignar_apellido+'</option>';
@@ -441,6 +441,16 @@ $(document).ready(function() {
 
 } );
           
+
+          function currency(n,sep) {
+      var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
+      sValue=n+"";
+      if (sep === undefined) {sep=",";}
+      while(sRegExp.test(sValue)) {
+        sValue = sValue.replace(sRegExp, "$1"+sep+"$2");
+      }
+      return sValue;
+    }
 
         
 

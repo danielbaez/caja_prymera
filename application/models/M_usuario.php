@@ -198,8 +198,12 @@ class M_usuario extends  CI_Model{
     }
 
     function actualizarUsuario($arrayUpdate, $tabla, $agencias, $id_usuario){
-        $this->db->where('id', $id_usuario);
-        $this->db->update($tabla, $arrayUpdate); 
+
+        if(count($arrayUpdate))
+        {
+            $this->db->where('id', $id_usuario);
+            $this->db->update($tabla, $arrayUpdate);
+        }
 
         if($agencias != false)
         {

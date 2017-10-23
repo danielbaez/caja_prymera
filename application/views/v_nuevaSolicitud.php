@@ -53,12 +53,12 @@
                   <div class="col-xs-12 col-sm-3 text-right">
                     <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
                     <?php if(_getSesion('rol') == 'administrador'){ ?>
-                      <a href="/C_main">Ver Perfil</a><br>
+                      <a href="/C_main">Editar Perfil</a><br>
                         <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
                         <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
                     <?php }
                         elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
-                        <a href="/C_main">Ver Usuarios</a><br>
+                        <a href="/C_main">Editar Perfil</a><br>
                     <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
                     <?php }
                         elseif(_getSesion('rol') == 'asesor'){ ?>

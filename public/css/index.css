@@ -9,7 +9,13 @@ body{
     background-attachment: fixed; 
     background-position: center; */
     padding-top: 70px;
+    font-family: 'quicksandlight' !important;
 }
+
+p,span,h1,h2,h3,h4,h5,a{
+	font-family: 'quicksandlight' !important;
+}
+
 .logo {
 	height: 97px;
 	width: 302px;
@@ -377,25 +383,4 @@ footer p{
 		font-size: 33px;
 	}
 }
-.modal-title.modal-recuperar-password-titulo {
-	text-align: center;
-    font-family: 'quicksandbold';
-}
-.modal-body.text-center h4{
-	font-family: 'quicksandlight';
-}
-.modal-body.text-center p{
-	font-family: 'quicksandlight';
-}
-a {
-    cursor:pointer; cursor: hand
-}
-.titulo-vista {
-	font-family: 'quicksandbold';
-}
-.tipo_letra_gruesa {
-	font-family: 'quicksandbold';
-}
-.tipo_letra_delgada {
-	font-family: 'quicksandlight';
-}
+

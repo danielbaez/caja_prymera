@@ -308,10 +308,10 @@ class M_solicitud extends  CI_Model{
                     $a = "solicitud.cod_agencia = ?";
                     break;
                 case 'fecha_desde':
-                    $a = "DATE_FORMAT(solicitud.timestamp_final, '%Y-%m-%d') >= ?";
+                    $a = "DATE_FORMAT(solicitud.fec_estado, '%Y-%m-%d') >= ?";
                     break;
                 case 'fecha_hasta':
-                    $a = "DATE_FORMAT(solicitud.timestamp_final, '%Y-%m-%d') <= ?";
+                    $a = "DATE_FORMAT(solicitud.fec_estado, '%Y-%m-%d') <= ?";
                     break;
                 
                 default:
@@ -349,7 +349,7 @@ class M_solicitud extends  CI_Model{
         }
         
 
-        $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA as agencia, tipo_producto.descripcion as producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
+        $sql = "SELECT DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, agencias.AGENCIA as agencia, tipo_producto.descripcion as producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
 
         $result = $this->db->query($sql, $filtros);
 
