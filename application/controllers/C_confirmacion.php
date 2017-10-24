@@ -396,6 +396,9 @@ class C_confirmacion extends CI_Controller {
         try {
             //twilio enviar msn
         $aleatorio = rand ( 100000 , 999999 );
+
+        $data['nro']   = $aleatorio;
+
         $numero = _post('nro_celular');
         _log($aleatorio);
         $this->load->library('twilio');
