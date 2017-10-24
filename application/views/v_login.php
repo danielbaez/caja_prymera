@@ -2,68 +2,38 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
-        <meta http-equiv="refresh"          content="36000">
-        <meta name="viewport"               content="width=device-width, initial-scale=1">
-        <meta name="keywords"               content="Moviliario,modell,escritorio,sillas,muebles,carpetas">
-        <meta name="robots"                 content="index,follow">
-        <meta name="date"                   content="April 05, 2017">
-        <meta name="author"                 content="webking.pe">
-        <meta name="language"               content="es">
-        <meta name="theme-color"            content="#FFFFFF">
+
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
           <title>Cr&eacute;dito Mi Auto</title>
         <?php } else { ?>
             <title>Cr&eacute;dito Mi Cash</title>
         <?php } ?>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+        
+        
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
         <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
 
         <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
+          
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
 
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>">
     </head>
     <body>
-        <!-- <nav class="navbar navbar-default">
-
-            <div class="container-fluid" style="margin-top: -70px">
-                
-                <div class="navbar-header">
-                    <div class="contenido-header">
-                        <h1 class="title-header">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
-                    </div>
-                    <div class="imagen-header">
-                        <img alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
-                    </div>
-                </div>
-            </div>
-        </nav> -->
-
-
         <div class="container-header">
             <div class="container">
                 <div class="row padding-div-row-header">
                     <div class="col-xs-6 col-title-header-padding">
-                        <h1 class="title-header">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
+                        <h1 class="title-header">&iexcl;Te financiamos hasta el 100% de tu auto!*</h1>
                     </div>
                     <div class="col-xs-6 div-logo">
                         <img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
-                        <h1 style="display: none">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
+                        <h1 style="display: none">&iexcl;Te financiamos hasta el 100% de tu auto!*</h1>
                     </div>
                 </div>    
             </div>            
@@ -71,14 +41,14 @@
 
         <div class="container fondo">
             <div class="row">                
-                <div class="col-xs-12 text-right div-navegacion">
+                <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
                     <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
-                    <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>                
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
                 </div>
             </div>
-            <!-- <div class="row row-top"> -->
-            <div class="row">
+            
+            <div class="row row-form-img-vehicular">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0 text-left">
                     <!-- <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;"> -->
                     <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);">
@@ -138,75 +108,77 @@
                         </button>
                     </div>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-6 button-login text-center">
-                    <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect hidden" style="font-weight: bold;" onclick="goToLogin()">Log in<i style="color: #4e82bb" class="mdi mdi-person"></i></button> -->
-                    <!-- <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> -->
-                    <img class="img-responsive" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
+                <div class="hidden-xs hidden-sm col-md-6 button-login text-right img-form-vehicular">
+                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> 
+                    <!-- <img class="img-responsive" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png">  -->
                 </div>
-                
-                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block; margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;">
+               
+                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;">
                     
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs responsive" id="myTab">
                         <li class="active"><a data-toggle="tab" href="#homes">Caracter&iacute;sticas</a></li>
                         <li><a data-toggle="tab" href="#menus1">Requisitos</a></li>
                         <li><a data-toggle="tab" href="#menus2">Documentos</a></li>
                         <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
                         <li><a data-toggle="tab" href="#menus4">Seguros</a></li>
                     </ul>
-                    
-                    <div class="tab-content" style="margin-top: 15px">
-                        <div id="homes" class="tab-pane fade in active">                            
+                    <!-- <div class="col-xs-12" style="background: white"> -->
+                    <div class="tab-content responsive" style="display: flex; background: white; padding-top: 10px;
+    padding-bottom: 10px;">
+                        <div id="homes" class="tab-pane active">                            
                             
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PORCENTAJE INICIAL:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</span>
                             </div>
                             <div class="col-xs-12"></div>                            
-                            <div class="col-xs-6 col-sm-3 text-left resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONTO A FINANCIAR:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
                             </div>
                             <div class="col-xs-12"></div>
-                            <div class="col-xs-6 col-sm-3 text-left resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PLAZOS:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</span>
                             </div>
                             <div class="col-xs-12"></div>
-                            <div class="col-xs-6 col-sm-3 text-left resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>TEA:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 12% - M&aacute;ximo 20%.</span>
                             </div>
                             <div class="col-xs-12"></div>
-                            <div class="col-xs-6 col-sm-3 text-left resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERIODO DE GRACIA:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Hasta 60 d&iacute;as.</span>
                             </div>
                             <div class="col-xs-12"></div>
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERICIDAD DE PAGO:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Mensual</span>
                             </div>
                             <div class="col-xs-12"></div>
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>DESTINO DE CR&Eacute;DITO:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Compra de auto nuevo.</span>
                             </div>
                             <div class="col-xs-12"></div>
-                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom resaltado">
+                            <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MODALIDAD:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
@@ -214,8 +186,8 @@
                             </div>                           
                         </div>
 
-                        <div id="menus1" class="tab-pane fade">
-                            <div class="col-xs-12">
+                        <div id="menus1" class="tab-pane">
+                            <div class="col-xs-12 font-bold">
                                 <span><strong>Requisitos m&iacute;nimos que debe tener un cliente:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -245,13 +217,13 @@
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben encontrarse registrados en la base de alertas del sistema Microbank.</span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <span><strong>Sobre la Tasaci&oacute;n:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Aplica para veh&iacute;culos nuevos (la tasaci&oacute;n se actualiza cada a&ntilde;o, luego del primer a&ntilde;o). Costo es asumido por el cliente.</span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <span><strong>Sobre la Garant&iacute;a Vehicular:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -262,9 +234,9 @@
                                         Carta de Caracter&iacute;sticas del Veh&iacute;culo proporcionada por el cliente</span>
                             </div>
                         </div>
-                        <div id="menus2" class="tab-pane fade">
+                        <div id="menus2" class="tab-pane">
 
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 font-bold">
                                 <span><strong>El cliente debe proporcionar los siguientes documentos:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -277,7 +249,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Sustento de ingresos: 3 &uacute;ltimas boletas de pago, si el cliente cuenta con ingresos variables y 2 &uacute;ltimas boletas, si el cliente cuenta con ingresos fijos (s&oacute;lo en caso solicite un monto mayor al pre-aprobado).</span>
                             </div>
 
-                            <div class="col-xs-12 espacio-top-bottom">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <span><strong>El expediente debe considerar los siguientes documentos:</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -333,52 +305,52 @@
                             </div>
 
                         </div>
-                        <div id="menus3" class="tab-pane fade">
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                        <div id="menus3" class="tab-pane">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si, usted podr&aacute; hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:<br>
                                 - Pago Total del Cr&eacute;dito: amortiza el total de la deuda con reducci&oacute;n de comisiones e intereses al d&iacute;a de pago.<br>
-- Prepago con Reducci&oacute;n del Plazo: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, el monto de las cuotas se mantiene y reduce el plazo del cr&eacute;dito.<br>
-- Prepago con Reducci&oacute;n de Cuota: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, reduciendo el monto de la cuota del mes y manteniendo el plazo del cr&eacute;dito.<br>
-- Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.
+                            - Prepago con Reducci&oacute;n del Plazo: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, el monto de las cuotas se mantiene y reduce el plazo del cr&eacute;dito.<br>
+                            - Prepago con Reducci&oacute;n de Cuota: amortiza capital, reduce intereses, comisiones y gastos al d&iacute;a de pago, reduciendo el monto de la cuota del mes y manteniendo el plazo del cr&eacute;dito.<br>
+                            - Adelanto de Cuotas: realiza pagos que se aplican a cuotas inmediatamente posteriores a la exigible. No reduce intereses, comisiones ni gastos.
                                 </span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) d&iacute;as de realizado el pago. 
-En cualquiera de los casos y a su solicitud, Prymera le har&aacute; entrega del cronograma de pagos modificado dentro de los 7 d&iacute;as calendarios posteriores a la presentaci&oacute;n de su solicitud.
+                                En cualquiera de los casos y a su solicitud, Prymera le har&aacute; entrega del cronograma de pagos modificado dentro de los 7 d&iacute;as calendarios posteriores a la presentaci&oacute;n de su solicitud.
                                 </span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.
                                 </span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garant&iacute;a a Prymera, &#191;qu&eacute; tr&aacute;mites tengo que realizar una vez cancele mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Deber&aacute;s acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:<br>- Solicitud de liberaci&oacute;n de la garant&iacute;a (hipotecaria y/o mobiliaria).<br>
-- Copia del documento de identidad del solicitante (titular de cr&eacute;dito y/o propietario).<br>
-- Copia del Testimonio de constituci&oacute;n de garant&iacute;a.<br>
-- Copia literal actualizada y/o certificado de gravamen actualizado (no mayor de 30 d&iacute;as de emitido)<br>
-Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
+                                - Copia del documento de identidad del solicitante (titular de cr&eacute;dito y/o propietario).<br>
+                                - Copia del Testimonio de constituci&oacute;n de garant&iacute;a.<br>
+                                - Copia literal actualizada y/o certificado de gravamen actualizado (no mayor de 30 d&iacute;as de emitido)<br>
+                                Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
 
                                 </span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;nto tiempo demora el tr&aacute;mite de levantamiento de garant&iacute;a?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -387,9 +359,9 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
                                 </span>
                             </div>
                         </div>
-                        <div id="menus4" class="tab-pane fade">
+                        <div id="menus4" class="tab-pane">
 
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 font-bold">
                                 <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -405,13 +377,13 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; es el seguro de desgravamen?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Es un seguro de vida de car&aacute;cter obligatorio que adquiere cuando solicita su cr&eacute;dito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica s&oacute;lo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deber&aacute; presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -419,7 +391,7 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
                                         a. Acreditar haber contratado por su cuenta un seguro que brinde cobertura similar o mayor al seguro ofrecido por Prymera y por los plazos iguales o mayores, para ello deber&aacute; adjuntar copia de la p&oacute;liza del seguro.</br>
                                         b. Endosar las p&oacute;lizas a favor de Prymera en un plazo no mayor al d&iacute;a h&aacute;bil de suscrito el  Contrato. En el endoso deber&aacute; constar la declaraci&oacute;n de la Compa&ntilde;&iacute;a de Seguros en el sentido que, Prymera es el &uacute;nico beneficiario de la indemnizaci&oacute;n hasta por el monto pendiente del pago total del cr&eacute;dito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas p&oacute;lizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, &eacute;ste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del Pr&eacute;stamo, m&aacute;s los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes se&ntilde;alada, no generar&aacute; para &eacute;l responsabilidad alguna.</span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del cr&eacute;dito, &#191;Qu&eacute; deber&aacute; presentar el apoderado?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -430,7 +402,7 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
                                             - El tiempo l&iacute;mite m&aacute;ximo para declarar el fallecimiento o la invalidez total y permanente es de 180 d&iacute;as posteriores a la ocurrencia</br>
                                             - Mayor informaci&oacute;n en caso la Compa&ntilde;&iacute;a de Seguro lo requiera.</span>
                             </div>
-                            <div class="col-xs-12 espacio-top-bottom resaltado">
+                            <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;En cu&aacute;ntos d&iacute;as obtendr&eacute; respuesta de la aseguradora ante un siniestro?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
@@ -438,6 +410,7 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
                             </div>
                         </div>
                     </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -503,14 +476,15 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
   </div>
 </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" src="https://openam.github.io/bootstrap-responsive-tabs/js/responsive-tabs.js"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" async src="<?php echo RUTA_JS?>jslogin.js?v=<?php echo time();?>"></script>
+
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" async src="<?php echo RUTA_JS?>jslogin.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" async src="<?php echo RUTA_JS?>jsmicash.js?v=<?php echo time();?>"></script>
+    
     <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
@@ -520,6 +494,10 @@ Este tr&aacute;mite no est&aacute; sujeto al pago de comisi&oacute;n.
 //           'sitekey' : '6Lf-jgQTAAAAAGgYwYOOjGAQRFQKqTx_6FCcUYM_'
 //         });
 //       };
+
+(function($) {
+      fakewaffle.responsiveTabs(['xs', 'sm']);
+  })(jQuery);
     </script>
   </body>
 </html>

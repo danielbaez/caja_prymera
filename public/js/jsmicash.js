@@ -108,6 +108,7 @@ function validateEmail(email) {
 
 function moreText() {
 	$( "#ocultarCaract" ).removeClass( "hidden" );
+	$('html').animate({scrollTop:$(document).height()},500);
 }
 
 function goToLogin() {

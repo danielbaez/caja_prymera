@@ -305,7 +305,7 @@ a {
 /* HEADER MI CASH */
 
 .container-header{
-    background-color: #0060aa; margin-top: -70px
+    background-color: #0060aa;
 }
 
 .padding-div-row-header{
@@ -313,34 +313,43 @@ a {
 }
 
 .col-title-header-padding{
-    padding-top: 10px
+    /*padding-top: 10px*/
 }
 
 .title-header{
     color: #FFFFFF;
     font-size: 30px;
     line-height: 1.2;
+        margin-top: 13px;
+    margin-bottom: 5px;
 }
 
 .img-header{
     width: 300px;
 }
 
-
 @media (min-width: 700px) and (max-width: 1199px) { 
 
     .title-header {
-        margin: 0;
+        /*margin: 0;*/
+
     }
 
+ }
+
+@media (max-width: 991px) { 
+
+    .row-form-img-vehicular{
+        margin-top: 0px !important
+
+    }
  }
 
  @media (max-width: 699px) { 
 
     .title-header {
-        margin: 0;
+        /*margin: 0;*/
     }
-
  }
 
   @media (max-width: 610px) { 
@@ -395,7 +404,47 @@ h1,h2,h3,h4,h5,a{
     padding-top: 10px;
 }
 
-.div-navegacion a{
-    background: none;
+.navegacion-a{
+ background: none;   
 }
 
+.img-form-vehicular{
+    background: url(/public/img/fondos/creedito-Vehicular.png);
+    background-size:100% auto;
+    height: 580px;
+    background-repeat: no-repeat;
+}
+
+.img-form-cash{
+    background: url(/public/img/fondos/Credito-Consumo.png);
+    background-size:100% auto;
+    height: 580px;
+    background-repeat: no-repeat;
+}
+
+.row-form-img-vehicular{
+    margin-top: 20px
+}
+
+.flecha-caracteristicas{
+    color:#005aa6
+}
+
+.espacio-top-bottom{
+    padding-top: 5px; padding-bottom: 5px;
+}
+
+.espacio-top{
+    padding-bottom: 5px;
+    padding-top: 0px;
+}
+
+
+#ocultarCaract .panel-heading{
+    background-color: #007ac0;
+    border-top-left-radius: 0;
+}
+
+#ocultarCaract .panel-heading a{
+    color: white
+}
