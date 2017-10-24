@@ -39,7 +39,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>">
     </head>
     <body>
-        <nav class="navbar navbar-default">
+        <!-- <nav class="navbar navbar-default">
 
             <div class="container-fluid" style="margin-top: -70px">
                 
@@ -52,11 +52,36 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
+
+
+        <div class="container-header">
+            <div class="container">
+                <div class="row padding-div-row-header">
+                    <div class="col-xs-6 col-title-header-padding">
+                        <h1 class="title-header">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
+                    </div>
+                    <div class="col-xs-6 div-logo">
+                        <img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+                        <h1 style="display: none">&iexcl;Te financiamos hasta el 100% de tu auto!* </h1>
+                    </div>
+                </div>    
+            </div>            
+        </div>  
+
         <div class="container fondo">
-            <div class="row row-top">
-                <div class="col-md-6 text-left">
-                    <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;">
+            <div class="row">                
+                <div class="col-xs-12 text-right div-navegacion">
+                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+                    <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+                    <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>                
+                </div>
+            </div>
+            <!-- <div class="row row-top"> -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0 text-left">
+                    <!-- <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;"> -->
+                    <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);">
                         <div class="panel-heading" style="background-color: #fff;border: 0px;color: #00519D;text-align: center;">
                             <h1 class="panel-title" style="font-size:40px;margin-top: 19px;">Consulta aqu&iacute;</h1>
                         </div>
@@ -106,16 +131,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-12">
+                    <div class="col-xs-12 col-md-12" style="padding-bottom: 15px">
                         <label class="" style="color: #fff">M&aacute;s caracter&iacute;sticas</label>
                         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="moreText()">
                             <i class="mdi mdi-play_circle_filled" style="color: #fff"></i>
                         </button>
                     </div>
                 </div>
-                <div class="col-md-6 button-login text-center">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect hidden" style="font-weight: bold;" onclick="goToLogin()">Log in<i style="color: #4e82bb" class="mdi mdi-person"></i></button>
-                    <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
+                <div class="hidden-xs hidden-sm col-md-6 button-login text-center">
+                    <!-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect hidden" style="font-weight: bold;" onclick="goToLogin()">Log in<i style="color: #4e82bb" class="mdi mdi-person"></i></button> -->
+                    <!-- <img class="imagen-fondo" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> -->
+                    <img class="img-responsive" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png"> 
                 </div>
                 
                 <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="background-color: #fff;display:block; margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;">

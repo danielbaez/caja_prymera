@@ -26,8 +26,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; 
-    background-position: center; 
+    background-position: center;
+    font-family: 'quicksandlight'
+
 }
+
+
+
+
 .imagen-fondo {
     width: 600px;
     position: relative;
@@ -294,3 +300,102 @@ a {
 .apegar {
     margin-left: -25px;
 }
+
+
+/* HEADER MI CASH */
+
+.container-header{
+    background-color: #0060aa; margin-top: -70px
+}
+
+.padding-div-row-header{
+    padding-top: 10px;padding-bottom: 10px;
+}
+
+.col-title-header-padding{
+    padding-top: 10px
+}
+
+.title-header{
+    color: #FFFFFF;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.img-header{
+    width: 300px;
+}
+
+
+@media (min-width: 700px) and (max-width: 1199px) { 
+
+    .title-header {
+        margin: 0;
+    }
+
+ }
+
+ @media (max-width: 699px) { 
+
+    .title-header {
+        margin: 0;
+    }
+
+ }
+
+  @media (max-width: 610px) { 
+
+    .title-header {
+        font-size: 24px !important;
+    }
+
+ }
+
+/*@media (max-width: 650px) {*/
+@media (max-width: 535px) {
+    .title-header {
+        display: none;
+    }
+    .div-logo{
+        width: 100%
+    }
+    .div-logo img{
+        margin: auto;
+        float: none !important;
+        width: 50% !important;
+    }
+    .div-logo h1{
+        display: block !important;
+        font-size: 15px;
+        text-align: center;
+        color: #FFFFFF;
+        margin: 0;
+        margin-top: 10px
+    }
+}
+
+/*FIN HEADER MI CASH */
+
+h1,h2,h3,h4,h5,a{
+    font-family: 'quicksandlight';
+}
+
+.font-bold{
+ font-family: 'quicksandbold';   
+}
+
+/* NAVEGACION */
+
+.usuario-logueado{
+    font-size: 17px;
+}
+
+.div-navegacion{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.div-navegacion a{
+    background: none;
+}
+
