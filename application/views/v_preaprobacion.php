@@ -32,7 +32,7 @@
     
 
 
-    <nav class="navbar navbar-default" style="margin: 0px;">
+    <nav class="navbar navbar-default" style="margin: 0px;margin-top: 30px">
     <div class="container-fluid" style="margin-top: -30px;">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -42,12 +42,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="text-left">
-          <h6>Cr&eacute;dito Vehicular</h6>
-        </div>
-        <div class="text-left">
-          <h1>Auto de Prymera</h1>
-        </div>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito Vehicular</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,7 +51,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
             <ul class="dropdown-menu">
             </ul>
           </li>
@@ -376,7 +372,7 @@
                 <p style="color:#808080">"Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
                 <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.”</p>
+                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.&quot;</p>
           </div>
       </div>
         </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -43,8 +43,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <h6>Cr&eacute;dito consumo</h6>
-        <h3>Mi Cash</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito consumo</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,7 +52,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-          	<img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+          	<img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="_goToHomeMicash();">
             <ul class="dropdown-menu">
             </ul>
           </li>
@@ -156,7 +156,7 @@
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
                                                 		<span style="color:#1C4485;font-size: 24px" id="tcea"><?php echo $tcea?>%</span>
                                                     <span style="display: none" id="tea"><?php echo $tea?>%</span>
-                                                		<p style="color:#A9A9A9;font-size: 11px;">*Cuota aproximada sujeta a evaluación</p>
+                                                		<p style="color:#A9A9A9;font-size: 11px;">*Cuota aproximada sujeta a evaluaci&oacute;n</p>
                                 					</div>
                                 				</div>
                                 				<div class="col-md-6" style="position: relative;top: 15px;right: 29px;">
@@ -338,7 +338,7 @@
           		<p style="color:#808080">"Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
                 <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.”</p>
+                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.&quot;</p>
         	</div>
     	</div>
         </div>

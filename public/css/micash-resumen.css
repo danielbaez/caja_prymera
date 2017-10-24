@@ -32,20 +32,20 @@ div.row.row1 {
 	color:#1C4485; 
 	padding:5px 15px;
 }
-h6 {
+/*h6 {
 	color: #fff;
     font-size: 18px;
     /* margin: 2px; */
-    text-align: center;
+    /*text-align: center;
     position: relative;
     top: 10px;
     left: 118px;
     font-family: 'quicksandlight';
-}
+}*/
 p {
     font-family: 'quicksandregular';
 }
-h3 {
+/*h3 {
 	color: #fff;
     font-size: 36px;
     margin: 7px;
@@ -53,7 +53,7 @@ h3 {
     position: relative;
     left: 180px;
     font-family: 'quicksandlight';
-}
+}*/
 div.form-group {
 	background: white; 
 	text-align: left;
@@ -79,6 +79,7 @@ span {
 	position: relative;
 	top: 10px;
 	max-width: 302px;
+    cursor: pointer;
 }
 .row {
     margin-right: -15px;

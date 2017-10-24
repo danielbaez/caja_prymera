@@ -20,9 +20,9 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
   </head>
     <body>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
 
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -54,18 +54,20 @@
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
           <div class="panel panel-primary" style="">
             <div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">
-              <h1 class="panel-title" style="font-size:25px;color: #005aa6;"><strong>Cambiar Contrase&ntilde;a</strong></h1>
+              <h1 class="panel-title" style="font-size:25px;color: #005aa6;margin-left: 70px;"><strong>Cambiar Contrase&ntilde;a</strong></h1>
             </div>
-            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 60%;position: relative;left: 132px;">
+            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 80%;height: 270px;position: relative;left: 132px;">
               <div class="row text-center" style="color:#EF484E">
-                <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';">Ingrese su usuario y su nueva contrase&ntilde;a</h1>
+                <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';margin-top: -15px">Ingrese su usuario y su nueva contrase&ntilde;a</h1>
                 <div class="col-md-12">
-                  <div class="col-xs-6" style="margin-left: 8px">
+                  <div class="col-xs-6" style="margin-left: 145px">
                     <div class="form-group">
                           <input class="form-control" type="text" id="email" placeholder="Usuario o correo electr&oacute;nico" maxlength="50" style="">
                         </div>
                   </div>
-                  <div class="col-xs-6" style="margin-left: 191px;margin-top: -49px;">
+                </div>
+                <div class="col-md-12">
+                    <div class="col-xs-6" style="margin-left: 145px;margin-top: 0px;">
                     <div class="form-group">
                           <input type="password" class="form-control" id="password" placeholder="Contrase&ntilde;a" maxlength="50" style="">
                         </div>

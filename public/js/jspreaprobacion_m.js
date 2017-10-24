@@ -327,3 +327,7 @@ function reenviarEmail() {
 		}
 	});
 }
+
+function _goToHomeMicash() {
+      location.href = '/Micash';
+    }

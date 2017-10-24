@@ -50,11 +50,11 @@
         </button>
         
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-          <h6>Cr&eacute;dito vehicular</h6>
-          <h3>Auto de Prymera</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito Vehicular</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
         <?php } else { ?>
-            <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 87px;font-family: 'quicksandlight';">Cr&eacute;dito Consumo</h6>
-            <h3 style="color: #fff;font-size: 36px;margin: 12px;text-align: center;position: relative;left: 81px;font-family: 'quicksandlight';">Mi Cash</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito consumo</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
         <?php } ?>
 
       </div>
@@ -64,7 +64,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
             <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>   -->
             <ul class="dropdown-menu">
             <!--  <li><a href="#">Action</a></li>
@@ -227,7 +227,7 @@
     <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#1C4485;text-align: center;font-size: 15px; margin-left: -315px;font-family: 'quicksandbold'">T&eacute;rminos y Condiciones</h3>
+            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#0152aa;text-align: center;font-size: 15px; margin-left: -315px;font-family: 'quicksandbold'">T&eacute;rminos y Condiciones</h3>
           </div>
           <div class="modal-body">
           <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>

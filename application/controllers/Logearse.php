@@ -290,12 +290,11 @@ class logearse extends CI_Controller {
        $this->email->to($email);
        $this->email->subject('Bienvenido/a a Caja Prymera-Restaurar Contrase&ntilde;a');
        $this->email->message('
-        <h1><strong>Mi Cash</strong></h1>
+        <h1><strong>Resetear Contrase&ntilde;a</strong></h1>
         <h4>Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n le enviamos el enlase para que pueda cambiar su contrase&ntilde;a</h4>
-        <h4>que solicitaste:</h4>
+        <h4>A continuaci&oacute;n te enviamos un enlace para que pueda cambiar tu contrase&ntilde;a</h4>
 
-        <p>Usuario: <a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambie su contrase&ntilde;a aqu&iacute;</a></p>
+        <p>Usuario: <a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambia tu contrase&ntilde;a aqu&iacute;</a></p>
         ');
        $this->email->send();
        //con esto podemos ver el resultado

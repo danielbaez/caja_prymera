@@ -27,10 +27,29 @@ class Ubicacion extends CI_Controller {
         $dato['Importe'] = _getSesion('Importe');
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
+        //$datos_bd = $this->M_preaprobacion->getDireccionByAgencia(_getSesion('Agencia'));
+        //$dato['direccion'] = $datos_bd[0]->UBICACION;
         $dato['concesionaria'] = _getSesion('concesionaria');
         $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
         $dato['ubicacion'] = $direccion[0]->UBICACION;
+        $dato['telefono'] = $direccion[0]->TELEFONO;
         $this->load->view('v_micash_ubicacion', $dato);
     }
+
+    function goToHome() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
+                  $data['location']  = '/Micash';
+            }else {
+                $data['location']  = '/C_login';
+            }
+        $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+     }
 }
 

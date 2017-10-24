@@ -7,6 +7,7 @@ h2 {
 	position: relative;
 	top: 10px;
 	max-width: 302px;
+	cursor: pointer;
 }
 .row {
     margin-right: 15px;
@@ -45,7 +46,7 @@ div.row.row1 {
 	color:#1C4485; 
 	padding:5px 15px;
 }
-h6 {
+/*h6 {
 	color: #fff;
     font-size: 16px;
     margin: 23px;
@@ -62,7 +63,7 @@ h3 {
 	text-align: center;
     position: relative;
     left: 81px;
-}
+}*/
 .panel-heading {
 	background-color:#fff;
 	border:0;

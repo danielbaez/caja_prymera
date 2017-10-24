@@ -97,7 +97,7 @@ class M_preaprobacion extends  CI_Model{
     }
 
     function getDireccionAgencia($agencia) {
-      $sql = "SELECT UBICACION
+      $sql = "SELECT *
                   FROM agencias
                  WHERE AGENCIA LIKE ?
                 GROUP BY UBICACION";
@@ -197,6 +197,14 @@ class M_preaprobacion extends  CI_Model{
              WHERE id = ?";
         $result = $this->db->query($sql, array($id));
         //_logLastQuery();
+        return $result->result();
+    }
+
+    function getDireccionByAgencia($agencia) {
+        $sql = "SELECT * 
+              FROM agencias 
+             WHERE AGENCIA LIKE ?";
+        $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }
 }

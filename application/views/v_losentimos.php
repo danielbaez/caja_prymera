@@ -38,11 +38,11 @@
           <span class="icon-bar"></span>
         </button>
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-          <h6>Cr&eacute;dito vehicular</h6>
-          <h3>Auto de Prymera</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 20px;margin-top: 20px;">Cr&eacute;dito Vehicular</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 20px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
         <?php } else { ?>
-            <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 87px;font-family: 'quicksandlight';">Cr&eacute;dito Consumo</h6>
-            <h3 style="color: #fff;font-size: 36px;margin: 12px;text-align: center;position: relative;left: 81px;font-family: 'quicksandlight';">Mi Cash</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 58px;margin-top: 20px;">Cr&eacute;dito consumo</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: -65px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
         <?php } ?>
       </div>
 
@@ -51,7 +51,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
             <ul class="dropdown-menu">
             </ul>
           </li>

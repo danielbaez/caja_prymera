@@ -39,7 +39,22 @@ class C_losentimos extends CI_Controller {
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        _log(print_r($data, true));
         echo json_encode(array_map('utf8_encode', $data));
     }
+
+    function goToHome() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
+                  $data['location']  = '/Micash';
+            }else {
+                $data['location']  = '/C_login';
+            }
+        $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+     }
 }

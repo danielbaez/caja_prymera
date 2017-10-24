@@ -107,6 +107,7 @@ div.text-left{
 }
 div.checkbox label {
 	position: relative;right: -6px;color: black;
+    font-family: quicksandlight;
 }
 .input-group {
 	width: 100%

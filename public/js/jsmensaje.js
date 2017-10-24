@@ -6,3 +6,19 @@ function goToHome(dato) {
 		location.href = "/C_login";
 	}
 }
+
+function goToHomeMensaje() {
+	$.ajax({
+		url   : '/C_mensaje/goToHome',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+		   	data = JSON.parse(data);
+		   	if(data.error == 0) {
+		   		location.href = data.location;
+		   	}
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
+}

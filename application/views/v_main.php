@@ -35,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
 		<style>
-		</style>  
+		</style>  	
 	</head>
 	<body>
 	  <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">

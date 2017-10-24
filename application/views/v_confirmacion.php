@@ -49,11 +49,11 @@
           <span class="icon-bar"></span>
         </button>
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-          <h6>Cr&eacute;dito vehicular</h6>
-          <h3>Auto de Prymera</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito Vehicular</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
         <?php } else { ?>
-            <h6 style="color: #fff;font-size: 16px;margin: 23px;text-align: center;position: relative;top: 10px;left: 87px;font-family: 'quicksandlight';">Cr&eacute;dito Consumo</h6>
-            <h3 style="color: #fff;font-size: 36px;margin: 12px;text-align: center;position: relative;left: 81px;font-family: 'quicksandlight';">Mi Cash</h3>
+          <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito consumo</h6>
+          <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
         <?php } ?>
       </div>
 
@@ -62,7 +62,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
             <ul class="dropdown-menu">
             </ul>
           </li>
@@ -233,7 +233,7 @@
                                                                 <div class="col-xs-12 m-t-50 text-right">
                                                                   <div class="container" style="position: relative;top: -53px;left: -10px;">
                                                               <ul class="nav nav-pills">
-                                                            <li id="remove" class="remove"><a style="background-color: #005aa6;color: #fff;position: relative;top: 17px;font-family: 'quicksandlight';font-size: 15px;border-radius: 7px;" href="http://localhost:8080/C_preaprobacion">Regresar</a></li>
+                                                            <li id="remove" class="remove"><a style="background-color: #005aa6;color: #fff;position: relative;top: 16px;font-family: 'quicksandlight';font-size: 15px;border-radius: 7px;" href="http://localhost:8080/C_preaprobacion">Regresar</a></li>
                                                           </ul>
                                                         </div>
                                                                   <button type="button" style="background-color: #005aa6;color: #fff;font-weight: lighter;font-size: 16px;position: relative;top: -81px;font-family: 'quicksandlight'" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg selector" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
@@ -291,7 +291,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header"><button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" onclick="limpiarCampos()"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-              <p style="text-align: center;font-size: 18px">Validar celular</p>
+              <p style="text-align: center;font-size: 18px;color: #0060aa;">Validar Celular</p>
             </div>
             <div class="modal-body">
               <div class="bs-example">
@@ -299,12 +299,12 @@
                   <p style="margin-bottom: 0;font-size: 19px;color:#808080">Para poder terminar con la solicitud </p> 
                   <p style="margin-bottom: 11px;font-size: 19px;color:#808080">Por favor ingrese el c&oacute;digo de seguridad que ha sido enviado a su celular: </p>
                   <div class="center">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="uno">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="dos">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="tres">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="cuatro">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="cinco">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1" id="seis">
+                      <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="uno">
+                      <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="dos">
+                      <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="tres">
+                      <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="cuatro">
+                      <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="cinco">
+                      <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="seis">
                   </div>  
                   <br>
                   <div class="col-xs-12">

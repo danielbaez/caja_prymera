@@ -34,19 +34,19 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>
-          <h6 style="cursor:pointer; cursor: hand;" onclick="goToHome(1)">Cr&eacute;dito Consumo</h6>
-          <h3 style="cursor:pointer; cursor: hand;" onclick="goToHome(1)">Mi Cash</h3>
+        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;cursor:pointer; cursor: hand;" onclick="goToHome(2)">Cr&eacute;dito Vehicular</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: -10px;font-size: 30px;cursor:pointer; cursor: hand;" onclick="goToHome(2)">Auto de Prymera</h3>
         <?php } else { ?>
-            <h6 style="color: #fff;font-size: 18px;margin: 23px;text-align: center;position: relative;top: 10px;left: 42px;cursor:pointer;cursor: hand;font-family: 'quicksandregular';" onclick="goToHome(2)">Cr&eacute;dito vehicular</h6>
-            <h3 style="color: #fff;font-size: 30px;margin: 12px;text-align: center;position: relative;left: 81px; cursor:pointer; cursor: hand;font-family: 'quicksandregular';" onclick="goToHome(2)">Auto de Prymera</h3>
+        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;cursor:pointer; cursor: hand;" onclick="goToHome(1)">Cr&eacute;dito consumo</h6>
+        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;font-size: 30px;margin-top: -10px;cursor:pointer; cursor: hand;" onclick="goToHome(1)">Mi Cash</h3>
         <?php } ?>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHomeMensaje();">
             <ul class="dropdown-menu">
             </ul>
           </li>

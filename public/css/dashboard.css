@@ -1,6 +1,10 @@
 .titulo-vista{
 	font-size: 22px;
-	color: #286090
+	color: #286090;
+	font-family: 'quicksandbold' !important;
+}
+h4 {
+	font-family: 'quicksandbold' !important;
 }
 
 .col-seccion{
