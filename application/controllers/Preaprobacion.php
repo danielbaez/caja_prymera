@@ -193,7 +193,9 @@ class preaprobacion extends CI_Controller {
             $datos_tea = $result->return->tea;
             $data['tea'] = round($datos_tea*10000)/100;
             $datos_tcea = $result->return->tcea;
-            $data['tcea'] = round($datos_tcea*10000)/100;   
+            $data['tcea'] = round($datos_tcea*10000)/100;  
+
+            $data['importePrestamo'] = $cantidad; 
 
           }
           if($res == 0){

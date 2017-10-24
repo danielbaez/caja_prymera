@@ -136,6 +136,10 @@
                             				</div>
                                             <div class="col-xs-12 col-md-6 text-center" style="color: black;font-size:16px;position: relative;left: 100px;width: 35%;">
                                 				<div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
+                                          <div class="col-md-12" style="margin: 10px">
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Importe del Pr&eacute;stamo</p>
+                                                    <span style="color:#1C4485;font-size: 24px" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
+                                          </div>
                                 					<div class="col-md-12" style="margin: 10px">
                                 						<p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
                                                 		<span style="color:#1C4485;font-size: 24px" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
@@ -466,6 +470,7 @@
         dataType: 'json'
       }).done(function(data){
         console.log(data);
+        $('#importePrestamo').html('S/ '+currency(data.importePrestamo));  
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%'); 
@@ -514,6 +519,7 @@
         dataType: 'json'
       }).done(function(data){
         console.log(data);
+        $('#importePrestamo').html('S/ '+currency(data.importePrestamo));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%');
