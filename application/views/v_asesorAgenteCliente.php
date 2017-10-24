@@ -207,7 +207,7 @@
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         <td><?php echo $solicitud->AGENCIA ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
-                        <td><?php echo $solicitud->status_sol ?></td>
+                        <td><?php echo $solicitud->status_sol == 0 ? 'Abierto' : 'Cerrado' ?></td>
                         <td><?php echo $solicitud->monto ?></td>
                       </tr>
                       <?php

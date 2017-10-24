@@ -96,7 +96,7 @@
                   </div>
                   <div class="form-group"> 
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                    <label for="cliente">* Nombre Cliente:</label>                 
+                    <label for="cliente">Nombre Cliente:</label>                 
                       <input type="text" class="form-control" name="cliente" value="<?php echo isset($cliente) ? $cliente : '' ?>" id="cliente" placeholder="Nombre Cliente">
                     </div>
                   </div>
@@ -330,22 +330,21 @@ $(document).ready(function() {
           dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
           $('.div-datos-cliente').html(dCliente);
 
-
           var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
           if(detalle.id_producto == 1){
-            dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
             dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
-            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual).toFixed(2))+'</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual*detalle.plazo).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
           }
           if(detalle.id_producto == 2){
             dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
             dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-            dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
             dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
-            dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual).toFixed(2))+' Meses</p>';
-            dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual*detalle.plazo).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
+            dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
           }
           

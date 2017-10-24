@@ -290,61 +290,82 @@
                 type:  'post',
                 dataType: 'json',
                 success:  function (response) {
+                  var detalle = response[0];
+                  var producto = '';
+                  if(detalle.id_producto == 1){
+                    producto = 'Mi Cash';
+                  }
+                  else if(detalle.id_producto == 2){
+                    producto = 'Vehicular';
+                  }
+                  $('.modal-title').html('Resumen Solicitud - '+producto);
+
                   $('#modalInformacionSolicitud').modal('show');
-                  console.log(response[0])
+                  console.log(detalle)
+
                   var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
-                  dCliente += '<p><span>Titular:</span> '+response[0].nombre_titular+' '+response[0].apellido_titular+'</p>';
-                  dCliente += '<p><span>Conyuge:</span> '+response[0].nombre_conyugue+'</p>';
-                  dCliente += '<p><span>DNI Titular:</span> '+response[0].dni_titular+'</p>';
-                  dCliente += '<p><span>DNI Conyuge:</span> '+response[0].dni_conyugue+'</p>';
-                  dCliente += '<p><span>e-mail:</span> '+response[0].email_titular+'</p>';
-                  dCliente += '<p><span>Nro Cel:</span> '+response[0].celular_titular+'</p>';
-                  dCliente += '<p><span>Fijo:</span> '+response[0].nro_fijo_titular+'</p>';
+                  dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
+                  if(detalle.id_producto == 2){
+                    dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
+                  }          
+                  dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
+                  if(detalle.id_producto == 2){
+                    dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+                  }
+                  dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
+                  dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
+                  dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
                   $('.div-datos-cliente').html(dCliente);
 
-
                   var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
-                  if(response[0].id_producto == 1){
-                    dPrestamo += '<p><span>Monto:</span> '+response[0].monto+'</p>';
-                    dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
-                    dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
-                    dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
-                    dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';
+                  if(detalle.id_producto == 1){
+                    dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+                    dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
                   }
-                  if(response[0].id_producto == 2){
-                    dPrestamo += '<p><span>Auto:</span> '+response[0].marca+'</p>';
-                    dPrestamo += '<p><span>Modelo:</span> '+response[0].modelo+'</p>';
-                    dPrestamo += '<p><span>Importe:</span> '+response[0].valor_auto+'</p>';
-                    dPrestamo += '<p><span>Plazo:</span> '+response[0].plazo+'</p>';
-                    dPrestamo += '<p><span>Cuota:</span> '+response[0].cuota_mensual+'</p>';
-                    dPrestamo += '<p><span>Total de Prestamo:</span> '+(response[0].cuota_mensual*response[0].plazo)+'</p>';
-                    dPrestamo += '<p><span>TCEA:</span> '+response[0].tcea+'</p>';  
+                  if(detalle.id_producto == 2){
+                    dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
+                    dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
+                    dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+                    dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
+                    dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
                   }
-                  
+
                   $('.div-datos-prestamo').html(dPrestamo);
 
                   var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
                   
-                  dEmpleo += '<p><span>Empresa:</span> '+response[0].empleador+'</p>';
-                  dEmpleo += '<p><span>Ingreso Mensual:</span> '+response[0].salario+'</p>';
-                  dEmpleo += '<p><span>Direccion:</span> '+response[0].dir_empleador+'</p>';
+                  dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
+                  dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
+                  dEmpleo += '<p><span>Direccion:</span> '+detalle.dir_empleador+'</p>';
+                  dEmpleo += '<p><span>distrito:</span> '+detalle.distrito+'</p>';
+                  dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
+                  dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
 
-                  dEmpleo += '<textarea name="nota" class="form-control" placeholder="Nota">'+response[0].nota+'</textarea>'
+                  if(detalle.nota == null){
+                    dEmpleo += '<textarea name="nota" class="form-control" placeholder="Nota"></textarea>'  
+                  }else{
+                    dEmpleo += '<textarea name="nota" class="form-control" placeholder="Nota">'+detalle.nota+'</textarea>'
+                  }                  
                   
                   $('.div-datos-empleo').html(dEmpleo);
 
                   var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-                  dSolicitud += '<p><span>Nro Solicitud:</span> '+response[0].id_solicitud+'</p>';
-                  dSolicitud += '<p><span>Fecha Solicitud:</span> '+response[0].fecha_solicitud+'</p>';
-                  dSolicitud += '<p><span>Hora:</span> '+response[0].hora_solicitud+'</p>';
-                  dSolicitud += '<p><span>Agencia:</span> '+response[0].agencia+'</p>';
-                  dSolicitud += '<p><span>Asesor:</span> '+response[0].usuario_nombre+'</p>';
+                  dSolicitud += '<p><span>Nro Solicitud:</span> '+detalle.id_solicitud+'</p>';
+                  dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
+                  dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
+                  dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
+                  dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
                   $('.div-datos-solicitud').html(dSolicitud);
 
-                  $('.btn-actualizar-estado').attr('data-idSolicitud', response[0].id_solicitud);
+                  $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
 
-                  $('.btn-actualizar-estado').attr('data-idNota', response[0].id_nota);
+                  $('.btn-actualizar-estado').attr('data-idNota', detalle.id_nota);
 
                 }
             });
@@ -380,6 +401,16 @@
           /*$('input[name="reporte"]').val('excel');
           $('form').submit();*/
         })
+
+        function currency(n,sep) {
+      var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
+      sValue=n+"";
+      if (sep === undefined) {sep=",";}
+      while(sRegExp.test(sValue)) {
+        sValue = sValue.replace(sRegExp, "$1"+sep+"$2");
+      }
+      return sValue;
+    }
 
 
       </script>
