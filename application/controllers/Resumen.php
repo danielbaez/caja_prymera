@@ -153,7 +153,7 @@ class Resumen extends CI_Controller {
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '._getSesion('nro_celular');
-        $message = 'Solicitó Crédito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'.Su cuota es '._getSesion('cuota_mensual').' Revise correo con condiciones';
+        $message = 'Solicito Credito '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'.Su cuota es '._getSesion('cuota_mensual').' Revise correo con condiciones';
         $response = $this->twilio->sms($from, $to, $message);
         _log(print_r($response, true));
         if($response->IsError) {
