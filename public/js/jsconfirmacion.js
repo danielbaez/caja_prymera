@@ -350,3 +350,10 @@ function goToHome() {
 		}
 	});
 }
+
+function cambiarTam() {
+	var codigo = $('#codigo').val();
+	if(codigo == '01') {
+		console.log('entra');
+	}
+}

@@ -17,6 +17,8 @@ class preaprobacion extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->library('table');
+        $this->load->helper('cookie');
+        $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
         $this->array_datos = array(
@@ -38,11 +40,16 @@ class preaprobacion extends CI_Controller {
         );
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
-        
+        if (! isset($_COOKIE[__getCookieName()])) {
+            redirect("/", 'location');
+        }
     }
     
     public function index()
     {
+        if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
+            redirect("/C_main", 'location');
+        }
         $data['nombreDato']=':D';
         $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']  = _getSesion('email');
@@ -58,7 +65,6 @@ class preaprobacion extends CI_Controller {
         $plazos = _getSesion('plazos');
 
         $plazos_explode = explode(',', $plazos);
-        _log(print_r($plazos_explode, true));
 
 
         $sueldo = $this->sueldo;
@@ -121,7 +127,9 @@ class preaprobacion extends CI_Controller {
                           'Importe'=> $importeMaximo,
                           'plazo' => $data['plazo_max']
                     );
-
+           if($params == null) {
+                redirect("/C_main", 'location');
+            }
           $result = $client->GetDatosCreditoCash($params);
           $res = $result->return->resultado;
           if($res == 1){

@@ -131,21 +131,21 @@
                         <div id="homes" class="tab-pane active">                            
                             
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PORCENTAJE INICIAL:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Porcentaje inicial:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10% y M&aacute;ximo 50% del valor del veh&iacute;culo.</span>
                             </div>
                             <div class="col-xs-12"></div>                            
                             <div class="col-xs-6 col-sm-3 text-left font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONTO A FINANCIAR:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Monto a financiar:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PLAZOS:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Plazos:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 12 meses y M&aacute;ximo 60 meses.</span>
@@ -159,28 +159,28 @@
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERIODO DE GRACIA:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Periodo de gracia:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Hasta 60 d&iacute;as.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERICIDAD DE PAGO:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Pericidad de pago:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Mensual</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>DESTINO DE CR&Eacute;DITO:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Destino de cr&eacute;dito:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Compra de auto nuevo.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MODALIDAD:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Modalidad:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Convencional - Compra inteligente.</span>
@@ -308,13 +308,13 @@
                         </div>
                         <div id="menus3" class="tab-pane">
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si, usted podr&aacute; hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:<br>
@@ -325,7 +325,7 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) d&iacute;as de realizado el pago. 
@@ -333,14 +333,14 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garant&iacute;a a Prymera, &#191;qu&eacute; tr&aacute;mites tengo que realizar una vez cancele mi cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garant&iacute;a a Prymera, qu&eacute; tr&aacute;mites tengo que realizar una vez cancele mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Deber&aacute;s acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:<br>- Solicitud de liberaci&oacute;n de la garant&iacute;a (hipotecaria y/o mobiliaria).<br>
@@ -379,13 +379,13 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Qu&eacute; es el seguro de desgravamen?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; es el seguro de desgravamen?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Es un seguro de vida de car&aacute;cter obligatorio que adquiere cuando solicita su cr&eacute;dito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica s&oacute;lo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deber&aacute; presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>No, el cliente tiene derecho a elegir entre la contrataci&oacute;n del seguro ofrecido por Prymera o un seguro contratado directamente por el cliente, siempre que cumpla previamente con las siguientes condiciones:</br>
@@ -393,7 +393,7 @@
                                         b. Endosar las p&oacute;lizas a favor de Prymera en un plazo no mayor al d&iacute;a h&aacute;bil de suscrito el  Contrato. En el endoso deber&aacute; constar la declaraci&oacute;n de la Compa&ntilde;&iacute;a de Seguros en el sentido que, Prymera es el &uacute;nico beneficiario de la indemnizaci&oacute;n hasta por el monto pendiente del pago total del cr&eacute;dito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas p&oacute;lizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, &eacute;ste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del Pr&eacute;stamo, m&aacute;s los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes se&ntilde;alada, no generar&aacute; para &eacute;l responsabilidad alguna.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del cr&eacute;dito, &#191;Qu&eacute; deber&aacute; presentar el apoderado?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del cr&eacute;dito, Qu&eacute; deber&aacute; presentar el apoderado?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>- Copias certificadas de Partida y Certificado de Defunci&oacute;n.</br>
@@ -404,7 +404,7 @@
                                             - Mayor informaci&oacute;n en caso la Compa&ntilde;&iacute;a de Seguro lo requiera.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&#191;En cu&aacute;ntos d&iacute;as obtendr&eacute; respuesta de la aseguradora ante un siniestro?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En cu&aacute;ntos d&iacute;as obtendr&eacute; respuesta de la aseguradora ante un siniestro?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>La aseguradora tiene un plazo m&aacute;ximo de 30 d&iacute;as h&aacute;biles para enviarte una respuesta.</span>

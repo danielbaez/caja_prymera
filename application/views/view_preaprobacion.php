@@ -18,8 +18,8 @@
 
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
-	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
+  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
      
@@ -53,7 +53,7 @@
         <ul class="nav navbar-nav navbar-right">
 
           <li class="dropdown">
-          	<img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="_goToHomeMicash();">
+            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="_goToHomeMicash();">
             <ul class="dropdown-menu">
             </ul>
           </li>
@@ -77,14 +77,14 @@
     </div>            
   </div>
 
-	<div class="container container-simulador">
-		<div class="row">
-			<?php if($tipo_product == '') {?>
-				<h2>Completa los datos:</h2>
-			<?php  } else {?>
-			<div class="col-xs-12 text-center">
-				<h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
-			</div>
+  <div class="container container-simulador">
+    <div class="row">
+      <?php if($tipo_product == '') {?>
+        <h2>Completa los datos:</h2>
+      <?php  } else {?>
+      <div class="col-xs-12 text-center">
+        <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
+      </div>
       <div class="col-xs-12">
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
@@ -156,12 +156,12 @@
           </div>
         </form>                  
       </div>
-    </div>  				
-		<?php  }?>
-	</div>
+    </div>          
+    <?php  }?>
+  </div>
 
   <div class="container">
-  	<!-- <div class="col-sm-12 col-md-4 col-md-offset-4"> -->
+    <!-- <div class="col-sm-12 col-md-4 col-md-offset-4"> -->
 
   </div>
 
@@ -178,12 +178,12 @@
         <div class="modal-body">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-          		<p style="color:#808080">"Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+              <p style="color:#808080">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
                 <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.&quot;</p>
-        	</div>
-    	</div>
+                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+          </div>
+      </div>
         </div>
         <div class="modal-footer" style="text-align: center;">
         </div>
@@ -192,30 +192,30 @@
 </div>    
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>-->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-  	<script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion_m.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion_m.js?v=<?php echo time();?>"></script>
+  <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
   <script>
-	(function($){
-	$(document).ready(function(){
-	    $('[data-toggle="tooltip"]').tooltip();   
+  (function($){
+  $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
       var glob_pagoTotal = null;
       var glob_cuotaMensual = null;
       var glob_tcea = null;
-	});
+  });
 
     var meses_pago = null;
     var cuota_inicial = null;
@@ -298,8 +298,8 @@
     var rangeSliderValueElementDias = document.getElementById('slider-range-value-dias');
 
     rangeSliderDias.noUiSlider.on('update', function( values, handle ) {
-    	rangeSliderValueElementDias.innerHTML = values[handle];
-      	cuota_inicial = values[handle];
+      rangeSliderValueElementDias.innerHTML = values[handle];
+        cuota_inicial = values[handle];
     });
 
     rangeSliderDias.noUiSlider.on('change', function( values, handle ) {
@@ -326,22 +326,22 @@
     });
     
 
-		function currency(n,sep) {
-		  var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
-		  sValue=n+"";
-		  if (sep === undefined) {sep=",";}
-		  while(sRegExp.test(sValue)) {
-		    sValue = sValue.replace(sRegExp, "$1"+sep+"$2");
-		  }
-		  return sValue;
-		}
+    function currency(n,sep) {
+      var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
+      sValue=n+"";
+      if (sep === undefined) {sep=",";}
+      while(sRegExp.test(sValue)) {
+        sValue = sValue.replace(sRegExp, "$1"+sep+"$2");
+      }
+      return sValue;
+    }
 
-// 		$("#slider-range").slider();
-// 		$("#slider-range").on("slide", function(slideEvt) {
-// 			//$("#ex6SliderVal").text('S/ '+slideEvt.value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
-// 			$("#slider-range-value").text('Monto S/ '+currency(slideEvt.value));
-// 			console.log($("#slider-range-value").text('Monto S/ '+currency(slideEvt.value)));
-// 		});
+//    $("#slider-range").slider();
+//    $("#slider-range").on("slide", function(slideEvt) {
+//      //$("#ex6SliderVal").text('S/ '+slideEvt.value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+//      $("#slider-range-value").text('Monto S/ '+currency(slideEvt.value));
+//      console.log($("#slider-range-value").text('Monto S/ '+currency(slideEvt.value)));
+//    });
 
 //     $("#slider-plazo").slider();
 //     $("#slider-plazo").on("slide", function(slideEvt) {
@@ -349,34 +349,34 @@
 //       $("#val-meses").text('Plazo '+currency(slideEvt.value+' meses'));
 //     });
 
-		$( "#generarCronograma" ).click(function() {
-			var fecha_pago = $('#fechaPago').val();
-			var tipoPago   = $('#tipoPago').val();
-			/*$.ajax({
-			data  : { cantidad : monto,
-				      meses    : meses_pago,
-				      fecha    : fecha_pago,
-				      tipoPago : tipoPago },
-			url   : 'C_preaprobacion/generarCronograma',
-			type  : 'POST'
-    		}).done(function(data){
-    			try{
-    				data = JSON.parse(data);
-    				if(data.error == 0){
-    					  $('#tablaCronograma').html(data.tabla);	
-    					  $('#tb_cronograma').bootstrapTable({ });
-    					  tableEventsUpgradeMdlComponentsMDL('tb_cronograma');
-    					  initSearchTableNew();
-    				}else {
-    					return;
-    				}
-    			} catch (err){
-    				msj('error',err.message);
-    			}
-    		});*/
-		});
+    $( "#generarCronograma" ).click(function() {
+      var fecha_pago = $('#fechaPago').val();
+      var tipoPago   = $('#tipoPago').val();
+      /*$.ajax({
+      data  : { cantidad : monto,
+              meses    : meses_pago,
+              fecha    : fecha_pago,
+              tipoPago : tipoPago },
+      url   : 'C_preaprobacion/generarCronograma',
+      type  : 'POST'
+        }).done(function(data){
+          try{
+            data = JSON.parse(data);
+            if(data.error == 0){
+                $('#tablaCronograma').html(data.tabla); 
+                $('#tb_cronograma').bootstrapTable({ });
+                tableEventsUpgradeMdlComponentsMDL('tb_cronograma');
+                initSearchTableNew();
+            }else {
+              return;
+            }
+          } catch (err){
+            msj('error',err.message);
+          }
+        });*/
+    });
 
-	})(jQuery);
+  })(jQuery);
 
   </script>
   </body>

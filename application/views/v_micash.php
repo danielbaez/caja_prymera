@@ -130,14 +130,14 @@
     padding-bottom: 10px;">
                         <div id="homes" class="tab-pane active">
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONTO A FINANCIAR:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Monto a financiar:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>MONEDA:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Moneda:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Soles</span>
@@ -151,28 +151,28 @@
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERIODO DE GRACIA:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Periodo de gracia:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Hasta 60 d&iacute;as.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>PERICIDAD DE PAGO:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Pericidad de pago:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Mensual.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>DESTINO DEL CR&Eacute;DITO:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Destino de cr&eacute;dito:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Libre disponibilidad.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>GARANT&Iacute;A:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Garant&iacute;a:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Ninguna.</span>
@@ -204,7 +204,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo a Caja Prymera.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo a Prymera.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso de tener c&oacute;nyuge se registra sus datos (nombres, apellidos y DNI)</span>
@@ -274,13 +274,13 @@
                                 <span><strong>Preguntas Frecuentes</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&iquest;Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si, usted podrá hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&iquest;Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:
@@ -291,7 +291,7 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&iquest;Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) días de realizado el pago. 
@@ -299,7 +299,7 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&iquest;Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.
@@ -311,13 +311,13 @@
                                 <span><strong>El producto "MI CASH" esta afecto el seguro desgravamen</strong></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&iquest;Qu&eacute; es el seguro de desgravamen?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; es el seguro de desgravamen?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Es un seguro de vida de car&aacute;cter obligatorio que adquiere cuando solicita su crédito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica sólo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deberá presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del crédito, &iquest;Qué deberá presentar el apoderado?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del crédito, Qué deberá presentar el apoderado?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>-Copias certificadas de Partida y Certificado de Defunción.<br>
@@ -328,7 +328,7 @@
                                     -Mayor información en caso la Compañía de Seguro lo requiera.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>&iquest;En cuántos días obtendré respuesta de la aseguradora ante un siniestro?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En cuántos días obtendré respuesta de la aseguradora ante un siniestro?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>La aseguradora tiene un plazo máximo de 30 días hábiles para enviarte una respuesta.</span>

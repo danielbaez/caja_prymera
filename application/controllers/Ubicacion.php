@@ -12,11 +12,20 @@ class Ubicacion extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->library('table');
+        $this->load->helper('cookie');
+        $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        if (! isset($_COOKIE[__getCookieName()])) {
+            redirect("/", 'location');
+        }
     }
 
     public function index()
     {
+         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
+            redirect("/C_main", 'location');
+        }
+        $this->session->set_userdata(array('conectado' => 0));
         $dato['nombreDato']=':D';
         $dato['pago_total'] = _getSesion('pago_total');
         $dato['nombre'] = ucfirst(_getSesion('nombre'));

@@ -9,7 +9,6 @@ class logearse extends CI_Controller {
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
-        $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
@@ -86,7 +85,8 @@ class logearse extends CI_Controller {
             $remember    = json_decode(_post('check'));
             $session = array('user'            => $user,
                              'password'          => $password,
-                             'TIPO_PROD'        =>PRODUCTO_VEHICULAR
+                             'TIPO_PROD'        =>PRODUCTO_VEHICULAR,
+                             'conectado'         => 1
                             );
             $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;
@@ -104,7 +104,8 @@ class logearse extends CI_Controller {
             $remember = json_decode(_post('check'));
             $session  = array('user'   => $user,
                              'password'=> $password,
-                             'TIPO_PROD' =>PRODUCTO_MICASH
+                             'TIPO_PROD' =>PRODUCTO_MICASH,
+                             'conectado'         => 1
                              );
             $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;
@@ -158,13 +159,15 @@ class logearse extends CI_Controller {
                             else if($redirect == PERMISO_MICASH)
                             {
                                 $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
-                                                                   'permiso_prod' => PERMISO_MICASH));
+                                                                   'permiso_prod' => PERMISO_MICASH,
+                                                                    'conectado'   => 1));
                                 redirect('Micash');
                             }
                             else if($redirect == PERMISO_VEHICULAR)
                             {
                                 $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
-                                                                   'permiso_prod' => PERMISO_VEHICULAR));
+                                                                   'permiso_prod' => PERMISO_VEHICULAR,
+                                                                    'conectado'   => 1));
                                 redirect('Login');
                             }
                         }
