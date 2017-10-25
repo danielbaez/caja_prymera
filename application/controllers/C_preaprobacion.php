@@ -12,21 +12,21 @@ class C_preaprobacion extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
+        $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
         if (! isset($_COOKIE[__getCookieName()])) {
-            header("Location: ".RUTA_CAJA, true, 301);
+            redirect("/", 'location');
         }
         
     }
     
     public function index()
     {
-
-        if(_getSesion("nombre") == null && _getSesion("email") == null) {
-            header("Location: ".RUTA_CAJA, true, 301);
+        if(_getSesion("usuario") == null && _getSesion("nombre") == null) {
+            redirect("/C_main", 'location');
         }
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
@@ -59,6 +59,9 @@ class C_preaprobacion extends CI_Controller {
         $maxIniPorc         = $this->maxIniPorc;
 
         $array_datos = _getSesion('arrDatos');
+        if($array_datos == null) {
+            redirect("/", 'location');
+        }
 
         $plazos = [];
         foreach ($array_datos as $key => $value) {

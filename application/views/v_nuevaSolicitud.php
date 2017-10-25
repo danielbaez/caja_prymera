@@ -48,7 +48,7 @@
                 <div class="col-xs-12">
                   <div class="col-xs-12 col-sm-3"></div>
                   <div class="col-xs-12 col-sm-6">
-                    <h1 class="titulo-vista">Seleccionar Solicitud</h1>            
+                    <h1 class="titulo-vista" style="margin-top: 50px;">Seleccionar Solicitud</h1>            
                   </div>
                   <div class="col-xs-12 col-sm-3 text-right">
                     <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
@@ -69,11 +69,11 @@
 
 
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                      <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
+                      <div class="panel panel-primary" style="border: 1px solid #337ab7;border-top-right-radius: 0px;border-top-left-radius: 40px;border-bottom-left-radius: 0px;border-bottom-right-radius: 40px;"><br>
                         <div class="panel-body" style="margin-top: 15px; margin-bottom: 20px">
                           <div class="col-xs-12 col-sm-6">
                             <a href="/C_login" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
-                            <h5>Vehicular</h5>
+                            <h5>Auto de Prymera</h5>
                           </div>
                           <div class="col-xs-12 col-sm-6">
                             <a href="/Micash" style="color:black"><i class="fa fa-money fa-5x" aria-hidden="true"></i></a><br>

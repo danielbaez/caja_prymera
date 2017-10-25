@@ -191,23 +191,21 @@
                           </label>
                       </div>
                   </div>
+                  <div class="col-xs-4 padding">
+                      <select class="form-control" id="Agencia" name="Agencia" style="font-family: 'quicksandlight';">
+                              <option value="">Cambiar Agencia</option>
+                              <?php echo $comboAgencias?>
+                      </select>
+                </div>
               </form>
-						  <div class="col-xs-12 text-left">
-						  </div>
 						  <div class="col-xs-12">
-			          <div class="col-xs-4 padding">
-                  <select class="form-control" id="Agencia" name="Agencia">
-                      <option value="" style="font-family: 'quicksandlight';">Cambiar Agencia</option>
-                      <?php echo $comboAgencias?>
-                    </select>
-                </div>
                 <div class="col-xs-8 text-right">
-                	<button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
+                	<button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';margin-left: 230px;margin-top: -65px;" onclick="irAUbicacion()">Aceptar</button>
                 </div>
 						  </div>
-						  	<div class="col-xs-12 color-info">
-            		    		<p>* La solicitud de tu cr&eacute;dito vehicular ha sido enviada al correo electr&oacute;nico y al n&uacute;mero de celular que  proporcion&oacute; indicando las instrucciones  a seguir para el desembolso</p>
-            		   		</div>
+						  	<div class="col-xs-12 color-info" style="margin-top: -20px">
+      		    		<p>* La solicitud de tu cr&eacute;dito vehicular ha sido enviada al correo electr&oacute;nico y al n&uacute;mero de celular que  proporcion&oacute; indicando las instrucciones  a seguir para el desembolso</p>
+      		   		</div>
 						</form>
 			    	</div>
 		    	</div>
