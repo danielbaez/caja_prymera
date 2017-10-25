@@ -484,7 +484,6 @@
 
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" async src="<?php echo RUTA_JS?>jslogin.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" async src="<?php echo RUTA_JS?>jsmicash.js?v=<?php echo time();?>"></script>
     
     <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
