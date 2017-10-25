@@ -76,7 +76,7 @@
             </div>            
         </div>
 
-	<div class="container" style="border:1px solid red">
+	<div class="container">
 		<!-- <div class="row" style="background-color: #fff;color: #1C4485;padding:5px 15px;"> -->
       <div class="row">
   			<div class="container">
