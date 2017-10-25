@@ -24,11 +24,16 @@ class M_usuario extends  CI_Model{
             foreach ($result->result() as $key => $value) {
                 if($value->rol == 'jefe_agencia')
                 {
-                    $sql = "SELECT GROUP_CONCAT(AGENCIA) as agencia FROM agencias where id_sup_agencia = $value->id GROUP BY id_sup_agencia";
+                    $sql = "SELECT GROUP_CONCAT(AGENCIA SEPARATOR ', ') as agencia FROM agencias where id_sup_agencia = $value->id GROUP BY id_sup_agencia";
                     $agencias = $this->db->query($sql, array());
                     $a = $agencias->result();
-                    $value->AGENCIA = $a[0]->agencia;
-                    
+                    if($a){
+                        $value->AGENCIA = $a[0]->agencia;    
+                    }
+                    else
+                    {
+                        $value->AGENCIA = '';
+                    }                   
                 }
                 elseif($value->rol == 'administrador')
                 {
@@ -84,7 +89,14 @@ class M_usuario extends  CI_Model{
                 $sql = "SELECT GROUP_CONCAT(id) as agencias FROM agencias where id_sup_agencia = ? GROUP BY id_sup_agencia";
                 $agencias = $this->db->query($sql, array($value->id));
                 $a = $agencias->result();
-                $value->id_agencia = $a[0]->agencias;
+                //$value->id_agencia = $a[0]->agencias;
+                if($a){
+                    $value->id_agencia = $a[0]->agencias;    
+                }
+                else
+                {
+                    $value->id_agencia = '';
+                }
             }
             $res[] = $value;              
         }
@@ -170,7 +182,7 @@ class M_usuario extends  CI_Model{
 
     function getSuperiores()
     {
-    	$sql = "SELECT * FROM usuario WHERE rol = 'jefe_agencia'";
+    	$sql = "SELECT * FROM usuario WHERE rol = 'jefe_agencia' AND estado = 1";
     	$result = $this->db->query($sql, array());
     	return $result->result();
     }

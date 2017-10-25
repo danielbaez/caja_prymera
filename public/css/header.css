@@ -23,6 +23,14 @@ h1{font-family: 'quicksandlight' !important}
     margin-bottom: 5px;
 }
 
+.title-header-one-line{
+    color: #FFFFFF;
+    font-size: 27px;
+    line-height: 1.2;
+    margin-top: 28px;
+    margin-bottom: 5px;   
+}
+
 .title-header-second{
     color: #FFFFFF;
     font-size: 27px;
@@ -71,6 +79,12 @@ h1{font-family: 'quicksandlight' !important}
     }
  } 
 
+ @media (max-width: 710px) {
+    .title-header-one-line{
+        margin-top: 15px
+    } 
+ }
+
  @media (max-width: 699px) { 
 
     .title-header{
@@ -94,7 +108,7 @@ h1{font-family: 'quicksandlight' !important}
 
 /*@media (max-width: 650px) {*/
 @media (max-width: 535px) {
-    .title-header, .title-header-first, .title-header-second {
+    .title-header, .title-header-one-line, .title-header-first, .title-header-second {
         display: none;
     }
     .div-logo{

@@ -25,6 +25,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-preaprobacion.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
   </head>
@@ -32,33 +33,20 @@
     
 
 
-    <nav class="navbar navbar-default" style="margin: 0px;margin-top: 30px">
-    <div class="container-fluid" style="margin-top: -30px;">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito Vehicular</h6>
-        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-
-          <li class="dropdown">
-            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
-            <ul class="dropdown-menu">
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <h1 class="title-header-first">Cr&eacute;dito Vehicular</h1>
+          <h1 class="title-header-second">Auto de Prymera</h1>          
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+            <h1 style="display: none">Cr&eacute;dito Vehicular | Auto de Prymera</h1>
+        </div>
+      </div>    
+    </div>            
+  </div>
 
   <div class="container-fluid">
     <div class="row" style="background-color: #fff;color: #1C4485;padding:5px 15px;">
@@ -188,7 +176,7 @@
                                                     <span style="display: none" id="tea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
-                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro de Auto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar"><i class="mdi mdi-info"></i></button></p>
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro del Auto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar"><i class="mdi mdi-info"></i></button></p>
                                                     <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
                                                     <p style="color:#A9A9A9;font-size:11px">*Cuota aproximada sujeta a evaluaci&oacute;n</p>
                                           </div>

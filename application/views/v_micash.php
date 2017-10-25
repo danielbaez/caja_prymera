@@ -34,7 +34,7 @@
                         <h1 class="title-header">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
                     </div>
                     <div class="col-xs-6 div-logo">
-                        <img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+                        <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
                         <h1 style="display: none">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
                     </div>
                 </div>    

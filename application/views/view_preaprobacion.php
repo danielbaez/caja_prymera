@@ -70,7 +70,7 @@
           <h1 class="title-header-second">Mi Cash</h1>
         </div>
         <div class="col-xs-6 div-logo">
-          <img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
           <h1 style="display: none">Cr&eacute;dito consumo | Mi Cash</h1>
         </div>
       </div>    

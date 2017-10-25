@@ -25,11 +25,7 @@ div.row.row1 {
 	color:#1C4485; 
 	padding:5px 15px;
 }
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-    margin-top: 30px;
-}
+
 /*h1{
     font-size: 34px;
     color: #fff;
@@ -46,11 +42,7 @@ div.row.row1 {
     right: -25px;
     font-family: 'quicksandlight';
 }*/
-.container-fluid {
-    background-color: #0060aa;
-    height: 132px;
-    margin-top: -30px;
-}
+
 /*h3 {
 	color: #fff;
 	font-size: 30px;

@@ -25,16 +25,17 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+        
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <style>
         </style>  
     </head>
     <body>
-    	<nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
+    	<!-- <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
           <div class="container-fluid">
             <div class="navbar-header">
             	<a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 10px;height: 128px;" href="#"><img class="img-responsive logo" style="max-width: 302px;float: right;margin-right: 182px" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
@@ -43,62 +44,22 @@
                 <h3 style="position: absolute;top: -45px;left: 119px;color: #fff;font-family: 'quicksandregular';">Sistema de cr&eacute;ditos Web</h3>
             </ul>
           </div>
-        </nav>
-        <!-- <section id="principal">
-            <div class="mdl-card mdl-card-login" style="margin-top: 120px;">
-                <div class="mdl-card__title p-b-0" style="text-align: center">
-                    <h3 style="color: #0060aa;font-size: 32px;font-family: quicksandbold">Bienvenido</h3>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <div class="col-sm-12">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="text" id="txtEmail" onkeyup="login()">
-                            <label class="mdl-textfield__label" for="txtEmail style="font-family: quicksandbold">Usuario</label>
-                        </div>
-                    </div>  
-                    <div class="col-sm-12">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="password" id="txtPassword" onkeyup="login()">
-                            <label class="mdl-textfield__label" for="txtPassword" style="font-family: quicksandbold">Contrase&ntilde;a</label>
-                        </div>
-                    </div>   
-                    <div class="col-sm-12 m-t-15">
-                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-                        	<span class="mdl-checkbox__label" style="font-family: quicksandbold">Recordarme</span>
-                            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
-                        </label>
+        </nav> -->
+
+        <div class="container-header">
+            <div class="container">
+                <div class="row padding-div-row-header">
+                    <div class="col-xs-6 col-title-header-padding">
+                        <h1 class="title-header-one-line">Sistema de cr&eacute;ditos Web</h1>
                     </div>
-                    <div class="col-sm-12 m-t-20">
-                        <div class="col-xs-12">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 100%;background: #007ac0;color: #fff;font-family: quicksandbold" onclick="logear()">Dashboard</button>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="col-xs-6">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 125%;background: #007ac0;color: #fff;margin-top: 10px;margin-left: -14px;font-family: quicksandbold" onclick="goToVehicular(1)">Vehicular</button>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-login" style="width: 118%;background: #007ac0;color: #fff;margin-top: 10px;margin-left: -1px;font-family: quicksandbold" onclick="goToMicash(2)">MiCash</button>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="col-sm-12 m-t-20">
-                    	<div class="col-xs-8 col-md-8">
-                    		<p style="font-family: quicksandlight;font-size: 12px">Olvid&oacute; su contrase&ntilde;a?</p>
-                    	</div>
-                    	<div class="col-xs-4 col-md-4" style="padding: 3px;margin-left: -16px;margin-top: -2px;">
-                    		<a href="" style="font-size: 12px; font-family: quicksandlight">Ingrese aqu&iacute;</a>
-                    	</div>
+                    <div class="col-xs-6 div-logo">
+                        <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+                        <h1 style="display: none">Sistema de cr&eacute;ditos Web</h1>
                     </div>
-                </div>
-                <div class="mdl-card__actions">
-                	<div class="col-md-6" style="padding:0">
-                	</div>
-                	<div class="col-md-6">
-        			</div>
-                </div>
-            </div>
-            <p class="text-center"></p>
-        </section> -->
+                </div>    
+            </div>            
+        </div>
+
 
         <div class="container">
             <div class="row text-center">

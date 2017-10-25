@@ -60,11 +60,11 @@
 		  	<span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
 			<?php if(_getSesion('rol') == 'administrador'){ ?>
 				<a href="/C_usuario/asignarSupervisor">Asignar Asesores</a><br>
-			<a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+			<a href="/C_usuario/nuevaSolicitud">Crear Solicitud</a><br>
 			<a href="/C_reporte/solicitudes">Ver Reportes</a><br>
 			  <?php }
 				  elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
-				  <a href="/C_usuario/nuevaSolicitud">Nueva Solicitud</a><br>
+				  <a href="/C_usuario/nuevaSolicitud">Crear Solicitud</a><br>
 				  <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
 			  <?php } ?>
 			  <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>
@@ -689,6 +689,18 @@
                     for(var c= 0; c<per.length; c++){
                     	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
                     }
+
+
+
+                    if($("input[name='permiso[]'][value='0']").is(":checked")) {
+			        	
+			        		$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', true).prop('checked', false);
+			        		$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', true).prop('checked', false);
+			        	
+			        }else{
+			        	
+			        }
+
 					
 				}
 			  });

@@ -81,11 +81,7 @@ span {
 	max-width: 302px;
     cursor: pointer;
 }
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-    margin-top: 30px;
-}
+
 .panel-primary,
 .panel-heading {
 	color: #00519d;

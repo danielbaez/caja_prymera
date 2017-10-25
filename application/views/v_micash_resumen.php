@@ -32,55 +32,43 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>"> 
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
       <body style="padding: 0px;background-image:url(../public/img/fondos/Car-Sunset.jpg);">
     <?php } else { ?>
         <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);">
     <?php } ?>
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        
-        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito Vehicular</h6>
-        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
-        <?php } else { ?>
-        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito consumo</h6>
-        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
-        <?php } ?>
 
-      </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+  <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
 
-          <li class="dropdown">
-          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
-            <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>   -->
-            <ul class="dropdown-menu">
-            <!--  <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>  -->
-            </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+          <h1 class="title-header-first">Cr&eacute;dito Vehicular</h1>
+          <h1 class="title-header-second">Auto de Prymera</h1>
+          <?php } else { ?>
+            <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
+            <h1 class="title-header-second">Mi Cash</h1>
+          <?php } ?>
+          
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <h1 style="display: none">Cr&eacute;dito Vehicular | Auto de Prymera</h1>
+          <?php } else { ?>
+            <h1 style="display: none">Cr&eacute;dito consumo | Mi Cash</h1>
+          <?php } ?>
+        </div>
+      </div>    
+    </div>            
+  </div>
 
     <div class="container">
-    	<div class="row" style="margin-top:100px">
+    	<div class="row" style="margin-top:50px">
     		<div class="col-sm-12 col-md-4">
 		    	<div class="panel panel-primary" style="">
 		    		<div class="panel-heading" style="background-color: #fff;font-weight: bold;padding: 23px;">

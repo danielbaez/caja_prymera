@@ -33,7 +33,7 @@
                         <h1 class="title-header">&iexcl;Te financiamos hasta el<br>100% de tu auto!*</h1>
                     </div>
                     <div class="col-xs-6 div-logo">
-                        <img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+                        <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
                         <h1 style="display: none">&iexcl;Te financiamos hasta el 100% de tu auto!*</h1>
                     </div>
                 </div>    
@@ -176,7 +176,7 @@
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Pericidad de pago:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Periocidad de pago:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Mensual</span>
@@ -223,7 +223,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben registrar cr&eacute;ditos vencidos, en cobranza judicial y/o castigada en los &uacute;ltimos 24 meses.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo Caja Prymera.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El n&uacute;mero m&aacute;ximo de entidades de endeudamiento es de 4 entidades, incluyendo a Prymera.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>No deben encontrarse registrados en la base de alertas del sistema Microbank.</span>
@@ -376,17 +376,11 @@
                                 <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>-Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br>
-                                -Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</span>
-                            </div>
-                            <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</br></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>
+                                Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; es el seguro de desgravamen?</span>
@@ -506,13 +500,6 @@
 //       };
 
 (function($) {
-
-    $('.nav-tabs a').on('click', function (e) {
-        e.preventDefault();
-        alert(1)
-        $(this).tab('show');
-    });
-
       fakewaffle.responsiveTabs(['xs']);
   })(jQuery);
     </script>

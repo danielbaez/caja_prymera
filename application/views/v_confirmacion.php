@@ -33,14 +33,15 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
   </head>
     <body style="" >
     
 
 
-    <nav class="navbar navbar-default">
+    <!-- <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
+      
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -57,7 +58,7 @@
         <?php } ?>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
+     
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
 
@@ -69,7 +70,33 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
+
+  <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+          <h1 class="title-header-first">Cr&eacute;dito Vehicular</h1>
+          <h1 class="title-header-second">Auto de Prymera</h1>
+          <?php } else { ?>
+            <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
+            <h1 class="title-header-second">Mi Cash</h1>
+          <?php } ?>
+          
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <h1 style="display: none">Cr&eacute;dito Vehicular | Auto de Prymera</h1>
+          <?php } else { ?>
+            <h1 style="display: none">Cr&eacute;dito consumo | Mi Cash</h1>
+          <?php } ?>
+        </div>
+      </div>    
+    </div>            
+  </div>
 
   <div class="container-fluid">
     <div class="row" style="background-color: #fff;color: #1C4485;padding:5px 15px;">
@@ -233,7 +260,7 @@
                                                                 <div class="col-xs-12 m-t-50 text-right">
                                                                   <div class="container" style="position: relative;top: -53px;left: -10px;">
                                                               <ul class="nav nav-pills">
-                                                            <li id="remove" class="remove"><a style="background-color: #005aa6;color: #fff;position: relative;top: 16px;font-family: 'quicksandlight';font-size: 15px;border-radius: 7px;" href="http://localhost:8080/C_preaprobacion">Regresar</a></li>
+                                                            <li id="remove" class="remove"><a style="background-color: #005aa6;color: #fff;position: relative;top: 16px;font-family: 'quicksandlight';font-size: 15px;border-radius: 7px;" href="/Preaprobacion">Regresar</a></li>
                                                           </ul>
                                                         </div>
                                                                   <button type="button" style="background-color: #005aa6;color: #fff;font-weight: lighter;font-size: 16px;position: relative;top: -81px;font-family: 'quicksandlight'" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
