@@ -22,6 +22,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
           
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
 
     </head>
     <body>
@@ -50,7 +51,7 @@
             </div>
 
             <!-- <div class="row row-top"> -->
-            <div class="row row-form-img-vehicular">
+            <div class="row row-form-img">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0 text-left">
                     <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;">
                         <div class="panel-heading" style="background-color: #fff;border: 0px;color: #00519D;text-align: center;">
@@ -102,7 +103,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-12" style="padding-bottom: 15px">
+                    <div class="col-xs-12 col-md-12 mas-caracteristicas">
                         <label class="letra_gruesa" style="color: #fff">M&aacute;s caracter&iacute;sticas</label>
                         <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="moreText()">
                             <i class="mdi mdi-play_circle_filled" style="color: #fff"></i>
@@ -419,7 +420,7 @@
 //       };
 
 (function($) {
-      fakewaffle.responsiveTabs(['xs', 'sm']);
+      fakewaffle.responsiveTabs(['xs']);
   })(jQuery);
     </script>
   </body>

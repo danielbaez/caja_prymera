@@ -1,0 +1,106 @@
+/* HEADER MI CASH */
+
+h1{font-family: 'quicksandlight' !important}
+
+.container-header{
+    background-color: #0060aa;
+}
+
+.padding-div-row-header{
+    padding-top: 10px;padding-bottom: 10px;
+}
+
+.col-title-header-padding{
+    padding-top: 3px;
+    /*padding-top: 10px*/
+}
+
+.title-header{
+    color: #FFFFFF;
+    font-size: 27px;
+    line-height: 1.2;
+    margin-top: 13px;
+    margin-bottom: 5px;
+}
+
+.title-header-first{
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 13px;
+    margin-bottom: 5px;
+}
+
+.img-header{
+    width: 300px;
+}
+
+@media (min-width: 700px) and (max-width: 1199px) { 
+
+    .title-header {
+        /*margin: 0;*/
+
+    }
+
+ }
+
+@media (max-width: 991px) { 
+
+    .row-form-img{
+        margin-top: 0px !important
+
+    }
+ }
+
+ @media (max-width: 768px) { 
+
+    .mas-caracteristicas{
+        display: none
+    }
+    #ocultarCaract{
+        display: block !important;
+        margin-top: 18px
+    }
+ } 
+
+ @media (max-width: 699px) { 
+
+    .title-header{
+        margin-top: 3px;
+    }
+    .col-title-header-padding{
+    padding-top: 0px;}
+ }
+
+  @media (max-width: 610px) { 
+
+    .title-header {
+        font-size: 24px !important;
+    }
+
+ }
+
+/*@media (max-width: 650px) {*/
+@media (max-width: 535px) {
+    .title-header, .title-header-first {
+        display: none;
+    }
+    .div-logo{
+        width: 100%
+    }
+    .div-logo img{
+        margin: auto;
+        float: none !important;
+        width: 50% !important;
+    }
+    .div-logo h1{
+        display: block !important;
+        font-size: 15px;
+        text-align: center;
+        color: #FFFFFF;
+        margin: 0;
+        margin-top: 10px
+    }
+}
+
+/*FIN HEADER MI CASH */
