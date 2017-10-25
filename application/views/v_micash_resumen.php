@@ -225,7 +225,7 @@
     <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#0152aa;text-align: center;font-size: 15px; margin-left: -315px;font-family: 'quicksandbold'">T&eacute;rminos y Condiciones</h3>
+            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#0152aa;text-align: center;font-size: 15px; margin-left: 0;font-family: 'quicksandbold'">T&eacute;rminos y Condiciones</h3>
           </div>
           <div class="modal-body">
           <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>

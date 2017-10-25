@@ -132,7 +132,7 @@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6">
                                                     	<label for="slider-range-meses" style="margin-right: 22px;position: relative;top: 5px;">Plazo de Pr&eacute;stamo</label>
-                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -20px;l;left: 76px;" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button>
+                                                    	<button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="top: -20px;l;left: 76px;" data-toggle="tooltip" data-placement="bottom" data-original-title="Tiempo en que desea pagar su pr&eacute;stamo"><i class="mdi mdi-info"></i></button>
                                                         <div id="slider-range-meses"></div>
                                                         <p id="slider-range-value-meses" style="margin-top:10px;margin-bottom:0;position: relative;right: 135px;top: -41px;border: 1px solid #ececec;width: 112px;height: 52px;padding: 13px;font-family: 'quicksandlight'"></p>
                                                     </div>
@@ -351,10 +351,10 @@
         <div class="modal-body">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-          		<p style="color:#808080">"Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+          		<p style="color:#808080">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
                 <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.&quot;</p>
+                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
         	</div>
     	</div>
         </div>

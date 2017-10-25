@@ -369,10 +369,10 @@
         <div class="modal-body">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-                <p style="color:#808080">"Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+                <p style="color:#808080">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
                 <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.&quot;</p>
+                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
           </div>
       </div>
         </div>
