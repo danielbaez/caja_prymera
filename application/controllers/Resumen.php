@@ -11,11 +11,19 @@ class Resumen extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->library('table');
+        $this->load->helper('cookie');
+        $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        if (! isset($_COOKIE[__getCookieName()])) {
+            redirect("/", 'location');
+        }
     }
 
     public function index()
     {
+        if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
+            redirect("/C_main", 'location');
+        }
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total'] = _getSesion('pago_total');
@@ -30,7 +38,6 @@ class Resumen extends CI_Controller {
         $dato['cuota_inicial'] = _getSesion('cuota_inicial');
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
-        _log(_getSesion('Agencia'));
         $dato['comboAgencias'] = $this->__buildComboAgencias();
         $this->load->view('v_micash_resumen', $dato);
     }

@@ -17,6 +17,8 @@ class C_confirmacion extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->library('table');
+        $this->load->helper('cookie');
+        $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->sueldo = 18750;
         $this->array_datos = array(
@@ -38,15 +40,16 @@ class C_confirmacion extends CI_Controller {
         );
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
+        if (! isset($_COOKIE[__getCookieName()])) {
+            redirect("/", 'location');
+        }
     }
     
     public function index()
     {
-        //_log(print_r($this->session->userdata(), true));
-        /*if (_getSesion('usuario') != null) {
+        if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0 || _getSesion('conectado') == 0) {
             redirect("/C_main", 'location');
-        }*/
-        $this->session->set_userdata(array('conectado' => 0));
+        }
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
         $data['email']  = _getSesion('email');

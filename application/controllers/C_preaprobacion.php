@@ -60,7 +60,7 @@ class C_preaprobacion extends CI_Controller {
 
         $array_datos = _getSesion('arrDatos');
         if($array_datos == null) {
-            redirect("/", 'location');
+            redirect("/C_main", 'location');
         }
 
         $plazos = [];
