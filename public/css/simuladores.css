@@ -1,0 +1,73 @@
+body{
+	font-family: 'quicksandlight';
+}
+
+span,p{
+
+	font-family: 'quicksandlight';
+}
+
+.container-simulador{
+	margin-bottom: 20px;
+}
+
+.font-bold{
+	font-family: 'quicksandbold';
+}
+
+.titulo-simulador{
+	font-size: 36px;
+    color: #015FA9;
+}
+
+.slider-value{
+	margin-top: 30px
+}
+
+.padding-left{
+	padding-left: 0
+}
+
+.padding-right{
+	padding-right: 0
+}
+
+.margin-top{
+margin-top: 40p
+}
+
+.div-ajax-valores{
+	 border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px; color: #1C4485 !important;
+}
+
+.margin-ajax-valores{
+	 margin: 10px
+}
+
+.titulo-ajax-valores{
+	font-size: 18px;padding: 0px;margin: 5px;
+}
+
+.valor-ajax-valores{
+	font-size: 24px
+}
+
+.letra-chica{
+	color:#A9A9A9;font-size: 11px;
+}
+
+.margin-top-btn{
+	margin-top: 10px
+}
+
+.btn-text-ampliar{
+	background-color: #bdbebf;color: #fff;font-size: 15px;width: 125px;height: 51px;padding: 1px;
+}
+
+.btn-text-siguiente{
+	background-color: #1C4485;color: #fff;font-size: 15px;width: 125px;height: 51px;padding-top: 14px;
+}
+
+.btn.focus, .btn:focus, .btn:hover{
+	color: white;
+}
