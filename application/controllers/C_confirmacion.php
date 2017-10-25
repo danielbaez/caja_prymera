@@ -38,11 +38,15 @@ class C_confirmacion extends CI_Controller {
         );
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
-        
     }
     
     public function index()
     {
+        //_log(print_r($this->session->userdata(), true));
+        /*if (_getSesion('usuario') != null) {
+            redirect("/C_main", 'location');
+        }*/
+        $this->session->set_userdata(array('conectado' => 0));
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
         $data['email']  = _getSesion('email');
@@ -375,7 +379,6 @@ class C_confirmacion extends CI_Controller {
                             'cod_concecionaria' => $concesionaria,
                             'agencia_desembolso' => $agencia[0]->id,
                             'validar_celular'   => 1,
-                            'timestamp_datos'   => date("Y-m-d H:i:s"),
                             'timestamp_final'   => date("Y-m-d H:i:s"),
                             'estado_civil'      => $estado_civil,
                             'nombre_conyugue'   => $nombre_conyugue,

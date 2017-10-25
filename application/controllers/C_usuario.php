@@ -18,7 +18,6 @@ class C_usuario extends CI_Controller {
     public function asignarSupervisor()
     {       
         $data['personales'] = $this->M_usuario->getPersonalByRol();
-        _log(print_r($data['personales'], true));
         $this->load->view('v_asignarSupervisor', $data);
     }
 

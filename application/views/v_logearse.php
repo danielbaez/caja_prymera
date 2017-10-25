@@ -104,7 +104,7 @@
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
               <h1 class="titulo-vista">Bienvenido Usuario</h1>
-            <div class="panel panel-primary" style="border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;">
+            <div class="panel panel-primary" style="border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;padding: 20px">
                 <!-- <div class="panel-heading" style="background-color:#1C4485;border:0">
                   <h1 class="panel-title" style="font-size:25px;">Bienvenido Usuario</h1>
                 </div> -->
@@ -117,20 +117,38 @@
                         <input type="email" class="form-control tipo_letra_delgada" style="width: 80%;" name="usuario" id="email" placeholder="Enter email">
                       </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 25px">
                       <label class="control-label col-sm-3 tipo_letra_gruesa" for="pwd">Contrase&ntilde;a:</label>
                       <div class="col-sm-9"> 
                         <input type="password" class="form-control tipo_letra_delgada" style="width: 80%;" name="password" id="pwd" placeholder="Enter password">
                       </div>
                     </div>
-                    <div class="form-group"> 
-                      <div class="col-center" style="margin-left: 63px">
-                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="1">Dashboard</button>
-                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="2">Mi Cash</button>
-                        <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="3">Auto de Prymera</button>
-                        <input type="hidden" name="redirect">
-                      </div>
+                    <div class="col-xs-12">
+                        <div class="col-xs-6">
+                            <div class="form-group"> 
+                              <div class="col-center" style="">
+                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="2" style="width: 60%;margin-left: 115px;">Mi Cash</button>
+                                <input type="hidden" name="redirect">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group"> 
+                              <div class="col-center" style="">
+                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="3" style="margin-left: -25px;">Auto de Prymera</button>
+                                <input type="hidden" name="redirect">
+                              </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="col-xs-12">
+                            <div class="form-group"> 
+                              <div class="col-center" style="">
+                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="1" style="width: 58%;margin-left: 66px;">Dashboard</button>
+                                <input type="hidden" name="redirect">
+                              </div>
+                            </div>
+                        </div>
                     <div class="form-group"> 
                       <div class="col-center">
                         <small class="tipo_letra_delgada" style="font-size: 14px;">Olvid&oacute; su contrase&ntilde;a?</small> <a href="/Logearse/olvidoPassword" class="tipo_letra_delgada">Ingrese aqu&iacute;</a>

@@ -20,7 +20,7 @@ function agregarPersonal() {
 	    	rol = $(this).attr('data-rol');
 	    	agencia = $(this).attr('data-agencia');
 	    	glob_personalAsignado += '-'+$(this).val();
-	    	$('#personalAsignado').append("<p id='id_nombre_pers_"+dato+"' data-id="+dato+">"+nombre+" <i class='fa fa-minus-circle fa-1x' data-nombres="+nombre+" data-apellido="+apellido+" data-rol="+rol+" data-id_user="+dato+" data-agencias='"+agencia+"' aria-hidden='true' onclick='borrarAsignados("+$(this).val()+", this)'></i></p>");
+	    	$('#personalAsignado').append("<p id='id_nombre_pers_"+dato+"' data-id="+dato+">"+nombre+" "+apellido+"<i class='fa fa-minus-circle fa-1x' data-nombres="+nombre+" data-apellido="+apellido+" data-rol="+rol+" data-id_user="+dato+" data-agencias='"+agencia+"' aria-hidden='true' onclick='borrarAsignados("+$(this).val()+", this)'></i></p>");
 	    	$('#check_'+dato).remove();
 	    }
 	});
@@ -74,7 +74,7 @@ function borrarAsignados(id_pers, element) {
 	$('#id_nombre_pers_'+id_pers).remove();
 	$('.agregar').append('<tr id="check_'+id_pers+'">'+
                                     '<td>'+
-                                       '<input type="checkbox" data-nombre="'+nombre+'" data-nombre="'+apellido+'" data-rol="'+rol+'" data-agencia="'+agencia+'" name="id_asesor[]" value="'+id_pers+'">'+
+                                       '<input type="checkbox" data-nombre="'+nombre+'" data-apellido="'+apellido+'" data-rol="'+rol+'" data-agencia="'+agencia+'" name="id_asesor[]" value="'+id_pers+'">'+
                                     '</td>'+                    
                                     '<td>'+nombre+' '+apellido+'</td>'+
                                     '<td>'+rol+'</td>'+

@@ -383,4 +383,8 @@ footer p{
 		font-size: 33px;
 	}
 }
+a,i {
+	cursor: pointer;
+	cursor: hand;
+}
 
