@@ -353,7 +353,11 @@ function goToHome() {
 
 function cambiarTam() {
 	var codigo = $('#codigo').val();
-	if(codigo == '01') {
-		console.log('entra');
+	if(codigo != '01') {
+		$('#nro_fijo').val('');
+		$('#nro_fijo').attr('maxlength', 6);
+	}else {
+		$('#nro_fijo').val('');
+		$('#nro_fijo').attr('maxlength', 7);
 	}
 }
