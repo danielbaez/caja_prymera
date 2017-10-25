@@ -18,6 +18,7 @@ span,p{
 .titulo-simulador{
 	font-size: 36px;
     color: #015FA9;
+    line-height: 35px;
 }
 
 .slider-value{
@@ -33,7 +34,7 @@ span,p{
 }
 
 .margin-top{
-margin-top: 40p
+margin-top: 40px
 }
 
 .div-ajax-valores{
@@ -71,3 +72,15 @@ margin-top: 40p
 .btn.focus, .btn:focus, .btn:hover{
 	color: white;
 }
+
+
+
+
+@media (max-width: 699px) { 
+
+   .titulo-simulador{
+	font-size: 24px;
+	line-height: 28px;
+
+}
+ }
