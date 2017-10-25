@@ -76,7 +76,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Asesor - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li class="active"><a href="/C_reporte/solicitudRechazada" class="nav-active-a">Solicitudes Rechazadas</a></li>
             </ul>
@@ -425,7 +425,7 @@ $(document).ready(function() {
             dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
             dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
             dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
-            dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+'</p>';
+            dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
             $('.div-datos-solicitud').html(dSolicitud);
 

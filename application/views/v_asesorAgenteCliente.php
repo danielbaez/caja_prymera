@@ -68,7 +68,7 @@
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="/C_reporteAsesor/agenteCliente" class="nav-active-a">Agente - CLiente</a></li>
+              <li class="active"><a href="/C_reporteAsesor/agenteCliente" class="nav-active-a">Asesor - Cliente</a></li>
               <li><a href="/C_reporteAsesor/agenteHistorialSolicitud">Historial Solicitud</a></li>
             </ul>
           </div>

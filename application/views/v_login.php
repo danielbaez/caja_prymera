@@ -44,7 +44,12 @@
             <div class="row">                
                 <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
                     <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
+                    <?php } ?>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
                     <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+                    <?php } ?>
                     <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
                 </div>
             </div>
@@ -111,7 +116,12 @@
                 </div>
                 <div class="hidden-xs hidden-sm col-md-6 button-login text-right img-form-vehicular">
                     <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
+                    <?php } ?>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
                     <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+                    <?php } ?>
                     <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> 
                     <!-- <img class="img-responsive" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png">  -->
                 </div>

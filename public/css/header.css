@@ -23,11 +23,19 @@ h1{font-family: 'quicksandlight' !important}
     margin-bottom: 5px;
 }
 
+.title-header-second{
+    color: #FFFFFF;
+    font-size: 27px;
+    line-height: 1.2;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
 .title-header-first{
     color: #FFFFFF;
     font-size: 20px;
     line-height: 1.2;
-    margin-top: 13px;
+    margin-top: 17px;
     margin-bottom: 5px;
 }
 
@@ -78,11 +86,15 @@ h1{font-family: 'quicksandlight' !important}
         font-size: 24px !important;
     }
 
+    .title-header-second{
+
+    }
+
  }
 
 /*@media (max-width: 650px) {*/
 @media (max-width: 535px) {
-    .title-header, .title-header-first {
+    .title-header, .title-header-first, .title-header-second {
         display: none;
     }
     .div-logo{

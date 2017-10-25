@@ -76,7 +76,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - Cliente</a></li>
+              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Asesor - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>

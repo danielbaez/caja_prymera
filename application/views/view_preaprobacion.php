@@ -67,7 +67,7 @@
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
           <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
-          <h1 class="title-header">Mi Cash</h1>
+          <h1 class="title-header-second">Mi Cash</h1>
         </div>
         <div class="col-xs-6 div-logo">
           <img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
