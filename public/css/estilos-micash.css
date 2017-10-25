@@ -312,20 +312,7 @@ h1,h2,h3,h4,h5,a{
  font-family: 'quicksandbold';   
 }
 
-/* NAVEGACION */
 
-.usuario-logueado{
-    font-size: 17px;
-}
-
-.div-navegacion{
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.navegacion-a{
- background: none;   
-}
 
 .img-form-vehicular{
     background: url(/public/img/fondos/creedito-Vehicular.png);

@@ -718,16 +718,16 @@ class preaprobacion extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $pagoTot  = _post('pagotot');
+            $pagoTot  = preg_replace('/[^0-9.]/', "", _post('pagotot'));
             $marca  = _post('marca');
             $modelo  = _post('modelo');
-            $cuotaMens  = _post('mensual');
-            $meses  = _post('meses');
-            $importe  = _post('cuotaIni');
-            $monto  = _post('monto');
+            $cuotaMens  = preg_replace('/[^0-9.]/', "", _post('mensual'));
+            $meses  = preg_replace('/[^0-9.]/', "", _post('meses'));
+            $importe  = preg_replace('/[^0-9.]/', "", _post('cuotaIni'));
+            $monto  = preg_replace('/[^0-9.]/', "", _post('monto'));
             $numero  = _post('numero');
-            $varTcea  = _post('pors_tcea');
-            $varTea   = _post('pors_tea');
+            $varTcea  = preg_replace('/[^0-9.]/', "", _post('pors_tcea'));
+            $varTea   = preg_replace('/[^0-9.]/', "", _post('pors_tea'));
             $Agencia  = _post('Agencia');
             $seguro  = _post('seguro');
             $idPersona = _getSesion('idPersona');

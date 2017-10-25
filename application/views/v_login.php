@@ -376,10 +376,10 @@
                                 <span>El producto "Auto de Prymera" esta afecto el seguro desgravamen y seguro vehicular</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br></span>
+                                <span>Certificado de Seguro Vehicular; cliente puede contratar un seguro particular, debi&eacute;ndolo endosar a favor de Prymera.</br></span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>
+                                <span>
                                 Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">

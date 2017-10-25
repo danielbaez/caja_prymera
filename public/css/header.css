@@ -1,3 +1,19 @@
+/* NAVEGACION */
+
+.usuario-logueado{
+    font-size: 17px;
+}
+
+.div-navegacion{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.navegacion-a{
+ background: none;   
+}
+
+
 /* HEADER MI CASH */
 
 h1{font-family: 'quicksandlight' !important}

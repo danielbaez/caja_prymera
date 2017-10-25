@@ -65,7 +65,7 @@
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
               <h1 class="titulo-vista">Bienvenido Usuario</h1>
-            <div class="panel panel-primary" style="border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;padding: 20px">
+            <div class="panel panel-primary" style="border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;padding: 20px; font-family:'quicksandlight'">
                 <!-- <div class="panel-heading" style="background-color:#1C4485;border:0">
                   <h1 class="panel-title" style="font-size:25px;">Bienvenido Usuario</h1>
                 </div> -->
@@ -73,13 +73,13 @@
                   <form class="form-horizontal" action="/logearse/login" method="post">
                     <br>
                     <div class="form-group">
-                      <label class="control-label col-sm-3 tipo_letra_gruesa" for="email">Usuario:</label>
+                      <label class="control-label col-sm-3 tipo_letra_gruesa" for="email" style="font-family:'quicksandbold'; color:#286090">Usuario:</label>
                       <div class="col-sm-9">
                         <input type="email" class="form-control tipo_letra_delgada" style="width: 80%;" name="usuario" id="email" placeholder="Enter email">
                       </div>
                     </div>
                     <div class="form-group" style="margin-top: 25px">
-                      <label class="control-label col-sm-3 tipo_letra_gruesa" for="pwd">Contrase&ntilde;a:</label>
+                      <label class="control-label col-sm-3 tipo_letra_gruesa" for="pwd" style="font-family:'quicksandbold'; color:#286090">Contrase&ntilde;a:</label>
                       <div class="col-sm-9"> 
                         <input type="password" class="form-control tipo_letra_delgada" style="width: 80%;" name="password" id="pwd" placeholder="Enter password">
                       </div>

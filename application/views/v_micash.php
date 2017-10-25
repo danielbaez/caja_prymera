@@ -168,7 +168,7 @@
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Pericidad de pago:</strong></span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Periocidad de pago:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
                                 <span>Mensual.</span>

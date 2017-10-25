@@ -22,45 +22,27 @@
   <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-     
-    <!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>"> -->
-    <!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-preaprobacion.css?v=<?php echo time();?>"> -->
+    
 
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
+
+<style type="text/css">
+  @media only screen and (min-width : 768px) {
+   .navbar-collapse.custom-menu {
+        display: none !important
+    }
+  .navbar-default{
+    display: none !important
+  }
+}
+</style>
+
   </head>
     <body>
     
-
-
-    <!-- <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 100px;margin-top: 35px;">Cr&eacute;dito consumo</h6>
-        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 100px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
-      </div>
-
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-
-          <li class="dropdown">
-            <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="_goToHomeMicash();">
-            <ul class="dropdown-menu">
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
 
   <div class="container-header">
     <div class="container">
@@ -77,14 +59,49 @@
     </div>            
   </div>
 
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <!-- <span class="sr-only">Toggle navigation</span> -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+    </div>
+
+    
+    <div class="collapse navbar-collapse custom-menu" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
   <div class="container container-simulador">
+
     <div class="row">
       <?php if($tipo_product == '') {?>
         <h2>Completa los datos:</h2>
       <?php  } else {?>
-      <div class="col-xs-12 text-center">
+      <div class="col-xs-8 text-center">
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
       </div>
+      <div class="hidden-xs col-sm-4 text-right div-navegacion">
+            <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+            <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+            <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
+            <?php } ?>
+            <?php if(_getSesion('rol') == 'asesor'){ ?>
+            <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+            <?php } ?>
+            <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+        </div>
       <div class="col-xs-12">
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
@@ -194,18 +211,16 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion_m.js?v=<?php echo time();?>"></script>
-  <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-    <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
+  
+
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
 
 
   <script>
