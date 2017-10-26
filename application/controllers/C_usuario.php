@@ -219,7 +219,7 @@ class C_usuario extends CI_Controller {
             foreach ($datosAsesor as $key) {
                         $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" onclick="agregarPersonal()" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">
                                     </td>                    
                                     <td>'.$key->nombre.' '.$key->apellido.'</td>
                                     <td>'.$key->rol.'</td>

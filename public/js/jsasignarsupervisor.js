@@ -23,6 +23,7 @@ function agregarPersonal() {
 	    	glob_personalAsignado += '-'+$(this).val();
 	    	$('#personalAsignado').append("<p id='id_nombre_pers_"+dato+"' data-id="+dato+">"+nombre+" "+apellido+"<i class='fa fa-minus-circle fa-1x' data-nombres="+nombre+" data-apellido="+apellido+" data-rol="+rol+" data-id_user="+dato+" data-agencias='"+agencia+"' aria-hidden='true' onclick='borrarAsignados("+$(this).val()+", this)'></i></p>");
 	    	$('#check_'+dato).remove();
+        $('#check_'+dato).addClass('hidden');
 	    }
 	    //console.log(glob_personalAsignado);
 	});
