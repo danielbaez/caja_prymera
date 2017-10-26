@@ -173,7 +173,8 @@
                         <td style="display: none"><?php echo $solicitud->monto ?></td>
                         <td style="display: none"><?php echo $solicitud->plazo ?></td>
                         <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
-                        <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_inicial ?></td>
+                        <!-- <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td> -->
                         <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
                         <td style="display: none"><?php echo $solicitud->tea ?></td>
                         <td style="display: none"><?php echo $solicitud->tcea ?></td>
@@ -270,16 +271,16 @@ $(document).ready(function() {
             titleAttr: 'PDF',
             title: 'Busqueda Solicitud - Filtros',
             orientation: 'landscape',
-            pageSize: 'LEGAL',
+            pageSize: 'A2',
             filename: 'reporte',
             customize: function (doc) {
               doc.content[1].table.widths = 
                   Array(doc.content[1].table.body[0].length + 1).join('*').split('');
             },
             exportOptions: {
-                // columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                 columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
                 //columns: [ 1, 2, 3, 9]
-                columns: [ 1, 2, 3, 9]
+                //columns: [ 1, 2, 3, 9]
             }
         },
         {
