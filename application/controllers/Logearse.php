@@ -322,7 +322,7 @@ class logearse extends CI_Controller {
        $this->email->to($email);
        $this->email->subject('Bienvenido/a a Caja Prymera-Restaurar Contrase&ntilde;a');
        $this->email->message('
-        <h1><strong>Resetear Contrase&ntilde;a</strong></h1>
+        <h1><strong>Restaurar Contrase&ntilde;a</strong></h1>
         <h4>Te damos la bienvenida a Prymera!</h4>
         <h4>A continuaci&oacute;n te enviamos un enlace para que pueda cambiar tu contrase&ntilde;a</h4>
 

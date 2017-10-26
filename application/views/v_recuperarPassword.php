@@ -50,7 +50,7 @@
               <h1 class="titulo-vista">Restaurar Contrase&ntilde;a</h1>
             <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
                 <p>Olvid&oacute; su contrase&ntilde;a?</p>
-                <p>Ingrese su usuario o direcci&oacute;n de correo para ayudarlo a resetear su contrase&ntilde;a</p>
+                <p>Ingrese su usuario o direcci&oacute;n de correo para ayudarlo a restaurar su contrase&ntilde;a</p>
                 <div class="panel-body">
                   <form class="form-horizontal">
                     <div class="form-group">
@@ -77,12 +77,12 @@
             <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title modal-recuperar-password-titulo">Resetear Contrase&ntilde;a</h3>
+                    <h3 class="modal-title modal-recuperar-password-titulo">Restaurar Contrase&ntilde;a</h3>
                   </div>
                   <div class="modal-body text-center">
                   <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i><br>
                    <h4>Revisa tu correo</h4>
-                 <p>Hemos enviado un enlace a <span id="correo_cambio"></span>, para resetear tu contrase&ntilde;a.</p>
+                 <p>Hemos enviado un enlace a <span id="correo_cambio"></span>, para restaurar tu contrase&ntilde;a.</p>
                  <p>Revisa tu buz&oacute;n de correo electr&oacute;nico, si no recibes el email, por favor revisa tambien tu bandeja de spam.</p>
                   </div>
                   <div class="modal-footer" style="text-align: center">
