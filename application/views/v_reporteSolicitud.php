@@ -189,12 +189,13 @@
                   <thead>
                     <tr class="tr-header-reporte">
                       <th class="text-center" style="display: none">Fecha default</th>
-                      <th class="text-center">Fecha</th>
+                      <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Nro sol.</th>
                       <th class="text-center">Cliente</th>
+                      <th class="text-center">DNI</th>
                       <th class="text-center">Agencia</th>
                       <th class="text-center">Agencia de Tramitaci&oacute;n</th>
-                      <th class="text-center">Tipo</th>
+                      <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Asesor</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Monto</th>
@@ -210,6 +211,7 @@
                         <td><?php echo $solicitud->fecha_solicitud ?></td>
                         <td><?php echo $solicitud->id_solicitud ?></td>
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->dni ?></td>
                         <td><?php echo $solicitud->AGENCIA ?></td>
                         <td><?php echo $solicitud->agencia_desembolso ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
@@ -294,6 +296,9 @@ $(document).ready(function() {
             customize: function (doc) {
               doc.content[1].table.widths = 
                   Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+            },
+            exportOptions: {
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             }
         },
         {
@@ -308,6 +313,9 @@ $(document).ready(function() {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
  
                 //$('row c[r^="A"]', sheet).attr( 's', '2');
+            },
+            exportOptions: {
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             }
         },
       ],

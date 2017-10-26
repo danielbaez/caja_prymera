@@ -123,7 +123,7 @@
                   <thead>
                     <tr class="tr-header-reporte">
                       <th class="text-center" style="display: none">Fecha default</th>
-                      <th class="text-center">Fecha</th>
+                      <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
@@ -236,6 +236,9 @@
                   customize: function (doc) {
                     doc.content[1].table.widths = 
                         Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                  },
+                  exportOptions: {
+                      columns: [ 1, 2, 3]
                   }
               },
               {
@@ -250,6 +253,9 @@
                       var sheet = xlsx.xl.worksheets['sheet1.xml'];
        
                       //$('row c[r^="A"]', sheet).attr( 's', '2');
+                  },
+                  exportOptions: {
+                      columns: [ 1, 2, 3]
                   }
               },
             ],

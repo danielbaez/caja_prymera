@@ -60,17 +60,17 @@
   </div>
 
 
-<nav class="navbar navbar-default">
+<!-- <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+    
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <!-- <span class="sr-only">Toggle navigation</span> -->
+        
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- <a class="navbar-brand" href="#">Brand</a> -->
+      
     </div>
 
     
@@ -81,18 +81,33 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
 
   <div class="container container-simulador">
 
-    <div class="row">
+    <div class="row" >                
+                <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
+                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
+                    <?php } ?>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+                    <?php } ?>
+                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+                </div>
+            </div>
+
+    <div class="row" style="margin-top: 20px">
       <?php if($tipo_product == '') {?>
         <h2>Completa los datos:</h2>
       <?php  } else {?>
-      <div class="col-xs-8 text-center">
+      <div class="col-xs-12 col-md-8 text-center">
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
       </div>
-      <div class="hidden-xs col-sm-4 text-right div-navegacion">
+      <!-- <div class="hidden-xs col-sm-4 text-right div-navegacion"> -->
+      <!-- <div class="col-xs-12 col-sm-4 text-right div-navegacion"> -->
+      <div class="hidden-xs hidden-sm col-md-4 button-login text-right">
             <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
             <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
             <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>

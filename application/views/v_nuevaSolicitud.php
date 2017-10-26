@@ -71,15 +71,39 @@
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                       <div class="panel panel-primary" style="border: 1px solid #337ab7;border-top-right-radius: 0px;border-top-left-radius: 40px;border-bottom-left-radius: 0px;border-bottom-right-radius: 40px;"><br>
                         <div class="panel-body" style="margin-top: 15px; margin-bottom: 20px">
-                          <div class="col-xs-12 col-sm-6">
+                          <!-- <div class="col-xs-12 col-sm-6">
                             <a href="/C_login" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
                             <h5>Auto de Prymera</h5>
                           </div>
                           <div class="col-xs-12 col-sm-6">
                             <a href="/Micash" style="color:black"><i class="fa fa-money fa-5x" aria-hidden="true"></i></a><br>
                             <h5>Mi Cash</h5>
-                          </div>
+                          </div> -->
+
+                            <?php if(in_array(2, _getSesion('permiso')) && in_array(3, _getSesion('permiso'))){ ?>
+                              <div class="col-xs-12 col-sm-6">
+                                <a href="/C_login" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
+                                <h5>Auto de Prymera</h5>
+                              </div>
+                              <div class="col-xs-12 col-sm-6">
+                                <a href="/Micash" style="color:black"><i class="fa fa-money fa-5x" aria-hidden="true"></i></a><br>
+                                <h5>Mi Cash</h5>
+                              </div>
+                            <?php } elseif(in_array(2, _getSesion('permiso'))){ ?>
+                                <div class="col-xs-12">
+                                    <a href="/Micash" style="color:black"><i class="fa fa-money fa-5x" aria-hidden="true"></i></a><br>
+                                    <h5>Mi Cash</h5>
+                                </div>
+                            <?php } elseif(in_array(3, _getSesion('permiso'))){ ?>
+                                <div class="col-xs-12">
+                                    <a href="/C_login" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
+                                    <h5>Auto de Prymera</h5>
+                              </div>
+                            <?php } ?>
+
                         </div>
+
+
                       </div>
                     </div>
 

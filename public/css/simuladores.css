@@ -19,10 +19,12 @@ span,p{
 	font-size: 36px;
     color: #015FA9;
     line-height: 35px;
+    margin-top: 0
 }
 
 .slider-value{
-	margin-top: 30px
+	margin-top: 30px;
+	border: 1px solid #ecdbdb;
 }
 
 .padding-left{

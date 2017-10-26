@@ -135,7 +135,8 @@ class logearse extends CI_Controller {
                                                             'id_usuario'      =>$datos[0]->id,
                                                             'nombre'          =>$datos[0]->nombre,
                                                             'nombreCompleto'          =>$datos[0]->nombre.' '.$datos[0]->apellido,
-                                                            'id_agencia'          =>$datos[0]->id_agencia
+                                                            'id_agencia'          =>$datos[0]->id_agencia,
+                                                            'permiso'          =>$productos
                                                             ));
                                                                           
                         if(in_array($redirect, $productos))
