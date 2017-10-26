@@ -140,6 +140,7 @@
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center" style="display: none">DNI</th>
+                      <th class="text-center" style="display: none">Email</th>
                       <th class="text-center" style="display: none">Nro Cel</th>
                       <th class="text-center" style="display: none">Fijo</th>
                       <th class="text-center" style="display: none">Importe Préstamo</th>
@@ -150,6 +151,10 @@
                       <th class="text-center" style="display: none">TEA</th>
                       <th class="text-center" style="display: none">TCEA</th>
                       <th class="text-center" style="display: none">Nro Solicitud</th>
+                      <th class="text-center" style="display: none">Fecha Creación</th>
+                      <th class="text-center" style="display: none">Hora Creación</th>
+                      <th class="text-center" style="display: none">Fecha Cierre</th>
+                      <th class="text-center" style="display: none">Hora Cierre</th>
                       <th class="text-center" style="display: none">Agencia</th>
                       <th class="text-center" style="display: none">Asesor</th>
                       <th class="text-center">Tipo Crédito</th>
@@ -168,17 +173,21 @@
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         
                         <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->email_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->monto ?></td>
                         <td style="display: none"><?php echo $solicitud->plazo ?></td>
                         <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
                         <td style="display: none"><?php echo $solicitud->cuota_inicial ?></td>
-                        <!-- <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td> -->
-                        <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td>
                         <td style="display: none"><?php echo $solicitud->tea ?></td>
                         <td style="display: none"><?php echo $solicitud->tcea ?></td>
                         <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
                         <td style="display: none"><?php echo $solicitud->agencia ?></td>
                         <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
 
@@ -271,14 +280,14 @@ $(document).ready(function() {
             titleAttr: 'PDF',
             title: 'Busqueda Solicitud - Filtros',
             orientation: 'landscape',
-            pageSize: 'A2',
+            pageSize: 'A0',
             filename: 'reporte',
             customize: function (doc) {
               doc.content[1].table.widths = 
                   Array(doc.content[1].table.body[0].length + 1).join('*').split('');
             },
             exportOptions: {
-                 columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                 columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 20]
                 //columns: [ 1, 2, 3, 9]
                 //columns: [ 1, 2, 3, 9]
             }
@@ -297,7 +306,7 @@ $(document).ready(function() {
                 //$('row c[r^="A"]', sheet).attr( 's', '2');
             },
             exportOptions: {
-                columns: [ 1, 2, 3, 4]
+                columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
             }
         },
       ],
@@ -410,7 +419,16 @@ $(document).ready(function() {
 
           if("<?php echo _getSesion('rol') ?>" == 'jefe_agencia'){
             
-              dSolicitud += '<select name="status" class="form-control" id="status">';
+            var disabled = 'disabled';
+            if(detalle.status_sol == 0){
+              disabled = '';
+              $('.btn-actualizar-estado').show();
+            }
+            if(detalle.status_sol == 1){
+              $('.btn-actualizar-estado').hide();
+            }
+
+              dSolicitud += '<select name="status" '+disabled+' class="form-control" id="status">';
             dSolicitud += '<option value="">Status</option>';
             if(detalle.status_sol == 0){
               dSolicitud += '<option selected value="0">Abierto</option>';
@@ -424,7 +442,7 @@ $(document).ready(function() {
             dSolicitud += '</select>';
 
 
-            dSolicitud += '<select style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
+            dSolicitud += '<select '+disabled+' style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
             dSolicitud += '<option value="">Asignar nuevo asesor</option>';
             console.log(asignar)
             for (var j = 0; j < asignar.length; j++) {
