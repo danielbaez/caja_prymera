@@ -143,7 +143,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Monto a financiar:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
-                                <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
+                                <span>M&iacute;nimo 1,000 Soles y M&aacute;ximo 15,000 Soles.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
@@ -290,7 +290,7 @@
                                 <span>Si, usted podrá hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;l es el procedimiento de pagos anticipados o adelantos de cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:

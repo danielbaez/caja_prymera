@@ -21,6 +21,7 @@ class Resumen extends CI_Controller {
 
     public function index()
     {
+      _log(print_r($this->session->userdata(), true));
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
             redirect("/C_main", 'location');
         }
@@ -58,6 +59,7 @@ class Resumen extends CI_Controller {
         try {
             $agencia = _post('agencia');
             $idPersona  = _getSesion('idPersona');
+            $gmailAgencia = null;
             if($agencia != null) {
                 $session = array('Agencia' => $agencia);
                 $this->session->set_userdata($session);
@@ -66,6 +68,7 @@ class Resumen extends CI_Controller {
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
             $validacion = $this->sendMailGmail();
+            $gmailAgencia = sendMailGmailAgencia();
             $celular = $this->enviarMail();
 //             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;
@@ -199,6 +202,84 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
+     }
+
+     function sendMailGmailAgencia(){
+      $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+      try {  
+          //cargamos la libreria email de ci
+       $this->load->library("email");
+       //configuracion para gmail
+       $configGmail = array(
+       'protocol' => 'smtp',
+       'smtp_host' => 'ssl://smtp.gmail.com',
+       'smtp_port' => 465,
+       'smtp_user' => 'miauto@prymera.pe',
+       'smtp_pass' => '8hUpuv6da_@v',
+       'mailtype' => 'html',
+       'charset' => 'utf-8',
+       'newline' => "\r\n"
+       );    
+       $poliza = null;
+       
+       //cargamos la configuración para enviar con gmail
+       $this->email->initialize($configGmail);
+       $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+       $ubicacion = $direccion[0]->UBICACION;
+       $this->email->from('userauto@prymera.com');
+       $this->email->to('jhonatan.ibericom@gmail.com');
+       $this->email->subject('Bienvenido/a a Caja Prymera');
+       $texto = null;
+       $nombre = _getSesion('nombre');
+       $tipo_cred = null;
+       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
+       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
+       $this->email->message('<body>
+                                  <h2 style="text-align: center;color: #0152aa;">Estimado Colaborador:</h2>
+
+                                  <p style="text-align: center;color: black;">Es un gusto saludarlo e informarle que el siguiente cliente ha solicitado un cr&eacute;dito &quot;'.$tipo_cred.'&quot;. Por favor cont&aacute;ctelo a la brevedad y realice el seguimiento respectivo hasta el desembolso de su cr&eacute;dito.</p>
+
+                                  <p style="margin-left: 30px;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
+                                   
+                                  <h3 style="margin-left: 30px;color: #0152aa;">Datos del cliente:</h3>
+                                  <p style="margin-left: 30px;color: black;">
+                                  Nombres: '.ucfirst($nombre).'</br>
+                                  Apellidos: '.ucfirst(_getSesion('apellido')).'</br>
+                                  DNI: '._getSesion('dni').'</br>
+                                  Tel&eacute;fono: '._getSesion('nro_celular').'</br>
+                                  Correo electr&oacute;nico: '._getSesion('email').'</br>
+                                  Agencia seleccionada: '._getSesion('Agencia').'</p>
+                                   
+                                   
+                                  <h3 style="margin-left: 30px;color: #0152aa;">Datos del Crédito:</h3>
+                                  <p style="margin-left: 30px;color: black;">
+                                  Nro. Solicitud:</br>
+                                  Importe: '._getSesion('Importe').'</br>
+                                  Plazo: '._getSesion('cant_meses').'</br>
+                                  Cuota: '._getSesion('cuota_mensual').'</br>
+                                  TEA: '._getSesion('sess_tea').'</br>
+                                  TCEA: '._getSesion('TCEA').'
+                                  </p>
+                                   
+                                   
+                                  <p style="margin-left: 30px;color: black;"><strong>T&eacute;rminos y condiciones:</strong>&quot; Seg&eacute;n lo especificado por legal&quot;</p>
+                                </body>');
+       $this->email->send();
+       
+      //_log(print_r($this->email->print_debugger(), true));
+       $arrayUpdt = array('envio_email' => 1,);
+       $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+       //con esto podemos ver el resultado
+       //var_dump($this->email->print_debugger());
+        $data['error'] = EXIT_SUCCESS;
+      }catch (Exception $e){
+            $arrayUpdt = array('envio_email' => 2);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+            //$data['msj'] = $e->getMessage();
+            //return json_encode(array_map('utf8_encode', array(1)));
+      }
+      return json_encode(array_map('utf8_encode', $data));
      }
 }
 

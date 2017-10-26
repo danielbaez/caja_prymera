@@ -81,7 +81,7 @@
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                   <div class="col-xs-12">
                     <div class="form-group" style="">
-                        <span><?php echo $valor_auto?></span>
+                        <span>S/ <?php echo $valor_auto?></span>
                         <div class="col-xs-7">
                           <span style="">Valor Veh&iacute;culo: </span>
                         </div>
@@ -106,7 +106,7 @@
                 <?php } ?>
 			    		  <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?><?php echo $Importe?></span>
+					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?><?php echo 'S/ '.$Importe?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Importe Pr&eacute;stamo: </span>
 					          	  </div>
@@ -115,7 +115,7 @@
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                 <div class="col-xs-12">
                     <div class="form-group" style="">
-                        <span><?php echo $cuota_inicial?></span>
+                        <span>S/ <?php echo $cuota_inicial?></span>
                         <div class="col-xs-7">
                           <span style="">Cuota Inicial: </span>
                         </div>
@@ -124,7 +124,7 @@
                 <?php } ?>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $cant_meses?></span>
+					          	  <span><?php echo $cant_meses?> meses</span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Plazo: </span>
 					          	  </div>
@@ -132,7 +132,7 @@
 					      </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $cuota_mensual?></span>
+					          	  <span>S/ <?php echo $cuota_mensual?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Cuota Mensual: </span>
 					          	  </div>
@@ -140,7 +140,7 @@
 					      </div>
                 <div class="col-xs-12">
                     <div class="form-group" style="">
-                        <span><?php echo $pago_total?></span>
+                        <span>S/ <?php echo $pago_total?></span>
                         <div class="col-xs-7">
                           <span style="">Pago Total: </span>
                         </div>
@@ -148,7 +148,7 @@
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group" style="">
-                        <span><?php echo $tea?></span>
+                        <span><?php echo $tea?>%</span>
                         <div class="col-xs-7">
                           <span style="">TEA: </span>
                         </div>
@@ -156,7 +156,7 @@
                 </div>
 					      <div class="col-xs-12">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $tcea?></span>
+					          	  <span><?php echo $tcea?>%</span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">TCEA: </span>
 					          	  </div>
