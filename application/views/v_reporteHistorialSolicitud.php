@@ -280,7 +280,7 @@ $(document).ready(function() {
             titleAttr: 'PDF',
             title: 'Busqueda Solicitud - Filtros',
             orientation: 'landscape',
-            pageSize: 'A2',
+            pageSize: 'A0',
             filename: 'reporte',
             customize: function (doc) {
               doc.content[1].table.widths = 
