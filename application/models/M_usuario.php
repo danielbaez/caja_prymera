@@ -360,5 +360,17 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array());
         return $result->result();
     }
+
+    function getDatosAsesoresByAgencia($agencia) {
+        $sql = "SELECT u.*, a.AGENCIA AS agencia
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND u.estado = 1
+                   AND u.rol LIKE '%asesor%'
+                   AND u.id_agencia != ?";
+        $result = $this->db->query($sql, array($agencia));
+        return $result->result();
+    }
 }
     

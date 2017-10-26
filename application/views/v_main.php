@@ -102,7 +102,7 @@
 					  ?>
 					<tr class="detalle-usuario" data-idUsuario="<?php echo $personal->id ?>">
 					  <td><?php echo $personal->nombre.' '.$personal->apellido ?></td>
-					  <td><?php echo $personal->rol ?></td>
+					  <td><?php echo ucfirst($personal->rol) ?></td>
 					  <td><?php echo $personal->AGENCIA ?></td>
 					</tr>
 				  <?php                 
@@ -207,7 +207,7 @@
 					  <label><input type="checkbox" value="2" name="permiso[]" id="permiso">Mi Cash</label>
 					</div>
 					<div class="checkbox">
-					  <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Vehicular</label>
+					  <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Auto de Prymera</label>
 					</div>
 					<div class="checkbox">
 					  <label><input type="checkbox" class="inactivo" value="0" name="permiso[]" disabled>Inactivo</label>
