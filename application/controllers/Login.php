@@ -101,6 +101,7 @@ class Login extends CI_Controller {
               $check = 2;//no aceptó
            }
           $result = $client->GetDatosCliente($params);
+          //_log(print_r($result, true));
           $res = $result->return->resultado;
           if($res == 1){
             $documento = $result->return->documento;
@@ -114,7 +115,7 @@ class Login extends CI_Controller {
             foreach ($arr as $key => $value) {
               if($key == 'rango'){
                 //print_r($value); 
-                $value->plazos = explode(',', $value->plazos); 
+                $value->plazos = explode(';', $value->plazos); 
 
                 $arrDatos[] = array('importeMinimo' => $value->importeMinimo, 'importeMaximo' => $value->importeMaximo, 'plazo' => $value->plazos);
                 //echo "<hr>";

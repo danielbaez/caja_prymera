@@ -64,7 +64,7 @@ class preaprobacion extends CI_Controller {
         $importeMinimo = _getSesion('importeMinimo');
         $plazos = _getSesion('plazos');
 
-        $plazos_explode = explode(',', $plazos);
+        $plazos_explode = explode(';', $plazos);
 
 
         $sueldo = $this->sueldo;

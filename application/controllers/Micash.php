@@ -51,6 +51,7 @@ class micash extends CI_Controller {
               $check = 2;//no aceptó
            }
           $result = $client->GetDatosCliente($params);
+          //_log(print_r($result, true));
           $res = $result->return->resultado;
           if($res == 1){
             $documento = $result->return->documento;
