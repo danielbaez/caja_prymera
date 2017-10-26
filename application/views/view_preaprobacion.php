@@ -69,11 +69,11 @@
   </div>
 
 
-<!-- <nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="min-height: 0">
   <div class="container-fluid">
     
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top: -70px">
         
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -90,7 +90,7 @@
       </ul>
     </div>
   </div>
-</nav> -->
+</nav>
 
 <!-- <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -112,7 +112,7 @@
 </nav> -->
 
 
-<nav class="navbar navbar-default" style="background: #0060aa; border: none">
+<!-- <nav class="navbar navbar-default" style="background: #0060aa; border: none">
   <div class="container-fluid">
 
     <div class="row" style="display: flex; align-items: center;">
@@ -147,7 +147,7 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
 
   <div class="container container-simulador">
 
