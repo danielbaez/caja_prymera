@@ -38,6 +38,15 @@
     display: none !important
   }
 }
+
+@media (max-width: 535px) {
+  .titles-header{
+    display: none
+  }
+  .img-header-s{
+    margin: auto;
+  }
+}
 </style>
 
   </head>
@@ -106,12 +115,19 @@
 <nav class="navbar navbar-default" style="background: #0060aa; border: none">
   <div class="container-fluid">
 
-    <div class="row" style="display: flex;
-  align-items: center;">
-      <div class="col-xs-6">
-        <img class="img-responsive img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+    <div class="row" style="display: flex; align-items: center;">
+      <div class="col-xs-10">
+        <div class="row" style="display: flex; align-items: center;">
+          <div class="col-xs-6 titles-header">
+            <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
+            <h1 class="title-header-second">Mi Cash</h1>
+          </div>
+          <div class="col-xs-6 img-header-s">
+            <img class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+          </div>  
+        </div>
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-2">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             

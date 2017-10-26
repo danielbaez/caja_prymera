@@ -60,11 +60,9 @@
 		  	<span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
 			<?php if(_getSesion('rol') == 'administrador'){ ?>
 				<a href="/C_usuario/asignarSupervisor">Asignar Asesores</a><br>
-			<a href="/C_usuario/nuevaSolicitud">Crear Solicitud</a><br>
 			<a href="/C_reporte/solicitudes">Ver Reportes</a><br>
 			  <?php }
 				  elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
-				  <a href="/C_usuario/nuevaSolicitud">Crear Solicitud</a><br>
 				  <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
 			  <?php } ?>
 			  <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>
