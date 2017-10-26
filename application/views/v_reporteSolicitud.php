@@ -76,7 +76,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li class="active"><a href="/C_reporte/solicitudes" class="nav-active-a">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Asesor - Cliente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
@@ -196,7 +196,7 @@
                       <th class="text-center">Agencia</th>
                       <th class="text-center">Agencia de Tramitaci&oacute;n</th>
                       <th class="text-center">Tipo Crédito</th>
-                      <th class="text-center">Asesor</th>
+                      <th class="text-center">Agente</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Monto</th>
                     </tr>

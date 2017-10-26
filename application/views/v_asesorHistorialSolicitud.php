@@ -67,7 +67,7 @@
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li><a href="/C_reporteAsesor/agenteCliente">Asesor - Cliente</a></li>
+              <li><a href="/C_reporteAsesor/agenteCliente">Agente - Cliente</a></li>
               <li class="active"><a href="/C_reporteAsesor/agenteHistorialSolicitud" class="nav-active-a">Historial Solicitud</a></li>
             </ul>
           </div>
@@ -125,6 +125,25 @@
                       <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
+                      <th class="text-center" style="display: none">DNI</th>
+                      <th class="text-center" style="display: none">Email</th>
+                      <th class="text-center" style="display: none">Nro Cel</th>
+                      <th class="text-center" style="display: none">Fijo</th>
+                      <th class="text-center" style="display: none">Importe Préstamo</th>
+                      <th class="text-center" style="display: none">Plazo</th>
+                      <th class="text-center" style="display: none">Cuota Mensual</th>
+                      <th class="text-center" style="display: none">Cuota Inicial</th>
+                      <th class="text-center" style="display: none">Total Préstamo</th>
+                      <th class="text-center" style="display: none">TEA</th>
+                      <th class="text-center" style="display: none">TCEA</th>
+                      <th class="text-center" style="display: none">Nro Solicitud</th>
+                      <th class="text-center" style="display: none">Fecha Creación</th>
+                      <th class="text-center" style="display: none">Hora Creación</th>
+                      <th class="text-center" style="display: none">Fecha Cierre</th>
+                      <th class="text-center" style="display: none">Hora Cierre</th>
+                      <th class="text-center" style="display: none">Agencia</th>
+                      <th class="text-center" style="display: none">Agente</th>
+                      <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
                   </thead>
@@ -138,6 +157,27 @@
                         <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>                        
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        
+                        <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->email_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->monto ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_inicial ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->tea ?></td>
+                        <td style="display: none"><?php echo $solicitud->tcea ?></td>
+                        <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->agencia ?></td>
+                        <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
+
+                        <td><?php echo $solicitud->producto ?></td>
                         <td><?php echo $solicitud->id_solicitud ?></td>
                       </tr>
                       <?php
@@ -231,14 +271,14 @@
                   titleAttr: 'PDF',
                   title: 'Busqueda Solicitud - Filtros',
                   orientation: 'landscape',
-                  pageSize: 'LEGAL',
+                  pageSize: 'A0',
                   filename: 'reporte',
                   customize: function (doc) {
                     doc.content[1].table.widths = 
                         Array(doc.content[1].table.body[0].length + 1).join('*').split('');
                   },
                   exportOptions: {
-                      columns: [ 1, 2, 3]
+                      columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 20]
                   }
               },
               {
@@ -255,7 +295,7 @@
                       //$('row c[r^="A"]', sheet).attr( 's', '2');
                   },
                   exportOptions: {
-                      columns: [ 1, 2, 3]
+                      columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
                   }
               },
             ],
@@ -362,10 +402,12 @@
 
                   var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
                   dSolicitud += '<p><span>Nro Solicitud:</span> '+detalle.id_solicitud+'</p>';
-                  dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
-                  dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
+                  dSolicitud += '<p><span>Fecha Creación:</span> '+detalle.fecha_solicitud+'</p>';
+                  dSolicitud += '<p><span>Hora Creación:</span> '+detalle.hora_solicitud+'</p>';
+                  dSolicitud += '<p><span>Fecha Cierre:</span> '+detalle.fecha_cierre+'</p>';
+                  dSolicitud += '<p><span>Hora Cierre:</span> '+detalle.hora_cierre+'</p>';
                   dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
-                  dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
+                  dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
                   $('.div-datos-solicitud').html(dSolicitud);
 

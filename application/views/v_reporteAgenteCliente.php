@@ -76,7 +76,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Asesor - Cliente</a></li>
+              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
@@ -84,13 +84,13 @@
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
-              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
+              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Agente</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/agenteCliente">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="email">* Asesor:</label>                
-                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
+                      <label for="email">* Agente:</label>                
+                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Agente">
                       <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
                   </div>
@@ -296,7 +296,7 @@ $(document).ready(function() {
             extend:    'pdf',
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Reporte Consolidado Solicitudes por Asesor',
+            title: 'Reporte Consolidado Solicitudes por Agente',
             orientation: 'landscape',
             pageSize: 'LEGAL',
             filename: 'reporte',
@@ -311,7 +311,7 @@ $(document).ready(function() {
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Reporte Consolidado Solicitudes por Asesor',
+            messageTop: 'Reporte Consolidado Solicitudes por Agente',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',
@@ -396,7 +396,7 @@ $(document).ready(function() {
 
   $('.export-excel').click(function(){
 
-    $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="8">Reporte Consolidado Solicitudes por Asesor</td></tr>').find('tr:first').hide();
+    $('#tabla-solicitudes thead').prepend('<tr class="text-right"><td colspan="8">Reporte Consolidado Solicitudes por Agente</td></tr>').find('tr:first').hide();
 
     $("#tabla-solicitudes").table2excel({
         filename: "reporte.xls"

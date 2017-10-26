@@ -68,14 +68,14 @@
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="/C_reporteAsesor/agenteCliente" class="nav-active-a">Asesor - Cliente</a></li>
+              <li class="active"><a href="/C_reporteAsesor/agenteCliente" class="nav-active-a">Agente - Cliente</a></li>
               <li><a href="/C_reporteAsesor/agenteHistorialSolicitud">Historial Solicitud</a></li>
             </ul>
           </div>
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
-              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Asesor</h4>
+              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Agente</h4>
               <form class="form-horizontal" method="POST" action="/C_reporteAsesor/agenteCliente">
                 <div class="col-xs-12 col-sm-4">
                   
@@ -286,7 +286,7 @@ $(document).ready(function() {
             extend:    'pdf',
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Reporte Consolidado Solicitudes por Asesor',
+            title: 'Reporte Consolidado Solicitudes por Agente',
             orientation: 'landscape',
             pageSize: 'LEGAL',
             filename: 'reporte',
@@ -301,7 +301,7 @@ $(document).ready(function() {
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Reporte Consolidado Solicitudes por Asesor',
+            messageTop: 'Reporte Consolidado Solicitudes por Agente',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',

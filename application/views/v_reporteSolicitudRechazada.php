@@ -76,7 +76,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Asesor - Cliente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li class="active"><a href="/C_reporte/solicitudRechazada" class="nav-active-a">Solicitudes Rechazadas</a></li>
             </ul>
@@ -89,7 +89,7 @@
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
-                      <label for="asesor">Asesor:</label>                
+                      <label for="asesor">Agente:</label>                
                       <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
                       <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
@@ -169,6 +169,10 @@
                       <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
+                      <th class="text-center" style="display: none">DNI</th>
+                      <th class="text-center" style="display: none">Nro Cel</th>
+                      <th class="text-center" style="display: none">Fijo</th>
+                      <th class="text-center" style="display: none">Nro Solicitud</th>
                       <th class="text-center">Agencia</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Status</th>
@@ -184,6 +188,10 @@
                         <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>                        
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
                         <td><?php echo $solicitud->agencia ?></td>
                         <td><?php echo $solicitud->producto ?></td>
                         <td>Rechazado</td>
@@ -273,7 +281,7 @@ $(document).ready(function() {
                   Array(doc.content[1].table.body[0].length + 1).join('*').split('');
             },
             exportOptions: {
-                columns: [ 1, 2, 3, 4, 5]
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
             }
         },
         {
@@ -290,7 +298,7 @@ $(document).ready(function() {
                 //$('row c[r^="A"]', sheet).attr( 's', '2');
             },
             exportOptions: {
-                columns: [ 1, 2, 3, 4, 5]
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
             }
         },
       ],
@@ -431,7 +439,7 @@ $(document).ready(function() {
             dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
             dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
             dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
-            dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
+            dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
             $('.div-datos-solicitud').html(dSolicitud);
 

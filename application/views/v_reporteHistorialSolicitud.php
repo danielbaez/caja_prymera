@@ -76,7 +76,7 @@
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
               <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
-              <li><a href="/C_reporte/agenteCliente">Asesor - Cliente</a></li>
+              <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li class="active"><a href="/C_reporte/historialSolicitud" class="nav-active-a">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
             </ul>
@@ -156,7 +156,7 @@
                       <th class="text-center" style="display: none">Fecha Cierre</th>
                       <th class="text-center" style="display: none">Hora Cierre</th>
                       <th class="text-center" style="display: none">Agencia</th>
-                      <th class="text-center" style="display: none">Asesor</th>
+                      <th class="text-center" style="display: none">Agente</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
@@ -415,7 +415,7 @@ $(document).ready(function() {
           dSolicitud += '<p><span>Hora Cierre:</span> '+detalle.hora_cierre+'</p>';
           
           dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
-          dSolicitud += '<p><span>Asesor:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
+          dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
           if("<?php echo _getSesion('rol') ?>" == 'jefe_agencia'){
             
@@ -443,7 +443,7 @@ $(document).ready(function() {
 
 
             dSolicitud += '<select '+disabled+' style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
-            dSolicitud += '<option value="">Asignar nuevo asesor</option>';
+            dSolicitud += '<option value="">Asignar nuevo Agente</option>';
             console.log(asignar)
             for (var j = 0; j < asignar.length; j++) {
               dSolicitud += '<option value="'+asignar[j].asignar_id+'">'+asignar[j].asignar_nombre+' '+asignar[j].asignar_apellido+'</option>';
