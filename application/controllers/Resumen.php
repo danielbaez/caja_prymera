@@ -68,7 +68,7 @@ class Resumen extends CI_Controller {
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
             $validacion = $this->sendMailGmail();
-            $gmailAgencia = sendMailGmailAgencia();
+            $gmailAgencia = $this->sendMailGmailAgencia();
             $celular = $this->enviarMail();
 //             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;
@@ -228,7 +228,7 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
        $this->email->from('userauto@prymera.com');
-       $this->email->to('jhonatan.ibericom@gmail.com');
+       $this->email->to('ssalas@prymera.pe');
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto = null;
        $nombre = _getSesion('nombre');

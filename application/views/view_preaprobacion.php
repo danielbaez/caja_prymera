@@ -103,7 +103,7 @@
 </nav> -->
 
 
-<!-- <nav class="navbar navbar-default" style="background: #0060aa; border: none">
+<nav class="navbar navbar-default" style="background: #0060aa; border: none">
   <div class="container-fluid">
 
     <div class="row" style="display: flex;
@@ -131,7 +131,7 @@
       </ul>
     </div>
   </div>
-</nav> -->
+</nav>
 
   <div class="container container-simulador">
 
