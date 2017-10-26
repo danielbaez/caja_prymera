@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="ISO-8859-1">
 
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
           <title>Cr&eacute;dito Mi Auto</title>
@@ -318,13 +318,13 @@
                         </div>
                         <div id="menus3" class="tab-pane">
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Puedo realizar pagos anticipados o adelantar cuotas de mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si, usted podr&aacute; hacerlo en cualquier momento y sin que ello implique el pago de penalidades y/o comisiones.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Cu&aacute;l el procedimiento de pagos anticipados o adelantos de cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si usted opta por esta opci&oacute;n, una vez realizado el pago deber&aacute; comunicar inmediatamente por escrito a Prymera sobre la elecci&oacute;n que usted ha tomado y que podr&iacute;a ser:<br>
@@ -335,7 +335,7 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Qu&eacute; pasa si realizo el pago anticipado y no comunico sobre mi elecci&oacute;n?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>En caso usted realice el pago de un monto menor o igual a dos cuotas, se considerar&aacute; como un Adelanto de cuotas. Si el monto pagado es mayor a dos cuotas (incluida la exigible en el periodo de pago) y no se cuente con dicha elecci&oacute;n o un tercero realice dicho pago por Usted, Prymera reducir&aacute; el n&uacute;mero de cuotas, dentro de los quince (15) d&iacute;as de realizado el pago. 
@@ -343,14 +343,14 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Qu&eacute; sucede si me atraso en pagar las cuotas?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Si el Cliente incumpliera con el pago oportuno de una o m&aacute;s de las cuotas previstas en el cronograma de pagos, se devengar&aacute;n autom&aacute;ticamente sobre las cuotas vencidas, en forma adicional a los intereses compensatorios, los intereses moratorios a la tasa que figura en la Hoja Resumen Informativa. La constituci&oacute;n en mora ser&aacute; autom&aacute;tica. Asimismo, se proceder&aacute; a realizar el reporte correspondiente a las Centrales de Riesgo.
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garant&iacute;a a Prymera, qu&eacute; tr&aacute;mites tengo que realizar una vez cancele mi cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Si he otorgado una garant&iacute;a a Prymera, <small style="font-family: arial;font-weight: bold;">&iquest; </small>qu&eacute; tr&aacute;mites tengo que realizar una vez cancele mi cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Deber&aacute;s acercarte a cualquier de nuestras Agencias portando tu documento de identidad y presentar los siguientes documentos:<br>- Solicitud de liberaci&oacute;n de la garant&iacute;a (hipotecaria y/o mobiliaria).<br>
@@ -362,7 +362,7 @@
                                 </span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Cu&aacute;nto tiempo demora el tr&aacute;mite de levantamiento de garant&iacute;a?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Cu&aacute;nto tiempo demora el tr&aacute;mite de levantamiento de garant&iacute;a?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Una vez recibida su solicitud de liberaci&oacute;n de garant&iacute;a, Prymera proceder&aacute; con la evaluaci&oacute;n de su solicitud y de ser procedente, le entregar&aacute; la minuta de levantamiento de garant&iacute;a respectiva. El plazo para realizar esta gesti&oacute;n es de hasta 30 d&iacute;as calendario desde que se recibe la solicitud hasta la entrega de la minuta de levantamiento solicitada.
@@ -383,13 +383,13 @@
                                 Seguro Desgravamen o Seguro de Vida endosado a favor de Prymera</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Qu&eacute; es el seguro de desgravamen?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Qu&eacute; es el seguro de desgravamen?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>Es un seguro de vida de car&aacute;cter obligatorio que adquiere cuando solicita su cr&eacute;dito y cubre fallecimiento por muerte natural o consecuencia de un accidente o invalidez total permanente por accidente. En caso de fallecimiento o invalidez por accidente, el seguro de desgravamen aplica s&oacute;lo si el siniestro es notificado antes de cumplirse los seis meses de su ocurrencia. El familiar del cliente deber&aacute; presentar los documentos requeridos en cualquiera de nuestra red de agencias.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un cr&eacute;dito?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>Es obligatorio contratar el(los) seguro(s) ofrecido(s) por Prymera para obtener un cr&eacute;dito?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>No, el cliente tiene derecho a elegir entre la contrataci&oacute;n del seguro ofrecido por Prymera o un seguro contratado directamente por el cliente, siempre que cumpla previamente con las siguientes condiciones:</br>
@@ -397,7 +397,7 @@
                                         b. Endosar las p&oacute;lizas a favor de Prymera en un plazo no mayor al d&iacute;a h&aacute;bil de suscrito el  Contrato. En el endoso deber&aacute; constar la declaraci&oacute;n de la Compa&ntilde;&iacute;a de Seguros en el sentido que, Prymera es el &uacute;nico beneficiario de la indemnizaci&oacute;n hasta por el monto pendiente del pago total del cr&eacute;dito. Adjuntar copia de la factura y/o comprobante de pago de la prima respectiva debidamente cancelada. En caso el cliente no cumpliera con contratar las referidas p&oacute;lizas y/o sus respectivas renovaciones a su vencimiento y/o reajustar la suma asegurada cuando Prymera se lo requiera, o con ampliar los riesgos y efectuar el endoso correspondiente a favor Prymera, &eacute;ste queda facultado para hacerlo por cuenta y costo del cliente e incluir las primas del seguro en las cuotas del Pr&eacute;stamo, m&aacute;s los intereses compensatorios y moratorios que corresponda, de conformidad con lo expuesto en la Hoja Resumen. El no ejercicio de la facultad otorgada a Prymera antes se&ntilde;alada, no generar&aacute; para &eacute;l responsabilidad alguna.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del cr&eacute;dito, Qu&eacute; deber&aacute; presentar el apoderado?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En caso siniestro del titular del cr&eacute;dito, <small style="font-family: arial;font-weight: bold;">&iquest; </small>Qu&eacute; deber&aacute; presentar el apoderado?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>- Copias certificadas de Partida y Certificado de Defunci&oacute;n.</br>
@@ -408,7 +408,7 @@
                                             - Mayor informaci&oacute;n en caso la Compa&ntilde;&iacute;a de Seguro lo requiera.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom font-bold">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>En cu&aacute;ntos d&iacute;as obtendr&eacute; respuesta de la aseguradora ante un siniestro?</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><small style="font-family: arial;font-weight: bold;">&iquest; </small>En cu&aacute;ntos d&iacute;as obtendr&eacute; respuesta de la aseguradora ante un siniestro?</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <span>La aseguradora tiene un plazo m&aacute;ximo de 30 d&iacute;as h&aacute;biles para enviarte una respuesta.</span>
@@ -431,7 +431,7 @@
           </div>
           <div class="modal-body">
             <p class="tipo_letra">
-               “El cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequ&iacute;voco e informado para que (por s&iacute; mismo o a trav&eacute;s de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaci&oacute;n tanto proporcionada, como recopilada a trav&eacute;s de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
+               &quot;El cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequ&iacute;voco e informado para que (por s&iacute; mismo o a trav&eacute;s de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaci&oacute;n tanto proporcionada, como recopilada a trav&eacute;s de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
             </p>
 
             <p class="tipo_letra">
@@ -471,7 +471,7 @@
             </p>
 
             <p class="tipo_letra">
-               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protección de Datos vigente en Per&uacute;.”<br><br> 
+               PRYMERA es titular y responsable de las Bases de Datos (Bancos de Datos) originadas por el tratamiento de los datos personales que recopile y/o trate y declara que ha adoptado los niveles de seguridad apropiados para el resguardo de la informaci&oacute;n, de acuerdo a Ley. Asimismo, declara que respeta los principios de legalidad, consentimiento, finalidad, proporcionalidad, calidad, disposici&oacute;n de recurso, nivel de protecci&oacute;n adecuado, conforme a las disposiciones de la Ley de Protecci&oacute;n de Datos vigente en Per&uacute;.&quot;<br><br> 
             </p>    
           </div>
           <div class="modal-footer">
