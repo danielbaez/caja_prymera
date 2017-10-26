@@ -159,17 +159,40 @@ class logearse extends CI_Controller {
                             }
                             else if($redirect == PERMISO_MICASH)
                             {
-                                $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
+                                if($datos[0]->rol == 'administrador')
+                                {
+                                    redirect('C_main');    
+                                }
+                                elseif($datos[0]->rol == 'jefe_agencia')
+                                {
+                                    redirect('C_reporte/solicitudes');    
+                                }
+                                elseif($datos[0]->rol == 'asesor')
+                                {
+                                    $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
                                                                    'permiso_prod' => PERMISO_MICASH,
                                                                     'conectado'   => 1));
-                                redirect('Micash');
+                                    redirect('Micash');   
+                                }                               
+                                
                             }
                             else if($redirect == PERMISO_VEHICULAR)
                             {
-                                $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
+                                if($datos[0]->rol == 'administrador')
+                                {
+                                    redirect('C_main');    
+                                }
+                                elseif($datos[0]->rol == 'jefe_agencia')
+                                {
+                                    redirect('C_reporte/solicitudes');    
+                                }
+                                elseif($datos[0]->rol == 'asesor')
+                                {
+                                    $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
                                                                    'permiso_prod' => PERMISO_VEHICULAR,
                                                                     'conectado'   => 1));
-                                redirect('Login');
+                                    redirect('Login');   
+                                }
                             }
                         }
                         else
