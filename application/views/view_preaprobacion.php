@@ -83,6 +83,56 @@
   </div>
 </nav> -->
 
+<!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+<div class="navbar-header" style="background-color: red">
+  <div class="container">
+    <div class="col-xs-6">
+      <img class="img-responsive img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">    
+    </div>
+    <div class="col-xs-6">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top: 30px;">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>    
+    </div>
+  </div>
+</div>
+</div>
+</nav> -->
+
+
+<nav class="navbar navbar-default" style="background: #0060aa; border: none">
+  <div class="container-fluid">
+
+    <div class="row" style="display: flex;
+  align-items: center;">
+      <div class="col-xs-6">
+        <img class="img-responsive img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
+      </div>
+      <div class="col-xs-6">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        
+      </div>
+
+    <div class="collapse navbar-collapse custom-menu" id="bs-example-navbar-collapse-1" style="border: none;">
+      <ul class="nav navbar-nav">
+        <li><a style="color: white" href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a style="color: white" href="#">Link</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
   <div class="container container-simulador">
 
     <div class="row" >                
