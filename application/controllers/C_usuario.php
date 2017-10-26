@@ -17,6 +17,10 @@ class C_usuario extends CI_Controller {
     
     public function asignarSupervisor()
     {       
+        if(_getSesion('query') == 1) {
+
+        }
+        $this->session->set_userdata(array('query' => 0));
         $data['personales'] = $this->M_usuario->getPersonalByRol();
         $this->load->view('v_asignarSupervisor', $data);
     }
@@ -199,5 +203,50 @@ class C_usuario extends CI_Controller {
         }
         echo json_encode(array_map('utf8_encode', $data));
     }*/
+
+    function getAsesoresByAgencia() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $agencia = _post('agencia');
+            $html = null;
+            $cabecera = null;
+            if($agencia == null) {
+                throw new Exception("Seleccione una agencia", 1);
+                
+            }
+            $datosAsesor = $this->M_usuario->getDatosAsesoresByAgencia($agencia);
+            foreach ($datosAsesor as $key) {
+                        $html .= '<tr id="check_'.$key->id.'">
+                                    <td>
+                                       <input type="checkbox" onclick="agregarPersonal()" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">
+                                    </td>                    
+                                    <td>'.$key->nombre.' '.$key->apellido.'</td>
+                                    <td>'.$key->rol.'</td>
+                                    <td>'.$key->agencia.'</td>
+                                  </tr>';
+                        $cabecera = '<div class="table-responsive">
+                                        <table id="tabla-personal" class="table table-bordered">
+                                          <thead>
+                                            <tr class="tr-header-reporte">
+                                              <th class="text-center widht-opt-select">Opt</th>
+                                              <th class="text-center">Nombres</th>
+                                              <th class="text-center">Rol</th>
+                                              <th class="text-center">Agencia</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody class="agregar">
+                                                 '.$html.'            
+                                          </tbody>
+                                        </table>
+                                    </div>';
+            }
+            $data['html'] = $cabecera;
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
 }
 

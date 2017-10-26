@@ -13,7 +13,7 @@
         <meta name="language"               content="es">
         <meta name="theme-color"            content="#FFFFFF">
         <meta name="description"            content="Koplan - Your way to success">
-        <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_azul.jpg">
+        <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.css?v=<?php echo time();?>">
@@ -69,7 +69,8 @@
             <div class="col-xs-12 div-seccion">
               <h4>Personal</h4>
               <br>
-              <div class="table-responsive">
+              <div class="agregar_tabla">
+                <div class="table-responsive">
                 
                 <table id="tabla-personal" class="table table-bordered">
                   <thead>
@@ -95,6 +96,7 @@
                   </tbody>
                 </table>
               </div>
+              </div>
               <div class="text-right div-agregar-personal-link">
                 <a onclick="agregarPersonal()">Agregar ></a>  
               </div>
@@ -110,7 +112,7 @@
                     <input type="text" class="form-control" name="supervisor" id="supervisor">
                   </div>
                   <div class="col-sm-6" style="margin-left: 178px;margin-top: 12px;">
-                    <select class="form-control cambio-rol" id="agencias" name="agencias">
+                    <select class="form-control cambio-rol" id="agencias" name="agencias" onchange="getAsesoresByAgencia()">
                       <option value="">Agencias</option>
                     </select>
                   </div>
@@ -168,7 +170,7 @@
 
       <script type="text/javascript">
 
-              $(document).ready(function() {
+  $(document).ready(function() {
 
   var table = $('#tabla-personal').DataTable( {
 

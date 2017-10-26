@@ -207,7 +207,7 @@
 					  <label><input type="checkbox" value="2" name="permiso[]" id="permiso">Mi Cash</label>
 					</div>
 					<div class="checkbox">
-					  <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Vehicular</label>
+					  <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Auto de Prymera</label>
 					</div>
 					<div class="checkbox">
 					  <label><input type="checkbox" class="inactivo" value="0" name="permiso[]" disabled>Inactivo</label>
