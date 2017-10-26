@@ -46,7 +46,26 @@
   .img-header-s{
     margin: auto;
   }
+  .btn-collapse{
+    top: -85px !important
+  }
+
 }
+
+
+@media (max-width: 460px) {
+  
+  .btn-collapse{
+    top: -75px !important
+  }
+
+}
+
+@media (max-width: 768px) {
+  .img-header{
+        margin-right: 70px
+  }
+  }
 </style>
 
   </head>
@@ -73,7 +92,7 @@
   <div class="container-fluid">
     
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top: -70px">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="top: -75px">
         
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
