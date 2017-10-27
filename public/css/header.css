@@ -146,3 +146,59 @@ h1{font-family: 'quicksandlight' !important}
 }
 
 /*FIN HEADER MI CASH */
+
+
+/** NAVBAR COLLAPSE **/
+
+.navbar-default{
+  min-height: 0; border: none
+}
+
+.custom-menu-collapse{
+  background: #0060aa; border: 1px solid #0060aa !important;
+}
+
+.custom-menu-collapse ul li a{
+  color:white !important;
+}
+
+.navbar-header{
+  margin-top: -50px
+}
+
+.navbar{
+   margin-bottom: 0px}
+
+.btn-collapse{
+  top: -30px;
+  background-color: white
+}
+  @media (min-width : 768px) {
+   .navbar-collapse.custom-menu {
+        display: none !important
+    }
+  .navbar-default{
+    display: none !important
+  }
+
+}
+
+@media (max-width: 767px) {
+  .img-header{
+        margin-right: 70px
+  }
+}
+
+@media (max-width: 535px) {
+  .titles-header{
+    display: none
+  }
+  .img-header-s{
+    margin: auto;
+  }
+
+  .btn-collapse{
+    top: -38px !important
+  }
+
+}

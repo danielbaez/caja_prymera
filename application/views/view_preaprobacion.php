@@ -27,47 +27,6 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
 
-  <!-- Custom fonts for this template -->
-
-<style type="text/css">
-  @media only screen and (min-width : 768px) {
-   .navbar-collapse.custom-menu {
-        display: none !important
-    }
-  .navbar-default{
-    display: none !important
-  }
-}
-
-@media (max-width: 535px) {
-  .titles-header{
-    display: none
-  }
-  .img-header-s{
-    margin: auto;
-  }
-  .btn-collapse{
-    top: -85px !important
-  }
-
-}
-
-
-@media (max-width: 460px) {
-  
-  .btn-collapse{
-    top: -75px !important
-  }
-
-}
-
-@media (max-width: 768px) {
-  .img-header{
-        margin-right: 70px
-  }
-  }
-</style>
-
   </head>
     <body>
     
@@ -88,120 +47,49 @@
   </div>
 
 
-<nav class="navbar navbar-default" style="min-height: 0">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
-    
-    <div class="navbar-header" style="">
-      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="top: -75px">
-        
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      
-    </div>
-
-    
-    <div class="collapse navbar-collapse custom-menu" id="bs-example-navbar-collapse-1">
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- <nav class="navbar navbar-default">
-  <div class="container-fluid">
-<div class="navbar-header" style="background-color: red">
-  <div class="container">
-    <div class="col-xs-6">
-      <img class="img-responsive img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">    
-    </div>
-    <div class="col-xs-6">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top: 30px;">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>    
-    </div>
-  </div>
-</div>
-</div>
-</nav> -->
-
-
-<!-- <nav class="navbar navbar-default" style="background: #0060aa; border: none">
-  <div class="container-fluid">
-
-    <div class="row" style="display: flex; align-items: center;">
-      <div class="col-xs-10">
-        <div class="row" style="display: flex; align-items: center;">
-          <div class="col-xs-6 titles-header">
-            <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
-            <h1 class="title-header-second">Mi Cash</h1>
-          </div>
-          <div class="col-xs-6 img-header-s">
-            <img class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
-          </div>  
-        </div>
-      </div>
-      <div class="col-xs-2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-      </div>
-        
-      </div>
-
-    <div class="collapse navbar-collapse custom-menu" id="bs-example-navbar-collapse-1" style="border: none;">
-      <ul class="nav navbar-nav">
-        <li><a style="color: white" href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a style="color: white" href="#">Link</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
   <div class="container container-simulador">
-
-    <div class="row" >                
-                <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
-                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <?php if(_getSesion('rol') == 'asesor'){ ?>
-                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
-                </div>
-            </div>
 
     <div class="row" style="margin-top: 20px">
       <?php if($tipo_product == '') {?>
         <h2>Completa los datos:</h2>
       <?php  } else {?>
-      <div class="col-xs-12 col-md-8 text-center">
+      <div class="col-xs-12 col-sm-8 text-center">
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
       </div>
-      <!-- <div class="hidden-xs col-sm-4 text-right div-navegacion"> -->
-      <!-- <div class="col-xs-12 col-sm-4 text-right div-navegacion"> -->
-      <div class="hidden-xs hidden-sm col-md-4 button-login text-right">
-            <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-            <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-            <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-            <?php } ?>
-            <?php if(_getSesion('rol') == 'asesor'){ ?>
-            <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-            <?php } ?>
-            <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
-        </div>
+      <div class="hidden-xs hidden-xs col-sm-4 button-login text-right">
+          <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+          <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
+          <?php } ?>
+          <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+          <?php } ?>
+          <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+      </div>
       <div class="col-xs-12">
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
