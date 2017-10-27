@@ -758,6 +758,7 @@
 	    			if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != ''){
 		    			this.submit();
 	    			}else{
+	    				$('.alert-success').hide();
 	    				$('.alert-form').show();
 	    				$('html').animate({scrollTop:0},500);
 				    	return false;
@@ -768,6 +769,7 @@
 				    		if(rol_superior != ''){
 				    			this.submit();
 				    		}else{
+				    			$('.alert-success').hide();
 				    			$('.alert-form').show();
 				    			$('html').animate({scrollTop:0},500);
 				    			return false;
@@ -776,6 +778,7 @@
 				    		this.submit();		    		
 				    	}
 				    }else{
+				    	$('.alert-success').hide();
 				    	$('.alert-form').show();
 				    	$('html').animate({scrollTop:0},500);
 				    	return false;

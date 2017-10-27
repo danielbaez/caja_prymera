@@ -293,6 +293,11 @@ $(document).ready(function() {
             customize: function (doc) {
               doc.content[1].table.widths = 
                   Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+
+                  doc.content.forEach(function(item) {
+                    item.alignment = 'center';
+                  }) 
+
             },
             exportOptions: {
                 columns: [ 1, 2, 3, 4, 5, 6, 7]
@@ -308,8 +313,11 @@ $(document).ready(function() {
             header: true,
             customize: function( xlsx ) {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
- 
-                //$('row c[r^="A"]', sheet).attr( 's', '2');
+
+                var clRow = $('row', sheet);
+                $('row c ', sheet).each(function () {
+                    $(this).attr('s', '51');
+                });
             },
             exportOptions: {
                 columns: [ 1, 2, 3, 4, 5, 6, 7]
