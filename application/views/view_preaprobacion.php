@@ -91,7 +91,7 @@
 <nav class="navbar navbar-default" style="min-height: 0">
   <div class="container-fluid">
     
-    <div class="navbar-header">
+    <div class="navbar-header" style="">
       <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="top: -75px">
         
         <span class="icon-bar"></span>
