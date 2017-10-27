@@ -112,7 +112,7 @@
                         </div>
                     <div class="form-group"> 
                       <div class="col-center">
-                        <small class="tipo_letra_delgada" style="font-size: 14px;">Olvid&oacute; su contrase&ntilde;a?</small> <a href="/Logearse/olvidoPassword" class="tipo_letra_delgada">Ingrese aqu&iacute;</a>
+                        <label class="tipo_letra_delgada" style="font-size: 14px;"><small style="font-family: arial;    font-weight: lighter;">¿</small>Olvid&oacute; su contrase&ntilde;a?</label> <a href="/Logearse/olvidoPassword" class="tipo_letra_delgada">Ingrese aqu&iacute;</a>
                       </div>
                     </div>
                             
