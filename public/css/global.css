@@ -1,0 +1,137 @@
+.close.btn-close {
+	background-color: black;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+    opacity: 1;
+    position: relative;
+    bottom: 20px;
+    left: 25px;
+    border: 2px solid #fff;
+}
+/*Modales*/
+.modal-content {
+	border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.modal-title {
+	text-align: center;
+    color: #007ac0 !important;
+    font-size: 20px;
+    font-family: 'quicksandregular';
+}
+.modal-body {
+	height: 470px;
+    overflow-y: auto;
+}
+.modal-body.otros{
+	height: 300px;
+    overflow-y: auto;
+}
+.modal-body.celular{
+	height: 175px;
+    overflow-y: auto;
+}
+.modal-body.otros .bs-example .form-group {
+	margin-left: 55px;
+	margin-top: 35px;
+}
+.modal-body.otros .bs-example .form-group p{
+	color:#808080;
+    margin: 1px;
+    font-size: 18px;
+}
+.modal-header {
+	border-bottom-color: #007ac0;
+}
+.modal-footer {
+	border-top: transparent;
+}
+.table-responsive.ocultar {
+	margin-top: 20px;
+	display: block;
+}
+.modal-dialog.modal-lg.centrar {
+	margin-top: 150px;
+}
+.table-responsive.ocultar p{
+	margin-bottom: 0;font-size: 19px;color:#808080;text-align: center;
+}
+/*Modales*/
+/*Botones*/
+.btn.btn-lg.botones{
+	background-color: #005aa6;
+    color: #fff;
+    font-size: 16px;
+    width: 125px;
+    height: 51px;
+    padding-top: 12px;
+    font-family: 'quicksandregular';
+}
+.btn.btn-lg.botones-codigo{
+	background-color: #005aa6;
+    color: #fff;
+    font-size: 16px;
+    width: 165px;
+    height: 51px;
+    padding-top: 12px;
+    font-family: 'quicksandregular';
+}
+/*Botones*/
+/*Titles*/
+.sub-title {
+	font-weight: bold;
+    font-size: 20px;
+    color: #1C4485;
+    border-radius: 10px;
+    font-family: 'quicksandlight';
+}
+.title-general{
+    font-size: 36px;
+    color: #015FA9;
+    font-family: 'quicksandbold';
+}
+.panel-title.subtitle { 
+	font-size: 25px;
+    color: #1C4485;
+    font-family: 'quicksandbold';
+ }
+/*Titles*/
+/*Crd-Border*/
+.card-border{
+	border: 2px solid #015FA9;
+    padding: 30px 15px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.linea {
+    border-left: 1px solid #a3a4a6;
+}
+/*Card-Border*/
+/*Tipo de letra*/
+p,label,span {
+	font-family: 'quicksandlight';
+}
+.form-control {
+	font-family: 'quicksandlight';
+}
+.link {
+	color: #005aa6;
+	float: right;
+	margin-top: -0px;
+	margin-right: 20px;
+}
+.btn-aceptar {
+	background-color: #005aa6;
+    color: #fff;
+    font-weight: lighter;
+    font-size: 16px;
+    font-family: 'quicksandlight';
+    float: right;
+    margin-top: -70px;
+    margin-right: 30px;
+}
+/*Tipo de letra*/
+/*Otros*/

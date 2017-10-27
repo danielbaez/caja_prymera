@@ -355,10 +355,12 @@
 	margin-bottom: 15px !important;
 }
 
-.m-t-15 {
+.m-t15 {
 	margin-top: 15px !important;
 }
-
+.m-t-15 {
+	margin-top: -15px !important;
+}
 .m-t-16{
 	margin-top:16px !important;
 }

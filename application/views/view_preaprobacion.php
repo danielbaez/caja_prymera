@@ -26,6 +26,7 @@
 
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
 
@@ -242,30 +243,30 @@
           <div class="col-xs-12 col-md-5 text-center">
             <div class="col-xs-12 col-md-10 col-md-offset-1 div-ajax-valores">
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">Importe del Pr&eacute;stamo</p>
-                        <span class="valor-ajax-valores" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
+                <p class="titulo-ajax-valores font-regular">Importe del Pr&eacute;stamo</p>
+                        <span class="valor-ajax-valores font-regular" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">Pago total</p>
-                        <span class="valor-ajax-valores" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
+                <p class="titulo-ajax-valores font-regular">Pago total</p>
+                        <span class="valor-ajax-valores font-regular" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">Cuota Mensual*</p>
-                        <span class="valor-ajax-valores" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
+                <p class="titulo-ajax-valores font-regular">Cuota Mensual*</p>
+                        <span class="valor-ajax-valores font-regular" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">TEA</p>
-                        <span class="valor-ajax-valores" id="tea"><?php echo $tea?>%</span>
+                <p class="titulo-ajax-valores font-regular">TEA</p>
+                        <span class="valor-ajax-valores font-regular" id="tea"><?php echo $tea?>%</span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">TCEA</p>
-                        <span class="valor-ajax-valores" id="tcea"><?php echo $tcea?>%</span>
+                <p class="titulo-ajax-valores font-regular">TCEA</p>
+                        <span class="valor-ajax-valores font-regular" id="tcea"><?php echo $tcea?>%</span>
                         <span style="display: none" id="tea"><?php echo $tea?>%</span>
-                        <p class="letra-chica font-bold">*Cuota aproximada sujeta a evaluaci&oacute;n</p>
+                        <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
               </div>
             </div>
             <div class="col-xs-6 text-center margin-top-btn">
-              <button type="button" class="btn btn-lg btn-text-ampliar font-bold" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
+              <button type="button" class="btn btn-lg btn-text-ampliar font-bold" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>ampliar</button>
             </div>
             <div class="col-xs-6 text-center margin-top-btn">
               <a onclick="addStyle()" class="btn btn-l btn-text-siguiente font-bold">Siguiente</a>
@@ -289,16 +290,16 @@
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-          <p style="text-align: center;font-size: 16px;">Desea ampliar?</p>
+          <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" style="">Desea ampliar?</h3>
         </div>
-        <div class="modal-body">
+        <div class="modal-body otros">
           <div class="bs-example">
-            <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-              <p style="color:#808080">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
-                <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
-                <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+            <div class="form-group" id="tablaCronograma" style="">
+              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+                <p style="">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+                <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
+                <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
           </div>
       </div>
         </div>

@@ -60,7 +60,7 @@ class C_confirmacion extends CI_Controller {
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
         $data['comboDepa']          = $this->__buildDepartamento();
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Est&aacute;s a un paso de tu pr&eacute;stamo.' : $titulo = '';
         
         $data['tipo_product'] = $titulo; 
        /*$importeMaximo = _getSesion('importeMaximo');

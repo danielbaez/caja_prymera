@@ -32,6 +32,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>"> 
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
@@ -73,7 +74,7 @@
 		    	<div class="panel panel-primary" style="">
 		    		<div class="panel-heading" style="background-color: #fff;font-weight: bold;padding: 23px;">
 		    			<div class="col-xs-12">
-		    				<h1 class="panel-title" style="font-weight: bold;">Resumen Solicitud</h1>
+		    				<h1 class="panel-title subtitle" style="">Resumen Solicitud</h1>
 		    			</div>
 		    		</div>
 			    	<div class="panel-body">
@@ -81,13 +82,13 @@
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                   <div class="col-xs-12">
                     <div class="form-group" style="">
-                        <span>S/ <?php echo $valor_auto?></span>
+                        <span><?php echo $valor_auto?></span>
                         <div class="col-xs-7">
                           <span style="">Valor Veh&iacute;culo: </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12  m-t-15">
                     <div class="form-group" style="">
                         <span><?php echo $marca?></span>
                         <div class="col-xs-7">
@@ -95,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12  m-t-15">
                     <div class="form-group" style="">
                         <span><?php echo $modelo?></span>
                         <div class="col-xs-7">
@@ -104,16 +105,16 @@
                     </div>
                 </div>
                 <?php } ?>
-			    		  <div class="col-xs-12">
+			    		  <div class="col-xs-12  m-t-15">
 					          <div class="form-group" style="">
-					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?><?php echo 'S/ '.$Importe?></span>
+					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?><?php echo $Importe?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Importe Pr&eacute;stamo: </span>
 					          	  </div>
 					          </div>
 					      </div>
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                <div class="col-xs-12">
+                <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
                         <span>S/ <?php echo $cuota_inicial?></span>
                         <div class="col-xs-7">
@@ -122,7 +123,7 @@
                     </div>
                 </div>
                 <?php } ?>
-					      <div class="col-xs-12">
+					      <div class="col-xs-12 m-t-15">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $cant_meses?> meses</span>
 					          	  <div class="col-xs-7">
@@ -130,7 +131,7 @@
 					          	  </div>
 					          </div>
 					      </div>
-					      <div class="col-xs-12">
+					      <div class="col-xs-12 m-t-15">
 					          <div class="form-group" style="">
 					          	  <span>S/ <?php echo $cuota_mensual?></span>
 					          	  <div class="col-xs-7">
@@ -138,7 +139,7 @@
 					          	  </div>
 					          </div>
 					      </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
                         <span>S/ <?php echo $pago_total?></span>
                         <div class="col-xs-7">
@@ -146,7 +147,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
                         <span><?php echo $tea?>%</span>
                         <div class="col-xs-7">
@@ -154,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-					      <div class="col-xs-12">
+					      <div class="col-xs-12 m-t-15">
 					          <div class="form-group" style="">
 					          	  <span><?php echo $tcea?>%</span>
 					          	  <div class="col-xs-7">
@@ -162,7 +163,7 @@
 					          	  </div>
 					          </div>
 					      </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
                         <span><?php echo $Agencia?></span>
                         <div class="col-xs-4">
@@ -199,7 +200,7 @@
 		    	</div>
 		    </div>
 		    <div class="col-md-8 info">
-		    	<p style="font-size:35px;font-weight: bold;">Felicidades <?php echo $nombre ?>!</p>
+		    	<h3 class="title-general">Felicidades <?php echo $nombre ?>!</h3>
 		    	<p class="info2">tu pr&eacute;stamo ha sido</p>
 		    	<p class="info2">pre aprobado, ya est&aacute;s cerca</p>
 		    	<p class="info2">de cumplir tus sue&ntilde;os</p>
@@ -233,11 +234,11 @@
             </p>
 
             <p class="tipo_letra">
-            <strong>Financiamiento Regular</strong>. Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia hasta el 90% del valor del vehículo, Financiamiento Min S/10,000 o USD $ 4,500 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Financiamiento entre 12 y Máx. a 60 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo, No aplica para financiar cuatrimotos, motos lineales o acuáticas o mototaxis (afines). <br> 
+            <strong>Financiamiento Regular</strong>: Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia hasta el 90% del valor del vehículo, Financiamiento Min S/10,000 o USD $ 4,500 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Financiamiento entre 12 y Máx. a 60 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo, No aplica para financiar cuatrimotos, motos lineales o acuáticas o mototaxis (afines). <br> 
             </p>
 
             <p class="tipo_letra">
-            <strong>Financiamiento Compra Inteligente</strong>. Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia en 36 cuotas mensuales hasta el 100% del valor del vehículo, donde el 60% del valor se reparten en 35 cuotas mensuales de igual monto y el 40% en la última cuota (36) incluyendo los intereses correspondientes, con la opción de poder pagar la última cuota (40%) o pagar el saldo del crédito a 24 cuotas adicionales, según lo acordado en el crédito vehicular. Monto del crédito Min S/75,000 o USD $ 25,000 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo y sólo de gama media – alta.<br> 
+            <strong>Financiamiento Compra Inteligente</strong>: Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia en 36 cuotas mensuales hasta el 100% del valor del vehículo, donde el 60% del valor se reparten en 35 cuotas mensuales de igual monto y el 40% en la última cuota (36) incluyendo los intereses correspondientes, con la opción de poder pagar la última cuota (40%) o pagar el saldo del crédito a 24 cuotas adicionales, según lo acordado en el crédito vehicular. Monto del crédito Min S/75,000 o USD $ 25,000 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo y sólo de gama media – alta.<br> 
 
             <p class="tipo_letra">
             Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. El monto del seguro vehicular es referencial dependerá de la marca y modelo que el cliente elija, pudiendo variar en caso el cliente opte por un seguro vehicular particular y no el de Prymera.  La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si se desembolsa S/ xx,000 a xx meses, pagarás lo siguiente: xx cuotas mensuales de S/ xxxxxx, total de intereses S/ xxxxxxxx, monto total de seguro desgravamen xxxxx, y monto total de seguro xxxxx TCEA xxxxx% La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros. “<br> 
