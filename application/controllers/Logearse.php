@@ -18,7 +18,7 @@ class logearse extends CI_Controller {
     public function index()
     {
         /*if (_getSesion('usuario') != null) {
-            redirect("/C_main", 'location');
+            //redirect("/C_main", 'location');
         }*/
         $dato['nombreDato']=':D';
         $this->load->view('v_logearse', $dato);

@@ -48,7 +48,7 @@ class preaprobacion extends CI_Controller {
     public function index()
     {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
-            redirect("/C_main", 'location');
+            //redirect("/C_main", 'location');
         }
         $data['nombreDato']=':D';
         $data['nombre'] = ucfirst(_getSesion('nombre'));
@@ -128,7 +128,7 @@ class preaprobacion extends CI_Controller {
                           'plazo' => $data['plazo_max']
                     );
            if($params == null) {
-                redirect("/C_main", 'location');
+                //redirect("/C_main", 'location');
             }
           $result = $client->GetDatosCreditoCash($params);
           $res = $result->return->resultado;

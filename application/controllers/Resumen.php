@@ -23,7 +23,7 @@ class Resumen extends CI_Controller {
     {
       _log(print_r($this->session->userdata(), true));
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
-            redirect("/C_main", 'location');
+            //redirect("/C_main", 'location');
         }
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
@@ -64,7 +64,9 @@ class Resumen extends CI_Controller {
                 $session = array('Agencia' => $agencia);
                 $this->session->set_userdata($session);
                 $agencia = $this->M_preaprobacion->getAgenciasId($agencia);
-                $arrayUpdt = array('agencia_desembolso' => $agencia[0]->id);
+                $arrayUpdt = array('agencia_desembolso' => $agencia[0]->id,
+                                'timestamp_final'   => date("Y-m-d H:i:s"),
+                                'fec_estado' => date("Y-m-d H:i:s"));
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
             $validacion = $this->sendMailGmail();
