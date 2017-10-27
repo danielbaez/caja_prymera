@@ -46,7 +46,7 @@ function guardatAsesoresAsignados() {
 		msj('error', 'Seleccione una agencia');
 		return;
 	}
-	console.log(ids_user);
+	//console.log(ids_user);
 	$.ajax({
 		data  : { personalAsignado : ids_user,
 		 		  agencia : agencia},
@@ -71,38 +71,43 @@ function guardatAsesoresAsignados() {
 }
 
 function borrarAsignados(id_pers, element) {
+  var obj = $('#personalAsignado').children();
+  var ids_user = null;
 	var nombre = $(element).attr('data-nombres');
 	var apellido = $(element).attr('data-apellido');
 	var rol = $(element).attr('data-rol');
 	var agencia = $(element).attr('data-agencias');
 	$('#id_nombre_pers_'+id_pers).remove();
-	$('.agregar').append('<tr id="check_'+id_pers+'">'+
+  $(obj).each(function( i ) {
+      id = $(this).attr('data-id');
+      ids_user += '-'+id;
+    });
+  console.log(ids_user);
+	/*$('.agregar').append('<tr id="check_'+id_pers+'">'+
                                     '<td>'+
                                        '<input type="checkbox" data-nombre="'+nombre+'" data-apellido="'+apellido+'" data-rol="'+rol+'" data-agencia="'+agencia+'" name="id_asesor[]" value="'+id_pers+'">'+
                                     '</td>'+                    
                                     '<td>'+nombre+' '+apellido+'</td>'+
                                     '<td>'+rol+'</td>'+
                                     '<td>'+agencia+'</td>'+
-                                  '</tr>');
-	/*$.ajax({
-		data  : { id_asesor : id_pers,
-				  personalAsignado : glob_personalAsignado},
+                                  '</tr>');*/
+	$.ajax({
+		data  : { id_asesor : ids_user,
+              id_pers : id_pers},
 		url   : '/C_usuario/borrarAsignados',
 		type  : 'POST'
 	}).done(function(data){
 		try{
 			data = JSON.parse(data);
 			if(data.error == 0) {
-				$('#personalAsignado').html('');
-				$('#personalAsignado').append(data.p);
-				$('.agregar').html('');
-            	$('.agregar').append(data.html);
+        $('.table-responsive').html('');
+        $('.table-responsive').append(data.html);
+        paginacion();
 			}
-			//msj('success', data.msj);
 		} catch (err){
 			msj('error',err.message);
 		}
-	});*/
+	});
 }
 
 function getAsesoresByAgencia() {

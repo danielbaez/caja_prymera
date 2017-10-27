@@ -130,18 +130,20 @@ class C_usuario extends CI_Controller {
         redirect('/');  
     }
 
-    /*function borrarAsignados() {
+    function borrarAsignados() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
             $id_asesor = _post('id_asesor');
-            $nombres = _post('personalAsignado');
-            $asesores = explode("-", $nombres);
+            $id_pers = _post('id_pers');
+            //_log(print_r($id_asesor, true));
+            $asesores = explode("-", $id_asesor);
             $array_glob = array();
             $html = "";
             $p = "";
+            $cabecera = "";
             foreach ($asesores as $key) {
-                if($key != 'null' && $key != $id_asesor) {
+                if($key != 'null' && $key != $id_pers) {
                     array_push($array_glob, $key);
                 }
             }
@@ -149,28 +151,35 @@ class C_usuario extends CI_Controller {
             foreach ($datosAsesor as $key) {
                         $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">
                                     </td>                    
-                                    <td>'.$key->nombre.'</td>
+                                    <td>'.$key->nombre.' '.$key->apellido.'</td>
                                     <td>'.$key->rol.'</td>
                                     <td>'.$key->agencia.'</td>
                                   </tr>';
+                      $cabecera = '<div class="table-responsive">
+                                    <table id="tabla-personal" class="table table-bordered">
+                                      <thead>
+                                        <tr class="tr-header-reporte">
+                                          <th class="text-center widht-opt-select">Opt</th>
+                                          <th class="text-center">Nombres</th>
+                                          <th class="text-center">Rol</th>
+                                          <th class="text-center">Agencia</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="agregar">
+                                             '.$html.'            
+                                      </tbody>
+                                    </table>
+                                </div>';
             }
-            $datosAsesor = $this->M_usuario->getDatosInTablaAsesor($array_glob);
-            foreach ($datosAsesor as $row) {
-                $p .= '<p id="id_nombre_pers_'.$row->id.'">'.$row->nombre.' <i class="fa fa-minus-circle fa-1x" data-nombres='.$row->nombre.'  data-rol='.$row->rol.' data-agencia='.$row->agencia.' aria-hidden="true" onclick="borrarAsignados('.$row->id.',this)"></i></p>';
-            }
-            if(count($array_glob) == 1) {
-                $data['p'] = '';
-            }
-            $data['p'] = $p;
-            $data['html'] = $html;
+            $data['html'] = $cabecera;
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
         echo json_encode(array_map('utf8_encode', $data));
-    }*/
+    }
 
     /*function actualizarTablas() {
         $data['error'] = EXIT_ERROR;
