@@ -48,7 +48,7 @@ class C_confirmacion extends CI_Controller {
     public function index()
     {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0 || _getSesion('conectado') == 0) {
-            redirect("/C_main", 'location');
+            ////redirect("/C_main", 'location');
         }
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
@@ -386,7 +386,7 @@ class C_confirmacion extends CI_Controller {
                             'cod_concecionaria' => $concesionaria,
                             'agencia_desembolso' => $agencia[0]->id,
                             'validar_celular'   => 1,
-                            'timestamp_final'   => date("Y-m-d H:i:s"),
+                            'fec_estado' => date("Y-m-d H:i:s"),
                             'estado_civil'      => $estado_civil,
                             'nombre_conyugue'   => $nombre_conyugue,
                             'dni_conyugue'      => $dni_conyugue,

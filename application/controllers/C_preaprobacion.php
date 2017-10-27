@@ -26,7 +26,7 @@ class C_preaprobacion extends CI_Controller {
     public function index()
     {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null) {
-            redirect("/C_main", 'location');
+            //redirect("/C_main", 'location');
         }
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
@@ -60,7 +60,7 @@ class C_preaprobacion extends CI_Controller {
 
         $array_datos = _getSesion('arrDatos');
         if($array_datos == null) {
-            redirect("/C_main", 'location');
+            //redirect("/C_main", 'location');
         }
 
         $plazos = [];
