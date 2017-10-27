@@ -210,13 +210,13 @@
     
 	<!-- Modal -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg medio" role="document">
     <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title class="alinear"" id="terminosYcondiciones" style="color:#0152aa;text-align: center;font-size: 15px; margin-left: 0;font-family: 'quicksandbold'">T&eacute;rminos y Condiciones</h3>
+            <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title alinear" id="terminosYcondiciones" style="">T&eacute;rminos y Condiciones</h3>
           </div>
-          <div class="modal-body">
+          <div class="modal-body resumen">
           <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>
             <p class="tipo_letra">
                “La oferta pre-aprobada cumplirá las siguientes condiciones:
@@ -246,7 +246,6 @@
             <?php } ?>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Salir</button>
           </div>
         </div>
   </div>

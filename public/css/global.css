@@ -26,6 +26,10 @@
 	height: 470px;
     overflow-y: auto;
 }
+.modal-body.resumen {
+	height: 400px;
+    overflow-y: auto;
+}
 .modal-body.otros{
 	height: 300px;
     overflow-y: auto;
@@ -54,6 +58,12 @@
 	display: block;
 }
 .modal-dialog.modal-lg.centrar {
+	margin-top: 150px;
+}
+.modal-dialog.modal-lg.medio {
+	margin-top: 90px;
+}
+.modal-dialog.modal-md.centrar {
 	margin-top: 150px;
 }
 .table-responsive.ocultar p{

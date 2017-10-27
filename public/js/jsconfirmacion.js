@@ -114,6 +114,7 @@ function verificarNumero() {
 						location.href = '/Resumen';
 					}
 				}else {
+					msj('error', data.msj);
 				}
 			} catch (err){
 				msj('error',err.message);

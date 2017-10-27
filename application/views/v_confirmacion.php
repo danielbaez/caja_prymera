@@ -129,7 +129,7 @@
                                                               <div class="col-sm-12">
                                                                   <div class="form-group">
                                                                       <select class="form-control" id="salario"  name="salario" onchange="habilitarCampo()">
-                                                                              <option value="">* Salario</option>
+                                                                              <option value="">* Ingreso Mensual</option>
                                                                               <option value="">Hasta 1,000 soles</option>
                                                                               <option value="">De 1,000 a 2,000 soles</option>
                                                                               <option value="">De 2,000 a 3,000 soles</option>
@@ -148,7 +148,7 @@
                                                             </div>
                                                             <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                  <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" onchange="habilitarCampo()" placeholder="* Direcci&oacute;n de empleador">
+                                                                  <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" onchange="habilitarCampo()" placeholder="* Direcci&oacute;n de Empresa">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
@@ -188,19 +188,19 @@
                                                                 <div class="col-xs-12 p-0">
                                                                 <div class="col-sm-12">
                                                                       <div class="form-group">
-                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="* Nro. Celular" onkeypress="return valida(event)" onchange="habilitarCampo()" maxlength="9">
+                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="* N&uacute;mero Celular" onkeypress="return valida(event)" onchange="habilitarCampo()" maxlength="9">
                                                                       </div>
                                                                     </div>
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-5">
                                                                   <div class="form-group">
                                                                         <select class="form-control" onchange="habilitarCampo();cambiarTam();" name="codigo" id="codigo">
-                                                                          <option value="">C&oacute;digo</option>
+                                                                          <option value="">C&oacute;d,</option>
                                                                         </select>
                                                                       </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-7">
                                                                   <div class="form-group">
-                                                                        <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)" maxlength="7">
+                                                                        <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Telefono Fijo" onkeypress="return valida(event)" maxlength="7">
                                                                       </div>
                                                                 </div>
                                                               </div>

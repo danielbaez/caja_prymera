@@ -175,7 +175,7 @@
 
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md" role="document">
+  <div class="modal-dialog modal-md centrar" role="document">
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>

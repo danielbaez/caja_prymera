@@ -347,6 +347,10 @@ class C_confirmacion extends CI_Controller {
             $Agencia  = _post('Agencia');
             if($tipo_product == PRODUCTO_VEHICULAR) {
                 $concesionaria = _post('concesionaria');
+                if($concesionaria == null) {
+                    throw new Exception("Ingrese una concesionaria", 1);
+                    
+                }
                 $concecionaria = $this->M_preaprobacion->getConcecionariaId($concesionaria);
                 $concesionaria = $concecionaria[0]->id;
             }
