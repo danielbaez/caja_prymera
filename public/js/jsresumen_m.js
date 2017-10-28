@@ -11,6 +11,7 @@ function irAUbicacion() {
 			type  : 'POST'
 		}).done(function(data){
 			console.log(data);
+			//return;
 			location.href = '/Ubicacion';
 		});
 }

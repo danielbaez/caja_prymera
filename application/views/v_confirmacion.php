@@ -24,7 +24,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>"> 
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-preaprobacion.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
@@ -106,7 +106,7 @@
             <h2>Completa los datos:</h2>
           <?php  } else {?>
           <div class="col-xs-12 text-center">
-            <h2 class="title-prestamo" id="titulo"><?php echo $tipo_product;?></h2>
+            <h2 class="title-general" id="titulo"><?php echo $tipo_product;?> <label class="font-regular">Confirma tus datos</label></h2>
           </div>
           <div class="col-xs-12">
           <div class="container max-width-950">
@@ -124,12 +124,12 @@
                                               <div class="row-fluid">
                                                   <div class="col-md-12 card-border">
                                                       <div class="col-xs-12 col-sm-8">  
-                                                          <p style="font-weight: bold;font-size:20px;color:#1C4485;border-radius:10px"><strong>Datos laborales</strong></p>
+                                                          <p class="sub-title"><strong>Datos laborales</strong></p>
                                                             <div class="col-xs-12 p-0">
                                                               <div class="col-sm-12">
                                                                   <div class="form-group">
                                                                       <select class="form-control" id="salario"  name="salario" onchange="habilitarCampo()">
-                                                                              <option value="">* Salario</option>
+                                                                              <option value="">* Ingreso Mensual</option>
                                                                               <option value="">Hasta 1,000 soles</option>
                                                                               <option value="">De 1,000 a 2,000 soles</option>
                                                                               <option value="">De 2,000 a 3,000 soles</option>
@@ -148,7 +148,7 @@
                                                             </div>
                                                             <div class="col-xs-12">
                                                               <div class="form-group">
-                                                                  <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" onchange="habilitarCampo()" placeholder="* Direcci&oacute;n de empleador">
+                                                                  <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" onchange="habilitarCampo()" placeholder="* Direcci&oacute;n de Empresa">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
@@ -183,24 +183,24 @@
                                                                     </div>
                                                             </div>-->
                                                         </div>
-                                                        <div class="col-xs-12 col-sm-4">
-                                                                <p><strong class="size">Datos del contacto</strong></p>
+                                                        <div class="col-xs-12 col-sm-4 linea">
+                                                                <p class="sub-title"><strong>Datos del contacto</strong></p>
                                                                 <div class="col-xs-12 p-0">
                                                                 <div class="col-sm-12">
                                                                       <div class="form-group">
-                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="* Nro. Celular" onkeypress="return valida(event)" onchange="habilitarCampo()" maxlength="9">
+                                                                        <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="* N&uacute;mero Celular" onkeypress="return valida(event)" onchange="habilitarCampo()" maxlength="9">
                                                                       </div>
                                                                     </div>
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-5">
                                                                   <div class="form-group">
                                                                         <select class="form-control" onchange="habilitarCampo();cambiarTam();" name="codigo" id="codigo">
-                                                                          <option value="">C&oacute;digo</option>
+                                                                          <option value="">C&oacute;d,</option>
                                                                         </select>
                                                                       </div>
                                                                 </div>
-                                                                <div class="col-sm-6">
+                                                                <div class="col-sm-7">
                                                                   <div class="form-group">
-                                                                        <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Nro. Fijo" onkeypress="return valida(event)" maxlength="7">
+                                                                        <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Telefono Fijo" onkeypress="return valida(event)" maxlength="7">
                                                                       </div>
                                                                 </div>
                                                               </div>
@@ -257,14 +257,11 @@
                                                                       </div>
                                                                     </div>
                                                                 <?php } ?>
-                                                                <div class="col-xs-12 m-t-50 text-right">
-                                                                  <div class="container" style="position: relative;top: -53px;left: -10px;">
-                                                              <ul class="nav nav-pills">
-                                                            <li id="remove" class="remove"><a style="background-color: #005aa6;color: #fff;position: relative;top: 16px;font-family: 'quicksandlight';font-size: 15px;border-radius: 7px;" href="/Preaprobacion">Regresar</a></li>
-                                                          </ul>
-                                                        </div>
-                                                                  <button type="button" style="background-color: #005aa6;color: #fff;font-weight: lighter;font-size: 16px;position: relative;top: -81px;font-family: 'quicksandlight'" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
-                                                                </div>
+                                                      </div>
+                                                      <div class="col-xs-12 m-t-50">
+                                                        <a id="remove" class="link" href="/Preaprobacion">Regresar</a>
+                                                      </div>
+                                                      <button type="button" style="" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
                               </div>
                                                     </div>
                           </div>
@@ -315,15 +312,15 @@
 </div>
 
 <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-lg centrar" role="document">
         <div class="modal-content">
-            <div class="modal-header"><button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" onclick="limpiarCampos()"><span style="color:#fff" aria-hidden="true">&times;</span></button>
+            <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
               <p style="text-align: center;font-size: 18px;color: #0060aa;">Validar Celular</p>
             </div>
-            <div class="modal-body">
+            <div class="modal-body celular">
               <div class="bs-example">
-                <div class="table-responsive ocultar" id="tablaCronograma" style="display: block;">
-                  <p style="margin-bottom: 0;font-size: 19px;color:#808080;text-align: center;">Para poder terminar con la solicitud </p> 
+                <div class="table-responsive ocultar" id="tablaCronograma" style="">
+                  <p style="">Para poder terminar con la solicitud </p> 
                   <p style="margin-bottom: 11px;font-size: 19px;color:#808080;text-align: center;">Por favor ingrese el c&oacute;digo de seguridad que ha sido enviado a su celular: </p>
                   <div class="center">
                       <input style="width: 50px;font-family: 'quicksandlight';margin-left: 270px;" type="text" placeholder="" size="4" maxlength="1" id="uno">
@@ -335,8 +332,8 @@
                   </div>  
                   <br>
                   <div class="col-xs-12">
-                    <a style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 340px;" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
-                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 340px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
+                    <a style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 370px;" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
+                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 370px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
                   </div>
             </div>
             <div class="table-responsive otro" id="idError" style="display: none;">
@@ -349,8 +346,8 @@
         </div>
             </div>
             <div class="modal-footer">
-              <button type="button confirmar" class="btn btn-primary" id="confirmar" aria-label="Close" style="display: block;margin-left: 392px;" onclick="verificarNumero()">Confirmar</button>
-              <button type="button cambiar" class="btn btn-primary" id="cambiar" aria-label="Close" style="display: none;margin-left: 370px;" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>
+              <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block;margin-left: 373px;" onclick="verificarNumero()">Confirmar</button>
+              <button type="button cambiar" class="btn btn-lg botones-codigo" id="cambiar" aria-label="Close" style="display: none;margin-left: 370px;" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>
             </div>
           </div>
       </div>

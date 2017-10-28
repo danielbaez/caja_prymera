@@ -149,12 +149,22 @@
                       <th class="text-center" style="display: none">Total Préstamo</th>
                       <th class="text-center" style="display: none">TEA</th>
                       <th class="text-center" style="display: none">TCEA</th>
+
+                      <th class="text-center" style="display: none">Empresa</th>
+                      <th class="text-center" style="display: none">Ingreso Mensual</th>
+                      <th class="text-center" style="display: none">Dirección</th>
+                      <th class="text-center" style="display: none">Distrito</th>
+                      <th class="text-center" style="display: none">Provincia</th>
+                      <th class="text-center" style="display: none">Departamento</th>
+
+
                       <th class="text-center" style="display: none">Nro Solicitud</th>
                       <th class="text-center" style="display: none">Fecha Creación</th>
                       <th class="text-center" style="display: none">Hora Creación</th>
                       <th class="text-center" style="display: none">Fecha Cierre</th>
                       <th class="text-center" style="display: none">Hora Cierre</th>
                       <th class="text-center" style="display: none">Agencia</th>
+                      <th class="text-center" style="display: none">Desembolso</th>
                       <th class="text-center" style="display: none">Agente</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Nro sol.</th>
@@ -182,12 +192,19 @@
                         <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td>
                         <td style="display: none"><?php echo $solicitud->tea ?></td>
                         <td style="display: none"><?php echo $solicitud->tcea ?></td>
+                        <td style="display: none"><?php echo $solicitud->empleador ?></td>
+                        <td style="display: none"><?php echo $solicitud->salario ?></td>
+                        <td style="display: none"><?php echo $solicitud->dir_empleador ?></td>
+                        <td style="display: none"><?php echo $solicitud->distrito ?></td>
+                        <td style="display: none"><?php echo $solicitud->provincia ?></td>
+                        <td style="display: none"><?php echo $solicitud->departamento ?></td>
                         <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
                         <td style="display: none"><?php echo $solicitud->fecha_solicitud ?></td>
                         <td style="display: none"><?php echo $solicitud->hora_solicitud ?></td>
                         <td style="display: none"><?php echo $solicitud->fecha_cierre ?></td>
                         <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
                         <td style="display: none"><?php echo $solicitud->agencia ?></td>
+                        <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
                         <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
 
                         <td><?php echo $solicitud->producto ?></td>
@@ -279,16 +296,22 @@ $(document).ready(function() {
             titleAttr: 'PDF',
             title: 'Busqueda Solicitud - Filtros',
             orientation: 'landscape',
-            pageSize: 'A0',
+            pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
-              doc.content[1].table.widths = 
-                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+
+              /*doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');*/
+           
+                  doc.content.forEach(function(item) {
+
+                    item.alignment = 'center';
+                    //doc.content[1].table.body[i][4].alignment = 'center';
+                    })              
             },
+
             exportOptions: {
-                 columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 20]
-                //columns: [ 1, 2, 3, 9]
-                //columns: [ 1, 2, 3, 9]
+                 columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
             }
         },
         {
@@ -301,11 +324,16 @@ $(document).ready(function() {
             header: true,
             customize: function( xlsx ) {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
- 
-                //$('row c[r^="A"]', sheet).attr( 's', '2');
+
+                var clRow = $('row', sheet);
+                $('row c ', sheet).each(function () {
+                    $(this).attr('s', '51');
+                    //$(this).attr('s', '2');
+                });
+
             },
             exportOptions: {
-                columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+                columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
             }
         },
       ],
@@ -414,6 +442,7 @@ $(document).ready(function() {
           dSolicitud += '<p><span>Hora Cierre:</span> '+detalle.hora_cierre+'</p>';
           
           dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
+          dSolicitud += '<p><span>Agencia Tramitación:</span> '+detalle.agencia_desembolso+'</p>';
           dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
           if("<?php echo _getSesion('rol') ?>" == 'jefe_agencia'){

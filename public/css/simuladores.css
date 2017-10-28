@@ -14,6 +14,9 @@ span,p{
 .font-bold{
 	font-family: 'quicksandbold';
 }
+.font-regular{
+	font-family: 'quicksandregular';
+}
 
 .titulo-simulador{
 	font-size: 36px;
@@ -48,11 +51,12 @@ margin-top: 40px
 }
 
 .titulo-ajax-valores{
-	font-size: 18px;padding: 0px;margin: 5px;
+	font-size: 18px;padding: 0px;margin: 5px;color: #0c69ac;
 }
 
 .valor-ajax-valores{
-	font-size: 24px
+	font-size: 24px;
+	color: #0c69ac;
 }
 
 .letra-chica{
@@ -64,11 +68,17 @@ margin-top: 40px
 }
 
 .btn-text-ampliar{
-	background-color: #bdbebf;color: #fff;font-size: 15px;width: 125px;height: 51px;padding: 1px;
+	background-color: #bdbebf;color: #fff;font-size: 17px;width: 125px;height: 51px;padding: 1px;font-family: quicksandregular;
 }
 
 .btn-text-siguiente{
-	background-color: #1C4485;color: #fff;font-size: 15px;width: 125px;height: 51px;padding-top: 14px;
+    background-color: #1C4485;
+    color: #fff;
+    font-size: 16px;
+    width: 125px;
+    height: 51px;
+    padding-top: 12px;
+    font-family: 'quicksandregular';
 }
 
 .btn.focus, .btn:focus, .btn:hover{

@@ -346,6 +346,8 @@ class M_usuario extends  CI_Model{
     function updateDatosAsesor($arrayData, $idAsesor, $tabla){
         $this->db->where_in('id'  , $idAsesor);
         $this->db->update($tabla, $arrayData);
+        _logLastQuery();
+        _log(print_r($this->db->affected_rows(), true));
         if ($this->db->affected_rows() != 0) {
             throw new Exception('No se pudo actualizar los datos');
         }

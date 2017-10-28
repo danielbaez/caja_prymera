@@ -285,8 +285,8 @@ a {
 .modal-title {
     text-align: center;
     color: #007ac0 !important;
-    font-size: 15px;
-    font-family: 'quicksandbold';
+    font-size: 20px;
+    font-family: 'quicksandregular';
 }
 .negrita {
     font-family: 'quicksandbold';

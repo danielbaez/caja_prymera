@@ -89,7 +89,7 @@
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="asesor">Agente:</label>                
-                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Asesor">
+                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Nombre Agente">
                       <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
                     </div>  
                   </div>
@@ -273,11 +273,16 @@ $(document).ready(function() {
             titleAttr: 'PDF',
             title: 'Busqueda Consolidado - Total Solicitudes Rechazadas',
             orientation: 'landscape',
-            pageSize: 'LEGAL',
+            pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
               doc.content[1].table.widths = 
                   Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+
+                  doc.content.forEach(function(item) {
+                    item.alignment = 'center';
+                  }) 
+
             },
             exportOptions: {
                 columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -293,8 +298,11 @@ $(document).ready(function() {
             header: true,
             customize: function( xlsx ) {
                 var sheet = xlsx.xl.worksheets['sheet1.xml'];
- 
-                //$('row c[r^="A"]', sheet).attr( 's', '2');
+
+                var clRow = $('row', sheet);
+                $('row c ', sheet).each(function () {
+                    $(this).attr('s', '51');
+                });
             },
             exportOptions: {
                 columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9]

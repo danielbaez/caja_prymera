@@ -212,18 +212,32 @@ class M_solicitud extends  CI_Model{
             //$sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto FROM solicitud INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id WHERE $where";  
 
 
-            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";  
+            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";  
         }
         elseif($rol == 'jefe_agencia')
         {
             //$sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto FROM solicitud INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id WHERE $where AND cod_agencia = (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
 
-            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where AND cod_agencia = (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
+            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where AND cod_agencia = (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
         }            
 
         $result = $this->db->query($sql, $filtros);
 
-        return $result->result();
+        $res = [];
+
+        foreach ($result->result() as $key => $value)
+        {
+            if($value->agencia_desembolso != '')
+            {
+                $sql = "SELECT AGENCIA FROM agencias where id = ?";
+                $agencias = $this->db->query($sql, array($value->agencia_desembolso));
+                $a = $agencias->result();
+                $value->agencia_desembolso = $a[0]->AGENCIA;                    
+            }
+            $res[] = $value;              
+        }
+
+        return $res;
     }
 
     function obtenerDetalleSolicitud($id)
@@ -231,14 +245,23 @@ class M_solicitud extends  CI_Model{
         $id_usuario = _getSesion('id_usuario');
         $rol = _getSesion('rol');
 
-        $sql = "SELECT solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE solicitud.id = ?";
+        $sql = "SELECT usuario.id as id_usuario, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE solicitud.id = ?";
 
         $result = $this->db->query($sql, array($id));
+        $result = $result->result();
+
+        if($result[0]->agencia_desembolso != '')
+        {
+            $sql_des = "SELECT AGENCIA FROM agencias WHERE id = ?";
+            $result_des = $this->db->query($sql_des, array($result[0]->agencia_desembolso));
+            $result_des = $result_des->result();
+            $result[0]->agencia_desembolso = $result_des[0]->AGENCIA;
+        }
         
         if($rol == 'jefe_agencia')
         {
-            $sql2 = "SELECT id as asignar_id, nombre as asignar_nombre, apellido as asignar_apellido FROM usuario WHERE id_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = ?)";
-            $result2 = $this->db->query($sql2, array($id_usuario));
+            $sql2 = "SELECT id as asignar_id, nombre as asignar_nombre, apellido as asignar_apellido FROM usuario WHERE id_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = ?) AND id <> ?";
+            $result2 = $this->db->query($sql2, array($id_usuario, $result[0]->id_usuario));
 
             if($result2->result())
             {
@@ -255,7 +278,7 @@ class M_solicitud extends  CI_Model{
         }  
 
         //$a = $result->result()->$result2;
-        return ['detalle' => $result->result(), 'asignar' => $result2]; 
+        return ['detalle' => $result, 'asignar' => $result2]; 
     }
 
     function actualizarEstadoSolicitud($id, $status, $id_asignar)
@@ -472,11 +495,26 @@ class M_solicitud extends  CI_Model{
 
         //$sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido FROM solicitud WHERE $where AND solicitud.ws_error = 1";
 
-        $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where AND solicitud.ws_error = 1";
+        $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where AND solicitud.ws_error = 1";
 
         $result = $this->db->query($sql, $filtros);
-       
-        return $result->result();
+
+        $res = [];
+
+        foreach ($result->result() as $key => $value)
+        {
+            if($value->agencia_desembolso != '')
+            {
+                $sql = "SELECT AGENCIA FROM agencias where id = ?";
+                $agencias = $this->db->query($sql, array($value->agencia_desembolso));
+                $a = $agencias->result();
+                $value->agencia_desembolso = $a[0]->AGENCIA;                    
+            }
+            $res[] = $value;              
+        }
+
+        return $res;
+
     }
 
     function actualizarNotaSolicitud($id, $nota, $id_nota, $id_asesor)
@@ -509,42 +547,23 @@ class M_solicitud extends  CI_Model{
         //$id_usuario = _getSesion('id_usuario');
         //$rol = _getSesion('rol');
 
-        $sql = "SELECT solicitud.id_nota, notas.nota, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id LEFT JOIN notas ON solicitud.id_nota = notas.id WHERE solicitud.id = ?";
+        $sql = "SELECT solicitud.id_nota, notas.nota, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, DATE_FORMAT(solicitud.timestamp_final,'%h:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%h:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id LEFT JOIN notas ON solicitud.id_nota = notas.id WHERE solicitud.id = ?";
 
-        /*$result = $this->db->query($sql, array($id));
-        
-        if($rol == 'jefe_agencia')
-        {
-            $sql2 = "SELECT id as asignar_id, nombre as asignar_nombre, apellido as asignar_apellido FROM usuario WHERE id_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = ?)";
-            $result2 = $this->db->query($sql2, array($id_usuario));
-
-            if($result2->result())
-            {
-                $result2 = $result2->result(); 
-            }
-            else
-            {
-                $result2 = [];
-            }  
-        }
-        else
-        {
-            $result2 = [];
-        }  
-
-        //$a = $result->result()->$result2;
-        return ['detalle' => $result->result(), 'asignar' => $result2];*/
-
-
-
-
-///////////////
-
-        //$sql = "SELECT solicitud.id_nota, notas.nota, usuario.nombre as usuario_nombre, agencias.AGENCIA as agencia, solicitud.status_sol, solicitud.timestamp_final as fecha_solicitud, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre as nombre_titular, solicitud.apellido as apellido_titular, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, tipo_producto.id as id_producto FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id LEFT JOIN notas ON solicitud.id_nota = notas.id WHERE solicitud.id = ?";
 
         $result = $this->db->query($sql, array($id));
+        $result = $result->result();
+
+        if($result[0]->agencia_desembolso != '')
+        {
+            $sql_des = "SELECT AGENCIA FROM agencias WHERE id = ?";
+            $result_des = $this->db->query($sql_des, array($result[0]->agencia_desembolso));
+            $result_des = $result_des->result();
+            $result[0]->agencia_desembolso = $result_des[0]->AGENCIA;
+        }
+
+        
        
-        return $result->result();        
+        return $result;        
     }
 }
     

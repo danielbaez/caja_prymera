@@ -48,7 +48,7 @@ class C_confirmacion extends CI_Controller {
     public function index()
     {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0 || _getSesion('conectado') == 0) {
-            redirect("/C_main", 'location');
+            ////redirect("/C_main", 'location');
         }
         $data['nombreDato']=':D';
         $data['nombre'] = _getSesion('nombre');
@@ -60,7 +60,7 @@ class C_confirmacion extends CI_Controller {
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
         $data['comboDepa']          = $this->__buildDepartamento();
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Est&aacute;s a un paso de tu pr&eacute;stamo.' : $titulo = '';
         
         $data['tipo_product'] = $titulo; 
        /*$importeMaximo = _getSesion('importeMaximo');
@@ -347,6 +347,10 @@ class C_confirmacion extends CI_Controller {
             $Agencia  = _post('Agencia');
             if($tipo_product == PRODUCTO_VEHICULAR) {
                 $concesionaria = _post('concesionaria');
+                if($concesionaria == null) {
+                    throw new Exception("Ingrese una concesionaria", 1);
+                    
+                }
                 $concecionaria = $this->M_preaprobacion->getConcecionariaId($concesionaria);
                 $concesionaria = $concecionaria[0]->id;
             }
@@ -382,7 +386,7 @@ class C_confirmacion extends CI_Controller {
                             'cod_concecionaria' => $concesionaria,
                             'agencia_desembolso' => $agencia[0]->id,
                             'validar_celular'   => 1,
-                            'timestamp_final'   => date("Y-m-d H:i:s"),
+                            'fec_estado' => date("Y-m-d H:i:s"),
                             'estado_civil'      => $estado_civil,
                             'nombre_conyugue'   => $nombre_conyugue,
                             'dni_conyugue'      => $dni_conyugue,

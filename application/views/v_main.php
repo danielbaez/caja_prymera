@@ -115,7 +115,7 @@
 		  <div class="col-xs-12 col-md-6 col-seccion">
 			<div class="col-xs-12 div-seccion">
 			  <h4>Administrar Perfiles</h4>
-			  <div class="alert alert-danger alert-form" style="font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px; display: none">Ingrese datos correctos al formulario
+			  <div class="alert alert-danger alert-form" style="font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px; display: none">Debe completar todos los campos
 	            </div>
 			  <form class="text-center" id="form-create-edit-user" action="C_main/registrar" method="POST" enctype="multipart/form-data" autocomplete="false">
 				<div class="col-xs-12 col-sm-6">
@@ -758,6 +758,7 @@
 	    			if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != ''){
 		    			this.submit();
 	    			}else{
+	    				$('.alert-success').hide();
 	    				$('.alert-form').show();
 	    				$('html').animate({scrollTop:0},500);
 				    	return false;
@@ -768,6 +769,7 @@
 				    		if(rol_superior != ''){
 				    			this.submit();
 				    		}else{
+				    			$('.alert-success').hide();
 				    			$('.alert-form').show();
 				    			$('html').animate({scrollTop:0},500);
 				    			return false;
@@ -776,6 +778,7 @@
 				    		this.submit();		    		
 				    	}
 				    }else{
+				    	$('.alert-success').hide();
 				    	$('.alert-form').show();
 				    	$('html').animate({scrollTop:0},500);
 				    	return false;

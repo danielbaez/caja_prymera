@@ -26,47 +26,7 @@
 
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
-
-  <!-- Custom fonts for this template -->
-
-<style type="text/css">
-  @media only screen and (min-width : 768px) {
-   .navbar-collapse.custom-menu {
-        display: none !important
-    }
-  .navbar-default{
-    display: none !important
-  }
-}
-
-@media (max-width: 535px) {
-  .titles-header{
-    display: none
-  }
-  .img-header-s{
-    margin: auto;
-  }
-  .btn-collapse{
-    top: -85px !important
-  }
-
-}
-
-
-@media (max-width: 460px) {
-  
-  .btn-collapse{
-    top: -75px !important
-  }
-
-}
-
-@media (max-width: 768px) {
-  .img-header{
-        margin-right: 70px
-  }
-  }
-</style>
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
 
   </head>
     <body>
@@ -88,120 +48,49 @@
   </div>
 
 
-<nav class="navbar navbar-default" style="min-height: 0">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
-    
-    <div class="navbar-header" style="">
-      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="top: -75px">
-        
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      
-    </div>
-
-    
-    <div class="collapse navbar-collapse custom-menu" id="bs-example-navbar-collapse-1">
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- <nav class="navbar navbar-default">
-  <div class="container-fluid">
-<div class="navbar-header" style="background-color: red">
-  <div class="container">
-    <div class="col-xs-6">
-      <img class="img-responsive img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">    
-    </div>
-    <div class="col-xs-6">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="margin-top: 30px;">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>    
-    </div>
-  </div>
-</div>
-</div>
-</nav> -->
-
-
-<!-- <nav class="navbar navbar-default" style="background: #0060aa; border: none">
-  <div class="container-fluid">
-
-    <div class="row" style="display: flex; align-items: center;">
-      <div class="col-xs-10">
-        <div class="row" style="display: flex; align-items: center;">
-          <div class="col-xs-6 titles-header">
-            <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
-            <h1 class="title-header-second">Mi Cash</h1>
-          </div>
-          <div class="col-xs-6 img-header-s">
-            <img class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
-          </div>  
-        </div>
-      </div>
-      <div class="col-xs-2">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-      </div>
-        
-      </div>
-
-    <div class="collapse navbar-collapse custom-menu" id="bs-example-navbar-collapse-1" style="border: none;">
-      <ul class="nav navbar-nav">
-        <li><a style="color: white" href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a style="color: white" href="#">Link</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
   <div class="container container-simulador">
-
-    <div class="row" >                
-                <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
-                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <?php if(_getSesion('rol') == 'asesor'){ ?>
-                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
-                </div>
-            </div>
 
     <div class="row" style="margin-top: 20px">
       <?php if($tipo_product == '') {?>
         <h2>Completa los datos:</h2>
       <?php  } else {?>
-      <div class="col-xs-12 col-md-8 text-center">
+      <div class="col-xs-12 col-sm-8 text-center">
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
       </div>
-      <!-- <div class="hidden-xs col-sm-4 text-right div-navegacion"> -->
-      <!-- <div class="col-xs-12 col-sm-4 text-right div-navegacion"> -->
-      <div class="hidden-xs hidden-sm col-md-4 button-login text-right">
-            <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-            <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-            <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-            <?php } ?>
-            <?php if(_getSesion('rol') == 'asesor'){ ?>
-            <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-            <?php } ?>
-            <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
-        </div>
+      <div class="hidden-xs hidden-xs col-sm-4 button-login text-right">
+          <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+          <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
+          <?php } ?>
+          <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
+          <?php } ?>
+          <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+      </div>
       <div class="col-xs-12">
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
@@ -242,30 +131,30 @@
           <div class="col-xs-12 col-md-5 text-center">
             <div class="col-xs-12 col-md-10 col-md-offset-1 div-ajax-valores">
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">Importe del Pr&eacute;stamo</p>
-                        <span class="valor-ajax-valores" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
+                <p class="titulo-ajax-valores font-regular">Importe del Pr&eacute;stamo</p>
+                        <span class="valor-ajax-valores font-regular" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">Pago total</p>
-                        <span class="valor-ajax-valores" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
+                <p class="titulo-ajax-valores font-regular">Pago total</p>
+                        <span class="valor-ajax-valores font-regular" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">Cuota Mensual*</p>
-                        <span class="valor-ajax-valores" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
+                <p class="titulo-ajax-valores font-regular">Cuota Mensual*</p>
+                        <span class="valor-ajax-valores font-regular" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">TEA</p>
-                        <span class="valor-ajax-valores" id="tea"><?php echo $tea?>%</span>
+                <p class="titulo-ajax-valores font-regular">TEA</p>
+                        <span class="valor-ajax-valores font-regular" id="tea"><?php echo $tea?>%</span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-bold">TCEA</p>
-                        <span class="valor-ajax-valores" id="tcea"><?php echo $tcea?>%</span>
+                <p class="titulo-ajax-valores font-regular">TCEA</p>
+                        <span class="valor-ajax-valores font-regular" id="tcea"><?php echo $tcea?>%</span>
                         <span style="display: none" id="tea"><?php echo $tea?>%</span>
-                        <p class="letra-chica font-bold">*Cuota aproximada sujeta a evaluaci&oacute;n</p>
+                        <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
               </div>
             </div>
             <div class="col-xs-6 text-center margin-top-btn">
-              <button type="button" class="btn btn-lg btn-text-ampliar font-bold" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
+              <button type="button" class="btn btn-lg btn-text-ampliar font-bold" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>ampliar</button>
             </div>
             <div class="col-xs-6 text-center margin-top-btn">
               <a onclick="addStyle()" class="btn btn-l btn-text-siguiente font-bold">Siguiente</a>
@@ -286,19 +175,19 @@
 
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md" role="document">
+  <div class="modal-dialog modal-md centrar" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-          <p style="text-align: center;font-size: 16px;">Desea ampliar?</p>
+          <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" style="">Desea ampliar?</h3>
         </div>
-        <div class="modal-body">
+        <div class="modal-body otros">
           <div class="bs-example">
-            <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-              <p style="color:#808080">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
-                <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
-                <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+            <div class="form-group" id="tablaCronograma" style="">
+              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+                <p style="">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+                <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
+                <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
           </div>
       </div>
         </div>
