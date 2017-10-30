@@ -39,6 +39,8 @@ h1{font-family: 'quicksandlight' !important}
 .title-header a{
   text-decoration: none !important;
   background-color: #0060aa !important;
+  position: relative;
+  z-index: 500;
 }
 
 .title-header a, .title-header a:link, .title-header a:visited, .title-header a:active, .title-header a:hover {
@@ -49,6 +51,8 @@ h1{font-family: 'quicksandlight' !important}
 .div-logo h1 a{
   text-decoration: none !important;
   background-color: #0060aa !important;
+  position: relative;
+  z-index: 500;
 }
 
 .div-logo h1 a, .div-logo h1 a:link, .div-logo h1 a:visited, .div-logo h1 a:active, .div-logo h1 a:hover {
