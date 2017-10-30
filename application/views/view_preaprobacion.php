@@ -82,14 +82,32 @@
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-4 button-login text-right">
-          <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+              </ul>
+            </li>
+        </ul>
+          <!-- <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
           <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
           <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
           <?php } ?>
           <?php if(_getSesion('rol') == 'asesor'){ ?>
           <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
           <?php } ?>
-          <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+          <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> -->                
       </div>
       <div class="col-xs-12">
         <form class="text-center form-horizontal">

@@ -145,3 +145,9 @@ p,label,span {
 }
 /*Tipo de letra*/
 /*Otros*/
+
+
+.dropdown-toggle{
+    background: #0060aa;
+    color: #fff
+}

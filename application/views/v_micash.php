@@ -28,7 +28,7 @@
     </head>
     <body>
 
-        <div class="container-header">
+        <!-- <div class="container-header">
             <div class="container">
                 <div class="row padding-div-row-header">
                     <div class="col-xs-6 col-title-header-padding">
@@ -40,21 +40,82 @@
                     </div>
                 </div>    
             </div>            
+        </div> -->
+
+
+          <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <h1 class="title-header">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
         </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <h1 style="display: none">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
+        </div>
+      </div>    
+    </div>            
+  </div>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
         <div class="container fondo">
             <div class="row">                
-                <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
-                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+                <div class="col-xs-12 hidden-xs visible-sm hidden-md text-right div-navegacion">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li>
+                                <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                                <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <?php if(_getSesion('rol') == 'asesor'){ ?>
+                                <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                    <!-- <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
                     <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
                     <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
                     <?php } ?>
                     <?php if(_getSesion('rol') == 'asesor'){ ?>
                     <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
                     <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> -->                
                 </div>
             </div>
+
+
 
             <!-- <div class="row row-top"> -->
             <div class="row row-form-img">
@@ -116,15 +177,40 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="hidden-xs hidden-sm col-md-6 button-login text-right img-form-cash">
-                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li>
+                                <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                                <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <?php if(_getSesion('rol') == 'asesor'){ ?>
+                                <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+
+    
+                    <!-- <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
                     <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
                     <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
                     <?php } ?>
                     <?php if(_getSesion('rol') == 'asesor'){ ?>
                     <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
                     <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> 
+                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>  -->
+
+
+
                 </div>
           
                 <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;">

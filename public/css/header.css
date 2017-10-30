@@ -24,43 +24,34 @@ h1{font-family: 'quicksandlight' !important}
 
 .padding-div-row-header{
     padding-top: 10px;padding-bottom: 10px;
-}
-
-.col-title-header-padding{
-    padding-top: 3px;
-    /*padding-top: 10px*/
+    display: flex;
+    align-items: center;
 }
 
 .title-header{
     color: #FFFFFF;
     font-size: 27px;
     line-height: 1.2;
-    margin-top: 13px;
-    margin-bottom: 5px;
+    /*margin-top: 13px;
+    margin-bottom: 5px;*/
 }
 
 .title-header-one-line{
     color: #FFFFFF;
     font-size: 27px;
-    line-height: 1.2;
-    margin-top: 28px;
-    margin-bottom: 5px;   
+    margin-top: 10px;  
 }
 
 .title-header-second{
     color: #FFFFFF;
     font-size: 27px;
-    line-height: 1.2;
-    margin-top: 0px;
-    margin-bottom: 5px;
+    margin-top: 0;
 }
 
 .title-header-first{
     color: #FFFFFF;
     font-size: 20px;
-    line-height: 1.2;
-    margin-top: 17px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
 .img-header{
@@ -69,19 +60,14 @@ h1{font-family: 'quicksandlight' !important}
 
 @media (min-width: 700px) and (max-width: 1199px) { 
 
-    .title-header {
-        /*margin: 0;*/
-
-    }
-
  }
 
 @media (max-width: 991px) { 
 
-    .row-form-img{
+    /*.row-form-img{
         margin-top: 0px !important
 
-    }
+    }*/
  }
 
  @media (max-width: 768px) { 
@@ -95,35 +81,30 @@ h1{font-family: 'quicksandlight' !important}
     }
  } 
 
- @media (max-width: 710px) {
-    .title-header-one-line{
-        margin-top: 15px
-    } 
+ @media (max-width: 710px) { 
  }
 
- @media (max-width: 699px) { 
+ @media (max-width: 700px) { 
+
+  .title-header {
+        font-size: 24px !important;
+    }
 
     .title-header{
-        margin-top: 3px;
+        /*margin-top: 3px;*/
     }
-    .col-title-header-padding{
-    padding-top: 0px;}
+
  }
 
   @media (max-width: 610px) { 
 
-    .title-header {
+    /*.title-header {
         font-size: 24px !important;
-    }
-
-    .title-header-second{
-
-    }
+    }*/
 
  }
 
-/*@media (max-width: 650px) {*/
-@media (max-width: 535px) {
+@media (max-width: 635px) {
     .title-header, .title-header-one-line, .title-header-first, .title-header-second {
         display: none;
     }
@@ -137,11 +118,14 @@ h1{font-family: 'quicksandlight' !important}
     }
     .div-logo h1{
         display: block !important;
-        font-size: 15px;
+        font-size: 16px;
         text-align: center;
         color: #FFFFFF;
         margin: 0;
         margin-top: 10px
+    }
+    .padding-div-row-header{
+        display: block
     }
 }
 
@@ -160,6 +144,10 @@ h1{font-family: 'quicksandlight' !important}
 
 .custom-menu-collapse ul li a{
   color:white !important;
+}
+
+.custom-menu-collapse ul li a{
+  background: #0060aa
 }
 
 .navbar-header{
@@ -185,11 +173,11 @@ h1{font-family: 'quicksandlight' !important}
 
 @media (max-width: 767px) {
   .img-header{
-        margin-right: 70px
+        margin-right: 60px
   }
 }
 
-@media (max-width: 535px) {
+@media (max-width: 635px) {
   .titles-header{
     display: none
   }
@@ -198,7 +186,7 @@ h1{font-family: 'quicksandlight' !important}
   }
 
   .btn-collapse{
-    top: -38px !important
+    top: -40px !important
   }
 
 }
