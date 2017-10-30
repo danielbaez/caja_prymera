@@ -85,7 +85,7 @@ body {
 .form-control {
     margin-left: 10px;
     width: 93%;
-    height: 50px;
+    /*height: 50px;*/
     font-family: 'quicksandlight';
     
 }
@@ -282,6 +282,10 @@ h1,h2,h3,h4,h5,a{
  font-family: 'quicksandbold';   
 }
 
+.font-bold span{
+ font-family: 'quicksandbold' !important;   
+}
+
 
 
 .img-form-vehicular{
@@ -294,7 +298,7 @@ h1,h2,h3,h4,h5,a{
 .img-form-cash{
     background: url(/public/img/fondos/Credito-Consumo.png);
     background-size:100% auto;
-    height: 580px;
+    height: 505px;
     background-repeat: no-repeat;
 }
 
@@ -315,6 +319,37 @@ h1,h2,h3,h4,h5,a{
     padding-top: 0px;
 }
 
+#ocultarCaract{
+    margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;
+}
+
+#ocultarCaract ul{
+    display: table; margin: 0 auto;width: 100%;
+}
+
+#ocultarCaract ul li{
+    width: 20%
+}
+
+#ocultarCaract ul li:not(.active) a{
+    margin-right: 0;
+    border-radius: 0; background-color: rgba(0, 122, 192, 0.7);
+}
+
+#ocultarCaract ul li.active{
+    background-color: white !important;
+}
+
+#ocultarCaract ul li a:active, #ocultarCaract ul li a:focus {
+ background-color: white;
+ color: black; 
+}
+
+#ocultarCaract ul li a:hover {
+ 
+ border: none
+}
+
 
 #ocultarCaract .panel-heading{
     background-color: #007ac0;
@@ -328,3 +363,24 @@ h1,h2,h3,h4,h5,a{
 .mas-caracteristicas{
     padding-bottom: 15px
 }
+
+@media (max-width : 991px){
+    .mas-caracteristicas{
+        display: none
+    }
+    #ocultarCaract{
+        display: block !important;
+        margin-top: 0 !important
+    }
+}
+
+@media (max-width: 768px) { 
+
+    .mas-caracteristicas{
+        display: none
+    }
+    #ocultarCaract{
+        display: block !important;
+        margin-top: 20px !important
+    }
+ }

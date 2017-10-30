@@ -30,8 +30,8 @@ h1{font-family: 'quicksandlight' !important}
 
 .title-header{
     color: #FFFFFF;
-    font-size: 27px;
-    line-height: 1.2;
+    font-size: 32px;
+    line-height: 1;
     /*margin-top: 13px;
     margin-bottom: 5px;*/
 }
@@ -64,19 +64,19 @@ h1{font-family: 'quicksandlight' !important}
 
 .title-header-one-line{
     color: #FFFFFF;
-    font-size: 27px;
+    font-size: 32px;
     margin-top: 10px;  
 }
 
 .title-header-second{
     color: #FFFFFF;
-    font-size: 27px;
+    font-size: 32px;
     margin-top: 0;
 }
 
 .title-header-first{
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 0;
 }
 
@@ -96,25 +96,16 @@ h1{font-family: 'quicksandlight' !important}
     }*/
  }
 
- @media (max-width: 768px) { 
-
-    .mas-caracteristicas{
-        display: none
-    }
-    #ocultarCaract{
-        display: block !important;
-        margin-top: 18px
-    }
- } 
+  
 
  @media (max-width: 710px) { 
  }
 
  @media (max-width: 700px) { 
 
-  .title-header {
+  /*.title-header {
         font-size: 24px !important;
-    }
+    }*/
 
     .title-header{
         /*margin-top: 3px;*/
@@ -201,6 +192,9 @@ h1{font-family: 'quicksandlight' !important}
   .img-header{
         margin-right: 60px
   }
+  .title-header, .title-header-second, .title-header-one-line {
+        font-size: 24px !important;
+    }
 }
 
 @media (max-width: 635px) {
