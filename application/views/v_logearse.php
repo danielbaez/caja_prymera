@@ -41,37 +41,13 @@
           <h1 class="title-header-one-line">Sistema de Cr&eacute;ditos Web</h1>
         </div>
         <div class="col-xs-6 div-logo">
-          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header-no-navbar" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
           <h1 style="display: none">Sistema de Cr&eacute;ditos Web</h1>
         </div>
       </div>    
     </div>            
   </div>
 
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-    </div>    
-    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
-        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
-        <?php } ?>
-        <?php if(_getSesion('rol') == 'asesor'){ ?>
-          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
-        <?php } ?>
-        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
 
         <div class="container">

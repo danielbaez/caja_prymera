@@ -26,19 +26,21 @@
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
 		<style>
 		</style>  	
 	</head>
 	<body>
-	  <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
+	  <!-- <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
 		  <div class="container-fluid">
 			<div class="navbar-header">
 			  <a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
@@ -46,18 +48,76 @@
 			<ul class="nav navbar-nav">
 			</ul>
 		  </div>
-		</nav>
+		</nav> -->
+
+		<div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <h1 class="title-header">Dashboard</h1>
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <h1 style="display: none">Dashboard</h1>
+        </div>
+      </div>    
+    </div>            
+  </div>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 	<div class="container">
 		<div class="row text-center">
-		<div class="col-xs-12" style="margin-bottom: 10px">
+		<div class="col-xs-12 m-t-20 m-b-20">
 		  <div class="col-xs-12 col-sm-3"></div>
 		  <div class="col-xs-12 col-sm-6">
 			<h1 class="titulo-vista">Bienvenido(a) <?php echo $nombre ?></h1>            
 		  </div>
 		  <div class="col-xs-12 col-sm-3 text-right">
 			
-		  	<span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
+			<ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                        <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                        <?php } ?>
+                    </li>
+                    <li>
+                        <?php if(_getSesion('rol') == 'asesor'){ ?>
+                        <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                        <?php } ?>
+                    </li>
+                    <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                  </ul>
+                </li>
+            </ul>
+
+		  	<!-- <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
 			<?php if(_getSesion('rol') == 'administrador'){ ?>
 				<a href="/C_usuario/asignarSupervisor">Asignar Asesores</a><br>
 			<a href="/C_reporte/solicitudes">Ver Reportes</a><br>
@@ -65,7 +125,7 @@
 				  elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
 				  <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
 			  <?php } ?>
-			  <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>
+			  <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br> -->
 		  </div>
 
 

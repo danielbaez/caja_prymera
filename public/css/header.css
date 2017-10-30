@@ -54,7 +54,7 @@ h1{font-family: 'quicksandlight' !important}
     margin-bottom: 0;
 }
 
-.img-header{
+.img-header, .img-header-no-navbar{
     width: 300px;
 }
 
