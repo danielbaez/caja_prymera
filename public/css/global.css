@@ -1,3 +1,11 @@
+body{
+    font-family: 'quicksandlight' !important;
+}
+
+p,span,h1,h2,h3,h4,h5,a{
+    font-family: 'quicksandlight' !important;
+}
+
 .close.btn-close {
 	background-color: black;
     color: #fff;
@@ -174,4 +182,12 @@ p,label,span {
 .ajustar {
     padding-top: 0px !important;
     margin: 0;
+}
+.dropdown-toggle{
+    background: #0060aa;
+    color: #fff
+}
+
+.dropdown-menu-user{
+    padding-right: 15px
 }

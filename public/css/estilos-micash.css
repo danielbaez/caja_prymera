@@ -52,13 +52,8 @@ body {
 .panel-body{
     border-bottom-right-radius: 40px;
 }
-.navbar-right{
-    padding: 0 200px;
-}
-.navbar {
-    margin-bottom: 0;
-}
-.button-login button{
+
+/*.button-login button{
     background-color: #4e82bb !important;
     color: #fff;
     border-radius: 20px;
@@ -76,7 +71,7 @@ body {
     color: #4e82bb;
     border-radius: 50%;
     margin-left: 5px;
-}
+}*/
 .container-fluid {
     background-color: #0060aa;
 }
@@ -94,16 +89,7 @@ body {
     font-family: 'quicksandlight';
     
 }
-.navbar-brand {
-    color: #fff;
-    font-size: 33px;
-    padding: 9px;
-    margin: 6px;
-    margin-top: 11px;
-    margin-bottom: 13px;
-    position: relative;
-    left: 204px;
-}
+
 div.text-left class1{
     color: #fff;
     position: relative;
@@ -155,19 +141,7 @@ div.checkbox label {
 .checkbox label{
     color: #9fa9a3;
 }
-.container-fluid>.navbar-header{
-    margin:3px;
-}
-.navbar-header{
-    width: 100%;
-    padding: 0 100px;
-    -webkit-transition: padding .5s linear;
-    -moz-transition: padding .5s linear;
-    -ms-transition: padding .5s linear;
-    -o-transition: padding .5s linear;
-    transition: padding .5s linear;
-    
-}
+
 .contenido-header{
     float:left;
     max-width: 320px;
@@ -189,9 +163,7 @@ div.checkbox label {
 }
 
 @media (max-width : 850px){
-    .navbar-header{
-        padding: 0 20px;
-    }
+    
     .imagen-fondo{
         display:none;
     }
@@ -205,9 +177,7 @@ div.checkbox label {
     }
 }
 @media (max-width : 700px){
-    .navbar-header{
-        padding: 0 5px;
-    }
+    
     .contenido-header{
         max-width: 235px;
     }
@@ -217,10 +187,10 @@ div.checkbox label {
     .contenido-header h1{
         font-size: 24px;
     }
-    .button-login button{
+    /*.button-login button{
         margin-top: -44px;
         margin-left: 112px;
-    }
+    }*/
 }
 @media (max-width : 550px){
     .imagen-header img{
