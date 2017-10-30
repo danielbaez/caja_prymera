@@ -118,7 +118,7 @@ class C_preaprobacion extends CI_Controller {
         $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
        
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! ' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
 
@@ -245,9 +245,9 @@ class C_preaprobacion extends CI_Controller {
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
 
             $datos_tea = $result->return->tea;
-            $data['tea'] = round($datos_tea*10000)/100;
+            $data['tea'] = number_format(round($datos_tea*10000)/100, 2);
             $datos_tcea = $result->return->tcea;
-            $data['tcea'] = round($datos_tcea*10000)/100;  
+            $data['tcea'] = number_format(round($datos_tcea*10000)/100, 2);  
 
             $data['seguroAuto'] = $result->return->seguroAuto;
             $data['seguroAuto'] = str_replace( ',', '', $data['seguroAuto']);

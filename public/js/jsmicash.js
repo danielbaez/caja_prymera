@@ -34,7 +34,7 @@ function solicitarPrestamo() {
 		  return;
 	}
 	if(check == false) {
-		msj('error','Por favor acepte los t&eacute;minos y condiciones');
+		msj('error','Por favor acepte el uso de datos personales');
 		  return;
 	}
 	$.ajax({
@@ -101,6 +101,7 @@ function soloLetras(e){
          return false;
      }
  }
+ 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);

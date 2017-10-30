@@ -34,7 +34,7 @@ function solicitarPrestamo() {
 		  return;
 	}
 	if(check == false) {
-		msj('error','Por favor acepte los t&eacute;minos y condiciones');
+		msj('error','Por favor acepte el uso de datos personales');
 		  return;
 	}
 	$.ajax({

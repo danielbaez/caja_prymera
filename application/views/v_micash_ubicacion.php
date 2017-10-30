@@ -21,7 +21,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-ubicacion.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.1.0/nouislider.min.css">
 
@@ -78,9 +78,9 @@
     </div>            
   </div>
 
-    <div class="container">
+    <div class="container m-t-60">
         <section>
-            <div class="mdl-content-cards">
+            <div class="mdl-content-cards m-50">
                 <div class="mdl-card cuadro" style="">
 			        <div class="mdl-card__title">
                     </div>

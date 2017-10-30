@@ -31,15 +31,20 @@
     overflow-y: auto;
 }
 .modal-body.otros{
-	height: 300px;
+	height: 200px;
     overflow-y: auto;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    width: 85%;
 }
 .modal-body.celular{
 	height: 175px;
     overflow-y: auto;
 }
 .modal-body.otros .bs-example .form-group {
-	margin-left: 55px;
+	margin-left: 25px;
 	margin-top: 35px;
 }
 .modal-body.otros .bs-example .form-group p{
@@ -48,7 +53,7 @@
     font-size: 18px;
 }
 .modal-header {
-	border-bottom-color: #007ac0;
+	border-bottom-color: transparent;
 }
 .modal-footer {
 	border-top: transparent;
@@ -59,6 +64,9 @@
 }
 .modal-dialog.modal-lg.centrar {
 	margin-top: 150px;
+}
+.modal-dialog.modal-lg.centrar_logo {
+    margin-top: 115px;
 }
 .modal-dialog.modal-lg.medio {
 	margin-top: 90px;
@@ -145,3 +153,25 @@ p,label,span {
 }
 /*Tipo de letra*/
 /*Otros*/
+.mdl-card.cuadro h1 {
+    font-size: 18px;
+}
+.cuadro {
+    width: 100%;
+    margin-top: 100px;
+    border: 2px solid #015FA9;
+    padding: 20px 40px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+.negrita {
+    font-weight: bold;
+    font-family: 'quicksandbold';
+}
+.light {
+    font-family: 'quicksandregular';
+}
+.ajustar {
+    padding-top: 0px !important;
+    margin: 0;
+}

@@ -90,7 +90,7 @@ class preaprobacion extends CI_Controller {
         $valorAuto = ($minAuto+$maxAuto)/2;
         $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
+        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! ' : $titulo = '';
         
         $data['tipo_product'] = $titulo;       
         

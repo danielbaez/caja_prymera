@@ -14,6 +14,14 @@ function addStyle() {
     var monto = document.getElementById('slider-range-value-monto').innerText;
     var pors_tea = document.getElementById('tea').innerText;
     var seguro = document.getElementById('seguroAuto').innerText;
+    if(marca == '' || marca == null) {
+    	msj('error', 'Seleccione la marca');
+		return;
+    }
+    if(modelo == '' || modelo == null) {
+    	msj('error', 'Seleccione la modelo');
+		return;
+    }
 	if(marca == '' && modelo == '') {
 		$("#remove1 a").removeAttr("href");
 		msj('error', 'Seleccione la marca y el modelo');

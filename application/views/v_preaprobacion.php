@@ -26,6 +26,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-preaprobacion.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
 
   <!-- Custom fonts for this template -->
   </head>
@@ -56,7 +57,7 @@
             <h2>Completa los datos:</h2>
           <?php  } else {?>
           <div class="col-xs-12 text-center">
-            <h1 class="title-prestamo" id="titulo"><?php echo $tipo_product;?></h1>
+            <h1 class="title-prestamo" id="titulo" style="font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre aprobado</span></h1>
           </div>
           <div class="col-xs-12">
           <div class="container max-width-950">
@@ -183,14 +184,14 @@
                                         </div>
                                         <div class="col-md-6" style="margin-top: 15px;margin-left: -28px;">
                                           <div class="col-xs-6 text-center">
-                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff;font-size: 15px;width: 125px;height: 51px;font-family: 'quicksandbold';padding: 1px;" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
+                                                        <button type="button" class="btn btn-lg" style="background-color: #bdbebf;color: #fff;font-size: 16px;width: 145px;height: 51px;font-family: 'quicksandbold';padding: 1px;" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>Ampliar</button>
                                                     </div>
                                         </div>
                                         <div class="col-md-6" style="position: relative;top: 15px;">
                                           <div class="col-xs-6 text-center">
                                             <div class="container" style="position: relative;top: 30px;">
                                                   <ul class="nav nav-pills">
-                                                <li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;height: 50px;width: 116px;font-family: 'quicksandbold';" onclick="addStyle()">Siguiente</a></li>
+                                                <li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;left: -2px;height: 50px;width: 130px;font-family: 'quicksandbold';font-size: 17px;" onclick="addStyle()">Siguiente</a></li>
                                               </ul>
                                             </div>
                                                     </div>
@@ -348,19 +349,19 @@
 
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md" role="document">
+  <div class="modal-dialog modal-md centrar" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-          <p style="text-align: center;font-size: 16px;"><small style="font-family: arial;font-weight: bold;">&iquest; </small>Desea ampliar ?</p>
+          <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title" style="">Desea ampliar?</h3>
         </div>
-        <div class="modal-body">
+        <div class="modal-body otros">
           <div class="bs-example">
-            <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-                <p style="color:#808080">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
-                <p style="color:#808080">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
-                <p style="color:#808080">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="color:#808080">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+            <div class="form-group" id="tablaCronograma" style="">
+              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
+                <p style="">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+                <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
+                <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
           </div>
       </div>
         </div>
@@ -368,7 +369,7 @@
         </div>
       </div>
   </div>
-</div>
+</div> 
 
 <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">

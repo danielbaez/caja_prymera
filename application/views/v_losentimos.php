@@ -78,12 +78,12 @@
                 <div class="col-md-12">
                   <div class="col-xs-6" style="margin-left: 8px">
                     <div class="form-group">
-                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="font-family: 'quicksandlight';">
+                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="font-family: 'quicksandlight';" onkeypress="return valida(event)">
                         </div>
                   </div>
                   <div class="col-xs-6" style="margin-left: 191px;margin-top: -49px;">
                     <div class="form-group">
-                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="font-family: 'quicksandlight';">
+                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="font-family: 'quicksandlight';" onkeypress="return valida(event)">
                         </div>
                   </div>
                 </div>

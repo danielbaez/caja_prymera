@@ -79,7 +79,7 @@
         <h2>Completa los datos:</h2>
       <?php  } else {?>
       <div class="col-xs-12 col-sm-8 text-center">
-        <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
+        <h2 class="titulo-simulador" style="font-family: 'quicksandregular';font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre aprobado</span></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-4 button-login text-right">
           <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>

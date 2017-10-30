@@ -23,6 +23,7 @@
           
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
 
     </head>
     <body>
@@ -59,11 +60,11 @@
                     <!-- <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;"> -->
                     <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);">
                         <div class="panel-heading" style="background-color: #fff;border: 0px;color: #00519D;text-align: center;">
-                            <h1 class="panel-title" style="font-size:40px;margin-top: 19px;">Consulta aqu&iacute;</h1>
+                            <h1 class="panel-title" style="font-size:40px;margin-top: 19px;font-weight: bold;">Consulta aqu&iacute;</h1>
                         </div>
                         <div class="panel-body" style="background-color: #fff;">
                             <form class="text-center">
-                                <p style="margin-top: -15px;font-size:15px;color: #a3a4a6;">Cr&eacute;dito Auto de Prymera</p>
+                                <p style="margin-top: -30px;font-size:15px;color: #a3a4a6;">Cr&eacute;dito Auto de Prymera</p>
                                 <p class="datos">Ingresa tus datos</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event)">
@@ -108,10 +109,16 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12 mas-caracteristicas">
-                        <label class="" style="color: #fff">M&aacute;s caracter&iacute;sticas</label>
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="moreText()">
-                            <i class="mdi mdi-play_circle_filled" style="color: #fff"></i>
-                        </button>
+                        <div class="col-xs-7" style="background-color: #fff;width: 183px;margin-left: -15px;">
+                            <div class="col-xs-8">
+                                <label class="" style="color: #00519D;margin: 5px;">Caracter&iacute;sticas</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="margin-left: 19px;" onclick="moreText()">
+                                    <i class="mdi mdi-keyboard_arrow_down" style="color: #00519D;"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-6 button-login text-right img-form-vehicular">
@@ -423,13 +430,13 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg centrar_logo" role="document">
     <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h3 class="modal-title" id="terminosYcondiciones" style="color:#1C4485">Uso de datos personales</h3>
           </div>
-          <div class="modal-body">
+          <div class="modal-body resumen">
             <p class="tipo_letra">
                &quot;El cliente autoriza y otorga a CRAC PRYMERA SA. (PRYMERA) por tiempo indefinido, su consentimiento libre, previo, expreso, inequ&iacute;voco e informado para que (por s&iacute; mismo o a trav&eacute;s de terceros) recopile, registre, organice, almacene, conserve, elabore, modifique, bloquee, suprima, extraiga, consulte, utilice, transfiera, exporte, importe o procese (trate) de cualquier otra forma sus datos personales, conforme a Ley, pudiendo elaborar Bases de Datos (Bancos de Datos) con su informaci&oacute;n tanto proporcionada, como recopilada a trav&eacute;s de terceros o generada por PRYMERA como consecuencia del cumplimiento de las relaciones contractuales y/o comerciales que mantenga con el cliente, con la finalidad de:<br><br> 
             </p>
@@ -475,7 +482,6 @@
             </p>    
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Salir</button>
           </div>
         </div>
   </div>
