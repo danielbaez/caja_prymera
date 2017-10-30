@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
 
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
           <title>Cr&eacute;dito Mi Auto</title>
@@ -20,52 +20,89 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-          
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
+        
 
     </head>
     <body>
-        <div class="container-header">
-            <div class="container">
-                <div class="row padding-div-row-header">
-                    <div class="col-xs-6 col-title-header-padding">
-                        <h1 class="title-header">&iexcl;Te financiamos hasta el<br>90% de tu auto!*</h1>
-                    </div>
-                    <div class="col-xs-6 div-logo">
-                        <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-                        <h1 style="display: none">&iexcl;Te financiamos hasta el 90% de tu auto!*</h1>
-                    </div>
-                </div>    
-            </div>            
-        </div>  
+
+
+          <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <h1 class="title-header"><a href="/C_login">&iexcl;Te financiamos hasta el<br>90% de tu auto!</a></h1>
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <h1 style="display: none"><a href="/C_login">&iexcl;Te financiamos hasta el 90% de tu auto!</a></h1>
+        </div>
+      </div>    
+    </div>            
+  </div>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> 
 
         <div class="container fondo">
             <div class="row">                
-                <div class="visible-xs col-xs-12 visible-sm hidden-md text-right div-navegacion">
-                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <?php if(_getSesion('rol') == 'asesor'){ ?>
-                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br>                
+                <div class="col-xs-12 hidden-xs visible-sm hidden-md text-right div-navegacion">
+
+                    <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+                        <li class="dropdown dropdown-menu-user">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li>
+                                <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                                <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <?php if(_getSesion('rol') == 'asesor'){ ?>
+                                <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                          </ul>
+                        </li>
+                    </ul>               
                 </div>
             </div>
             
             <div class="row row-form-img">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-0 text-left">
-                    <!-- <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;"> -->
-                    <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);">
-                        <div class="panel-heading" style="background-color: #fff;border: 0px;color: #00519D;text-align: center;">
-                            <h1 class="panel-title" style="font-size:40px;margin-top: 19px;font-weight: bold;">Consulta aqu&iacute;</h1>
+                    <div class="panel panel-primary formulario-1" style="border:none;background: rgba(255,255,255,0.6);max-width: 461px;">
+                        <div class="panel-heading" style="background-color: #fff;border: 0px;color: #00519D;text-align: center; padding-bottom: 0">
+                            <h1 class="panel-title" style="font-size:32px;margin-top: 0px;font-weight: bold;">Consulta aqu&iacute;</h1>
                         </div>
-                        <div class="panel-body" style="background-color: #fff;">
+                        <div class="panel-body" style="background-color: #fff; padding-top: 0; padding-bottom: 5px;">
                             <form class="text-center">
-                                <p style="margin-top: -30px;font-size:15px;color: #a3a4a6;">Cr&eacute;dito Auto de Prymera</p>
-                                <p class="datos">Ingresa tus datos</p>
+                                <p style="font-size:15px;color: #a3a4a6; margin-bottom: 0">Cr&eacute;dito Auto de Prymera</p>
+                                <p class="datos" style="margin-bottom: 0">Ingresa tus datos</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event)">
                                 </div>
@@ -76,9 +113,7 @@
                                     <input type="text" class="form-control" id="dni" placeholder="DNI" style="" maxlength="8" onkeypress="return valida(event)">
                                 </div>
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="email" style="margin-left: 10px;width: 93%;height: 50px;" class="form-control" id="email" placeholder="Email" style="" maxlength="50">
-                                    </div>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" style="" maxlength="50">
                                 </div>
                             </form>
                             <form class="text-center">
@@ -104,12 +139,12 @@
                                 </div>
                             </div>
                             <div class="col-xs-12">
-                                <p style="font-size: 12px;color: #9fa9a3;margin-top:10px;">*El cr&eacute;dito vehicular "Auto de Prymera" est&aacute; sujeto a evaluaci&oacute;n</p>
+                                <p style="font-size: 12px;color: #9fa9a3;margin-top:10px; margin-bottom: 0">*El cr&eacute;dito vehicular "Auto de Prymera" est&aacute; sujeto a evaluaci&oacute;n</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-12 mas-caracteristicas">
-                        <div class="col-xs-7" style="background-color: #fff;width: 183px;margin-left: -15px;">
+                    <div class="col-xs-12 col-md-12 mas-caracteristicas" style="padding-left: 0">
+                        <div class="col-xs-7" style="background-color: #fff;width: 183px;">
                             <div class="col-xs-8">
                                 <label class="" style="color: #00519D;margin: 5px;">Caracter&iacute;sticas</label>
                             </div>
@@ -122,18 +157,27 @@
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-6 button-login text-right img-form-vehicular">
-                    <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <?php if(_getSesion('rol') == 'asesor'){ ?>
-                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> 
-                    <!-- <img class="img-responsive" alt="" src="<?php echo RUTA_IMG?>fondos/Credito-Vehicular.png">  -->
+                    <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li>
+                                <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                                <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <?php if(_getSesion('rol') == 'asesor'){ ?>
+                                <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                                <?php } ?>
+                            </li>
+                            <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                          </ul>
+                        </li>
+                    </ul>
                 </div>
                
-                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract" style="margin-bottom: 20px; font-family: 'quicksand'; padding-bottom: 10px;">
+                <div class="col-xs-12 col-md-12 hidden" id="ocultarCaract">
                     
                     <ul class="nav nav-tabs responsive" id="myTab">
                         <li class="active"><a data-toggle="tab" href="#homes">Caracter&iacute;sticas</a></li>
@@ -506,7 +550,7 @@
 //       };
 
 (function($) {
-      fakewaffle.responsiveTabs(['xs']);
+      fakewaffle.responsiveTabs(['xs','sm']);
   })(jQuery);
     </script>
   </body>

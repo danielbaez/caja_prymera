@@ -28,20 +28,6 @@
     </head>
     <body>
 
-        <!-- <div class="container-header">
-            <div class="container">
-                <div class="row padding-div-row-header">
-                    <div class="col-xs-6 col-title-header-padding">
-                        <h1 class="title-header">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
-                    </div>
-                    <div class="col-xs-6 div-logo">
-                        <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-                        <h1 style="display: none">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
-                    </div>
-                </div>    
-            </div>            
-        </div> -->
-
 
           <div class="container-header">
     <div class="container">
@@ -103,15 +89,7 @@
                             <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
                           </ul>
                         </li>
-                    </ul>
-                    <!-- <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <?php if(_getSesion('rol') == 'asesor'){ ?>
-                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-                    <?php } ?>
-                    <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> -->                
+                    </ul>               
                 </div>
             </div>
 

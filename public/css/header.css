@@ -36,14 +36,16 @@ h1{font-family: 'quicksandlight' !important}
     margin-bottom: 5px;*/
 }
 
-.title-header a{
+.title-header a, .title-header-first a, .title-header-second a{
   text-decoration: none !important;
   background-color: #0060aa !important;
   position: relative;
   z-index: 500;
 }
 
-.title-header a, .title-header a:link, .title-header a:visited, .title-header a:active, .title-header a:hover {
+.title-header a, .title-header a:link, .title-header a:visited, .title-header a:active, .title-header a:hover,
+.title-header-first a, .title-header-first a:link, .title-header-first a:visited, .title-header-first a:active, .title-header-first a:hover,
+.title-header-second a, .title-header-second a:link, .title-header-second a:visited, .title-header-second a:active, .title-header-second a:hover {
   text-decoration: none !important;
   color: white !important;
 }
