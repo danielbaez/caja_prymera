@@ -36,6 +36,28 @@ h1{font-family: 'quicksandlight' !important}
     margin-bottom: 5px;*/
 }
 
+.title-header a{
+  text-decoration: none !important;
+  background-color: #0060aa !important;
+}
+
+.title-header a, .title-header a:link, .title-header a:visited, .title-header a:active, .title-header a:hover {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.div-logo h1 a{
+  text-decoration: none !important;
+  background-color: #0060aa !important;
+}
+
+.div-logo h1 a, .div-logo h1 a:link, .div-logo h1 a:visited, .div-logo h1 a:active, .div-logo h1 a:hover {
+  text-decoration: none;
+  color: white !important;
+}
+
+
+
 .title-header-one-line{
     color: #FFFFFF;
     font-size: 27px;

@@ -7,67 +7,55 @@
       <title>Caja Prymera</title>
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
-	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
+
+
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-losentimos.css?v=<?php echo time();?>">
+    
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
+
   </head>
     <body>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right dropdown-menu-user">
-
-          <li class="dropdown">
-          <img class="logo_nuevo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png">
-            <ul class="dropdown-menu">
-            </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+    <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <h1 class="title-header-one-line">Sistema de Cr&eacute;ditos Web</h1>
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header-no-navbar" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <h1 style="display: none">Sistema de Cr&eacute;ditos Web</h1>
+        </div>
+      </div>    
+    </div>            
+  </div>
 
     <div class="container">
-      <div class="row" style="margin-top: 50px">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
-          <div class="panel panel-primary" style="">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-20 m-b-20">
+          <div class="panel panel-primary" style="border: none">
             <div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">
-              <h1 class="panel-title" style="font-size:25px;color: #005aa6;margin-left: 70px;"><strong>Cambiar Contrase&ntilde;a</strong></h1>
+              <h1 class="titulo-vista"><strong>Cambiar Contrase&ntilde;a</strong></h1>
             </div>
-            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px;width: 80%;height: 270px;position: relative;left: 132px;">
+            <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px; border-bottom-right-radius: 40px;">
               <div class="row text-center" style="color:#EF484E">
-                <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';margin-top: -15px">Ingrese su usuario y su nueva contrase&ntilde;a</h1>
+                <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';">Ingrese su usuario y su nueva contrase&ntilde;a</h1>
                 <div class="col-md-12">
-                  <div class="col-xs-6" style="margin-left: 145px">
+                  <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     <div class="form-group">
                           <input class="form-control" type="text" id="email" placeholder="Usuario o correo electr&oacute;nico" maxlength="50" style="">
                         </div>
                   </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="col-xs-6" style="margin-left: 145px;margin-top: 0px;">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     <div class="form-group">
                           <input type="password" class="form-control" id="password" placeholder="Contrase&ntilde;a" maxlength="50" style="">
                         </div>
@@ -75,7 +63,7 @@
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <button type="button" class="btn btn-lg" style="width:40%;font-weight: lighter;background-color: #005aa6;width: 60%;color: #fff;font-family: 'quicksandbold';" onclick="cambiarPass()">Aceptar</button>
+                    <button type="button" class="btn btn-lg" style="background-color: #005aa6;color: #fff;font-family: 'quicksandbold';" onclick="cambiarPass()">Aceptar</button>
                 </div>
               </div>
             </div>

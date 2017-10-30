@@ -26,6 +26,7 @@ p,span,h1,h2,h3,h4,h5,a{
 }
 .modal-title {
 	text-align: center;
+    font-weight: bold;
     color: #007ac0 !important;
     font-size: 20px;
     font-family: 'quicksandregular';
@@ -37,6 +38,12 @@ p,span,h1,h2,h3,h4,h5,a{
 .modal-body.resumen {
 	height: 400px;
     overflow-y: auto;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    width: 85%;
+    margin-left: 80px;
 }
 .modal-body.otros{
 	height: 200px;
@@ -50,6 +57,11 @@ p,span,h1,h2,h3,h4,h5,a{
 .modal-body.celular{
 	height: 175px;
     overflow-y: auto;
+    /*border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    width: 85%;*/
 }
 .modal-body.otros .bs-example .form-group {
 	margin-left: 25px;
@@ -183,11 +195,17 @@ p,label,span {
     padding-top: 0px !important;
     margin: 0;
 }
-.dropdown-toggle{
-    background: #0060aa;
-    color: #fff
-}
 
 .dropdown-menu-user{
     padding-right: 15px
+}
+
+.dropdown-menu-user li a{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.dropdown-toggle, .dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-toggle:visited, .dropdown-toggle:focus {
+ background-color: #0060aa !important;
+ color: #fff !important;
 }

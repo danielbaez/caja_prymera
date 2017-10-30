@@ -3,7 +3,7 @@
 }
 
 .btn-login-cash-veh{
-	width: 80%
+	width: 85%
 }
 .btn-login-dash{
 	width: 90%
@@ -12,7 +12,7 @@
 
 .titulo-vista{
 	font-size: 22px;
-	color: #286090;
+	color: #0060aa;
 	font-family: 'quicksandbold' !important;
 
 }
@@ -25,7 +25,7 @@ h4 {
 }
 
 .div-seccion{
-	border:1px solid #286090
+	border:1px solid #0060aa
 }
 
 .div-sexo{
@@ -62,30 +62,30 @@ h4 {
 
 .panel-login-recuperar-password-solicitud{
 	border-radius: 4px !important;
-	border-color: #286090 !important;
+	border-color: #0060aa !important;
 
 }
 
 .modal-recuperar-password-titulo{
-	color:#286090; font-size: 18px
+	color:#0060aa; font-size: 18px
 }
 
 .nav-active-a{
-	color: white !important; background: #286090 !important;
+	color: white !important; background: #0060aa !important;
 	border-radius: 0 !important;
-    border: 1px solid #286090 !important;
+    border: 1px solid #0060aa !important;
 }
 
 .col-border-filtros-reporte{
-	border:2px solid #286090; border-bottom: none
+	border:2px solid #0060aa; border-bottom: none
 }
 
 .col-border-filtros-resultado-reporte{
-	border:2px solid #286090; border-top:none
+	border:2px solid #0060aa; border-top:none
 }
 
 .tr-header-reporte{
-	background: #286090; color: white
+	background: #0060aa; color: white
 }
 
 .reporte-texto-total{
@@ -102,7 +102,7 @@ h4 {
 }
 
 .modal-reporte-informacion-solicitud-titulo{
-	color: #286090
+	color: #0060aa
 }
 
 .modal-reporte-informacion-solicitud p{
@@ -125,6 +125,13 @@ h4 {
 }
 
 
+@media (max-width: 991px){
+
+	.btn-login-cash-veh, .btn-login-dash{
+		width: 82%
+	}
+}
+
 @media (max-width: 767px){
 	.titulo-vista{
 		padding-top: 0;
@@ -133,6 +140,20 @@ h4 {
 		margin-bottom: 0;
 	}
 	.btn-login-cash-veh, .btn-login-dash{
-		width: 100% !important
+		width: 100%
 	}
+}
+
+
+.btn{
+	background-color: #0060aa !important
+}
+
+.pagination>.active>a{
+	background-color: #0060aa;
+	border-color: #0060aa;
+}
+
+.buttons-export a{
+	background-color: white
 }

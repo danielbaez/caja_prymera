@@ -102,7 +102,7 @@
                                                       <span id="sueldoMax">S/ <?php echo  $montoMaximo?></span>
                                                     </div>
                                               </div>
-                                              <div class="col-md-12 m-l-62 p-t-17">
+                                              <div class="col-md-12 m-l-62 p-t-17 m-t--30">
                                                 <div class="hidden-xs col-sm-3 text-center" style="padding: 25px;position: relative;top: 67px;left: 70px">
                                                       <span id="minCuota">S/ <?php echo  $cuotaMinimo?></span>
                                                     </div>
