@@ -49,7 +49,7 @@
 
         <div class="container">
             <div class="row text-center">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-20 m-b-20">
               <h1 class="titulo-vista">Restaurar Contrase&ntilde;a</h1>
             <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
                 <p>Olvid&oacute; su contrase&ntilde;a?</p>

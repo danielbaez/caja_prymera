@@ -56,42 +56,75 @@
                   <form class="form-horizontal" action="/logearse/login" method="post">
                     <div class="form-group">
                       <label class="control-label col-sm-3 tipo_letra_gruesa" for="email" style="font-family:'quicksandbold'; color:#286090">Usuario:</label>
-                      <div class="col-sm-9">
+                      <div class="col-sm-8">
                         <input type="email" class="form-control tipo_letra_delgada" name="usuario" id="email" placeholder="Enter email">
                       </div>
                     </div>
                     <div class="form-group" style="margin-top: 25px">
                       <label class="control-label col-sm-3 tipo_letra_gruesa" for="pwd" style="font-family:'quicksandbold'; color:#286090">Contrase&ntilde;a:</label>
-                      <div class="col-sm-9"> 
+                      <div class="col-sm-8"> 
                         <input type="password" class="form-control tipo_letra_delgada" name="password" id="pwd" placeholder="Enter password">
                       </div>
                     </div>
-                    
-                    <div class="col-xs-12 col-sm-6">
+
+                    <div class="hidden-xs hidden-sm col-sm-3"></div>
+                    <div class="hidden-xs hidden-sm col-sm-8">
+                      <div class="col-sm-6" style="margin:0; padding: 0; text-align: left; padding-left: 8px">
                         <div class="form-group"> 
                           <div class="col-center" style="">
                             <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-cash-veh" data-value="2">Mi Cash</button>
                             <input type="hidden" name="redirect">
                           </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
+                      </div>
+                      <div class="col-sm-6" style="margin:0; padding: 0; text-align: right;">
                         <div class="form-group"> 
                           <div class="col-center" style="">
                             <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-cash-veh" data-value="3">Auto de Prymera</button>
                             <input type="hidden" name="redirect">
                           </div>
                         </div>
+                      </div>
+
                     </div>
-                    <div class="col-xs-12"></div>
-                    <div class="col-xs-12">
-                            <div class="form-group"> 
-                              <div class="col-center" style="">
-                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-dash" data-value="1">Dashboard</button>
+
+                    <div class="hidden-xs hidden-sm col-sm-3"></div>
+                    <div class="hidden-xs hidden-sm col-sm-8" style="padding: 0; margin: 0;">
+                      <div class="col-sm-12" style="margin:0; padding: 0; padding-left: 8px">
+                        <div class="form-group"> 
+                          <div class="col-center" style="">
+                            <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-dash" data-value="1">Dashboard</button>
                                 <input type="hidden" name="redirect">
-                              </div>
-                            </div>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+                    
+                    <div class="visible-xs visible-sm col-xs-12">
+                      <div class="form-group"> 
+                        <div class="col-center" style="">
+                          <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-cash-veh" data-value="2">Mi Cash</button>
+                          <input type="hidden" name="redirect">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="visible-xs visible-sm col-xs-12">
+                      <div class="form-group"> 
+                        <div class="col-center" style="">
+                          <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-cash-veh" data-value="3">Auto de Prymera</button>
+                          <input type="hidden" name="redirect">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="visible-xs visible-sm col-xs-12"></div>
+                    <div class="visible-xs visible-sm col-xs-12">
+                        <div class="form-group"> 
+                          <div class="col-center" style="">
+                            <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-dash" data-value="1">Dashboard</button>
+                            <input type="hidden" name="redirect">
+                          </div>
+                        </div>
+                    </div>
                     <div class="form-group"> 
                       <div class="col-center">
                         <label class="tipo_letra_delgada" style="font-size: 14px;"><small style="font-family: arial;    font-weight: lighter;">¿</small>Olvid&oacute; su contrase&ntilde;a?</label> <a href="/Logearse/olvidoPassword" class="tipo_letra_delgada">Ingrese aqu&iacute;</a>

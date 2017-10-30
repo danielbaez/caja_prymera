@@ -47,11 +47,11 @@
     <div class="container">
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
+          <h1 class="title-header"><a href="/Micash">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</a></h1>
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</h1>
+          <h1 style="display: none"><a href="/Micash">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</a></h1>
         </div>
       </div>    
     </div>            
@@ -87,7 +87,7 @@
                 <div class="col-xs-12 hidden-xs visible-sm hidden-md text-right div-navegacion">
 
                     <ul class="nav navbar-nav navbar-right dropdown-menu-user">
-                        <li class="dropdown">
+                        <li class="dropdown dropdown-menu-user">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li>
@@ -186,7 +186,7 @@
 
                 <div class="hidden-xs hidden-sm col-md-6 button-login text-right img-form-cash">
 
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right dropdown-menu-user">
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                           <ul class="dropdown-menu">
