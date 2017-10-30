@@ -97,7 +97,7 @@
                         <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">
                         <div id="map_div" class="chart_new" style="display:block"></div>
                         <h5 style="color:black;text-align: center;font-size: 15px;font-family: quicksandregular;">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h5>
-                        <h5 style="color:black;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandregular;">Av. Los Lirios con <?php echo $ubicacion ?> Tel&eacute;fono <?php echo $telefono ?></h5>
+                        <h5 style="color:black;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandregular;"><?php echo $ubicacion ?> Tel&eacute;fono <?php echo $telefono ?></h5>
                     </div>
 				</div>
             </div>

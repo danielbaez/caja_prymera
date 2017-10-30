@@ -36,7 +36,7 @@ p,span,h1,h2,h3,h4,h5,a{
     overflow-y: auto;
 }
 .modal-body.resumen {
-	height: 400px;
+	/*height: 445px;*/
     overflow-y: auto;
     border: 1px solid #007ac0;
     border-left: transparent;
@@ -53,6 +53,16 @@ p,span,h1,h2,h3,h4,h5,a{
     border-right: transparent;
     border-bottom: transparent;
     width: 85%;
+}
+.modal-body.preaprobacion-modal{
+    height: 240px;
+    overflow-y: auto;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    width: 85%;
+    margin-left: 30px;
 }
 .modal-body.celular{
 	height: 188px;
@@ -77,6 +87,11 @@ p,span,h1,h2,h3,h4,h5,a{
 }
 .modal-body.otros .bs-example .form-group p{
 	color:#808080;
+    margin: 1px;
+    font-size: 18px;
+}
+.modal-body.preaprobacion-modal .bs-example .form-group p{
+    color:#808080;
     margin: 1px;
     font-size: 18px;
 }
@@ -228,4 +243,7 @@ p,label,span {
 .table-responsive.ocultar .center {
     margin-left: -55px;
     margin-top: 15px;
+}
+.bs-example.form-group {
+    margin-top: 40px;
 }

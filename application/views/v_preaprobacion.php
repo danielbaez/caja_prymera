@@ -355,7 +355,7 @@
           <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
           <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
         </div>
-        <div class="modal-body otros">
+        <div class="modal-body preaprobacion-modal">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="">
               <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>

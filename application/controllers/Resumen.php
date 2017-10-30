@@ -142,8 +142,7 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
 <p style="margin-left: 120px;">pago para que podamos evaluarte.</p>
 
 <p style="margin-left: 120px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
-
-<p style="margin-left: 120px;">T&eacute;rminos y condiciones:” Seg&uacute;n lo especificado por legal”</p> '.$texto.'');
+'.$texto.'');
        $this->email->send();
        
       //_log(print_r($this->email->print_debugger(), true));
@@ -230,7 +229,7 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
        $this->email->from('userauto@prymera.com');
-       $this->email->to('ssalas@prymera.pe');
+       $this->email->to('jsociety.pe@gmail.com');
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto = null;
        $nombre = _getSesion('nombre');
@@ -245,27 +244,23 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
                                   <p style="margin-left: 30px;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
                                    
                                   <h3 style="margin-left: 30px;color: #0152aa;">Datos del cliente:</h3>
-                                  <p style="margin-left: 30px;color: black;">
-                                  Nombres: '.ucfirst($nombre).'</br>
-                                  Apellidos: '.ucfirst(_getSesion('apellido')).'</br>
-                                  DNI: '._getSesion('dni').'</br>
-                                  Tel&eacute;fono: '._getSesion('nro_celular').'</br>
-                                  Correo electr&oacute;nico: '._getSesion('email').'</br>
-                                  Agencia seleccionada: '._getSesion('Agencia').'</p>
+                                  <p style="margin-left: 30px;color: black;"></p>
+                                  <p>Nombres: '.ucfirst($nombre).'</p>
+                                  <p>Apellidos: '.ucfirst(_getSesion('apellido')).'</p>
+                                  <p>DNI: '._getSesion('dni').'</p>
+                                  <p>Tel&eacute;fono: '._getSesion('nro_celular').'</p>
+                                  <p>Correo electr&oacute;nico: '._getSesion('email').'</p>
+                                  <p>Agencia seleccionada: '._getSesion('Agencia').'</p>
                                    
                                    
                                   <h3 style="margin-left: 30px;color: #0152aa;">Datos del Crédito:</h3>
-                                  <p style="margin-left: 30px;color: black;">
-                                  Nro. Solicitud:</br>
-                                  Importe: '._getSesion('Importe').'</br>
-                                  Plazo: '._getSesion('cant_meses').'</br>
-                                  Cuota: '._getSesion('cuota_mensual').'</br>
-                                  TEA: '._getSesion('sess_tea').'</br>
-                                  TCEA: '._getSesion('TCEA').'
-                                  </p>
-                                   
-                                   
-                                  <p style="margin-left: 30px;color: black;"><strong>T&eacute;rminos y condiciones:</strong>&quot; Seg&eacute;n lo especificado por legal&quot;</p>
+                                  <p style="margin-left: 30px;color: black;"></p>
+                                  <p>Nro. Solicitud:</p>
+                                  <p>Importe: '._getSesion('Importe').'</p>
+                                  <p>Plazo: '._getSesion('cant_meses').'</p>
+                                  <p>Cuota: '._getSesion('cuota_mensual').'</p>
+                                  <p>TEA: '._getSesion('sess_tea').'</p>
+                                  <p>TCEA: '._getSesion('TCEA').'</p>
                                 </body>');
        $this->email->send();
        
