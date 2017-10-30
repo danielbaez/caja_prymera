@@ -1,71 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Caja prymera</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
-        <meta http-equiv="refresh"          content="36000">
-        <meta name="viewport"               content="width=device-width, initial-scale=1">
-        <meta name="keywords"               content="A fast online advisory service for academical and professional targets">
-        <meta name="robots"                 content="index,follow">
-        <meta name="date"                   content="September 03, 2017">
-        <meta name="author"                 content="softhy.pe">
-        <meta name="language"               content="es">
-        <meta name="theme-color"            content="#FFFFFF">
-        <meta name="description"            content="Koplan - Your way to success">
-        <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>index.css?v=<?php echo time();?>">
+  <head>
+    <title>Caja prymera</title>
+    <meta charset="utf-8">    
+    <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">   
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <style>
-        </style>  
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
-          <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-            </div>
-            <ul class="nav navbar-nav">
-            </ul>
-          </div>
-        </nav>
+    <style>
+    </style>    
+  </head>
+  <body>
 
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-xs-12">
-                  <div class="col-xs-12 col-sm-3"></div>
-                  <div class="col-xs-12 col-sm-6">
+      <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <h1 class="title-header">Dashboard</h1>
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <h1 style="display: none">Dashboard</h1>
+        </div>
+      </div>    
+    </div>            
+  </div>
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a></li>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-xs-12 m-t-20 m-b-20">
+          <div class="hidden-xs col-sm-3"></div>
+          <div class="col-xs-12 col-sm-6">
                     <h1 class="titulo-vista" style="margin-top: 50px;">Seleccionar Solicitud</h1>            
                   </div>
-                  <div class="col-xs-12 col-sm-3 text-right">
-                    <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
-                    <?php if(_getSesion('rol') == 'administrador'){ ?>
-                      <a href="/C_main">Editar Perfil</a><br>
-                        <a href="/C_usuario/asignarSupervisor">Asignar Supervisor</a><br>
-                        <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
-                    <?php }
-                        elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
-                        <a href="/C_main">Editar Perfil</a><br>
-                    <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
-                    <?php }
-                        elseif(_getSesion('rol') == 'asesor'){ ?>
-                          <a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a><br>
-                    <?php } ?>
-                    <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br>
-                  </div>
+                  <div class="hidden-xs col-sm-3 text-right">
+                    <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                                <ul class="dropdown-menu">                   
+                                  <li><a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a></li>
+                                  <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                                </ul>
+                              </li>
+                          </ul>
+                    </div>
 
 
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">

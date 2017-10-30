@@ -159,3 +159,7 @@ p,label,span {
     background: #0060aa;
     color: #fff
 }
+
+.dropdown-menu-user{
+    padding-right: 15px
+}

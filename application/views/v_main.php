@@ -2,37 +2,14 @@
 <html lang="en">
 	<head>
 		<title>Caja prymera</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible"  content="IE=edge">
-		<meta http-equiv="refresh"          content="36000">
-		<meta name="viewport"               content="width=device-width, initial-scale=1">
-		<meta name="keywords"               content="A fast online advisory service for academical and professional targets">
-		<meta name="robots"                 content="index,follow">
-		<meta name="date"                   content="September 03, 2017">
-		<meta name="author"                 content="softhy.pe">
-		<meta name="language"               content="es">
-		<meta name="theme-color"            content="#FFFFFF">
-		<meta name="description"            content="Koplan - Your way to success">
+		<meta charset="utf-8">		
 		<link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap_select/css/bootstrap-select.min.css?v=<?php echo time();?>">
-	  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
-	  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
+		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
-		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">		
+		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
-
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
@@ -76,12 +53,12 @@
     </div>    
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
-        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
-        <?php } ?>
-        <?php if(_getSesion('rol') == 'asesor'){ ?>
-          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php if(_getSesion('rol') == 'administrador'){ ?>
+            <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+            <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php }
+        	 elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+        	<li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
         <?php } ?>
         <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
       </ul>
@@ -92,42 +69,27 @@
 	<div class="container">
 		<div class="row text-center">
 		<div class="col-xs-12 m-t-20 m-b-20">
-		  <div class="col-xs-12 col-sm-3"></div>
+		  <div class="hidden-xs col-sm-3"></div>
 		  <div class="col-xs-12 col-sm-6">
 			<h1 class="titulo-vista">Bienvenido(a) <?php echo $nombre ?></h1>            
 		  </div>
-		  <div class="col-xs-12 col-sm-3 text-right">
-			
-			<ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-                        <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
-                        <?php } ?>
-                    </li>
-                    <li>
-                        <?php if(_getSesion('rol') == 'asesor'){ ?>
-                        <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
-                        <?php } ?>
-                    </li>
-                    <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+		  <div class="hidden-xs col-sm-3 text-right">
+            <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">                    
+                          <?php if(_getSesion('rol') == 'administrador'){ ?>
+                            <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+	                    	<li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+                          <?php }
+                             elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+                            <li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
+                          <?php } ?>
+                          <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                        </ul>
+                      </li>
                   </ul>
-                </li>
-            </ul>
-
-		  	<!-- <span class="usuario-logueado"><?php echo _getSesion('nombreCompleto') ?></span><br>
-			<?php if(_getSesion('rol') == 'administrador'){ ?>
-				<a href="/C_usuario/asignarSupervisor">Asignar Asesores</a><br>
-			<a href="/C_reporte/solicitudes">Ver Reportes</a><br>
-			  <?php }
-				  elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
-				  <a href="/C_reporte/solicitudes">Ver Reportes</a><br>
-			  <?php } ?>
-			  <a href="/C_usuario/logout">Cerrar Sesi&oacute;n</a><br> -->
-		  </div>
-
+            </div>
 
 		    <?php
             $msg = $this->session->flashdata('msg');
@@ -311,18 +273,11 @@
 	</div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap_select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
 	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
 	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
-	  <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-		<script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
-	  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 	  <script type="text/javascript" async src="<?php echo RUTA_JS?>jsmain.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 

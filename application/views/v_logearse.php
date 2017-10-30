@@ -16,17 +16,13 @@
         <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
 
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
-
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>roboto_new.css?v=<?php echo time();?>">  
+ 
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-        
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <style>
         </style>  
@@ -52,49 +48,46 @@
 
         <div class="container">
             <div class="row text-center">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-20 m-b-20">
               <h1 class="titulo-vista">Bienvenido Usuario</h1>
-            <div class="panel panel-primary" style="border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;padding: 20px; font-family:'quicksandlight'">
-                <!-- <div class="panel-heading" style="background-color:#1C4485;border:0">
-                  <h1 class="panel-title" style="font-size:25px;">Bienvenido Usuario</h1>
-                </div> -->
+            <div class="panel panel-primary login-div">
+
                 <div class="panel-body">
                   <form class="form-horizontal" action="/logearse/login" method="post">
-                    <br>
                     <div class="form-group">
                       <label class="control-label col-sm-3 tipo_letra_gruesa" for="email" style="font-family:'quicksandbold'; color:#286090">Usuario:</label>
                       <div class="col-sm-9">
-                        <input type="email" class="form-control tipo_letra_delgada" style="width: 80%;" name="usuario" id="email" placeholder="Enter email">
+                        <input type="email" class="form-control tipo_letra_delgada" name="usuario" id="email" placeholder="Enter email">
                       </div>
                     </div>
                     <div class="form-group" style="margin-top: 25px">
                       <label class="control-label col-sm-3 tipo_letra_gruesa" for="pwd" style="font-family:'quicksandbold'; color:#286090">Contrase&ntilde;a:</label>
                       <div class="col-sm-9"> 
-                        <input type="password" class="form-control tipo_letra_delgada" style="width: 80%;" name="password" id="pwd" placeholder="Enter password">
+                        <input type="password" class="form-control tipo_letra_delgada" name="password" id="pwd" placeholder="Enter password">
                       </div>
                     </div>
-                    <div class="col-xs-12">
-                        <div class="col-xs-6">
-                            <div class="form-group"> 
-                              <div class="col-center" style="">
-                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="2" style="width: 60%;margin-left: 115px;">Mi Cash</button>
-                                <input type="hidden" name="redirect">
-                              </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="form-group"> 
-                              <div class="col-center" style="">
-                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="3" style="margin-left: -25px;">Auto de Prymera</button>
-                                <input type="hidden" name="redirect">
-                              </div>
-                            </div>
+                    
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group"> 
+                          <div class="col-center" style="">
+                            <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-cash-veh" data-value="2">Mi Cash</button>
+                            <input type="hidden" name="redirect">
+                          </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group"> 
+                          <div class="col-center" style="">
+                            <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-cash-veh" data-value="3">Auto de Prymera</button>
+                            <input type="hidden" name="redirect">
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12"></div>
                     <div class="col-xs-12">
                             <div class="form-group"> 
                               <div class="col-center" style="">
-                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa" data-value="1" style="width: 58%;margin-left: 66px;">Dashboard</button>
+                                <button type="submit" class="btn btn-primary redirect tipo_letra_gruesa btn-login-dash" data-value="1">Dashboard</button>
                                 <input type="hidden" name="redirect">
                               </div>
                             </div>

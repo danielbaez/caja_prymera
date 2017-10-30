@@ -1,7 +1,20 @@
+.login-div{
+	border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #337ab7;border-bottom-left-radius: 0px;border-top-right-radius: 0px;padding: 20px; font-family:'quicksandlight'; max-width: 90%; margin:0 auto; margin-top: 20px
+}
+
+.btn-login-cash-veh{
+	width: 80%
+}
+.btn-login-dash{
+	width: 90%
+}
+
+
 .titulo-vista{
 	font-size: 22px;
 	color: #286090;
 	font-family: 'quicksandbold' !important;
+
 }
 h4 {
 	font-family: 'quicksandbold' !important;
@@ -109,4 +122,17 @@ h4 {
 
 #tabla-usuarios, #tabla-personal tr{
 	cursor: pointer;
+}
+
+
+@media (max-width: 767px){
+	.titulo-vista{
+		padding-top: 0;
+		padding-bottom: 0;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.btn-login-cash-veh, .btn-login-dash{
+		width: 100% !important
+	}
 }

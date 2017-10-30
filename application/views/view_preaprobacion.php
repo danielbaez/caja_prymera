@@ -82,7 +82,7 @@
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-4 button-login text-right">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right dropdown-menu-user">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
               <ul class="dropdown-menu">

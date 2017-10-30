@@ -86,7 +86,7 @@
             <div class="row">                
                 <div class="col-xs-12 hidden-xs visible-sm hidden-md text-right div-navegacion">
 
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right dropdown-menu-user">
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                           <ul class="dropdown-menu">
