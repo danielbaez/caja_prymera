@@ -23,7 +23,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     
-
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
@@ -74,14 +74,14 @@
 
   <div class="container container-simulador">
 
-    <div class="row" style="margin-top: 20px">
+    <div class="row" style="margin-top: 40px">
       <?php if($tipo_product == '') {?>
         <h2>Completa los datos:</h2>
       <?php  } else {?>
-      <div class="col-xs-12 col-sm-8 text-center">
-        <h2 class="titulo-simulador" style="font-family: 'quicksandregular';font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre aprobado</span></h2>
+      <div class="col-xs-12 col-sm-9 text-center">
+        <h2 class="titulo-simulador" style="font-family: 'quicksandregular' !important;font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre aprobado</span></h2>
       </div>
-      <div class="hidden-xs hidden-xs col-sm-4 button-login text-right">
+      <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
         <ul class="nav navbar-nav navbar-right dropdown-menu-user">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
@@ -109,7 +109,7 @@
           <?php } ?>
           <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> -->                
       </div>
-      <div class="col-xs-12">
+      <div class="col-xs-12 m-t30">
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
             <div class="col-xs-3">
@@ -149,24 +149,24 @@
           <div class="col-xs-12 col-md-5 text-center">
             <div class="col-xs-12 col-md-10 col-md-offset-1 div-ajax-valores">
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-regular">Importe del Pr&eacute;stamo</p>
+                <p class="titulo-ajax-valores">Importe del Pr&eacute;stamo</p>
                         <span class="valor-ajax-valores font-regular" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-regular">Pago total</p>
+                <p class="titulo-ajax-valores">Pago total</p>
                         <span class="valor-ajax-valores font-regular" id="cantTotPago">S/ <?php echo $pagoTotal?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-regular">Cuota Mensual*</p>
+                <p class="titulo-ajax-valores">Cuota Mensual*</p>
                         <span class="valor-ajax-valores font-regular" id="cantMensPago">S/ <?php echo $cuotaMensual?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-regular">TEA</p>
+                <p class="titulo-ajax-valores">TEA</p>
                         <span class="valor-ajax-valores font-regular" id="tea"><?php echo $tea?>%</span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
-                <p class="titulo-ajax-valores font-regular">TCEA</p>
-                        <span class="valor-ajax-valores font-regular" id="tcea"><?php echo $tcea?>%</span>
+                <p class="titulo-ajax-valores">TCEA</p>
+                        <span class="valor-ajax-valores" id="tcea"><?php echo $tcea?>%</span>
                         <span style="display: none" id="tea"><?php echo $tea?>%</span>
                         <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
               </div>
@@ -197,13 +197,12 @@
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" style="">Desea ampliar?</h3>
+          <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
         </div>
         <div class="modal-body otros">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="">
-              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
-                <p style="">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
                 <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
           </div>
@@ -213,7 +212,7 @@
         </div>
       </div>
   </div>
-</div>    
+</div>     
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>

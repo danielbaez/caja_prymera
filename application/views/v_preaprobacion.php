@@ -57,7 +57,7 @@
             <h2>Completa los datos:</h2>
           <?php  } else {?>
           <div class="col-xs-12 text-center">
-            <h1 class="title-prestamo" id="titulo" style="font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre aprobado</span></h1>
+            <h1 class="title-general" id="titulo" style="font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre-aprobado</span></h1>
           </div>
           <div class="col-xs-12">
           <div class="container max-width-950">
@@ -157,29 +157,29 @@
                                         <div class="col-md-12" style="border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px;">
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Importe del Pr&eacute;stamo</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="importePrestamo">S/0</span>
+                                                    <span style="color:#1C4485;font-size: 30px" id="importePrestamo">S/0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Pago total</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantTotPago">S/0</span>
+                                                    <span style="color:#1C4485;font-size: 30px" id="cantTotPago">S/0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Cuota Mensual*</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="cantMensPago">S/0</span>
+                                                    <span style="color:#1C4485;font-size: 30px" id="cantMensPago">S/0</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TEA</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="tea">0%</span>
+                                                    <span style="color:#1C4485;font-size: 30px" id="tea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
                                             <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">TCEA</p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="tcea">0%</span>
+                                                    <span style="color:#1C4485;font-size: 30px" id="tcea">0%</span>
                                                     <span style="display: none" id="tea">0%</span>
                                           </div>
                                           <div class="col-md-12" style="margin: 10px">
-                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;">Seguro del Auto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar"><i class="mdi mdi-info"></i></button></p>
-                                                    <span style="color:#1C4485;font-size: 20px" id="seguroAuto">S/ 0</span>
-                                                    <p style="color:#A9A9A9;font-size:11px">*Cuota aproximada sujeta a evaluaci&oacute;n</p>
+                                            <p style="color:#1C4485;font-size: 18px;padding: 0px;margin: 5px;margin-left: 38px;">Seguro del Auto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar"><i class="mdi mdi-info"></i></button></p>
+                                                    <span style="color:#1C4485;font-size: 30px" id="seguroAuto">S/0</span>
+                                                    <p style="color:#A9A9A9;font-size:11px">*Cuota referencial sujeta a evaluaci&oacute;n</p>
                                           </div>
                                         </div>
                                         <div class="col-md-6" style="margin-top: 15px;margin-left: -28px;">
@@ -191,7 +191,7 @@
                                           <div class="col-xs-6 text-center">
                                             <div class="container" style="position: relative;top: 30px;">
                                                   <ul class="nav nav-pills">
-                                                <li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;left: -2px;height: 50px;width: 130px;font-family: 'quicksandbold';font-size: 17px;" onclick="addStyle()">Siguiente</a></li>
+                                                <li id="remove1" class="remove1"><a data-toggle="tab" style="background-color: #1C4485;color: #fff;position: relative;top: -30px;left: -2px;height: 50px;width: 130px;font-family: 'quicksandbold' !important;font-size: 17px;" onclick="addStyle()">Siguiente</a></li>
                                               </ul>
                                             </div>
                                                     </div>
@@ -353,13 +353,12 @@
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" style="">Desea ampliar?</h3>
+          <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
         </div>
         <div class="modal-body otros">
           <div class="bs-example">
             <div class="form-group" id="tablaCronograma" style="">
-              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada,</p>
-                <p style="">culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
                 <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
                 <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
           </div>

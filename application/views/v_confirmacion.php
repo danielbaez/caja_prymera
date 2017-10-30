@@ -289,13 +289,13 @@
       <div class="modal-dialog modal-lg centrar" role="document">
         <div class="modal-content">
             <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
-              <p style="text-align: center;font-size: 18px;color: #0060aa;">Validar Celular</p>
+              <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Validar Celular</p>
             </div>
             <div class="modal-body celular">
               <div class="bs-example">
                 <div class="table-responsive ocultar" id="tablaCronograma" style="">
-                  <p style="">Para poder terminar con la solicitud </p> 
-                  <p style="margin-bottom: 11px;font-size: 19px;color:#808080;text-align: center;">Por favor ingrese el c&oacute;digo de seguridad que ha sido enviado a su celular: </p>
+                  <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad </p>
+                  <p style="text-align: left;">que ha sido enviado a su celular: </p>
                   <div class="center">
                       <input style="width: 50px;font-family: 'quicksandlight';margin-left: 270px;" type="text" placeholder="" size="4" maxlength="1" id="uno">
                       <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="dos">
@@ -306,14 +306,14 @@
                   </div>  
                   <br>
                   <div class="col-xs-12">
-                    <a style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 370px;" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
-                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 370px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
+                    <a style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 280px;" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
+                    <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 280px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
                   </div>
             </div>
             <div class="table-responsive otro" id="idError" style="display: none;">
                 <br>
                 <br>
-                <p style="margin-bottom: 0;font-size: 19px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
+                <p style="margin-bottom: 0;font-size: 22px;margin-top: 25px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
                 <br>
                 <br>
             </div>

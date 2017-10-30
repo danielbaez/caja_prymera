@@ -19,7 +19,7 @@ span,p{
 }
 
 .titulo-simulador{
-	font-size: 36px;
+	font-size: 30px;
     color: #015FA9;
     line-height: 35px;
     margin-top: 0
@@ -43,7 +43,12 @@ margin-top: 40px
 }
 
 .div-ajax-valores{
-	 border: 1px solid #1C4485;border-bottom-right-radius: 50px;border-top-left-radius: 50px;border-width: 2px; color: #1C4485 !important;
+	 border: 1px solid #1C4485;
+	 border-bottom-right-radius: 50px;
+	 border-top-left-radius: 50px;
+	 border-width: 2px; 
+	 color: #1C4485 !important;
+	 width: 75%;
 }
 
 .margin-ajax-valores{
@@ -51,12 +56,12 @@ margin-top: 40px
 }
 
 .titulo-ajax-valores{
-	font-size: 18px;padding: 0px;margin: 5px;color: #0c69ac;
+	font-size: 18px;padding: 0px;margin: 5px;color: #0060aa;
 }
 
 .valor-ajax-valores{
-	font-size: 24px;
-	color: #0c69ac;
+	font-size: 30px;
+	color: #0060aa;
 }
 
 .letra-chica{
@@ -68,17 +73,23 @@ margin-top: 40px
 }
 
 .btn-text-ampliar{
-	background-color: #bdbebf;color: #fff;font-size: 17px;width: 125px;height: 51px;padding: 1px;font-family: quicksandregular;
+	background-color: #bdbebf;
+	color: #fff;font-size: 17px;
+	width: 150px;
+	height: 51px;
+	padding: 1px;
+	font-family: quicksandbold;
 }
 
 .btn-text-siguiente{
     background-color: #1C4485;
     color: #fff;
     font-size: 16px;
-    width: 125px;
+    width: 150px;
+    margin-left: -100px;
     height: 51px;
     padding-top: 12px;
-    font-family: 'quicksandregular';
+    font-family: 'quicksandbold' !important;
 }
 
 .btn.focus, .btn:focus, .btn:hover{
@@ -94,5 +105,8 @@ margin-top: 40px
 	font-size: 24px;
 	line-height: 28px;
 
+	}
 }
- }
+/*.margin-ajax-valores p,span{
+    font-weight: bold;
+}*/

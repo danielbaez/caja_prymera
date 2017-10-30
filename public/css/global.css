@@ -29,7 +29,7 @@ p,span,h1,h2,h3,h4,h5,a{
     font-weight: bold;
     color: #007ac0 !important;
     font-size: 20px;
-    font-family: 'quicksandregular';
+    font-family: 'quicksandbold' !important;
 }
 .modal-body {
 	height: 470px;
@@ -55,13 +55,21 @@ p,span,h1,h2,h3,h4,h5,a{
     width: 85%;
 }
 .modal-body.celular{
-	height: 175px;
+	height: 188px;
     overflow-y: auto;
-    /*border: 1px solid #007ac0;
+    border: 1px solid #007ac0;
     border-left: transparent;
     border-right: transparent;
     border-bottom: transparent;
-    width: 85%;*/
+    width: 85%;
+    margin-left: 80px;
+    margin-top: -20px;
+}
+.modal-footer {
+    margin-top: -40px;
+}
+.modal-body.celular .bs-example{
+    margin-top: -20px;
 }
 .modal-body.otros .bs-example .form-group {
 	margin-left: 25px;
@@ -106,7 +114,7 @@ p,span,h1,h2,h3,h4,h5,a{
     width: 125px;
     height: 51px;
     padding-top: 12px;
-    font-family: 'quicksandregular';
+    font-family: 'quicksandbold' !important;
 }
 .btn.btn-lg.botones-codigo{
 	background-color: #005aa6;
@@ -115,7 +123,7 @@ p,span,h1,h2,h3,h4,h5,a{
     width: 165px;
     height: 51px;
     padding-top: 12px;
-    font-family: 'quicksandregular';
+    font-family: 'quicksandbold' !important;
 }
 /*Botones*/
 /*Titles*/
@@ -124,12 +132,12 @@ p,span,h1,h2,h3,h4,h5,a{
     font-size: 20px;
     color: #1C4485;
     border-radius: 10px;
-    font-family: 'quicksandlight';
+    font-family: 'quicksandlight' !important;
 }
 .title-general{
-    font-size: 36px;
+    font-size: 30px;
     color: #015FA9;
-    font-family: 'quicksandbold';
+    font-family: 'quicksandbold' !important;
 }
 .panel-title.subtitle { 
 	font-size: 25px;
@@ -166,7 +174,7 @@ p,label,span {
     color: #fff;
     font-weight: lighter;
     font-size: 16px;
-    font-family: 'quicksandlight';
+    font-family: 'quicksandbold' !important;
     float: right;
     margin-top: -70px;
     margin-right: 30px;
@@ -209,4 +217,15 @@ p,label,span {
 .dropdown-toggle, .dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-toggle:visited, .dropdown-toggle:focus {
  background-color: #0060aa !important;
  color: #fff !important;
+}
+.container.max-width-950 p,span{
+    font-weight: bold;
+}
+.col-md-12.margin-ajax-valores p,span{
+    font-weight: bold;
+    font-family: 'quicksandregular' !important;
+}
+.table-responsive.ocultar .center {
+    margin-left: -55px;
+    margin-top: 15px;
 }

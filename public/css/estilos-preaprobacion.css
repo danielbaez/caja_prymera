@@ -74,7 +74,7 @@ div.row.row1 {
 .title-prestamo{
 	font-size: 36px;
 	color: #015FA9;
-    font-family: 'quicksandbold';
+    font-family: 'quicksandbold' !important;
 }
 label {
     font-family: 'quicksandlight';
