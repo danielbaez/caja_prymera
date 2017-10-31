@@ -53,8 +53,8 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-20 m-b-20">
               <h1 class="titulo-vista">Restaurar Contrase&ntilde;a</h1>
             <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
-                <p>Olvid&oacute; su contrase&ntilde;a?</p>
-                <p>Ingrese su usuario o direcci&oacute;n de correo para ayudarlo a restaurar su contrase&ntilde;a</p>
+                <p><span style="font-family: arial !important;font-weight: lighter;color: #acacac;">&iquest;</span>Olvidaste tu contrase&ntilde;a?</p>
+                <p>Ingresa tu usuario o direcci&oacute;n de correo para ayudarte a restaurar tu contrase&ntilde;a</p>
                 <div class="panel-body">
                   <form class="form-horizontal">
                     <div class="form-group">
@@ -87,7 +87,7 @@
                   <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i><br>
                    <h4>Revisa tu correo</h4>
                  <p>Hemos enviado un enlace a <span id="correo_cambio"></span>, para restaurar tu contrase&ntilde;a.</p>
-                 <p>Revisa tu buz&oacute;n de correo electr&oacute;nico, si no recibes el email, por favor revisa tambien tu bandeja de spam.</p>
+                 <p>Revisa tu buz&oacute;n de correo electr&oacute;nico, si no recibes el email, por favor revisa tambi&eacute;n tu bandeja de spam.</p>
                   </div>
                   <div class="modal-footer" style="text-align: center">
                   </div>

@@ -5,7 +5,10 @@ body{
 p,span,h1,h2,h3,h4,h5,a{
     font-family: 'quicksandlight' !important;
 }
-
+a {
+    cursor: pointer;
+    cursor: hand;
+}
 .close.btn-close {
 	background-color: black;
     color: #fff;

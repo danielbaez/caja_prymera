@@ -10,6 +10,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
@@ -135,8 +136,9 @@
                   </div>
                 </div> -->
                 
-                <div class="form-group div-personales-agregados">
-                  <div class="col-sm-offset-3 col-sm-6 col-personales-agregados" style="background: #dadada;" id="personalAsignado">
+                <div class="form-group div-personales-agregados" style="margin-left: 12px;">
+                  <label class="control-label col-sm-4" for="supervisor">Personal Asignado:</label>
+                  <div class="col-sm-offset-3 col-sm-6 col-personales-agregados" style="background: #dadada;margin-left: -2px;" id="personalAsignado">
                   </div>
                 </div>
                 <div class="form-group"> 

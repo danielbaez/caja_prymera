@@ -142,13 +142,21 @@ class C_usuario extends CI_Controller {
             $html = "";
             $p = "";
             $cabecera = "";
+            _log(COUNT($asesores));
             foreach ($asesores as $key) {
-                if($key != 'null' && $key != $id_pers) {
-                    array_push($array_glob, $key);
+                if(COUNT($asesores) == 2) {
+                    if($key != 'null') {
+                        array_push($array_glob, $key);
+                    }
+                }else {
+                    if($key != 'null' && $key != $id_pers) {
+                        array_push($array_glob, $key);
+                    }
                 }
             }
             $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
             foreach ($datosAsesor as $key) {
+                _log(print_r($key, true));
                         $html .= '<tr id="check_'.$key->id.'">
                                     <td>
                                        <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">

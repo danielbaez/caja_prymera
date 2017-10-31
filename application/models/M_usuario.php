@@ -291,6 +291,7 @@ class M_usuario extends  CI_Model{
                    AND u.id NOT IN ?";
         }
         $result = $this->db->query($sql, array($array));
+        _logLastQuery();
         return $result->result();
     }
 
