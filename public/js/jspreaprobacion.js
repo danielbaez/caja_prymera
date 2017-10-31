@@ -244,7 +244,7 @@ function getDistritos() {
 
 function getModelo() {
 	var marca = $('#marca').val();
-	if(Provincia == null) {
+	if(marca == null) {
 		msj('error', 'Seleccione una marca v&aacute;lida');
 		return;
 	}

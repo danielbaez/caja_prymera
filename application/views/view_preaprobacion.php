@@ -84,7 +84,7 @@
 
     <div class="row m-t-40">
       <div class="col-xs-12 col-sm-9 text-center">
-        <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?><span>Tienes un pr&eacute;stamo pre aprobado</span></h2>
+        <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?><span>Tienes un pr&eacute;stamo pre-aprobado</span></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
         <ul class="nav navbar-nav navbar-right dropdown-menu-user">
