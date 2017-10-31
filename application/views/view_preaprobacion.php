@@ -149,7 +149,7 @@
             <div class="col-xs-12 col-md-10 col-md-offset-1 div-ajax-valores">
               <div class="col-md-12 margin-ajax-valores">
                 <p class="titulo-ajax-valores">Importe del Pr&eacute;stamo</p>
-                        <span class="valor-ajax-valores font-regular" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 0); ?></span>
+                        <span class="valor-ajax-valores font-regular" id="importePrestamo">S/ <?php echo number_format(str_replace( ',', '', $importeMaximo), 2); ?></span>
               </div>
               <div class="col-md-12 margin-ajax-valores">
                 <p class="titulo-ajax-valores">Pago total</p>

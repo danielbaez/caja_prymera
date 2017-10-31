@@ -86,7 +86,7 @@
                     </div>
                     <div>
                     	<h1 class="p-0 m-0 negrita" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
-                        <h1 class="ajustar negrita" ><b>Solicitaste un cr&eacute;dito de S/ <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?> <?php echo $Importe ?> soles a <?php echo $cant_meses ?> meses con una cuota de S/ <?php echo $cuota_mensual ?></b></h1><br />
+                        <h1 class="ajustar negrita" ><b>Solicitaste un cr&eacute;dito de <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> <?php } ?> <?php echo $Importe ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?></b></h1><br />
                         <h1 class="p-0 m-0 light" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
                         <h1 class="m-t-0 light">con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span> (luz, agua, tel&eacute;fono) con antiguedad</h1>
                         <h1 class="p-0 m-t-23 light">no mayor a dos meses.

@@ -14,6 +14,7 @@ function addStyle() {
     var monto = document.getElementById('slider-range-value-monto').innerText;
     var pors_tea = document.getElementById('tea').innerText;
     var seguro = document.getElementById('seguroAuto').innerText;
+    console.log(monto);
     if(marca == '' || marca == null) {
     	msj('error', 'Seleccione la marca');
 		return;

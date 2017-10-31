@@ -62,6 +62,7 @@ class preaprobacion extends CI_Controller {
         $data['comboDepa']          = $this->__buildDepartamento();
         $importeMaximo = _getSesion('importeMaximo');
         $importeMinimo = _getSesion('importeMinimo');
+        //_log(number_format(intval(_getSesion('importeMaximo')),2));
         $plazos = _getSesion('plazos');
 
         $plazos_explode = explode(';', $plazos);
@@ -111,6 +112,7 @@ class preaprobacion extends CI_Controller {
         }
 
         $data['importeMaximo']      = $importeMaximo;
+        _log($importeMaximo);
         $data['importeMinimo']      = $importeMinimo;
 
 
@@ -203,7 +205,7 @@ class preaprobacion extends CI_Controller {
             $datos_tcea = $result->return->tcea;
             $data['tcea'] = round($datos_tcea*10000)/100;  
 
-            $data['importePrestamo'] = $cantidad; 
+            $data['importePrestamo'] = number_format(floatval($cantidad), 2); 
 
           }
           if($res == 0){
@@ -732,12 +734,12 @@ class preaprobacion extends CI_Controller {
             $seguro  = _post('seguro');
             $idPersona = _getSesion('idPersona');
             $session = array(
-                        'pago_total'        => $pagoTot,
-                        'cuota_mensual'     => $cuotaMens,
-                        'TCEA'              => $varTcea,
-                        'cant_meses'        => $meses,
-                        'Importe'           => $importe,
-                        'sess_tea'          => $varTea
+                        'pago_total'        => _post('pagotot'),
+                        'cuota_mensual'     => _post('mensual'),
+                        'TCEA'              => _post('pors_tea'),
+                        'cant_meses'        => _post('meses'),
+                        'Importe'           => _post('cuotaIni'),
+                        'sess_tea'          => _post('pors_tea')
                             );
             $this->session->set_userdata($session);
             $arrayUpdt = array(

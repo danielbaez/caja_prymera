@@ -111,12 +111,17 @@ class C_preaprobacion extends CI_Controller {
 
         $data['montoMaximo']      = round($maxAuto/100)*100;
         $data['montoMinimo']      = round($minAuto/100)*100;
+        /*_log($data['montoMaximo']);
+        _log($data['montoMinimo']);*/
 
         $valorAuto = ($data['montoMaximo']+$data['montoMinimo'])/2;
         $valorAuto = round($valorAuto/100)*100;
 
         $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
+
+        /*$data['montoMaximo']      = number_format(intval(round($maxAuto/100)*100), 2);
+        $data['montoMinimo']      = number_format(intval(round($minAuto/100)*100), 2);*/
        
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! ' : $titulo = '';
         
@@ -257,11 +262,11 @@ class C_preaprobacion extends CI_Controller {
 
             if(_post('action') == 'plazo' or _post('action') == 'monto')
             {
-                $data['importeeeeee'] = $valorAuto - $data['cuotaMinimo'];            
+                $data['importeeeeee'] = number_format($valorAuto - $data['cuotaMinimo'], true);            
             }
             else
             {
-                $data['importeeeeee'] = $valorAuto - $cuota;            
+                $data['importeeeeee'] = number_format($valorAuto - $cuota, 2);            
             }
 
           }
@@ -669,15 +674,15 @@ class C_preaprobacion extends CI_Controller {
             $importe_auto = $monto-$importe;
             $concesionaria = _post('concesionaria');
             $session = array(
-                        'pago_total'        => $pagoTot,
-                        'cuota_mensual'     => $cuotaMens,
-                        'TCEA'              => $varTcea,
-                        'cant_meses'        => $meses,
-                        'Importe'           => $importe_auto,
-                        'cuota_inicial'     => $importe,
-                        'sess_tea'          => $varTea,
+                        'pago_total'        => _post('pagotot'),
+                        'cuota_mensual'     => _post('mensual'),
+                        'TCEA'              => _post('pors_tcea'),
+                        'cant_meses'        => _post('meses'),
+                        'Importe'           => $importe_auto.'.00',
+                        'cuota_inicial'     => _post('cuotaIni').'00',
+                        'sess_tea'          => _post('pors_tea'),
                         'seguro'            => $seguro,
-                        'valor_auto'        => $monto_vehic,
+                        'valor_auto'        => $monto_vehic.'.00',
                         'marca'             => $marca,
                         'modelo'            => $modelo
                             );

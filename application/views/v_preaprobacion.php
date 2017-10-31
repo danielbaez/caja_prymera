@@ -395,7 +395,6 @@
     //
 
     var rangeSliderMonto = document.getElementById('slider-range-monto');
-
       noUiSlider.create(rangeSliderMonto, {
         start: [ <?php echo  ($montoMinimo+$montoMaximo)/2?>],
         step: 100,

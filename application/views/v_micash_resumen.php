@@ -107,7 +107,7 @@
                 <?php } ?>
 			    		  <div class="col-xs-12  m-t-15">
 					          <div class="form-group" style="">
-					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php } ?><?php echo 'S/ '.$Importe?></span>
+					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php echo 'S/ '.$Importe?><?php }else{ ?><?php echo $Importe.'.00'?><?php } ?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Importe Pr&eacute;stamo: </span>
 					          	  </div>
@@ -116,7 +116,7 @@
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                 <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
-                        <span>S/ <?php echo $cuota_inicial?></span>
+                        <span><?php echo $cuota_inicial?></span>
                         <div class="col-xs-7">
                           <span style="">Cuota Inicial: </span>
                         </div>
@@ -125,7 +125,7 @@
                 <?php } ?>
 					      <div class="col-xs-12 m-t-15">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $cant_meses?> meses</span>
+					          	  <span><?php echo $cant_meses?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Plazo: </span>
 					          	  </div>
@@ -133,7 +133,7 @@
 					      </div>
 					      <div class="col-xs-12 m-t-15">
 					          <div class="form-group" style="">
-					          	  <span>S/ <?php echo $cuota_mensual?></span>
+					          	  <span><?php echo $cuota_mensual?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">Cuota Mensual: </span>
 					          	  </div>
@@ -141,7 +141,7 @@
 					      </div>
                 <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
-                        <span>S/ <?php echo $pago_total?></span>
+                        <span><?php echo $pago_total?></span>
                         <div class="col-xs-7">
                           <span style="">Pago Total: </span>
                         </div>
@@ -149,7 +149,7 @@
                 </div>
                 <div class="col-xs-12 m-t-15">
                     <div class="form-group" style="">
-                        <span><?php echo $tea?>%</span>
+                        <span><?php echo $tea?></span>
                         <div class="col-xs-7">
                           <span style="">TEA: </span>
                         </div>
@@ -157,7 +157,7 @@
                 </div>
 					      <div class="col-xs-12 m-t-15">
 					          <div class="form-group" style="">
-					          	  <span><?php echo $tcea?>%</span>
+					          	  <span><?php echo $tcea?></span>
 					          	  <div class="col-xs-7">
 					          	  	<span style="">TCEA: </span>
 					          	  </div>
@@ -193,7 +193,7 @@
                 </div>
 						  </div>
 						  	<div class="col-xs-12 color-info" style="margin-top: -20px">
-      		    		<p>* La solicitud de tu cr&eacute;dito vehicular ha sido enviada al correo electr&oacute;nico y al n&uacute;mero de celular que  proporcion&oacute; indicando las instrucciones  a seguir para el desembolso</p>
+      		    		<p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>cr&eacute;dito vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada al correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
       		   		</div>
 						</form>
 			    	</div>
