@@ -12,10 +12,10 @@ span,p{
 }
 
 .font-bold{
-	font-family: 'quicksandbold';
+	font-family: 'quicksandbold' !important;
 }
 .font-regular{
-	font-family: 'quicksandregular';
+	font-family: 'quicksandregular' !important;
 }
 
 .titulo-simulador{
@@ -23,6 +23,10 @@ span,p{
     color: #015FA9;
     line-height: 35px;
     margin-top: 0
+}
+
+.titulo-simulador span{
+	font-weight: lighter;
 }
 
 .slider-value{
@@ -48,7 +52,7 @@ margin-top: 40px
 	 border-top-left-radius: 50px;
 	 border-width: 2px; 
 	 color: #1C4485 !important;
-	 width: 75%;
+	 /*width: 75%;*/
 }
 
 .margin-ajax-valores{
@@ -86,7 +90,7 @@ margin-top: 40px
     color: #fff;
     font-size: 16px;
     width: 150px;
-    margin-left: -100px;
+    /*margin-left: -100px;*/
     height: 51px;
     padding-top: 12px;
     font-family: 'quicksandbold' !important;
@@ -96,8 +100,40 @@ margin-top: 40px
 	color: white;
 }
 
+.modal-div-text p{
+	margin-bottom: 0;
+    font-size: 19px;
+    color: #808080;
+    text-align: center
+}
 
+.modal-div-numbers{
+	padding-top: 20px; padding-bottom: 10px
+}
 
+.modal-div-numbers input{
+	width: 50px;font-family: 'quicksandlight'
+}
+
+.modal-celular{
+	height: 188px;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    width: 85%;
+    margin: auto;
+}
+
+@media (max-width: 767px) { 
+
+   .linea{
+   		border: none
+	}
+	.modal-celular{
+		width: 100%
+	}
+}
 
 @media (max-width: 699px) { 
 
@@ -105,6 +141,19 @@ margin-top: 40px
 	font-size: 24px;
 	line-height: 28px;
 
+	}
+}
+
+@media (max-width: 635px) { 
+
+	.div-ajax{
+		margin-left: 0;
+	    float: none;
+	    width: 100%;
+	}
+
+	.btn-text-ampliar, .btn-text-siguiente{
+		width: 135px !important
 	}
 }
 /*.margin-ajax-valores p,span{

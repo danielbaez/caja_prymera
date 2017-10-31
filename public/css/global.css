@@ -76,7 +76,7 @@ p,span,h1,h2,h3,h4,h5,a{
     margin-top: -20px;
 }
 .modal-footer {
-    margin-top: -40px;
+    /*margin-top: -40px;*/
 }
 .modal-body.celular .bs-example{
     margin-top: -20px;
@@ -163,7 +163,7 @@ p,span,h1,h2,h3,h4,h5,a{
 /*Crd-Border*/
 .card-border{
 	border: 2px solid #015FA9;
-    padding: 30px 15px;
+    padding: 20px 15px;
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
 }

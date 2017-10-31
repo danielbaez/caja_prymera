@@ -30,19 +30,19 @@
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-            <h1 class="title-header-first"><a href="/Micash">Cr&eacute;dito Vehicular</a></h1>
-            <h1 class="title-header-second"><a href="/Micash">Auto de Prymera</a></h1>
+            <h1 class="title-header-first"><a href="/C_login">Cr&eacute;dito Vehicular</a></h1>
+            <h1 class="title-header-second"><a href="/C_login">Auto de Prymera</a></h1>
             <?php } else { ?>
-            <h1 class="title-header-first"><a href="/C_login">Cr&eacute;dito consumo</a></h1>
-            <h1 class="title-header-second"><a href="/C_login">Mi Cash</a></h1>
+            <h1 class="title-header-first"><a href="/Micash">Cr&eacute;dito consumo</a></h1>
+            <h1 class="title-header-second"><a href="/Micash">Mi Cash</a></h1>
           <?php } ?>
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none"><a href="/Micash">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-            <h1 style="display: none"><a href="/C_login">Cr&eacute;dito consumo | Mi Cash</a></h1>
+            <h1 style="display: none"><a href="/C_login">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
             <?php } else { ?>
+            <h1 style="display: none"><a href="/Micash">Cr&eacute;dito consumo | Mi Cash</a></h1>
           <?php } ?>
         </div>
       </div>    

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,10 +22,10 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">    
 
   </head>
     <body>
@@ -36,12 +35,21 @@
     <div class="container">
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
-          <h1 class="title-header-second">Mi Cash</h1>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <h1 class="title-header-first"><a href="/C_login">Cr&eacute;dito Vehicular</a></h1>
+            <h1 class="title-header-second"><a href="/C_login">Auto de Prymera</a></h1>
+            <?php } else { ?>
+            <h1 class="title-header-first"><a href="/Micash">Cr&eacute;dito consumo</a></h1>
+            <h1 class="title-header-second"><a href="/Micash">Mi Cash</a></h1>
+          <?php } ?>
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none">Cr&eacute;dito consumo | Mi Cash</h1>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <h1 style="display: none"><a href="/C_login">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
+            <?php } else { ?>
+            <h1 style="display: none"><a href="/Micash">Cr&eacute;dito consumo | Mi Cash</a></h1>
+          <?php } ?>
         </div>
       </div>    
     </div>            
@@ -74,12 +82,9 @@
 
   <div class="container container-simulador">
 
-    <div class="row" style="margin-top: 40px">
-      <?php if($tipo_product == '') {?>
-        <h2>Completa los datos:</h2>
-      <?php  } else {?>
+    <div class="row m-t-40">
       <div class="col-xs-12 col-sm-9 text-center">
-        <h2 class="titulo-simulador" style="font-family: 'quicksandregular' !important;font-weight: bold;"><?php echo $tipo_product;?><span style="font-weight: lighter;">Tienes un pr&eacute;stamo pre aprobado</span></h2>
+        <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?><span>Tienes un pr&eacute;stamo pre aprobado</span></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
         <ul class="nav navbar-nav navbar-right dropdown-menu-user">
@@ -99,16 +104,10 @@
                 <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
               </ul>
             </li>
-        </ul>
-          <!-- <span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span><br>
-          <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-          <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a><br>
-          <?php } ?>
-          <?php if(_getSesion('rol') == 'asesor'){ ?>
-          <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a><br>
-          <?php } ?>
-          <a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a><br> -->                
+        </ul>                
       </div>
+    </div>
+    <div class="row">
       <div class="col-xs-12 m-t30">
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
@@ -146,7 +145,7 @@
 
           <div class="col-xs-12 visible-xs visible-sm margin-top"></div>
           
-          <div class="col-xs-12 col-md-5 text-center">
+          <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 text-center div-ajax">
             <div class="col-xs-12 col-md-10 col-md-offset-1 div-ajax-valores">
               <div class="col-md-12 margin-ajax-valores">
                 <p class="titulo-ajax-valores">Importe del Pr&eacute;stamo</p>
@@ -175,13 +174,13 @@
               <button type="button" class="btn btn-lg btn-text-ampliar font-bold" data-toggle="modal" data-target="#myModal" id="generarCronograma">Deseo<br>ampliar</button>
             </div>
             <div class="col-xs-6 text-center margin-top-btn">
-              <a onclick="addStyle()" class="btn btn-l btn-text-siguiente font-bold">Siguiente</a>
+              <a onclick="addStyle()" class="btn btn-lg btn-text-siguiente font-bold">Siguiente</a>
             </div>       
           </div>
         </form>                  
       </div>
     </div>          
-    <?php  }?>
+
   </div>
 
   <div class="container">
