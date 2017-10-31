@@ -279,6 +279,10 @@ class logearse extends CI_Controller {
                 throw new Exception("Ingrese su correo electr&oacute;nico", 1);
             }
             $id_pers = $this->M_usuario->getIdRecuperarPassword($email);
+            if($id_pers == null || $id_pers == '') {
+                throw new Exception("No se encontr&oacute; su usuario o correo", 1);
+                
+            }
             $session = array('id_pers_recuperar' => $id_pers[0]->id,
                              'fecha_recupear' => date("Y-m-d"),
                              'estado_recuperar' => 1);
@@ -320,13 +324,13 @@ class logearse extends CI_Controller {
        $this->email->initialize($configGmail);
        $this->email->from('userauto@prymera.com');
        $this->email->to($email);
-       $this->email->subject('Bienvenido/a a Caja Prymera-Restaurar Contrase&ntilde;a');
+       $this->email->subject('Bienvenido/a a Caja Prymera-Restaurar Contraseña');
        $this->email->message('
         <h1><strong>Restaurar Contrase&ntilde;a</strong></h1>
         <h4>Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n te enviamos un enlace para que pueda cambiar tu contrase&ntilde;a</h4>
+        <h4>A continuaci&oacute;n te enviamos un enlace para que puedas cambiar tu contrase&ntilde;a</h4>
 
-        <p>Usuario: <a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambia tu contrase&ntilde;a aqu&iacute;</a></p>
+        <p>'._getSesion('nombreCompleto').': <a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambia tu contrase&ntilde;a aqu&iacute;</a></p>
         ');
        $this->email->send();
        //con esto podemos ver el resultado

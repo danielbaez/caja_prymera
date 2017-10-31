@@ -20,6 +20,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
         
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
@@ -76,20 +77,19 @@
         </div>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog modal-md" role="document">
+          <div class="modal-dialog modal-md" role="document" style="margin-top: 115px;">
             <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h3 class="modal-title modal-recuperar-password-titulo">Restaurar Contrase&ntilde;a</h3>
                   </div>
-                  <div class="modal-body text-center">
+                  <div class="modal-body otros text-center" style="margin-left: 35px;">
                   <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i><br>
                    <h4>Revisa tu correo</h4>
                  <p>Hemos enviado un enlace a <span id="correo_cambio"></span>, para restaurar tu contrase&ntilde;a.</p>
                  <p>Revisa tu buz&oacute;n de correo electr&oacute;nico, si no recibes el email, por favor revisa tambien tu bandeja de spam.</p>
                   </div>
                   <div class="modal-footer" style="text-align: center">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
                   </div>
                 </div>
           </div>

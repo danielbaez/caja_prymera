@@ -11,6 +11,7 @@ function recuperarPass() {
 					modal('myModal');
 					$('#correo_cambio').html(email);
 				}else {
+					msj('error', data.msj);
 				}
 			} catch (err){
 				msj('error',err.message);
