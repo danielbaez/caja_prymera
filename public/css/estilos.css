@@ -70,8 +70,8 @@ body {
 	margin-left: 5px;
 }
 .container-fluid {
-	background-color: #0060aa;
-    height: 132px;
+	/*background-color: #0060aa;
+    height: 132px;*/
 }
 .form-control {
     margin-left: 10px;

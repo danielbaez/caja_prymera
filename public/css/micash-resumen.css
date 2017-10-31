@@ -1,16 +1,16 @@
 .container-fluid {
-    background-color: #0060aa;
-    height: 132px;
+    /*background-color: #0060aa;
+    height: 132px;*/
 }
 .navbar-brand {
-	color: #fff;
+	/*color: #fff;
     font-size: 33px;
     padding: 9px;
     margin: 6px;
     margin-top: 11px;
     margin-bottom: 13px;
     position: relative;
-    left: 204px;
+    left: 204px;*/
 }
 body {
 	background-size: cover;
@@ -86,7 +86,7 @@ span {
 .panel-heading {
 	color: #00519d;
 	border: none;
-	width: 461px;
+	/*width: 461px;*/
     background-color: #fff;
     border-radius: 0px;
     border-top-left-radius: 40px;
@@ -109,14 +109,14 @@ span {
 	font-size: 35px;
     color: #0c69ac;
 	font-weight:bold;
-    position: relative;
+    /*position: relative;
     left: 100px;
-    top: 0px;
+    top: 0px;*/
 }
 .color-info {
-	position: relative;
+	/*position: relative;
      top: 10px;
-     text-align: left;
+     text-align: left;*/
 }
 .info2 {
 	color: #1069ab;

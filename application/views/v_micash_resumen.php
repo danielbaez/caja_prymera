@@ -10,6 +10,7 @@
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
 
@@ -30,12 +31,59 @@
         <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);">
     <?php } ?>
 
+      <div class="container-header">
+    <div class="container">
+      <div class="row padding-div-row-header">
+        <div class="col-xs-6 col-title-header-padding">
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <h1 class="title-header-first"><a href="/C_login">Cr&eacute;dito Vehicular</a></h1>
+            <h1 class="title-header-second"><a href="/C_login">Auto de Prymera</a></h1>
+            <?php } else { ?>
+            <h1 class="title-header-first"><a href="/Micash">Cr&eacute;dito consumo</a></h1>
+            <h1 class="title-header-second"><a href="/Micash">Mi Cash</a></h1>
+          <?php } ?>
+        </div>
+        <div class="col-xs-6 div-logo">
+          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+            <h1 style="display: none"><a href="/C_login">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
+            <?php } else { ?>
+            <h1 style="display: none"><a href="/Micash">Cr&eacute;dito consumo | Mi Cash</a></h1>
+          <?php } ?>
+        </div>
+      </div>    
+    </div>            
+  </div>
 
-  
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
     <div class="container">
     	<div class="row" style="margin-top:50px">
-    		<div class="col-sm-12 col-md-4">
+    		<div class="col-xs-12 col-xm-pull-0 col-sm-push-6 col-md-6 col-md-offset-0">
 		    	<div class="panel panel-primary" style="">
 		    		<div class="panel-heading" style="background-color: #fff;font-weight: bold;padding: 23px;">
 		    			<div class="col-xs-12">
@@ -164,7 +212,7 @@
 			    	</div>
 		    	</div>
 		    </div>
-		    <div class="col-md-8 info">
+		    <div class="col-xs-12 col-xs-push-0 col-sm-pull-6 col-md-6 info">
 		    	<h3 class="title-general">Felicidades <?php echo $nombre ?>!</h3>
 		    	<p class="info2">tu pr&eacute;stamo ha sido</p>
 		    	<p class="info2">pre aprobado, ya est&aacute;s cerca</p>
