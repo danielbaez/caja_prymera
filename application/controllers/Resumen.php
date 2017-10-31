@@ -21,7 +21,7 @@ class Resumen extends CI_Controller {
 
     public function index()
     {
-      _log(print_r($this->session->userdata(), true));
+      //_log(print_r($this->session->userdata(), true));
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
             //redirect("/C_main", 'location');
         }
@@ -65,6 +65,11 @@ class Resumen extends CI_Controller {
                 $this->session->set_userdata($session);
                 $agencia = $this->M_preaprobacion->getAgenciasId($agencia);
                 $arrayUpdt = array('agencia_desembolso' => $agencia[0]->id,
+                                'timestamp_final'   => date("Y-m-d H:i:s"),
+                                'fec_estado' => date("Y-m-d H:i:s"));
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+            }else if(_getSesion('Agencia') != null) {
+              $arrayUpdt = array('agencia_desembolso' => _getSesion('Agencia'),
                                 'timestamp_final'   => date("Y-m-d H:i:s"),
                                 'fec_estado' => date("Y-m-d H:i:s"));
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
@@ -173,7 +178,7 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
         $to = '+51 '._getSesion('nro_celular');
         $message = 'Su credito: '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'. Su cuota es '._getSesion('cuota_mensual').' Condiciones al 243-4800';
         $response = $this->twilio->sms($from, $to, $message);
-        _log(print_r($response, true));
+        //_log(print_r($response, true));
         if($response->IsError) {
           $arrayUpdt = array('envio_sms' => 2);
           $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
