@@ -296,78 +296,46 @@
 </div>
 
 <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg centrar" role="document">
-        <div class="modal-content">
-            <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
-              <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Validar Celular</p>
-            </div>
-            <!-- <div class="modal-body celular">
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="bs-example">
-                    <div class="table-responsive ocultar" id="tablaCronograma" style="">
-                      <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad </p>
-                      <p style="text-align: left;">que ha sido enviado a su celular: </p>
-                      <div class="center">
-                          <input style="width: 50px;font-family: 'quicksandlight';margin-left: 270px;" type="text" placeholder="" size="4" maxlength="1" id="uno">
-                          <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="dos">
-                          <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="tres">
-                          <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="cuatro">
-                          <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="cinco">
-                          <input style="width: 50px;font-family: 'quicksandlight'" type="text" placeholder="" size="4" maxlength="1" id="seis">
-                      </div>  
-                      <br>
-                      <div class="col-xs-12">
-                        <a style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 280px;" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
-                        <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;margin-left: 280px;" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
-                      </div>
-                    </div>
-                    <div class="table-responsive otro" id="idError" style="display: none;">
-                        <br>
-                        <br>
-                        <p style="margin-bottom: 0;font-size: 22px;margin-top: 25px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
-                        <br>
-                        <br>
-                    </div>
-                  </div>
-                </div>
-              </div>              
-            </div> -->
-            <div class="modal-body modal-celular">
-              <div class="row">
-                <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
-                  <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad <br>que ha sido enviado a su celular: </p>
-                  <div class="col-xs-12 text-center modal-div-numbers">
-                    <input type="text" placeholder="" size="4" maxlength="1" id="uno">
-                    <input type="text" placeholder="" size="4" maxlength="1" id="dos">
-                    <input type="text" placeholder="" size="4" maxlength="1" id="tres">
-                    <input type="text" placeholder="" size="4" maxlength="1" id="cuatro">
-                    <input type="text" placeholder="" size="4" maxlength="1" id="cinco">
-                    <input type="text" placeholder="" size="4" maxlength="1" id="seis">
-                  </div>
-                </div>
-                <div class="col-xs-12 text-center">
-                  <a style="color: #0060aa;font-size: 15px" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
-                  <a href="" style="color: #0060aa;font-size: 15px" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
-                </div>
-                <div class="col-xs-12 otro" id="idError" style="display: none;">
-                    <br>
-                    <p style="margin-bottom: 0;font-size: 22px;margin-top: 25px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
-                    
-                </div>
-              </div>              
-            </div>
-            <div class="modal-footer">
-              <div class="row">
-                <div class="col-xs-12">
-                  <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block; margin: 0 auto" onclick="verificarNumero()">Confirmar</button>
-                  <button type="button cambiar" class="btn btn-lg botones-codigo" id="cambiar" aria-label="Close" style="display: none; margin: 0 auto" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>  
-                </div>                
-              </div>
+  <div class="modal-dialog modal-lg centrar" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
+        <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Validar Celular</p>
+      </div>
+      <div class="modal-body modal-celular">
+        <div class="row">
+          <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
+            <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad <br>que ha sido enviado a su celular: </p>
+            <div class="col-xs-12 text-center modal-div-numbers">
+              <input type="text" placeholder="" size="4" maxlength="1" id="uno">
+              <input type="text" placeholder="" size="4" maxlength="1" id="dos">
+              <input type="text" placeholder="" size="4" maxlength="1" id="tres">
+              <input type="text" placeholder="" size="4" maxlength="1" id="cuatro">
+              <input type="text" placeholder="" size="4" maxlength="1" id="cinco">
+              <input type="text" placeholder="" size="4" maxlength="1" id="seis">
             </div>
           </div>
+          <div class="col-xs-12 text-center">
+            <a style="color: #0060aa;font-size: 15px" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
+            <a href="" style="color: #0060aa;font-size: 15px" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
+          </div>
+          <div class="col-xs-12 otro" id="idError" style="display: none;">
+              <br>
+              <p style="margin-bottom: 0;font-size: 22px;margin-top: 25px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
+              
+          </div>
+        </div>              
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block; margin: 0 auto" onclick="verificarNumero()">Confirmar</button>
+            <button type="button cambiar" class="btn btn-lg botones-codigo" id="cambiar" aria-label="Close" style="display: none; margin: 0 auto" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>  
+          </div>                
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
 
 

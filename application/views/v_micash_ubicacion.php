@@ -10,170 +10,178 @@
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
+
     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
+
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.carousel.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>OwlCarousel/css/owl.theme.default.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.css?v=<?php echo time();?>">
-	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
+    
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.1.0/nouislider.min.css">
-
-  <!-- Custom fonts for this template -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-    <style>
-            .chart_new {
-                width:100%;
-                min-height:280px;
-            	  margin: auto;
-            }
-            
-            svg:first-child > g > text[text-anchor~=middle]{
-                font-size:12px;
-            }
-            
-            #modalNuevosRatxSede .table-responsive{
-            	overflow-y: hidden;
-            }
-    	</style>
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+    
+
   </head>
-    <body style="" >
+    <body>
     
 
   <div class="container-header">
     <div class="container">
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
-
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-          <h1 class="title-header-first">Cr&eacute;dito Vehicular</h1>
-          <h1 class="title-header-second">Auto de Prymera</h1>
-          <?php } else { ?>
-            <h1 class="title-header-first">Cr&eacute;dito consumo</h1>
-            <h1 class="title-header-second">Mi Cash</h1>
+            <h1 class="title-header-first"><a href="/C_login">Cr&eacute;dito Vehicular</a></h1>
+            <h1 class="title-header-second"><a href="/C_login">Auto de Prymera</a></h1>
+            <?php } else { ?>
+            <h1 class="title-header-first"><a href="/Micash">Cr&eacute;dito consumo</a></h1>
+            <h1 class="title-header-second"><a href="/Micash">Mi Cash</a></h1>
           <?php } ?>
-          
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-            <h1 style="display: none">Cr&eacute;dito Vehicular | Auto de Prymera</h1>
-          <?php } else { ?>
-            <h1 style="display: none">Cr&eacute;dito consumo | Mi Cash</h1>
+            <h1 style="display: none"><a href="/C_login">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
+            <?php } else { ?>
+            <h1 style="display: none"><a href="/Micash">Cr&eacute;dito consumo | Mi Cash</a></h1>
           <?php } ?>
         </div>
       </div>    
     </div>            
   </div>
 
-    <div class="container m-t-60">
-        <section>
-            <div class="mdl-content-cards m-50">
-                <div class="mdl-card cuadro" style="">
-			        <div class="mdl-card__title">
-                    </div>
-                    <div>
-                    	<h1 class="p-0 m-0 negrita" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
-                        <h1 class="ajustar negrita" ><b>Solicitaste un cr&eacute;dito de <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> <?php } ?> <?php echo $Importe ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?></b></h1><br />
-                        <h1 class="p-0 m-0 light" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
-                        <h1 class="m-t-0 light">con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span> (luz, agua, tel&eacute;fono) con antiguedad</h1>
-                        <h1 class="p-0 m-t-23 light">no mayor a dos meses.
-                         Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago.<?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> Un representante de Prymera se contactar&aacute; contigo para indicarte el proceso a seguir para la toma de firmas, el dep&oacute;sito del porcentaje de la inicial y el desembolso de tu cr&eacute;dito. <?php } ?> <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>  </br><span class="negrita">¡No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span><?php } ?></h1>
-                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><h1 class="p-0 m-t-23 light">Si desea un monto mayor al pre-aprobado, adicional, debe proporcionarnos los estados de cuenta de tus cr&eacute;ditos o tarjetas de cr&eacute;dito vigentes para que el &aacute;rea de riesgos lo pueda evaluar.</br><span class="negrita"> &#33;No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span></h1><?php } ?>
-                    </div>
-                    <div class="mdl-card__supporting-text br-b" style="width: 100%;">
-                        <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">
-                        <div id="map_div" class="chart_new" style="display:block"></div>
-                        <h5 style="color:black;text-align: center;font-size: 15px;font-family: quicksandregular;">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h5>
-                        <h5 style="color:black;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandregular;"><?php echo $ubicacion ?> Tel&eacute;fono <?php echo $telefono ?></h5>
-                    </div>
-				</div>
-            </div>
-        </section>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>    
+    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+        <?php } ?>
+        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container container-simulador">
+
+    <div class="row m-t-40 m-b-20 hidden-xs">
+      <div class="col-xs-12 col-sm-9 text-center">
+        
+      </div>
+      <div class="hidden-xs col-sm-3 button-login text-right">
+        <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+              </ul>
+            </li>
+        </ul>            
+      </div>
     </div>
 
+    <div class="row m-t-40">         
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="col-xs-12 div-ubicacion">
+          <h1 class="p-0 m-0 negrita" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
+          <h1 class="ajustar negrita" ><b>Solicitaste un cr&eacute;dito de S/ <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>S/ <?php } ?> <?php echo $Importe ?> soles a <?php echo $cant_meses ?> meses con una cuota de S/ <?php echo $cuota_mensual ?></b></h1><br />
+          <h1 class="p-0 m-0 light" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
+          <h1 class="m-t-0 light">con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span> (luz, agua, tel&eacute;fono) con antiguedad</h1>
+          <h1 class="p-0 light">no mayor a dos meses.
+          Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago.<?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> Un representante de Prymera se contactar&aacute; contigo para indicarte el proceso a seguir para la toma de firmas, el dep&oacute;sito del porcentaje de la inicial y el desembolso de tu cr&eacute;dito. <?php } ?> <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>  </br><span class="negrita">¡No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span><?php } ?></h1>
+          <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><h1 class="light p-b-15">Si desea un monto mayor al pre-aprobado, adicional, debe proporcionarnos los estados de cuenta de tus cr&eacute;ditos o tarjetas de cr&eacute;dito vigentes para que el &aacute;rea de riesgos lo pueda evaluar.</br></br><span class="negrita"> &#33;No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span></h1><?php } ?>
+          <div class="mdl-card__supporting-text br-b" style="width: 100%;">
+              <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">
+              <div id="map_div" class="chart_new" style="display:block"></div>
+              <h5 style="color:black;text-align: center;font-size: 15px;font-family: quicksandregular;">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h5>
+              <h5 style="color:black;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandregular;"><?php echo $ubicacion ?> Tel&eacute;fono <?php echo $telefono ?></h5>
+          </div>
+        </div>                                        
+      </div>        
+    </div>
+  </div>
 
+  <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>-->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.1.0/nouislider.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-  	<script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" async src="<?php echo RUTA_JS?>jsubicacion.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>google_chart/loader.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-    <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-
-
+  <!-- <script type="text/javascript" async src="<?php echo RUTA_JS?>jsubicacion.js?v=<?php echo time();?>"></script> -->
+  <script src="<?php echo RUTA_PLUGINS?>google_chart/loader.js?v=<?php echo time();?>"></script>
+  
+  
   <script>
 
   google.charts.load('current', {'packages':['map'],
-	   'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'});
+     'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'});
         $(window).load(function() {
-        	google.charts.setOnLoadCallback(drawMap);
-        	function drawMap() {
-        		var data = new google.visualization.DataTable();
-      	      data.addColumn('string', 'Address');
-      	      data.addColumn('string', 'Location');
-      	      data.addRows([
-      	        ["<?php echo $ubicacion ?>", "<?php echo $ubicacion ?>"]
-      	      ]);
+          google.charts.setOnLoadCallback(drawMap);
+          function drawMap() {
+            var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Address');
+              data.addColumn('string', 'Location');
+              data.addRows([
+                ["<?php echo $ubicacion ?>", "<?php echo $ubicacion ?>"]
+              ]);
 
-        	    var options = {
-            	          mapType: 'styledMap',
-            	          zoomLevel: 18,
-            	          showTooltip: true,
-            	          showInfoWindow: true,
-            	          useMapTypeControl: true,
-            	          maps: {
-            	            // Your custom mapTypeId holding custom map styles.
-            	            styledMap: {
-            	              name: 'Styled Map', // This name will be displayed in the map type control.
-            	              styles: [
-            	                {featureType: 'poi.attraction',
-            	                 stylers: [{color: '#fce8b2'}]
-            	                },
-            	                {featureType: 'road.highway',
-            	                 stylers: [{hue: '#0277bd'}, {saturation: -50}]
-            	                },
-            	                {featureType: 'road.highway',
-            	                 elementType: 'labels.icon',
-            	                 stylers: [{hue: '#000'}, {saturation: 100}, {lightness: 50}]
-            	                },
-            	                {featureType: 'landscape',
-            	                 stylers: [{hue: '#259b24'}, {saturation: 10}, {lightness: -22}]
-            	                }
-            	          ]}}
-            	        };
+              var options = {
+                        mapType: 'styledMap',
+                        zoomLevel: 18,
+                        showTooltip: true,
+                        showInfoWindow: true,
+                        useMapTypeControl: true,
+                        maps: {
+                          // Your custom mapTypeId holding custom map styles.
+                          styledMap: {
+                            name: 'Styled Map', // This name will be displayed in the map type control.
+                            styles: [
+                              {featureType: 'poi.attraction',
+                               stylers: [{color: '#fce8b2'}]
+                              },
+                              {featureType: 'road.highway',
+                               stylers: [{hue: '#0277bd'}, {saturation: -50}]
+                              },
+                              {featureType: 'road.highway',
+                               elementType: 'labels.icon',
+                               stylers: [{hue: '#000'}, {saturation: 100}, {lightness: 50}]
+                              },
+                              {featureType: 'landscape',
+                               stylers: [{hue: '#259b24'}, {saturation: 10}, {lightness: -22}]
+                              }
+                        ]}}
+                      };
 
-      	    var map = new google.visualization.Map(document.getElementById('map_div'));
+            var map = new google.visualization.Map(document.getElementById('map_div'));
 
-      	    map.draw(data, options);
-      	  };
-        	
+            map.draw(data, options);
+          };
+          
         });
 
   </script>
