@@ -24,7 +24,7 @@ panel-primary,
 	border-bottom-right-radius: 40px;
 }
 .navbar-right{
-	padding: 0 200px;
+	/*padding: 0 200px;*/
 }
 
 div.row.row1 {
@@ -63,15 +63,15 @@ div.form-group {
     font-family: 'quicksandregular';
 }
 .form-control {
-	width: 153%;
+	/*width: 153%;*/
 }
 span {
 	font-size: 19px;
 }
 .padding {
-	padding: 5px;
+	/*padding: 5px;
     position: relative;
-    left: -16px;
+    left: -16px;*/
 }
 .logo {
 	height: 97px;
@@ -98,12 +98,10 @@ span {
     color: #1C4485;
 }
 .btn-lg {
-    width: 60%;
+    width: 100%;
     font-weight: bold;
     background-color: #017dc3;
     color: #fff;
-    position: relative;
-    left: 26px;
 }
 .info {
 	font-size: 35px;
@@ -127,4 +125,9 @@ a {
 }
 .form-control {
     font-family: 'quicksandlight';
+}
+
+
+#acepto{
+    margin-top: 8px;
 }

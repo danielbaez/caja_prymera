@@ -10,20 +10,33 @@
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>">
+
+
+
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
 
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
+  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+
     
-	<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+
     
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>"> 
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
+
+
+
+
+    <!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos.css?v=<?php echo time();?>"> -->
+    
+ 
+
+
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
       <body style="padding: 0px;background-image:url(../public/img/fondos/Car-Sunset.jpg);">
@@ -80,10 +93,42 @@
   </div>
 </nav>
 
+<div class="container container-simulador">
 
-    <div class="container">
-    	<div class="row" style="margin-top:50px">
-    		<div class="col-xs-12 col-xm-pull-0 col-sm-push-6 col-md-6 col-md-offset-0">
+    <div class="row m-t-40">
+      <div class="col-xs-12 col-sm-9 text-center">
+        
+      </div>
+      <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
+        <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+              </ul>
+            </li>
+        </ul>                
+      </div>
+    </div>
+    <div class="row">
+    		<div class="col-xs-12 col-md-6 col-md-push-6 info">
+          <h3 class="title-general">Felicidades <?php echo $nombre ?>!</h3>
+          <p class="info2">tu pr&eacute;stamo ha sido</p>
+          <p class="info2">pre aprobado, ya est&aacute;s cerca</p>
+          <p class="info2">de cumplir tus sue&ntilde;os</p>
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-md-pull-6 col-md-offset-0">
 		    	<div class="panel panel-primary" style="">
 		    		<div class="panel-heading" style="background-color: #fff;font-weight: bold;padding: 23px;">
 		    			<div class="col-xs-12">
@@ -93,131 +138,154 @@
 			    	<div class="panel-body">
 			    		<form class="text-center" action="losentimos.html" method="POST">
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                  <div class="col-xs-12">
-                    <div class="form-group" style="">
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Valor Veh&iacute;culo: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $valor_auto?></span>
-                        <div class="col-xs-7">
-                          <span style="">Valor Veh&iacute;culo: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
-                <div class="col-xs-12  m-t-15">
-                    <div class="form-group" style="">
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Marca: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $marca?></span>
-                        <div class="col-xs-7">
-                          <span style="">Marca: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
-                <div class="col-xs-12  m-t-15">
-                    <div class="form-group" style="">
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Modelo: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $modelo?></span>
-                        <div class="col-xs-7">
-                          <span style="">Modelo: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
                 <?php } ?>
-			    		  <div class="col-xs-12  m-t-15">
-					          <div class="form-group" style="">
-					          	  <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php echo 'S/ '.$Importe?><?php }else{ ?><?php echo $Importe.'.00'?><?php } ?></span>
-					          	  <div class="col-xs-7">
-					          	  	<span style="">Importe Pr&eacute;stamo: </span>
-					          	  </div>
-					          </div>
-					      </div>
+
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Importe Pr&eacute;stamo: </span>
+                      </div>
+                      <div class="col-xs-6">
+                        <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php echo 'S/ '.$Importe?><?php }else{ ?><?php echo $Importe.'.00'?><?php } ?></span>
+                      </div>
+                    </div>
+                </div>
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                <div class="col-xs-12 m-t-15">
-                    <div class="form-group" style="">
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Cuota Inicial: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $cuota_inicial?></span>
-                        <div class="col-xs-7">
-                          <span style="">Cuota Inicial: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
                 <?php } ?>
-					      <div class="col-xs-12 m-t-15">
-					          <div class="form-group" style="">
-					          	  <span><?php echo $cant_meses?></span>
-					          	  <div class="col-xs-7">
-					          	  	<span style="">Plazo: </span>
-					          	  </div>
-					          </div>
-					      </div>
-					      <div class="col-xs-12 m-t-15">
-					          <div class="form-group" style="">
-					          	  <span><?php echo $cuota_mensual?></span>
-					          	  <div class="col-xs-7">
-					          	  	<span style="">Cuota Mensual: </span>
-					          	  </div>
-					          </div>
-					      </div>
-                <div class="col-xs-12 m-t-15">
-                    <div class="form-group" style="">
+
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Plazo: </span>
+                      </div>
+                      <div class="col-xs-6">
+                        <span><?php echo $cant_meses?></span>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Cuota Mensual: </span>
+                      </div>
+                      <div class="col-xs-6">
+                        <span><?php echo $cuota_mensual?></span>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Pago Total: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $pago_total?></span>
-                        <div class="col-xs-7">
-                          <span style="">Pago Total: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
-                <div class="col-xs-12 m-t-15">
-                    <div class="form-group" style="">
+					      <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">TEA: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $tea?></span>
-                        <div class="col-xs-7">
-                          <span style="">TEA: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
-					      <div class="col-xs-12 m-t-15">
-					          <div class="form-group" style="">
-					          	  <span><?php echo $tcea?></span>
-					          	  <div class="col-xs-7">
-					          	  	<span style="">TCEA: </span>
-					          	  </div>
-					          </div>
-					      </div>
-                <div class="col-xs-12 m-t-15">
-                    <div class="form-group" style="">
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">TCEA: </span>
+                      </div>
+                      <div class="col-xs-6">
+                        <span><?php echo $tcea?></span>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group" style="">                
+                      <div class="col-xs-6">
+                        <span style="">Agencia: </span>
+                      </div>
+                      <div class="col-xs-6">
                         <span><?php echo $Agencia?></span>
-                        <div class="col-xs-4">
-                          <span style="">Agencia: </span>
-                        </div>
+                      </div>
                     </div>
                 </div>
                 <form class="text-center">
                   <div class="form-group">
                       <div class="checkbox" style="margin-left: 24px">
                           <label>
-                              <input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
-                              <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -1px;" onclick="abrirModal()">T&eacute;rminos y Condiciones</button>
+                              <input type="checkbox" class="checkbox" id="acepto">  
+                              Acepto <a class="btn btn-link" onclick="abrirModal()" style="padding-top: 3px;padding-left: 0px;">T&eacute;rminos y Condiciones</a>
                           </label>
                       </div>
                   </div>
-                  <div class="col-xs-4 padding">
-                      <select class="form-control" id="Agencia" name="Agencia" style="font-family: 'quicksandlight';">
+                  <div class="col-xs-12 col-sm-6 padding">
+                      <select class="form-control" id="Agencia" name="Agencia" style="font-family: 'quicksandlight'; margin-top:5px">
                               <option value="">Cambiar Agencia</option>
                               <?php echo $comboAgencias?>
                       </select>
                 </div>
+                <div class="col-xs-12 visible-xs p-t-15"></div>
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
+                  <button type="button" class="btn btn-lg m-b-10" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
+                </div>
               </form>
 						  <div class="col-xs-12">
-                <div class="col-xs-8 text-right">
+                <!-- <div class="col-xs-8 text-right">
                 	<button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';margin-left: 230px;margin-top: -65px;" onclick="irAUbicacion()">Aceptar</button>
-                </div>
+                </div> -->
 						  </div>
-						  	<div class="col-xs-12 color-info" style="margin-top: -20px">
+						  	<div class="col-xs-12 color-info">
       		    		<p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>cr&eacute;dito vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada al correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
       		   		</div>
 						</form>
 			    	</div>
 		    	</div>
 		    </div>
-		    <div class="col-xs-12 col-xs-push-0 col-sm-pull-6 col-md-6 info">
-		    	<h3 class="title-general">Felicidades <?php echo $nombre ?>!</h3>
-		    	<p class="info2">tu pr&eacute;stamo ha sido</p>
-		    	<p class="info2">pre aprobado, ya est&aacute;s cerca</p>
-		    	<p class="info2">de cumplir tus sue&ntilde;os</p>
-		    </div>
+		    
 	    </div>
     </div>
     
@@ -265,20 +333,13 @@
 </div>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-1.12.1.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
 	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
 	<script type="text/javascript" async src="<?php echo RUTA_JS?>jsresumen_m.js?v=<?php echo time();?>"></script>
-	<script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-    <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
+	
 	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-    
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   </body>
 </html>
