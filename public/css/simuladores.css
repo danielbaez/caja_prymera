@@ -150,6 +150,9 @@ margin-top: 40px
 	.div-ubicacion h1, .div-ubicacion span{
     	font-size: 18px
 	}
+	.row-container-resumen{
+		margin-top: 0 !important
+	}
 }
 
 @media (max-width: 699px) { 

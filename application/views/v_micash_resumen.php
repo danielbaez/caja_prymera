@@ -95,7 +95,7 @@
 
 <div class="container container-simulador">
 
-    <div class="row m-t-40">
+    <div class="row m-t-40 row-container-resumen">
       <div class="col-xs-12 col-sm-9 text-center">
         
       </div>
@@ -138,7 +138,7 @@
 			    	<div class="panel-body">
 			    		<form class="text-center" action="losentimos.html" method="POST">
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Valor Veh&iacute;culo: </span>
@@ -148,7 +148,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Marca: </span>
@@ -158,7 +158,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Modelo: </span>
@@ -170,7 +170,7 @@
                 </div>
                 <?php } ?>
 
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Importe Pr&eacute;stamo: </span>
@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Cuota Inicial: </span>
@@ -193,7 +193,7 @@
                 </div>
                 <?php } ?>
 
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Plazo: </span>
@@ -203,7 +203,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Cuota Mensual: </span>
@@ -213,7 +213,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Pago Total: </span>
@@ -223,7 +223,7 @@
                       </div>
                     </div>
                 </div>
-					      <div class="col-xs-12">
+					      <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">TEA: </span>
@@ -233,7 +233,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">TCEA: </span>
@@ -243,7 +243,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">Agencia: </span>
@@ -254,7 +254,7 @@
                     </div>
                 </div>
                 <form class="text-center">
-                  <div class="form-group">
+                  <div class="form-group" style="padding-bottom: 0">
                       <div class="checkbox" style="margin-left: 24px">
                           <label>
                               <input type="checkbox" class="checkbox" id="acepto">  
