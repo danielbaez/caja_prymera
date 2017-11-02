@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">Seguro del Auto</p>
-                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0</span>
+                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="margin-top: -23px;margin-left: 40px;color: black;"></i></span>
                           <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
                 </div>
               </div>
