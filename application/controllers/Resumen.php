@@ -171,12 +171,14 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
         $data['msj']   = null;
         try {
           $tipo_cred = null;
+          $mensaje = null;
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
+        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
           //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '._getSesion('nro_celular');
-        $message = 'Su credito: '.$tipo_cred.' por '._getSesion('Importe').' a '._getSesion('cant_meses').'. Su cuota es '._getSesion('cuota_mensual').' Condiciones al 243-4800';
+        $message = 'Su credito: '.$tipo_cred.' por '.$mensaje.' a '._getSesion('cant_meses').'. Su cuota es '._getSesion('cuota_mensual').' Condiciones al 243-4800';
         $response = $this->twilio->sms($from, $to, $message);
         //_log(print_r($response, true));
         if($response->IsError) {

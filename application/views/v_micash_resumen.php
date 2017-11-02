@@ -275,7 +275,7 @@
                 </div> -->
 						  </div>
 						  	<div class="col-xs-12 color-info">
-      		    		<p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>cr&eacute;dito vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada a tu correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
+      		    		<p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>Cr&eacute;dito Vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada a tu correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
       		   		</div>
 						</form>
 			    	</div>
