@@ -112,17 +112,15 @@
       <div class="col-xs-12 col-md-10 col-md-offset-1">
         <div class="col-xs-12 div-ubicacion">
           <h1 class="p-0 m-0 negrita" ><b><?php echo $nombre ?>, Gracias por confiar en Prymera.</b></h1>
-          <h1 class="ajustar negrita" ><b>Solicitaste un cr&eacute;dito de <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> <?php } ?> <?php echo $Importe ?> soles a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?></b></h1><br />
-          <h1 class="p-0 m-0 light" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?></h1>
-          <h1 class="m-t-0 light">con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span> (luz, agua, tel&eacute;fono) con antiguedad</h1>
-          <h1 class="p-0 light">no mayor a dos meses.
-          Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago.<?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> Un representante de Prymera se contactar&aacute; contigo para indicarte el proceso a seguir para la toma de firmas, el dep&oacute;sito del porcentaje de la inicial y el desembolso de tu cr&eacute;dito. <?php } ?> <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>  </br><span class="negrita">¡No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span><?php } ?></h1>
+          <h1 class="ajustar negrita" ><b>Solicitaste un cr&eacute;dito de <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>  <?php echo 'S/ '.$Importe ?> <?php }else{ ?> <?php echo $Importe ?> <?php }?> a <?php echo $cant_meses ?> con una cuota de <?php echo $cuota_mensual ?></b></h1><br />
+          <h1 class="p-0 m-0 light" >Para gestionar tu pr&eacute;stamo, te esperamos en nuestra agencia de <?php echo $Agencia ?> con tu <span class="negrita"> DNI </span><span class="negrita"> y un recibo de servicio</span> (luz, agua, tel&eacute;fono) con antiguedad no mayor a dos meses.</br>
+          Si deseas un monto mayor al pre-aprobado adicional, debes proporcionarnos tu &uacute;ltima boleta de pago.<?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?></br> Un representante de Prymera se contactar&aacute; contigo para indicarte el proceso a seguir para la toma de firmas, el dep&oacute;sito del porcentaje de la inicial y el desembolso de tu cr&eacute;dito. <?php } ?> <?php if ($tipo_producto == PRODUCTO_MICASH) { ?>  </br><span class="negrita">¡No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span><?php } ?></h1>
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><h1 class="light p-b-15">Si deseas un monto mayor al pre-aprobado, adicional, debes proporcionarnos los estados de cuenta de tus cr&eacute;ditos o tarjetas de cr&eacute;dito vigentes para que el &aacute;rea de riesgos lo pueda evaluar.</br></br><span class="negrita"> &#33;No dejes pasar la oportunidad de cumplir tus sue&ntilde;os!</span></h1><?php } ?>
           <div class="mdl-card__supporting-text br-b" style="width: 100%;">
               <small class="m-t-100" style="font-size: 15px; display:block;" id="subtituloEvaluacion1">
               <div id="map_div" class="chart_new" style="display:block"></div>
               <h5 style="color:black;text-align: center;font-size: 15px;font-family: quicksandregular;">Agencias <?php echo $Agencia ?>: <?php echo $concesionaria ?></h5>
-              <h5 style="color:black;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandregular;"><?php echo $ubicacion ?> Tel&eacute;fono <?php echo $telefono ?></h5>
+              <h5 style="color:black;text-align: center;margin: -5px;font-size: 14px;font-family: quicksandregular;"><?php echo $ubicacion ?> Tel&eacute;fono: <?php echo $telefono ?></h5>
           </div>
         </div>                                        
       </div>        
