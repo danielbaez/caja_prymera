@@ -375,5 +375,42 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }
+
+    function verifyEmailAndDNI($dni, $email, $id_usuario, $action) {
+
+        $addWhere = '';
+        if($action == 'update')
+        {
+            $addWhere = "AND id <> $id_usuario";
+        }
+        $sql = "SELECT email 
+                  FROM usuario
+                 WHERE email LIKE '%".$email."%'
+                   AND estado = 1 $addWhere";
+        $result = $this->db->query($sql, array());
+
+        $sql2 = "SELECT dni 
+                  FROM usuario
+                 WHERE dni LIKE '%".$dni."%'
+                   AND estado = 1 $addWhere";
+        $result2 = $this->db->query($sql2, array());
+
+        if($result->num_rows() == 1 && $result2->num_rows() == 1)
+        {
+            return ['success' => true, 'msg' => 'El email y dni ya existen'];
+        }
+        else if($result->num_rows() == 1)
+        {
+            return ['success' => true, 'msg' => 'El email ya existe'];
+        }
+        else if($result2->num_rows() == 1)
+        {
+            return ['success' => true, 'msg' => 'El dni ya existe'];
+        }
+        else
+        {
+            return ['success' => false];
+        }        
+    }
 }
     

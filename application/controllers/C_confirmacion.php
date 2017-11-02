@@ -184,7 +184,6 @@ class C_confirmacion extends CI_Controller {
     
     function __buildCodTelefono($departamento){
         $codtel = $this->M_preaprobacion->getCod_telefono($departamento);
-        _logLastQuery();
         $opt = null;
         foreach($codtel as $cod){
             $codi = $cod->CODIGO;

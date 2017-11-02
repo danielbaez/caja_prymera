@@ -58,13 +58,18 @@ div.form-group {
 	background: white; 
 	text-align: left;
 	border-radius: 3px; 
-	padding: 6px 6px; 
-	border-bottom: 1px solid #dadada;
+	padding: 12px 6px; 
+	/*border-bottom: 1px solid #dadada;*/
     font-family: 'quicksandregular';
 }
 .form-control {
 	/*width: 153%;*/
 }
+
+.border-resumen-bottom{
+    border-bottom: 1px solid #dadada;
+}
+
 span {
 	font-size: 19px;
 }

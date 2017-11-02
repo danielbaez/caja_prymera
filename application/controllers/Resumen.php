@@ -68,10 +68,10 @@ class Resumen extends CI_Controller {
                                 'timestamp_final'   => date("Y-m-d H:i:s"),
                                 'fec_estado' => date("Y-m-d H:i:s"));
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
-            }else if(_getSesion('Agencia') != null) {
-              $arrayUpdt = array('agencia_desembolso' => _getSesion('Agencia'),
-                                'timestamp_final'   => date("Y-m-d H:i:s"),
+            }else{
+              $arrayUpdt = array('timestamp_final'   => date("Y-m-d H:i:s"),
                                 'fec_estado' => date("Y-m-d H:i:s"));
+              
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
             $validacion = $this->sendMailGmail();

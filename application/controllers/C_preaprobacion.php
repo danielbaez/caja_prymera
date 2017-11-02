@@ -111,8 +111,7 @@ class C_preaprobacion extends CI_Controller {
 
         $data['montoMaximo']      = round($maxAuto/100)*100;
         $data['montoMinimo']      = round($minAuto/100)*100;
-        /*_log($data['montoMaximo']);
-        _log($data['montoMinimo']);*/
+
 
         $valorAuto = ($data['montoMaximo']+$data['montoMinimo'])/2;
         $valorAuto = round($valorAuto/100)*100;
@@ -554,7 +553,6 @@ class C_preaprobacion extends CI_Controller {
     
     function __buildCodTelefono($departamento){
         $codtel = $this->M_preaprobacion->getCod_telefono($departamento);
-        _logLastQuery();
         $opt = null;
         foreach($codtel as $cod){
             $codi = $cod->CODIGO;

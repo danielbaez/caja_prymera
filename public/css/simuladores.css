@@ -79,7 +79,7 @@ margin-top: 40px
 .btn-text-ampliar{
 	background-color: #bdbebf;
 	color: #fff;font-size: 17px;
-	width: 150px;
+	width: 170px;
 	height: 51px;
 	padding: 1px;
 	font-family: quicksandbold;
@@ -89,8 +89,8 @@ margin-top: 40px
     background-color: #1C4485;
     color: #fff;
     font-size: 16px;
-    width: 150px;
-    /*margin-left: -100px;*/
+    width: 170px;
+    margin-left: -85px;
     height: 51px;
     padding-top: 12px;
     font-family: 'quicksandbold' !important;
@@ -149,6 +149,9 @@ margin-top: 40px
 	}
 	.div-ubicacion h1, .div-ubicacion span{
     	font-size: 18px
+	}
+	.row-container-resumen{
+		margin-top: 0 !important
 	}
 }
 

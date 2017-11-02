@@ -73,7 +73,7 @@ class C_usuario extends CI_Controller {
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode($data);
     }
 
     function guardarPersonalAsignado() {
@@ -263,7 +263,18 @@ class C_usuario extends CI_Controller {
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode($data);
+    }
+
+    function verifyEmailAndDNI()
+    {
+        $dni = _post('dni');
+        $email = _post('email');
+        $id_usuario = _post('id_usuario');
+        $action = _post('action');
+        $response = $this->M_usuario->verifyEmailAndDNI($dni, $email, $id_usuario, $action);
+
+        echo json_encode($response);
     }
 }
 

@@ -47,7 +47,7 @@ class preaprobacion extends CI_Controller {
     
     public function index()
     {
-        if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
+        if(_getSesion("usuario") == null && _getSesion('conectado') == 0) {
             //redirect("/C_main", 'location');
         }
         $data['nombreDato']=':D';
@@ -62,8 +62,10 @@ class preaprobacion extends CI_Controller {
         $data['comboDepa']          = $this->__buildDepartamento();
         $importeMaximo = _getSesion('importeMaximo');
         $importeMinimo = _getSesion('importeMinimo');
-        //_log(number_format(intval(_getSesion('importeMaximo')),2));
         $plazos = _getSesion('plazos');
+        if($plazos == null) {
+           redirect("/Micash", 'location'); 
+        }
 
         $plazos_explode = explode(';', $plazos);
 
@@ -112,7 +114,7 @@ class preaprobacion extends CI_Controller {
         }
 
         $data['importeMaximo']      = $importeMaximo;
-        _log($importeMaximo);
+        //_log($importeMaximo);
         $data['importeMinimo']      = $importeMinimo;
 
 
@@ -222,56 +224,6 @@ class preaprobacion extends CI_Controller {
         }
 
         echo json_encode($data);
-
-        /*$data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            $cantPago    = null;
-            $iniRango    = _post('cantidad');
-            $meses       = _post('meses');
-            $meses_pago  = null;
-            $nuevo       = null;
-            $minAuto     = null;
-            $maxAuto     = null;
-            $plazo       = null;
-            $minPrestamo = null;
-            $maxPrestamo = null;
-            $valorAuto   = null;
-            $minInicial  = null;
-            $maxInicial  = null;
-            $minIniPorc  = $this->minIniPorc;
-            $maxIniPorc  = $this->maxIniPorc;
-            $arr         = $this->array_datos;
-            $nuevo       = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$iniRango))));
-            
-            if($meses != null) {
-                $meses_pago = intval(str_replace(' ', '',str_replace('meses', '',$meses)));
-                foreach ($arr as $row) {
-                    if($meses_pago == $row['plazo']) {
-                        $minPrestamo = $row['mont_min'];
-                        $maxPrestamo = $row['mont_max'];
-                        $minAuto = $minPrestamo/(1-$minIniPorc);
-                        $maxAuto = $maxPrestamo/(1-$maxIniPorc);
-                    }
-                }
-                $valorAuto = ($minAuto+$maxAuto)/2;
-                $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
-                $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-            }
-            
-            $data['cuota_ini']   = $nuevo-round($minAuto/100)*100;
-            $data['minAuto']      = round($minAuto/100)*100;
-            $data['maxAuto']      = round($maxAuto/100)*100;
-            $data['max_cuota']    = round($maxInicial/100)*100;
-            $data['min_cuota']    = round($minInicial/100)*100;
-            $data['valor_auto']   = round($valorAuto/100)*100;
-            $data['cantPago']     = round($maxInicial/100)*100;
-            $data['mensual']      = round($minInicial/100)*100;
-            $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));*/
     }
     
     function changeValuesVehiculo() {

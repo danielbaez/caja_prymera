@@ -125,10 +125,10 @@
                 <div id="slider-range-monto"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
-                  <span id="minCuota">S/ <?php echo  $montoMinimo?></span>
+                  <span id="sueldoMin">S/ <?php echo  $montoMinimo?></span>
                 </div>
                 <div class="col-xs-6 text-right padding-right">
-                  <span id="maxCuota">S/ <?php echo  $montoMaximo?></span>
+                  <span id="sueldoMax">S/ <?php echo  $montoMaximo?></span>
                 </div>
               </div>
 
