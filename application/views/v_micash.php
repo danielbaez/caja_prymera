@@ -17,6 +17,8 @@
 
         <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
@@ -149,12 +151,12 @@
                     <div class="col-xs-12 col-md-12 mas-caracteristicas" style="padding-left: 0">
                         <div class="col-xs-7" style="background-color: #fff;width: 183px;">
                             <div class="col-xs-8">
-                                <label class="" style="color: #00519D;margin: 5px;">Caracter&iacute;sticas</label>
+                                <label class="" style="color: #00519D;margin: 5px;">Caracter&iacute;sticas <i onclick="moreText()" class="fa fa-chevron-down" aria-hidden="true"></i></label>
                             </div>
                             <div class="col-xs-4">
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="margin-left: 19px;" onclick="moreText()">
+                                <!-- <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="margin-left: 19px;" onclick="moreText()">
                                     <i class="mdi mdi-keyboard_arrow_down" style="color: #00519D;"></i>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </div>

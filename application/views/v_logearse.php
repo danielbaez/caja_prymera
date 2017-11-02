@@ -2,30 +2,16 @@
 <html lang="en">
     <head>
         <title>Caja prymera</title>
-        <meta charset="ISO-8859-1">
-        <meta http-equiv="X-UA-Compatible"  content="IE=edge">
-        <meta http-equiv="refresh"          content="36000">
-        <meta name="viewport"               content="width=device-width, initial-scale=1">
-        <meta name="keywords"               content="A fast online advisory service for academical and professional targets">
-        <meta name="robots"                 content="index,follow">
-        <meta name="date"                   content="September 03, 2017">
-        <meta name="author"                 content="softhy.pe">
-        <meta name="language"               content="es">
-        <meta name="theme-color"            content="#FFFFFF">
-        <meta name="description"            content="Koplan - Your way to success">
+        <meta charset="utf-8">
+        
         <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
-
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
- 
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
-        <style>
-        </style>  
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">    
     </head>
     <body>
 
@@ -153,8 +139,6 @@
         </div>
 
 		<script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
-  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-    	<script type="text/javascript" async src="<?php echo RUTA_JS?>jslogear.js?v=<?php echo time();?>"></script>
-    	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
     </body>
 </html>
