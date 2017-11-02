@@ -18,10 +18,6 @@
 
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
-
-    
-
     
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
@@ -257,7 +253,7 @@
                   <div class="form-group" style="padding-bottom: 0">
                       <div class="checkbox" style="margin-left: 24px">
                           <label>
-                              <input type="checkbox" class="checkbox" id="acepto">  
+                              <input type="checkbox" class="checkbox" id="acepto" style="zoom:1.5">  
                               Acepto <a class="btn btn-link" onclick="abrirModal()" style="padding-top: 3px;padding-left: 0px;">T&eacute;rminos y Condiciones</a>
                           </label>
                       </div>
@@ -335,7 +331,7 @@
 
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-	<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+
 	<script type="text/javascript" async src="<?php echo RUTA_JS?>jsresumen_m.js?v=<?php echo time();?>"></script>
 	
 	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
