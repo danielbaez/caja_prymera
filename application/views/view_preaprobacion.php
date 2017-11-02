@@ -17,7 +17,8 @@
 
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>"> -->
   <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
@@ -112,26 +113,10 @@
         <form class="text-center form-horizontal">
           <div class="col-xs-12 col-md-7">
             <div class="col-xs-3">
-              <p id="slider-range-value-dias" class="slider-value"></p>
-            </div>
-            <div class="col-xs-9">
-              <p class="text-left">Monto <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="Importe del pr&eacute;stamo a solicitar"><i class="mdi mdi-info"></i></button></p>
-              <div id="slider-range-dias"></div>
-              <br>
-              <div class="col-xs-6 text-left padding-left">
-                <span id="minCuota">S/ <?php echo  $importeMinimo?></span>
-              </div>
-              <div class="col-xs-6 text-right padding-right">
-                <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
-              </div>
-            </div>
-            <div class="col-xs-12 margin-top"></div>
-
-            <div class="col-xs-3">
               <p id="slider-range-value-meses" class="slider-value"></p>
             </div>
             <div class="col-xs-9">
-              <p class="text-left">Plazo de Pr&eacute;stamo <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" data-toggle="tooltip" data-placement="bottom" data-original-title="M&aacute;ximo de meses para pagar"><i class="mdi mdi-info"></i></button></p>
+              <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="M&aacute;ximo de meses para pagar" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
               <div id="slider-range-meses"></div>
               <br>
               <div class="col-xs-6 text-left padding-left">
@@ -139,6 +124,21 @@
               </div>
               <div class="col-xs-6 text-right padding-right">
                 <span><?php echo $plazo_max ?>m</span>
+              </div>
+            </div>
+            <div class="col-xs-12 margin-top"></div>
+            <div class="col-xs-3">
+              <p id="slider-range-value-dias" class="slider-value"></p>
+            </div>
+            <div class="col-xs-9">
+              <p class="text-left">Monto <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Importe del pr&eacute;stamo a solicitar" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+              <div id="slider-range-dias"></div>
+              <br>
+              <div class="col-xs-6 text-left padding-left">
+                <span id="minCuota">S/ <?php echo  $importeMinimo?></span>
+              </div>
+              <div class="col-xs-6 text-right padding-right">
+                <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
               </div>
             </div>
           </div>

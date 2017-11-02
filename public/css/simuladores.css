@@ -42,6 +42,13 @@ span,p{
 	padding-right: 0
 }
 
+.icon-info{
+	font-size: 18px;
+    position: absolute;
+    padding-left: 5px;  
+    padding-top: 1px;
+}
+
 .margin-top{
 margin-top: 40px
 }
@@ -79,7 +86,8 @@ margin-top: 40px
 .btn-text-ampliar{
 	background-color: #bdbebf;
 	color: #fff;font-size: 17px;
-	width: 170px;
+	/*width: 170px;*/
+	width: 90%;
 	height: 51px;
 	padding: 1px;
 	font-family: quicksandbold;
@@ -89,8 +97,9 @@ margin-top: 40px
     background-color: #1C4485;
     color: #fff;
     font-size: 16px;
-    width: 170px;
-    margin-left: -85px;
+    /*width: 170px;*/
+    width: 90%;
+    /*margin-left: -85px;*/
     height: 51px;
     padding-top: 12px;
     font-family: 'quicksandbold' !important;
@@ -173,7 +182,7 @@ margin-top: 40px
 	}
 
 	.btn-text-ampliar, .btn-text-siguiente{
-		width: 135px !important
+		width: 135px !important;
 	}
 }
 /*.margin-ajax-valores p,span{

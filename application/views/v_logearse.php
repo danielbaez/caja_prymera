@@ -140,5 +140,11 @@
 
 		<script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript">
+      $(".redirect").on("click", function(){
+          //alert($(this).data('value'));
+          $('input[name="redirect"]').val($(this).data('value'));
+      });
+    </script>
     </body>
 </html>

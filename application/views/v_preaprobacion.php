@@ -17,9 +17,10 @@
 
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
+    
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
@@ -118,10 +119,27 @@
               <div class="col-xs-12 margin-top"></div>
 
               <div class="col-xs-3">
+                <p id="slider-range-value-plazo" class="slider-value"></p>
+              </div>
+              <div class="col-xs-9">
+                <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <div id="slider-range-plazo"></div>
+                <br>
+                <div class="col-xs-6 text-left padding-left">
+                  <span><?php echo $plazo_min ?>m</span>
+                </div>
+                <div class="col-xs-6 text-right padding-right">
+                  <span><?php echo $plazo_max ?>m</span>
+                </div>
+              </div>
+
+              <div class="col-xs-12 margin-top"></div>
+
+              <div class="col-xs-3">
                 <p id="slider-range-value-monto" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Valor del veh&iacute;culo <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cual es el precio del veh&iacute;culo?"><i class="mdi mdi-info"></i></button></p>
+                <p class="text-left">Valor del veh&iacute;culo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cual es el precio del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-monto"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
@@ -138,7 +156,7 @@
                 <p id="slider-range-value-cuota" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Cuota inicial <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" style="" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?"><i class="mdi mdi-info"></i></button></p>
+                <p class="text-left">Cuota inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-cuota"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
@@ -146,23 +164,6 @@
                 </div>
                 <div class="col-xs-6 text-right padding-right">
                   <span id="maxCuota">S/ <?php echo  $cuotaMaximo?></span>
-                </div>
-              </div>
-
-              <div class="col-xs-12 margin-top"></div>
-
-              <div class="col-xs-3">
-                <p id="slider-range-value-plazo" class="slider-value"></p>
-              </div>
-              <div class="col-xs-9">
-                <p class="text-left">Plazo de Pr&eacute;stamo <button class="mdl-button mdl-js-button mdl-button--icon mdl-chip__action" data-toggle="tooltip" data-placement="bottom" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?"><i class="mdi mdi-info"></i></button></p>
-                <div id="slider-range-plazo"></div>
-                <br>
-                <div class="col-xs-6 text-left padding-left">
-                  <span><?php echo $plazo_min ?>m</span>
-                </div>
-                <div class="col-xs-6 text-right padding-right">
-                  <span><?php echo $plazo_max ?>m</span>
                 </div>
               </div>
 
@@ -279,13 +280,9 @@
     
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap_select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
-  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
-  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
+
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion.js?v=<?php echo time();?>"></script>
-   <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.min.js?v=<?php echo time();?>"></script>
-    <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table-es-MX.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
