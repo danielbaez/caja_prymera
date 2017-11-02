@@ -112,6 +112,7 @@ function borrarAsignados(id_pers, element) {
 
 function getAsesoresByAgencia() {
 	var agencia = $('#agencias').val();
+  $('#personalAsignado').html('');
 	if(agencia == null) {
 		msj('error', 'Seleccione una agencia');
 	}

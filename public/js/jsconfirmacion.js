@@ -362,3 +362,72 @@ function cambiarTam() {
 		$('#nro_fijo').attr('maxlength', 7);
 	}
 }
+
+
+function verificarDatos(e) {
+	if(e.keyCode === 13){
+		e.preventDefault();
+		verificarCampos();
+        }
+}
+
+function verificarCampos() {
+	var salario     	  = $('#salario').val();
+	var nro_celular 	  = $('#nro_celular').val();
+	var empleador   	  = $('#empleador').val();
+	var direccion_empresa = $('#direccion_empresa').val();
+	var Departamento 	  = $('#Departamento').val();
+	var Provincia 		  = $('#Provincia').val();
+	var Distrito 		  = $('#Distrito').val();
+	var Agencia 		  = $('#idagencia').val();
+	var codigo 			  = $('#codigo').val();
+	var nro_fijo     	  = $('#nro_fijo').val();
+	var concesionaria	  = $('#concesionaria').val();
+	var tipo_pago         = $('#tipoPago').val();
+	var uno 			  = $('#uno').val();
+	var dos 			  = $('#dos').val();
+	var tres 			  = $('#tres').val();
+	var cuatro 			  = $('#cuatro').val();
+	var cinco 			  = $('#cinco').val();
+	var seis 			  = $('#seis').val();
+	var fijo			  = $('#nro_fijo').val();
+	var estado_civil      = $('#estado_civil').val();
+	var nombre_conyugue   = $('#nombre_conyugue').val();
+	var dni_conyugue      = $('#dni_conyugue').val();
+	if(salario == null) {
+		msj('error', 'Seleccione una salario v&aacute;lida');
+		return;
+	}else 
+	if(empleador == null || empleador == '') {
+		msj('error', 'Ingrese un empeador correctamente');
+		return;
+	}else
+	if(direccion_empresa == null || direccion_empresa == '') {
+		msj('error', 'Ingrese una direcci&oacute;n correctamente');
+		return;
+	}else
+	if(Departamento == null || Departamento == '') {
+		msj('error', 'Seleccione un departamento correctamente');
+		return;
+	}else
+	if(Provincia == null || Provincia == '') {
+		msj('error', 'Seleccione una Provincia correctamente');
+		return;
+	}else
+	if(Distrito == null || Distrito == '') {
+		msj('error', 'Seleccione un Distrito correctamente');
+		return;
+	}else
+	if(nro_celular == null || nro_celular == '') {
+		msj('error', 'Seleccione un n&uacute;mero de celular v&aacute;lido');
+		return;
+	}else
+	if(nro_celular.length <9) {
+		msj('error', 'Ingrese un celular de 9 d&iacute;gitos');
+		return;
+	}else
+	if(Agencia == null || Agencia == '') {
+		msj('error', 'Ingrese una agencia');
+		return;
+	}
+}

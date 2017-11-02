@@ -136,13 +136,11 @@ class C_usuario extends CI_Controller {
         try {
             $id_asesor = _post('id_asesor');
             $id_pers = _post('id_pers');
-            //_log(print_r($id_asesor, true));
             $asesores = explode("-", $id_asesor);
             $array_glob = array();
             $html = "";
             $p = "";
             $cabecera = "";
-            _log(COUNT($asesores));
             foreach ($asesores as $key) {
                 if(COUNT($asesores) == 2) {
                     if($key != 'null') {
@@ -156,10 +154,9 @@ class C_usuario extends CI_Controller {
             }
             $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
             foreach ($datosAsesor as $key) {
-                _log(print_r($key, true));
                         $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'" onclick="agregarPersonal()">
                                     </td>                    
                                     <td>'.$key->nombre.' '.$key->apellido.'</td>
                                     <td>'.$key->rol.'</td>
@@ -189,38 +186,6 @@ class C_usuario extends CI_Controller {
         echo json_encode(array_map('utf8_encode', $data));
     }
 
-    /*function actualizarTablas() {
-        $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            $nombres = _post('personalAsignado');
-            $asesores = explode("-", $nombres);
-            $array_glob = array();
-            $html = "";
-            foreach ($asesores as $key) {
-                if($key != 'null') {
-                    array_push($array_glob, $key);
-                }
-            }
-            $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_glob);
-            foreach ($datosAsesor as $key) {
-                        $html .= '<tr id="check_'.$key->id.'">
-                                    <td>
-                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->nombre.'">
-                                    </td>                    
-                                    <td>'.$key->nombre.'</td>
-                                    <td>'.$key->rol.'</td>
-                                    <td>'.$key->agencia.'</td>
-                                  </tr>';
-            }
-            $data['html'] = $html;
-            $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));
-    }*/
-
     function getAsesoresByAgencia() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
@@ -236,7 +201,7 @@ class C_usuario extends CI_Controller {
             foreach ($datosAsesor as $key) {
                         $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'" onclick="agregarPersonal()">
                                     </td>                    
                                     <td>'.$key->nombre.' '.$key->apellido.'</td>
                                     <td>'.$key->rol.'</td>

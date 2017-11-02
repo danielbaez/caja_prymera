@@ -291,7 +291,6 @@ class M_usuario extends  CI_Model{
                    AND u.id NOT IN ?";
         }
         $result = $this->db->query($sql, array($array));
-        _logLastQuery();
         return $result->result();
     }
 
@@ -347,9 +346,7 @@ class M_usuario extends  CI_Model{
     function updateDatosAsesor($arrayData, $idAsesor, $tabla){
         $this->db->where_in('id'  , $idAsesor);
         $this->db->update($tabla, $arrayData);
-        _logLastQuery();
-        _log(print_r($this->db->affected_rows(), true));
-        if ($this->db->affected_rows() != 0) {
+        if ($this->db->affected_rows() == 0) {
             throw new Exception('No se pudo actualizar los datos');
         }
         return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);

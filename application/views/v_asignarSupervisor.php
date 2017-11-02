@@ -110,7 +110,7 @@
                 </table>
               </div>
               </div>
-              <div class="text-right div-agregar-personal-link">
+              <div class="text-right div-agregar-personal-link hidden">
                 <a onclick="agregarPersonal()">Agregar ></a>  
               </div>
             </div>

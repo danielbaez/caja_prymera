@@ -77,3 +77,10 @@ function soloLetras(e){
          return false;
      }
  }
+
+ function verificarDatos(e) {
+	if(e.keyCode === 13){
+		e.preventDefault();
+		guardarDatos();
+        }
+}

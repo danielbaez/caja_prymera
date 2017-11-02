@@ -138,12 +138,12 @@
                           </div>
                           <div class="col-xs-12">
                             <div class="form-group">
-                                <input type="search" class="form-control" id="empleador" name="empleador" maxlength="50" placeholder="* Empleador" onchange="habilitarCampo()">
+                                <input type="search" class="form-control" id="empleador" name="empleador" maxlength="50" placeholder="* Empleador" onchange="habilitarCampo()" onkeyup="verificarDatos(event);">
                               </div>
                           </div>
                           <div class="col-xs-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" onchange="habilitarCampo()" placeholder="* Direcci&oacute;n de Empresa">
+                                <input type="text" class="form-control" id="direccion_empresa" name="direccion_empresa" maxlength="50" onchange="habilitarCampo()" onkeyup="verificarDatos(event);" placeholder="* Direcci&oacute;n de Empresa">
                               </div>
                           </div>
                           <div class="col-xs-12">
@@ -183,7 +183,7 @@
                               <div class="col-xs-12 p-0">
                                 <div class="col-sm-12">
                                   <div class="form-group">
-                                    <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="* N&uacute;mero Celular" onkeypress="return valida(event)" onchange="habilitarCampo()" maxlength="9">
+                                    <input type="text" class="form-control" id="nro_celular" name="nro_celular" placeholder="* N&uacute;mero Celular" onkeypress="return valida(event)" onkeyup="verificarDatos(event);" onchange="habilitarCampo()" maxlength="9">
                                   </div>
                                 </div>
                                 <div class="col-sm-5">
@@ -195,7 +195,7 @@
                                 </div>
                                 <div class="col-sm-7">
                                   <div class="form-group">
-                                      <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Telefono Fijo" onkeypress="return valida(event)" maxlength="7">
+                                      <input type="text" class="form-control" onchange="habilitarCampo()" id="nro_fijo" name="nro_fijo" placeholder="Telefono Fijo" onkeypress="return valida(event)" onkeyup="verificarDatos(event);" maxlength="7">
                                   </div>
                                 </div>
                               </div>
@@ -228,7 +228,7 @@
                             </div>
                             <div class="col-xs-12">
                               <div class="form-group">
-                                <input type="text" class="form-control" id="email" onchange="habilitarCampo()" name="email" placeholder="Email" value="<?php echo $email?>">
+                                <input type="text" class="form-control" id="email" onchange="habilitarCampo()" name="email" placeholder="Email" onkeyup="verificarDatos(event);" value="<?php echo $email?>">
                               </div>
                             </div>
                             <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>

@@ -105,16 +105,16 @@
                                 <p style="font-size:15px;color: #a3a4a6; margin-bottom: 5px;">Cr&eacute;dito Consumo "Mi Cash"</p>
                                 <p class="datos" style="margin-bottom: 10px">Ingresa tus datos</p>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event)">
+                                    <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event);" onkeyup="verificarDatos(event);">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="Apellido" placeholder="Apellido" style="" maxlength="100" onkeypress="return soloLetras(event)">
+                                    <input type="text" class="form-control" id="Apellido" placeholder="Apellido" style="" maxlength="100" onkeypress="return soloLetras(event);" onkeyup="verificarDatos(event);">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="dni" placeholder="DNI" style="" maxlength="8" onkeypress="return valida(event)">
+                                    <input type="text" class="form-control" id="dni" placeholder="DNI" style="" maxlength="8" onkeypress="return valida(event);" onkeyup="verificarDatos(event);">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="email" placeholder="Email" style="" maxlength="50">
+                                    <input type="email" class="form-control" id="email" placeholder="Email" style="" maxlength="50" onkeyup="verificarDatos(event);">
                                 </div>
                             </form>
                             <form class="text-center">

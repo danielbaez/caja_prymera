@@ -148,7 +148,7 @@
                 <div class="col-md-12">
                   <div class="col-xs-12 col-md-6">
                     <div class="form-group">
-                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="font-family: 'quicksandlight';" onkeypress="return valida(event)">
+                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="font-family: 'quicksandlight';" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
                         </div>
                   </div>
                   <div class="col-xs-12 col-md-6">
