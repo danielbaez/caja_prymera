@@ -39,7 +39,7 @@ a {
     overflow-y: auto;
 }
 .modal-body.resumen {
-	/*height: 445px;*/
+	height: 370px;
     overflow-y: auto;
     border: 1px solid #007ac0;
     border-left: transparent;
@@ -244,3 +244,4 @@ p,label,span {
 .bs-example.form-group {
     margin-top: 40px;
 }
+/*fin Otros*/

@@ -118,3 +118,10 @@ function moreText() {
 function goToLogin() {
 	location.href = "/login";
 }
+
+function verificarDatos(e) {
+	if(e.keyCode === 13){
+		e.preventDefault();
+		solicitarPrestamo();
+    }
+}

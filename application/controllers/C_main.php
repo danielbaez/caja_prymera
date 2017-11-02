@@ -32,11 +32,6 @@ class C_main extends CI_Controller {
 
         $data['superiores'] = $this->M_usuario->getSuperiores();
         $data['agencias'] = $this->M_agencia->getAgencias();
-
-        //_log(print_r($this->session->all_userdata('deliverdata') , true));
-//         if(_getSesion("nombre") == null && _getSesion("email") == null) {
-//             header("Location: ".RUTA_KOPLAN, true, 301);
-//         }
         $this->load->view('v_main', $data);
     }
 
@@ -45,9 +40,6 @@ class C_main extends CI_Controller {
         $action = _post('action');
 
         $this->load->model('M_usuario');
-
-        /*print_r(_post('agencia'));
-        exit();*/
         $nombres   = __getTextValue('nombres');
         $apellidos = __getTextValue('apellidos');
         $sexo      = _post('sexo');
@@ -90,7 +82,6 @@ class C_main extends CI_Controller {
         if($action == 'save')
         {
             $permiso = implode(",",$checkPermiso);
-            //$datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'usuario');
             if($rol == 'jefe_agencia')
             {
                 $arrayInsert = array('nombre' => $nombres,
@@ -284,9 +275,7 @@ class C_main extends CI_Controller {
                 $datos = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, null);
             }
             $id_agencia = $this->M_preaprobacion->getidByAgencia($agencia);
-            //_log(print_r($id_agencia, true));
             $datos = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, $id_agencia[0]->id);
-            //_logLastQuery();
             $data['dni'] = $datos[0]->dni;
             $data['nombre'] = $datos[0]->nombre;
             $data['fecha_nac'] = $datos[0]->fecha_nac;
@@ -320,7 +309,7 @@ class C_main extends CI_Controller {
             $rol = _post('rol');
             $datos = $this->M_preaprobacion->verificarDatos($rol);
             $data['nombre_complet'] = $datos['0']->nombres;
-         $data['error'] = EXIT_SUCCESS;
+            $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
@@ -334,7 +323,7 @@ class C_main extends CI_Controller {
             $rol = _post('rol');
             $datos = $this->M_preaprobacion->verificarDatos($rol);
             $data['nombre_complet'] = $datos['0']->nombres;
-         $data['error'] = EXIT_SUCCESS;
+            $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
@@ -355,11 +344,8 @@ class C_main extends CI_Controller {
             $email        = _post('email');
             $rol          = _post('rol');
             $rol_superior = _post('rol_superior');
-            //$checkPermiso = _post('permiso');
-            //_log(print_r($checkPermiso, true));
             $agencia      = _post('agencia');
-            //$permiso = implode(",",$checkPermiso);
-            $nombre_img      = _post('nombre_img');
+            $nombre_img   = _post('nombre_img');
             $id = $this->M_preaprobacion->getDatosPersByRol($rol, $nombres, null);
             $arrayUpdt = array('celular' => $celular,
                                 'nombre' => $nombres,
@@ -382,12 +368,11 @@ class C_main extends CI_Controller {
 
     function getAgencias()
     {
-        $id = _post('id');
+        $id     = _post('id');
         $action = _post('action');
         $this->load->model('M_agencia');
         $agencias = $this->M_agencia->getAgenciasBySup($id, $action);
         echo json_encode($agencias);
-
     }
 
     function getDefaultAgencias()

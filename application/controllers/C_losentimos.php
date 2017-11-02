@@ -17,7 +17,6 @@ class C_losentimos extends CI_Controller {
     public function index()
     {
         $dato['nombreDato']=':D';
-        //_log(print_r($this->session->all_userdata(), true));
         $dato['nombreCompleto'] = _getSesion('nombreCompleto');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $this->load->view('v_losentimos', $dato);

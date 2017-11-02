@@ -143,7 +143,7 @@
                 </div>
                 <div class="form-group"> 
                   <div class="col-sm-offset-2 col-sm-8">
-                    <button type="button" class="btn btn-primary" onclick="guardatAsesoresAsignados()">Asignar</button>
+                    <button type="button" style="margin-left: -68px;" class="btn btn-primary" onclick="guardatAsesoresAsignados()">Asignar</button>
                   </div>
                 </div>
               </form>

@@ -60,7 +60,7 @@
                     <div class="form-group">
                       <label class="control-label col-sm-3" for="email">Usuario:</label>
                       <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email" placeholder="Ingresar email" maxlength="50">
+                        <input type="email" class="form-control" id="email" placeholder="Ingresar email" maxlength="50" onkeyup="verificarDatos(event);">
                       </div>
                     </div>
                     <div class="form-group"> 
