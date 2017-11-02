@@ -256,12 +256,15 @@
                   </div>
                   <div class="col-xs-12 col-sm-4 col-sm-offset-2 text-left div-datos-solicitud">
                   </div>
+                  <div class="col-xs-12 p-t-15">
+                    <button type="button" class="btn btn-primary btn-actualizar-estado">Actualizar</button>
+                  </div>
                 </div>             
              
               </div>
-              <div class="modal-footer" style="text-align: center">
+              <!-- <div class="modal-footer" style="text-align: center">
                 <button type="button" class="btn btn-primary btn-actualizar-estado">Actualizar</button>
-              </div>
+              </div> -->
             </div>
       </div>
     </div>
