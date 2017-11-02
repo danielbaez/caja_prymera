@@ -137,7 +137,7 @@
 		  <div class="col-xs-12 col-md-6 col-seccion">
 			<div class="col-xs-12 div-seccion">
 			  <h4>Administrar Perfiles</h4>
-			  <div class="alert alert-danger alert-form" style="font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px; display: none">Debe completar todos los campos
+			  <div class="alert alert-danger alert-form" style="font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px; display: none">
 	            </div>
 			  <form class="text-center" id="form-create-edit-user" action="C_main/registrar" method="POST" enctype="multipart/form-data" autocomplete="false">
 				<div class="col-xs-12 col-sm-6">
@@ -295,6 +295,9 @@
 	  <script>
 
 	  	$(document).ready(function() {
+
+	  		var msgForm = "Debe completar todos los campos";
+	  		var msgEmail = "El email ya existe, eija otro";
 
   var table = $('#tabla-usuarios').DataTable( {
 
@@ -765,62 +768,84 @@
 
 	    var rol_user = $('input[name="rol_user"]').val()
 
+	    var $this = this;
+
     	if(action == 'save' || action == 'update'){
 
     		if(rol_user == 'administrador'){
 
 	    		if(rol_db == 'administrador' && action == 'update'){
-	    			if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != ''){
-		    			this.submit();
-	    			}else{
-	    				$('.alert-success').hide();
-	    				$('.alert-form').show();
-	    				$('html').animate({scrollTop:0},500);
-				    	return false;
-				    }
-	    		}else{
-		    		if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != '' && permiso){
 
+	    			$.ajax({
+						data:  {dni: $('#dni').val(), email: $('#email').val(), id_usuario: $('input[name="id_usuario"]').val(), action: action},
+						url:   '/C_usuario/verifyEmailAndDNI',
+						type:  'post',
+						dataType: 'json',
+						success:  function (response) {
+							if(response.success){
+								$('.alert-form').html(response.msg).show();
+								$('.alert-success').hide();
+						    	$('html').animate({scrollTop:0},500);
+						    	return false;
+							}else{
 
-
-		    			/////
-		    			
-		    			/*$.ajax({
-							data:  {dni: $('#dni').val(), email: $('#email').val()},
-							url:   '/C_usuario/verifyEmailAndDNI',
-							type:  'post',
-							dataType: 'json',
-							success:  function (response) {
-								console.log(response)
+								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != ''){
+					    			$this.submit();
+				    			}else{
+				    				alert(2)
+				    				$('.alert-success').hide();
+				    				$('.alert-form').html(msgForm).show();
+				    				$('html').animate({scrollTop:0},500);
+							    	return false;
+							    }
 							}
-						});
+						}
+					});
 
-						return false;*/
-		    			////
+	    			
+	    		}else{
 
+	    			$.ajax({
+						data:  {dni: $('#dni').val(), email: $('#email').val(), id_usuario: $('input[name="id_usuario"]').val(), action: action},
+						url:   '/C_usuario/verifyEmailAndDNI',
+						type:  'post',
+						dataType: 'json',
+						success:  function (response) {
+							if(response.success){
+								$('.alert-form').html(response.msg).show();
+								$('.alert-success').hide();
+						    	$('html').animate({scrollTop:0},500);
+						    	return false;
+							}else{
 
+								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != '' && permiso){
+							    	if(rol == 'asesor'){
+							    		if(rol_superior != ''){
+							    			$this.submit();
+							    		}else{
+							    			$('.alert-success').hide();
+							    			$('.alert-form').html(msgForm).show();
+							    			$('html').animate({scrollTop:0},500);
+							    			return false;
+							    		}
+							    	}else{
+							    		$this.submit();		    		
+							    	}
+							    }else{
+							    	$('.alert-success').hide();
+							    	$('.alert-form').html(msgForm).show();
+							    	$('html').animate({scrollTop:0},500);
+							    	return false;
+							    }
 
-				    	if(rol == 'asesor'){
-				    		if(rol_superior != ''){
-				    			this.submit();
-				    		}else{
-				    			$('.alert-success').hide();
-				    			$('.alert-form').show();
-				    			$('html').animate({scrollTop:0},500);
-				    			return false;
-				    		}
-				    	}else{
-				    		this.submit();		    		
-				    	}
-				    }else{
-				    	$('.alert-success').hide();
-				    	$('.alert-form').show();
-				    	$('html').animate({scrollTop:0},500);
-				    	return false;
-				    }
+							}
+						}
+					});
+
+		    		
 				}
 			}else if(rol_user == 'jefe_agencia'){
-	    		this.submit();		 
+	    		$this.submit();		 
 			}
     	}  
 
