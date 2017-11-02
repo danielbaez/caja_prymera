@@ -780,6 +780,26 @@
 				    }
 	    		}else{
 		    		if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != '' && permiso){
+
+
+
+		    			/////
+		    			
+		    			/*$.ajax({
+							data:  {dni: $('#dni').val(), email: $('#email').val()},
+							url:   '/C_usuario/verifyEmailAndDNI',
+							type:  'post',
+							dataType: 'json',
+							success:  function (response) {
+								console.log(response)
+							}
+						});
+
+						return false;*/
+		    			////
+
+
+
 				    	if(rol == 'asesor'){
 				    		if(rol_superior != ''){
 				    			this.submit();

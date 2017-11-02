@@ -265,5 +265,12 @@ class C_usuario extends CI_Controller {
         }
         echo json_encode(array_map('utf8_encode', $data));
     }
+
+    function verifyEmailAndDNI($dni, $email)
+    {
+        $response = $this->M_usuario->verifyEmailAndDNI($dni, $email);
+
+        echo json_encode($response);
+    }
 }
 

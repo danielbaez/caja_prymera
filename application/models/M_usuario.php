@@ -375,5 +375,20 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }
+
+    function verifyEmailAndDNI($dni, $email) {
+        $sql = "SELECT dni, email 
+                  FROM usuario
+                 WHERE email LIKE '%".$email."%'
+                   AND estado = 1";
+        $result = $this->db->query($sql, array());
+        $result = $result->result();
+
+        if($result->num_rows() == 1)
+        {
+            return ['success' => true];
+        }
+        return ['success' => false];
+    }
 }
     
