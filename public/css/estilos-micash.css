@@ -107,7 +107,8 @@ div.text-left{
     /*color: #fff;*/
 }
 div.checkbox label {
-    position: relative;right: -6px;color: black;
+    
+    color: black;
     font-family: 'quicksandlight';
 }
 .input-group {
@@ -135,8 +136,8 @@ div.checkbox label {
     padding-left: 15px;
 }
 .checkbox {
-    text-align: left;
-    margin-left: 33px;
+    text-align: center;
+    /*margin-left: 33px;*/
 }
 .checkbox label{
     color: #9fa9a3;
@@ -291,14 +292,14 @@ h1,h2,h3,h4,h5,a{
 .img-form-vehicular{
     background: url(/public/img/fondos/creedito-Vehicular.png);
     background-size:100% auto;
-    height: 505px;
+    height: 510px;
     background-repeat: no-repeat;
 }
 
 .img-form-cash{
     background: url(/public/img/fondos/Credito-Consumo.png);
     background-size:100% auto;
-    height: 505px;
+    height: 510px;
     background-repeat: no-repeat;
 }
 

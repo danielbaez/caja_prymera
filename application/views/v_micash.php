@@ -16,11 +16,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
 
         <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>">
-        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
+        
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
@@ -104,10 +100,10 @@
                         <div class="panel-heading" style="background-color: #fff;border: 0px;color: #00519D;text-align: center; padding-bottom: 0">
                             <h1 class="panel-title" style="font-size:32px;margin-top: 0px;font-weight: bold;">Consulta aqu&iacute;</h1>
                         </div>
-                        <div class="panel-body" style="background-color: #fff; padding-top: 0; padding-bottom: 5px;">
+                        <div class="panel-body" style="background-color: #fff; padding-top: 5px; padding-bottom: 10px;">
                             <form class="text-center">
-                                <p style="font-size:15px;color: #a3a4a6; margin-bottom: 0">Cr&eacute;dito Consumo "Mi Cash"</p>
-                                <p class="datos" style="margin-bottom: 0">Ingresa tus datos</p>
+                                <p style="font-size:15px;color: #a3a4a6; margin-bottom: 5px;">Cr&eacute;dito Consumo "Mi Cash"</p>
+                                <p class="datos" style="margin-bottom: 10px">Ingresa tus datos</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event)">
                                 </div>
@@ -125,7 +121,7 @@
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="checkbox" style="position: absolute;top: 6px;transform: scale(1.5);" id="acepto"> Acepto 
+                                            <input type="checkbox" class="checkbox" style="zoom: 1.5;" id="acepto"> Acepto 
                                             <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -1px;" data-toggle="modal" data-target="#myModal">Uso de datos personales</button>
                                         </label>
                                     </div>
@@ -135,7 +131,7 @@
                                 <div class="col-xs-6 col-md-8 robot">
                                     <div class="checkbox" style="border: 1px solid #ccc;background: #f0f0f0;margin: 0px;padding: 20px;">
                                         <label>
-                                            <input type="checkbox" style="transform: scale(1.5);"> No soy un robot
+                                            <input type="checkbox" style="zoom: 1.5;"> No soy un robot
                                         </label>
                                     </div>
                                 </div>
@@ -148,17 +144,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-12 mas-caracteristicas" style="padding-left: 0">
-                        <div class="col-xs-7" style="background-color: #fff;width: 183px;">
-                            <div class="col-xs-8">
-                                <label class="" style="color: #00519D;margin: 5px;">Caracter&iacute;sticas <i onclick="moreText()" class="fa fa-chevron-down" aria-hidden="true"></i></label>
-                            </div>
-                            <div class="col-xs-4">
-                                <!-- <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" style="margin-left: 19px;" onclick="moreText()">
-                                    <i class="mdi mdi-keyboard_arrow_down" style="color: #00519D;"></i>
-                                </button> -->
-                            </div>
-                        </div>
+                    <div class="col-xs-12 mas-caracteristicas" style="padding-left: 0">
+                        <span onclick="moreText()" style="color: #00519D;padding: 10px 15px; background-color: #fff; cursor: pointer;">Caracter&iacute;sticas <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
                     </div>
                 </div>
 
