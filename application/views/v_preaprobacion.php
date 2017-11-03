@@ -655,6 +655,22 @@
 
   })
 
+    function verificarDatos(e) {
+      if(e.keyCode === 13){
+        e.preventDefault();
+        alert
+        }
+    }
+
+
+    $(document).on('keyup', function(e) {
+      /*if($('#marca').val() != '' && $('#modelo').val() != ''){
+        $('.btn-text-siguiente').attr('disabled', true);
+        addStyle();
+      }*/
+      addStyle();
+    });
+
 
   })(jQuery);
 

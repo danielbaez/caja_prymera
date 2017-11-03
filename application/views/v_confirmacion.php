@@ -121,7 +121,7 @@
                           <div class="col-xs-12 p-0">
                             <div class="col-sm-12">
                               <div class="form-group">
-                                  <select class="form-control" id="salario"  name="salario" onchange="habilitarCampo()">
+                                  <select onkeyup="verificarDatos(event);" class="form-control" id="salario"  name="salario" onchange="habilitarCampo()">
                                           <option value="">* Ingreso Mensual</option>
                                           <option value="">Hasta 1,000 soles</option>
                                           <option value="">De 1,000 a 2,000 soles</option>
@@ -146,7 +146,7 @@
                           </div>
                           <div class="col-xs-12">
                             <div class="form-group">
-                                <select class="form-control" id="Departamento" name="Departamento" onchange="getProvincia();habilitarCampo()">
+                                <select onkeyup="verificarDatos(event);" class="form-control" id="Departamento" name="Departamento" onchange="getProvincia();habilitarCampo()">
                                         <option value="">* Departamento</option>
                                         <?php echo $comboDepa;?>
                                 </select>
@@ -155,14 +155,14 @@
                           <div class="col-xs-12 p-0">
                             <div class="col-sm-6">
                               <div class="form-group">
-                                  <select class="form-control" id="Provincia" name="Provincia" onchange="getDistritos();habilitarCampo()">
+                                  <select onkeyup="verificarDatos(event);" class="form-control" id="Provincia" name="Provincia" onchange="getDistritos();habilitarCampo()">
                                           <option value="">* Provincia</option>
                                   </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                               <div class="form-group">
-                                  <select class="form-control" id="Distrito" name="Distrito" onchange="habilitarCampo()">
+                                  <select onkeyup="verificarDatos(event);" class="form-control" id="Distrito" name="Distrito" onchange="habilitarCampo()">
                                             <option value="">* Distrito</option>
                                   </select>
                                 </div>
@@ -186,7 +186,7 @@
                                 </div>
                                 <div class="col-sm-5">
                                   <div class="form-group">
-                                    <select class="form-control" onchange="habilitarCampo();cambiarTam();" name="codigo" id="codigo">
+                                    <select class="form-control" onkeyup="verificarDatos(event);" onchange="habilitarCampo();cambiarTam();" name="codigo" id="codigo">
                                       <option value="">C&oacute;d,</option>
                                     </select>
                                   </div>
@@ -200,7 +200,7 @@
                             <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                               <div class="col-xs-12">
                                 <div class="form-group">
-                                  <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
+                                  <select onkeyup="verificarDatos(event);" class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
                                     <option value="">* Concesionario</option>
                                     <?php echo $comboConcecionaria?>
                                   </select>
@@ -209,7 +209,7 @@
                             <?php } else { ?>
                                 <div class="col-xs-12 hidden">
                                   <div class="form-group">
-                                    <select class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
+                                    <select onkeyup="verificarDatos(event);" class="form-control" id="concesionaria" name="agencias" onchange="ocultarAgencia();habilitarCampo()">
                                       <option value="">* Concesionaria</option>
                                         <?php echo $comboConcecionaria?>
                                     </select>
@@ -218,7 +218,7 @@
                             <?php } ?>
                             <div class="col-xs-12">
                               <div class="form-group">
-                                <select class="form-control" id="idagencia" name="agencias" onchange="habilitarCampo()">
+                                <select class="form-control" id="idagencia" name="agencias" onchange="habilitarCampo()" onkeyup="verificarDatos(event);">
                                   <option value="">* Agencias</option>
                                        <?php echo $comboAgencias?>
                                 </select>
@@ -232,7 +232,7 @@
                             <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                             <div class="col-xs-12">
                              <div class="form-group">
-                                <select class="form-control" id="estado_civil" name="estado_civil" onchange="mostrarEstadoCivil()">
+                                <select class="form-control" id="estado_civil" name="estado_civil" onkeyup="verificarDatos(event);" onchange="mostrarEstadoCivil()">
                                   <option value="">Estado Civil</option>
                                   <option value="soltero">Soltero</option>
                                   <option value="casado">Casado</option>
@@ -241,18 +241,18 @@
                             </div>
                             <div class="col-xs-12 oculto hidden">
                               <div class="form-group">
-                                <input type="text" class="form-control" id="nombre_conyugue" name="nombre_conyugue" placeholder="Nombre del Conyugue" maxlength="50" onkeypress="return soloLetras(event)">
+                                <input type="text" class="form-control" id="nombre_conyugue" name="nombre_conyugue" placeholder="Nombre del Conyugue" maxlength="50" onkeypress="return soloLetras(event)" onkeyup="verificarDatos(event);">
                               </div>
                             </div>
                             <div class="col-xs-12 oculto hidden">
                               <div class="form-group">
-                                <input type="text" class="form-control" id="dni_conyugue" name="dni_conyugue" placeholder="DNI del Conyugue" maxlength="8" onkeypress="return valida(event)">
+                                <input type="text" class="form-control" id="dni_conyugue" name="dni_conyugue" placeholder="DNI del Conyugue" maxlength="8" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
                               </div>
                             </div>
                             <?php } ?>
                       </div>
                       <div class="col-xs-12 m-t-50">
-                        <a id="remove" class="link" href="/Preaprobacion">Regresar</a>
+                        <a id="remove" class="link" href="/C_preaprobacion">Regresar</a>
                       </div>
                       <button type="button" style="" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
                   </form>
@@ -304,12 +304,12 @@
           <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
             <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad <br>que ha sido enviado a su celular: </p>
             <div class="col-xs-12 text-center modal-div-numbers">
-              <input type="text" placeholder="" size="4" maxlength="1" id="uno">
-              <input type="text" placeholder="" size="4" maxlength="1" id="dos">
-              <input type="text" placeholder="" size="4" maxlength="1" id="tres">
-              <input type="text" placeholder="" size="4" maxlength="1" id="cuatro">
-              <input type="text" placeholder="" size="4" maxlength="1" id="cinco">
-              <input type="text" placeholder="" size="4" maxlength="1" id="seis">
+              <input type="text" placeholder="" size="4" maxlength="1" id="uno" onkeyup="enterConfirmar(event);">
+              <input type="text" placeholder="" size="4" maxlength="1" id="dos" onkeyup="enterConfirmar(event);">
+              <input type="text" placeholder="" size="4" maxlength="1" id="tres" onkeyup="enterConfirmar(event);">
+              <input type="text" placeholder="" size="4" maxlength="1" id="cuatro" onkeyup="enterConfirmar(event);">
+              <input type="text" placeholder="" size="4" maxlength="1" id="cinco" onkeyup="enterConfirmar(event);">
+              <input type="text" placeholder="" size="4" maxlength="1" id="seis" onkeyup="enterConfirmar(event);">
             </div>
           </div>
           <div class="col-xs-12 text-center">

@@ -37,6 +37,7 @@ function solicitarPrestamo() {
 		msj('error','Por favor acepte el uso de datos personales');
 		  return;
 	}
+	$('.btn-consultar').attr('disabled', true);
 	$.ajax({
 		data  : { nombre  	: nombre,
 				  apellido  : apellido,
@@ -54,6 +55,7 @@ function solicitarPrestamo() {
 			location.href = data.url;
 		}
 		if(data.status == 2){
+			$('.btn-consultar').attr('disabled', false);
 			msj("error", "Hubo un problema en el servidor, vuelva a intertarlo");
 		}
 		/*try{
