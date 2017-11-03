@@ -67,7 +67,15 @@ h4 {
 }
 
 .modal-recuperar-password-titulo{
-	color:#0060aa; font-size: 18px
+	color:#0060aa; 
+	font-size: 18px;
+	width: 85%;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    padding-bottom: inherit;
+    margin: auto;
 }
 
 .nav-active-a{
