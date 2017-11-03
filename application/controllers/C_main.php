@@ -100,7 +100,7 @@ class C_main extends CI_Controller {
                                 );
               $this->M_usuario->crearUsuario($arrayInsert, 'usuario', $agencia);  
             }
-            elseif($rol == 'asesor')
+            elseif($rol == 'asesor' || $rol == 'asesor_externo')
             {
 
                 $arrayInsert = array('nombre' => $nombres,
@@ -193,7 +193,7 @@ class C_main extends CI_Controller {
 
                     $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', $agencia, $id_usuario);  
                 }
-                elseif($rol == 'asesor')
+                elseif($rol == 'asesor' || $rol == 'asesor_externo')
                 {
                     $permiso = implode(",",$checkPermiso);
                     $arrayUpdate = array('nombre' => $nombres,

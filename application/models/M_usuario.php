@@ -75,7 +75,7 @@ class M_usuario extends  CI_Model{
 
     	$res = [];
         foreach ($result->result() as $key => $value) {
-            if($value->rol == 'asesor')
+            if($value->rol == 'asesor' || $value->rol == 'asesor_externo')
             {
                 $sql = "SELECT * FROM usuario WHERE id IN (SELECT agencias.id_sup_agencia as superior FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id = ?)";
                 $agencias = $this->db->query($sql, array($value->id_agencia));
@@ -107,7 +107,7 @@ class M_usuario extends  CI_Model{
                 $rrr = $this->db->query($sqlAg, array($res[0]->id));
                 $res[0]->cargarAgencias =  $rrr->result();
             }
-            elseif($res[0]->rol == 'asesor')
+            elseif($res[0]->rol == 'asesor' || $res[0]->rol == 'asesor_externo')
             { 
                 //$sqlAg = "SELECT * FROM agencias WHERE id_sup_agencia IS NULL OR id = ?";
                 /*$sqlAg = "SELECT * FROM agencias WHERE id = ?";

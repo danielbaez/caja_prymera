@@ -77,10 +77,11 @@ function limpiar() {
   $('#celular').val(null);
   $('#email').val(null);
   $('#rol').val(null);
-  $('#rol').html('');
+  /*$('#rol').html('');
   $('#rol').append('<option value="">Rol</option>');
   $('#rol').append('<option value="jefe_agencia">Jefe de Agencia</option>');
-  $('#rol').append('<option value="asesor">Asesor</option>');
+  $('#rol').append('<option value="asesor">Asesor</option>');*/
+  $("#rol[value='']").attr("checked", true);
   $('#rol_superior').val(null);
 }
 

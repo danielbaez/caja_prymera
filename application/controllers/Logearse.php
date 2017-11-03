@@ -13,6 +13,9 @@ class logearse extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
+
+        $this->load->helper("access_helper");
+        //access_helper::is_logged_in();
     }
     
     public function index()
@@ -136,7 +139,8 @@ class logearse extends CI_Controller {
                                                             'nombre'          =>$datos[0]->nombre,
                                                             'nombreCompleto'          =>$datos[0]->nombre.' '.$datos[0]->apellido,
                                                             'id_agencia'          =>$datos[0]->id_agencia,
-                                                            'permiso'          =>$productos
+                                                            'permiso'          =>$productos,
+                                                            'logged' => true
                                                             ));
                                                                           
                         if(in_array($redirect, $productos))
@@ -167,7 +171,7 @@ class logearse extends CI_Controller {
                                 {
                                     redirect('C_reporte/solicitudes');    
                                 }
-                                elseif($datos[0]->rol == 'asesor')
+                                elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
                                 {
                                     $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
                                                                    'permiso_prod' => PERMISO_MICASH,
@@ -186,7 +190,7 @@ class logearse extends CI_Controller {
                                 {
                                     redirect('C_reporte/solicitudes');    
                                 }
-                                elseif($datos[0]->rol == 'asesor')
+                                elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
                                 {
                                     $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
                                                                    'permiso_prod' => PERMISO_VEHICULAR,
@@ -207,7 +211,12 @@ class logearse extends CI_Controller {
                             }
                             elseif($datos[0]->rol == 'asesor')
                             {
-                                redirect('C_reporteAsesor/agenteCliente');    
+                                //redirect('C_reporteAsesor/agenteCliente');
+                                redirect('C_usuario/nuevaSolicitud');     
+                            }
+                            elseif($datos[0]->rol == 'asesor_externo')
+                            {
+                                redirect('C_usuario/nuevaSolicitud');    
                             }
                         }
                             

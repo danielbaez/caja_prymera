@@ -41,8 +41,10 @@
     </div>    
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a></li>
-        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+        <?php if(_getSesion('rol') == 'asesor'){ ?>
+            <li><a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a></li>
+        <?php } ?>
+          <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>        
       </ul>
     </div>
   </div>
@@ -60,8 +62,10 @@
                               <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                                 <ul class="dropdown-menu">                   
-                                  <li><a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a></li>
-                                  <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+                                  <?php if(_getSesion('rol') == 'asesor'){ ?>
+                                      <li><a href="/C_reporteAsesor/agenteCliente">Ver Reportes</a></li>
+                                  <?php } ?>
+                                    <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
                                 </ul>
                               </li>
                           </ul>
