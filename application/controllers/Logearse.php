@@ -13,6 +13,9 @@ class logearse extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
+
+        $this->load->helper("access_helper");
+        access_helper::is_logged_in();
     }
     
     public function index()
@@ -136,7 +139,8 @@ class logearse extends CI_Controller {
                                                             'nombre'          =>$datos[0]->nombre,
                                                             'nombreCompleto'          =>$datos[0]->nombre.' '.$datos[0]->apellido,
                                                             'id_agencia'          =>$datos[0]->id_agencia,
-                                                            'permiso'          =>$productos
+                                                            'permiso'          =>$productos,
+                                                            'logged' => true
                                                             ));
                                                                           
                         if(in_array($redirect, $productos))
