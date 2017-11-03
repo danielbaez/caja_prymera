@@ -410,6 +410,10 @@ function verificarCampos() {
 	var estado_civil      = $('#estado_civil').val();
 	var nombre_conyugue   = $('#nombre_conyugue').val();
 	var dni_conyugue      = $('#dni_conyugue').val();
+
+
+	var tipo_producto_hidden = $('input[name="tipo_producto_hidden"]').val();
+
 	if(salario == null) {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
@@ -442,7 +446,7 @@ function verificarCampos() {
 		msj('error', 'Ingrese un celular de 9 d&iacute;gitos');
 		return;
 	}else
-	if(concesionaria == null || concesionaria == '') {
+	if((concesionaria == null || concesionaria == '') && tipo_producto_hidden == 'vehicular') {
 		msj('error', 'Seleccione una concesionaria');
 		return;
 	}else

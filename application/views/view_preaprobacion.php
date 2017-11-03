@@ -396,6 +396,10 @@
         });*/
     });
 
+    $(document).on('keyup', function(e) {
+      addStyle();
+    });
+
   })(jQuery);
 
   </script>

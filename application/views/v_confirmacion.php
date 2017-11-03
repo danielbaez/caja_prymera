@@ -252,8 +252,13 @@
                             <?php } ?>
                       </div>
                       <div class="col-xs-12 m-t-50">
+                        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                         <a id="remove" class="link" href="/C_preaprobacion">Regresar</a>
+                        <?php } else{ ?>
+                        <a id="remove" class="link" href="/preaprobacion">Regresar</a>
+                        <?php } ?>
                       </div>
+                      <input type="hidden" name="tipo_producto_hidden" value="<?php echo $tipo_producto ?>">
                       <button type="button" style="" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
                   </form>
                 </div>                                        
