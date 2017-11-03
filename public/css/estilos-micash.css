@@ -258,6 +258,13 @@ a {
     color: #007ac0 !important;
     font-size: 20px;
     font-family: 'quicksandregular';
+    width: 85%;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    padding-bottom: inherit;
+    margin: auto;
 }
 .negrita {
     font-family: 'quicksandbold';

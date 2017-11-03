@@ -10,7 +10,7 @@
  	}
 	public static function is_logged_in()
 	{
-		$CI =& get_instance();
+		/*$CI =& get_instance();
 		if(_getSesion('logged'))
 		{
 			$controller = $CI->uri->segment(1);
@@ -37,7 +37,7 @@
 			{
 				//redirect('/');
 			}	
-		} 
+		} */
 	}
  }
 

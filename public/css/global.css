@@ -33,6 +33,16 @@ a {
     color: #007ac0 !important;
     font-size: 20px;
     font-family: 'quicksandbold' !important;
+    width: 85%;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    padding-bottom: inherit;
+    margin: auto;
+}
+.bs-example .form-group {
+    margin-left: 15px;
 }
 .modal-body {
 	height: 470px;
@@ -41,12 +51,12 @@ a {
 .modal-body.resumen {
 	height: 370px;
     overflow-y: auto;
-    border: 1px solid #007ac0;
+    /*border: 1px solid #007ac0;
     border-left: transparent;
     border-right: transparent;
     border-bottom: transparent;
     width: 85%;
-    margin-left: 80px;
+    margin-left: 80px;*/
 }
 .modal-body.otros{
 	height: 200px;
@@ -60,12 +70,12 @@ a {
 .modal-body.preaprobacion-modal{
     height: 240px;
     overflow-y: auto;
-    border: 1px solid #007ac0;
+    /*border: 1px solid #007ac0;
     border-left: transparent;
     border-right: transparent;
     border-bottom: transparent;
     width: 85%;
-    margin-left: 30px;
+    margin-left: 30px;*/
 }
 .modal-body.celular{
 	height: 188px;
@@ -81,12 +91,12 @@ a {
 .modal-body.text-center.modal-reporte-informacion-solicitud {
     height: 370px;
     overflow-y: auto;
-    border: 1px solid #007ac0;
+    /*border: 1px solid #007ac0;
     border-left: transparent;
     border-right: transparent;
     border-bottom: transparent;
     width: 85%;
-    margin-left: 70px;
+    margin-left: 70px;*/
 }
 .modal-footer {
     /*margin-top: -40px;*/

@@ -181,7 +181,8 @@
                     <select class="form-control cambio-rol" id="rol" name="rol">
 					  <option value="">Rol</option>
 					  <option value="jefe_agencia">Jefe de agencia</option>
-					  <option value="asesor">asesor</option>
+					  <option value="asesor">Asesor</option>
+					  <option value="asesor_externo">Asesor Externo</option>
 					</select>
 				  </div>
 				  <div class="form-group div-rol-superior text-left">
@@ -484,8 +485,9 @@
 				})
 
             }
-            else if($(this).val() == 'asesor'){
+            else if($(this).val() == 'asesor' || $(this).val() == 'asesor_externo'){
                 $('.div-rol-superior').show();
+                $("#rol_superior").val("").change();
                 $('#agencias').attr('disabled', true)
 
             }
@@ -611,7 +613,7 @@
 
 					}
 
-					else if(rol_user == 'administrador' && response[0].rol == 'asesor'){
+					else if(rol_user == 'administrador' && (response[0].rol == 'asesor' || response[0].rol == 'asesor_externo')){
 
 						$('#rol_superior').attr('disabled', false)
 
@@ -632,7 +634,7 @@
 
 					}
 
-					else if(rol_user == 'jefe_agencia' && response[0].rol == 'asesor'){
+					else if(rol_user == 'jefe_agencia' && (response[0].rol == 'asesor' || response[0].rol == 'asesor_externo')){
 
 						//$("#blah").unbind("click")
 						$("#blah").off('click');
