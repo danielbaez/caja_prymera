@@ -28,6 +28,7 @@ function addStyle() {
 		msj('error', 'Seleccione la marca y el modelo');
 		return;
 	}else if(marca != '' && modelo != '') {
+		$('.btn-text-siguiente').attr('disabled', true);
 		location.href = '/C_confirmacion';
 		$.ajax({
 			data  : { marca : marca,
@@ -49,6 +50,7 @@ function addStyle() {
 				if(data.error == 0){
 					location.href = '/C_confirmacion';
 				}else {
+					$('.btn-text-siguiente').attr('disabled', false);
 				}
 			} catch (err){
 				msj('error',err.message);

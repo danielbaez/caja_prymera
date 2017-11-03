@@ -81,6 +81,7 @@ function verificarNumero() {
 		msj('error','Por favor acepte la autorizaci&oacute;n de datos');
 		  return;
 	}*/
+	$('#confirmar').attr('disabled', true);
 	$.ajax({
 		data  : { salario : salario,
 				nro_celular : nro_celular,
@@ -114,10 +115,12 @@ function verificarNumero() {
 						location.href = '/Resumen';
 					}
 				}else {
+					$('#confirmar').attr('disabled', false);
 					msj('error', data.msj);
 				}
 			} catch (err){
 				msj('error',err.message);
+				$('#confirmar').attr('disabled', false);
 			}
 	});
 }
@@ -265,9 +268,14 @@ function cambiarCelular() {
 	$('#cuatro').val('');
 	$('#cinco').val('');
 	$('#seis').val('');
+	$('#confirmar').attr('disabled', false);
 }
 
 function enviarMail() {
+	$('#btnAceptar').attr('disabled', true);
+
+	$('#myModaltelef').modal();
+
 	var nro_celular = $('#nro_celular').val();
 	$.ajax({
 		data  : { nro_celular : nro_celular},
@@ -325,6 +333,7 @@ function limpiarCampos() {
 	$('#cuatro').val(null);
 	$('#cinco').val(null);
 	$('#seis').val(null);
+	$('#btnAceptar').attr('disabled', false);
 }
 
 function mostrarEstadoCivil() {
@@ -368,6 +377,13 @@ function verificarDatos(e) {
 	if(e.keyCode === 13){
 		e.preventDefault();
 		verificarCampos();
+        }
+}
+
+function enterConfirmar(e) {
+	if(e.keyCode === 13){
+		e.preventDefault();
+		verificarNumero();
         }
 }
 
@@ -426,8 +442,14 @@ function verificarCampos() {
 		msj('error', 'Ingrese un celular de 9 d&iacute;gitos');
 		return;
 	}else
+	if(concesionaria == null || concesionaria == '') {
+		msj('error', 'Seleccione una concesionaria');
+		return;
+	}else
 	if(Agencia == null || Agencia == '') {
 		msj('error', 'Ingrese una agencia');
 		return;
 	}
+
+	enviarMail();
 }

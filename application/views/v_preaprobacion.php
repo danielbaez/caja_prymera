@@ -123,7 +123,7 @@
               </div>
               <div class="col-xs-9">
                 <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
-                <div id="slider-range-plazo"></div>
+                <div id="slider-range-plazo" onkeyup="verificarDatos(event);"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
                   <span><?php echo $plazo_min ?>m</span>
@@ -654,6 +654,22 @@
       });
 
   })
+
+    function verificarDatos(e) {
+      if(e.keyCode === 13){
+        e.preventDefault();
+        alert
+        }
+    }
+
+
+    $(document).on('keyup', function(e) {
+      /*if($('#marca').val() != '' && $('#modelo').val() != ''){
+        $('.btn-text-siguiente').attr('disabled', true);
+        addStyle();
+      }*/
+      addStyle();
+    });
 
 
   })(jQuery);

@@ -115,12 +115,10 @@
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="email" placeholder="Email" style="" maxlength="50" onkeyup="verificarDatos(event);">
                                 </div>
-                            </form>
-                            <form class="text-center">
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="checkbox" style="zoom: 1.5;" id="acepto"> Acepto 
+                                            <input type="checkbox" class="checkbox" style="zoom: 1.5;" id="acepto" onkeyup="verificarDatos(event);"> Acepto 
                                             <button type="button" class="btn btn-link" style="position: relative;left: -11px;top: -2px;" data-toggle="modal" data-target="#myModal">Uso de datos personales</button>
                                         </label>
                                     </div>
@@ -128,14 +126,14 @@
                             </form>
                             <div class="col-xs-12" style="padding: 0;">
                                 <div class="col-xs-6 col-md-8 robot">
-                                    <div class="checkbox" style="border: 1px solid #ccc;background: #f0f0f0;margin: 0px;padding: 20px;">
+                                    <div class="checkbox" style="border: 1px solid #ccc;background: #f0f0f0;margin: 0px;padding: 20px;" onkeyup="verificarDatos(event);">
                                         <label>
                                             <input type="checkbox" style="zoom: 1.5;"> No soy un robot
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-md-4 consultar">
-                                    <button type="button" class="btn btn-lg" style="width:100%;font-weight:bold;color: #fff;background-color: #007ac0;height: 65px;" onclick="solicitarPrestamo()">Consultar</button>
+                                    <button type="button" class="btn btn-lg btn-consultar" style="width:100%;font-weight:bold;color: #fff;background-color: #007ac0;height: 65px;" onclick="solicitarPrestamo()">Consultar</button>
                                 </div>
                             </div>
                             <div class="col-xs-12">
