@@ -62,7 +62,7 @@
         <div class="col-xs-12 m-t-20 m-b-20">
           <div class="hidden-xs col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
-            <h1 class="titulo-vista">Vista Reportes</h1>            
+            <h1 class="titulo-vista">Reportes</h1>            
           </div>
           <div class="hidden-xs col-sm-3 text-right">
             <ul class="nav navbar-nav navbar-right dropdown-menu-user">
@@ -225,10 +225,10 @@
     </div>
 
     <div class="modal fade" id="modalInformacionSolicitud" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-lg" role="document" style="margin-top: 114px;">
         <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title modal-recuperar-password-titulo">Resumen Solicitud</h3>
               </div>
               <div class="modal-body text-center modal-reporte-informacion-solicitud">
@@ -437,7 +437,7 @@ $(document).ready(function() {
             producto = 'Mi Cash';
           }
           else if(detalle.id_producto == 2){
-            producto = 'Vehicular';
+            producto = 'Auto de Prymera';
           }
           $('.modal-title').html('Resumen Solicitud - '+producto);
 
@@ -446,13 +446,13 @@ $(document).ready(function() {
             var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
             dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
             dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
-            dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
-            dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
+            dCliente += '<p><span>E-mail:</span> '+detalle.email_titular+'</p>';
+            dCliente += '<p><span>Nro. Cel:</span> '+detalle.celular_titular+'</p>';
             dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
             $('.div-datos-cliente').html(dCliente);
 
             var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-            dSolicitud += '<p><span>Nro Solicitud:</span> '+detalle.id_solicitud+'</p>';
+            dSolicitud += '<p><span>Nro. Solicitud:</span> '+detalle.id_solicitud+'</p>';
             dSolicitud += '<p><span>Fecha Solicitud:</span> '+detalle.fecha_solicitud+'</p>';
             dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
             dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';

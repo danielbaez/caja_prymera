@@ -56,7 +56,7 @@
         <div class="col-xs-12 m-t-20 m-b-20">
           <div class="hidden-xs col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
-            <h1 class="titulo-vista">Vista Reportes</h1>            
+            <h1 class="titulo-vista">Reportes</h1>            
           </div>
           <div class="hidden-xs col-sm-3 text-right">
             <ul class="nav navbar-nav navbar-right dropdown-menu-user">
@@ -131,7 +131,7 @@
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center" style="display: none">DNI</th>
-                      <th class="text-center" style="display: none">Email</th>
+                      <th class="text-center" style="display: none">E-mail</th>
                       <th class="text-center" style="display: none">Nro Cel</th>
                       <th class="text-center" style="display: none">Fijo</th>
                       <th class="text-center" style="display: none">Importe Préstamo</th>
@@ -150,7 +150,7 @@
                       <th class="text-center" style="display: none">Departamento</th>
 
 
-                      <th class="text-center" style="display: none">Nro Solicitud</th>
+                      <th class="text-center" style="display: none">Nro- Solicitud</th>
                       <th class="text-center" style="display: none">Fecha Creación</th>
                       <th class="text-center" style="display: none">Hora Creación</th>
                       <th class="text-center" style="display: none">Fecha Cierre</th>
@@ -222,10 +222,10 @@
     </div>
 
     <div class="modal fade" id="modalInformacionSolicitud" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-lg" role="document" style="margin-top: 114px;">
         <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title modal-recuperar-password-titulo">Resumen Solicitud</h3>
               </div>
               <div class="modal-body text-center modal-reporte-informacion-solicitud">
@@ -369,7 +369,7 @@
                     producto = 'Mi Cash';
                   }
                   else if(detalle.id_producto == 2){
-                    producto = 'Vehicular';
+                    producto = 'Auto de Prymera';
                   }
                   $('.modal-title').html('Resumen Solicitud - '+producto);
 
@@ -385,26 +385,26 @@
                   if(detalle.id_producto == 2){
                     dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
                   }
-                  dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
+                  dCliente += '<p><span>E-mail:</span> '+detalle.email_titular+'</p>';
                   dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
                   dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
                   $('.div-datos-cliente').html(dCliente);
 
-                  var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Prestamo</h4>';
+                  var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Pr&eacute;stamo</h4>';
                   if(detalle.id_producto == 1){
                     dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
                     dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
-                    dPrestamo += '<p><span>Total de Prestamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
                   }
                   if(detalle.id_producto == 2){
                     dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
                     dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-                    dPrestamo += '<p><span>Importe Prestamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
                     dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
-                    dPrestamo += '<p><span>Total de Prestamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+                    dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
                   }
 
@@ -415,7 +415,7 @@
                   dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
                   dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
                   dEmpleo += '<p><span>Direccion:</span> '+detalle.dir_empleador+'</p>';
-                  dEmpleo += '<p><span>distrito:</span> '+detalle.distrito+'</p>';
+                  dEmpleo += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
                   dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
                   dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
 
@@ -428,8 +428,8 @@
                   $('.div-datos-empleo').html(dEmpleo);
 
                   var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
-                  dSolicitud += '<p><span>Nro Solicitud:</span> '+detalle.id_solicitud+'</p>';
-                  dSolicitud += '<p><span>Fecha Creación:</span> '+detalle.fecha_solicitud+'</p>';
+                  dSolicitud += '<p><span>Nro. Solicitud:</span> '+detalle.id_solicitud+'</p>';
+                  dSolicitud += '<p><span>Fecha Creaci&oacute;n:</span> '+detalle.fecha_solicitud+'</p>';
                   dSolicitud += '<p><span>Hora Creación:</span> '+detalle.hora_solicitud+'</p>';
                   dSolicitud += '<p><span>Fecha Cierre:</span> '+detalle.fecha_cierre+'</p>';
                   dSolicitud += '<p><span>Hora Cierre:</span> '+detalle.hora_cierre+'</p>';

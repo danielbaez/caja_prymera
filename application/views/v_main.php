@@ -159,18 +159,18 @@
 					<input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" onkeypress="return valida(event)" maxlength="8">
 				  </div>
 				  <div class="form-group div-usuario-as-email">
-					<input type="text" class="form-control" placeholder="Usuario (email)" disabled>
+					<input type="text" class="form-control" placeholder="Usuario (E-mail)" disabled>
 				  </div>
 				  <div class="form-group text-left">
-				  	<label class="form-label">Password</label>
-					<input type="text" class="form-control input-password-as-dni" placeholder="Contrase&ntilde;a (dni)" disabled>
+				  	<label class="form-label">Contrase&ntilde;a</label>
+					<input type="text" class="form-control input-password-as-dni" placeholder="Contrase&ntilde;a (DNI)" disabled>
 					<input type="password" name="password_fake" id="password_fake" value="" style="display:none;" />
 					<input type="password" class="form-control" style="display: none" id="password" name="password">
 				  </div>
 
 				  <div class="form-group text-left">
 				  	<label class="form-label">Celular</label>
-					<input type="text" class="form-control" id="celular" name="celular" placeholder="Nro Cel" onkeypress="return valida(event)" maxlength="9">
+					<input type="text" class="form-control" id="celular" name="celular" placeholder="N&uacute;mero Celular" onkeypress="return valida(event)" maxlength="9">
 				  </div>
 				  
 				  <div class="form-group div-rol text-left">
@@ -213,8 +213,8 @@
 					<input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso">
 				  </div>
 				  <div class="form-group text-left">
-				  	<label class="form-label">Email</label>
-					<input type="text" class="form-control" id="email" name="email" placeholder="Correo">
+				  	<label class="form-label">E-mail</label>
+					<input type="text" class="form-control" id="email" name="email" placeholder="Correo electr&oacute;nico">
 				  </div>
 				  <div class="form-group">
 					<input type="text" class="form-control hidden" id="nombre_img" name="nombre_img">
