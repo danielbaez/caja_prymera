@@ -267,9 +267,8 @@
 
           list: {
             onClickEvent: function(data) {
-
               var value = $("#supervisor").getSelectedItemData();
-
+              return;
               //var value = $("#supervisor").val();
               //console.log(value);
               $.ajax({
@@ -292,7 +291,12 @@
                   msj('error',err.message);
                 }
               });
-            } 
+            },
+            onKeyEnterEvent: function(data) {
+              console.log('entra');
+              alert('123');
+              return;
+            }
           },
 
           requestDelay: 400

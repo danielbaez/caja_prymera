@@ -46,7 +46,7 @@ function addStyle() {
 	location.href = '/C_confirmacion';
 }
 
-function verificarNumero() {
+/*function verificarNumero() {
 	var salario     	  = $('#salario').val();
 	var nro_celular 	  = $('#nro_celular').val();
 	var empleador   	  = $('#empleador').val();
@@ -160,7 +160,7 @@ function verificarNumero() {
 				msj('error',err.message);
 			}
 	});
-}
+}*/
 
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;

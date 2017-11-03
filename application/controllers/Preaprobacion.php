@@ -688,7 +688,8 @@ class preaprobacion extends CI_Controller {
             $session = array(
                         'pago_total'        => _post('pagotot'),
                         'cuota_mensual'     => _post('mensual'),
-                        'TCEA'              => _post('pors_tea'),
+                        'TCEA'              => _post('pors_tcea'),
+                        'tcea_sess'         => _post('pors_tcea'),
                         'cant_meses'        => _post('meses'),
                         'Importe'           => _post('cuotaIni'),
                         'sess_tea'          => _post('pors_tea')

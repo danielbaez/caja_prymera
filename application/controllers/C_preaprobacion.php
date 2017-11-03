@@ -675,6 +675,7 @@ class C_preaprobacion extends CI_Controller {
                         'pago_total'        => _post('pagotot'),
                         'cuota_mensual'     => _post('mensual'),
                         'TCEA'              => _post('pors_tcea'),
+                        'tcea_sess'         => _post('pors_tcea'),
                         'cant_meses'        => _post('meses'),
                         'Importe'           => $importe_auto.'.00',
                         'cuota_inicial'     => _post('cuotaIni').'00',
