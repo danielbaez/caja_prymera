@@ -153,12 +153,12 @@
                   </div>
                   <div class="col-xs-12 col-md-6">
                     <div class="form-group">
-                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="font-family: 'quicksandlight';" onkeypress="return valida(event)">
+                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="font-family: 'quicksandlight';" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
                         </div>
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <button type="button" class="btn btn-lg" style="font-weight: lighter;background-color: #005aa6;color: #fff;font-family: 'quicksandbold';width: 160px;margin-top: 5px;" onclick="guardarDatos()">Aceptar</button>
+                    <button type="button" class="btn btn-lg btn-aceptar" style="font-weight: lighter;background-color: #005aa6;color: #fff;font-family: 'quicksandbold';width: 160px;margin-top: 5px;" onclick="guardarDatos()">Aceptar</button>
                 </div>
               </div>
             </div>

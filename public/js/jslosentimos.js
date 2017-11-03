@@ -9,6 +9,7 @@ function guardarDatos() {
 		msj('error', 'Ingrese su n&uacute;mero de tel&eacute;fono fijo');
 		return;
 	}
+	$('.btn-aceptar').attr('disabled', true);
 	$.ajax({
 			data  : { nro_cel  : nro_cel,
 					  nro_fijo  : nro_fijo},
@@ -20,6 +21,7 @@ function guardarDatos() {
 				if(data.error == 0){
 					location.href = '/C_mensaje';
 				}else {
+					$('.btn-aceptar').attr('disabled', false);
 					return;
 				}
 				//msj('error', data.mensaje);

@@ -4,6 +4,7 @@ function solicitarPrestamo() {
 	var dni      = $('#dni').val();
 	var email    = $('#email').val();
 	var check    = $('#acepto').is(':checked');
+
 	if(nombre == '' || nombre == null || nombre == undefined) {
 		msj('error','Ingrese su Nombre');
 		return;
@@ -37,6 +38,8 @@ function solicitarPrestamo() {
 		msj('error','Por favor acepte el uso de datos personales');
 		  return;
 	}
+
+	$('.btn-consultar').attr('disabled', true);
 	$.ajax({
 		data  : { nombre  	: nombre,
 				  apellido  : apellido,
@@ -55,6 +58,7 @@ function solicitarPrestamo() {
 		}
 		if(data.status == 2){
 			msj("error", "Hubo un problema en el servidor, vuelva a intertarlo");
+			$('.btn-consultar').attr('disabled', false);
 		}
 		// try{
 		// 	data = JSON.parse(data);
