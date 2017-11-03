@@ -655,12 +655,6 @@
 
   })
 
-    function verificarDatos(e) {
-      if(e.keyCode === 13){
-        e.preventDefault();
-        }
-    }
-
 
     $(document).on('keyup', function(e) {
       /*if($('#marca').val() != '' && $('#modelo').val() != ''){

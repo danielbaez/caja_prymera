@@ -19,6 +19,8 @@
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
+    
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
@@ -253,20 +255,20 @@
                   <div class="form-group" style="padding-bottom: 0">
                       <div class="checkbox" style="margin-left: 24px">
                           <label>
-                              <input type="checkbox" class="checkbox" id="acepto" style="zoom:1.5">  
+                              <input onkeyup="enterIrAUbicacion(event);" autofocus type="checkbox" class="checkbox" id="acepto" style="zoom:1.5">  
                               Acepto <a class="btn btn-link" onclick="abrirModal()" style="padding-top: 3px;padding-left: 0px;">T&eacute;rminos y Condiciones</a>
                           </label>
                       </div>
                   </div>
                   <div class="col-xs-12 col-sm-6 padding">
-                      <select class="form-control" id="Agencia" name="Agencia" style="font-family: 'quicksandlight'; margin-top:5px">
+                      <select onkeyup="enterIrAUbicacion(event);" class="form-control" id="Agencia" name="Agencia" style="font-family: 'quicksandlight'; margin-top:5px">
                               <option value="">Cambiar Agencia</option>
                               <?php echo $comboAgencias?>
                       </select>
                 </div>
                 <div class="col-xs-12 visible-xs p-t-15"></div>
                 <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
-                  <button type="button" class="btn btn-lg m-b-10" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
+                  <button type="button" class="btn btn-lg m-b-10 btn-resumen" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
                 </div>
               </form>
 						  <div class="col-xs-12">
@@ -332,9 +334,10 @@
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
 
+    <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 	<script type="text/javascript" async src="<?php echo RUTA_JS?>jsresumen_m.js?v=<?php echo time();?>"></script>
 	
-	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+	
 	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 
   </body>

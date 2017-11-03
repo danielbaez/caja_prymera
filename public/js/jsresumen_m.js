@@ -4,6 +4,7 @@ function irAUbicacion() {
 		msj('error', 'Autorice los t&eacute;rminos y condiciones');
 		return;
 	}
+	$('.btn-resumen').attr('disabled', true);
 	var agencia = $('#Agencia').val();
 		$.ajax({
 			data  : { agencia : agencia},
@@ -34,4 +35,11 @@ function goToHome() {
 			msj('error',err.message);
 		}
 	});
+}
+
+function enterIrAUbicacion(e) {
+	if(e.keyCode === 13){
+		e.preventDefault();
+		irAUbicacion()
+    }
 }

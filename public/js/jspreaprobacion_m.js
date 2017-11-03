@@ -10,6 +10,7 @@ function addStyle() {
     var meses = document.getElementById('slider-range-value-meses').innerText;
     var cuotaIni = document.getElementById('slider-range-value-dias').innerText;
     var pors_tea = document.getElementById('tea').innerText;cantMensPago
+    $('.btn-text-siguiente').attr('disabled', true);
 	$.ajax({
 		data  : { pagotot : pagotot,
 			    mensual : mensual,
@@ -29,6 +30,7 @@ function addStyle() {
 						$('.otro').removeClass( "hidden" );
 						$('#confirmar').css('display', 'none');
 						$('#cambiar').css('display', 'block');
+						$('.btn-text-siguiente').attr('disabled', false);
 					}else if(data.cambio == 0){
 						location.href = '/C_confirmacion';
 					}
@@ -36,6 +38,7 @@ function addStyle() {
 				}
 			} catch (err){
 				msj('error',err.message);
+				$('.btn-text-siguiente').attr('disabled', false);
 			}
 	});
 	/*$('#remove1').removeClass("active");
