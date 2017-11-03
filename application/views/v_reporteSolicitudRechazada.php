@@ -424,7 +424,7 @@ $(document).ready(function() {
   $('#tabla-solicitudes tbody').on('click', 'tr', function () {
   //$(".tr-ver-info-solicitud").click(function() {
       $.ajax({
-          data:  {id: $(this).attr('data-idSolicitud')},
+          data:  {id: $(this).attr('data-idSolicitud'), action:'rechazados'},
           url:   '/C_reporte/modalInformacionSolicitud',
           type:  'post',
           dataType: 'json',

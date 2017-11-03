@@ -164,7 +164,8 @@ class C_reporte extends CI_Controller {
     public function modalInformacionSolicitud()
     {
         $id = _post('id');
-        $detalle = $this->M_solicitud->obtenerDetalleSolicitud($id);
+        $action = _post('action');
+        $detalle = $this->M_solicitud->obtenerDetalleSolicitud($id, $action);
         echo json_encode($detalle);
     }
 

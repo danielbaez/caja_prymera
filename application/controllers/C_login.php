@@ -26,8 +26,8 @@ class C_login extends CI_Controller {
         $data['msj']   = null;
         try {
             $json_service  = '{"tipo": "A","Nombre": "juan","cantidad_max": 3000}';
-            $nombre        = __getTextValue('nombre');
-            $apellido      = __getTextValue('apellido');
+            $nombre        = _post('nombre');
+            $apellido      = _post('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
             $newdata       = array();

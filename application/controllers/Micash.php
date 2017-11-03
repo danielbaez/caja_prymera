@@ -38,8 +38,8 @@ class micash extends CI_Controller {
                                   'producto'=>'01'
                     );
 
-          $nombre        = __getTextValue('nombre');
-            $apellido      = __getTextValue('apellido');
+          $nombre        = _post('nombre');
+            $apellido      = _post('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
             $agencia_user  = $this->M_preaprobacion->getAgencia(_getSesion('id_usuario'));

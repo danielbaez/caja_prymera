@@ -88,8 +88,8 @@ class Login extends CI_Controller {
                                   'producto'=>'02'
                     );
 
-          $nombre        = __getTextValue('nombre');
-            $apellido      = __getTextValue('apellido');
+          $nombre        = _post('nombre');
+            $apellido      = _post('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
             $tipo_producto = PRODUCTO_VEHICULAR;

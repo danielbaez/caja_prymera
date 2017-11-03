@@ -31,8 +31,8 @@ class C_cambiarPassword extends CI_Controller {
     	$data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-        	$email = __getTextValue('email');
-        	$password = __getTextValue('password');
+        	$email = _post('email');
+        	$password = _post('password');
         	$idPersona =  str_replace("/?a=","",base64_decode(_post('encrypt')));
         	$idPersona = _getSesion('id_pers_recuperar');
             $arrayUpdt = array('email' => $email,

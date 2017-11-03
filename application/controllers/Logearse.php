@@ -27,8 +27,8 @@ class logearse extends CI_Controller {
     function logear() {
         $data['error'] = EXIT_ERROR;
         try{
-            $user        = __getTextValue('user');
-            $password    = json_decode(__getTextValue('pass'));
+            $user        = _post('user');
+            $password    = json_decode(_post('pass'));
             $remember    = json_decode(_post('check'));
             $check       = null;
             $nombre      = null;
@@ -80,8 +80,8 @@ class logearse extends CI_Controller {
     function goToVehicular() {
         $data['error'] = EXIT_ERROR;
         try{
-            $user        = __getTextValue('user');
-            $password    = json_decode(__getTextValue('pass'));
+            $user        = _post('user');
+            $password    = json_decode(_post('pass'));
             $remember    = json_decode(_post('check'));
             $session = array('user'            => $user,
                              'password'          => $password,
@@ -99,8 +99,8 @@ class logearse extends CI_Controller {
     function goToMicash() {
         $data['error'] = EXIT_ERROR;
         try{
-            $user     = __getTextValue('user');
-            $password = json_decode(__getTextValue('pass'));
+            $user     = _post('user');
+            $password = json_decode(_post('pass'));
             $remember = json_decode(_post('check'));
             $session  = array('user'   => $user,
                              'password'=> $password,
@@ -274,7 +274,7 @@ class logearse extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj'] = "";
         try{
-            $email = __getTextValue('email');
+            $email = _post('email');
             if($email == null) {
                 throw new Exception("Ingrese su correo electr&oacute;nico", 1);
             }

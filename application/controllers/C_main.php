@@ -40,8 +40,8 @@ class C_main extends CI_Controller {
         $action = _post('action');
 
         $this->load->model('M_usuario');
-        $nombres   = __getTextValue('nombres');
-        $apellidos = __getTextValue('apellidos');
+        $nombres   = _post('nombres');
+        $apellidos = _post('apellidos');
         $sexo      = _post('sexo');
         $fecha_nacimiento = _post('fecha_nacimiento');
         $dni           = _post('dni');
@@ -334,8 +334,8 @@ class C_main extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $nombres   = __getTextValue('nombres');
-            $apellidos = __getTextValue('apellidos');
+            $nombres   = _post('nombres');
+            $apellidos = _post('apellidos');
             $sexo      = _post('sexo');
             $fecha_nacimiento = _post('fecha_nacimiento');
             $dni           = _post('dni');
