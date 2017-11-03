@@ -150,7 +150,6 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
 '.$texto.'');
        $this->email->send();
        
-      //_log(print_r($this->email->print_debugger(), true));
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        //con esto podemos ver el resultado
@@ -159,14 +158,11 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
       }catch (Exception $e){
             $arrayUpdt = array('envio_email' => 2);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-            //$data['msj'] = $e->getMessage();
-            //return json_encode(array_map('utf8_encode', array(1)));
       }
       return json_encode(array_map('utf8_encode', $data));
      }
 
      function enviarMail() {
-      //_log('456');
         $data['error'] = EXIT_SUCCESS;
         $data['msj']   = null;
         try {
@@ -180,7 +176,6 @@ Mayor información y costos (Tasas de interés, comisiones y gastos) están disp
         $to = '+51 '._getSesion('nro_celular');
         $message = 'Su credito: '.$tipo_cred.' por '.$mensaje.' a '._getSesion('cant_meses').'. Su cuota es '._getSesion('cuota_mensual').' Condiciones al 243-4800';
         $response = $this->twilio->sms($from, $to, $message);
-        //_log(print_r($response, true));
         if($response->IsError) {
           $arrayUpdt = array('envio_sms' => 2);
           $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');

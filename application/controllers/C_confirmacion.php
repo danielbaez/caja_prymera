@@ -63,102 +63,6 @@ class C_confirmacion extends CI_Controller {
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Est&aacute;s a un paso de tu pr&eacute;stamo.' : $titulo = '';
         
         $data['tipo_product'] = $titulo; 
-       /*$importeMaximo = _getSesion('importeMaximo');
-        $importeMinimo = _getSesion('importeMinimo');
-        $plazos = _getSesion('plazos');
-
-        $plazos_explode = explode(',', $plazos);
-
-
-        $sueldo = $this->sueldo;
-        $minAuto = null;
-        $maxAuto = null;
-        $plazo   = null;
-        $minPrestamo = null;
-        $maxPrestamo = null;
-        $valorAuto   = null;
-        $minInicial  = null;
-        $maxInicial  = null;
-        $cantPago    = 100000;
-        $minIniPorc  = $this->minIniPorc;
-        $maxIniPorc  = $this->maxIniPorc;
-        $arr = $this->array_datos;
-        foreach ($arr as $row) {
-            $plazo = $row['plazo'];
-            $minPrestamo = $row['mont_min'];
-            $maxPrestamo = $row['mont_max'];
-            $minAuto = $minPrestamo/(1-$minIniPorc);
-            $maxAuto = $maxPrestamo/(1-$maxIniPorc);
-        }
-        $valorAuto = ($minAuto+$maxAuto)/2;
-        $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
-        $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-        'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.$nombre.'!!! Tienes un pr&eacute;stamo pre aprobado' : $titulo = '';
-        
-        $data['tipo_product'] = $titulo;       
-        
-        $data['plazo_max']      = $plazos_explode[count($plazos_explode)-1];
-        $data['plazo_min']      = $plazos_explode[0];
-
-        $count = count($plazos_explode);
-        if($count == 2){
-            $data['plazo_step'] = $data['plazo_max']  - $data['plazo_min'];
-        }
-        elseif($count >= 3) {
-            $data['plazo_step'] = $plazos_explode[1] - $plazos_explode[0];
-        }
-
-        $data['importeMaximo']      = $importeMaximo;
-        $data['importeMinimo']      = $importeMinimo;*/
-
-
-        /*try 
-          {
-            //resultado 1 -- ok
-          //resultado 3: token
-            //resultado 2: error del servidor
-          //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
-
-           $params = array('token'=> 'E928EUXP',
-                                  'documento'=>_getSesion('dni'),
-                                  'Importe'=> $importeMaximo,
-                                  'plazo' => $data['plazo_max']
-                    );
-
-          $result = $client->GetDatosCreditoCash($params);
-          $res = $result->return->resultado;
-          if($res == 1){
-            $documento = $result->return->documento;
-            $data['cuotaMensual'] = $result->return->cuotaMensual;
-            $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
-            $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
-            $this->varCuotaMensual = $data['cuotaMensual'];
-
-            $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
-            $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
-            $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
-            $this->varPagoTotal = $data['pagoTotal'];
-
-            $datos_tea = $result->return->tea;
-            $data['tea'] = round($datos_tea*10000)/100;
-            $datos_tcea = $result->return->tcea;
-            $data['tcea'] = round($datos_tcea*10000)/100;  
-          }
-          if($res == 0){
-            //$response = array('status' => 0, 'url' => RUTA_CAJA.'c_losentimos');
-          }
-          if($res == 2){
-            //$response = array('status' => 2);
-          }
-
-        }
-        catch(Exception $e)
-        {
-           //$response = array('status' => 2);
-        }*/
-
-
         $this->load->view('v_confirmacion', $data);
     }
 
@@ -418,7 +322,6 @@ class C_confirmacion extends CI_Controller {
                          'nro_celular' => $to);
         $this->session->set_userdata($session);
         $response = $this->twilio->sms($from, $to, $message);
-        //_log(print_r($response, true));
         if($response->IsError) {
           $data['error'] = EXIT_ERROR;
         }

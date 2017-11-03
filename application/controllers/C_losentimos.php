@@ -28,14 +28,14 @@ class C_losentimos extends CI_Controller {
         try {
             $nro_cel = _post('nro_cel');
             $nro_fijo = _post('nro_fijo');
-            if($nro_cel == '') {
+            if($nro_cel == '' || $nro_cel == null) {
                 throw new Exception("Ingrese un n&uacute;mero de celular", 1);
                 
             }
-            if($nro_fijo == '') {
+            /*if($nro_fijo == '') {
                 throw new Exception("Ingrese un n&uacute;mero de tel&eacute;fono fijo", 1);
                 
-            }
+            }*/
             $idPersona  = _getSesion('idPersona');
             
             $arrayUpdt = array('celular'        => $nro_cel,

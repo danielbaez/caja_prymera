@@ -75,38 +75,6 @@
   </div>
 </nav>
 
-    <!-- <nav class="navbar navbar-default" style="margin-top: 0px;">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 20px;margin-top: 20px;">Cr&eacute;dito Vehicular</h6>
-        <h3 style="color: #fff;font-family: quicksandlight;margin-left: 20px;margin-top: -10px;font-size: 30px;">Auto de Prymera</h3>
-        <?php } else { ?>
-        <h6 style="color: #fff;font-family: quicksandlight;margin-left: 58px;margin-top: 20px;">Cr&eacute;dito consumo</h6>
-        <h3 style="color: #fff;font-family: quicksandlight;margin-left: -65px;font-size: 30px;margin-top: -10px;">Mi Cash</h3>
-        <?php } ?>
-      </div>
-
-      
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-
-          <li class="dropdown">
-          <img class="logo" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png" onclick="goToHome();">
-            <ul class="dropdown-menu">
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-
     <div class="container">
 
       <div class="row">                
@@ -148,12 +116,12 @@
                 <div class="col-md-12">
                   <div class="col-xs-12 col-md-6">
                     <div class="form-group">
-                          <input class="form-control" type="text" id="nro_cel" placeholder="Nro. Cel" maxlength="9" style="font-family: 'quicksandlight';" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
+                          <input class="form-control" type="text" id="nro_cel" placeholder="*N&uacute;mero Celular" maxlength="9" style="font-family: 'quicksandlight';" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
                         </div>
                   </div>
                   <div class="col-xs-12 col-md-6">
                     <div class="form-group">
-                          <input type="text" class="form-control" id="nro_fijo" placeholder="Nro. Fijo" maxlength="7" style="font-family: 'quicksandlight';" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
+                          <input type="text" class="form-control" id="nro_fijo" placeholder="N&uacute;mero Fijo" maxlength="7" style="font-family: 'quicksandlight';" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
                         </div>
                   </div>
                 </div>
@@ -175,5 +143,7 @@
 	<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" async src="<?php echo RUTA_JS?>jslosentimos.js?v=<?php echo time();?>"></script>
 	<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript">
+</script>
   </body>
 </html>

@@ -5,10 +5,10 @@ function guardarDatos() {
 		msj('error', 'Ingrese su n&uacute;mero de celular');
 		return;
 	}
-	if(nro_fijo == null || nro_fijo == '') {
+	/*if(nro_fijo == null || nro_fijo == '') {
 		msj('error', 'Ingrese su n&uacute;mero de tel&eacute;fono fijo');
 		return;
-	}
+	}*/
 	$('.btn-aceptar').attr('disabled', true);
 	$.ajax({
 			data  : { nro_cel  : nro_cel,
@@ -81,8 +81,8 @@ function soloLetras(e){
  }
 
  function verificarDatos(e) {
-	if(e.keyCode === 13){
+	if(e.keyCode === 13) {
 		e.preventDefault();
 		guardarDatos();
-        }
+    }
 }

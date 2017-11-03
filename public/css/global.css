@@ -78,6 +78,16 @@ a {
     margin-left: 80px;
     margin-top: -20px;
 }
+.modal-body.text-center.modal-reporte-informacion-solicitud {
+    height: 370px;
+    overflow-y: auto;
+    border: 1px solid #007ac0;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    width: 85%;
+    margin-left: 70px;
+}
 .modal-footer {
     /*margin-top: -40px;*/
 }

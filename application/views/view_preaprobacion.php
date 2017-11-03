@@ -116,7 +116,7 @@
               <p id="slider-range-value-meses" class="slider-value"></p>
             </div>
             <div class="col-xs-9">
-              <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="M&aacute;ximo de meses para pagar" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+              <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
               <div id="slider-range-meses"></div>
               <br>
               <div class="col-xs-6 text-left padding-left">

@@ -122,7 +122,7 @@
                 <p id="slider-range-value-plazo" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-plazo"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
@@ -139,7 +139,7 @@
                 <p id="slider-range-value-monto" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Valor del veh&iacute;culo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cual es el precio del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <p class="text-left">Valor del veh&iacute;culo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-monto"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
@@ -196,7 +196,7 @@
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">Seguro del Auto</p>
-                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="margin-top: -23px;margin-left: 40px;color: black;"></i></span>
+                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 </span><i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 5px;right: 75px;color: black;"></i>
                           <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
                 </div>
               </div>

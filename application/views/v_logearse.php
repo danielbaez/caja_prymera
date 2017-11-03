@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-20 m-b-20">
-              <h1 class="titulo-vista">Bienvenido Usuario</h1>
+              <h1 class="titulo-vista">Bienvenido a Prymera</h1>
             <div class="panel panel-primary login-div">
 
                 <div class="panel-body">

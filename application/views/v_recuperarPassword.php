@@ -52,7 +52,7 @@
             <div class="row text-center">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-20 m-b-20">
               <h1 class="titulo-vista">Restaurar Contrase&ntilde;a</h1>
-            <div class="panel panel-primary panel-login-recuperar-password-solicitud"><br>
+            <div class="panel panel-primary" style="border-color: #337ab7;border-bottom-right-radius: 40px;border-bottom-left-radius: 0;border-top-left-radius: 40px;border-top-right-radius: 0;"><br>
                 <p><span style="font-family: arial !important;font-weight: lighter;color: #acacac;">&iquest;</span>Olvidaste tu contrase&ntilde;a?</p>
                 <p>Ingresa tu usuario o direcci&oacute;n de correo para ayudarte a restaurar tu contrase&ntilde;a</p>
                 <div class="panel-body">
@@ -60,7 +60,7 @@
                     <div class="form-group">
                       <label class="control-label col-sm-3" for="email">Usuario:</label>
                       <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email" placeholder="Ingresar email" maxlength="50" onkeyup="verificarDatos(event);" style="width: 80%;">
+                        <input type="email" class="form-control" id="email" placeholder="Ingresa tu Email" maxlength="50" onkeyup="verificarDatos(event);" style="width: 80%;">
                       </div>
                     </div>
                     <div class="form-group"> 

@@ -215,7 +215,7 @@ class logearse extends CI_Controller {
                     else
                     {
                         
-                        $this->session->set_flashdata('error', 'Datos invalidos');
+                        $this->session->set_flashdata('error', 'Datos inv&aacute;lidos');
                         redirect('/');
 
                     }
@@ -231,14 +231,14 @@ class logearse extends CI_Controller {
             else
             {
                     
-                $this->session->set_flashdata('error', 'Datos invalidos');
+                $this->session->set_flashdata('error', 'Datos inv&aacute;lidos');
                 redirect('/');
 
             }
         }
         else
         {
-            $this->session->set_flashdata('error', 'Ingrese sus datos');
+            $this->session->set_flashdata('error', 'Ingresa tus datos');
                 redirect('/');
         }
        
@@ -280,7 +280,7 @@ class logearse extends CI_Controller {
             }
             $id_pers = $this->M_usuario->getIdRecuperarPassword($email);
             if($id_pers == null || $id_pers == '') {
-                throw new Exception("No se encontr&oacute; su usuario o correo", 1);
+                throw new Exception("No se encontr&oacute; su usuario o correo electr&oacute;nico", 1);
                 
             }
             $session = array('id_pers_recuperar' => $id_pers[0]->id,
