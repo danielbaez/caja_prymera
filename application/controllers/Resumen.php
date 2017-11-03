@@ -24,6 +24,7 @@ class Resumen extends CI_Controller {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
             //redirect("/C_main", 'location');
         }
+        //_log(print_r($this->session->all_userdata(), true));
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total'] = _getSesion('pago_total');
@@ -167,13 +168,18 @@ class Resumen extends CI_Controller {
         try {
           $tipo_cred = null;
           $mensaje = null;
+          $texto_envio = null;
+          $fecha = explode('-', date("Y-m-d"));
+          $fecha_new = $fecha[1].'-'.($fecha[2]+10);
+          //_log(print_r($fecha_new, true));
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
+        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
           //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';
         $to = '+51 '._getSesion('nro_celular');
-        $message = 'Su credito: '.$tipo_cred.' por '.$mensaje.' a '._getSesion('cant_meses').'. Su cuota es '._getSesion('cuota_mensual').' Condiciones al 243-4800';
+        $message = $texto_envio;
         $response = $this->twilio->sms($from, $to, $message);
         if($response->IsError) {
           $arrayUpdt = array('envio_sms' => 2);

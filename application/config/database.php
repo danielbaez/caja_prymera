@@ -83,6 +83,7 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => '',
 	'dbdriver' => 'mysqli',
+	'database' => 'caja_prymera',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => TRUE,

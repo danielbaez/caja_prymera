@@ -37,9 +37,9 @@
 
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <body style="padding: 0px;background-image:url(../public/img/fondos/Car-Sunset.jpg);">
+      <body style="padding: 0px;/*background-image:url(../public/img/fondos/Car-Sunset.jpg);*/">
     <?php } else { ?>
-        <body style="padding: 0px;background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);">
+        <body style="padding: 0px;">
     <?php } ?>
 
       <div class="container-header">
@@ -91,7 +91,12 @@
   </div>
 </nav>
 
-<div class="container container-simulador">
+<?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+<div class="container-fluid" style="background-image:url(../public/img/fondos/Car-Sunset.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: scroll; background-position: center;padding-top: 70px;">
+<?php } else { ?>
+  <div class="container-fluid" style="background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: scroll; background-position: center;padding-top: 70px;">
+<?php } ?>
+    <div class="container container-simulador" style="">
 
     <div class="row m-t-40 row-container-resumen">
       <div class="col-xs-12 col-sm-9 text-center">
@@ -119,7 +124,7 @@
       </div>
     </div>
     <div class="row">
-    		<div class="col-xs-12 col-md-6 col-md-push-6 info">
+        <div class="col-xs-12 col-md-6 col-md-push-6 info">
           <h3 class="title-general">Felicidades <?php echo $nombre ?>!</h3>
           <p class="info2">tu pr&eacute;stamo ha sido</p>
           <p class="info2">pre aprobado, ya est&aacute;s cerca</p>
@@ -127,14 +132,14 @@
         </div>
 
         <div class="col-xs-12 col-md-6 col-md-pull-6 col-md-offset-0">
-		    	<div class="panel panel-primary" style="">
-		    		<div class="panel-heading" style="background-color: #fff;font-weight: bold;padding: 23px;">
-		    			<div class="col-xs-12">
-		    				<h1 class="panel-title subtitle" style="">Resumen Solicitud</h1>
-		    			</div>
-		    		</div>
-			    	<div class="panel-body">
-			    		<form class="text-center" action="losentimos.html" method="POST">
+          <div class="panel panel-primary" style="">
+            <div class="panel-heading" style="background-color: #fff;font-weight: bold;padding: 23px;">
+              <div class="col-xs-12">
+                <h1 class="panel-title subtitle" style="">Resumen Solicitud</h1>
+              </div>
+            </div>
+            <div class="panel-body">
+              <form class="text-center" action="losentimos.html" method="POST">
                 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                 <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
@@ -221,7 +226,7 @@
                       </div>
                     </div>
                 </div>
-					      <div class="col-xs-12 border-resumen-bottom">
+                <div class="col-xs-12 border-resumen-bottom">
                     <div class="form-group" style="">                
                       <div class="col-xs-6">
                         <span style="">TEA: </span>
@@ -271,21 +276,22 @@
                   <button type="button" class="btn btn-lg m-b-10 btn-resumen" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
                 </div>
               </form>
-						  <div class="col-xs-12">
+              <div class="col-xs-12">
                 <!-- <div class="col-xs-8 text-right">
-                	<button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';margin-left: 230px;margin-top: -65px;" onclick="irAUbicacion()">Aceptar</button>
+                  <button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';margin-left: 230px;margin-top: -65px;" onclick="irAUbicacion()">Aceptar</button>
                 </div> -->
-						  </div>
-						  	<div class="col-xs-12 color-info">
-      		    		<p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>Cr&eacute;dito Vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada a tu correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
-      		   		</div>
-						</form>
-			    	</div>
-		    	</div>
-		    </div>
-		    
-	    </div>
+              </div>
+                <div class="col-xs-12 color-info">
+                  <p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>Cr&eacute;dito Vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada a tu correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
+</div>
     
 	<!-- Modal -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
