@@ -23,8 +23,9 @@ class C_cambiarPassword extends CI_Controller {
     	$id =  str_replace("/?a=","",base64_decode($_GET['a']));
     	$dato['encrypt'] = $_GET['a'];
         $dato['nombreDato']=':D';
-        $estado_recuperar = $this->M_usuario->getDatosById('usuario', 'id', _getSesion('id_pers_recuperar'));
-        if($estado_recuperar[0]->estado_recuperar != 1 && _getSesion("fecha_recupear") != date("Y-m-d") || $id == null) {
+        $idPersona =  str_replace("/?a=","",base64_decode($_GET['a']));
+        $estado_recuperar = $this->M_usuario->getDatosById('usuario', 'id', $idPersona);
+        if($estado_recuperar[0]->estado_recuperar != 1 && $estado_recuperar[0]->fecha_recuperar != date("Y-m-d") || $id == null) {
 	        redirect("/", 'location');
 	    }
         $this->load->view('v_cambiarPassword', $dato);
