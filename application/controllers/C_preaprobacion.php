@@ -666,7 +666,7 @@ class C_preaprobacion extends CI_Controller {
             $varTcea  = preg_replace('/[^0-9.]/', "", _post('pors_tcea'));
             $varTea   = preg_replace('/[^0-9.]/', "", _post('pors_tea'));
             $Agencia  = _post('Agencia');
-            $seguro   = _post('seguro');
+            $seguro   = preg_replace('/[^0-9.]/', "", _post('seguro'));
             $monto = preg_replace('/[^0-9.]/', "", _post('monto'));
             $monto_vehic = _post('monto');
             $importe_auto = $monto-$importe;
@@ -680,7 +680,7 @@ class C_preaprobacion extends CI_Controller {
                         'Importe'           => $importe_auto.'.00',
                         'cuota_inicial'     => _post('cuotaIni').'00',
                         'sess_tea'          => _post('pors_tea'),
-                        'seguro'            => $seguro,
+                        'seguro'            => _post('seguro'),
                         'valor_auto'        => $monto_vehic.'.00',
                         'marca'             => $marca,
                         'modelo'            => $modelo
@@ -695,7 +695,9 @@ class C_preaprobacion extends CI_Controller {
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'            => $marca,
                                 'modelo'          => $modelo,
-                                'costo_seguro'  => $seguro
+                                'costo_seguro'  => $seguro,
+                                'cuota_inicial' => $importe,
+                                'valor_auto'    => $monto_vehic
                             );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
