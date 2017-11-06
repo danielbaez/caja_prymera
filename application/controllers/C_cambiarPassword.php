@@ -13,6 +13,9 @@ class C_cambiarPassword extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
+
+        $this->load->helper("access_helper");
+        is_logged();
     }
     
     public function index()

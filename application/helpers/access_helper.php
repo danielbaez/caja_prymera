@@ -59,10 +59,11 @@ if (!function_exists('is_logged'))
 
 function permissions($controller)
 {
-	$controller = strtolower($controller);
+	//$controller = strtolower($controller);
 
 	$p = ['' => ['public' => ['index']],
 		  'logearse' => ['public' => ['index', 'login', 'olvidoPassword', 'recuperarPass']],
+		  'C_cambiarPassword' => ['public' => ['index', 'cambiarPass']]
 		  //'C_main' => ['public' => []]
 	];
 	if(array_key_exists($controller, $p))
