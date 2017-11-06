@@ -14,6 +14,10 @@ class C_preaprobacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+
+        $this->load->helper("access_helper");
+        is_logged();
+        
         $this->sueldo = 18750;
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
