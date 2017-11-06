@@ -39,16 +39,22 @@ if (!function_exists('is_logged'))
 	    	$rol = _getSesion('rol');
 	    	$redirect = roles($rol);
 
-
 	    	$controller = $CI->uri->segment(1);
 	    	//echo $controller;
-			$method = $CI->uri->segment(2);
-			$uri = $controller.'/'.$method;
+			/*$method = $CI->uri->segment(2);
+			$uri = $controller.'/'.$method;*/
 
-			if(!in_array($controller, rolPermissions($rol)))
+			$method = $CI->router->fetch_method();
+			//echo $method; exit();
+
+			//if(!in_array($controller, rolPermissions($rol)))
+			$perm_method = rolPermissions($rol);
+	
+			if(is_array($perm_method) && !in_array($method, $perm_method[$controller]))
 			{
 				if($controller != $redirect)//solo si el controller es diferente 
 				{
+					//exit();
 					redirect('/'.$redirect);
 				}
 			}			
@@ -94,9 +100,34 @@ function roles($rol)
 
 function rolPermissions($rol)
 {
-	$permission = ['administrador' => ['C_main', 'C_usuario', 'C_horario', 'C_IP', 'C_reporte'],
-				   'asesor' => ['C_reporteAsesor'],
-	];
+	/*$permission = ['administrador' => ['C_main', 'C_usuario', 'C_horario', 'C_IP', 'C_reporte'],
+				   'asesor' => ['C_reporteAsesor', 'C_usuario'],
+	];*/
+
+	$permission = [
+					'administrador' => [
+						'C_main' => ['index'],
+					   	'C_usuario' => ['detalleUsuario', 'asignarSupervisor', 'logout'],
+					   	'C_horario' => [],
+					   	'C_IP' => [],
+					   	'C_reporte' => []
+					],
+				    'asesor' => [
+				   		'C_reporteAsesor' => ['agenteCliente', 'agenteHistorialSolicitud'],
+				   		'C_usuario' => ['nuevaSolicitud', 'logout'],
+				   		'C_login' => ['index'],
+				   		'Micash' => ['index', 'solicitar'],
+				   		'C_losentimos' => ['index'],
+				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
+				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero'],
+				   		'Resumen' => ['index', 'setearAgencia'],
+				   		'Ubicacion' => ['index']
+				   	],
+				   	'asesor_externo' => [
+				   		'C_usuario' => ['nuevaSolicitud', 'logout']
+				   	]
+				  ];
+
 	return $permission[$rol];
 }
 

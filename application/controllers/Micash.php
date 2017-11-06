@@ -11,6 +11,10 @@ class micash extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->model('M_preaprobacion');
+
+        $this->load->helper("url");
+        $this->load->helper("access_helper");
+        is_logged();
     }
     
     public function index()
