@@ -57,6 +57,7 @@
       <ul class="nav navbar-nav">
         <?php if(_getSesion('rol') == 'administrador'){ ?>
             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+            <li><a href="/C_horario">Horarios</a></li>
             <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
         <?php }
         	 elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
@@ -82,6 +83,7 @@
                         <ul class="dropdown-menu">                    
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+                            <li><a href="/C_horario">Horarios</a></li>
 	                    	<li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>

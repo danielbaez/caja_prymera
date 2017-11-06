@@ -54,6 +54,7 @@
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php if(_getSesion('rol') == 'administrador'){ ?>
+        	<li><a href="/C_main">Editar Perfil</a></li>
             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
             <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
         <?php }
@@ -79,6 +80,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">                    
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
+                          	<li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
 	                    	<li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
                           <?php }
