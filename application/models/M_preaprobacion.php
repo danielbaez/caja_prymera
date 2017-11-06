@@ -19,7 +19,7 @@ class M_preaprobacion extends  CI_Model{
         $this->db->where('id'  , $idCliente);
         $this->db->update($tabla, $arrayData);
         //_log(print_r('cambio: '.$this->db->affected_rows(), true));
-        if ($this->db->affected_rows() != 1) {
+        if ($this->db->trans_status() == false) {
             throw new Exception('No se pudo actualizar los datos');
         }
         return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);

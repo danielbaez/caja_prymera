@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_horario extends CI_Controller {
+class C_IP extends CI_Controller {
     
     function __construct() {
         parent::__construct();
@@ -10,7 +10,7 @@ class C_horario extends CI_Controller {
         $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
         $this->output->set_header('Pragma: no-cache');
         $this->load->helper('cookie');
-        $this->load->model('M_horario');
+        $this->load->model('M_agencia');
         $this->load->helper("url");
 
         $this->load->helper("access_helper");
@@ -22,18 +22,17 @@ class C_horario extends CI_Controller {
     {             
         $data['nombre'] = _getSesion("nombre");
 
-        $data['horarios'] = $this->M_horario->getHorario();
+        $data['agencias'] = $this->M_agencia->getAllAgencias();
 
-        $this->load->view('v_horarios', $data);
+        $this->load->view('v_ip', $data);
     }
 
     public function save()
     {             
-        $desde = _post('desde');
-        $hasta = _post('hasta');
-        $this->M_horario->setHorario($desde, $hasta);
-        $this->session->set_flashdata('msg', 'Se actualizo el horario correctamente');
-        redirect('C_horario');
+        $agencias = _post('agencia');
+        $a = $this->M_agencia->setIP($agencias);
+        $this->session->set_flashdata('msg', "Se actualizo los IP's correctamente");
+        redirect('C_IP');
     }
     
 }

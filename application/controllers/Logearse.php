@@ -16,6 +16,8 @@ class logearse extends CI_Controller {
 
         $this->load->helper("access_helper");
         //access_helper::is_logged_in();
+        //checkIfLoggedIn($this->session->userdata('logged'));
+        is_logged();
     }
     
     public function index()

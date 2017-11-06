@@ -10,6 +10,8 @@
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome.min.css?v=<?php echo time();?>">
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">		
 		<link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
@@ -17,15 +19,6 @@
 		</style>  	
 	</head>
 	<body>
-	  <!-- <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-			  <a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-			</div>
-			<ul class="nav navbar-nav">
-			</ul>
-		  </div>
-		</nav> -->
 
 		<div class="container-header">
     <div class="container">
@@ -56,7 +49,7 @@
         <?php if(_getSesion('rol') == 'administrador'){ ?>
         	<li><a href="/C_main">Editar Perfil</a></li>
             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
-            <li><a href="/C_IP">Asignar IP</a></li>
+            <li><a href="/C_horario">Horarios</a></li>
             <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
         <?php }
         	 elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
@@ -83,7 +76,7 @@
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                           	<li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
-                            <li><a href="/C_IP">Asignar IP</a></li>
+                            <li><a href="/C_horario">Horarios</a></li>
 	                    	<li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
@@ -110,27 +103,21 @@
             
 		  
 		  <div class="col-xs-12 col-md-12 col-seccion">
-			<div class="col-xs-12 div-seccion">
-			<form class="form" action="/C_horario/save" method="POST">
-			  <h4>Horario</h4>
+			<div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 div-seccion">
+			<form class="form" action="/C_ip/save" method="POST" id="form-ip">
+			  <h4>Asignar IP</h4>
 			  <div class="table-responsive">
-				<table class="table table-bordered" id="tabla-usuarios">
+				<table class="table table-bordered" id="tabla-agencias">
 				  <thead>
 					<tr class="tr-header-reporte">
-				      <th class="text-center">Hora</th>
-					  <th class="text-center">Lunes</th>
-					  <th class="text-center">Martes</th>
-					  <th class="text-center">Miercoles</th>
-					  <th class="text-center">Jueves</th>
-					  <th class="text-center">Viernes</th>
-					  <th class="text-center">Sabado</th>
-					  <th class="text-center">Domingo</th>
+				      <th class="text-center">Agencias</th>
+					  <th class="text-center">IP</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<?php
 					$count = 0;
-					 foreach($horarios as $horario){
+					 foreach($agencias as $agencia){
 					 	$count++;
 					 	$variable = 'desde[]';
 					 	if($count == 2){
@@ -138,14 +125,8 @@
 					 	}
 					  ?>
 					  	<tr>
-					  	<td><?php if($count == 1){ echo "Desde"; } else { echo "hasta"; }  ?></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->lunes ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->martes ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->miercoles ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->jueves ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->viernes ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->sabado ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->domingo ?>" class="form-control" id="time"></td>
+					  	<td><?php echo $agencia->AGENCIA ?></td>
+						<td><input name="agencia[<?php echo $agencia->id ?>]" style="width: 85%; margin:auto" type="text" value="<?php echo $agencia->ip ?>" class="form-control" id="ip"></td>
 					    </tr>
 					  <?php                 
 					  	}
@@ -167,14 +148,67 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
 
-	  <script>
+	  <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
-	  	$(document).ready(function() {
+<script>
 
+$(document).ready(function() {
+
+	var table = $('#tabla-agencias').DataTable( {
+
+      lengthChange: false,
+
+      "language": {
+        "search": "Buscar:",
+        "emptyTable": "No hay registros disponibles",
+        "paginate": {
+            "first":        "Primero",
+            "previous":     "Anterior",
+            "next":         "Siguiente",
+            "last":         "Ultimo"
+        },
+        "info":             "_START_ a _END_ de _TOTAL_ entradas",
+
+
+        "infoEmpty":        "0 de 0 of 0 entradas",
+        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+        "zeroRecords":      "No se encontraron registros",
+      },
+      "bInfo" : false,
+      "pageLength": 5,
+      lengthMenu: [
+          [ 5, 15, 25, 50, -1 ],
+          [ '5', '15', '25', '50', 'Total' ]
+      ],
+      "dom": 'rtp'
+  	} );
+
+
+   $('#form-ip').on('submit', function(e){
+      var form = this;
+      var params = table.$('input,select,textarea').serializeArray();
+      $.each(params, function(){     
+        if(!$.contains(document, form[this.name])){
+            $(form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', this.name)
+                  .val(this.value)
+        	);
+        } 
+      });    
+   });      
 
 });
-
-
 	  </script>
 	</body>
 </html>

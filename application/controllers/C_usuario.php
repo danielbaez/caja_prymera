@@ -12,6 +12,10 @@ class C_usuario extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->model('M_usuario');
         $this->load->model('M_preaprobacion');
+        $this->load->helper("url");
+
+        $this->load->helper("access_helper");
+        is_logged();
 
     }
     

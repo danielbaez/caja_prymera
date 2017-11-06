@@ -93,5 +93,21 @@ class M_agencia extends  CI_Model{
         return $result->result();
     }
 
+    function getAllAgencias()
+    {
+        $sql = "SELECT * FROM agencias";
+        $result = $this->db->query($sql, array());    
+        return $result->result();
+    }
+
+    function setIP($agencias)
+    {
+        foreach ($agencias as $key => $value) {
+            $this->db->where('id', $key);
+            $this->db->update('agencias', ['ip' => $value]);
+        }
+        
+    }
+
     
 }

@@ -13,6 +13,9 @@ class C_reporteAsesor extends CI_Controller {
         $this->load->model('M_producto');
         $this->load->model('M_solicitud');
 
+        $this->load->helper("access_helper");
+        is_logged();
+
     }
     
     public function agenteCliente()

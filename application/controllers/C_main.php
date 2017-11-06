@@ -16,6 +16,10 @@ class C_main extends CI_Controller {
 //             header("Location: ".RUTA_KOPLAN, true, 301);
 //             //redirect(RUTA_VEHIKMANT, 'location');
 //         }
+
+        $this->load->helper("access_helper");
+        is_logged();
+
     }
     
     public function index()
