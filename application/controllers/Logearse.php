@@ -298,7 +298,8 @@ class logearse extends CI_Controller {
                              'fecha_recupear' => date("Y-m-d"),
                              'estado_recuperar' => 1);
             $this->session->set_userdata($session);
-            $arrayUpdt = array('estado_recuperar' => 1);
+            $arrayUpdt = array('estado_recuperar' => 1,
+                                'fecha_recuperar' => date("Y-m-d"));
             $this->M_usuario->updateDatosAsesor($arrayUpdt,$id_pers[0]->id , 'usuario');
             $id_encrypt = base64_encode($id_pers[0]->id);
             $validacion = $this->sendMailGmail($email, $id_encrypt);

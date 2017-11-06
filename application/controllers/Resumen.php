@@ -120,7 +120,82 @@ class Resumen extends CI_Controller {
        $tipo_cred = null;
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto = '<p style="font-size: 10px;margin-left: 120px">“La oferta pre-aprobada cumplirá las siguientes condiciones:
+       $texto = '<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+      @media (min-width: 850px) and (max-width: 1028px) { 
+        .logo-img {
+          max-width: 250px !important;
+        }
+        .img-credit {
+          margin-left: 70px !important;
+        }
+    }
+    @media (min-width: 600px) and (max-width: 850px) { 
+        .logo-img {
+          max-width: 200px !important;
+          margin-top: -80px !important;
+        }
+        .img-credit {
+          margin-left: -10px !important;
+          max-width: 430px !important;
+          margin-top: 21px;
+        }
+    }
+    @media (min-width: 1028px) and (max-width: 1250px) { 
+        .img-credit {
+          margin-left: 70px !important;
+        }
+    }
+    </style>
+</head>
+<body>
+  <div class="container-fluid" style="max-width: 700px;height: 116px;background-color: #0060aa;margin-left: 300px;">
+    <div class="container-header">
+      <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">Crédito Consumo</h3>
+      <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">Mi Cash</h1>
+      <img class="logo-img" src="Nueva carpeta/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
+    </div>
+    <div class="container-body" style="margin-top: 40px">
+      <img src="Nueva carpeta/Background.jpg" style="width: 100%;height: 500px;">
+      <img class="img-credit" src="Nueva carpeta/Credito-Consumo.png" style="position: absolute;top: 148px;max-width: 450px;margin-left: 100px;">
+    </div>
+    <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
+      <h1 class="title-container" style="color: #378fb7;padding: 40px;"> ¡Alejandro </br> te damos la bienvenida!</h1>
+      <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;top: -40px;">A continuación detallamos las condiciones </br> del crédito "Mi Cash" que solicitaste.</h3>
+      <div class="container-tabla" style="width: 45%;height: 270px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: absolute;margin-top: 5px;margin-left: 40px;">
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;">
+          <h3 style="color: #378fb7;font-weight: lighter;">Importe: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> S/ 8,000</p></h3>
+        </div>
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
+          <h3 style="color: #378fb7;font-weight: lighter;">Plazo: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> S/ 875</p></h3>
+        </div>
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
+          <h3 style="color: #378fb7;font-weight: lighter;">Cuota: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> 12 meses</p></h3>
+        </div>
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
+          <h3 style="color: #378fb7;font-weight: lighter;">TEA: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> 20%</p></h3>
+        </div>
+        <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
+          <h3 style="color: #378fb7;font-weight: lighter;">TCEA: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> 20%</p></h3>
+        </div>
+      </div>
+    </div>
+    <div class="container-final" style="width: 100%;height: 360px;background-color: #378fb7;margin-top: -22px;">
+      <h1 style="color: #fff;margin-left: 40px;position: relative;top: 160px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
+      <p style="color: #fff;position: relative;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
+      <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en Av. Túpac Amaru 1210 </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
+      <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">¿Qué debo presentar?</p>
+    </div>
+  </div>
+</body>
+</html>';
+       /*_getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto = '<p style="font-size: 10px;margin-left: 120px">“La oferta pre-aprobada cumplirá las siguientes condiciones:
          CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
         Valido sólo para personas naturales con edad Min. 23 años y Max. 70 años con condición de Trabajadores Dependientes con Min. 6 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 6 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Monto Mín. del crédito: S/ 1000 y Máx. S/ 15000. No aplica para compra de deuda. Crédito otorgado sólo en moneda nacional. Financiamiento entre 06 y Máx. a 36 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado en cualquiera de las agencias de Prymera.
         Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si retiras S/ 2,000 a 36 meses, pagarás lo siguiente: 36 cuotas mensuales de S/ 111.22, total de intereses S/ 1,935.63, monto total de seguro S/ 68.87, TCEA 65.8%. La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros.”</p>' : $texto = '“La oferta pre-aprobada cumplirá las siguientes condiciones:
@@ -151,7 +226,7 @@ class Resumen extends CI_Controller {
 <p style="margin-left: 120px;">pago para que podamos evaluarte.</p>
 
 <p style="margin-left: 120px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
-'.$texto.'');
+'.$texto.'');*/
        $this->email->send();
        
        $arrayUpdt = array('envio_email' => 1,);
