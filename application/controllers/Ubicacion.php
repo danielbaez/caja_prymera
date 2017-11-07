@@ -29,7 +29,7 @@ class Ubicacion extends CI_Controller {
          if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
             ////redirect("/C_main", 'location');
         }
-        $this->session->set_userdata(array('conectado' => 0));
+        //$this->session->set_userdata(array('conectado' => 0));
         $dato['nombreDato']=':D';
         $dato['pago_total'] = _getSesion('pago_total');
         $dato['nombre'] = ucfirst(_getSesion('nombre'));

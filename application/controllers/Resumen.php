@@ -28,7 +28,7 @@ class Resumen extends CI_Controller {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
             //redirect("/C_main", 'location');
         }
-        //_log(print_r($this->session->all_userdata(), true));
+        _log(print_r($this->session->all_userdata(), true));
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total'] = _getSesion('pago_total');
@@ -93,6 +93,8 @@ class Resumen extends CI_Controller {
       $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
       try {  
+        $datos_bd = $this->M_preaprobacion->getDireccionByAgencia(_getSesion('Agencia'));
+        $direccion = $datos_bd[0]->UBICACION;
           //cargamos la libreria email de ci
        $this->load->library("email");
        //configuracion para gmail
@@ -135,63 +137,105 @@ class Resumen extends CI_Controller {
         .img-credit {
           margin-left: 70px !important;
         }
+        .container-tabla {
+          width: 55% !important;
+          z-index: 1000;
+        }
     }
-    @media (min-width: 600px) and (max-width: 850px) { 
+    @media (min-width: 550px) and (max-width: 850px) { 
         .logo-img {
           max-width: 200px !important;
           margin-top: -80px !important;
         }
         .img-credit {
-          margin-left: -10px !important;
-          max-width: 430px !important;
-          margin-top: 21px;
+              top: 148px;
+            max-width: 450px;
+            margin-left: 45px !important;
+        }
+        .container-tabla {
+        width: 65% !important;
+        z-index: 1000;
         }
     }
     @media (min-width: 1028px) and (max-width: 1250px) { 
         .img-credit {
           margin-left: 70px !important;
         }
+        .container-tabla {
+          width: 48% !important;
+          z-index: 1000;
+        }
+    }
+    @media (min-width: 300px) and (max-width: 550px) { 
+      .img-credit {
+              top: 148px;
+            max-width: 400px !important;
+            margin-left: 10px !important;
+        }
+        .container-tabla {
+          width: 85% !important;
+          z-index: 1000;
+        }
+    }
+    }
+    @media (min-width: 1250px) and (max-width: 1350px) { 
+      .container-tabla {
+          /*width: 35% !important;*/
+        }
     }
     </style>
 </head>
 <body>
-  <div class="container-fluid" style="max-width: 700px;height: 116px;background-color: #0060aa;margin-left: 300px;">
+  <div style="    margin: auto;width: 100%;max-width: 600px;">
+    <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;">
     <div class="container-header">
       <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">Crédito Consumo</h3>
-      <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">Mi Cash</h1>
-      <img class="logo-img" src="Nueva carpeta/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
+      <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$tipo_cred.'</h1>
+      <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
     </div>
-    <div class="container-body" style="margin-top: 40px">
-      <img src="Nueva carpeta/Background.jpg" style="width: 100%;height: 500px;">
-      <img class="img-credit" src="Nueva carpeta/Credito-Consumo.png" style="position: absolute;top: 148px;max-width: 450px;margin-left: 100px;">
+    <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background.jpg");text-align: center;">
+      <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
+      <img class="img-credit" src="'.RUTA_IMG.'/fondos/Credito-Consumo.png" style="max-width: 450px;margin: auto;">
     </div>
     <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
-      <h1 class="title-container" style="color: #378fb7;padding: 40px;"> ¡Alejandro </br> te damos la bienvenida!</h1>
-      <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;top: -40px;">A continuación detallamos las condiciones </br> del crédito "Mi Cash" que solicitaste.</h3>
-      <div class="container-tabla" style="width: 45%;height: 270px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: absolute;margin-top: 5px;margin-left: 40px;">
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;">
-          <h3 style="color: #378fb7;font-weight: lighter;">Importe: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> S/ 8,000</p></h3>
+      <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>
+      <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;margin-bottom: 30px;">A continuación detallamos las condiciones </br> del '.$tipo_cred.' que solicitaste.</h3>
+      <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Importe: </h3>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> S/ '._getSesion('Importe').'</p>
         </div>
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
-          <h3 style="color: #378fb7;font-weight: lighter;">Plazo: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> S/ 875</p></h3>
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Plazo: </h3>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cant_meses').'</p>
         </div>
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
-          <h3 style="color: #378fb7;font-weight: lighter;">Cuota: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> 12 meses</p></h3>
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Cuota: </h3>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cuota_mensual').'</p>
         </div>
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
-          <h3 style="color: #378fb7;font-weight: lighter;">TEA: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> 20%</p></h3>
+        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TEA: </h3>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('sess_tea').'</p>
         </div>
         <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
-          <h3 style="color: #378fb7;font-weight: lighter;">TCEA: <p style="color: #378fb7;font-weight: lighter;margin-top: 4px;float: right;"> 20%</p></h3>
+          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TCEA: </h3>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
         </div>
       </div>
+      <div style="background-color: #378fb7;height: 360px;margin: -172px 0px;">
+        <h1 style="color: #fff;margin-left: 40px;padding-top: 150px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
+      <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
+      <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
+      <p style="color: #fff;margin-left: 40px;">¿Qué debo presentar?</p>
+      </div>
     </div>
-    <div class="container-final" style="width: 100%;height: 360px;background-color: #378fb7;margin-top: -22px;">
+    <!--<div class="container-final" style="width: 100%;height: 360px;background-color: #378fb7;margin-top: -22px;z-index: -1;">
       <h1 style="color: #fff;margin-left: 40px;position: relative;top: 160px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
       <p style="color: #fff;position: relative;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
-      <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en Av. Túpac Amaru 1210 </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
+      <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
       <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">¿Qué debo presentar?</p>
-    </div>
+    </div>-->
+  </div>
   </div>
 </body>
 </html>';
@@ -253,10 +297,9 @@ class Resumen extends CI_Controller {
           $texto_envio = null;
           $fecha = explode('-', date("Y-m-d"));
           $fecha_new = $fecha[1].'-'.($fecha[2]+10);
-          //_log(print_r($fecha_new, true));
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
-        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
+        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$this->_data_last_month_day().'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
           //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';
@@ -367,5 +410,13 @@ class Resumen extends CI_Controller {
       }
       return json_encode(array_map('utf8_encode', $data));
      }
+
+     function _data_last_month_day() { 
+      $month = date('m');
+      $year = date('Y');
+      $day = date("d", mktime(0,0,0, $month+1, 0, $year));
+ 
+      return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
+  }
 }
 
