@@ -701,6 +701,7 @@ class Preaprobacion extends CI_Controller {
                                 'plazo'         => $meses,
                                 'monto'         => $importe,
                                 'tea'           => $varTea,
+                                'fec_estado' => date("Y-m-d H:i:s"),
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'         => $marca,
                                 'modelo'        => $modelo                                

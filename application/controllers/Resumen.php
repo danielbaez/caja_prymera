@@ -196,7 +196,8 @@ class Resumen extends CI_Controller {
 </body>
 </html>';
 
-$this->email->message($texto);
+//$this->email->message($texto);
+
        /*_getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto = '<p style="font-size: 10px;margin-left: 120px">“La oferta pre-aprobada cumplirá las siguientes condiciones:
          CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
         Valido sólo para personas naturales con edad Min. 23 años y Max. 70 años con condición de Trabajadores Dependientes con Min. 6 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 6 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Monto Mín. del crédito: S/ 1000 y Máx. S/ 15000. No aplica para compra de deuda. Crédito otorgado sólo en moneda nacional. Financiamiento entre 06 y Máx. a 36 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado en cualquiera de las agencias de Prymera.

@@ -697,11 +697,12 @@ class C_preaprobacion extends CI_Controller {
                                 'monto'         => $importe_auto,
                                 'tea'           => $varTea,
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
+                                'fec_estado' => date("Y-m-d H:i:s"),
                                 'marca'            => $marca,
                                 'modelo'          => $modelo,
                                 'costo_seguro'  => $seguro,
                                 'cuota_inicial' => $importe,
-                                'valor_auto'    => $monto_vehic
+                                'valor_auto'    => $monto
                             );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
