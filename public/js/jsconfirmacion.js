@@ -77,10 +77,6 @@ function verificarNumero() {
 		msj('error', 'Seleccione una salario v&aacute;lida');
 		return;
 	}
-	/*if(checkAutorizo == false) {
-		msj('error','Por favor acepte la autorizaci&oacute;n de datos');
-		  return;
-	}*/
 	$('#confirmar').attr('disabled', true);
 	$.ajax({
 		data  : { salario : salario,
@@ -283,7 +279,6 @@ function enviarMail() {
 		type  : 'POST'
 	}).done(function(data){
 		try{
-		   	//data = JSON.parse(data);
 		} catch (err){
 			msj('error',err.message);
 		}
@@ -298,7 +293,6 @@ function reenviarEmail() {
 		type  : 'POST'
 	}).done(function(data){
 		try{
-		   	//data = JSON.parse(data);
 		} catch (err){
 			msj('error',err.message);
 		}

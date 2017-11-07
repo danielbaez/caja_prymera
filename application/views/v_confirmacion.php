@@ -268,11 +268,7 @@
     </div>
 
     <div class="container">
-      <!-- <div class="col-sm-12 col-md-4 col-md-offset-4"> -->
-
     </div>
-
-
 
     <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -340,11 +336,6 @@
   </div>
 </div>
 
-
-
-    
-
-
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
 
@@ -387,7 +378,6 @@
       var concesionaria   = $('#concesionaria').val();
       var estado_civil = $('#estado_civil').val();
       var email         = $('#email').val();
-      //var checkAutorizo     = $('#checkAutorizo').is(':checked');
       if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
         && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != ''/* && codigo != ''*/ /*&& checkAutorizo != false*/) {
         $('#btnAceptar').removeAttr("disabled");
@@ -408,7 +398,6 @@
       var Agencia       = $('#idagencia').val();
       var concesionaria   = $('#concesionaria').val();
       var email         = $('#email').val();
-      //var checkAutorizo     = $('#checkAutorizo').is(':checked');
       if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
         && Provincia != '' && Distrito != '' && Agencia != '' && email != ''/* && nro_fijo != '' && codigo != ''*/ /*&& checkAutorizo != false*/) {
         $('#btnAceptar').removeAttr("disabled");
