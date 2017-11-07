@@ -82,15 +82,6 @@ function borrarAsignados(id_pers, element) {
       id = $(this).attr('data-id');
       ids_user += '-'+id;
     });
-  console.log(ids_user);
-	/*$('.agregar').append('<tr id="check_'+id_pers+'">'+
-                                    '<td>'+
-                                       '<input type="checkbox" data-nombre="'+nombre+'" data-apellido="'+apellido+'" data-rol="'+rol+'" data-agencia="'+agencia+'" name="id_asesor[]" value="'+id_pers+'">'+
-                                    '</td>'+                    
-                                    '<td>'+nombre+' '+apellido+'</td>'+
-                                    '<td>'+rol+'</td>'+
-                                    '<td>'+agencia+'</td>'+
-                                  '</tr>');*/
 	$.ajax({
 		data  : { id_asesor : ids_user,
               id_pers : id_pers},
