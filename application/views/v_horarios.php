@@ -17,29 +17,20 @@
 		</style>  	
 	</head>
 	<body>
-	  <!-- <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-			  <a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-			</div>
-			<ul class="nav navbar-nav">
-			</ul>
-		  </div>
-		</nav> -->
 
-		<div class="container-header">
-    <div class="container">
-      <div class="row padding-div-row-header">
-        <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header">Dashboard</h1>
-        </div>
-        <div class="col-xs-6 div-logo">
-          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none">Dashboard</h1>
-        </div>
-      </div>    
-    </div>            
-  </div>
+	<div class="container-header">
+	    <div class="container">
+	      <div class="row padding-div-row-header">
+	        <div class="col-xs-6 col-title-header-padding">
+	          <h1 class="title-header">Dashboard</h1>
+	        </div>
+	        <div class="col-xs-6 div-logo">
+	          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+	          <h1 style="display: none">Dashboard</h1>
+	        </div>
+	      </div>    
+	    </div>            
+  	</div>
 
 
 <nav class="navbar navbar-default">
@@ -111,52 +102,92 @@
 		  
 		  <div class="col-xs-12 col-md-12 col-seccion">
 			<div class="col-xs-12 div-seccion">
-			<form class="form" action="/C_horario/save" method="POST">
-			  <h4>Horario</h4>
-			  <div class="table-responsive">
-				<table class="table table-bordered" id="tabla-usuarios">
-				  <thead>
-					<tr class="tr-header-reporte">
-				      <th class="text-center">Hora</th>
-					  <th class="text-center">Lunes</th>
-					  <th class="text-center">Martes</th>
-					  <th class="text-center">Miercoles</th>
-					  <th class="text-center">Jueves</th>
-					  <th class="text-center">Viernes</th>
-					  <th class="text-center">Sabado</th>
-					  <th class="text-center">Domingo</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					<?php
-					$count = 0;
-					 foreach($horarios as $horario){
-					 	$count++;
-					 	$variable = 'desde[]';
-					 	if($count == 2){
-					 		$variable = 'hasta[]';
-					 	}
-					  ?>
-					  	<tr>
-					  	<td><?php if($count == 1){ echo "Desde"; } else { echo "hasta"; }  ?></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->lunes ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->martes ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->miercoles ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->jueves ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->viernes ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->sabado ?>" class="form-control" id="time"></td>
-						<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->domingo ?>" class="form-control" id="time"></td>
-					    </tr>
-					  <?php                 
-					  	}
-					  ?>               
-				  </tbody>
-				</table>
-			  </div>
-			  <div class="col-xs-12" style="padding-bottom: 10px">
-				<input type="submit" class="btn btn-lg" name="" value="Guardar" style="color:white">
-			  </div>
-			</form>
+				<form class="form" action="/C_horario/save" method="POST">
+				  <h4>Horario</h4>
+				  <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3" style="margin-bottom: 15px">
+				  	<select style="" id="agencia" name="agencia" class="form-control">
+				  	<option value="">Seleccione una agencia</option>
+				  	<?php foreach ($agencias as $agencia): ?>
+				  		<option <?php if($agencia_selected == $agencia->id){ echo 'selected'; } ?> value="<?php echo $agencia->id ?>"><?php echo $agencia->AGENCIA ?></option>
+				  	<?php endforeach ?>
+				  </select>	
+				  </div>
+				  <?php if(is_array($horarios)){ ?>
+				  <div class="col-xs-12">				  	
+				  	<div class="table-responsive">
+					<table class="table table-bordered" id="tabla-usuarios">
+					  <thead>
+						<tr class="tr-header-reporte">
+					      <th class="text-center">Hora</th>
+						  <th class="text-center">Lunes</th>
+						  <th class="text-center">Martes</th>
+						  <th class="text-center">Miercoles</th>
+						  <th class="text-center">Jueves</th>
+						  <th class="text-center">Viernes</th>
+						  <th class="text-center">Sabado</th>
+						  <th class="text-center">Domingo</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<?php
+						if(is_array($horarios) && count($horarios))
+						{
+						$count = 0;
+						 foreach($horarios as $horario){
+						 	$count++;
+						 	$variable = 'desde[]';
+						 	if($count == 2){
+						 		$variable = 'hasta[]';
+						 	}
+						  ?>
+						  	<tr>
+						  	<td><?php if($count == 1){ echo "Desde"; } else { echo "hasta"; }  ?></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->lunes ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->martes ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->miercoles ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->jueves ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->viernes ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->sabado ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->domingo ?>" class="form-control" id="time"></td>
+						    </tr>
+						  <?php                 
+						  	}
+						}
+						else
+						{
+						?>
+							<tr>
+								<td>Desde</td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+							</tr>
+							<tr>
+								<td>Hasta</td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+							</tr>
+						<?php
+						}
+						?>               
+					  </tbody>
+					</table>
+				  	</div>
+				  </div>	  
+				  <div class="col-xs-12" style="padding-bottom: 10px">
+					<input type="submit" class="btn btn-lg" name="" value="Guardar" style="color:white">
+				  </div>
+				  <?php } ?>
+				</form>
 			</div>			  
 		  </div>
 	  </div>
@@ -171,7 +202,10 @@
 
 	  	$(document).ready(function() {
 
-
+	  		$('#agencia').on('change', function() {
+			  //alert( this.value );
+			  window.location.href = '/C_horario/agencia?agencia='+this.value;
+			})
 });
 
 

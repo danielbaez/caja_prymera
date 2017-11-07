@@ -5,37 +5,63 @@ class M_horario extends  CI_Model{
         parent::__construct();
     }
 
-    function getHorario()
+    function getHorario($agencia)
     {
-    	$sql = "SELECT * FROM horarios";
-    	$result = $this->db->query($sql, array());
-    	return $result->result();
+        if($agencia)
+        {
+            $sql = "SELECT * FROM horarios WHERE id_agencia = ?";
+            $result = $this->db->query($sql, array($agencia));    
+            return $result->result();
+        }
+        else
+        {
+            return [];
+        }
+           	
     }
 
-    function setHorario($desde, $hasta)
+    function setHorario($agencia, $desde, $hasta)
     {
-    	$data_desde['lunes'] = $desde[0];
-    	$data_desde['martes'] = $desde[1];
-    	$data_desde['miercoles'] = $desde[2];
-    	$data_desde['jueves'] = $desde[3];
-    	$data_desde['viernes'] = $desde[4];
-    	$data_desde['sabado'] = $desde[5];
-    	$data_desde['domingo'] = $desde[6];
+        $data_desde['lunes'] = $desde[0];
+        $data_desde['martes'] = $desde[1];
+        $data_desde['miercoles'] = $desde[2];
+        $data_desde['jueves'] = $desde[3];
+        $data_desde['viernes'] = $desde[4];
+        $data_desde['sabado'] = $desde[5];
+        $data_desde['domingo'] = $desde[6];
 
-    	$data_hasta['lunes'] = $hasta[0];
-    	$data_hasta['martes'] = $hasta[1];
-    	$data_hasta['miercoles'] = $hasta[2];
-    	$data_hasta['jueves'] = $hasta[3];
-    	$data_hasta['viernes'] = $hasta[4];
-    	$data_hasta['sabado'] = $hasta[5];
-    	$data_hasta['domingo'] = $hasta[6];
+        $data_hasta['lunes'] = $hasta[0];
+        $data_hasta['martes'] = $hasta[1];
+        $data_hasta['miercoles'] = $hasta[2];
+        $data_hasta['jueves'] = $hasta[3];
+        $data_hasta['viernes'] = $hasta[4];
+        $data_hasta['sabado'] = $hasta[5];
+        $data_hasta['domingo'] = $hasta[6];
 
+        $sql = "SELECT * FROM horarios WHERE id_agencia = ?";
+        $result = $this->db->query($sql, array($agencia));
+
+        if($result->num_rows() == 2)
+        {
+            $this->db->where('id_agencia', $agencia);
+            $this->db->where('turno', 'desde');
+            $this->db->update('horarios', $data_desde);
+
+            $this->db->where('id_agencia', $agencia);
+            $this->db->where('turno', 'hasta');
+            $this->db->update('horarios', $data_hasta);
+        }
+        else
+        {
+            $data_desde['id_agencia'] = $agencia;
+            $data_desde['turno'] = 'desde';            
+            $this->db->insert('horarios', $data_desde);
+
+            $data_hasta['id_agencia'] = $agencia;
+            $data_hasta['turno'] = 'hasta';            
+            $this->db->insert('horarios', $data_hasta);
+        }  	    	
     	
-    	$this->db->where('id', 1);
-        $this->db->update('horarios', $data_desde);
-
-        $this->db->where('id', 2);
-        $this->db->update('horarios', $data_hasta);
     }
 
 }
