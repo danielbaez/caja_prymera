@@ -88,7 +88,8 @@ class Micash extends CI_Controller {
                                 'ws_error'          => $res,
                                 'ws_resultado'      => json_encode($result),
                                 'ws_timestamp'        => date("Y-m-d H:i:s"),
-                                'cod_agencia' => $agencia_user[0]->id_agencia
+                                'cod_agencia' => $agencia_user[0]->id_agencia,
+                                'last_page' => N_SIMULADOR
                                 );
             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -115,7 +116,8 @@ class Micash extends CI_Controller {
                                 'ws_error'          => $res,
                                 'ws_resultado'      => json_encode($result),
                                 'ws_timestamp'        => date("Y-m-d H:i:s"),
-                                'cod_agencia'        => $agencia_user[0]->id_agencia
+                                'cod_agencia'        => $agencia_user[0]->id_agencia,
+                                'last_page' => N_INGRESO_DATOS_RECHAZADO
                                 );
             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));

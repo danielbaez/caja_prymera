@@ -46,6 +46,10 @@ class Ubicacion extends CI_Controller {
         $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
         $dato['ubicacion'] = $direccion[0]->UBICACION;
         $dato['telefono'] = $direccion[0]->TELEFONO;
+        $idPersona  = _getSesion('idPersona');
+        $arrayUpdt = array('last_page' => N_INTRO_MAPA);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+
         $this->load->view('v_micash_ubicacion', $dato);
     }
 

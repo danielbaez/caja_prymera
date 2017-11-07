@@ -55,12 +55,16 @@ class Preaprobacion extends CI_Controller {
         if(_getSesion("usuario") == null && _getSesion('conectado') == 0) {
             //redirect("/C_main", 'location');
         }
+        $idPersona = _getSesion('idPersona');
         $data['nombreDato']=':D';
         $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']  = _getSesion('email');
         $nombre   = $this->session->userdata('nombre');
         $data['tipo_producto'] = _getSesion("TIPO_PROD");
         $apellido = _getSesion('apellido');
+
+        $arrayUpdt = array('last_page'     => N_SIMULADOR);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
 
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
@@ -709,7 +713,7 @@ class Preaprobacion extends CI_Controller {
                                 'fec_estado' => date("Y-m-d H:i:s"),
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'         => $marca,
-                                'modelo'        => $modelo                                
+                                'modelo'        => $modelo                           
                             );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['cambio'] = 0;

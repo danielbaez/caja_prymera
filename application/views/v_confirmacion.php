@@ -232,8 +232,8 @@
                             <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                             <div class="col-xs-12">
                              <div class="form-group">
-                                <select class="form-control" id="estado_civil" name="estado_civil" onkeyup="verificarDatos(event);" onchange="mostrarEstadoCivil()">
-                                  <option value="">Estado Civil</option>
+                                <select class="form-control" id="estado_civil"  name="estado_civil" onkeyup="verificarDatos(event);" onchange="mostrarEstadoCivil();habilitarCampo()">
+                                  <option value="">* Estado Civil</option>
                                   <option value="soltero">Soltero</option>
                                   <option value="casado">Casado</option>
                                 </select>
@@ -370,6 +370,51 @@
         $(this).next(':input').focus();
       });
     });
+
+    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+      function habilitarCampo() {
+      var salario         = $('#salario').val();
+      var nro_celular     = $('#nro_celular').val();
+      var empleador       = $('#empleador').val();
+      var direccion_empresa = $('#direccion_empresa').val();
+      var Departamento    = $('#Departamento').val();
+      var Provincia       = $('#Provincia').val();
+      var Distrito      = $('#Distrito').val();
+      var codigo        = $('#codigo').val();
+      var codigo        = $('#codigo').val();
+      var nro_fijo      = $('#nro_fijo').val();
+      var Agencia       = $('#idagencia').val();
+      var concesionaria   = $('#concesionaria').val();
+      var estado_civil = $('#estado_civil').val();
+      var email         = $('#email').val();
+      //var checkAutorizo     = $('#checkAutorizo').is(':checked');
+      if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
+        && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != ''/* && codigo != ''*/ /*&& checkAutorizo != false*/) {
+        $('#btnAceptar').removeAttr("disabled");
+      }
+    }
+    <?php }else{ ?>
+      function habilitarCampo() {
+      var salario         = $('#salario').val();
+      var nro_celular     = $('#nro_celular').val();
+      var empleador       = $('#empleador').val();
+      var direccion_empresa = $('#direccion_empresa').val();
+      var Departamento    = $('#Departamento').val();
+      var Provincia       = $('#Provincia').val();
+      var Distrito      = $('#Distrito').val();
+      var codigo        = $('#codigo').val();
+      var codigo        = $('#codigo').val();
+      var nro_fijo      = $('#nro_fijo').val();
+      var Agencia       = $('#idagencia').val();
+      var concesionaria   = $('#concesionaria').val();
+      var email         = $('#email').val();
+      //var checkAutorizo     = $('#checkAutorizo').is(':checked');
+      if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
+        && Provincia != '' && Distrito != '' && Agencia != '' && email != ''/* && nro_fijo != '' && codigo != ''*/ /*&& checkAutorizo != false*/) {
+        $('#btnAceptar').removeAttr("disabled");
+      }
+    }
+    <?php } ?>
   </script>
   </body>
 </html>
