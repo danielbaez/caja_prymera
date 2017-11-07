@@ -109,7 +109,7 @@ function rolPermissions($rol)
 						'C_main' => ['index', 'registrar'],
 					   	'C_usuario' => ['detalleUsuario', 'verifyEmailAndDNI', 'asignarSupervisor', 'autocompleteGetJefe', 'actualizarTabla', 'getAsesoresByAgencia', 'guardarPersonalAsignado', 'logout'],
 					   	'C_horario' => ['index', 'save'],
-					   	'C_ippp' => ['index', 'save'],
+					   	'C_ip' => ['index', 'save'],
 					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud']
 					],
 					'jefe_agencia' => [
