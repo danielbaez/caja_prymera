@@ -11,6 +11,64 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
+    function verifyUserIPTime($usuario)
+    {
+
+        $sql = "SELECT ip from agencias WHERE id = ?";
+        $result_ip = $this->db->query($sql, array($usuario->id_agencia));
+        $result_ip = $result_ip->result();
+
+        //print_r($result_ip[0]->ip); exit();
+
+        $sql = "SELECT *, GROUP_CONCAT(horarios.lunes SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT(horarios.lunes SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT(horarios.lunes SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT(horarios.lunes SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT(horarios.lunes SEPARATOR '*'))+1, length(GROUP_CONCAT(horarios.lunes SEPARATOR '*'))) AS Hastaaa FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id INNER JOIN horarios ON agencias.id = horarios.id_agencia WHERE usuario.id = ?";
+
+        $result = $this->db->query($sql, array($usuario->id));
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) { // IP compartido
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) { // IP Proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
+        }
+
+        $ip = '192.168.1.5';
+
+        if($result->num_rows() == 1)
+        {
+            $result = $result->result();
+            $desde = $result[0]->Desdeee;
+            $hasta = $result[0]->Hastaaa;
+            $ip_db = $result[0]->ip;
+
+            $now = date('H:m:s');
+
+            echo "desde:".$desde;
+            echo "<br>";
+            echo "ahora:".$now;
+            echo "<br>";
+            echo "hasta:".$hasta;
+            echo "<br>";
+
+            //echo $ip_db; exit();
+
+            if($ip_db != $ip)
+            {
+                return array('error' => 'No esta conectado a una ip especifica');
+            }
+            elseif($now > $desde && $now < $hasta)
+            {
+                return array('error' => false);
+            }
+            else
+            {
+                return array('error' => 'No puede acceder a esta hora');
+            }
+            
+        }
+        //return $result->result();   
+    }
+
     function getPersonal($id, $rol) {
 
         if($rol == 'administrador')
