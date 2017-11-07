@@ -238,6 +238,33 @@ class C_reporte extends CI_Controller {
         }
     }
 
+    public function solicitudesTotales()
+    {
+        $action = _post('action');
+        if(isset($action) and  $action == 'obtenerSolicitudesTotales') {
+            $dni = _post('dni');
+            $fecha_desde = _post('fecha_desde');
+            $fecha_hasta = _post('fecha_hasta');
+            $filtros = array(
+                        'dni' => $dni,
+                        'fecha_desde' => $fecha_desde,
+                        'fecha_hasta' => $fecha_hasta
+                    );
+
+            $data['solicitudes'] = $this->M_solicitud->obtenerSolicitudesTotales($filtros);
+
+            $data['dni'] = $dni;
+            $data['desde'] = $fecha_desde;
+            $data['hasta'] = $fecha_hasta;
+
+            $this->load->view('v_reporteSolicitudesTotales', $data);
+        }
+        else
+        {        
+            $this->load->view('v_reporteSolicitudesTotales', []);
+        }
+    }
+
     public function sendMailGmail()
     {
        //cargamos la libreria email de ci

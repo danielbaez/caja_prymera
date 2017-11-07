@@ -75,13 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	/*'hostname' => 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com',
+	//'hostname' => 'localhost',
+	'hostname' => 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com',
 	'username' => 'prymera',
 	'password' => 'prymera123',
-	'database' => 'caja_prymera',*/
+	'database' => 'caja_prymera',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'root',
 	'database' => 'caja_prymera',
 	'dbdriver' => 'mysqli',
 	'database' => 'caja_prymera',

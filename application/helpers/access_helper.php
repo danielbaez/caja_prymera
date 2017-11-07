@@ -81,10 +81,10 @@ function rolPermissions($rol)
 	$permission = [
 					'administrador' => [
 						'C_main' => ['index', 'registrar'],
-					   	'C_usuario' => ['detalleUsuario', 'verifyEmailAndDNI', 'asignarSupervisor', 'autocompleteGetJefe', 'actualizarTabla', 'getAsesoresByAgencia', 'guardarPersonalAsignado', 'logout'],
+					   	'C_usuario' => ['detalleUsuario', 'verifyEmailAndDNI', 'asignarSupervisor', 'autocompleteGetJefe', 'actualizarTabla', 'getAsesoresByAgencia', 'borrarAsignados', 'guardarPersonalAsignado', 'logout'],
 					   	'C_horario' => ['index', 'agencia', 'save'],
 					   	'C_ip' => ['index', 'save'],
-					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud']
+					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'solicitudesTotales']
 					],
 					'jefe_agencia' => [
 						'C_main' => ['index', 'registrar'],
