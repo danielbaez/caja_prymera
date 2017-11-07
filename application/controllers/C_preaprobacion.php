@@ -38,7 +38,7 @@ class C_preaprobacion extends CI_Controller {
         $data['comboMarca']         = $this->__buildMarca();
 
         $idPersona = _getSesion('idPersona');
-        $arrayUpdt = array('last_page'     => N_SIMULADOR);
+        $arrayUpdt = array('last_page' => N_INGRESO_DATOS_RECHAZADO);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         
         $data['nombreDato']=':D';

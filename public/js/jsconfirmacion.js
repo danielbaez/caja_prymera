@@ -40,7 +40,6 @@ function verificarNumero() {
 	var nombre_conyugue   = $('#nombre_conyugue').val();
 	var dni_conyugue      = $('#dni_conyugue').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
-	//var checkAutorizo     = $('#checkAutorizo').is(':checked');
     if(uno == null && dos == null && tres == null && cuatro == null && cinco == null && seis == null) {
     	msj('error', 'Ingrese el codigo que se le envi&oacute; al celular');
 		return;
@@ -50,7 +49,7 @@ function verificarNumero() {
 		return;
 	}
 	if(nro_celular == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
+		msj('error', 'Seleccione un n&uacute;mero de celular v&aacute;lido');
 		return;
 	}
 	if(nro_celular.length <9) {
@@ -58,23 +57,23 @@ function verificarNumero() {
 		return;
 	}
 	if(empleador == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
+		msj('error', 'Seleccione un empleador v&aacute;lido');
 		return;
 	}
 	if(direccion_empresa == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
+		msj('error', 'Seleccione una direcci&oacute;n v&aacute;lida');
 		return;
 	}
 	if(Departamento == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
+		msj('error', 'Seleccione un departamento v&aacute;lido');
 		return;
 	}
 	if(Provincia == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
+		msj('error', 'Seleccione una provincia v&aacute;lida');
 		return;
 	}
 	if(Distrito == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
+		msj('error', 'Seleccione un distrito v&aacute;lido');
 		return;
 	}
 	$('#confirmar').attr('disabled', true);
@@ -383,8 +382,6 @@ function verificarCampos() {
 	var estado_civil      = $('#estado_civil').val();
 	var nombre_conyugue   = $('#nombre_conyugue').val();
 	var dni_conyugue      = $('#dni_conyugue').val();
-
-
 	var tipo_producto_hidden = $('input[name="tipo_producto_hidden"]').val();
 
 	if(salario == null) {
@@ -392,7 +389,7 @@ function verificarCampos() {
 		return;
 	}else 
 	if(empleador == null || empleador == '') {
-		msj('error', 'Ingrese un empeador correctamente');
+		msj('error', 'Ingrese un empleador correctamente');
 		return;
 	}else
 	if(direccion_empresa == null || direccion_empresa == '') {
@@ -404,11 +401,11 @@ function verificarCampos() {
 		return;
 	}else
 	if(Provincia == null || Provincia == '') {
-		msj('error', 'Seleccione una Provincia correctamente');
+		msj('error', 'Seleccione una provincia correctamente');
 		return;
 	}else
 	if(Distrito == null || Distrito == '') {
-		msj('error', 'Seleccione un Distrito correctamente');
+		msj('error', 'Seleccione un distrito correctamente');
 		return;
 	}else
 	if(nro_celular == null || nro_celular == '') {

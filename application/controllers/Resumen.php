@@ -124,8 +124,10 @@ class Resumen extends CI_Controller {
        $texto = null;
        $nombre = _getSesion('nombre');
        $tipo_cred = null;
+       $imagen = null
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
+       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
        $texto = '<!DOCTYPE html>
 <html>
 <head>
@@ -199,7 +201,7 @@ class Resumen extends CI_Controller {
     </div>
     <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background.jpg");text-align: center;">
       <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
-      <img class="img-credit" src="'.RUTA_IMG.'/fondos/Credito-Consumo.png" style="max-width: 450px;margin: auto;">
+      <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 450px;margin: auto;">
     </div>
     <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
       <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>

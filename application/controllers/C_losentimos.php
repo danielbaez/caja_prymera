@@ -19,6 +19,9 @@ class C_losentimos extends CI_Controller {
 
     public function index()
     {
+        $idPersona = _getSesion('idPersona');
+        $arrayUpdt = array('last_page'     => N_SIMULADOR);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         $dato['nombreDato']=':D';
         $dato['nombreCompleto'] = _getSesion('nombreCompleto');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
