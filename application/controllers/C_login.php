@@ -27,51 +27,83 @@ class C_login extends CI_Controller {
     public function solicitar() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
-        try {
-            $json_service  = '{"tipo": "A","Nombre": "juan","cantidad_max": 3000}';
-            $nombre        = _post('nombre');
+
+
+        try 
+          {
+            //resultado 1 -- ok
+          //resultado 3: token
+            //resultado 2: error del servidor
+          //resultado 0 : rechazado
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+           $params = array('token'=> 'E928EUXP',
+                                  'documento'=>_post('dni'),
+                                  'producto'=>'02'
+                    );
+
+          $nombre        = _post('nombre');
             $apellido      = _post('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
-            $newdata       = array();
-            $tipo_producto = PRODUCTO_MICASH;
-            if($dni == null || $dni == '') {
-                throw new Exception('Ingrese su DNI');
+            $tipo_producto = PRODUCTO_VEHICULAR;
+            $agencia_user  = $this->M_preaprobacion->getAgencia(_getSesion('id_usuario'));
+            $check = _post('check');
+            if($check == true) {
+              $check = 1;//aceptó
+           }else {
+              $check = 2;//no aceptó
+           }
+          $result = $client->GetDatosCliente($params);
+          //_log(print_r($result, true));
+          $res = $result->return->resultado;
+          if($res == 1){
+            $documento = $result->return->documento;
+            $importeMinimo = $result->return->rango->importeMinimo;
+            $importeMaximo = $result->return->rango->importeMaximo;
+            
+            $arr = (array)$result->return;
+
+            //print_r($arr);
+            $arrDatos = [];
+            foreach ($arr as $key => $value) {
+              if($key == 'rango'){
+                //print_r($value); 
+                $value->plazos = explode(';', $value->plazos); 
+
+                $arrDatos[] = array('importeMinimo' => $value->importeMinimo, 'importeMaximo' => $value->importeMaximo, 'plazo' => $value->plazos);
+                //echo "<hr>";
+              }
+               
+               
             }
-            if(strlen($dni) != 8) {
-                throw new Exception('El DNI debe contener 8 caracteres');
-            }
-            $json = json_decode($json_service);
-            $session = array('nombre'            => $nombre,
-                             'apellido'          => $apellido,
-                             'dni'               => $dni,
-                             'email'             => $email,
-                             'tipo_solicitud'    => $json->tipo,
-                             'cantidad'          => $json->cantidad_max,
-                             'tipo_producto'     => $tipo_producto
+
+            //print_r($arrDatos);
+
+            //exit();
+
+            $plazos = $result->return->rango->plazos;
+            
+            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
+
+          $session = array('nombre'  => $nombre,
+                'apellido'          => $apellido,
+                'dni'               => $dni,
+                'email'             => $email,
+                'tipo_solicitud'    => $res,
+                'importeMaximo'     => $importeMaximo,
+                'importeMinimo'     => $importeMinimo,
+                'tipo_producto'     => $tipo_producto,
+                'plazos'            => $plazos,
+                'arrDatos'          => $arrDatos
             );
             $this->session->set_userdata($session);
-            if($dni == null) {
-                throw new Exception('Ingrese su DNI');
-            }else {
-                if($json->tipo == 'A') {
-                    if($tipo_producto == PRODUCTO_MICASH) {
-                        $data['url'] = RUTA_CAJA.'c_preaprobacion';
-                    }else {
-                        $data['url'] = RUTA_CAJA.'c_marca';
-                    }
-                }else if($json->tipo == 'B') {
-                    $data['url'] = RUTA_CAJA.'c_losentimos';
-                }else if($json->tipo == 'C') {
-                    $data['url'] = RUTA_CAJA.'c_noencontrado';
-                }
-            }
             $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
                                 'nombre' => $nombre,
                                 'apellido'  => $apellido,
                                 'email'  => $email,
                                 'dni'  => $dni,
-                                'id_tipo_prod' => _getSesion('permiso_prod'),
+                                'id_tipo_prod' => 2,
                                 'fec_estado' => date("Y-m-d H:i:s"),
                                 'check_autorizo'    => $check,
                                 'ws_error'          => $res,
@@ -80,10 +112,45 @@ class C_login extends CI_Controller {
                                 'cod_agencia'        => $agencia_user[0]->id_agencia
                                 );
             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
-            $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
+            $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
+
+          }
+          if($res == 0){
+            $session = array('nombre'  => $nombre,
+                'apellido'          => $apellido,
+                'dni'               => $dni,
+                'email'             => $email,
+                'tipo_solicitud'    => $res,
+                'tipo_producto'     => $tipo_producto
+            );
+            $this->session->set_userdata($session);
+            //$agencia = $this->M_preaprobacion->getAgenciaPersonal(_getSesion('id_usuario'));
+            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
+                                'nombre' => $nombre,
+                                'apellido'  => $apellido,
+                                'email'  => $email,
+                                'dni'  => $dni,
+                                'id_tipo_prod' => 2,
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'check_autorizo'    => $check,
+                                'ws_error'          => $res,
+                                'ws_resultado'      => json_encode($result),
+                                'ws_timestamp'        => date("Y-m-d H:i:s"),
+                                'cod_agencia'        => $agencia_user[0]->id_agencia
+                                );
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
+            $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
+            $response = array('status' => 0, 'url' => RUTA_CAJA.'C_losentimos');
+          }
+          if($res == 2){
+            $response = array('status' => 2);
+          }
+
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        catch(Exception $e)
+        {
+           $response = array('status' => 2);
+        }
+        echo json_encode($response);
     }
 }

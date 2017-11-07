@@ -68,7 +68,7 @@ function permissions($controller)
 	//$controller = strtolower($controller);
 
 	$p = ['' => ['public' => ['index']],
-		  'logearse' => ['public' => ['index', 'login', 'olvidoPassword', 'recuperarPass']],
+		  'Logearse' => ['public' => ['index', 'login', 'olvidoPassword', 'recuperarPass']],
 		  'C_cambiarPassword' => ['public' => ['index', 'cambiarPass']]
 		  //'C_main' => ['public' => []]
 	];
@@ -106,16 +106,21 @@ function rolPermissions($rol)
 
 	$permission = [
 					'administrador' => [
-						'C_main' => ['index'],
-					   	'C_usuario' => ['detalleUsuario', 'asignarSupervisor', 'logout'],
-					   	'C_horario' => [],
-					   	'C_IP' => [],
-					   	'C_reporte' => []
+						'C_main' => ['index', 'registrar'],
+					   	'C_usuario' => ['detalleUsuario', 'verifyEmailAndDNI', 'asignarSupervisor', 'autocompleteGetJefe', 'actualizarTabla', 'getAsesoresByAgencia', 'guardarPersonalAsignado', 'logout'],
+					   	'C_horario' => ['index', 'save'],
+					   	'C_ip' => ['index', 'save'],
+					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud']
+					],
+					'jefe_agencia' => [
+						'C_main' => ['index', 'registrar'],
+						'C_usuario' => ['detalleUsuario', 'logout'],
+						'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'actualizarEstadoSolicitud']
 					],
 				    'asesor' => [
-				   		'C_reporteAsesor' => ['agenteCliente', 'agenteHistorialSolicitud'],
+				   		'C_reporteAsesor' => ['agenteCliente', 'agenteHistorialSolicitud', 'modalInformacionSolicitud', 'actualizarNotaSolicitud'],
 				   		'C_usuario' => ['nuevaSolicitud', 'logout'],
-				   		'C_login' => ['index'],
+				   		'C_login' => ['index', 'solicitar'],
 				   		'Micash' => ['index', 'solicitar'],
 				   		'C_losentimos' => ['index'],
 				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
@@ -124,7 +129,14 @@ function rolPermissions($rol)
 				   		'Ubicacion' => ['index']
 				   	],
 				   	'asesor_externo' => [
-				   		'C_usuario' => ['nuevaSolicitud', 'logout']
+				   		'C_usuario' => ['nuevaSolicitud', 'logout'],
+				   		'C_login' => ['index', 'solicitar'],
+				   		'Micash' => ['index', 'solicitar'],
+				   		'C_losentimos' => ['index'],
+				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
+				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero'],
+				   		'Resumen' => ['index', 'setearAgencia'],
+				   		'Ubicacion' => ['index']
 				   	]
 				  ];
 

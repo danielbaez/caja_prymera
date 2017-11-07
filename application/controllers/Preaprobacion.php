@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class preaprobacion extends CI_Controller {
+class Preaprobacion extends CI_Controller {
     
     private $sueldo = null;
     private $varPagoTotal = null;

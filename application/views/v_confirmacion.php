@@ -255,7 +255,7 @@
                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                         <a id="remove" class="link" href="/C_preaprobacion">Regresar</a>
                         <?php } else{ ?>
-                        <a id="remove" class="link" href="/preaprobacion">Regresar</a>
+                        <a id="remove" class="link" href="/Preaprobacion">Regresar</a>
                         <?php } ?>
                       </div>
                       <input type="hidden" name="tipo_producto_hidden" value="<?php echo $tipo_producto ?>">

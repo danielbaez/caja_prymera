@@ -92,9 +92,9 @@
 </nav>
 
 <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-<div class="container-fluid" style="background-image:url(../public/img/fondos/Car-Sunset.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: scroll; background-position: center;padding-top: 70px;">
+<div class="container-fluid" style="background-image:url(../public/img/fondos/Car-Sunset.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: scroll; background-position: center;">
 <?php } else { ?>
-  <div class="container-fluid" style="background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: scroll; background-position: center;padding-top: 70px;">
+  <div class="container-fluid" style="background-image:url(../public/img/fondos/Credito-Consumo-image.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: scroll; background-position: center;">
 <?php } ?>
     <div class="container container-simulador" style="">
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_IP extends CI_Controller {
+class C_ip extends CI_Controller {
     
     function __construct() {
         parent::__construct();
@@ -32,7 +32,7 @@ class C_IP extends CI_Controller {
         $agencias = _post('agencia');
         $a = $this->M_agencia->setIP($agencias);
         $this->session->set_flashdata('msg', "Se actualizo los IP's correctamente");
-        redirect('C_IP');
+        redirect('C_ip');
     }
     
 }

@@ -46,7 +46,7 @@ function solicitarPrestamo() {
 				  dni       : dni,
 				  email     : email,
 				  check     : check},
-		url   : 'micash/solicitar',
+		url   : 'Micash/solicitar',
 		type  : 'POST',
 		dataType: 'json',
 	}).done(function(data){
@@ -120,7 +120,7 @@ function moreText() {
 }
 
 function goToLogin() {
-	location.href = "/login";
+	location.href = "/Login";
 }
 
 function verificarDatos(e) {

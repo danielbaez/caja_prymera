@@ -281,7 +281,7 @@
       $.ajax({
         data  : { meses    : meses_pago,
                   cantidad : monto},
-        url   : 'preaprobacion/changeValues',
+        url   : 'Preaprobacion/changeValues',
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
@@ -330,7 +330,7 @@
       $.ajax({
         data  : { meses    : meses_pago,
                 cantidad : monto},
-        url   : 'preaprobacion/changeValues',
+        url   : 'Preaprobacion/changeValues',
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){

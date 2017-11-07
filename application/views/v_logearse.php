@@ -41,7 +41,7 @@
             <div class="panel panel-primary login-div">
 
                 <div class="panel-body">
-                  <form class="form-horizontal" action="/logearse/login" method="post">
+                  <form class="form-horizontal" action="/Logearse/login" method="post">
                     <div class="form-group">
                       <label class="control-label col-sm-3 tipo_letra_gruesa" for="email" style="font-family:'quicksandbold'; color:#286090">Usuario:</label>
                       <div class="col-sm-8">
