@@ -33,11 +33,11 @@
     <div class="container">
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header"><a href="/C_login">&iexcl;Te financiamos hasta el<br>90% de tu auto!</a></h1>
+          <h1 class="title-header"><a href="/Vehicular">&iexcl;Te financiamos hasta el<br>90% de tu auto!</a></h1>
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none"><a href="/C_login">&iexcl;Te financiamos hasta el 90% de tu auto!</a></h1>
+          <h1 style="display: none"><a href="/Vehicular">&iexcl;Te financiamos hasta el 90% de tu auto!</a></h1>
         </div>
       </div>    
     </div>            

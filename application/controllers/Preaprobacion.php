@@ -20,6 +20,11 @@ class Preaprobacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+
+        $this->load->helper("url");
+        $this->load->helper("access_helper");
+        is_logged();
+        
         $this->sueldo = 18750;
         $this->array_datos = array(
             array(

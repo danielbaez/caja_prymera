@@ -3,7 +3,7 @@ function goToHome(dato) {
 		location.href = "/Micash";
 	}
 	if(dato == 2) {
-		location.href = "/C_login";
+		location.href = "/Vehicular";
 	}
 }
 

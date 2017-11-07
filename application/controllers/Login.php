@@ -47,27 +47,4 @@ class Login extends CI_Controller {
        var_dump($this->email->print_debugger());
      }
     
-    public function index()
-    {
-        $dato['nombreDato']=':D';
-        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
-        $this->load->view('v_login', $dato);
-
-
-        //$this->sendMailGmail(); 
-
-        //twilio enviar msn
-        /*$this->load->library('twilio');
-        $from = '786-220-7333';
-        $to = '+51 968 820 382';
-        $message = 'This is a testdqwdqwd qwdqw...';
-        $response = $this->twilio->sms($from, $to, $message);
-        print_r($response);
-        if($response->IsError)
-          exit('Error: ' . $response->ErrorMessage);
-        else
-          exit('Sent message to ' . $to);*/
-
-    }
-    
 }

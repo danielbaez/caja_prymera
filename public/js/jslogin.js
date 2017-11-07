@@ -44,7 +44,7 @@ function solicitarPrestamo() {
 				  dni       : dni,
 				  email     : email,
 				  check     : check},
-		url   : 'C_login/solicitar',
+		url   : 'Vehicular/solicitar',
 		type  : 'POST',
 		dataType: 'json',
 	}).done(function(data){

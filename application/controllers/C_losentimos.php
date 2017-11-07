@@ -59,7 +59,7 @@ class C_losentimos extends CI_Controller {
             if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
                   $data['location']  = '/Micash';
             }else {
-                $data['location']  = '/C_login';
+                $data['location']  = '/Vehicular';
             }
         $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){

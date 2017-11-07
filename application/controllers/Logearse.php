@@ -197,7 +197,7 @@ class Logearse extends CI_Controller {
                                     $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
                                                                    'permiso_prod' => PERMISO_VEHICULAR,
                                                                     'conectado'   => 1));
-                                    redirect('Login');   
+                                    redirect('Vehicular');   
                                 }
                             }
                         }

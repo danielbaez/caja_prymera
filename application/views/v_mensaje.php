@@ -27,8 +27,8 @@
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-            <h1 class="title-header-first"><a href="/C_login">Cr&eacute;dito Vehicular</a></h1>
-            <h1 class="title-header-second"><a href="/C_login">Auto de Prymera</a></h1>
+            <h1 class="title-header-first"><a href="/Vehicular">Cr&eacute;dito Vehicular</a></h1>
+            <h1 class="title-header-second"><a href="/Vehicular">Auto de Prymera</a></h1>
             <?php } else { ?>
             <h1 class="title-header-first"><a href="/Micash">Cr&eacute;dito consumo</a></h1>
             <h1 class="title-header-second"><a href="/Micash">Mi Cash</a></h1>
@@ -37,7 +37,7 @@
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
           <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-            <h1 style="display: none"><a href="/C_login">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
+            <h1 style="display: none"><a href="/Vehicular">Cr&eacute;dito Vehicular | Auto de Prymera</a></h1>
             <?php } else { ?>
             <h1 style="display: none"><a href="/Micash">Cr&eacute;dito consumo | Mi Cash</a></h1>
           <?php } ?>
@@ -45,11 +45,6 @@
       </div>    
     </div>            
   </div>
-
-
-
-  
-
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -76,7 +71,34 @@
 </nav>
 
     <div class="container">
-      <div class="row" style="margin-top:30px">
+
+      <div class="row m-t-40 row-container-resumen">
+      <div class="col-xs-12 col-sm-9 text-center">
+        
+      </div>
+      <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
+        <ul class="nav navbar-nav navbar-right dropdown-menu-user">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                    <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                    <a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li>
+                    <?php if(_getSesion('rol') == 'asesor'){ ?>
+                    <a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a>
+                    <?php } ?>
+                </li>
+                <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+              </ul>
+            </li>
+        </ul>                
+      </div>
+    </div>
+
+      <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" style="position: relative;top: 50px;">
           <div class="panel panel-primary" style="">
             <div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">

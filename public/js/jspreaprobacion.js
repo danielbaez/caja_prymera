@@ -268,5 +268,5 @@ function getModelo() {
 }
 
 function goToHome() {
-	location.href = '/C_login';
+	location.href = '/Vehicular';
 }
