@@ -117,3 +117,18 @@ defined('MSJ_INSERT_ERROR')   OR define('MSJ_INSERT_ERROR', 'Se ha insertado inc
 defined('MSJ_INSERT_SUCCESS') OR define('MSJ_INSERT_SUCCESS', 'Se ha insertado correctamente');
 defined('MSJ_DELETE_ERROR')   OR define('MSJ_DELETE_ERROR', 'Se ha eliminado incorrectamente');
 defined('MSJ_DELETE_SUCCESS') OR define('MSJ_DELETE_SUCCESS', 'Se ha eliminado correctamente');
+
+//PAGINAS
+defined('PG_INGRESO_DATOS')   OR define('PG_INGRESO_DATOS', 'Ingreso de datos');
+defined('PG_SIMULADOR') OR define('PG_SIMULADOR', 'Simulador');
+defined('PG_CONFIRMAR_DATOS')   OR define('PG_CONFIRMAR_DATOS', 'Confirmacion de datos');
+defined('PG_RESUMEN') OR define('PG_RESUMEN', 'Resumen de solicitud');
+defined('PG_INTRO_MAPA') OR define('PG_INTRO_MAPA', 'Introducción y mapa');
+
+//NUMERO PAGINAS
+defined('N_INGRESO_DATOS_RECHAZADO')   OR define('N_INGRESO_DATOS_RECHAZADO', 0);
+defined('N_INGRESO_DATOS')   OR define('N_INGRESO_DATOS', 1);
+defined('N_SIMULADOR') OR define('N_SIMULADOR', 2);
+defined('N_CONFIRMAR_DATOS')   OR define('N_CONFIRMAR_DATOS', 3);
+defined('N_RESUMEN') OR define('N_RESUMEN', 4);
+defined('N_INTRO_MAPA') OR define('N_INTRO_MAPA', 5);

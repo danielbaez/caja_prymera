@@ -28,7 +28,9 @@ class Resumen extends CI_Controller {
         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
             //redirect("/C_main", 'location');
         }
-        _log(print_r($this->session->all_userdata(), true));
+        $arrayUpdt = array('last_page' => N_RESUMEN);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+        //_log(print_r($this->session->all_userdata(), true));
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total'] = _getSesion('pago_total');
@@ -70,11 +72,13 @@ class Resumen extends CI_Controller {
                 $agencia = $this->M_preaprobacion->getAgenciasId($agencia);
                 $arrayUpdt = array('agencia_desembolso' => $agencia[0]->id,
                                 'timestamp_final'   => date("Y-m-d H:i:s"),
-                                'fec_estado' => date("Y-m-d H:i:s"));
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'last_page' => N_INTRO_MAPA);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }else{
               $arrayUpdt = array('timestamp_final'   => date("Y-m-d H:i:s"),
-                                'fec_estado' => date("Y-m-d H:i:s"));
+                                'fec_estado' => date("Y-m-d H:i:s"),
+                                'last_page' => N_INTRO_MAPA);
               
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             }
@@ -297,9 +301,10 @@ class Resumen extends CI_Controller {
           $texto_envio = null;
           $fecha = explode('-', date("Y-m-d"));
           $fecha_new = $fecha[1].'-'.($fecha[2]+10);
+          $newDate = date("d-m-Y", strtotime($this->_data_last_month_day()));
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
         _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
-        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$this->_data_last_month_day().'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
+        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$newDate.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
           //twilio enviar msn
         $this->load->library('twilio');
         $from = '786-220-7333';

@@ -468,9 +468,9 @@
 
 
           
-          $('#importePrestamo').html('S/'+currency(data.importeeeeee));
-          $('#cantTotPago').html('S/'+currency(data.pagoTotal));  
-          $('#cantMensPago').html('S/'+currency(data.cuotaMensual)); 
+          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
           $('#tea').html(data.tea+'%');
           $('#seguroAuto').html('S/ '+data.seguroAuto);
@@ -540,9 +540,9 @@
           dataType: 'json'
         }).done(function(data){
           console.log(data);
-          $('#importePrestamo').html('S/'+currency(data.importeeeeee));
-          $('#cantTotPago').html('S/'+currency(data.pagoTotal));  
-          $('#cantMensPago').html('S/'+currency(data.cuotaMensual)); 
+          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
           $('#tcea').html(data.tcea+'%');
           $('#tea').html(data.tea+'%');
           $('#seguroAuto').html('S/ '+data.seguroAuto);
@@ -645,9 +645,9 @@
             start: data.cuotaMinimo
         });
     
-        $('#importePrestamo').html('S/'+currency(data.importeeeeee));
-        $('#cantTotPago').html('S/'+currency(data.pagoTotal));  
-        $('#cantMensPago').html('S/'+currency(data.cuotaMensual)); 
+        $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
         $('#tcea').html(data.tcea+'%');
         $('#tea').html(data.tea+'%');
         $('#seguroAuto').html('S/ '+data.seguroAuto);

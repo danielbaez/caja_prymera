@@ -305,27 +305,6 @@ function reenviarEmail() {
 	});
 }
 
-function habilitarCampo() {
-	var salario     	  = $('#salario').val();
-	var nro_celular 	  = $('#nro_celular').val();
-	var empleador   	  = $('#empleador').val();
-	var direccion_empresa = $('#direccion_empresa').val();
-	var Departamento 	  = $('#Departamento').val();
-	var Provincia 		  = $('#Provincia').val();
-	var Distrito 		  = $('#Distrito').val();
-	var codigo  		  = $('#codigo').val();
-	var codigo  		  = $('#codigo').val();
-	var nro_fijo 		  = $('#nro_fijo').val();
-	var Agencia 		  = $('#idagencia').val();
-	var concesionaria	  = $('#concesionaria').val();
-	var email 			  = $('#email').val();
-	//var checkAutorizo     = $('#checkAutorizo').is(':checked');
-	if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
-		&& Provincia != '' && Distrito != '' && Agencia != '' && email != ''/* && nro_fijo != '' && codigo != ''*/ /*&& checkAutorizo != false*/) {
-		$('#btnAceptar').removeAttr("disabled");
-	}
-}
-
 function limpiarCampos() {
 	$('#uno').val(null);
 	$('#dos').val(null);

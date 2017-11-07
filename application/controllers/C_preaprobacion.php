@@ -36,6 +36,10 @@ class C_preaprobacion extends CI_Controller {
         $data['comboAgencias']      = $this->__buildComboAgencias();
         $data['comboDepa']          = $this->__buildDepartamento();
         $data['comboMarca']         = $this->__buildMarca();
+
+        $idPersona = _getSesion('idPersona');
+        $arrayUpdt = array('last_page'     => N_SIMULADOR);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         
         $data['nombreDato']=':D';
         $data['nombre'] = ucfirst(_getSesion('nombre'));
