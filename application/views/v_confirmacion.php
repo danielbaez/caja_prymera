@@ -123,13 +123,13 @@
                               <div class="form-group">
                                   <select onkeyup="verificarDatos(event);" class="form-control" id="salario"  name="salario" onchange="habilitarCampo()">
                                           <option value="">* Ingreso Mensual</option>
-                                          <option value="">Hasta 1,000 soles</option>
-                                          <option value="">De 1,000 a 2,000 soles</option>
-                                          <option value="">De 2,000 a 3,000 soles</option>
-                                          <option value="">De 3,000 a 4,000 soles</option>
-                                          <option value="">De 4,000 a 5,000 soles</option>
-                                          <option value="">De 5,000 a 6,000 soles</option>
-                                          <option value="">De 6,000 a más</option>
+                                          <option value="Hasta 1,000 soles">Hasta 1,000 soles</option>
+                                          <option value="De 1,000 a 2,000 soles">De 1,000 a 2,000 soles</option>
+                                          <option value="De 2,000 a 3,000 soles">De 2,000 a 3,000 soles</option>
+                                          <option value="De 3,000 a 4,000 soles">De 3,000 a 4,000 soles</option>
+                                          <option value="De 4,000 a 5,000 soles">De 4,000 a 5,000 soles</option>
+                                          <option value="De 5,000 a 6,000 soles">De 5,000 a 6,000 soles</option>
+                                          <option value="De 6,000 a más">De 6,000 a más</option>
                                 </select>
                               </div>
                             </div>
