@@ -297,9 +297,6 @@
               });
             },
             onKeyEnterEvent: function(data) {
-              console.log('entra');
-              alert('123');
-              return;
             }
           },
 
@@ -307,6 +304,7 @@
         };
 
         $("#supervisor").easyAutocomplete(options);
+        $('div.easy-autocomplete').removeAttr('style');
 
       });
 
