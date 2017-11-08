@@ -12,6 +12,7 @@ class C_horario extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->model('M_horario');
         $this->load->model('M_agencia');
+        $this->load->model('M_acceso');
         $this->load->helper("url");
 
         $this->load->helper("access_helper");
@@ -28,6 +29,8 @@ class C_horario extends CI_Controller {
         $data['agencias'] = $this->M_agencia->getAllAgencias();
 
         $data['horarios'] = false;
+
+        $data['acceso'] = $this->M_acceso->getAcceso();
 
         $this->load->view('v_horarios', $data);
     }
@@ -47,16 +50,30 @@ class C_horario extends CI_Controller {
             $data['horarios'] = false;
         }
 
+        $data['acceso'] = $this->M_acceso->getAcceso();
+
         $this->load->view('v_horarios', $data);
     }
 
     public function save()
-    {   
+    {
+        $acceso = _post('acceso') == 'on' ? 1 : 0;
         $agencia = _post('agencia');
-        $desde = _post('desde');
-        $hasta = _post('hasta');
+        if($agencia != '')
+        {
+            $desde = _post('desde');
+            $hasta = _post('hasta');    
+        }
+        else
+        {
+            $agencia = false;
+            $desde = false;
+            $hasta = false;
+        }
+        
         //exit($agencia);
         $this->M_horario->setHorario($agencia, $desde, $hasta);
+        $this->M_acceso->setAcceso($acceso, 'horario');
         $this->session->set_flashdata('msg', 'Se actualizo el horario correctamente');
         redirect('C_horario');
     }

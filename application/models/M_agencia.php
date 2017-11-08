@@ -105,9 +105,7 @@ class M_agencia extends  CI_Model{
         foreach ($agencias as $key => $value) {
             $this->db->where('id', $key);
             $this->db->update('agencias', ['ip' => $value]);
-        }
-        
+        }        
     }
-
     
 }

@@ -46,14 +46,14 @@
             </div>
             <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px; border-bottom-right-radius: 40px;">
               <div class="row text-center" style="color:#EF484E">
-                <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';">Ingrese su usuario y su nueva contrase&ntilde;a</h1>
-                <div class="col-md-12">
+                <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';">Ingrese su nueva contrase&ntilde;a</h1>
+                <!-- <div class="col-md-12">
                   <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     <div class="form-group">
                           <input class="form-control" type="text" id="email" placeholder="Usuario o correo electr&oacute;nico" maxlength="50" style="">
                         </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-12">
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     <div class="form-group">

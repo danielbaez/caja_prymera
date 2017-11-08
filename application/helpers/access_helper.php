@@ -10,7 +10,7 @@ if (!function_exists('is_logged'))
     	
     	if (!$is_logged)
 	    { 
-	        $public = permissions($controller);
+	        $public = permissions_public($controller);
 	        $public = $public['public'];
 
 	        if(!in_array($CI->router->fetch_method(), $public))
@@ -23,28 +23,41 @@ if (!function_exists('is_logged'))
 	    }
 	    else
 	    {
-	    	$rol = _getSesion('rol');
-	    	$redirect = roles($rol);
+	    	$CI->load->model('M_usuario');
+	    	$datos = $CI->M_usuario->getLoginById(_getSesion('id_usuario'));
+	    	$access = $CI->M_usuario->verifyUserIPTime($datos[0]);
 
-	    	$controller = $CI->uri->segment(1);
+	    	if(!$access['error'])
+	    	{
+		    	$rol = _getSesion('rol');
+		    	$redirect = roles($rol);
 
-			$method = $CI->router->fetch_method();
+		    	$controller = $CI->uri->segment(1);
 
-			$perm_method = rolPermissions($rol);
-	
-			if(is_array($perm_method) && !in_array($method, $perm_method[$controller]))
-			{
-				if($controller != $redirect)//solo si el controller es diferente 
+				$method = $CI->router->fetch_method();
+
+				$perm_method = rolPermissions($rol);
+		
+				if(is_array($perm_method) && !in_array($method, $perm_method[$controller]))
 				{
-					redirect('/'.$redirect);
+					if($controller != $redirect)//solo si el controller es diferente 
+					{
+						redirect('/'.$redirect);
+					}
 				}
-			}			
+			}
+			else
+			{
+				$CI->session->set_userdata('logged', false);
+				$CI->session->set_flashdata('error', $access['error']);
+        		redirect('/', 'refresh');
+			}
 	    }
     }
 
 }
 
-function permissions($controller)
+function permissions_public($controller)
 {
 	$p = ['' => ['public' => ['index']],
 		  'Logearse' => ['public' => ['index', 'login', 'olvidoPassword', 'recuperarPass']],

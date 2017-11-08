@@ -15,6 +15,9 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+
+        <link href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+
 		<style>
 		</style>  	
 	</head>
@@ -105,7 +108,8 @@
 		  <div class="col-xs-12 col-md-12 col-seccion">
 			<div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 div-seccion">
 			<form class="form" action="/C_ip/save" method="POST" id="form-ip">
-			  <h4>Asignar IP</h4>
+        <h4>Asignar IP</h4>
+        <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" <?php echo $acceso[0]->ip == 1 ? 'checked="checked"' : ''; ?>" name="acceso"></p>
 			  <div class="table-responsive">
 				<table class="table table-bordered" id="tabla-agencias">
 				  <thead>
@@ -159,9 +163,26 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
+
+<script src="<?php echo RUTA_JS?>highlight.js"></script>
+<script src="https://unpkg.com/bootstrap-switch"></script>
+
 <script>
 
 $(document).ready(function() {
+
+  window.hljs.initHighlightingOnLoad();
+
+  $('input[type="checkbox"], input[type="radio"]')
+    .not('[data-switch-no-init]')
+    .bootstrapSwitch()
+
+  $('input[name="acceso"]').on('switchChange.bootstrapSwitch', function(event, state) {
+    console.log(this); // DOM element
+    console.log(event); // jQuery event
+    console.log(state); // true | false
+
+  });
 
 	var table = $('#tabla-agencias').DataTable( {
 

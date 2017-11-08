@@ -1,17 +1,17 @@
 function cambiarPass() {
-	var email = $('#email').val();
+	//var email = $('#email').val();
 	var password = $('#password').val();
 	var encrypt = $('#encrypt').val();
-	if(email == null || email == '') {
+	/*if(email == null || email == '') {
 		msj('error', 'Ingrese su email correctamente');
 		return;
-	}
+	}*/
 	if(password == null || password == '') {
-		msj('error', 'Ingrese su email correctamente');
+		msj('error', 'Ingrese su nueva contraseña');
 		return;
 	}
 	$.ajax({
-		data  : { email : email,
+		data  : { //email : email,
 				  password : password,
 				  encrypt : encrypt},
 		url   : '/C_cambiarPassword/cambiarPass',
