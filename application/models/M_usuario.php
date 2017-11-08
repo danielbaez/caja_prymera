@@ -59,12 +59,12 @@ class M_usuario extends  CI_Model{
             $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
         }
 
-        echo "ip1".$_SERVER['HTTP_CLIENT_IP'];
+        /*echo "ip1".$_SERVER['HTTP_CLIENT_IP'];
         echo "<br>";
         echo "ip2".$_SERVER['HTTP_X_FORWARDED_FOR'];
         echo "<br>";
         echo "ip3".$_SERVER['REMOTE_ADDR'];
-        echo "<br>";
+        echo "<br>";*/
 
         //$ip = '192.168.1.5';
 
@@ -85,7 +85,7 @@ class M_usuario extends  CI_Model{
             echo "<br>";
             echo $ip;
 
-            exit();
+            //exit();
 
             //echo $ip_db; exit();
 
