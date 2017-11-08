@@ -93,13 +93,13 @@ class M_usuario extends  CI_Model{
             {
                 return array('error' => 'No esta conectado a una ip especifica');
             }
-            elseif($now > $desde && $now < $hasta)
+            if($now < $desde || $now > $hasta)
             {
-                return array('error' => false);
+                return array('error' => 'No puede acceder a esta hora');
             }
             else
             {
-                return array('error' => 'No puede acceder a esta hora');
+                return array('error' => false);
             }
             
         }
