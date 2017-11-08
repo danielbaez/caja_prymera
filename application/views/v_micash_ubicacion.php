@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <title>Cr&eacute;dito Mi Auto</title>
+      <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>

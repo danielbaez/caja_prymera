@@ -20,6 +20,7 @@ class Preaprobacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        $this->load->model('M_usuario');
 
         $this->load->helper("url");
         $this->load->helper("access_helper");
@@ -52,10 +53,11 @@ class Preaprobacion extends CI_Controller {
     
     public function index()
     {
-        if(_getSesion("usuario") == null && _getSesion('conectado') == 0) {
-            //redirect("/C_main", 'location');
-        }
         $idPersona = _getSesion('idPersona');
+        $datos = $this->M_usuario->getDatosById('solicitud', 'id', $idPersona);
+        if($datos[0]->last_page != N_SIMULADOR) {
+            redirect("/C_main", 'location');
+        }
         $data['nombreDato']=':D';
         $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']  = _getSesion('email');

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <title>Cr&eacute;dito Mi Auto</title>
+      <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>

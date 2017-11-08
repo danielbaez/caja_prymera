@@ -15,6 +15,7 @@ class Ubicacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        $this->load->model('M_usuario');
 
         $this->load->helper("access_helper");
         is_logged();
@@ -26,10 +27,10 @@ class Ubicacion extends CI_Controller {
 
     public function index()
     {
-         if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
-            ////redirect("/C_main", 'location');
+        $datos = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
+        if($datos[0]->last_page != N_INTRO_MAPA) {
+            redirect("/C_main", 'location');
         }
-        //$this->session->set_userdata(array('conectado' => 0));
         $dato['nombreDato']=':D';
         $dato['pago_total'] = _getSesion('pago_total');
         $dato['nombre'] = ucfirst(_getSesion('nombre'));
@@ -40,8 +41,6 @@ class Ubicacion extends CI_Controller {
         $dato['Importe'] = _getSesion('Importe');
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
-        //$datos_bd = $this->M_preaprobacion->getDireccionByAgencia(_getSesion('Agencia'));
-        //$dato['direccion'] = $datos_bd[0]->UBICACION;
         $dato['concesionaria'] = _getSesion('concesionaria');
         $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
         $dato['ubicacion'] = $direccion[0]->UBICACION;

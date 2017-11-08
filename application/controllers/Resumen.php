@@ -14,6 +14,7 @@ class Resumen extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        $this->load->model('M_usuario');
 
         $this->load->helper("access_helper");
         is_logged();
@@ -25,12 +26,12 @@ class Resumen extends CI_Controller {
 
     public function index()
     {
-        if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0) {
-            //redirect("/C_main", 'location');
+        $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
+        if($datos_page[0]->last_page != N_RESUMEN) {
+            redirect("/C_main", 'location');
         }
         $arrayUpdt = array('last_page' => N_RESUMEN);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-        //_log(print_r($this->session->all_userdata(), true));
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total'] = _getSesion('pago_total');
@@ -85,7 +86,6 @@ class Resumen extends CI_Controller {
             $validacion = $this->sendMailGmail();
             $gmailAgencia = $this->sendMailGmailAgencia();
             $celular = $this->enviarMail();
-//             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -124,10 +124,10 @@ class Resumen extends CI_Controller {
        $texto = null;
        $nombre = _getSesion('nombre');
        $tipo_cred = null;
-       $imagen = null
-       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
-       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
-       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
+       $imagen = null;
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
        $texto = '<!DOCTYPE html>
 <html>
 <head>

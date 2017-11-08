@@ -20,6 +20,7 @@ class C_confirmacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        $this->load->model('M_usuario');
 
         $this->load->helper("access_helper");
         is_logged();
@@ -51,8 +52,9 @@ class C_confirmacion extends CI_Controller {
     
     public function index()
     {
-        if(_getSesion("usuario") == null && _getSesion("nombre") == null || _getSesion('conectado') == 0 || _getSesion('conectado') == 0) {
-            ////redirect("/C_main", 'location');
+        $datos = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
+        if($datos[0]->last_page != N_CONFIRMAR_DATOS) {
+            redirect("/C_main", 'location');
         }
         $idPersona  = _getSesion('idPersona');
         $arrayUpdt = array('last_page' => N_CONFIRMAR_DATOS);
@@ -342,16 +344,19 @@ class C_confirmacion extends CI_Controller {
         echo json_encode(array_map('utf8_encode', $data));
     }
 
-     function goToHome() {
+     function Redireccionar() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
-                  $data['location']  = '/Micash';
+            $idPersona  = _getSesion('idPersona');
+            $arrayUpdt = array('last_page' => N_SIMULADOR);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+            if(_getSesion('tipo_producto') == PRODUCTO_MICASH) {
+                  $data['location']  = '/Preaprobacion';
             }else {
-                $data['location']  = '/Vehicular';
+                $data['location']  = '/C_preaprobacion';
             }
-        $data['error'] = EXIT_SUCCESS;
+            $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }

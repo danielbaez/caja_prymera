@@ -8,7 +8,7 @@ function addStyle() {
 		$('#titulo').html('Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos');
 		flg_active++;
 	}else {
-		$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre aprobado');
+		$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre-aprobado');
 		flg_active = 1;
 	}
 	$('#remove1').removeClass("active");
@@ -317,22 +317,6 @@ function mostrarEstadoCivil() {
 	}
 }
 
-function goToHome() {
-	$.ajax({
-		url   : '/C_confirmacion/goToHome',
-		type  : 'POST'
-	}).done(function(data){
-		try{
-		   	data = JSON.parse(data);
-		   	if(data.error == 0) {
-		   		location.href = data.location;
-		   	}
-		} catch (err){
-			msj('error',err.message);
-		}
-	});
-}
-
 function cambiarTam() {
 	var codigo = $('#codigo').val();
 	if(codigo != '01') {
@@ -426,4 +410,21 @@ function verificarCampos() {
 	}
 
 	enviarMail();
+}
+
+function redirect() {
+	$.ajax({
+		url   : '/C_confirmacion/Redireccionar',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+		   	data = JSON.parse(data);
+		   	console.log(data);
+		   	if(data.error == 0) {
+		   		location.href = data.location;
+		   	}
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
 }

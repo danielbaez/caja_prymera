@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <title>Cr&eacute;dito Mi Auto</title>
+      <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
@@ -127,7 +127,7 @@
         <div class="col-xs-12 col-md-6 col-md-push-6 info">
           <h3 class="title-general">Felicidades <?php echo $nombre ?>!</h3>
           <p class="info2">tu pr&eacute;stamo ha sido</p>
-          <p class="info2">pre aprobado, ya est&aacute;s cerca</p>
+          <p class="info2">pre-aprobado, ya est&aacute;s cerca</p>
           <p class="info2">de cumplir tus sue&ntilde;os</p>
         </div>
 
@@ -277,12 +277,9 @@
                 </div>
               </form>
               <div class="col-xs-12">
-                <!-- <div class="col-xs-8 text-right">
-                  <button type="button" class="btn btn-lg" style="font-family: 'quicksandlight';margin-left: 230px;margin-top: -65px;" onclick="irAUbicacion()">Aceptar</button>
-                </div> -->
               </div>
                 <div class="col-xs-12 color-info">
-                  <p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>Cr&eacute;dito Vehicular <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada a tu correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gestion de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
+                  <p>* La solicitud de tu <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>Cr&eacute;dito Auto de Prymera <?php }else { ?> Cr&eacute;dito Mi Cash <?php } ?>ha sido enviada a tu correo electr&oacute;nico y al n&uacute;mero de celular que proporcionaste, indicando las instrucciones a seguir para <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?> la gesti&oacute;n de tu cr&eacute;dito <?php }else { ?>el desembolso<?php } ?></p>
                 </div>
             </form>
             </div>
@@ -323,7 +320,7 @@
             </p>
 
             <p class="tipo_letra">
-            <strong>Financiamiento Compra Inteligente</strong>: Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia en 36 cuotas mensuales hasta el 100% del valor del vehículo, donde el 60% del valor se reparten en 35 cuotas mensuales de igual monto y el 40% en la última cuota (36) incluyendo los intereses correspondientes, con la opción de poder pagar la última cuota (40%) o pagar el saldo del crédito a 24 cuotas adicionales, según lo acordado en el crédito vehicular. Monto del crédito Min S/75,000 o USD $ 25,000 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo y sólo de gama media – alta.<br> 
+            <strong>Financiamiento Compra Inteligente</strong>: Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia en 36 cuotas mensuales hasta el 100% del valor del vehículo, donde el 60% del valor se reparten en 35 cuotas mensuales de igual monto y el 40% en la última cuota (36) incluyendo los intereses correspondientes, con la opción de poder pagar la última cuota (40%) o pagar el saldo del crédito a 24 cuotas adicionales, según lo acordado en el crédito auto de prymera. Monto del crédito Min S/75,000 o USD $ 25,000 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo y sólo de gama media – alta.<br> 
 
             <p class="tipo_letra">
             Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. El monto del seguro vehicular es referencial dependerá de la marca y modelo que el cliente elija, pudiendo variar en caso el cliente opte por un seguro vehicular particular y no el de Prymera.  La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si se desembolsa S/ xx,000 a xx meses, pagarás lo siguiente: xx cuotas mensuales de S/ xxxxxx, total de intereses S/ xxxxxxxx, monto total de seguro desgravamen xxxxx, y monto total de seguro xxxxx TCEA xxxxx% La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros. “<br> 
