@@ -125,7 +125,6 @@ class Preaprobacion extends CI_Controller {
         }
 
         $data['importeMaximo']      = $importeMaximo;
-        //_log($importeMaximo);
         $data['importeMinimo']      = $importeMinimo;
 
 
@@ -525,7 +524,6 @@ class Preaprobacion extends CI_Controller {
             $session = array('marca'            => $marca,
                              'modelo'          => $modelo);
             $this->session->set_userdata($session);
-//             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($session, 'tipo_producto');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -564,7 +562,6 @@ class Preaprobacion extends CI_Controller {
             $meses  = _post('meses');
             $importe  = _post('cuotaIni');
             $numero  = _post('numero');
-            //$varTea  = 
             $varTcea  = _post('pors_tcea');
             $varTea   = _post('pors_tea');
             $Agencia  = _post('Agencia');
@@ -591,7 +588,6 @@ class Preaprobacion extends CI_Controller {
                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
-                //$this->sendMailGmail();
             }
 
             $data['error'] = EXIT_SUCCESS;
@@ -618,66 +614,6 @@ class Preaprobacion extends CI_Controller {
         else
           exit('Sent message to ' . $to);
     }
-
-    /*function sendMailGmail()
-    {
-       //cargamos la libreria email de ci
-       $this->load->library("email");
-       //configuracion para gmail
-       $configGmail = array(
-       'protocol' => 'smtp',
-       // 'smtp_host' => 'ssl://smtp.gmail.com',
-       // 'smtp_port' => 465,
-       // 'smtp_user' => 'daniel.baez@comparabien.com',
-       // 'smtp_pass' => 'compara@daniel',
-       'smtp_host' => 'smtp.pepipost.com',
-       'smtp_port' => 25,
-       'smtp_user' => 'comparabien',
-       'smtp_pass' => 'Compara123',
-       'mailtype' => 'html',
-       'charset' => 'utf-8',
-       'newline' => "\r\n"
-       );    
-       
-       //cargamos la configuración para enviar con gmail
-       $this->email->initialize($configGmail);
-       $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
-       $ubicacion = $direccion[0]->UBICACION;
-       $this->email->from('daniel.baez@comparabien.com');
-       $this->email->to(_getSesion('email'));
-       $this->email->subject('Bienvenido/a a Caja Prymera');
-       $nombre = _getSesion('nombre');
-       $this->email->message('
-        <h1><strong>Mi Cash</strong></h1>
-        <h4>'.$nombre.' Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n detallamos las condiciones del cr&eacute;dito “MI CASH” </h4>
-        <h4>que solicitaste:</h4>
-
-        <p>Monto: '._getSesion('pago_total').' </p>
-        <p>Plazo: '._getSesion('cant_meses').'</p>
-        <p>Cuota: '._getSesion('cuota_mensual').'</p>
-        <p>TEA: '._getSesion('sess_tea').'</p>
-        <p>TCEA: '._getSesion('TCEA').'</p>
-
-        <h1><strong>Quiero desembolsar mi cr&eacute;dito pre aprobado &iquest;Qu&eacute; debo hacer?</strong></h1>
-        <p>Acércate a la agencia: “'._getSesion('Agencia').'” ubicada en '.$ubicacion.'.</p>
-
-        <h3><strong>&iquest;Qu&eacute; debo presentar?</strong></h3>
-        <p>- Tu DNI vigente </p>
-        <p>- Un recibo de servicio (m&aacute;ximo 2 meses de antigüedad).</p>
-
-        <h3><strong>¡M&aacute;s Beneficios para ti!</strong></h3>
-        <p>Si deseas un cr&eacute;dito con un monto mayor al pre-aprobado, debes llevar tu &uacute;ltima boleta de </p>
-        <p>pago para que podamos evaluarte.</p>
-
-        <p>¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
-
-        <p>T&eacute;rminos y condiciones:” Seg&uacute;n lo especificado por legal”</p>
-        ');
-       $this->email->send();
-       //con esto podemos ver el resultado
-       //var_dump($this->email->print_debugger());
-     }*/
 
      function setearDatos() {
         $data['error'] = EXIT_ERROR;
