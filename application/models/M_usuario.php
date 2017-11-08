@@ -75,7 +75,7 @@ class M_usuario extends  CI_Model{
             $hasta = $result[0]->Hastaaa;
             $ip_db = $result[0]->ip;
 
-            $now = date('H:m:s');
+            $now = date('H:i:s');
 
             echo "desde:".$desde;
             echo "<br>";
