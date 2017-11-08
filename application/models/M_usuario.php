@@ -85,7 +85,7 @@ class M_usuario extends  CI_Model{
             echo "<br>";
             echo $ip;
 
-            //exit();
+            exit();
 
             //echo $ip_db; exit();
 
