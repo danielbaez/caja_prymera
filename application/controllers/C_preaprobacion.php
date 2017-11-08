@@ -14,6 +14,7 @@ class C_preaprobacion extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
+        $this->load->model('M_usuario');
 
         $this->load->helper("access_helper");
         is_logged();
@@ -23,14 +24,14 @@ class C_preaprobacion extends CI_Controller {
         $this->maxIniPorc  = 0.5;
         if (! isset($_COOKIE[__getCookieName()])) {
             redirect("/", 'location');
-        }
-        
+        } 
     }
     
     public function index()
     {
-        if(_getSesion("usuario") == null && _getSesion("nombre") == null) {
-            //redirect("/C_main", 'location');
+        $datos = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
+        if($datos[0]->last_page != N_SIMULADOR) {
+            redirect("/C_main", 'location');
         }
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
         $data['comboAgencias']      = $this->__buildComboAgencias();
@@ -38,10 +39,9 @@ class C_preaprobacion extends CI_Controller {
         $data['comboMarca']         = $this->__buildMarca();
 
         $idPersona = _getSesion('idPersona');
-        $arrayUpdt = array('last_page' => N_INGRESO_DATOS_RECHAZADO);
+        $arrayUpdt = array('last_page' => N_SIMULADOR);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         
-        $data['nombreDato']=':D';
         $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']=_getSesion('email');
         $nombre = $this->session->userdata('nombre');
@@ -93,29 +93,13 @@ class C_preaprobacion extends CI_Controller {
             $arr_end[$value] = array('importeMinimo' => min($mmin), 'importeMaximo' => max($mmax));
         }
 
-        /*print_r($arr_end);
-        exit();*/
-
         $plazo_max = max($plazos);
         $arr_max = $arr_end[$plazo_max];
 
-        //$this->session->set_userdata(array('plazosss' => $plazos, 'arr_end' => $arr_end));
-
-
         $this->session->set_userdata(array('arr_end' => $arr_end));
-
-        //print_r($arr_max);  
 
         $minAuto = $arr_max['importeMinimo']/(1-$minIniPorc);      
         $maxAuto = $arr_max['importeMaximo']/(1-$maxIniPorc);
-
-        // print_r($minAuto);
-        // echo "<br>";
-        // print_r($maxAuto); 
-        
-        //$valorAuto = ($minAuto+$maxAuto)/2;
-
-        //print_r($valorAuto);
 
         $data['montoMaximo']      = round($maxAuto/100)*100;
         $data['montoMinimo']      = round($minAuto/100)*100;
@@ -126,15 +110,11 @@ class C_preaprobacion extends CI_Controller {
 
         $minInicial = max($valorAuto-$arr_max['importeMaximo'],$valorAuto*$minIniPorc);
         $maxInicial = min($valorAuto-$arr_max['importeMinimo'],$valorAuto*$maxIniPorc);
-
-        /*$data['montoMaximo']      = number_format(intval(round($maxAuto/100)*100), 2);
-        $data['montoMinimo']      = number_format(intval(round($minAuto/100)*100), 2);*/
        
         'mi_cash' == PRODUCTO_MICASH  ? $titulo = 'Felicidades '.ucfirst($nombre).'!!! ' : $titulo = '';
         
         $data['tipo_product'] = $titulo;
 
-        
         $count = count($plazos);
         if($count == 1){
             $data['plazo_max']      = $plazos[0];
@@ -159,7 +139,6 @@ class C_preaprobacion extends CI_Controller {
     }
     
     function changeValues() {
-
         $minIniPorc         = $this->minIniPorc;
         $maxIniPorc         = $this->maxIniPorc;
 
@@ -293,56 +272,6 @@ class C_preaprobacion extends CI_Controller {
         }
 
         echo json_encode($data);
-
-        /*$data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            $cantPago    = null;
-            $iniRango    = _post('cantidad');
-            $meses       = _post('meses');
-            $meses_pago  = null;
-            $nuevo       = null;
-            $minAuto     = null;
-            $maxAuto     = null;
-            $plazo       = null;
-            $minPrestamo = null;
-            $maxPrestamo = null;
-            $valorAuto   = null;
-            $minInicial  = null;
-            $maxInicial  = null;
-            $minIniPorc  = $this->minIniPorc;
-            $maxIniPorc  = $this->maxIniPorc;
-            $arr         = $this->array_datos;
-            $nuevo       = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$iniRango))));
-            
-            if($meses != null) {
-                $meses_pago = intval(str_replace(' ', '',str_replace('meses', '',$meses)));
-                foreach ($arr as $row) {
-                    if($meses_pago == $row['plazo']) {
-                        $minPrestamo = $row['importeMinimo'];
-                        $maxPrestamo = $row['importeMaximo'];
-                        $minAuto = $minPrestamo/(1-$minIniPorc);
-                        $maxAuto = $maxPrestamo/(1-$maxIniPorc);
-                    }
-                }
-                $valorAuto = ($minAuto+$maxAuto)/2;
-                $minInicial = max($valorAuto-$maxPrestamo,$valorAuto*$minIniPorc);
-                $maxInicial = min($valorAuto-$minPrestamo,$valorAuto*$maxIniPorc);
-            }
-            
-            $data['cuota_ini']   = $nuevo-round($minAuto/100)*100;
-            $data['minAuto']      = round($minAuto/100)*100;
-            $data['maxAuto']      = round($maxAuto/100)*100;
-            $data['max_cuota']    = round($maxInicial/100)*100;
-            $data['min_cuota']    = round($minInicial/100)*100;
-            $data['valor_auto']   = round($valorAuto/100)*100;
-            $data['cantPago']     = round($maxInicial/100)*100;
-            $data['mensual']      = round($minInicial/100)*100;
-            $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));*/
     }
     
     function changeValuesVehiculo() {
@@ -706,7 +635,8 @@ class C_preaprobacion extends CI_Controller {
                                 'modelo'          => $modelo,
                                 'costo_seguro'  => $seguro,
                                 'cuota_inicial' => $importe,
-                                'valor_auto'    => $monto
+                                'valor_auto'    => $monto,
+                               'last_page' => N_CONFIRMAR_DATOS
                             );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <title>Cr&eacute;dito Mi Auto</title>
+      <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
@@ -253,9 +253,9 @@
                       </div>
                       <div class="col-xs-12 m-t-50">
                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                        <a id="remove" class="link" href="/C_preaprobacion">Regresar</a>
+                        <a id="remove" class="link" onclick="redirect();">Regresar</a>
                         <?php } else{ ?>
-                        <a id="remove" class="link" href="/Preaprobacion">Regresar</a>
+                        <a id="remove" class="link" onclick="redirect();">Regresar</a>
                         <?php } ?>
                       </div>
                       <input type="hidden" name="tipo_producto_hidden" value="<?php echo $tipo_producto ?>">

@@ -100,7 +100,7 @@ function rolPermissions($rol)
 				   		'C_losentimos' => ['index', 'guardarDatos'],
 				   		'C_mensaje' => ['index'],
 				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
-				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero'],
+				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero', 'Redireccionar'],
 				   		'Resumen' => ['index', 'setearAgencia'],
 				   		'Ubicacion' => ['index']
 				   	],
@@ -112,7 +112,7 @@ function rolPermissions($rol)
 				   		'C_losentimos' => ['index', 'guardarDatos'],
 				   		'C_mensaje' => ['index'],
 				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
-				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero'],
+				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero', 'Redireccionar'],
 				   		'Resumen' => ['index', 'setearAgencia'],
 				   		'Ubicacion' => ['index']
 				   	]
