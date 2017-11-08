@@ -20,7 +20,34 @@ class M_usuario extends  CI_Model{
 
         //print_r($result_ip[0]->ip); exit();
 
-        $sql = "SELECT *, GROUP_CONCAT(horarios.lunes SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT(horarios.lunes SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT(horarios.lunes SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT(horarios.lunes SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT(horarios.lunes SEPARATOR '*'))+1, length(GROUP_CONCAT(horarios.lunes SEPARATOR '*'))) AS Hastaaa FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id INNER JOIN horarios ON agencias.id = horarios.id_agencia WHERE usuario.id = ?";
+        $day= date("w");
+        switch($day) {
+        case 0: 
+        $dia = "domingo";
+        break;
+        case 1: 
+        $dia = "lunes";
+        break;
+        case 2: 
+        $dia = "martes";
+        break;
+        case 3: 
+        $dia = "miercoles";
+        break;
+        case 4: 
+        $dia = "jueves";
+        break;
+        case 5: 
+        $dia = "viernes";
+        break;
+        case 6: 
+        $dia = "sabado";
+        break;
+        }
+
+        $dia_db = 'horarios.'.$dia;
+
+        $sql = "SELECT *, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id INNER JOIN horarios ON agencias.id = horarios.id_agencia WHERE usuario.id = ?";
 
         $result = $this->db->query($sql, array($usuario->id));
 
@@ -32,7 +59,7 @@ class M_usuario extends  CI_Model{
             $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
         }
 
-        $ip = '192.168.1.5';
+        //$ip = '192.168.1.5';
 
         if($result->num_rows() == 1)
         {
@@ -49,6 +76,9 @@ class M_usuario extends  CI_Model{
             echo "<br>";
             echo "hasta:".$hasta;
             echo "<br>";
+            echo $ip;
+
+            exit();
 
             //echo $ip_db; exit();
 
