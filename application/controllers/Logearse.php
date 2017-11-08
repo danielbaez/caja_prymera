@@ -40,9 +40,9 @@ class Logearse extends CI_Controller {
                 {
                     if($this->validate_pass($datos[0]->password, $password))
                     {
-                        /*$rr = $this->M_usuario->verifyUserIPTime($datos[0]);
+                        $rr = $this->M_usuario->verifyUserIPTime($datos[0]);
                         if(!$rr['error'])
-                        {*/
+                        {
                             $productos = explode(',', $datos[0]->permiso);
                             $this->session->set_userdata(array('usuario'          => $usuario,
                                                                 'rol'             => $datos[0]->rol,
@@ -130,12 +130,12 @@ class Logearse extends CI_Controller {
                                     redirect('C_usuario/nuevaSolicitud');    
                                 }
                             }
-                        //}
-                        /*else
+                        }
+                        else
                         {
                             $this->session->set_flashdata('error', $rr['error']);
                             redirect('/');
-                        }*/                            
+                        }                            
                     }
                     else
                     {
