@@ -237,7 +237,7 @@ class C_confirmacion extends CI_Controller {
                 $concecionaria = $this->M_preaprobacion->getConcecionariaId($concesionaria);
                 $concesionaria = $concecionaria[0]->id;
             }
-            if($numero != _getSesion('codigo_ver')) {
+            if(/*$numero != _getSesion('codigo_ver')*/false) {
                 $data['mensaje'] = "El n&uacute;mero ingresado no es v&aacute;";
                 $data['cambio'] = 1;
                 $arrayUpdt = array('validar_celular' => 0);
@@ -287,7 +287,7 @@ class C_confirmacion extends CI_Controller {
     function enviarMail() {
         $data['error'] = EXIT_SUCCESS;
         $data['msj']   = null;
-        try {
+        /*try {
         //twilio enviar msn
         $aleatorio = rand ( 100000 , 999999 );
         $data['nro']   = $aleatorio;
@@ -308,7 +308,7 @@ class C_confirmacion extends CI_Controller {
         }
         }catch (Exception $e){
             $data['error'] = EXIT_ERROR;
-        }
+        }*/
         echo json_encode(array_map('utf8_encode', $data));
     }
 

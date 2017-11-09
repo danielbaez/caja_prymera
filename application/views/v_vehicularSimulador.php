@@ -321,8 +321,6 @@
             type  : 'POST',
             dataType: 'json'
           }).done(function(data){
-            console.log(data);
-
             $('#sueldoMin').html('S/ '+data.montoMinimo);
             $('#sueldoMax').html('S/ '+data.montoMaximo);
 
@@ -344,7 +342,6 @@
                 },
                 start: data.cuotaMinimo
             });
-
             $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
             $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
             $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
@@ -471,7 +468,6 @@
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
-        console.log(data);
         $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 

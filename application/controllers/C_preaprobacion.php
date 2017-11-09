@@ -229,13 +229,11 @@ class C_preaprobacion extends CI_Controller {
 
             $data['status'] = 1;
 
-            if(_post('action') == 'plazo' or _post('action') == 'monto')
-            {
-                $data['importeeeeee'] = number_format($valorAuto - $data['cuotaMinimo'], true);            
+            if(_post('action') == 'plazo' or _post('action') == 'monto') {
+                $data['importeeeeee'] = number_format($valorAuto - $data['cuotaMinimo'], true).'0';      
             }
-            else
-            {
-                $data['importeeeeee'] = number_format($valorAuto - $cuota, 2);            
+            else {
+                $data['importeeeeee'] = number_format($valorAuto - $cuota, 2);     
             }
           }
           if($res == 0){

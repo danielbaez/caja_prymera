@@ -82,7 +82,7 @@ class Resumen extends CI_Controller {
             }
             $validacion = $this->sendMailGmail();
             $gmailAgencia = $this->sendMailGmailAgencia();
-            $celular = $this->enviarMail();
+            //$celular = $this->enviarMail();
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

@@ -51,31 +51,16 @@ a {
 .modal-body.resumen {
 	height: 370px;
     overflow-y: auto;
-    /*border: 1px solid #007ac0;
-    border-left: transparent;
-    border-right: transparent;
-    border-bottom: transparent;
-    width: 85%;
-    margin-left: 80px;*/
 }
 .modal-body.otros{
 	height: 200px;
     overflow-y: auto;
-    border: 1px solid #007ac0;
-    border-left: transparent;
-    border-right: transparent;
-    border-bottom: transparent;
     width: 85%;
+    margin-top: -25px;
 }
 .modal-body.preaprobacion-modal{
     height: 240px;
     overflow-y: auto;
-    /*border: 1px solid #007ac0;
-    border-left: transparent;
-    border-right: transparent;
-    border-bottom: transparent;
-    width: 85%;
-    margin-left: 30px;*/
 }
 .modal-body.celular{
 	height: 188px;
@@ -91,15 +76,8 @@ a {
 .modal-body.text-center.modal-reporte-informacion-solicitud {
     height: 370px;
     overflow-y: auto;
-    /*border: 1px solid #007ac0;
-    border-left: transparent;
-    border-right: transparent;
-    border-bottom: transparent;
-    width: 85%;
-    margin-left: 70px;*/
 }
 .modal-footer {
-    /*margin-top: -40px;*/
 }
 .modal-body.celular .bs-example{
     margin-top: -20px;

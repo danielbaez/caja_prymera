@@ -13,10 +13,7 @@ class Logearse extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
-
         $this->load->helper("access_helper");
-        //access_helper::is_logged_in();
-        //checkIfLoggedIn($this->session->userdata('logged'));
         is_logged();
     }
     
@@ -203,7 +200,7 @@ class Logearse extends CI_Controller {
                                 'fecha_recuperar' => date("Y-m-d"));
             $this->M_usuario->updateDatosAsesor($arrayUpdt,$id_pers[0]->id , 'usuario');
             $id_encrypt = base64_encode($id_pers[0]->id);
-            $validacion = $this->sendMailGmail($email, $id_encrypt);
+            //$validacion = $this->sendMailGmail($email, $id_encrypt);
             $data['error'] = EXIT_SUCCESS;
         }  catch(Exception $e){
             $data['msj'] = $e->getMessage();
