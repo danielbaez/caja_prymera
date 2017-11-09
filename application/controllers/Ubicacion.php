@@ -49,7 +49,7 @@ class Ubicacion extends CI_Controller {
         $arrayUpdt = array('last_page' => N_INTRO_MAPA);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
 
-        $this->load->view('v_micash_ubicacion', $dato);
+        $this->load->view('v_simuladorUbicacion', $dato);
     }
 
     function goToHome() {

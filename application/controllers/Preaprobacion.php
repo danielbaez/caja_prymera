@@ -134,7 +134,7 @@ class Preaprobacion extends CI_Controller {
           //resultado 3: token
             //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
            $params = array('token'=> 'E928EUXP',
                           'documento'=>_getSesion('dni'),
@@ -176,7 +176,7 @@ class Preaprobacion extends CI_Controller {
         }
 
 
-        $this->load->view('view_preaprobacion', $data);
+        $this->load->view('v_miCashSimulador', $data);
     }
     
     function changeValues() {
@@ -190,7 +190,7 @@ class Preaprobacion extends CI_Controller {
           //resultado 3: token
             //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
            $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
@@ -651,7 +651,8 @@ class Preaprobacion extends CI_Controller {
                                 'fec_estado' => date("Y-m-d H:i:s"),
                                 'ws2_timestamp' => date("Y-m-d H:i:s"),
                                 'marca'         => $marca,
-                                'modelo'        => $modelo                           
+                                'modelo'        => $modelo,
+                                'last_page' => N_CONFIRMAR_DATOS                           
                             );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['cambio'] = 0;

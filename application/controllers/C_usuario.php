@@ -131,7 +131,7 @@ class C_usuario extends CI_Controller {
     {
         $this->load->helper("url");
         $this->session->sess_destroy();
-        redirect('/');  
+        redirect('/', 'refresh');
     }
 
     function borrarAsignados() {

@@ -242,18 +242,26 @@ class C_reporte extends CI_Controller {
     {
         $action = _post('action');
         if(isset($action) and  $action == 'obtenerSolicitudesTotales') {
-            $dni = _post('dni');
+            $asesor = _post('asesor');
+            $id_asesor = _post('id_asesor');    
+            if($asesor == ''){
+                $id_asesor = '';
+            }
+            //$dni = _post('dni');
             $fecha_desde = _post('fecha_desde');
             $fecha_hasta = _post('fecha_hasta');
             $filtros = array(
-                        'dni' => $dni,
+                        //'dni' => $dni,
+                        'id_asesor' => $id_asesor,
                         'fecha_desde' => $fecha_desde,
                         'fecha_hasta' => $fecha_hasta
                     );
 
             $data['solicitudes'] = $this->M_solicitud->obtenerSolicitudesTotales($filtros);
 
-            $data['dni'] = $dni;
+            $data['id_asesor'] = $id_asesor;
+            $data['asesor'] = $asesor;
+            //$data['dni'] = $dni;
             $data['desde'] = $fecha_desde;
             $data['hasta'] = $fecha_hasta;
 

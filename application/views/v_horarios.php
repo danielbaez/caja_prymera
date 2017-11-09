@@ -13,6 +13,8 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+
+        <link href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
 		<style>
 		</style>  	
 	</head>
@@ -104,6 +106,7 @@
 			<div class="col-xs-12 div-seccion">
 				<form class="form" action="/C_horario/save" method="POST">
 				  <h4>Horario</h4>
+				  <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" <?php echo $acceso[0]->horario == 1 ? 'checked="checked"' : ''; ?>" name="acceso"></p>
 				  <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3" style="margin-bottom: 15px">
 				  	<select style="" id="agencia" name="agencia" class="form-control">
 				  	<option value="">Seleccione una agencia</option>
@@ -182,11 +185,11 @@
 					  </tbody>
 					</table>
 				  	</div>
-				  </div>	  
+				  </div>	
+				  <?php } ?>  
 				  <div class="col-xs-12" style="padding-bottom: 10px">
 					<input type="submit" class="btn btn-lg" name="" value="Guardar" style="color:white">
-				  </div>
-				  <?php } ?>
+				  </div>				  
 				</form>
 			</div>			  
 		  </div>
@@ -198,9 +201,25 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
 
+	  <script src="<?php echo RUTA_JS?>highlight.js"></script>
+<script src="https://unpkg.com/bootstrap-switch"></script>
+
 	  <script>
 
 	  	$(document).ready(function() {
+
+	  		window.hljs.initHighlightingOnLoad();
+
+		  $('input[type="checkbox"], input[type="radio"]')
+		    .not('[data-switch-no-init]')
+		    .bootstrapSwitch()
+
+		  $('input[name="acceso"]').on('switchChange.bootstrapSwitch', function(event, state) {
+		    console.log(this); // DOM element
+		    console.log(event); // jQuery event
+		    console.log(state); // true | false
+
+		  });
 
 	  		$('#agencia').on('change', function() {
 			  //alert( this.value );

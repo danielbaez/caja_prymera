@@ -47,7 +47,7 @@ class Resumen extends CI_Controller {
         $dato['tea'] = _getSesion('sess_tea');
         $dato['Agencia'] = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
-        $this->load->view('v_micash_resumen', $dato);
+        $this->load->view('v_simuladorResumen', $dato);
     }
 
     function __buildComboAgencias(){

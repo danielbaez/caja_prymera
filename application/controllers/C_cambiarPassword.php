@@ -39,7 +39,7 @@ class C_cambiarPassword extends CI_Controller {
         	$password = _post('password');
         	$idPersona =  str_replace("/?a=","",base64_decode(_post('encrypt')));
         	$idPersona = _getSesion('id_pers_recuperar');
-            $arrayUpdt = array('email' => $email,
+            $arrayUpdt = array(//'email' => $email,
             					'password' => $this->get_hash($password),
             					'estado_recuperar' => 0);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'usuario');
