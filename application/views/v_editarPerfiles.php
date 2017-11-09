@@ -496,6 +496,7 @@
 
             }
             else{
+            	$('.div-rol-superior').show();
             	$('#agencias').attr('disabled', true)
             	$('#rol_superior').attr('disabled', true)
             }
@@ -527,7 +528,7 @@
 
             }else{
             	$('#agencias').html('');
-
+            	$('#agencias').attr('disabled', true);
             }
         });
 
@@ -579,6 +580,39 @@
                     }
 
                     var rol_user = $('input[name="rol_user"]').val();
+
+                    ////////
+
+                    //console.log(response[0].permiso)
+
+                    var per = response[0].permiso.split(',');
+
+                    var estado = response[0].estado;
+
+                    $('input[name="permiso[]"]').each(function() {
+				    	$(this).prop('checked', false);
+				  	});
+
+                    if(estado == 1)
+                    {
+                    	for(var c= 0; c<per.length; c++){
+	                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
+	                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("disabled", false);
+	                    }
+                    }
+                    else
+                    {
+                    	$("input[name='permiso[]'][value='0']").prop("checked", true);
+                    }
+
+                    if($("input[name='permiso[]'][value='0']").is(":checked")) {
+			        	$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', true).prop('checked', false);
+			        	$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', true).prop('checked', false);		        	
+			        }else{
+			        	
+			        }
+
+                    ////////
 
 
                     if(rol_user == 'jefe_agencia'){
@@ -672,59 +706,21 @@
                         $('#agencias').attr('disabled', true)
                         $('input[name="permiso[]"]').attr('disabled', true)
 
+                        $('input[name="permiso[]"]').each(function() {
+					    	$(this).prop('disabled', true);
+					  	});
 
-					}
-
-
-					/*else if(response[0].rol == 'jefe_agencia'){
-						$('.div-agencias').show();
-					  $('.div-rol').show();
-					  $('.div-permisos').show();
-						$('#rol').val(response[0].rol);
-						$('.div-rol-superior').hide();
-						$('#rol_superior').val(response[0].rol_superior);
-
-                        $("#agencias").val(response[0].id_agencia.split(','));
-
-					}
-					else if(response[0].rol == 'asesor'){
-						$('.div-agencias').show();
-						  $('.div-rol').show();
-						  $('.div-permisos').show();
-						  $('.div-rol-superior').show();
-						$('#rol').val(response[0].rol);
-						$('#rol_superior').val(response[0].rol_superior);
-
-                        $("#agencias").val([response[0].id_agencia]);
-
-                        $("#agencias").removeAttr('multiple');
-						
-					}*/
-
-					console.log(response[0].permiso)
-
-                    var per = response[0].permiso.split(',');
-
-                    $('input[name="permiso[]"]').each(function() {
-   
-					    $(this).prop('checked', false);
-					  });
-
-                    for(var c= 0; c<per.length; c++){
-                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
-                    }
-
-
-
-                    if($("input[name='permiso[]'][value='0']").is(":checked")) {
-			        	
-			        		$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', true).prop('checked', false);
-			        		$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', true).prop('checked', false);
-			        	
-			        }else{
-			        	
-			        }
-
+	                    if(estado == 1)
+	                    {
+	                    	for(var c= 0; c<per.length; c++){
+		                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
+		                    }
+	                    }
+	                    else
+	                    {
+	                    	$("input[name='permiso[]'][value='0']").prop("checked", true);
+	                    }
+					}			
 					
 				}
 			  });

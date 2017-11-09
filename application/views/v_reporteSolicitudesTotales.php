@@ -92,14 +92,14 @@
               <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
-              <li class="active"><a href="/C_reporte/solicitudesTotales" class="nav-active-a">Solicitudes Totales</a></li>
+              <li class="active"><a href="/C_reporte/solicitudesTotales" class="nav-active-a">Clientes en consulta</a></li>
             </ul>
           </div>
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
                <div class="alert alert-msg" style="display:none; font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px;"></div>
-              <h4 class="titulo-vista">Solicitudes Totales - Filtros</h4>
+              <h4 class="titulo-vista">Clientes en consulta - Filtros</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/solicitudesTotales">
                 <div class="col-xs-12 col-sm-4">
                   <!-- <div class="form-group">
@@ -370,7 +370,7 @@ $(document).ready(function() {
             extend:    'pdf', //pdfHtml5
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Solicitudes Totales - Filtros',
+            title: 'Clientes en consulta - Filtros',
             orientation: 'landscape',
             pageSize: 'A4',
             filename: 'reporte',
@@ -390,7 +390,7 @@ $(document).ready(function() {
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Solicitudes Totales - Filtros',
+            messageTop: 'Clientes en consulta - Filtros',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',

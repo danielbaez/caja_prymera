@@ -265,7 +265,7 @@ class M_usuario extends  CI_Model{
 
     function detalleUsuario($id)
     {
-    	$sql = "SELECT usuario.id, usuario.imagen, usuario.permiso, usuario.id_agencia, usuario.nombre, usuario.apellido, usuario.sexo, usuario.dni, DATE_FORMAT(usuario.fecha_nac,'%Y-%m-%d') as fecha_nac, DATE_FORMAT(usuario.fecha_ingreso,'%Y-%m-%d') as fecha_ingreso, usuario.email, usuario.celular, usuario.rol FROM usuario LEFT JOIN agencias ON usuario.id_agencia = agencias.id WHERE usuario.id = ?";
+    	$sql = "SELECT usuario.id, usuario.imagen, usuario.permiso, usuario.id_agencia, usuario.nombre, usuario.apellido, usuario.sexo, usuario.dni, DATE_FORMAT(usuario.fecha_nac,'%Y-%m-%d') as fecha_nac, DATE_FORMAT(usuario.fecha_ingreso,'%Y-%m-%d') as fecha_ingreso, usuario.email, usuario.celular, usuario.rol, usuario.estado FROM usuario LEFT JOIN agencias ON usuario.id_agencia = agencias.id WHERE usuario.id = ?";
     	$result = $this->db->query($sql, array($id));
 
     	$res = [];
@@ -578,13 +578,13 @@ class M_usuario extends  CI_Model{
         $sql = "SELECT email 
                   FROM usuario
                  WHERE email LIKE '%".$email."%'
-                   AND estado = 1 $addWhere";
+                   $addWhere";
         $result = $this->db->query($sql, array());
 
         $sql2 = "SELECT dni 
                   FROM usuario
                  WHERE dni LIKE '%".$dni."%'
-                   AND estado = 1 $addWhere";
+                   $addWhere";
         $result2 = $this->db->query($sql2, array());
 
         if($result->num_rows() == 1 && $result2->num_rows() == 1)
