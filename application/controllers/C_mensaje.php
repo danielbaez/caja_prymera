@@ -16,7 +16,7 @@ class C_mensaje extends CI_Controller {
     {
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
-        $this->load->view('v_mensaje', $dato);
+        $this->load->view('v_nosPondremosEnContacto', $dato);
     }
 
     function goToHome() {

@@ -575,71 +575,80 @@ class M_solicitud extends  CI_Model{
 
     function obtenerSolicitudesTotales($filtros)
     {
-        foreach($filtros as $key=>$value)
+        if($filtros['id_asesor'] != '')
         {
-            if(is_null($value) || $value == '')
-                unset($filtros[$key]);
-        }
-
-        $where = '';
-        $cont = 0;
-        foreach($filtros as $key=>$value)
-        {
-            $cont++;
-            switch ($key) {
-
-                case 'dni':
-                    $a = "solicitud.dni = ?";                    
-                    break;
-                case 'fecha_desde':
-                    $a = "DATE_FORMAT(solicitud.fec_estado, '%Y-%m-%d') >= ?";
-                    break;
-                case 'fecha_hasta':
-                    $a = "DATE_FORMAT(solicitud.fec_estado, '%Y-%m-%d') <= ?";
-                    break;
-                
-                default:
-                    # code...
-                    break;
-            }
-
-            if($cont == 1)
+            foreach($filtros as $key=>$value)
             {
-                $where .= $a;
+                if(is_null($value) || $value == '')
+                    unset($filtros[$key]);
             }
-            elseif($cont > 1)
-            {
-                $where .= " AND ".$a;
-            }
-        }
 
-        $rol = _getSesion('rol');
-        $id_usuario = _getSesion('id_usuario');
-        if($where == '')
-        {
-            $where .= " 1";    
-        }
-        /*if($where != '')
-        {
-            $where .= " AND ws_error = 0";    
+            $where = '';
+            $cont = 0;
+            foreach($filtros as $key=>$value)
+            {
+                $cont++;
+                switch ($key) {
+                    /*case 'dni':
+                        $a = "solicitud.dni = ?";                    
+                        break;*/
+                    case 'id_asesor':
+                        $a = "solicitud.id_usuario = ?";                    
+                        break;
+                    case 'fecha_desde':
+                        $a = "DATE_FORMAT(solicitud.fec_estado, '%Y-%m-%d') >= ?";
+                        break;
+                    case 'fecha_hasta':
+                        $a = "DATE_FORMAT(solicitud.fec_estado, '%Y-%m-%d') <= ?";
+                        break;
+                    
+                    default:
+                        # code...
+                        break;
+                }
+
+                if($cont == 1)
+                {
+                    $where .= $a;
+                }
+                elseif($cont > 1)
+                {
+                    $where .= " AND ".$a;
+                }
+            }
+
+            $rol = _getSesion('rol');
+            $id_usuario = _getSesion('id_usuario');
+            if($where == '')
+            {
+                $where .= " 1";    
+            }
+            /*if($where != '')
+            {
+                $where .= " AND ws_error = 0";    
+            }
+            else
+            {
+                if($rol == 'administrador')
+                {
+                    $where .= "ws_error = 0";
+                }
+                elseif($rol == 'jefe_agencia')
+                {
+                    $where .= "ws_error = 0 AND solicitud.cod_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
+                }            
+            }*/
+
+            $sql = "SELECT solicitud.last_page, solicitud.ws_error, DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_final,  DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
+
+            $result = $this->db->query($sql, $filtros);
+
+            return $result->result();
         }
         else
         {
-            if($rol == 'administrador')
-            {
-                $where .= "ws_error = 0";
-            }
-            elseif($rol == 'jefe_agencia')
-            {
-                $where .= "ws_error = 0 AND solicitud.cod_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
-            }            
-        }*/
-
-        $sql = "SELECT solicitud.ws_error, DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_final,  DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
-
-        $result = $this->db->query($sql, $filtros);
-
-        return $result->result();
+            return [];
+        }
     }
 }
     

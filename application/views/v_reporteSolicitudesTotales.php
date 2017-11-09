@@ -8,6 +8,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">   
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
@@ -101,11 +102,18 @@
               <h4 class="titulo-vista">Solicitudes Totales - Filtros</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/solicitudesTotales">
                 <div class="col-xs-12 col-sm-4">
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="dni">DNI:</label>
                       <input type="text" class="form-control" name="dni" value="<?php echo isset($dni) ? $dni : '' ?>" id="dni" placeholder="DNI Cliente">
                     </div>
+                  </div> -->
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="email">* Agente:</label>                
+                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Agente">
+                      <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
+                    </div>  
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
@@ -154,8 +162,8 @@
                       <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
-                      <th class="text-center" style="display: none">DNI</th>
-                      <th class="text-center" style="display: none">Email</th>
+                      <th class="text-center">DNI</th>
+                      <!-- <th class="text-center" style="display: none">Email</th>
                       <th class="text-center" style="display: none">Nro Cel</th>
                       <th class="text-center" style="display: none">Fijo</th>
                       <th class="text-center" style="display: none">Importe Préstamo</th>
@@ -181,11 +189,11 @@
                       <th class="text-center" style="display: none">Hora Cierre</th>
                       <th class="text-center" style="display: none">Agencia</th>
                       <th class="text-center" style="display: none">Desembolso</th>
-                      <th class="text-center" style="display: none">Agente</th>
+                      <th class="text-center" style="display: none">Agente</th> -->
                       <th class="text-center">Tipo Crédito</th>
-                      <th class="text-center">Nro sol.</th>
                       <th class="text-center">Estado</th>
                       <th class="text-center">Página</th>
+                      <th class="text-center">Nro sol.</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -194,13 +202,13 @@
                       foreach ($solicitudes as $solicitud) {
                       ?>
                       <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
-                      <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
+                      <tr class="tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
                         <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>                        
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         
-                        <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
-                        <td style="display: none"><?php echo $solicitud->email_titular ?></td>
+                        <td><?php echo $solicitud->dni_titular ?></td>
+                        <!-- <td style="display: none"><?php echo $solicitud->email_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->monto ?></td>
@@ -223,22 +231,26 @@
                         <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
                         <td style="display: none"><?php echo $solicitud->agencia ?></td>
                         <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
-                        <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
+                        <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td> -->
 
                         <td><?php echo $solicitud->producto ?></td>
-                        <td><?php echo $solicitud->id_solicitud ?></td>
                         <td>
                         <?php
                           if($solicitud->ws_error == 1 && $solicitud->fecha_final != '0000-00-00')
                           {
-                          ?>
-                          Realizado
-                          <?php
+                            if($solicitud->status_sol == 1)
+                            {
+                              echo "Cerrado";
+                            }
+                            else
+                            {
+                              echo "Abierto";
+                            }
                           }
                           elseif($solicitud->ws_error == 1 && $solicitud->fecha_final == '0000-00-00')
                           {
                           ?>
-                          Incompleto
+                          Inconcluso
                           <?php
                           }
                           else
@@ -249,7 +261,31 @@
                           } 
                           ?>
                         </td>
-                        <td><?php echo $solicitud->id_solicitud ?></td>
+                        <td>
+                          <?php
+                          if($solicitud->last_page == 0)
+                          {
+                            echo "Lo sentimos";
+                          }
+                          elseif($solicitud->last_page == 2)
+                          {
+                            echo "Simulador";
+                          }
+                          elseif($solicitud->last_page == 3)
+                          {
+                            echo "Confirmar Datos";
+                          }
+                          elseif($solicitud->last_page == 4)
+                          {
+                            echo "Resumen";
+                          }
+                          elseif($solicitud->last_page == 5)
+                          {
+                            echo "Mapa";
+                          }
+                            ?>
+                          </td>
+                          <td><?php echo $solicitud->id_solicitud ?></td>
                       </tr>
                       <?php
                       }
@@ -270,7 +306,7 @@
       <br>
     </div>
 
-    <div class="modal fade" id="modalInformacionSolicitud" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- <div class="modal fade" id="modalInformacionSolicitud" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document" style="margin-top: 114px;">
         <div class="modal-content">
               <div class="modal-header">
@@ -292,21 +328,17 @@
                     <button type="button" class="btn btn-primary btn-actualizar-estado">Actualizar</button>
                   </div>
                 </div>             
-             
               </div>
-              <!-- <div class="modal-footer" style="text-align: center">
-                <button type="button" class="btn btn-primary btn-actualizar-estado">Actualizar</button>
-              </div> -->
             </div>
       </div>
-    </div>
+    </div> -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>   
-<script type="text/javascript" src="<?php echo RUTA_PLUGINS?>OwlCarousel/js/owl.carousel.min.js?v=<?php echo time();?>"></script>
+
 <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
 <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
@@ -338,30 +370,27 @@ $(document).ready(function() {
             extend:    'pdf', //pdfHtml5
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Busqueda Solicitud - Filtros',
+            title: 'Solicitudes Totales - Filtros',
             orientation: 'landscape',
             pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
 
-              /*doc.content[1].table.widths = 
-                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');*/
-           
                   doc.content.forEach(function(item) {
-
                     item.alignment = 'center';
-                    //doc.content[1].table.body[i][4].alignment = 'center';
-                    })              
-            },
+                  }) 
 
+            },
             exportOptions: {
-                 columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
+                 columns: [1, 2, 3, 4, 5, 6, 7],
             }
         },
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Busqueda Solicitud - Filtros',
+            messageTop: 'Solicitudes Totales - Filtros',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',
@@ -377,7 +406,7 @@ $(document).ready(function() {
 
             },
             exportOptions: {
-                columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                columns: [1, 2, 3, 4, 5, 6, 7]
             }
         },
       ],
@@ -408,10 +437,51 @@ $(document).ready(function() {
   //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
   .appendTo( '.buttons-export' );
 
-  $('#tabla-solicitudes tbody').on('click', 'tr', function () {
-        //var data = table.row( this ).data();
-      //  alert( 'You clicked on '+data[0]+'\'s row' );
-    //} );
+
+  var options = {
+
+    url: function() {
+      return "/C_reporte/autocompleteGetAsesor";
+    },
+
+    getValue: function(element) {
+      return element.nombre+' '+element.apellido;
+    },
+
+    ajaxSettings: {
+      dataType: "json",
+      method: "POST",
+      data: {
+        dataType: "json"
+      }
+    },
+
+    preparePostData: function(data) {
+      data.asesor = $("#asesor").val();
+      return data;
+    },
+
+    list: {
+      onClickEvent: function(data) {
+        var value = $("#asesor").getSelectedItemData();
+        console.log(value)
+        $('input[name="id_asesor"]').val(value.id);
+      } 
+      /*onSelectItemEvent: function() {
+        var value = $("#asesor").getSelectedItemData()
+        alert(1)
+        console.log(value)
+      }*/
+    },
+
+    requestDelay: 400
+  };
+
+  $("#asesor").easyAutocomplete(options);
+
+
+  /*$('#tabla-solicitudes tbody').on('click', 'tr', function () {
+
     $.ajax({
         data:  {id: $(this).attr('data-idSolicitud')},
         url:   '/C_reporte/modalInformacionSolicitud',
@@ -537,9 +607,9 @@ $(document).ready(function() {
         }
     });
        
-  });
+  });*/
 
-  $(".btn-actualizar-estado").click(function() {
+  /*$(".btn-actualizar-estado").click(function() {
     var status = $('#status option:selected').val();
     if(status !== ''){
       $.ajax({
@@ -564,14 +634,11 @@ $(document).ready(function() {
     }else{
       alert('Por favor elige un estado')
     }
-  });
-  // data-dismiss="modal"
+  });*/
 
+} );          
 
-} );
-          
-
-          function currency(n,sep) {
+    function currency(n,sep) {
       var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
       sValue=n+"";
       if (sep === undefined) {sep=",";}
@@ -580,10 +647,6 @@ $(document).ready(function() {
       }
       return sValue;
     }
-
-        
-
-
       </script>
     </body>
 </html>

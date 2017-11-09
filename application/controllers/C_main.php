@@ -36,7 +36,7 @@ class C_main extends CI_Controller {
 
         $data['superiores'] = $this->M_usuario->getSuperiores();
         $data['agencias'] = $this->M_agencia->getAgencias();
-        $this->load->view('v_main', $data);
+        $this->load->view('v_editarPerfiles', $data);
     }
 
     function registrar() {
