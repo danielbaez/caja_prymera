@@ -5,15 +5,17 @@ class C_mensaje extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        
+        $this->load->model('M_usuario');
         $this->load->helper("url");
         $this->load->helper("access_helper");
         is_logged();
     
     }
 
-    public function index()
-    {
+    public function index() {
+        $idPersona = _getSesion('idPersona');
+        $arrayUpdt = array('last_page' => N_MENSAJE_RECHAZADO);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $this->load->view('v_nosPondremosEnContacto', $dato);

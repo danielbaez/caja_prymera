@@ -126,8 +126,8 @@ defined('PG_RESUMEN') OR define('PG_RESUMEN', 'Resumen de solicitud');
 defined('PG_INTRO_MAPA') OR define('PG_INTRO_MAPA', 'Introducción y mapa');
 
 //NUMERO PAGINAS
+defined('N_MENSAJE_RECHAZADO')   OR define('N_MENSAJE_RECHAZADO', 1);
 defined('N_INGRESO_DATOS_RECHAZADO')   OR define('N_INGRESO_DATOS_RECHAZADO', 0);
-defined('N_INGRESO_DATOS')   OR define('N_INGRESO_DATOS', 1);
 defined('N_SIMULADOR') OR define('N_SIMULADOR', 2);
 defined('N_CONFIRMAR_DATOS')   OR define('N_CONFIRMAR_DATOS', 3);
 defined('N_RESUMEN') OR define('N_RESUMEN', 4);
