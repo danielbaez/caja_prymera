@@ -17,8 +17,7 @@ class Vehicular extends CI_Controller {
         is_logged();
     }
     
-    public function index()
-    {
+    public function index() {
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $this->load->view('v_vehicular', $dato);
@@ -27,8 +26,6 @@ class Vehicular extends CI_Controller {
     public function solicitar() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
-
-
         try 
           {
             //resultado 1 -- ok
@@ -55,37 +52,21 @@ class Vehicular extends CI_Controller {
               $check = 2;//no aceptó
            }
           $result = $client->GetDatosCliente($params);
-          //_log(print_r($result, true));
           $res = $result->return->resultado;
           if($res == 1){
             $documento = $result->return->documento;
             $importeMinimo = $result->return->rango->importeMinimo;
             $importeMaximo = $result->return->rango->importeMaximo;
-            
             $arr = (array)$result->return;
-
-            //print_r($arr);
             $arrDatos = [];
             foreach ($arr as $key => $value) {
               if($key == 'rango'){
-                //print_r($value); 
                 $value->plazos = explode(';', $value->plazos); 
-
                 $arrDatos[] = array('importeMinimo' => $value->importeMinimo, 'importeMaximo' => $value->importeMaximo, 'plazo' => $value->plazos);
-                //echo "<hr>";
               }
-               
-               
             }
-
-            //print_r($arrDatos);
-
-            //exit();
-
             $plazos = $result->return->rango->plazos;
-            
             $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
-
           $session = array('nombre'  => $nombre,
                 'apellido'          => $apellido,
                 'dni'               => $dni,
@@ -125,7 +106,6 @@ class Vehicular extends CI_Controller {
                 'tipo_producto'     => $tipo_producto
             );
             $this->session->set_userdata($session);
-            //$agencia = $this->M_preaprobacion->getAgenciaPersonal(_getSesion('id_usuario'));
             $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
                                 'nombre' => $nombre,
                                 'apellido'  => $apellido,
@@ -147,7 +127,6 @@ class Vehicular extends CI_Controller {
           if($res == 2){
             $response = array('status' => 2);
           }
-
         }
         catch(Exception $e)
         {

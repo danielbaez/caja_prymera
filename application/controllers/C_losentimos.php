@@ -12,7 +12,6 @@ class C_losentimos extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->model('M_preaprobacion');
         $this->load->helper("url");
-
         $this->load->helper("access_helper");
         is_logged();
     }
@@ -36,14 +35,8 @@ class C_losentimos extends CI_Controller {
             $nro_fijo = _post('nro_fijo');
             if($nro_cel == '' || $nro_cel == null) {
                 throw new Exception("Ingrese un n&uacute;mero de celular", 1);
-                
             }
-            /*if($nro_fijo == '') {
-                throw new Exception("Ingrese un n&uacute;mero de tel&eacute;fono fijo", 1);
-                
-            }*/
             $idPersona  = _getSesion('idPersona');
-            
             $arrayUpdt = array('celular'        => $nro_cel,
                                'nro_fijo'          => $nro_fijo
                              );
@@ -54,20 +47,4 @@ class C_losentimos extends CI_Controller {
         }
         echo json_encode(array_map('utf8_encode', $data));
     }
-
-    function goToHome() {
-        $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
-                  $data['location']  = '/Micash';
-            }else {
-                $data['location']  = '/Vehicular';
-            }
-        $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));
-     }
 }

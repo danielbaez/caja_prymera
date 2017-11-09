@@ -4,31 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
       <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand"/>
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
-
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-    
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
-    
-
   </head>
-    <body>
-    
+  <body>
 
   <div class="container-header">
     <div class="container">
@@ -55,32 +47,31 @@
   </div>
 
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-    </div>    
-    <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
-        <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
-          <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
-        <?php } ?>
-        <?php if(_getSesion('rol') == 'asesor'){ ?>
-          <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
-        <?php } ?>
-        <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
-      </ul>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed btn-collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>      
+      </div>    
+      <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a><?php echo _getSesion('nombreCompleto') ?></a></li>
+          <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+            <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
+          <?php } ?>
+          <?php if(_getSesion('rol') == 'asesor'){ ?>
+            <li><a href="/C_reporteAsesor/agenteCliente" class="navegacion-a">Ver Reportes</a></li>
+          <?php } ?>
+          <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <div class="container container-simulador">
-
     <div class="row m-t-40 m-b-20">
       <div class="col-xs-12 col-sm-9 text-center">
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?><span> Confirma tus datos</span></h2>
@@ -111,9 +102,7 @@
           <?php if($tipo_product == '') {?>
             <h2>Completa los datos:</h2>
           <?php  } else {?>
-          
           <div class="col-xs-12 col-md-10 col-md-offset-1">
-              
                 <div class="col-xs-12 card-border">
                   <form class="text-center" action="C_resumen" method="POST">
                     <div class="col-xs-12 col-sm-8">  
@@ -168,13 +157,6 @@
                                 </div>
                             </div>
                           </div>
-                    <!--      <div class="col-xs-12 text-left">
-                            <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox" id="checkAutorizo" onchange="habilitarCampo()" name="autorizacion"> Autorizo que usen mis datos para esta oferta
-                                      </label>
-                                  </div>
-                          </div>-->
                       </div>
                       <div class="col-xs-12 col-sm-4 linea">
                               <p class="sub-title"><strong>Datos del contacto</strong></p>
@@ -266,79 +248,76 @@
           <?php  }?>
       </div>
     </div>
-
     <div class="container">
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-          <p style="text-align: center;font-size: 16px;">Desea ampliar?</p>
-        </div>
-        <div class="modal-body">
-          <div class="bs-example">
-            <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
-              <p style="color:#808080">Para ampliar su oferta, complete la solicitud con el valor</p>
-                <p style="color:#808080">m&aacute;ximo permitido, luego dirijase a la agencia para</p>
-                <p style="color:#808080">evaluar su solicitud en Riesgos y proceder a la firma del</p>
-                <p style="color:#808080">Expediente</p>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
+              <p style="text-align: center;font-size: 16px;">Desea ampliar?</p>
+            </div>
+            <div class="modal-body">
+              <div class="bs-example">
+                <div class="form-group" id="tablaCronograma" style="margin-left: 55px;">
+                  <p style="color:#808080">Para ampliar su oferta, complete la solicitud con el valor</p>
+                    <p style="color:#808080">m&aacute;ximo permitido, luego dirijase a la agencia para</p>
+                    <p style="color:#808080">evaluar su solicitud en Riesgos y proceder a la firma del</p>
+                    <p style="color:#808080">Expediente</p>
+              </div>
           </div>
-      </div>
-        </div>
-        <div class="modal-footer" style="text-align: center;">
-        </div>
-      </div>
-  </div>
-</div>
-
-<div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg centrar" role="document">
-    <div class="modal-content">
-      <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
-        <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Validar Celular</p>
-      </div>
-      <div class="modal-body modal-celular">
-        <div class="row">
-          <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
-            <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad <br>que ha sido enviado a su celular: </p>
-            <div class="col-xs-12 text-center modal-div-numbers">
-              <input type="text" placeholder="" size="4" maxlength="1" id="uno" onkeyup="enterConfirmar(event);">
-              <input type="text" placeholder="" size="4" maxlength="1" id="dos" onkeyup="enterConfirmar(event);">
-              <input type="text" placeholder="" size="4" maxlength="1" id="tres" onkeyup="enterConfirmar(event);">
-              <input type="text" placeholder="" size="4" maxlength="1" id="cuatro" onkeyup="enterConfirmar(event);">
-              <input type="text" placeholder="" size="4" maxlength="1" id="cinco" onkeyup="enterConfirmar(event);">
-              <input type="text" placeholder="" size="4" maxlength="1" id="seis" onkeyup="enterConfirmar(event);">
+            </div>
+            <div class="modal-footer" style="text-align: center;">
             </div>
           </div>
-          <div class="col-xs-12 text-center">
-            <a style="color: #0060aa;font-size: 15px" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
-            <a href="" style="color: #0060aa;font-size: 15px" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
-          </div>
-          <div class="col-xs-12 otro" id="idError" style="display: none;">
-              <br>
-              <p style="margin-bottom: 0;font-size: 22px;margin-top: 25px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
-              
-          </div>
-        </div>              
       </div>
-      <div class="modal-footer">
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block; margin: 0 auto" onclick="verificarNumero()">Confirmar</button>
-            <button type="button cambiar" class="btn btn-lg botones-codigo" id="cambiar" aria-label="Close" style="display: none; margin: 0 auto" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>  
-          </div>                
+    </div>
+
+    <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg centrar" role="document">
+        <div class="modal-content">
+          <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
+            <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Validar Celular</p>
+          </div>
+          <div class="modal-body modal-celular">
+            <div class="row">
+              <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
+                <p style="">Para poder terminar con la solicitud, Por favor ingrese el c&oacute;digo de seguridad <br>que ha sido enviado a su celular: </p>
+                <div class="col-xs-12 text-center modal-div-numbers">
+                  <input type="text" placeholder="" size="4" maxlength="1" id="uno" onkeyup="enterConfirmar(event);">
+                  <input type="text" placeholder="" size="4" maxlength="1" id="dos" onkeyup="enterConfirmar(event);">
+                  <input type="text" placeholder="" size="4" maxlength="1" id="tres" onkeyup="enterConfirmar(event);">
+                  <input type="text" placeholder="" size="4" maxlength="1" id="cuatro" onkeyup="enterConfirmar(event);">
+                  <input type="text" placeholder="" size="4" maxlength="1" id="cinco" onkeyup="enterConfirmar(event);">
+                  <input type="text" placeholder="" size="4" maxlength="1" id="seis" onkeyup="enterConfirmar(event);">
+                </div>
+              </div>
+              <div class="col-xs-12 text-center">
+                <a style="color: #0060aa;font-size: 15px" onclick="enviarMail()">Enviar otro c&oacute;digo</a><br>
+                <a href="" style="color: #0060aa;font-size: 15px" data-dismiss="modal" onclick="limpiarCampos()">Cambiar Celular</a>
+              </div>
+              <div class="col-xs-12 otro" id="idError" style="display: none;">
+                  <br>
+                  <p style="margin-bottom: 0;font-size: 22px;margin-top: 25px;color:#808080;text-align: center;">El n&uacute;mero ingresado no es v&aacute;lido</p> 
+              </div>
+            </div>              
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block; margin: 0 auto" onclick="verificarNumero()">Confirmar</button>
+                <button type="button cambiar" class="btn btn-lg botones-codigo" id="cambiar" aria-label="Close" style="display: none; margin: 0 auto" onclick="cambiarCelular()">Cambiar C&oacute;digo</button>  
+              </div>                
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
+  <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-
   <script type="text/javascript" async src="<?php echo RUTA_JS?>jsconfirmacion.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
@@ -379,7 +358,7 @@
       var estado_civil = $('#estado_civil').val();
       var email         = $('#email').val();
       if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
-        && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != ''/* && codigo != ''*/ /*&& checkAutorizo != false*/) {
+        && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != '') {
         $('#btnAceptar').removeAttr("disabled");
       }
     }
@@ -399,7 +378,7 @@
       var concesionaria   = $('#concesionaria').val();
       var email         = $('#email').val();
       if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
-        && Provincia != '' && Distrito != '' && Agencia != '' && email != ''/* && nro_fijo != '' && codigo != ''*/ /*&& checkAutorizo != false*/) {
+        && Provincia != '' && Distrito != '' && Agencia != '' && email != '') {
         $('#btnAceptar').removeAttr("disabled");
       }
     }

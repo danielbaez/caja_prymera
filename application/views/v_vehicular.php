@@ -2,46 +2,38 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
           <title>Cr&eacute;dito Auto de Prymera</title>
         <?php } else { ?>
             <title>Cr&eacute;dito Mi Cash</title>
         <?php } ?>
         
-        
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
         <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-
         <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>"> -->
-        
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-        
-
     </head>
     <body>
 
 
-          <div class="container-header">
-    <div class="container">
-      <div class="row padding-div-row-header">
-        <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header"><a href="/Vehicular">&iexcl;Te financiamos hasta el<br>90% de tu auto!</a></h1>
-        </div>
-        <div class="col-xs-6 div-logo">
-          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none"><a href="/Vehicular">&iexcl;Te financiamos hasta el 90% de tu auto!</a></h1>
-        </div>
-      </div>    
-    </div>            
-  </div>
+    <div class="container-header">
+        <div class="container">
+          <div class="row padding-div-row-header">
+            <div class="col-xs-6 col-title-header-padding">
+              <h1 class="title-header"><a href="/Vehicular">&iexcl;Te financiamos hasta el<br>90% de tu auto!</a></h1>
+            </div>
+            <div class="col-xs-6 div-logo">
+              <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+              <h1 style="display: none"><a href="/Vehicular">&iexcl;Te financiamos hasta el 90% de tu auto!</a></h1>
+            </div>
+          </div>    
+        </div>            
+      </div>
 
 
 <nav class="navbar navbar-default">
@@ -175,9 +167,8 @@
                         <li><a data-toggle="tab" href="#menus3">Preguntas frecuentes</a></li>
                         <li><a data-toggle="tab" href="#menus4">Seguros</a></li>
                     </ul>
-                    <!-- <div class="col-xs-12" style="background: white"> -->
                     <div class="tab-content responsive" style="display: flex; background: white; padding-top: 10px;
-    padding-bottom: 10px;">
+                        padding-bottom: 10px;">
                         <div id="homes" class="tab-pane active">                            
                             
                             <div class="col-xs-6 col-sm-3 text-left espacio-top-bottom font-bold">
@@ -455,7 +446,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -520,27 +510,17 @@
   </div>
 </div>
 
-
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="https://openam.github.io/bootstrap-responsive-tabs/js/responsive-tabs.js"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" async src="<?php echo RUTA_JS?>jslogin.js?v=<?php echo time();?>"></script>
-    
     <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
     <script type="text/javascript">
-//     var onloadCallback = function() {
-//         grecaptcha.render('html_element', {
-//           'sitekey' : '6Lf-jgQTAAAAAGgYwYOOjGAQRFQKqTx_6FCcUYM_'
-//         });
-//       };
-
-(function($) {
-      fakewaffle.responsiveTabs(['xs','sm']);
-  })(jQuery);
+    (function($) {
+          fakewaffle.responsiveTabs(['xs','sm']);
+      })(jQuery);
     </script>
   </body>
 </html>

@@ -5,10 +5,6 @@ function guardarDatos() {
 		msj('error', 'Ingrese su n&uacute;mero de celular');
 		return;
 	}
-	/*if(nro_fijo == null || nro_fijo == '') {
-		msj('error', 'Ingrese su n&uacute;mero de tel&eacute;fono fijo');
-		return;
-	}*/
 	$('.btn-aceptar').attr('disabled', true);
 	$.ajax({
 			data  : { nro_cel  : nro_cel,
@@ -24,37 +20,18 @@ function guardarDatos() {
 					$('.btn-aceptar').attr('disabled', false);
 					return;
 				}
-				//msj('error', data.mensaje);
 			} catch (err){
 				msj('error',err.message);
 			}
 		});
 }
 
-function goToHome() {
-	$.ajax({
-		url   : '/C_losentimos/goToHome',
-		type  : 'POST'
-	}).done(function(data){
-		try{
-		   	data = JSON.parse(data);
-		   	if(data.error == 0) {
-		   		location.href = data.location;
-		   	}
-		} catch (err){
-			msj('error',err.message);
-		}
-	});
-}
-
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
-
     //Tecla de retroceso para borrar, siempre la permite
     if (tecla==8){
         return true;
     }
-        
     // Patron de entrada, en este caso solo acepta numeros
     patron =/[0-9]/;
     tecla_final = String.fromCharCode(tecla);
@@ -66,7 +43,6 @@ function soloLetras(e){
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
     especiales = "8-37-39-46";
-
     tecla_especial = false
     for(var i in especiales){
          if(key == especiales[i]){
@@ -74,7 +50,6 @@ function soloLetras(e){
              break;
          }
      }
-
      if(letras.indexOf(tecla)==-1 && !tecla_especial){
          return false;
      }

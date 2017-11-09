@@ -15,17 +15,14 @@ class Resumen extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
-
         $this->load->helper("access_helper");
         is_logged();
-        
         if (! isset($_COOKIE[__getCookieName()])) {
             redirect("/", 'location');
         }
     }
 
-    public function index()
-    {
+    public function index() {
         $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         if($datos_page[0]->last_page != N_RESUMEN) {
             redirect("/C_main", 'location');
@@ -95,25 +92,24 @@ class Resumen extends CI_Controller {
 
     function sendMailGmail(){
       $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
+      $data['msj']   = null;
       try {  
         $datos_bd = $this->M_preaprobacion->getDireccionByAgencia(_getSesion('Agencia'));
         $direccion = $datos_bd[0]->UBICACION;
-          //cargamos la libreria email de ci
+        //cargamos la libreria email de ci
        $this->load->library("email");
        //configuracion para gmail
        $configGmail = array(
-       'protocol' => 'smtp',
-       'smtp_host' => 'ssl://smtp.gmail.com',
-       'smtp_port' => 465,
-       'smtp_user' => 'miauto@prymera.pe',
-       'smtp_pass' => '8hUpuv6da_@v',
-       'mailtype' => 'html',
-       'charset' => 'utf-8',
-       'newline' => "\r\n"
-       );    
+                            'protocol'  => 'smtp',
+                            'smtp_host' => 'ssl://smtp.gmail.com',
+                            'smtp_port' => 465,
+                            'smtp_user' => 'miauto@prymera.pe',
+                            'smtp_pass' => '8hUpuv6da_@v',
+                            'mailtype'  => 'html',
+                            'charset'   => 'utf-8',
+                            'newline'   => "\r\n"
+                            );    
        $poliza = null;
-       
        //cargamos la configuración para enviar con gmail
        $this->email->initialize($configGmail);
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
@@ -129,122 +125,122 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
        $texto = '<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-  <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">
-      @media (min-width: 850px) and (max-width: 1028px) { 
-        .logo-img {
-          max-width: 250px !important;
-        }
-        .img-credit {
-          margin-left: 70px !important;
-        }
-        .container-tabla {
-          width: 55% !important;
-          z-index: 1000;
-        }
-    }
-    @media (min-width: 550px) and (max-width: 850px) { 
-        .logo-img {
-          max-width: 200px !important;
-          margin-top: -80px !important;
-        }
-        .img-credit {
-              top: 148px;
-            max-width: 450px;
-            margin-left: 45px !important;
-        }
-        .container-tabla {
-        width: 65% !important;
-        z-index: 1000;
-        }
-    }
-    @media (min-width: 1028px) and (max-width: 1250px) { 
-        .img-credit {
-          margin-left: 70px !important;
-        }
-        .container-tabla {
-          width: 48% !important;
-          z-index: 1000;
-        }
-    }
-    @media (min-width: 300px) and (max-width: 550px) { 
-      .img-credit {
-              top: 148px;
-            max-width: 400px !important;
-            margin-left: 10px !important;
-        }
-        .container-tabla {
-          width: 85% !important;
-          z-index: 1000;
-        }
-    }
-    }
-    @media (min-width: 1250px) and (max-width: 1350px) { 
-      .container-tabla {
-          /*width: 35% !important;*/
-        }
-    }
-    </style>
-</head>
-<body>
-  <div style="    margin: auto;width: 100%;max-width: 600px;">
-    <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;">
-    <div class="container-header">
-      <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">Crédito Consumo</h3>
-      <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$tipo_cred.'</h1>
-      <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
-    </div>
-    <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background.jpg");text-align: center;">
-      <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
-      <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 450px;margin: auto;">
-    </div>
-    <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
-      <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>
-      <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;margin-bottom: 30px;">A continuación detallamos las condiciones </br> del '.$tipo_cred.' que solicitaste.</h3>
-      <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
-          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Importe: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> S/ '._getSesion('Importe').'</p>
-        </div>
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
-          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Plazo: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cant_meses').'</p>
-        </div>
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
-          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Cuota: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cuota_mensual').'</p>
-        </div>
-        <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
-          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TEA: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('sess_tea').'</p>
-        </div>
-        <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
-          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TCEA: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
-        </div>
-      </div>
-      <div style="background-color: #378fb7;height: 360px;margin: -172px 0px;">
-        <h1 style="color: #fff;margin-left: 40px;padding-top: 150px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
-      <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
-      <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
-      <p style="color: #fff;margin-left: 40px;">¿Qué debo presentar?</p>
-      </div>
-    </div>
-    <!--<div class="container-final" style="width: 100%;height: 360px;background-color: #378fb7;margin-top: -22px;z-index: -1;">
-      <h1 style="color: #fff;margin-left: 40px;position: relative;top: 160px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
-      <p style="color: #fff;position: relative;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
-      <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
-      <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">¿Qué debo presentar?</p>
-    </div>-->
-  </div>
-  </div>
-</body>
-</html>';
+                  <html>
+                  <head>
+                    <title></title>
+                    <meta charset="utf-8">
+                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                      <meta name="viewport" content="width=device-width, initial-scale=1">
+                      <style type="text/css">
+                        @media (min-width: 850px) and (max-width: 1028px) { 
+                          .logo-img {
+                            max-width: 250px !important;
+                          }
+                          .img-credit {
+                            margin-left: 70px !important;
+                          }
+                          .container-tabla {
+                            width: 55% !important;
+                            z-index: 1000;
+                          }
+                      }
+                      @media (min-width: 550px) and (max-width: 850px) { 
+                          .logo-img {
+                            max-width: 200px !important;
+                            margin-top: -80px !important;
+                          }
+                          .img-credit {
+                                top: 148px;
+                              max-width: 450px;
+                              margin-left: 45px !important;
+                          }
+                          .container-tabla {
+                          width: 65% !important;
+                          z-index: 1000;
+                          }
+                      }
+                      @media (min-width: 1028px) and (max-width: 1250px) { 
+                          .img-credit {
+                            margin-left: 70px !important;
+                          }
+                          .container-tabla {
+                            width: 48% !important;
+                            z-index: 1000;
+                          }
+                      }
+                      @media (min-width: 300px) and (max-width: 550px) { 
+                        .img-credit {
+                                top: 148px;
+                              max-width: 400px !important;
+                              margin-left: 10px !important;
+                          }
+                          .container-tabla {
+                            width: 85% !important;
+                            z-index: 1000;
+                          }
+                      }
+                      }
+                      @media (min-width: 1250px) and (max-width: 1350px) { 
+                        .container-tabla {
+                            /*width: 35% !important;*/
+                          }
+                      }
+                      </style>
+                  </head>
+                  <body>
+                    <div style="    margin: auto;width: 100%;max-width: 600px;">
+                      <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;">
+                      <div class="container-header">
+                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">Crédito Consumo</h3>
+                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$tipo_cred.'</h1>
+                        <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
+                      </div>
+                      <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background.jpg");text-align: center;">
+                        <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
+                        <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 450px;margin: auto;">
+                      </div>
+                      <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
+                        <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>
+                        <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;margin-bottom: 30px;">A continuación detallamos las condiciones </br> del '.$tipo_cred.' que solicitaste.</h3>
+                        <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
+                          <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Importe: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> S/ '._getSesion('Importe').'</p>
+                          </div>
+                          <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Plazo: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cant_meses').'</p>
+                          </div>
+                          <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Cuota: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cuota_mensual').'</p>
+                          </div>
+                          <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TEA: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('sess_tea').'</p>
+                          </div>
+                          <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TCEA: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
+                          </div>
+                        </div>
+                        <div style="background-color: #378fb7;height: 360px;margin: -172px 0px;">
+                          <h1 style="color: #fff;margin-left: 40px;padding-top: 150px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
+                        <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
+                        <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
+                        <p style="color: #fff;margin-left: 40px;">¿Qué debo presentar?</p>
+                        </div>
+                      </div>
+                      <!--<div class="container-final" style="width: 100%;height: 360px;background-color: #378fb7;margin-top: -22px;z-index: -1;">
+                        <h1 style="color: #fff;margin-left: 40px;position: relative;top: 160px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
+                        <p style="color: #fff;position: relative;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
+                        <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
+                        <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">¿Qué debo presentar?</p>
+                      </div>-->
+                    </div>
+                    </div>
+                  </body>
+                  </html>';
 
 //$this->email->message($texto);
 
@@ -281,7 +277,6 @@ class Resumen extends CI_Controller {
 <p style="margin-left: 120px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
 '.$texto.'');*/
        $this->email->send();
-       
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        //con esto podemos ver el resultado
@@ -304,51 +299,35 @@ class Resumen extends CI_Controller {
           $fecha = explode('-', date("Y-m-d"));
           $fecha_new = $fecha[1].'-'.($fecha[2]+10);
           $newDate = date("d-m-Y", strtotime($this->_data_last_month_day()));
-        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
-        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
-        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$newDate.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
+          _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
+          _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
+          _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$newDate.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
           //twilio enviar msn
-        $this->load->library('twilio');
-        $from = '786-220-7333';
-        $to = '+51 '._getSesion('nro_celular');
-        $message = $texto_envio;
-        $response = $this->twilio->sms($from, $to, $message);
-        if($response->IsError) {
-          $arrayUpdt = array('envio_sms' => 2);
-          $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-        }
-        else {
-              $arrayUpdt = array('envio_sms' => 1);
-              $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-              $data['error'] = EXIT_ERROR;
-            }    
+          $this->load->library('twilio');
+          $from = '786-220-7333';
+          $to = '+51 '._getSesion('nro_celular');
+          $message = $texto_envio;
+          $response = $this->twilio->sms($from, $to, $message);
+          if($response->IsError) {
+            $arrayUpdt = array('envio_sms' => 2);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+          }
+          else {
+                $arrayUpdt = array('envio_sms' => 1);
+                $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+                $data['error'] = EXIT_ERROR;
+               }    
         }catch (Exception $e){
           $data['error'] = EXIT_ERROR;
         }
       return json_encode(array_map('utf8_encode', $data));
     }
 
-    function goToHome() {
-        $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
-                  $data['location']  = '/Micash';
-            }else {
-                $data['location']  = '/Vehicular';
-            }
-        $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));
-     }
-
      function sendMailGmailAgencia(){
       $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
       try {  
-          //cargamos la libreria email de ci
+       //cargamos la libreria email de ci
        $this->load->library("email");
        //configuracion para gmail
        $configGmail = array(
@@ -363,7 +342,7 @@ class Resumen extends CI_Controller {
        );    
        $poliza = null;
        
-       //cargamos la configuración para enviar con gmail
+       //cargamos la configuración para enviar con gmail6
        $this->email->initialize($configGmail);
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
@@ -376,44 +355,38 @@ class Resumen extends CI_Controller {
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        $this->email->message('<body>
-                                  <h2 style="text-align: center;color: #0152aa;">Estimado Colaborador:</h2>
+                                <h2 style="text-align: center;color: #0152aa;">Estimado Colaborador:</h2>
 
-                                  <p style="text-align: center;color: black;">Es un gusto saludarlo e informarle que el siguiente cliente ha solicitado un cr&eacute;dito &quot;'.$tipo_cred.'&quot;. Por favor cont&aacute;ctelo a la brevedad y realice el seguimiento respectivo hasta el desembolso de su cr&eacute;dito.</p>
+                                <p style="text-align: center;color: black;">Es un gusto saludarlo e informarle que el siguiente cliente ha solicitado un cr&eacute;dito &quot;'.$tipo_cred.'&quot;. Por favor cont&aacute;ctelo a la brevedad y realice el seguimiento respectivo hasta el desembolso de su cr&eacute;dito.</p>
 
-                                  <p style="margin-left: 30px;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
-                                   
-                                  <h3 style="margin-left: 30px;color: #0152aa;">Datos del cliente:</h3>
-                                  <p style="margin-left: 30px;color: black;"></p>
-                                  <p>Nombres: '.ucfirst($nombre).'</p>
-                                  <p>Apellidos: '.ucfirst(_getSesion('apellido')).'</p>
-                                  <p>DNI: '._getSesion('dni').'</p>
-                                  <p>Tel&eacute;fono: '._getSesion('nro_celular').'</p>
-                                  <p>Correo electr&oacute;nico: '._getSesion('email').'</p>
-                                  <p>Agencia seleccionada: '._getSesion('Agencia').'</p>
-                                   
-                                   
-                                  <h3 style="margin-left: 30px;color: #0152aa;">Datos del Crédito:</h3>
-                                  <p style="margin-left: 30px;color: black;"></p>
-                                  <p>Nro. Solicitud:</p>
-                                  <p>Importe: '._getSesion('Importe').'</p>
-                                  <p>Plazo: '._getSesion('cant_meses').'</p>
-                                  <p>Cuota: '._getSesion('cuota_mensual').'</p>
-                                  <p>TEA: '._getSesion('sess_tea').'</p>
-                                  <p>TCEA: '._getSesion('TCEA').'</p>
-                                </body>');
+                                <p style="margin-left: 30px;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
+                                 
+                                <h3 style="margin-left: 30px;color: #0152aa;">Datos del cliente:</h3>
+                                <p style="margin-left: 30px;color: black;"></p>
+                                <p>Nombres: '.ucfirst($nombre).'</p>
+                                <p>Apellidos: '.ucfirst(_getSesion('apellido')).'</p>
+                                <p>DNI: '._getSesion('dni').'</p>
+                                <p>Tel&eacute;fono: '._getSesion('nro_celular').'</p>
+                                <p>Correo electr&oacute;nico: '._getSesion('email').'</p>
+                                <p>Agencia seleccionada: '._getSesion('Agencia').'</p>
+                                 
+                                 
+                                <h3 style="margin-left: 30px;color: #0152aa;">Datos del Crédito:</h3>
+                                <p style="margin-left: 30px;color: black;"></p>
+                                <p>Nro. Solicitud:</p>
+                                <p>Importe: '._getSesion('Importe').'</p>
+                                <p>Plazo: '._getSesion('cant_meses').'</p>
+                                <p>Cuota: '._getSesion('cuota_mensual').'</p>
+                                <p>TEA: '._getSesion('sess_tea').'</p>
+                                <p>TCEA: '._getSesion('TCEA').'</p>
+                              </body>');
        $this->email->send();
-       
-      //_log(print_r($this->email->print_debugger(), true));
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-       //con esto podemos ver el resultado
-       //var_dump($this->email->print_debugger());
         $data['error'] = EXIT_SUCCESS;
       }catch (Exception $e){
             $arrayUpdt = array('envio_email' => 2);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-            //$data['msj'] = $e->getMessage();
-            //return json_encode(array_map('utf8_encode', array(1)));
       }
       return json_encode(array_map('utf8_encode', $data));
      }
@@ -422,7 +395,6 @@ class Resumen extends CI_Controller {
       $month = date('m');
       $year = date('Y');
       $day = date("d", mktime(0,0,0, $month+1, 0, $year));
- 
       return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
   }
 }

@@ -21,7 +21,7 @@ function solicitarPrestamo() {
 		return;
 	}
 	if(isNaN(dni) == true) {
-		msj('error','Ingrese s&oacute;lo n&uacute;meros por favor');
+		msj('error','Ingrese s&oacute;lo n&uacute;meros enteros');
 		return;
 	}
 	if(email == '' || email == null || email == undefined) {
@@ -30,7 +30,7 @@ function solicitarPrestamo() {
 	}
 	if (validateEmail(email)) {
 	} else {
-		  msj('error',email+' no es valido');
+		  msj('error','Este email: '+email+' no es valido');
 		  return;
 	}
 	if(check == false) {
@@ -58,28 +58,14 @@ function solicitarPrestamo() {
 			$('.btn-consultar').attr('disabled', false);
 			msj("error", "Hubo un problema en el servidor, vuelva a intertarlo");
 		}
-		/*try{
-			data = JSON.parse(data);
-			if(data.error == 0){
-				location.href = data.url;
-			}else {
-				return;
-			}
-		} catch (err){
-			msj('error',err.message);
-		}*/
 	});
 }
 
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
-
-    //Tecla de retroceso para borrar, siempre la permite
-    if (tecla==8){
+    if (tecla==8) {
         return true;
     }
-        
-    // Patron de entrada, en este caso solo acepta numeros
     patron =/[0-9]/;
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
@@ -98,7 +84,6 @@ function soloLetras(e){
              break;
          }
      }
-
      if(letras.indexOf(tecla)==-1 && !tecla_especial){
          return false;
      }
@@ -115,10 +100,6 @@ function moreText() {
 	$('.mas-caracteristicas').hide();
 
 	$('html').animate({scrollTop:$(document).height()},500);
-}
-
-function goToLogin() {
-	location.href = "/Login";
 }
 
 function verificarDatos(e) {

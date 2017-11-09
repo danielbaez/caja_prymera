@@ -1,7 +1,3 @@
-function confirmarDatos() {
-	location.href = '/C_confirmacion';
-}
-
 var flg_active = 1; 
 function addStyle() {
 	var marca  = $('#marca').val();
@@ -31,17 +27,17 @@ function addStyle() {
 		$('.btn-text-siguiente').attr('disabled', true);
 		location.href = '/C_confirmacion';
 		$.ajax({
-			data  : { marca : marca,
-					  modelo : modelo,
-					 pagotot : pagotot,
-			    	mensual : mensual,
-				    pors_tcea : pors_tcea,
-				    meses : meses,
-				    cuotaIni : cuotaIni,
-				    pors_tea : pors_tea,
-					monto    : monto,
-					seguro   : seguro},
-				url   : 'C_preaprobacion/guardarMarca',
+			data  : { marca     : marca,
+					  modelo    : modelo,
+					  pagotot   : pagotot,
+			    	  mensual   : mensual,
+				      pors_tcea : pors_tcea,
+				      meses     : meses,
+				      cuotaIni  : cuotaIni,
+				      pors_tea  : pors_tea,
+					  monto     : monto,
+					  seguro    : seguro},
+			url   : 'C_preaprobacion/guardarMarca',
 			type  : 'POST',
 			dataType : 'json'
 		}).done(function(data){

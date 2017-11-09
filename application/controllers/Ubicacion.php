@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ubicacion extends CI_Controller {
     
-	//construct : $this->load->model('M_preaprobacion');
 	function __construct() {
         ob_start();
         parent::__construct();
@@ -16,10 +15,8 @@ class Ubicacion extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
-
         $this->load->helper("access_helper");
         is_logged();
-        
         if (! isset($_COOKIE[__getCookieName()])) {
             redirect("/", 'location');
         }
@@ -48,24 +45,7 @@ class Ubicacion extends CI_Controller {
         $idPersona  = _getSesion('idPersona');
         $arrayUpdt = array('last_page' => N_INTRO_MAPA);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
-
         $this->load->view('v_simuladorUbicacion', $dato);
     }
-
-    function goToHome() {
-        $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            if(_getSesion('TIPO_PROD') == PRODUCTO_MICASH) {
-                  $data['location']  = '/Micash';
-            }else {
-                $data['location']  = '/Vehicular';
-            }
-        $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));
-     }
 }
 

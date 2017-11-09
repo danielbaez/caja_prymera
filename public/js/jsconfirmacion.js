@@ -1,21 +1,3 @@
-function confirmarDatos() {
-	location.href = '/C_confirmacion';
-}
-
-var flg_active = 1; 
-function addStyle() {
-	if(flg_active == 1) {
-		$('#titulo').html('Est&aacute;s a un paso de tu pr&eacute;stamo. Confirma tus datos');
-		flg_active++;
-	}else {
-		$('#titulo').html('Felicidades!!! Tienes un pr&eacute;stamo pre-aprobado');
-		flg_active = 1;
-	}
-	$('#remove1').removeClass("active");
-	$('#remove').removeClass("active");
-	location.href = '/C_confirmacion';
-}
-
 function verificarNumero() {
 	var salario     	  = $('#salario').val();
 	var nro_celular 	  = $('#nro_celular').val();
@@ -44,36 +26,12 @@ function verificarNumero() {
     	msj('error', 'Ingrese el codigo que se le envi&oacute; al celular');
 		return;
     }
-	if(salario == null) {
-		msj('error', 'Seleccione una salario v&aacute;lida');
-		return;
-	}
 	if(nro_celular == null) {
 		msj('error', 'Seleccione un n&uacute;mero de celular v&aacute;lido');
 		return;
 	}
 	if(nro_celular.length <9) {
 		msj('error', 'Ingrese un celular de 9 d&iacute;gitos');
-		return;
-	}
-	if(empleador == null) {
-		msj('error', 'Seleccione un empleador v&aacute;lido');
-		return;
-	}
-	if(direccion_empresa == null) {
-		msj('error', 'Seleccione una direcci&oacute;n v&aacute;lida');
-		return;
-	}
-	if(Departamento == null) {
-		msj('error', 'Seleccione un departamento v&aacute;lido');
-		return;
-	}
-	if(Provincia == null) {
-		msj('error', 'Seleccione una provincia v&aacute;lida');
-		return;
-	}
-	if(Distrito == null) {
-		msj('error', 'Seleccione un distrito v&aacute;lido');
 		return;
 	}
 	$('#confirmar').attr('disabled', true);
@@ -122,13 +80,9 @@ function verificarNumero() {
 
 function valida(e){
     tecla = (document.all) ? e.keyCode : e.which;
-
-    //Tecla de retroceso para borrar, siempre la permite
     if (tecla==8){
         return true;
     }
-        
-    // Patron de entrada, en este caso solo acepta numeros
     patron =/[0-9]/;
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
@@ -147,7 +101,6 @@ function soloLetras(e){
              break;
          }
      }
-
      if(letras.indexOf(tecla)==-1 && !tecla_especial){
          return false;
      }
@@ -408,7 +361,6 @@ function verificarCampos() {
 		msj('error', 'Ingrese una agencia');
 		return;
 	}
-
 	enviarMail();
 }
 

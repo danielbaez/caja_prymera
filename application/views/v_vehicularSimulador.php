@@ -4,33 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
       <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
-
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
-    
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-    
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">    
-
   </head>
-    <body>
-    
+  <body>
 
   <div class="container-header">
     <div class="container">
@@ -73,7 +65,6 @@
 </nav>
 
     <div class="container container-simulador">
-
       <div class="row m-t-40">
         <div class="col-xs-12 col-sm-9 text-center">
           <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?><span>Tienes un pr&eacute;stamo pre-aprobado</span></h2>
@@ -210,95 +201,78 @@
           </form>                  
         </div>
       </div>          
-
     </div>
-
-  <div class="container">
-    <!-- <div class="col-sm-12 col-md-4 col-md-offset-4"> -->
-
-  </div>
 
     <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md centrar" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
-        </div>
-        <div class="modal-body preaprobacion-modal">
-          <div class="bs-example">
-            <div class="form-group" id="tablaCronograma" style="">
-              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
-                <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
-          </div>
-      </div>
-        </div>
-        <div class="modal-footer" style="text-align: center;">
-        </div>
-      </div>
-  </div>
-</div> 
-
-<div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md centrar" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
-              <p style="text-align: center;font-size: 18px">Validar celular</p>
+              <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
             </div>
-            <div class="modal-body">
+            <div class="modal-body preaprobacion-modal">
               <div class="bs-example">
-                <div class="table-responsive" id="tablaCronograma">
-                  <p style="margin-bottom: 0;font-size: 19px;color:#808080">Para poder terminar con la solicitud </p> 
-                  <p style="margin-bottom: 11px;font-size: 19px;color:#808080">Por favor ingrese el c&oacute;digo de seguridad que ha sido enviado a su celular: </p>
-                  <div class="center">
-                    <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                      <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
-                  </div>  
-                  <br>
-                  <div class="col-xs-12">
-                      <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;">Enviar otro c&oacute;digo</a>
-                    </div>
+                <div class="form-group" id="tablaCronograma" style="">
+                  <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+                    <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
+                    <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+              </div>
+          </div>
             </div>
-        </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" aria-label="Close" onclick="verificarNumero()">Confirmar</button>
+            <div class="modal-footer" style="text-align: center;">
             </div>
           </div>
       </div>
-    </div>
+    </div> 
 
-
-
+    <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" style="margin-top: -6px;border: 1px solid #fff;background-color: black;border-radius: 50%;width: 3%;top: 0px;" class="close" data-dismiss="modal" aria-label="Close"><span style="color:#fff" aria-hidden="true">&times;</span></button>
+                    <p style="text-align: center;font-size: 18px">Validar celular</p>
+                </div>
+                    <div class="modal-body">
+                        <div class="bs-example">
+                          <div class="table-responsive" id="tablaCronograma">
+                              <p style="margin-bottom: 0;font-size: 19px;color:#808080">Para poder terminar con la solicitud </p> 
+                              <p style="margin-bottom: 11px;font-size: 19px;color:#808080">Por favor ingrese el c&oacute;digo de seguridad que ha sido enviado a su celular: </p>
+                              <div class="center">
+                                <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+                                  <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+                                  <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+                                  <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+                                  <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+                                  <input style="width: 50px;" type="text" placeholder="" size="4" maxlength="1">
+                              </div>  
+                              <br>
+                              <div class="col-xs-12">
+                                  <a href="" style="color: #0060aa;font-size: 15px;margin: -15px;">Enviar otro c&oacute;digo</a>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" aria-label="Close" onclick="verificarNumero()">Confirmar</button>
+                  </div>
+            </div>
+          </div>
+      </div>
     
     <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
     <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-
-  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
-  <script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion.js?v=<?php echo time();?>"></script>
-  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
-  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion.js?v=<?php echo time();?>"></script>
+    <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+    <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-    
-
-
   <script>
-  (function($){
-  $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();  
-  });
-    
-    //////////
-
+    (function($){
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();  
+    });
     var rangeSliderPlazo = document.getElementById('slider-range-plazo');
-
     noUiSlider.create(rangeSliderPlazo, {
       start: [ <?php echo $plazo_max ?> ],
       step: <?php echo $plazo_step?>,
@@ -317,9 +291,7 @@
     if(<?php echo $plazo_min ?> == <?php echo $plazo_max ?>){
       rangeSliderPlazo.setAttribute('disabled', true);
     }
-
     var rangeSliderValueElementPlazos = document.getElementById('slider-range-value-plazo');
-
     rangeSliderPlazo.noUiSlider.on('update', function( values, handle ) {
       rangeSliderValueElementPlazos.innerHTML = values[handle];
       meses_pago = values[handle];
@@ -335,11 +307,7 @@
 
       m = monto.replace(/[^0-9.]/g, "");
       c = cuota.replace(/[^0-9.]/g, "");
-
-      /*if(parseFloat(m) < parseFloat(c)){
-        alert('El monto no puede ser menor que la cuota inicial')
-      }else{*/
-        if(modelo != ''){
+        if(modelo != '') {
           rangeSliderCuota.removeAttribute('disabled');
           $.ajax({
             data  : { meses    : meses_pago,
@@ -385,11 +353,7 @@
             $('#seguroAuto').html('S/ '+data.seguroAuto); 
           });
         }
-      //}
     });
-
-
-    //
 
     var rangeSliderMonto = document.getElementById('slider-range-monto');
       noUiSlider.create(rangeSliderMonto, {
@@ -408,83 +372,63 @@
       });
 
     var rangeSliderValueElementMonto = document.getElementById('slider-range-value-monto');
-
     rangeSliderMonto.noUiSlider.on('update', function( values, handle ) {
       rangeSliderValueElementMonto.innerHTML = values[handle];
       meses_pago = values[handle];
     });
-
     rangeSliderMonto.noUiSlider.on('change', function( values, handle ) {
-
-      console.log(values)
-      rangeSliderValueElementMonto.innerHTML = values[handle];
+    rangeSliderValueElementMonto.innerHTML = values[handle];
       
-      meses = $('#slider-range-value-plazo').html();
-      monto = values[handle];
-      cuota = $('#slider-range-value-cuota').html();
-      marca = $('#marca option:selected').val();
-      modelo= $('#modelo option:selected').val();
+    meses = $('#slider-range-value-plazo').html();
+    monto = values[handle];
+    cuota = $('#slider-range-value-cuota').html();
+    marca = $('#marca option:selected').val();
+    modelo= $('#modelo option:selected').val();
 
-      m = monto.replace(/[^0-9.]/g, "");
-      c = cuota.replace(/[^0-9.]/g, "");
-
-      /*if(parseFloat(m) < parseFloat(c)){
-        alert('El monto no puede ser menor que la cuota inicial');
-        rangeSliderMonto.noUiSlider.set(100000);
-        monto = 'S/ 100000';
-      }*/
-      if(modelo != ''){
-        $.ajax({
-          data  : { meses    : meses,
-                  cuota : cuota,
-                  monto: monto,
-                  marca: marca,
-                  modelo: modelo, action: 'monto'
-                },
-          url   : 'C_preaprobacion/changeValues',
-          type  : 'POST',
-          dataType: 'json'
-        }).done(function(data){
-          console.log(data);
-
-          $('#minCuota').html('S/ '+data.cuotaMinimo);
-          $('#maxCuota').html('S/ '+data.cuotaMaximo);
-
-          if(data.cuotaMinimo == data.cuotaMaximo){
-            $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
-            rangeSliderCuota.setAttribute('disabled', true);  
-          }else{
-            rangeSliderCuota.removeAttribute('disabled');
-          }
-
-          rangeSliderCuota.noUiSlider.updateOptions({
-              range: {
-                  'min': data.cuotaMinimo,
-                  'max': data.cuotaMaximo
+    m = monto.replace(/[^0-9.]/g, "");
+    c = cuota.replace(/[^0-9.]/g, "");
+    if(modelo != ''){
+      $.ajax({
+        data  : { meses    : meses,
+                cuota : cuota,
+                monto: monto,
+                marca: marca,
+                modelo: modelo, action: 'monto'
               },
-              start: data.cuotaMinimo
-          });
+        url   : 'C_preaprobacion/changeValues',
+        type  : 'POST',
+        dataType: 'json'
+      }).done(function(data){
+        $('#minCuota').html('S/ '+data.cuotaMinimo);
+        $('#maxCuota').html('S/ '+data.cuotaMaximo);
 
+        if(data.cuotaMinimo == data.cuotaMaximo){
+          $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+          rangeSliderCuota.setAttribute('disabled', true);  
+        }else{
+          rangeSliderCuota.removeAttribute('disabled');
+        }
 
-
-          
-          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
-          $('#tcea').html(data.tcea+'%');
-          $('#tea').html(data.tea+'%');
-          $('#seguroAuto').html('S/ '+data.seguroAuto);
+        rangeSliderCuota.noUiSlider.updateOptions({
+            range: {
+                'min': data.cuotaMinimo,
+                'max': data.cuotaMaximo
+            },
+            start: data.cuotaMinimo
         });
-      }
-      
+
+        $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#tcea').html(data.tcea+'%');
+        $('#tea').html(data.tea+'%');
+        $('#seguroAuto').html('S/ '+data.seguroAuto);
+      });
+    }  
     });
-
-    //
-
 
     //dias
     var rangeSliderCuota = document.getElementById('slider-range-cuota');
-
     noUiSlider.create(rangeSliderCuota, {
       start: [ <?php echo  $cuotaMinimo?>],
       step: 100,
@@ -499,58 +443,44 @@
         prefix: ' S/ ',
       })
     });
-
     var rangeSliderValueElementCuotas = document.getElementById('slider-range-value-cuota');
-
     rangeSliderCuota.noUiSlider.on('update', function( values, handle ) {
       rangeSliderValueElementCuotas.innerHTML = values[handle];
         cuota_inicial = values[handle];
     });
-
     rangeSliderCuota.noUiSlider.on('change', function( values, handle ) {
-      console.log(values)
-      rangeSliderValueElementCuotas.innerHTML = values[handle];
+    rangeSliderValueElementCuotas.innerHTML = values[handle];
       
-      meses_pago = $('#slider-range-value-plazo').html();
-      monto = $('#slider-range-value-monto').html();
-      cuota = values[handle];
-      marca = $('#marca option:selected').val();
-      modelo= $('#modelo option:selected').val();
+    meses_pago = $('#slider-range-value-plazo').html();
+    monto = $('#slider-range-value-monto').html();
+    cuota = values[handle];
+    marca = $('#marca option:selected').val();
+    modelo= $('#modelo option:selected').val();
 
-      m = monto.replace(/[^0-9.]/g, "");
-      c = cuota.replace(/[^0-9.]/g, "");
-
-      /*if(parseFloat(m) < parseFloat(c)){
-        alert('El monto no puede ser menor que la cuota inicial');
-        rangeSliderMonto.noUiSlider.set(100000);
-        monto = 'S/ 100000';
-      }*/
-      if(modelo != ''){
-        //alert($('#slider-range-value-plazo').html())
-        //alert(meses_pago)
-        $.ajax({
-          data  : { meses    : meses_pago,
-                  cuota : cuota,
-                  monto: monto,
-                  marca: marca,
-                  modelo: modelo
-                },
-          url   : 'C_preaprobacion/changeValues',
-          type  : 'POST',
-          dataType: 'json'
-        }).done(function(data){
-          console.log(data);
-          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
-          $('#tcea').html(data.tcea+'%');
-          $('#tea').html(data.tea+'%');
-          $('#seguroAuto').html('S/ '+data.seguroAuto);
-        });
-      }
-      
+    m = monto.replace(/[^0-9.]/g, "");
+    c = cuota.replace(/[^0-9.]/g, "");
+    if(modelo != ''){
+      $.ajax({
+        data  : { meses    : meses_pago,
+                cuota : cuota,
+                monto: monto,
+                marca: marca,
+                modelo: modelo
+              },
+        url   : 'C_preaprobacion/changeValues',
+        type  : 'POST',
+        dataType: 'json'
+      }).done(function(data){
+        console.log(data);
+        $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#tcea').html(data.tcea+'%');
+        $('#tea').html(data.tea+'%');
+        $('#seguroAuto').html('S/ '+data.seguroAuto);
+      });
+    }
     });
-    
 
     function currency(n,sep) {
       var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
@@ -562,49 +492,12 @@
       return sValue;
     }
 
-//    $("#slider-range").slider();
-//    $("#slider-range").on("slide", function(slideEvt) {
-//      //$("#ex6SliderVal").text('S/ '+slideEvt.value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
-//      $("#slider-range-value").text('Monto S/ '+currency(slideEvt.value));
-//      console.log($("#slider-range-value").text('Monto S/ '+currency(slideEvt.value)));
-//    });
-
-//     $("#slider-plazo").slider();
-//     $("#slider-plazo").on("slide", function(slideEvt) {
-//       //$("#ex6SliderVal").text('S/ '+slideEvt.value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
-//       $("#val-meses").text('Plazo '+currency(slideEvt.value+' meses'));
-//     });
-
     $( "#generarCronograma" ).click(function() {
       var fecha_pago = $('#fechaPago').val();
       var tipoPago   = $('#tipoPago').val();
-      /*$.ajax({
-      data  : { cuota : monto,
-              meses    : meses_pago,
-              fecha    : fecha_pago,
-              tipoPago : tipoPago },
-      url   : 'C_preaprobacion/generarCronograma',
-      type  : 'POST'
-        }).done(function(data){
-          try{
-            data = JSON.parse(data);
-            if(data.error == 0){
-                $('#tablaCronograma').html(data.tabla); 
-                $('#tb_cronograma').bootstrapTable({ });
-                tableEventsUpgradeMdlComponentsMDL('tb_cronograma');
-                initSearchTableNew();
-            }else {
-              return;
-            }
-          } catch (err){
-            msj('error',err.message);
-          }
-        });*/
     });
 
     $('#modelo').on('change', function() {
-      //alert( $(this).find(":selected").val() );
-
       meses_pago = $('#slider-range-value-plazo').html();
       monto = $('#slider-range-value-monto').html();
       cuota = $('#slider-range-value-cuota').html();
@@ -621,14 +514,10 @@
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
-        console.log(data);
-
         $('#sueldoMin').html('S/ '+data.montoMinimo);
         $('#sueldoMax').html('S/ '+data.montoMaximo);
-
         $('#minCuota').html('S/ '+data.cuotaMinimo);
         $('#maxCuota').html('S/ '+data.cuotaMaximo);
-
         rangeSliderMonto.noUiSlider.updateOptions({
             range: {
                 'min': data.montoMinimo,
@@ -636,7 +525,6 @@
             },
             start: (data.montoMinimo+data.montoMaximo)/2
         });
-
         rangeSliderCuota.noUiSlider.updateOptions({
             range: {
                 'min': data.cuotaMinimo,
@@ -644,7 +532,6 @@
             },
             start: data.cuotaMinimo
         });
-    
         $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
@@ -652,19 +539,15 @@
         $('#tea').html(data.tea+'%');
         $('#seguroAuto').html('S/ '+data.seguroAuto);
       });
-
   })
 
-
-    $(document).keypress(function(e) {
-      if(e.which == 13) {
-          addStyle();
-      }
-    });
-
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+        addStyle();
+    }
+  });
 
   })(jQuery);
-
   </script>
   </body>
 </html>

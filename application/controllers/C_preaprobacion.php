@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_preaprobacion extends CI_Controller {
     
-    private $sueldo = null;
-    
     function __construct() {
         parent::__construct();
         $this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
@@ -15,11 +13,8 @@ class C_preaprobacion extends CI_Controller {
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
-
         $this->load->helper("access_helper");
         is_logged();
-        
-        $this->sueldo = 18750;
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
         if (! isset($_COOKIE[__getCookieName()])) {
@@ -41,19 +36,15 @@ class C_preaprobacion extends CI_Controller {
         $idPersona = _getSesion('idPersona');
         $arrayUpdt = array('last_page' => N_SIMULADOR);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
-        
         $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']=_getSesion('email');
         $nombre = $this->session->userdata('nombre');
         $data['tipo_producto'] = _getSesion("TIPO_PROD");
-
         $importeMaximo = _getSesion('importeMaximo');
         $importeMinimo = _getSesion('importeMinimo');
         $plazos = _getSesion('plazos');
-
         $apellido           = _getSesion('apellido');
         $nombre             = ucfirst($this->session->userdata('nombre'));
-        $sueldo             = $this->sueldo;
         $minAuto            = null;
         $maxAuto            = null;
         $plazo              = null;
@@ -78,7 +69,6 @@ class C_preaprobacion extends CI_Controller {
 
         }
         $plazos = array_unique($plazos);
-        
         $arr_end = [];
         foreach ($plazos as $key => $value) {
             $arr_end[$value] = [];
@@ -92,7 +82,6 @@ class C_preaprobacion extends CI_Controller {
             }
             $arr_end[$value] = array('importeMinimo' => min($mmin), 'importeMaximo' => max($mmax));
         }
-
         $plazo_max = max($plazos);
         $arr_max = $arr_end[$plazo_max];
 
@@ -131,7 +120,6 @@ class C_preaprobacion extends CI_Controller {
             $data['plazo_min']      = $plazos[0];
             $data['plazo_step'] = $plazos[1] - $plazos[0];
         }
-
         $data['cuotaMaximo']      = round($maxInicial/100)*100;
         $data['cuotaMinimo']      = round($minInicial/100)*100;
 
@@ -143,11 +131,8 @@ class C_preaprobacion extends CI_Controller {
         $maxIniPorc         = $this->maxIniPorc;
 
         $meses = preg_replace("/[^0-9]/","",_post('meses'));
-
         $arr_max = _getSesion('arr_end');
-
         $arr_max = $arr_max[$meses];
-        //print_r($arr_max);
 
         $minAuto = $arr_max['importeMinimo']/(1-$minIniPorc);      
         $maxAuto = $arr_max['importeMaximo']/(1-$maxIniPorc);
@@ -172,15 +157,14 @@ class C_preaprobacion extends CI_Controller {
 
         try 
           {
-            
             $meses = preg_replace("/[^0-9]/","",_post('meses'));
             $cuota = preg_replace("/[^0-9]/","",_post('cuota'));
             $marca = _post('marca');
             $modelo = _post('modelo');
 
-            //resultado 1 -- ok
+          //resultado 1 -- ok
           //resultado 3: token
-            //resultado 2: error del servidor
+          //resultado 2: error del servidor
           //resultado 0 : rechazado
           $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
@@ -193,7 +177,7 @@ class C_preaprobacion extends CI_Controller {
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
                                   'modelo' => $modelo
-                    );
+                                );
           }
 
           elseif(_post('action') == 'monto')
@@ -205,7 +189,7 @@ class C_preaprobacion extends CI_Controller {
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
                                   'modelo' => $modelo
-                    );
+                                );
           }
           else{
                 $params = array('token'=> 'E928EUXP',
@@ -215,14 +199,13 @@ class C_preaprobacion extends CI_Controller {
                                   'cuotaInicial' => $cuota,
                                   'marca' => $marca,
                                   'modelo' => $modelo
-                    );
+                                );
           }
 
           $result = $client->GetDatosCreditoVehicular($params);
    
           $res = $result->return->resultado;
           if($res == 1){
-
             $documento = $result->return->documento;
             $data['cuotaMensual'] = $result->return->cuotaMensual;
             $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
@@ -254,7 +237,6 @@ class C_preaprobacion extends CI_Controller {
             {
                 $data['importeeeeee'] = number_format($valorAuto - $cuota, 2);            
             }
-
           }
           if($res == 0){
             $data['status'] = 0;
@@ -264,13 +246,11 @@ class C_preaprobacion extends CI_Controller {
             $data['status'] = 2;
             //$response = array('status' => 2);
           }
-
         }
         catch(Exception $e)
         {
            //$response = array('status' => 2);
         }
-
         echo json_encode($data);
     }
     
@@ -371,65 +351,6 @@ class C_preaprobacion extends CI_Controller {
         $data['msj'] = $e->getMessage();
     }
     echo json_encode(array_map('utf8_encode', $data));
-    }
-    
-    function generarCronograma() {
-        $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            $iniRango = _post('cantidad');
-            $meses    = _post('meses');
-            $fecha    = _post('fecha');
-            $tipoPago = _post('tipoPago');
-            $fecha != null ? $fecha = _post('fecha') : $fecha = '2017-01-01';
-            $cantPago    = null;
-            $meses_pago  = null;
-            $int_gracia  = 115;
-            if($meses != null) {
-                $meses_pago = intval(str_replace(' ', '',str_replace('meses', '',$meses)));
-            }
-            $nuevo = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$iniRango))));
-            $nuevo != null ? $cantPago    = ($nuevo+$nuevo*0.3)+(($nuevo*0.3)/$meses_pago) : '';
-            if($tipoPago != null) {
-                $tipoPago == TIPO_PAGO_SIMPLE ? $nuevo = $nuevo/1 : $nuevo = $nuevo/2;
-                $tipoPago == TIPO_PAGO_SIMPLE ? $int_gracia = $int_gracia/1 : $int_gracia = $int_gracia/2;
-            }
-            $monto = number_format(floatval($nuevo*0.3+(($nuevo*0.3)/$meses_pago)), 2, ',', ' ');
-            $tabla = $this->__buildTablaCronograma($monto, $fecha, $int_gracia);
-            $data['tabla'] = $tabla;
-            $data['error'] = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));
-    }
-    
-    
-    function __buildTablaCronograma($cantidad, $fecha, $int_gracia) {
-        $tmpl = array('table_open'  => '<table data-toggle="table" class="table borderless" data-toolbar="#custom-toolbar"
-                                               data-pagination="true" data-page-list="[5, 10, 15, 20, 25, 30, 35, 40, 45, 50]"
-                                               data-show-columns="false" data-search="true" id="tb_cronograma">','table_close' => '</table>');
-        $this->table->set_template($tmpl);
-        $head_1 = array('data' => '#', 'class' => 'text-center color-value');
-        $head_2 = array('data' => 'Fecha Pago'  , 'class' => 'text-center color-value');
-        $head_3 = array('data' => 'Valor cuota'  , 'class' => 'text-center color-value');
-        $head_4 = array('data' => 'TEA'  , 'class' => 'text-center color-value');
-        $head_5 = array('data' => 'TCEA'  , 'class' => 'text-center color-value');
-        $head_6 = array('data' => 'Desgravamen'  , 'class' => 'text-center color-value');
-        $head_7 = array('data' => 'Int. Gracia'  , 'class' => 'text-center color-value');
-        $this->table->set_heading($head_1,$head_2, $head_3, $head_4, $head_5, $head_6, $head_7);
-//         foreach ($datos as $row) {
-            $row_cell_1 = array('data' => "1"       , 'class' => 'text-center');
-            $row_cell_2 = array('data' => $fecha       , 'class' => 'text-center');
-            $row_cell_3 = array('data' => "S/. ".$cantidad       , 'class' => 'text-center');
-            $row_cell_4 = array('data' => "30%"       , 'class' => 'text-center color-data');
-            $row_cell_5 = array('data' => "34.5%"       , 'class' => 'text-center');
-            $row_cell_6 = array('data' => "0.045%"       , 'class' => 'text-center');
-            $row_cell_7 = array('data' => "S/. ".$int_gracia       , 'class' => 'text-center');
-            $this->table->add_row($row_cell_1,$row_cell_2,$row_cell_3,$row_cell_4, $row_cell_5, $row_cell_6, $row_cell_7);
-//         }
-            $tabla = $this->table->generate();
-        return $tabla;
     }
     
     function enviarEmail() {
@@ -609,34 +530,34 @@ class C_preaprobacion extends CI_Controller {
             $importe_auto = $monto-$importe;
             $concesionaria = _post('concesionaria');
             $session = array(
-                        'pago_total'        => _post('pagotot'),
-                        'cuota_mensual'     => _post('mensual'),
-                        'TCEA'              => _post('pors_tcea'),
-                        'tcea_sess'         => _post('pors_tcea'),
-                        'cant_meses'        => _post('meses'),
-                        'Importe'           => $importe_auto.'.00',
-                        'cuota_inicial'     => _post('cuotaIni').'00',
-                        'sess_tea'          => _post('pors_tea'),
-                        'seguro'            => _post('seguro'),
-                        'valor_auto'        => $monto_vehic.'.00',
-                        'marca'             => $marca,
-                        'modelo'            => $modelo
+                             'pago_total'        => _post('pagotot'),
+                             'cuota_mensual'     => _post('mensual'),
+                             'TCEA'              => _post('pors_tcea'),
+                             'tcea_sess'         => _post('pors_tcea'),
+                             'cant_meses'        => _post('meses'),
+                             'Importe'           => $importe_auto.'.00',
+                             'cuota_inicial'     => _post('cuotaIni').'00',
+                             'sess_tea'          => _post('pors_tea'),
+                             'seguro'            => _post('seguro'),
+                             'valor_auto'        => $monto_vehic.'.00',
+                             'marca'             => $marca,
+                             'modelo'            => $modelo
                             );
             $this->session->set_userdata($session);
             $arrayUpdt = array(
-                                'cuota_mensual' => $cuotaMens,
-                                'tcea'          => $varTcea,
-                                'plazo'         => $meses,
-                                'monto'         => $importe_auto,
-                                'tea'           => $varTea,
-                                'ws2_timestamp' => date("Y-m-d H:i:s"),
-                                'fec_estado' => date("Y-m-d H:i:s"),
-                                'marca'            => $marca,
-                                'modelo'          => $modelo,
-                                'costo_seguro'  => $seguro,
-                                'cuota_inicial' => $importe,
-                                'valor_auto'    => $monto,
-                               'last_page' => N_CONFIRMAR_DATOS
+                               'cuota_mensual' => $cuotaMens,
+                               'tcea'          => $varTcea,
+                               'plazo'         => $meses,
+                               'monto'         => $importe_auto,
+                               'tea'           => $varTea,
+                               'ws2_timestamp' => date("Y-m-d H:i:s"),
+                               'fec_estado'    => date("Y-m-d H:i:s"),
+                               'marca'         => $marca,
+                               'modelo'        => $modelo,
+                               'costo_seguro'  => $seguro,
+                               'cuota_inicial' => $importe,
+                               'valor_auto'    => $monto,
+                               'last_page'     => N_CONFIRMAR_DATOS
                             );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
