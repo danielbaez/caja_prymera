@@ -35,82 +35,27 @@ class Logearse extends CI_Controller {
         if($usuario != '' and $password != '')
         {
             $datos = $this->M_usuario->login($usuario);
-            if(count($datos)){
-                if($datos[0]->estado == 1)
+            if(count($datos))
+            {
+                if($this->validate_pass($datos[0]->password, $password))
                 {
-                    if($this->validate_pass($datos[0]->password, $password))
+                    $rr = $this->M_usuario->verifyUserIPTime($datos[0]);
+                    if(!$rr['error'])
                     {
-                        $rr = $this->M_usuario->verifyUserIPTime($datos[0]);
-                        if(!$rr['error'])
+                        $productos = explode(',', $datos[0]->permiso);
+                        $this->session->set_userdata(array('usuario'          => $usuario,
+                                                            'rol'             => $datos[0]->rol,
+                                                            'id_usuario'      =>$datos[0]->id,
+                                                            'nombre'          =>$datos[0]->nombre,
+                                                            'nombreCompleto'          =>$datos[0]->nombre.' '.$datos[0]->apellido,
+                                                            'id_agencia'          =>$datos[0]->id_agencia,
+                                                            'permiso'          =>$productos,
+                                                            'logged' => true
+                                                            ));
+                                                                          
+                        if(in_array($redirect, $productos))
                         {
-                            $productos = explode(',', $datos[0]->permiso);
-                            $this->session->set_userdata(array('usuario'          => $usuario,
-                                                                'rol'             => $datos[0]->rol,
-                                                                'id_usuario'      =>$datos[0]->id,
-                                                                'nombre'          =>$datos[0]->nombre,
-                                                                'nombreCompleto'          =>$datos[0]->nombre.' '.$datos[0]->apellido,
-                                                                'id_agencia'          =>$datos[0]->id_agencia,
-                                                                'permiso'          =>$productos,
-                                                                'logged' => true
-                                                                ));
-                                                                              
-                            if(in_array($redirect, $productos))
-                            {
-                                if($redirect == PERMISO_ADMINISTRADOR)
-                                {
-                                    if($datos[0]->rol == 'administrador')
-                                    {
-                                        redirect('C_main');    
-                                    }
-                                    elseif($datos[0]->rol == 'jefe_agencia')
-                                    {
-                                        redirect('C_reporte/solicitudes');    
-                                    }
-                                    elseif($datos[0]->rol == 'asesor')
-                                    {
-                                        redirect('C_reporteAsesor/agenteCliente');    
-                                    }
-                                    
-                                }
-                                else if($redirect == PERMISO_MICASH)
-                                {
-                                    if($datos[0]->rol == 'administrador')
-                                    {
-                                        redirect('C_main');    
-                                    }
-                                    elseif($datos[0]->rol == 'jefe_agencia')
-                                    {
-                                        redirect('C_reporte/solicitudes');    
-                                    }
-                                    elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
-                                    {
-                                        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
-                                                                       'permiso_prod' => PERMISO_MICASH,
-                                                                        'conectado'   => 1));
-                                        redirect('Micash');   
-                                    }                               
-                                    
-                                }
-                                else if($redirect == PERMISO_VEHICULAR)
-                                {
-                                    if($datos[0]->rol == 'administrador')
-                                    {
-                                        redirect('C_main');    
-                                    }
-                                    elseif($datos[0]->rol == 'jefe_agencia')
-                                    {
-                                        redirect('C_reporte/solicitudes');    
-                                    }
-                                    elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
-                                    {
-                                        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
-                                                                       'permiso_prod' => PERMISO_VEHICULAR,
-                                                                        'conectado'   => 1));
-                                        redirect('Vehicular');   
-                                    }
-                                }
-                            }
-                            else
+                            if($redirect == PERMISO_ADMINISTRADOR)
                             {
                                 if($datos[0]->rol == 'administrador')
                                 {
@@ -122,43 +67,85 @@ class Logearse extends CI_Controller {
                                 }
                                 elseif($datos[0]->rol == 'asesor')
                                 {
-                                    //redirect('C_reporteAsesor/agenteCliente');
-                                    redirect('C_usuario/nuevaSolicitud');     
+                                    redirect('C_reporteAsesor/agenteCliente');    
                                 }
-                                elseif($datos[0]->rol == 'asesor_externo')
+                                
+                            }
+                            else if($redirect == PERMISO_MICASH)
+                            {
+                                if($datos[0]->rol == 'administrador')
                                 {
-                                    redirect('C_usuario/nuevaSolicitud');    
+                                    redirect('C_main');    
+                                }
+                                elseif($datos[0]->rol == 'jefe_agencia')
+                                {
+                                    redirect('C_reporte/solicitudes');    
+                                }
+                                elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
+                                {
+                                    $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
+                                                                   'permiso_prod' => PERMISO_MICASH,
+                                                                    'conectado'   => 1));
+                                    redirect('Micash');   
+                                }                               
+                                
+                            }
+                            else if($redirect == PERMISO_VEHICULAR)
+                            {
+                                if($datos[0]->rol == 'administrador')
+                                {
+                                    redirect('C_main');    
+                                }
+                                elseif($datos[0]->rol == 'jefe_agencia')
+                                {
+                                    redirect('C_reporte/solicitudes');    
+                                }
+                                elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
+                                {
+                                    $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
+                                                                   'permiso_prod' => PERMISO_VEHICULAR,
+                                                                    'conectado'   => 1));
+                                    redirect('Vehicular');   
                                 }
                             }
                         }
                         else
                         {
-                            $this->session->set_flashdata('error', $rr['error']);
-                            redirect('/');
-                        }                            
+                            if($datos[0]->rol == 'administrador')
+                            {
+                                redirect('C_main');    
+                            }
+                            elseif($datos[0]->rol == 'jefe_agencia')
+                            {
+                                redirect('C_reporte/solicitudes');    
+                            }
+                            elseif($datos[0]->rol == 'asesor')
+                            {
+                                //redirect('C_reporteAsesor/agenteCliente');
+                                redirect('C_usuario/nuevaSolicitud');     
+                            }
+                            elseif($datos[0]->rol == 'asesor_externo')
+                            {
+                                redirect('C_usuario/nuevaSolicitud');    
+                            }
+                        }
                     }
                     else
                     {
-                        
-                        $this->session->set_flashdata('error', 'Datos inv&aacute;lidos');
+                        $this->session->set_flashdata('error', $rr['error']);
                         redirect('/');
-
-                    }
+                    }                            
                 }
                 else
                 {
-                        
-                    $this->session->set_flashdata('error', 'Usuario desactivado');
+                    $this->session->set_flashdata('error', 'Datos inv&aacute;lidos');
                     redirect('/');
-
                 }
             }
             else
             {
-                    
                 $this->session->set_flashdata('error', 'Datos inv&aacute;lidos');
                 redirect('/');
-
             }
         }
         else

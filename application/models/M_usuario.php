@@ -19,167 +19,174 @@ class M_usuario extends  CI_Model{
 
     function verifyUserIPTime($usuario)
     {
-        if($usuario->email == 'daniel.baez@comparabien.com')
+        if($usuario->estado == 1)
         {
-            $rol = $usuario->rol;
-
-            if($rol == 'asesor' || $rol == 'jefe_agencia' || $rol == 'asesor_externo')
+            if($usuario->email == 'daniel.baez@comparabien.com')
             {
-                if (!empty($_SERVER['HTTP_CLIENT_IP'])) { // IP compartido
-                    $ip = $_SERVER['HTTP_CLIENT_IP'];
-                } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) { // IP Proxy
-                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-                } else {
-                    $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
-                }
+                $rol = $usuario->rol;
 
-                $ip = '192.168.1.6';
-
-                $day= date("w");
-                switch($day)
+                if($rol == 'asesor' || $rol == 'jefe_agencia' || $rol == 'asesor_externo')
                 {
-                    case 0: 
-                    $dia = "domingo";
-                    break;
-                    case 1: 
-                    $dia = "lunes";
-                    break;
-                    case 2: 
-                    $dia = "martes";
-                    break;
-                    case 3: 
-                    $dia = "miercoles";
-                    break;
-                    case 4: 
-                    $dia = "jueves";
-                    break;
-                    case 5: 
-                    $dia = "viernes";
-                    break;
-                    case 6: 
-                    $dia = "sabado";
-                    break;
-                }
-
-                $dia_db = 'horarios.'.$dia;
-
-                /*$sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id INNER JOIN horarios ON agencias.id = horarios.id_agencia WHERE usuario.id = ?";
-
-                $result = $this->db->query($sql, array($usuario->id));*/
-
-                if($rol == 'asesor' || $rol == 'asesor_externo')
-                {
-                    $acceso = $this->verifyAcceso();
-                    
-                    if($acceso[0]->ip == 1 || $acceso[0]->horario == 1)
-                    {
-                        /*$sql = "SELECT ip from agencias WHERE id = ?";
-                        $result_ip = $this->db->query($sql, array($usuario->id_agencia));                
-                        $result_ip = $result_ip->result();*/
-
-                        $sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM agencias INNER JOIN horarios ON agencias.id = horarios.id_agencia where agencias.id = ?";
-                        $result = $this->db->query($sql, array($usuario->id_agencia));
-
-                        if($result->num_rows() == 1)
-                        {
-                            $result = $result->result();
-                            $desde = $result[0]->Desdeee;
-                            $hasta = $result[0]->Hastaaa;
-                            $ip_db = $result[0]->ip;
-
-                            $now = date('H:i:s');
-
-                            /*echo "desde:".$desde;
-                            echo "<br>";
-                            echo "ahora:".$now;
-                            echo "<br>";
-                            echo "hasta:".$hasta;
-                            echo "<br>";
-                            echo $ip;
-
-                            exit();*/
-
-                            //echo $ip_db; exit();
-
-                            if($acceso[0]->ip == 1 && $acceso[0]->horario == 1)
-                            {
-                                if($ip_db != $ip)
-                                {
-                                    return array('error' => 'No esta conectado a una ip especifica');
-                                }
-                                if($now < $desde || $now > $hasta)
-                                {
-                                    return array('error' => 'No puede acceder a esta hora');
-                                }
-                                else
-                                {
-                                    return array('error' => false);
-                                }
-                            }
-                            elseif($acceso[0]->ip == 1 && $acceso[0]->horario == 0)
-                            {
-                                if($ip_db != $ip)
-                                {
-                                    return array('error' => 'No esta conectado a una ip especifica');
-                                }
-                                else
-                                {
-                                    return array('error' => false);
-                                }
-                            }
-                            elseif($acceso[0]->ip == 0 && $acceso[0]->horario == 1)
-                            {
-                                if($now < $desde || $now > $hasta)
-                                {
-                                    return array('error' => 'No puede acceder a esta hora');
-                                }
-                                else
-                                {
-                                    return array('error' => false);
-                                }
-                            }                                                 
-                        }
+                    if (!empty($_SERVER['HTTP_CLIENT_IP'])) { // IP compartido
+                        $ip = $_SERVER['HTTP_CLIENT_IP'];
+                    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) { // IP Proxy
+                        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                    } else {
+                        $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
                     }
-                    else
+
+                    $ip = '192.168.1.6';
+
+                    $day= date("w");
+                    switch($day)
                     {
-                        return array('error' => false);
+                        case 0: 
+                        $dia = "domingo";
+                        break;
+                        case 1: 
+                        $dia = "lunes";
+                        break;
+                        case 2: 
+                        $dia = "martes";
+                        break;
+                        case 3: 
+                        $dia = "miercoles";
+                        break;
+                        case 4: 
+                        $dia = "jueves";
+                        break;
+                        case 5: 
+                        $dia = "viernes";
+                        break;
+                        case 6: 
+                        $dia = "sabado";
+                        break;
                     }
-                }
-                elseif($rol == 'jefe_agencia')
-                {
-                    $acceso = $this->verifyAcceso();
 
-                    if($acceso[0]->ip == 1)
+                    $dia_db = 'horarios.'.$dia;
+
+                    /*$sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id INNER JOIN horarios ON agencias.id = horarios.id_agencia WHERE usuario.id = ?";
+
+                    $result = $this->db->query($sql, array($usuario->id));*/
+
+                    if($rol == 'asesor' || $rol == 'asesor_externo')
                     {
-                        $sql = "SELECT agencias.ip FROM agencias where id_sup_agencia IN(?)";
-                        $result = $this->db->query($sql, array($usuario->id));
-                        $result = $result->result();
-                        $ips = [];
-                        foreach ($result as $key => $value) 
+                        $acceso = $this->verifyAcceso();
+                        
+                        if($acceso[0]->ip == 1 || $acceso[0]->horario == 1)
                         {
-                            $ips[] = $value->ip;
-                        }
+                            /*$sql = "SELECT ip from agencias WHERE id = ?";
+                            $result_ip = $this->db->query($sql, array($usuario->id_agencia));                
+                            $result_ip = $result_ip->result();*/
 
-                        if(!in_array($ip, $ips))
-                        {
-                            return array('error' => 'No esta conectado a una ip especifica');
+                            $sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM agencias INNER JOIN horarios ON agencias.id = horarios.id_agencia where agencias.id = ?";
+                            $result = $this->db->query($sql, array($usuario->id_agencia));
+
+                            if($result->num_rows() == 1)
+                            {
+                                $result = $result->result();
+                                $desde = $result[0]->Desdeee;
+                                $hasta = $result[0]->Hastaaa;
+                                $ip_db = $result[0]->ip;
+
+                                $now = date('H:i:s');
+
+                                /*echo "desde:".$desde;
+                                echo "<br>";
+                                echo "ahora:".$now;
+                                echo "<br>";
+                                echo "hasta:".$hasta;
+                                echo "<br>";
+                                echo $ip;
+
+                                exit();*/
+
+                                //echo $ip_db; exit();
+
+                                if($acceso[0]->ip == 1 && $acceso[0]->horario == 1)
+                                {
+                                    if($ip_db != $ip)
+                                    {
+                                        return array('error' => 'No esta conectado a una ip especifica');
+                                    }
+                                    if($now < $desde || $now > $hasta)
+                                    {
+                                        return array('error' => 'No puede acceder a esta hora');
+                                    }
+                                    else
+                                    {
+                                        return array('error' => false);
+                                    }
+                                }
+                                elseif($acceso[0]->ip == 1 && $acceso[0]->horario == 0)
+                                {
+                                    if($ip_db != $ip)
+                                    {
+                                        return array('error' => 'No esta conectado a una ip especifica');
+                                    }
+                                    else
+                                    {
+                                        return array('error' => false);
+                                    }
+                                }
+                                elseif($acceso[0]->ip == 0 && $acceso[0]->horario == 1)
+                                {
+                                    if($now < $desde || $now > $hasta)
+                                    {
+                                        return array('error' => 'No puede acceder a esta hora');
+                                    }
+                                    else
+                                    {
+                                        return array('error' => false);
+                                    }
+                                }                                                 
+                            }
                         }
                         else
                         {
                             return array('error' => false);
                         }
                     }
-                    else
+                    elseif($rol == 'jefe_agencia')
                     {
-                        return array('error' => false);
+                        $acceso = $this->verifyAcceso();
+
+                        if($acceso[0]->ip == 1)
+                        {
+                            $sql = "SELECT agencias.ip FROM agencias where id_sup_agencia IN(?)";
+                            $result = $this->db->query($sql, array($usuario->id));
+                            $result = $result->result();
+                            $ips = [];
+                            foreach ($result as $key => $value) 
+                            {
+                                $ips[] = $value->ip;
+                            }
+
+                            if(!in_array($ip, $ips))
+                            {
+                                return array('error' => 'No esta conectado a una ip especifica');
+                            }
+                            else
+                            {
+                                return array('error' => false);
+                            }
+                        }
+                        else
+                        {
+                            return array('error' => false);
+                        }
                     }
+                    /*echo "ip1".$_SERVER['HTTP_CLIENT_IP'];
+                    echo "<br>";
+                    echo "ip2".$_SERVER['HTTP_X_FORWARDED_FOR'];
+                    echo "<br>";
+                    echo "ip3".$_SERVER['REMOTE_ADDR'];
+                    echo "<br>";*/               
                 }
-                /*echo "ip1".$_SERVER['HTTP_CLIENT_IP'];
-                echo "<br>";
-                echo "ip2".$_SERVER['HTTP_X_FORWARDED_FOR'];
-                echo "<br>";
-                echo "ip3".$_SERVER['REMOTE_ADDR'];
-                echo "<br>";*/               
+                else
+                {
+                    return array('error' => false);
+                }
             }
             else
             {
@@ -188,7 +195,7 @@ class M_usuario extends  CI_Model{
         }
         else
         {
-            return array('error' => false);
+            return array('error' => 'Usuario desactivado');
         }   
     }
 

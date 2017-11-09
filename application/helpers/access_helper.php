@@ -4,14 +4,14 @@ if (!function_exists('is_logged'))
 {
     function is_logged()
     {
-    	$CI =& get_instance();
+    	$CI = & get_instance();
     	$is_logged = _getSesion('logged');
     	$controller = $CI->uri->segment(1);
+    	$method = $CI->router->fetch_method();
     	
     	if (!$is_logged)
 	    { 
 	        $public = permissions_public($controller);
-	        $public = $public['public'];
 
 	        if(!in_array($CI->router->fetch_method(), $public))
 	        {
@@ -30,11 +30,7 @@ if (!function_exists('is_logged'))
 	    	if(!$access['error'])
 	    	{
 		    	$rol = _getSesion('rol');
-		    	$redirect = roles($rol);
-
-		    	$controller = $CI->uri->segment(1);
-
-				$method = $CI->router->fetch_method();
+		    	$redirect = roles($rol);				
 
 				$perm_method = rolPermissions($rol);
 		
@@ -54,14 +50,13 @@ if (!function_exists('is_logged'))
 			}
 	    }
     }
-
 }
 
 function permissions_public($controller)
 {
-	$p = ['' => ['public' => ['index']],
-		  'Logearse' => ['public' => ['index', 'login', 'olvidoPassword', 'recuperarPass']],
-		  'C_cambiarPassword' => ['public' => ['index', 'cambiarPass']]
+	$p = ['' => ['index'],
+		  'Logearse' => ['index', 'login', 'olvidoPassword', 'recuperarPass'],
+		  'C_cambiarPassword' => ['index', 'cambiarPass']
 	];
 	if(array_key_exists($controller, $p))
 	{
@@ -72,7 +67,8 @@ function permissions_public($controller)
 
 function roles($rol)
 {
-	switch ($rol) {
+	switch ($rol)
+	{
 		case 'administrador':
 			$redirect = 'C_main';
 			break;
