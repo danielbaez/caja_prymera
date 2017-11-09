@@ -19,7 +19,7 @@ class M_usuario extends  CI_Model{
 
     function verifyUserIPTime($usuario)
     {
-        if(/*$usuario->email == 'daniel.baez@comparabien.com'*/true)
+        if($usuario->email == 'daniel.baez@comparabien.com')
         {
             $rol = $usuario->rol;
 
