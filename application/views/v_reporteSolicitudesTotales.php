@@ -267,6 +267,10 @@
                           {
                             echo "Lo sentimos";
                           }
+                          elseif($solicitud->last_page == 1)
+                          {
+                            echo "Lo sentimos - mensaje";
+                          }
                           elseif($solicitud->last_page == 2)
                           {
                             echo "Simulador";
