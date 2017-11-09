@@ -28,22 +28,21 @@ class Ubicacion extends CI_Controller {
         if($datos[0]->last_page != N_INTRO_MAPA) {
             redirect("/C_main", 'location');
         }
-        $dato['nombreDato']=':D';
-        $dato['pago_total'] = _getSesion('pago_total');
-        $dato['nombre'] = ucfirst(_getSesion('nombre'));
+        $dato['pago_total']    = _getSesion('pago_total');
+        $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
-        $dato['tcea'] = _getSesion('TCEA');
+        $dato['tcea']          = _getSesion('TCEA');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
-        $dato['cant_meses'] = _getSesion('cant_meses');
-        $dato['Importe'] = _getSesion('Importe');
-        $dato['tea'] = _getSesion('sess_tea');
-        $dato['Agencia'] = _getSesion('Agencia');
+        $dato['cant_meses']    = _getSesion('cant_meses');
+        $dato['Importe']       = _getSesion('Importe');
+        $dato['tea']           = _getSesion('sess_tea');
+        $dato['Agencia']       = _getSesion('Agencia');
         $dato['concesionaria'] = _getSesion('concesionaria');
         $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
-        $dato['ubicacion'] = $direccion[0]->UBICACION;
-        $dato['telefono'] = $direccion[0]->TELEFONO;
-        $idPersona  = _getSesion('idPersona');
-        $arrayUpdt = array('last_page' => N_INTRO_MAPA);
+        $dato['ubicacion']     = $direccion[0]->UBICACION;
+        $dato['telefono']      = $direccion[0]->TELEFONO;
+        $idPersona             = _getSesion('idPersona');
+        $arrayUpdt             = array('last_page' => N_INTRO_MAPA);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
         $this->load->view('v_simuladorUbicacion', $dato);
     }
