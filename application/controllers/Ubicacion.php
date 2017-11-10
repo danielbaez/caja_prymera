@@ -17,9 +17,6 @@ class Ubicacion extends CI_Controller {
         $this->load->model('M_usuario');
         $this->load->helper("access_helper");
         is_logged();
-        if (! isset($_COOKIE[__getCookieName()])) {
-            redirect("/", 'location');
-        }
     }
 
     public function index()

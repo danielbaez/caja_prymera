@@ -17,9 +17,6 @@ class Resumen extends CI_Controller {
         $this->load->model('M_usuario');
         $this->load->helper("access_helper");
         is_logged();
-        if (! isset($_COOKIE[__getCookieName()])) {
-            redirect("/", 'location');
-        }
     }
 
     public function index() {
@@ -127,7 +124,7 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = 'Mi Cash' : $nuevo_texto = 'Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'IMG-Consumo1.png' : $imagen = 'Nueva carpeta/IMG-Vehicular1.png';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'IMG-Consumo1.png' : $imagen = 'IMG-Vehicular1.png';
        $texto = '<!DOCTYPE html>
                   <html>
                   <head>

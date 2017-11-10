@@ -17,9 +17,6 @@ class C_preaprobacion extends CI_Controller {
         is_logged();
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
-        if (! isset($_COOKIE[__getCookieName()])) {
-            redirect("/", 'location');
-        } 
     }
     
     public function index()

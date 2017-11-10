@@ -42,9 +42,6 @@ class Preaprobacion extends CI_Controller {
         );
         $this->minIniPorc  = 0.1;
         $this->maxIniPorc  = 0.5;
-        if (! isset($_COOKIE[__getCookieName()])) {
-            redirect("/", 'location');
-        }
     }
     
     public function index() {

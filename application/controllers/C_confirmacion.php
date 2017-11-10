@@ -17,16 +17,13 @@ class C_confirmacion extends CI_Controller {
         $this->load->model('M_usuario');
         $this->load->helper("access_helper");
         is_logged();
-        if (! isset($_COOKIE[__getCookieName()])) {
-            redirect("/", 'location');
-        }
     }
     
     public function index()
     {
         $datos = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         if($datos[0]->last_page != N_CONFIRMAR_DATOS) {
-            redirect("/Vehicular", 'location');
+            redirect("/C_main", 'location');
         }
         $idPersona  = _getSesion('idPersona');
         $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
