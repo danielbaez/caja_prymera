@@ -124,7 +124,70 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
-       $texto = '<body>
+       $texto = '<!DOCTYPE html>
+                  <html>
+                  <head>
+                    <title></title>
+                    <meta charset="utf-8">
+                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                      <meta name="viewport" content="width=device-width, initial-scale=1">
+                      <style type="text/css">
+                        @media (min-width: 850px) and (max-width: 1028px) { 
+                          .logo-img {
+                            max-width: 250px !important;
+                          }
+                          .img-credit {
+                            margin-left: 70px !important;
+                          }
+                          .container-tabla {
+                            width: 55% !important;
+                            z-index: 1000;
+                          }
+                      }
+                      @media (min-width: 550px) and (max-width: 850px) { 
+                          .logo-img {
+                            max-width: 200px !important;
+                            margin-top: -80px !important;
+                          }
+                          .img-credit {
+                                top: 148px;
+                              max-width: 450px;
+                              margin-left: 45px !important;
+                          }
+                          .container-tabla {
+                          width: 65% !important;
+                          z-index: 1000;
+                          }
+                      }
+                      @media (min-width: 1028px) and (max-width: 1250px) { 
+                          .img-credit {
+                            margin-left: 70px !important;
+                          }
+                          .container-tabla {
+                            width: 48% !important;
+                            z-index: 1000;
+                          }
+                      }
+                      @media (min-width: 300px) and (max-width: 550px) { 
+                        .img-credit {
+                                top: 148px;
+                              max-width: 400px !important;
+                              margin-left: 10px !important;
+                          }
+                          .container-tabla {
+                            width: 85% !important;
+                            z-index: 1000;
+                          }
+                      }
+                      }
+                      @media (min-width: 1250px) and (max-width: 1350px) { 
+                        .container-tabla {
+                            /*width: 35% !important;*/
+                          }
+                      }
+                      </style>
+                  </head>
+                  <body>
                     <div style="    margin: auto;width: 100%;max-width: 600px;">
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;">
                       <div class="container-header">
@@ -176,9 +239,10 @@ class Resumen extends CI_Controller {
                       </div>-->
                     </div>
                     </div>
-                  </body>';
+                  </body>
+                  </html>';
 
-//$this->email->message($texto);
+$this->email->message($texto);
 
        /*_getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto = '<p style="font-size: 10px;margin-left: 120px">“La oferta pre-aprobada cumplirá las siguientes condiciones:
          CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
