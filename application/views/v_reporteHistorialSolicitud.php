@@ -13,6 +13,9 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+
     <style>
     </style>    
   </head>
@@ -121,11 +124,11 @@
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="fecha">Fecha Solicitud:</label>
                       <?php if(isset($fecha)){ ?>
-                        <input type="date" name="fecha" class="form-control" value="<?php echo $fecha ?>" id="fecha">
+                        <input type="text" id="fecha" name="fecha" class="form-control" value="<?php echo $fecha ?>" id="fecha">
                       <?php }
                       else{
                       ?>
-                      <input type="date" name="fecha" class="form-control" id="fecha">
+                      <input type="text" id="fecha" name="fecha" class="form-control" id="fecha">
                       <?php
                       }
                       ?>
@@ -295,9 +298,18 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+
 <script type="text/javascript">
 
 $(document).ready(function() {
+
+  $('#fecha').datetimepicker({
+    format: 'YYYY-MM-DD'
+  });
+
 
   var table = $('#tabla-solicitudes').DataTable( {
 
