@@ -569,7 +569,7 @@ class C_preaprobacion extends CI_Controller {
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode($data);
     }
 }
 

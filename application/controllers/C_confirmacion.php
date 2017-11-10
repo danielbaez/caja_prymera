@@ -26,7 +26,7 @@ class C_confirmacion extends CI_Controller {
     {
         $datos = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         if($datos[0]->last_page != N_CONFIRMAR_DATOS) {
-            redirect("/C_main", 'location');
+            redirect("/Vehicular", 'location');
         }
         $idPersona  = _getSesion('idPersona');
         $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);

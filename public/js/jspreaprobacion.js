@@ -26,7 +26,7 @@ function addStyle() {
 		return;
 	}else if(marca != '' && modelo != '') {
 		$('.btn-text-siguiente').attr('disabled', true);
-		location.href = '/C_confirmacion';
+		//location.href = '/C_confirmacion';
 		$.ajax({
 			data  : { marca     : marca,
 					  modelo    : modelo,
@@ -44,7 +44,6 @@ function addStyle() {
 			dataType : 'json'
 		}).done(function(data){
 			try{
-				data = JSON.parse(data);
 				if(data.error == 0){
 					location.href = '/C_confirmacion';
 				}else {
