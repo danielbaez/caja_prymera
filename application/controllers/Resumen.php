@@ -121,6 +121,10 @@ class Resumen extends CI_Controller {
        $nombre = _getSesion('nombre');
        $tipo_cred = null;
        $imagen = null;
+       $credito = null;
+       $nuevo_texto = null;
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $credito = 'Cr&eacute;dito Consumo' : $credito = 'Cr&eacute;dito Vehicular';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = 'Mi Cash' : $nuevo_texto = 'Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
@@ -189,10 +193,10 @@ class Resumen extends CI_Controller {
                   </head>
                   <body>
                     <div style="    margin: auto;width: 100%;max-width: 600px;">
-                      <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;">
-                      <div class="container-header">
-                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">Crédito Consumo</h3>
-                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$tipo_cred.'</h1>
+                      <div class="container-fluid" style="max-width: 600px;height: 1500px;">
+                        <div class="container-header" style="background-color: #0060aa;height: 115px;">
+                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">'.$credito.'</h3>
+                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$nuevo_texto.'</h1>
                         <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
                       </div>
                       <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background.jpg");text-align: center;">
