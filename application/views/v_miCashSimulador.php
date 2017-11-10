@@ -134,10 +134,6 @@
                 <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
               </div>
             </div>
-            <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
-                <label class="form-label" style="margin-top: 30px;">Periodo de gracia</label>
-                <input type="date" class="form-control" id="periodo_gracia" name="periodo_gracia">
-              </div>
           </div>
 
           <div class="col-xs-12 visible-xs visible-sm margin-top"></div>

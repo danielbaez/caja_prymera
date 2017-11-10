@@ -127,7 +127,7 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = 'Mi Cash' : $nuevo_texto = 'Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'IMG-Consumo1.png' : $imagen = 'Nueva carpeta/IMG-Vehicular1.png';
        $texto = '<!DOCTYPE html>
                   <html>
                   <head>
@@ -196,12 +196,11 @@ class Resumen extends CI_Controller {
                       <div class="container-fluid" style="max-width: 600px;height: 1500px;">
                         <div class="container-header" style="background-color: #0060aa;height: 115px;">
                         <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">'.$credito.'</h3>
-                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$nuevo_texto.'</h1>
-                        <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;top: -90px;">
+                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;margin-top: -45px;"></h1>
                       </div>
-                      <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background-img.jpg");text-align: center;">
+                      <div class="container-body" style="margin-top: 40px;text-align: center;">
                         <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
-                        <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 450px;margin: auto;">
+                        <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 600px;margin: auto;">
                       </div>
                       <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
                         <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>
@@ -228,58 +227,36 @@ class Resumen extends CI_Controller {
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
                           </div>
                         </div>
-                        <div style="background-color: #378fb7;height: 360px;margin: -172px 0px;">
+                        <div style="background-color: #378fb7;height: 750px;margin: -172px 0px;">
                           <h1 style="color: #fff;margin-left: 40px;padding-top: 150px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
                         <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
-                        <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
+                        <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en Av. Túpac Amaru 1210 </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
                         <p style="color: #fff;margin-left: 40px;">¿Qué debo presentar?</p>
+                        <p style="color: #fff;margin-left: 40px;">. Tu DNI vigente</p>
+                        <p style="color: #fff;margin-left: 40px;">. Un recibo de un servicio (máximo 2 meses de antiguedad)</p>
+                        <p style="color: #fff;margin-left: 40px;">. Las 2 últimas voletas de pago si tus ingresos son fijos</p>
+                        <p style="color: #fff;margin-left: 40px;">. Las 3 últimas voletas de pago si tus ingresos son variables</p>
+                        <p style="color: #fff;top: 153px;margin-left: 40px;">¡Más beneficios para ti!</p>
+                        <p style="color: #fff;margin-left: 40px;">Si deseas un crédito "Auto de Prymera" con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>
+                        </br>
+                        <p style="color: #fff;margin-left: 40px;font-size: 27px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
                         </div>
-                      </div>
-                      <!--<div class="container-final" style="width: 100%;height: 360px;background-color: #378fb7;margin-top: -22px;z-index: -1;">
-                        <h1 style="color: #fff;margin-left: 40px;position: relative;top: 160px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
-                        <p style="color: #fff;position: relative;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
-                        <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
-                        <p style="color: #fff;position: relative;top: 150px;margin-left: 40px;">¿Qué debo presentar?</p>
-                      </div>-->
-                    </div>
+                        </br>
+                        <div style="height: 350px;    margin-top: 172px;">
+                          <div style="padding: 20px;border: 1px solid;height: 115px;">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                          </div>
+                        </div>
                     </div>
                   </body>
                   </html>';
 
-$this->email->message($texto);
-
-       /*_getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto = '<p style="font-size: 10px;margin-left: 120px">“La oferta pre-aprobada cumplirá las siguientes condiciones:
-         CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
-        Valido sólo para personas naturales con edad Min. 23 años y Max. 70 años con condición de Trabajadores Dependientes con Min. 6 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 6 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Monto Mín. del crédito: S/ 1000 y Máx. S/ 15000. No aplica para compra de deuda. Crédito otorgado sólo en moneda nacional. Financiamiento entre 06 y Máx. a 36 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado en cualquiera de las agencias de Prymera.
-        Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si retiras S/ 2,000 a 36 meses, pagarás lo siguiente: 36 cuotas mensuales de S/ 111.22, total de intereses S/ 1,935.63, monto total de seguro S/ 68.87, TCEA 65.8%. La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros.”</p>' : $texto = '“La oferta pre-aprobada cumplirá las siguientes condiciones:
-        CRÉDITO AUTO DE PRYMERA, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO AUTO DE PRYMERA, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
-        Financiamiento Regular. Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia hasta el 90% del valor del vehículo, Financiamiento Min S/10,000 o USD $ 4,500 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Financiamiento entre 12 y Máx. a 60 cuotas mensuales. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo, No aplica para financiar cuatrimotos, motos lineales o acuáticas o mototaxis (afines). 
-        Financiamiento Compra Inteligente. Valido sólo para personas naturales con edad Min. 24 años y Max. 70 años, sujeto a condición de la vigencia Max. del seguro de desgravamen, y con condición de Trabajadores Dependientes con Min. 12 meses de antigüedad laboral. El cliente debe tener la condición de calificación NORMAL (RCC) en la Central de Riesgos en los últimos 12 meses. El cliente no debe registrar créditos vencidos, en cobranza judicial y/o castigada en los últimos 24 meses. Se financia en 36 cuotas mensuales hasta el 100% del valor del vehículo, donde el 60% del valor se reparten en 35 cuotas mensuales de igual monto y el 40% en la última cuota (36) incluyendo los intereses correspondientes, con la opción de poder pagar la última cuota (40%) o pagar el saldo del crédito a 24 cuotas adicionales, según lo acordado en el crédito vehicular. Monto del crédito Min S/75,000 o USD $ 25,000 y Max. S/ 150,000 o USD $ 45,000. El desembolso del crédito se abona directamente al concesionario o proveedor. Crédito otorgado en moneda nacional. Periodo de gracia según calificación: Máx. 60 días calendario. El crédito puede ser solicitado solo en las Agencias de Plaza Norte, Mall del Sur y Miraflores de Prymera. Se financia adquisición de vehículo de 4 ruedas nuevo y sólo de gama media – alta.
-        Mayor información y costos (Tasas de interés, comisiones y gastos) están disponibles en nuestro tarifario vigente publicado en nuestras oficinas y página web www.prymera.com.pe. Todas las operaciones relacionadas están afectas al ITF 0.005%. El monto del seguro vehicular es referencial dependerá de la marca y modelo que el cliente elija, pudiendo variar en caso el cliente opte por un seguro vehicular particular y no el de Prymera.  La empresa tiene la obligación de difundir información de conformidad con la Ley N° 28587 y sus modificatorias, el Reglamento de Transparencia de Información y Disposiciones Aplicables a la Contratación con Usuarios del Sistema Financiero, aprobado mediante resolución SBS 8181 – 2012. * Ejemplo: Si se desembolsa S/ xx,000 a xx meses, pagarás lo siguiente: xx cuotas mensuales de S/ xxxxxx, total de intereses S/ xxxxxxxx, monto total de seguro desgravamen xxxxx, y monto total de seguro xxxxx TCEA xxxxx% La cuota es referencial pudiendo variar según la fecha de desembolso del crédito y sujeto a variación por cargos, comisiones y seguros. “';
-       $this->email->message('<h1 style="text-align: center;"><strong>'.$tipo_cred.'</strong></h1>
-<h4 style="text-align: center;">'.ucfirst($nombre).' Te damos la bienvenida a Prymera!</h4>
-<h4 style="margin-left: 100px;">A continuaci&oacute;n detallamos las condiciones del '.$tipo_cred.' que solicitaste:</h4>
-
-<p style="margin-left: 120px;">Importe del pr&eacute;stamo: '._getSesion('Importe').' </p>
-<p style="margin-left: 120px;">Plazo: '._getSesion('cant_meses').'</p>
-<p style="margin-left: 120px;">Cuota: '._getSesion('cuota_mensual').'</p>
-<p style="margin-left: 120px;">TEA: '._getSesion('sess_tea').'</p>
-<p style="margin-left: 120px;">TCEA: '._getSesion('TCEA').'</p>
-'.$poliza.'
-
-<h3 style="margin-left: 100px;"><strong>Quiero gestionar mi cr&eacute;dito pre aprobado &iquest;Qu&eacute; debo hacer?</strong></h3>
-<p style="margin-left: 120px;">Acércate a la agencia: “'._getSesion('Agencia').'” ubicada en '.$ubicacion.'.</p>
-
-<h3 style="margin-left: 100px;"><strong>&iquest;Qu&eacute; debo presentar?</strong></h3>
-<p style="margin-left: 120px;">- Tu DNI vigente </p>
-<p style="margin-left: 120px;">- Un recibo de servicio (m&aacute;ximo 2 meses de antigüedad).</p>
-
-<h3 style="margin-left: 100px;"><strong>¡M&aacute;s Beneficios para ti!</strong></h3>
-<p style="margin-left: 120px;">Si deseas un cr&eacute;dito con un monto mayor al pre-aprobado, debes llevar tu &uacute;ltima boleta de </p>
-<p style="margin-left: 120px;">pago para que podamos evaluarte.</p>
-
-<p style="margin-left: 120px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
-'.$texto.'');*/
+       $this->email->message($texto);
        $this->email->send();
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
