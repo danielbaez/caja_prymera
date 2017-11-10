@@ -157,7 +157,10 @@
                   <span id="maxCuota">S/ <?php echo  $cuotaMaximo?></span>
                 </div>
               </div>
-
+              <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
+                <label class="form-label" style="margin-top: 30px;">Periodo de gracia</label>
+                <input type="date" class="form-control" id="periodo_gracia" name="periodo_gracia">
+              </div>
             </div>
 
             <div class="col-xs-12 visible-xs visible-sm margin-top"></div>
@@ -303,6 +306,7 @@
       monto = $('#slider-range-value-monto').html();
       cuota = $('#slider-range-value-cuota').html();
       marca = $('#marca option:selected').val();
+      periodo = $('#periodo_gracia').val();
       modelo= $('#modelo option:selected').val();
 
       m = monto.replace(/[^0-9.]/g, "");
@@ -310,12 +314,13 @@
         if(modelo != '') {
           rangeSliderCuota.removeAttribute('disabled');
           $.ajax({
-            data  : { meses    : meses_pago,
-                    cuota : cuota,
-                    monto: monto,
-                    marca: marca,
-                    modelo: modelo,
-                    action: 'plazo'
+            data  : { meses : meses_pago,
+                    cuota   : cuota,
+                    monto   : monto,
+                    marca   : marca,
+                    periodo : periodo,
+                    modelo  : modelo,
+                    action  : 'plazo'
                   },
             url   : 'C_preaprobacion/changeValues',
             type  : 'POST',
@@ -376,21 +381,23 @@
     rangeSliderMonto.noUiSlider.on('change', function( values, handle ) {
     rangeSliderValueElementMonto.innerHTML = values[handle];
       
-    meses = $('#slider-range-value-plazo').html();
-    monto = values[handle];
-    cuota = $('#slider-range-value-cuota').html();
-    marca = $('#marca option:selected').val();
-    modelo= $('#modelo option:selected').val();
+    meses   = $('#slider-range-value-plazo').html();
+    monto   = values[handle];
+    cuota   = $('#slider-range-value-cuota').html();
+    marca   = $('#marca option:selected').val();
+    modelo  = $('#modelo option:selected').val();
+    periodo = $('#periodo_gracia').val();
 
     m = monto.replace(/[^0-9.]/g, "");
     c = cuota.replace(/[^0-9.]/g, "");
     if(modelo != ''){
       $.ajax({
-        data  : { meses    : meses,
-                cuota : cuota,
-                monto: monto,
-                marca: marca,
-                modelo: modelo, action: 'monto'
+        data  : { meses : meses,
+                cuota   : cuota,
+                monto   : monto,
+                marca   : marca,
+                periodo : periodo,
+                modelo  : modelo, action: 'monto'
               },
         url   : 'C_preaprobacion/changeValues',
         type  : 'POST',
@@ -449,20 +456,22 @@
     rangeSliderValueElementCuotas.innerHTML = values[handle];
       
     meses_pago = $('#slider-range-value-plazo').html();
-    monto = $('#slider-range-value-monto').html();
-    cuota = values[handle];
-    marca = $('#marca option:selected').val();
-    modelo= $('#modelo option:selected').val();
+    monto   = $('#slider-range-value-monto').html();
+    cuota   = values[handle];
+    marca   = $('#marca option:selected').val();
+    modelo  = $('#modelo option:selected').val();
+    periodo = $('#periodo_gracia').val();
 
     m = monto.replace(/[^0-9.]/g, "");
     c = cuota.replace(/[^0-9.]/g, "");
     if(modelo != ''){
       $.ajax({
-        data  : { meses    : meses_pago,
-                cuota : cuota,
-                monto: monto,
-                marca: marca,
-                modelo: modelo
+        data  : { meses : meses_pago,
+                cuota   : cuota,
+                monto   : monto,
+                marca   : marca,
+                periodo : periodo,
+                modelo  : modelo
               },
         url   : 'C_preaprobacion/changeValues',
         type  : 'POST',

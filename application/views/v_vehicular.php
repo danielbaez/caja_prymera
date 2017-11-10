@@ -120,7 +120,7 @@
                                 <div class="col-xs-6 col-md-8 robot">
                                     <div class="checkbox" style="border: 1px solid #ccc;background: #f0f0f0;margin: 0px;padding: 20px;" onkeyup="verificarDatos(event);">
                                         <label>
-                                            <input type="checkbox" style="zoom: 1.5;"> No soy un robot
+                                            <input type="checkbox" style="zoom: 1.5;margin-top: 1px;"> No soy un robot
                                         </label>
                                     </div>
                                 </div>

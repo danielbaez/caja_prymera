@@ -19,7 +19,7 @@ class C_losentimos extends CI_Controller {
     public function index()
     {
         $idPersona = _getSesion('idPersona');
-        $arrayUpdt = array('last_page'     => N_SIMULADOR);
+        $arrayUpdt = array('last_page' => N_SIMULADOR);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         $dato['nombreDato']=':D';
         $dato['nombreCompleto'] = _getSesion('nombreCompleto');
@@ -37,8 +37,9 @@ class C_losentimos extends CI_Controller {
                 throw new Exception("Ingrese un n&uacute;mero de celular", 1);
             }
             $idPersona  = _getSesion('idPersona');
-            $arrayUpdt = array('celular'        => $nro_cel,
-                               'nro_fijo'          => $nro_fijo
+            $arrayUpdt = array('celular'    => $nro_cel,
+                               'nro_fijo'   => $nro_fijo,
+                               'last_page'  => N_MENSAJE_RECHAZADO
                              );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
          $data['error'] = EXIT_SUCCESS;

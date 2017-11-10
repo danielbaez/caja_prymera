@@ -4,6 +4,7 @@ function confirmarDatos() {
 
 var flg_active = 1; 
 function addStyle() {
+	var periodo = $('#periodo_gracia').val();
 	var pagotot = document.getElementById('cantTotPago').innerText;
     var mensual = document.getElementById('cantMensPago').innerText;
     var pors_tcea = document.getElementById('tcea').innerText;
@@ -13,11 +14,12 @@ function addStyle() {
     $('.btn-text-siguiente').attr('disabled', true);
 	$.ajax({
 		data  : { pagotot : pagotot,
-			    mensual : mensual,
+			    mensual   : mensual,
 			    pors_tcea : pors_tcea,
-			    meses : meses,
-			    cuotaIni : cuotaIni,
-			    pors_tea : pors_tea},
+			    meses 	  : meses,
+			    cuotaIni  : cuotaIni,
+			    pors_tea  : pors_tea,
+			    periodo   : periodo},
 		url   : 'Preaprobacion/setearDatos',
 		type  : 'POST'
 	}).done(function(data){
