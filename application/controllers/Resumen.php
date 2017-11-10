@@ -197,7 +197,7 @@ class Resumen extends CI_Controller {
                         <div class="container-header" style="background-color: #0060aa;height: 115px;">
                         <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">'.$credito.'</h3>
                         <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$nuevo_texto.'</h1>
-                        <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;margin-top: -90px;float: right;position: relative;left: -40px;">
+                        <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;top: -90px;">
                       </div>
                       <div class="container-body" style="margin-top: 40px;background: url("'.RUTA_IMG.'/fondos/Background.jpg");text-align: center;">
                         <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
