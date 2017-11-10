@@ -124,70 +124,7 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'Credito-Consumo.png' : $imagen = 'creedito-Vehicular.png';
-       $texto = '<!DOCTYPE html>
-                  <html>
-                  <head>
-                    <title></title>
-                    <meta charset="utf-8">
-                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                      <meta name="viewport" content="width=device-width, initial-scale=1">
-                      <style type="text/css">
-                        @media (min-width: 850px) and (max-width: 1028px) { 
-                          .logo-img {
-                            max-width: 250px !important;
-                          }
-                          .img-credit {
-                            margin-left: 70px !important;
-                          }
-                          .container-tabla {
-                            width: 55% !important;
-                            z-index: 1000;
-                          }
-                      }
-                      @media (min-width: 550px) and (max-width: 850px) { 
-                          .logo-img {
-                            max-width: 200px !important;
-                            margin-top: -80px !important;
-                          }
-                          .img-credit {
-                                top: 148px;
-                              max-width: 450px;
-                              margin-left: 45px !important;
-                          }
-                          .container-tabla {
-                          width: 65% !important;
-                          z-index: 1000;
-                          }
-                      }
-                      @media (min-width: 1028px) and (max-width: 1250px) { 
-                          .img-credit {
-                            margin-left: 70px !important;
-                          }
-                          .container-tabla {
-                            width: 48% !important;
-                            z-index: 1000;
-                          }
-                      }
-                      @media (min-width: 300px) and (max-width: 550px) { 
-                        .img-credit {
-                                top: 148px;
-                              max-width: 400px !important;
-                              margin-left: 10px !important;
-                          }
-                          .container-tabla {
-                            width: 85% !important;
-                            z-index: 1000;
-                          }
-                      }
-                      }
-                      @media (min-width: 1250px) and (max-width: 1350px) { 
-                        .container-tabla {
-                            /*width: 35% !important;*/
-                          }
-                      }
-                      </style>
-                  </head>
-                  <body>
+       $texto = '<body>
                     <div style="    margin: auto;width: 100%;max-width: 600px;">
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;">
                       <div class="container-header">
@@ -239,8 +176,7 @@ class Resumen extends CI_Controller {
                       </div>-->
                     </div>
                     </div>
-                  </body>
-                  </html>';
+                  </body>';
 
 //$this->email->message($texto);
 

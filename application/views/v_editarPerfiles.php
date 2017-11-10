@@ -19,29 +19,20 @@
 		</style>  	
 	</head>
 	<body>
-	  <!-- <nav class="navbar navbar-inverse" style="background-color: transparent;border-color: transparent;">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-			  <a class="navbar-brand" style="background-color: #0060aa;margin: -69px;padding-top: 1px;height: 120px;" href="#"><img class="img-responsive logo" style="max-width: 302px;" alt="" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-			</div>
-			<ul class="nav navbar-nav">
-			</ul>
-		  </div>
-		</nav> -->
 
-		<div class="container-header">
-    <div class="container">
-      <div class="row padding-div-row-header">
-        <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header">Dashboard</h1>
-        </div>
-        <div class="col-xs-6 div-logo">
-          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none">Dashboard</h1>
-        </div>
-      </div>    
-    </div>            
-  </div>
+	<div class="container-header">
+	    <div class="container">
+	      <div class="row padding-div-row-header">
+	        <div class="col-xs-6 col-title-header-padding">
+	          <h1 class="title-header">Dashboard</h1>
+	        </div>
+	        <div class="col-xs-6 div-logo">
+	          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+	          <h1 style="display: none">Dashboard</h1>
+	        </div>
+	      </div>    
+	    </div>            
+	</div>
 
 
 <nav class="navbar navbar-default">

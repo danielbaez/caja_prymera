@@ -11,14 +11,11 @@
             <title>Cr&eacute;dito Mi Cash</title>
         <?php } ?>
         
-        
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
         <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-
         <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>estilos-micash.css?v=<?php echo time();?>">
@@ -29,19 +26,19 @@
     <body>
 
 
-          <div class="container-header">
-    <div class="container">
-      <div class="row padding-div-row-header">
-        <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header"><a href="/Micash">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</a></h1>
-        </div>
-        <div class="col-xs-6 div-logo">
-          <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
-          <h1 style="display: none"><a href="/Micash">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</a></h1>
-        </div>
-      </div>    
-    </div>            
-  </div>
+    <div class="container-header">
+        <div class="container">
+          <div class="row padding-div-row-header">
+            <div class="col-xs-6 col-title-header-padding">
+              <h1 class="title-header"><a href="/Micash">&iexcl;Te prestamos hasta<br>S/ 15,000 f&aacute;cil y r&aacute;pido!*</a></h1>
+            </div>
+            <div class="col-xs-6 div-logo">
+              <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
+              <h1 style="display: none"><a href="/Micash">&iexcl;Te prestamos hasta S/ 15,000 f&aacute;cil y r&aacute;pido!*</a></h1>
+            </div>
+          </div>    
+        </div>            
+      </div>
 
 
 <nav class="navbar navbar-default">
@@ -131,7 +128,7 @@
                                 <div class="col-xs-6 col-md-8 robot">
                                     <div class="checkbox" style="border: 1px solid #ccc;background: #f0f0f0;margin: 0px;padding: 20px;">
                                         <label>
-                                            <input type="checkbox" style="zoom: 1.5;" onkeyup="verificarDatos(event);"> No soy un robot
+                                            <input type="checkbox" style="zoom: 1.5;margin-top: 1px;" onkeyup="verificarDatos(event);"> No soy un robot
                                         </label>
                                     </div>
                                 </div>

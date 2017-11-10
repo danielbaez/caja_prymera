@@ -4,32 +4,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
       <title>Cr&eacute;dito Auto de Prymera</title>
     <?php } else { ?>
         <title>Cr&eacute;dito Mi Cash</title>
     <?php } ?>
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
-
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>"> -->
-  <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>material-icons.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
-    
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">    
-
   </head>
-    <body>
+  <body>
     
 
   <div class="container-header">
@@ -82,7 +76,6 @@
 </nav>
 
   <div class="container container-simulador">
-
     <div class="row m-t-40">
       <div class="col-xs-12 col-sm-9 text-center">
         <h2 class="titulo-simulador font-bold"><?php echo $tipo_product;?><span>Tienes un pr&eacute;stamo pre-aprobado</span></h2>
@@ -141,10 +134,13 @@
                 <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
               </div>
             </div>
+            <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
+                <label class="form-label" style="margin-top: 30px;">Periodo de gracia</label>
+                <input type="date" class="form-control" id="periodo_gracia" name="periodo_gracia">
+              </div>
           </div>
 
           <div class="col-xs-12 visible-xs visible-sm margin-top"></div>
-          
           <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 text-center div-ajax">
             <div class="col-xs-12 col-md-10 col-md-offset-1 div-ajax-valores">
               <div class="col-md-12 margin-ajax-valores">
@@ -180,52 +176,39 @@
         </form>                  
       </div>
     </div>          
-
   </div>
-
-  <div class="container">
-    <!-- <div class="col-sm-12 col-md-4 col-md-offset-4"> -->
-
-  </div>
-
-
 
     <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-md centrar" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
-        </div>
-        <div class="modal-body preaprobacion-modal">
-          <div class="bs-example">
-            <div class="form-group" id="tablaCronograma" style="">
-              <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
-                <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
-                <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md centrar" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" style="" class="close btn-close" data-dismiss="modal" aria-label="Close"><span style="" aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title" style="">Ampliaci&oacute;n de Cr&eacute;dito</h3>
+            </div>
+            <div class="modal-body preaprobacion-modal">
+              <div class="bs-example">
+                <div class="form-group" id="tablaCronograma" style="">
+                  <p style="">Si Ud. desea ampliar su oferta de pr&eacute;stamo pre-aprobada, culmine el proceso de solicitud con el monto m&aacute;ximo permitido.</p>
+                    <p style="">Al final se le enviar&aacute; un correo con los requisitos,</p>
+                    <p style="">para que se acerque a la Agencia de Prymera m&aacute;s cercana.</p>
+              </div>
+          </div>
+            </div>
+            <div class="modal-footer" style="text-align: center;">
+            </div>
           </div>
       </div>
-        </div>
-        <div class="modal-footer" style="text-align: center;">
-        </div>
-      </div>
-  </div>
-</div>     
+    </div>     
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-    <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+  <script type="text/javascript" src="<?php echo RUTA_JS?>jquery-3.2.1.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-  
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
   <script type="text/javascript" async src="<?php echo RUTA_JS?>jspreaprobacion_m.js?v=<?php echo time();?>"></script>
-  
-
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-  
-
 
   <script>
   (function($){
@@ -273,13 +256,14 @@
     });
 
     rangeSliderMeses.noUiSlider.on('change', function( values, handle ) {
-      console.log(values)
       rangeSliderValueElementMeses.innerHTML = values[handle];
       meses_pago = values[handle];
-      monto = $('#slider-range-value-dias').html();
+      monto   = $('#slider-range-value-dias').html();
+      periodo = $('#periodo_gracia').val();
       $.ajax({
         data  : { meses    : meses_pago,
-                  cantidad : monto},
+                  cantidad : monto,
+                  periodo  : periodo},
         url   : 'Preaprobacion/changeValues',
         type  : 'POST',
         dataType: 'json'
@@ -326,14 +310,15 @@
       rangeSliderValueElementDias.innerHTML = values[handle];
       monto = values[handle];
       meses_pago = $('#slider-range-value-meses').html();
+      periodo    = $('#periodo_gracia').val();
       $.ajax({
         data  : { meses    : meses_pago,
-                cantidad : monto},
+                cantidad   : monto,
+                periodo    : periodo},
         url   : 'Preaprobacion/changeValues',
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
-        console.log(data);
         $('#importePrestamo').html('S/ '+currency(data.importePrestamo));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
@@ -344,7 +329,6 @@
       });
     });
     
-
     function currency(n,sep) {
       var sRegExp = new RegExp("(-?[0-9]+)([0-9]{3})"),
       sValue=n+"";
@@ -355,44 +339,9 @@
       return sValue;
     }
 
-//    $("#slider-range").slider();
-//    $("#slider-range").on("slide", function(slideEvt) {
-//      //$("#ex6SliderVal").text('S/ '+slideEvt.value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
-//      $("#slider-range-value").text('Monto S/ '+currency(slideEvt.value));
-//      console.log($("#slider-range-value").text('Monto S/ '+currency(slideEvt.value)));
-//    });
-
-//     $("#slider-plazo").slider();
-//     $("#slider-plazo").on("slide", function(slideEvt) {
-//       //$("#ex6SliderVal").text('S/ '+slideEvt.value.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
-//       $("#val-meses").text('Plazo '+currency(slideEvt.value+' meses'));
-//     });
-
     $( "#generarCronograma" ).click(function() {
       var fecha_pago = $('#fechaPago').val();
       var tipoPago   = $('#tipoPago').val();
-      /*$.ajax({
-      data  : { cantidad : monto,
-              meses    : meses_pago,
-              fecha    : fecha_pago,
-              tipoPago : tipoPago },
-      url   : 'C_preaprobacion/generarCronograma',
-      type  : 'POST'
-        }).done(function(data){
-          try{
-            data = JSON.parse(data);
-            if(data.error == 0){
-                $('#tablaCronograma').html(data.tabla); 
-                $('#tb_cronograma').bootstrapTable({ });
-                tableEventsUpgradeMdlComponentsMDL('tb_cronograma');
-                initSearchTableNew();
-            }else {
-              return;
-            }
-          } catch (err){
-            msj('error',err.message);
-          }
-        });*/
     });
 
     $(document).keypress(function(e) {
@@ -400,7 +349,6 @@
           addStyle();
       }
     });
-
   })(jQuery);
 
   </script>

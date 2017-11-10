@@ -161,6 +161,7 @@ class C_preaprobacion extends CI_Controller {
             $cuota = preg_replace("/[^0-9]/","",_post('cuota'));
             $marca = _post('marca');
             $modelo = _post('modelo');
+            $periodo = _post('periodo');
 
           //resultado 1 -- ok
           //resultado 3: token
@@ -176,7 +177,8 @@ class C_preaprobacion extends CI_Controller {
                                   'plazo' => $meses,
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
-                                  'modelo' => $modelo
+                                  'modelo' => $modelo/*,
+                                  'periodo_gracia' => $periodo*/
                                 );
           }
 
@@ -188,7 +190,8 @@ class C_preaprobacion extends CI_Controller {
                                   'plazo' => $meses,
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
-                                  'modelo' => $modelo
+                                  'modelo' => $modelo/*,
+                                  'periodo_gracia' => $periodo*/
                                 );
           }
           else{
@@ -198,12 +201,13 @@ class C_preaprobacion extends CI_Controller {
                                   'plazo' => $meses,
                                   'cuotaInicial' => $cuota,
                                   'marca' => $marca,
-                                  'modelo' => $modelo
+                                  'modelo' => $modelo/*,
+                                  'periodo_gracia' => $periodo*/
                                 );
           }
 
           $result = $client->GetDatosCreditoVehicular($params);
-   
+          
           $res = $result->return->resultado;
           if($res == 1){
             $documento = $result->return->documento;
@@ -513,6 +517,7 @@ class C_preaprobacion extends CI_Controller {
         try {
             $marca = _post('marca');
             $modelo = _post('modelo');
+            $periodo = _post('periodo');
             $idPersona = _getSesion('idPersona');
             $pagoTot  = preg_replace('/[^0-9.]/', "", _post('pagotot'));
             $cuotaMens  = preg_replace('/[^0-9.]/', "", _post('mensual'));
@@ -539,24 +544,26 @@ class C_preaprobacion extends CI_Controller {
                              'seguro'            => _post('seguro'),
                              'valor_auto'        => $monto_vehic.'.00',
                              'marca'             => $marca,
-                             'modelo'            => $modelo
+                             'modelo'            => $modelo,
+                             'periodo_gracia'    => $periodo
                             );
             $this->session->set_userdata($session);
             $arrayUpdt = array(
-                               'cuota_mensual' => $cuotaMens,
-                               'tcea'          => $varTcea,
-                               'plazo'         => $meses,
-                               'monto'         => $importe_auto,
-                               'tea'           => $varTea,
-                               'ws2_timestamp' => date("Y-m-d H:i:s"),
-                               'fec_estado'    => date("Y-m-d H:i:s"),
-                               'marca'         => $marca,
-                               'modelo'        => $modelo,
-                               'costo_seguro'  => $seguro,
-                               'cuota_inicial' => $importe,
-                               'valor_auto'    => $monto,
-                               'last_page'     => N_CONFIRMAR_DATOS
-                            );
+                               'cuota_mensual'  => $cuotaMens,
+                               'tcea'           => $varTcea,
+                               'plazo'          => $meses,
+                               'monto'          => $importe_auto,
+                               'tea'            => $varTea,
+                               'ws2_timestamp'  => date("Y-m-d H:i:s"),
+                               'fec_estado'     => date("Y-m-d H:i:s"),
+                               'marca'          => $marca,
+                               'modelo'         => $modelo,
+                               'costo_seguro'   => $seguro,
+                               'cuota_inicial'  => $importe,
+                               'valor_auto'     => $monto,
+                               'last_page'      => N_CONFIRMAR_DATOS,
+                               'periodo_gracia' => $periodo
+                              );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){

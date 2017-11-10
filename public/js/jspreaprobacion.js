@@ -2,6 +2,7 @@ var flg_active = 1;
 function addStyle() {
 	var marca  = $('#marca').val();
 	var modelo = $('#modelo').val();
+	var periodo = $('#periodo_gracia').val();
 	var pagotot = document.getElementById('cantTotPago').innerText;
     var mensual = document.getElementById('cantMensPago').innerText;
     var pors_tcea = document.getElementById('tcea').innerText;
@@ -36,6 +37,7 @@ function addStyle() {
 				      cuotaIni  : cuotaIni,
 				      pors_tea  : pors_tea,
 					  monto     : monto,
+					  periodo   : periodo,
 					  seguro    : seguro},
 			url   : 'C_preaprobacion/guardarMarca',
 			type  : 'POST',

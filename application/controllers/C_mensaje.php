@@ -6,6 +6,7 @@ class C_mensaje extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('M_usuario');
+        $this->load->model('M_preaprobacion');
         $this->load->helper("url");
         $this->load->helper("access_helper");
         is_logged();
