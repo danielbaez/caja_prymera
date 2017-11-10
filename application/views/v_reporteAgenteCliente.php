@@ -14,6 +14,9 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+
     <style>
     </style>    
   </head>
@@ -180,11 +183,11 @@
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Desde:</label>
                         <?php if(isset($desde)){ ?>
-                          <input type="date" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
+                          <input type="text" id="desde" name="fecha_desde" class="form-control" value="<?php echo $desde ?>" id="fecha_desde">
                         <?php }
                         else{
                         ?>
-                        <input type="date" name="fecha_desde" class="form-control" id="fecha_desde">
+                        <input type="text" id="desde" name="fecha_desde" class="form-control" id="fecha_desde">
                         <?php
                         }
                         ?>
@@ -194,11 +197,11 @@
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
                       <label for="email">Hasta:</label>
                       <?php if(isset($hasta)){ ?>
-                          <input type="date" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
+                          <input type="text" id="hasta" name="fecha_hasta" class="form-control" value="<?php echo $hasta ?>" id="fecha_hasta">
                         <?php }
                         else{
                         ?>
-                        <input type="date" name="fecha_hasta" class="form-control" id="fecha_hasta">
+                        <input type="text" id="hasta" name="fecha_hasta" class="form-control" id="fecha_hasta">
                         <?php
                         }
                         ?>
@@ -293,10 +296,20 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
 
 <script type="text/javascript">
 
 $(document).ready(function() {
+
+  $('#desde').datetimepicker({
+    format: 'YYYY-MM-DD'
+  });
+  $('#hasta').datetimepicker({
+    format: 'YYYY-MM-DD'
+  });
 
   var table = $('#tabla-solicitudes').DataTable( {
 

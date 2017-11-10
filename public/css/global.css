@@ -2,9 +2,9 @@ body{
     font-family: 'quicksandlight' !important;
 }
 
-p,span,h1,h2,h3,h4,h5,a{
+/*p,span,h1,h2,h3,h4,h5,a{
     font-family: 'quicksandlight' !important;
-}
+}*/
 a {
     cursor: pointer;
     cursor: hand;
@@ -231,10 +231,10 @@ p,label,span {
 .container.max-width-950 p,span{
     font-weight: bold;
 }
-.col-md-12.margin-ajax-valores p,span{
+/*.col-md-12.margin-ajax-valores p,span{
     font-weight: bold;
     font-family: 'quicksandregular' !important;
-}
+}*/
 .table-responsive.ocultar .center {
     margin-left: -55px;
     margin-top: 15px;
