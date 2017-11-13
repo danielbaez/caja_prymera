@@ -18,7 +18,7 @@ span,p{
 	font-family: 'quicksandregular' !important;
 }
 
-.titulo-simulador{
+.titulo-simulador{ 
 	font-size: 30px;
     color: #015FA9;
     line-height: 35px;
@@ -91,6 +91,7 @@ margin-top: 40px
 	height: 51px;
 	padding: 1px;
 	font-family: quicksandbold;
+	margin-left: 22px;
 }
 
 .btn-text-siguiente{
@@ -103,6 +104,7 @@ margin-top: 40px
     height: 51px;
     padding-top: 12px;
     font-family: 'quicksandbold' !important;
+    margin-right: 20px;
 }
 
 .btn.focus, .btn:focus, .btn:hover{
@@ -142,7 +144,7 @@ margin-top: 40px
 }
 
 .div-ubicacion h1, .div-ubicacion span{
-    font-size: 20px
+    font-size: 17px
 }
 
 @media (max-width: 767px) { 
@@ -164,6 +166,11 @@ margin-top: 40px
 	}
 }
 
+@media (min-width: 300px) and (max-width: 992px) { 
+	.text-center.form-horizontal .col-xs-12.col-md-7 {
+    	padding-top: 0 !important;
+	}
+ 		}
 @media (max-width: 699px) { 
 
    .titulo-simulador{

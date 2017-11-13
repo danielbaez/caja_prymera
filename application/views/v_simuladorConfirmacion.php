@@ -105,7 +105,7 @@
           <div class="col-xs-12 col-md-10 col-md-offset-1">
                 <div class="col-xs-12 card-border">
                   <form class="text-center" action="C_resumen" method="POST">
-                    <div class="col-xs-12 col-sm-8">  
+                    <div class="col-xs-12 col-sm-8 linea">  
                         <p class="sub-title"><strong>Datos laborales</strong></p>
                           <div class="col-xs-12 p-0">
                             <div class="col-sm-12">
@@ -158,7 +158,7 @@
                             </div>
                           </div>
                       </div>
-                      <div class="col-xs-12 col-sm-4 linea">
+                      <div class="col-xs-12 col-sm-4">
                               <p class="sub-title"><strong>Datos del contacto</strong></p>
                               <div class="col-xs-12 p-0">
                                 <div class="col-sm-12">
@@ -233,15 +233,15 @@
                             </div>
                             <?php } ?>
                       </div>
-                      <div class="col-xs-12 m-t-50">
+                      <div class="col-xs-12 m-t-0">
                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                        <a id="remove" class="link" onclick="redirect();">Regresar</a>
+                        <a id="remove" class="link" onclick="redirect();" style="margin: 2px 20px;">Regresar</a>
                         <?php } else{ ?>
-                        <a id="remove" class="link" onclick="redirect();">Regresar</a>
+                        <a id="remove" class="link" onclick="redirect();" style="margin: -20px 20px;">Regresar</a>
                         <?php } ?>
                       </div>
                       <input type="hidden" name="tipo_producto_hidden" value="<?php echo $tipo_producto ?>">
-                      <button type="button" style="" data-toggle="modal" data-target="#myModaltelef" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
+                      <button type="button" style="margin-right: 180px !important;margin-top: -25px !important;" data-toggle="modal"  data-target="#myModaltelef" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="enviarMail()" disabled>Aceptar</button>
                   </form>
                 </div>                                        
         </div>

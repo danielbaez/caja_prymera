@@ -12,7 +12,6 @@ function agregarPersonal() {
 		msj('error', 'Ingrese un supervisor');
 		return;
 	}
-	//$('#personalAsignado').html('');
 	$('input[type=checkbox]').each(function () {
 	    if(this.checked == true) {
 	    	dato = $(this).val();
@@ -25,7 +24,6 @@ function agregarPersonal() {
         $('#check_'+dato).addClass('hidden');
         $('#check_'+dato).remove();
 	    }
-	    //console.log(glob_personalAsignado);
 	});
 }
 
@@ -57,11 +55,12 @@ function guardatAsesoresAsignados() {
 			data = JSON.parse(data);
 			if(data.error == 0) {
 				$('#supervisor').val('');
-				$('.agregar').html('');
-            	$('.agregar').append(data.html);
-            	$('#agencias').html('');
-            	$('#agencias').append('<option value="">Agencias</option>');
-            	$('#personalAsignado').html('');
+				$('.table-responsive').html('');
+        $('.table-responsive').append(data.html);
+        paginacion();
+      	$('#agencias').html('');
+      	$('#agencias').append('<option value="">Agencias</option>');
+      	$('#personalAsignado').html('');
 			}
 			msj('success', data.msj);
 		} catch (err){

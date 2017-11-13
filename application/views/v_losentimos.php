@@ -11,7 +11,6 @@
     <?php } ?>
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
-	<!-- <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>mdl/material.min.css?v=<?php echo time();?>"> -->
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">  
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
@@ -103,13 +102,13 @@
 
       <div class="row p-t-20">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div class="panel panel-primary" style="padding-bottom: 35px">
+          <div class="panel panel-primary" style="padding-bottom: 35px;border: 2px solid #337ab7;">
             <div class="panel-heading text-center" style="background-color: #fff;border:0;padding-top: 15px;padding-bottom: 15px;color: #1C4485;">
               <h1 class="panel-title" style="font-size:24px;color: #005aa6;">Lo sentimos, en estos momentos no contamos con una</h1>
               <h1 style="font-size:24px;color:#005aa6;margin:0px;">oferta que se ajuste a tus necesidades <strong>y nos gustar&iacute;a</strong></h1>
               <h1 style="font-size:24px;color:#005aa6;margin:0px;text-align: center"><strong>ponernos en contacto contigo</strong></h1>
             </div>
-            
+            </br>
             <div class="panel-body" style="padding-bottom:25px;border: 1px solid #1C4485;border-top-left-radius: 40px; width: 60%; margin:0 auto">
               <div class="row text-center" style="color:#EF484E;padding: 0px;margin: 0px;">
                 <h1 style="margin:8px 0 15px 0;text-align: center;font-size: 20px;color: #808080;font-family: 'quicksandlight';">Confirma tus datos</h1>
@@ -126,7 +125,7 @@
                   </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                    <button type="button" class="btn btn-lg btn-aceptar" style="font-weight: lighter;background-color: #005aa6;color: #fff;font-family: 'quicksandbold';width: 160px;margin-top: 5px;" onclick="guardarDatos()">Aceptar</button>
+                    <button type="button" class="btn btn-lg btn-aceptar" style="font-weight: lighter;background-color: #005aa6;color: #fff;font-family: 'quicksandbold';width: 160px;margin-top: 5px;margin: auto;" onclick="guardarDatos()">Aceptar</button>
                 </div>
               </div>
             </div>
