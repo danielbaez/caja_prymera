@@ -20,7 +20,9 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
-    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">    
+    <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">    
   </head>
   <body>
 
@@ -94,7 +96,7 @@
       <div class="row">
         <div class="col-xs-12 m-t30">
           <form class="text-center form-horizontal">
-            <div class="col-xs-12 col-md-7">
+            <div class="col-xs-12 col-md-7" style="padding-top: 55px;">
               <div class="col-xs-6">
                 <select class="form-control" name="marca" title="Selec. Tipo de pago" id="marca" onchange="getModelo()">
                   <option value="">Marca</option>
@@ -113,14 +115,14 @@
                 <p id="slider-range-value-plazo" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <p class="text-left" style="font-size: 16px">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-plazo"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
-                  <span><?php echo $plazo_min ?>m</span>
+                  <span style="font-size: 16px"><?php echo $plazo_min ?>m</span>
                 </div>
                 <div class="col-xs-6 text-right padding-right">
-                  <span><?php echo $plazo_max ?>m</span>
+                  <span style="font-size: 16px"><?php echo $plazo_max ?>m</span>
                 </div>
               </div>
 
@@ -130,14 +132,14 @@
                 <p id="slider-range-value-monto" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Valor del veh&iacute;culo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <p class="text-left" style="font-size: 16px">Valor del veh&iacute;culo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-monto"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
-                  <span id="sueldoMin">S/ <?php echo  $montoMinimo?></span>
+                  <span id="sueldoMin" style="font-size: 16px">S/ <?php echo  $montoMinimo?></span>
                 </div>
                 <div class="col-xs-6 text-right padding-right">
-                  <span id="sueldoMax">S/ <?php echo  $montoMaximo?></span>
+                  <span id="sueldoMax" style="font-size: 16px">S/ <?php echo  $montoMaximo?></span>
                 </div>
               </div>
 
@@ -147,19 +149,19 @@
                 <p id="slider-range-value-cuota" class="slider-value"></p>
               </div>
               <div class="col-xs-9">
-                <p class="text-left">Cuota inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <p class="text-left" style="font-size: 16px">Cuota inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                 <div id="slider-range-cuota"></div>
                 <br>
                 <div class="col-xs-6 text-left padding-left">
-                  <span id="minCuota">S/ <?php echo  $cuotaMinimo?></span>
+                  <span id="minCuota" style="font-size: 16px">S/ <?php echo  $cuotaMinimo?></span>
                 </div>
                 <div class="col-xs-6 text-right padding-right">
-                  <span id="maxCuota">S/ <?php echo  $cuotaMaximo?></span>
+                  <span id="maxCuota" style="font-size: 16px">S/ <?php echo  $cuotaMaximo?></span>
                 </div>
               </div>
               <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
-                <label class="form-label" style="margin-top: 30px;">Periodo de gracia</label>
-                <input type="date" class="form-control" id="periodo_gracia" name="periodo_gracia">
+                <label class="form-label" style="margin-top: 30px;font-size: 16px;">Fecha de Pago</label>
+                <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia">
               </div>
             </div>
 
@@ -270,10 +272,16 @@
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
     <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
   <script>
     (function($){
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();  
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#periodo_gracia').datetimepicker({
+          format: 'YYYY-MM-DD'
+        });  
     });
     var rangeSliderPlazo = document.getElementById('slider-range-plazo');
     noUiSlider.create(rangeSliderPlazo, {

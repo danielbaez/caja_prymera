@@ -89,26 +89,41 @@ class C_usuario extends CI_Controller {
                     array_push($array_asesores, $key);
                 }
             }
-            $datosAsesor = $this->M_usuario->getDatosTablaAsesor();
+            $datosAsesor = $this->M_usuario->getDatosNuevosTablaAsesor($array_asesores);
             foreach ($datosAsesor as $key) {
                         $html .= '<tr id="check_'.$key->id.'">
                                     <td>
-                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->nombre.'">
+                                       <input type="checkbox" data-nombre="'.$key->nombre.'" data-apellido="'.$key->apellido.'" data-rol="'.$key->rol.'" data-agencia="'.$key->agencia.'" name="id_asesor[]" value="'.$key->id.'" onclick="agregarPersonal()">
                                     </td>                    
-                                    <td>'.$key->nombre.'</td>
+                                    <td>'.$key->nombre.' '.$key->apellido.'</td>
                                     <td>'.$key->rol.'</td>
                                     <td>'.$key->agencia.'</td>
                                   </tr>';
+                      $cabecera = '<div class="table-responsive">
+                                    <table id="tabla-personal" class="table table-bordered">
+                                      <thead>
+                                        <tr class="tr-header-reporte">
+                                          <th class="text-center widht-opt-select">Opt</th>
+                                          <th class="text-center">Nombres</th>
+                                          <th class="text-center">Rol</th>
+                                          <th class="text-center">Agencia</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="agregar">
+                                             '.$html.'            
+                                      </tbody>
+                                    </table>
+                                </div>';
             }
+            $data['html'] = $cabecera;
             $arrayUpdt = array('id_agencia' => $agencia);
             $mensajes = $this->M_usuario->updateDatosAsesor($arrayUpdt,$array_asesores , 'usuario');
-            $data['html'] = $html;
             $data['msj'] = $mensajes['msj'];
             $data['error'] = $mensajes['error'];
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode($data);
     }
 
 

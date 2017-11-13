@@ -104,19 +104,19 @@
     <div class="row">
       <div class="col-xs-12 m-t30">
         <form class="text-center form-horizontal">
-          <div class="col-xs-12 col-md-7">
+          <div class="col-xs-12 col-md-7" style="padding-top: 140px;">
             <div class="col-xs-3">
               <p id="slider-range-value-meses" class="slider-value"></p>
             </div>
             <div class="col-xs-9">
-              <p class="text-left">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+              <p class="text-left" style="font-size: 16px">Plazo de Pr&eacute;stamo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
               <div id="slider-range-meses"></div>
               <br>
               <div class="col-xs-6 text-left padding-left">
-                <span><?php echo $plazo_min ?>m</span>
+                <span style="font-size: 16px"><?php echo $plazo_min ?>m</span>
               </div>
               <div class="col-xs-6 text-right padding-right">
-                <span><?php echo $plazo_max ?>m</span>
+                <span style="font-size: 16px"><?php echo $plazo_max ?>m</span>
               </div>
             </div>
             <div class="col-xs-12 margin-top"></div>
@@ -124,14 +124,14 @@
               <p id="slider-range-value-dias" class="slider-value"></p>
             </div>
             <div class="col-xs-9">
-              <p class="text-left">Monto <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Importe del pr&eacute;stamo a solicitar" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+              <p class="text-left" style="font-size: 16px">Monto <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Importe del pr&eacute;stamo a solicitar" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
               <div id="slider-range-dias"></div>
               <br>
               <div class="col-xs-6 text-left padding-left">
-                <span id="minCuota">S/ <?php echo  $importeMinimo?></span>
+                <span id="minCuota" style="font-size: 16px">S/ <?php echo  $importeMinimo?></span>
               </div>
               <div class="col-xs-6 text-right padding-right">
-                <span id="maxCuota">S/ <?php echo  $importeMaximo?></span>
+                <span id="maxCuota" style="font-size: 16px">S/ <?php echo  $importeMaximo?></span>
               </div>
             </div>
           </div>

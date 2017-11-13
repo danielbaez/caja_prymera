@@ -405,6 +405,7 @@ $(document).ready(function() {
                     dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
+                    dPrestamo += '<p><span>TEA:</span> '+detalle.tea+'%</p>';
                   }
                   if(detalle.id_producto == 2){
                     dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
@@ -414,6 +415,7 @@ $(document).ready(function() {
                     dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
                     dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
+                    dPrestamo += '<p><span>TEA:</span> '+detalle.tea+'%</p>';
                   }
 
                   $('.div-datos-prestamo').html(dPrestamo);
