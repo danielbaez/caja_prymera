@@ -172,7 +172,7 @@ class Resumen extends CI_Controller {
                       @media (min-width: 300px) and (max-width: 550px) { 
                         .img-credit {
                                 top: 148px;
-                              max-width: 400px !important;
+                              max-width: 300px !important;
                               margin-left: 10px !important;
                           }
                           .container-tabla {
@@ -190,16 +190,16 @@ class Resumen extends CI_Controller {
                   </head>
                   <body>
                     <div style="    margin: auto;width: 100%;max-width: 600px;">
-                      <div class="container-fluid" style="max-width: 600px;height: 1500px;">
+                      <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;border-top-left-radius: 40px;">
                         <div class="container-header" style="background-color: #0060aa;height: 115px;">
-                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;position: relative;top: 35px;">'.$credito.'</h3>
-                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;position: relative;top: 15px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;margin-top: -45px;"></h1>
+                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;margin: 0 35px;padding-top: 35px;">'.$credito.'</h3>
+                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;margin-top: 1px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;margin-top: -45px;"></h1>
                       </div>
-                      <div class="container-body" style="margin-top: 40px;text-align: center;">
+                      <div class="container-body" style="text-align: center;margin-top: -20px;">
                         <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
                         <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 600px;margin: auto;">
                       </div>
-                      <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -24px;font-weight: bold;">
+                      <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -30px;font-weight: bold;">
                         <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>
                         <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;margin-bottom: 30px;">A continuación detallamos las condiciones </br> del '.$tipo_cred.' que solicitaste.</h3>
                         <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
@@ -224,7 +224,7 @@ class Resumen extends CI_Controller {
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
                           </div>
                         </div>
-                        <div style="background-color: #378fb7;height: 750px;margin: -172px 0px;">
+                        <div style="background-color: #378fb7;height: 750px;margin: -172px 0px;border-bottom-right-radius: 40px;">
                           <h1 style="color: #fff;margin-left: 40px;padding-top: 150px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
                         <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
                         <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en Av. Túpac Amaru 1210 </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
@@ -239,7 +239,7 @@ class Resumen extends CI_Controller {
                         <p style="color: #fff;margin-left: 40px;font-size: 27px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
                         </div>
                         </br>
-                        <div style="height: 350px;    margin-top: 172px;">
+                        <div style="height: 350px;">
                           <div style="padding: 20px;border: 1px solid;height: 115px;">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
