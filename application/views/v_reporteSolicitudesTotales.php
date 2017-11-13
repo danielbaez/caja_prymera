@@ -272,7 +272,7 @@
                           }
                           elseif($solicitud->last_page == 1)
                           {
-                            echo "Lo sentimos - mensaje";
+                            echo "Te contactamos";
                           }
                           elseif($solicitud->last_page == 2)
                           {
@@ -284,11 +284,11 @@
                           }
                           elseif($solicitud->last_page == 4)
                           {
-                            echo "Resumen";
+                            echo "Resumen Solicitud";
                           }
                           elseif($solicitud->last_page == 5)
                           {
-                            echo "Mapa";
+                            echo "Info y Mapa";
                           }
                             ?>
                           </td>
