@@ -189,7 +189,7 @@ class Resumen extends CI_Controller {
                       </style>
                   </head>
                   <body>
-                    <div style="    margin: auto;width: 100%;max-width: 600px;">
+                    <div style="    margin: auto;width: 100%;max-width: 600px;height: 2000px;">
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;border-top-left-radius: 40px;">
                         <div class="container-header" style="background-color: #0060aa;height: 115px;">
                         <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;margin: 0 35px;padding-top: 35px;">'.$credito.'</h3>
@@ -224,8 +224,8 @@ class Resumen extends CI_Controller {
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
                           </div>
                         </div>
-                        <div style="background-color: #378fb7;height: 750px;margin: -172px 0px;border-bottom-right-radius: 40px;">
-                          <h1 style="color: #fff;margin-left: 40px;padding-top: 150px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
+                        <div style="background-color: #378fb7;height: 500px;margin: -172px 0px;border-bottom-right-radius: 40px;">
+                          <h1 style="color: #fff;margin-left: 40px;padding-top: 40px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
                         <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
                         <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en Av. Túpac Amaru 1210 </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
                         <p style="color: #fff;margin-left: 40px;">¿Qué debo presentar?</p>
