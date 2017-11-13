@@ -5,15 +5,10 @@ class C_cambiarPassword extends CI_Controller {
     
     function __construct() {
         parent::__construct();
-        $this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
-        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
-        $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
-        $this->output->set_header('Pragma: no-cache');
-        $this->load->helper('cookie');
+
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
-
         $this->load->helper("access_helper");
         is_logged();
     }
@@ -38,8 +33,7 @@ class C_cambiarPassword extends CI_Controller {
         	$email = _post('email');
         	$password = _post('password');
         	$idPersona =  str_replace("/?a=","",base64_decode(_post('encrypt')));
-        	$idPersona = _getSesion('id_pers_recuperar');
-            $arrayUpdt = array(//'email' => $email,
+            $arrayUpdt = array(
             					'password' => $this->get_hash($password),
             					'estado_recuperar' => 0);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'usuario');

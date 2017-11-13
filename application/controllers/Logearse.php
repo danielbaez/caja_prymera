@@ -5,11 +5,7 @@ class Logearse extends CI_Controller {
     
     function __construct() {
         parent::__construct();
-        $this->output->set_header('Last-Modified:'.gmdate('D, d M Y H:i:s').'GMT');
-        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
-        $this->output->set_header('Cache-Control: post-check=0, pre-check=0',false);
-        $this->output->set_header('Pragma: no-cache');
-        $this->load->helper('cookie');
+
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
@@ -192,15 +188,11 @@ class Logearse extends CI_Controller {
                 throw new Exception("No se encontr&oacute; su usuario o correo electr&oacute;nico", 1);
                 
             }
-            $session = array('id_pers_recuperar' => $id_pers[0]->id,
-                             'fecha_recupear' => date("Y-m-d"),
-                             'estado_recuperar' => 1);
-            $this->session->set_userdata($session);
             $arrayUpdt = array('estado_recuperar' => 1,
                                 'fecha_recuperar' => date("Y-m-d"));
             $this->M_usuario->updateDatosAsesor($arrayUpdt,$id_pers[0]->id , 'usuario');
             $id_encrypt = base64_encode($id_pers[0]->id);
-            //$validacion = $this->sendMailGmail($email, $id_encrypt);
+            $validacion = $this->sendMailGmail($email, $id_encrypt);
             $data['error'] = EXIT_SUCCESS;
         }  catch(Exception $e){
             $data['msj'] = $e->getMessage();
@@ -238,10 +230,8 @@ class Logearse extends CI_Controller {
        $this->email->message('
         <h1><strong>Restaurar Contrase&ntilde;a</strong></h1>
         <h4>Te damos la bienvenida a Prymera!</h4>
-        <h4>A continuaci&oacute;n te enviamos un enlace para que puedas cambiar tu contrase&ntilde;a</h4>
-
-        <p>'._getSesion('nombreCompleto').': <a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambia tu contrase&ntilde;a aqu&iacute;</a></p>
-        ');
+        <h4>A continuaci&oacute;n te enviamos un enlace para que puedas cambiar tu contrase&ntilde;a:</h4>
+        <p><a href="http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/C_cambiarPassword/?a='.$id_encrypt.'">cambia tu contrase&ntilde;a aqu&iacute;</a></p>');
        $this->email->send();
        //con esto podemos ver el resultado
        //var_dump($this->email->print_debugger());
