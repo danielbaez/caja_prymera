@@ -240,7 +240,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                         <p style="color: #fff;margin-left: 40px;font-size: 27px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
                         </div>
                         </br>
-                        <div style="height: 350px;">
+                        <div style="height: 350px;padding-top: 40px;">
                           <div style="padding: 20px;border: 1px solid;height: 115px;font-size: 8px;">
                             '.$terminos_condiciones.'
                           </div>
