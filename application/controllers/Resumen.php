@@ -207,10 +207,29 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                   <body>
                     <div style="    margin: auto;width: 100%;max-width: 600px;height: 2000px;">
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;border-top-left-radius: 40px;">
-                        <div class="container-header" style="background-color: #0060aa;height: 115px;">
+                        <div class="container" style="width: 600px; max-width: 100%; margin: 0 auto; background-color: #0060aa;padding-bottom: 30px;">
+                           <div class="row padding-div-row-header" style="display: flex;
+                         align-items: center;">
+                             <div class="col-xs-6 col-title-header-padding" style="max-width: 50%; margin: 0 auto">
+                               <h1 class="title-header-first" style="    color: #FFFFFF;
+                         font-size: 16px;
+                         margin-bottom: 0;"><span>'.$credito.'</span></h1>
+                               <h1 class="title-header-second" style="color: #FFFFFF;
+                         font-size: 32px;
+                         margin-top: 0;"><span>'.$nuevo_texto.'</span></h1>
+                             </div>
+                             <div class="col-xs-6 div-logo" style="max-width: 50%; margin: 0 auto">
+                               <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px; display: block;
+                         max-width: 100%;
+                         height: auto;"></a>
+                               <h1 style="display: none">Dashboard</h1>
+                             </div>
+                           </div>    
+                         </div>
+                  <!--<div class="container-header" style="background-color: #0060aa;height: 115px;">
                         <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;margin: 0 35px;padding-top: 35px;">'.$credito.'</h3>
                         <h1 style="font-size: 25px;color: #fff;margin-left: 40px;margin-top: 1px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right; padding: 0px 20px;margin: -42px 0px;"></h1>
-                      </div>
+                      </div>-->
                       <div class="container-body" style="text-align: center;margin-top: -20px;">
                         <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
                         <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 600px;margin: auto;">
