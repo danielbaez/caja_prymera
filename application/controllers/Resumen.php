@@ -115,11 +115,26 @@ class Resumen extends CI_Controller {
        $imagen = null;
        $credito = null;
        $nuevo_texto = null;
+       $texto_credito = null;
+       $importe = null;
        $terminos_condiciones = null;
+       $texto_beneficios = null;
+       $texto_hacer = null;
+       
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;">No te preocupes, un agente de la agencia Independencia ubicada  en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
+         </br>
+         Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$direccion.' en el horario de atención: Lunes a viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar tu última boleta de pago para que podamos evaluarte.</p>' : $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_presentar = '<p style="color: #fff;margin-left: 40px;">. Tu DNI vigente</p>
+                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;">. Un recibo de un servicio (máximo 2 meses de antigüedad)</p>
+                        <p style="color: #fff;margin-left: 40px;">. Las 2 últimas boletas de pago si tus ingresos son fijos</p>
+                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;">. Las 3 últimas boletas de pago si tus ingresos son variables</p>' : $texto_presentar = '<p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;">Tu DNI vigente y  un recibo de un servicio </br> (máximo 2 meses de antigüedad).</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $credito = 'Cr&eacute;dito Consumo' : $credito = 'Cr&eacute;dito Vehicular';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = 'Mi Cash' : $nuevo_texto = 'Auto de Prymera';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = '"Mi Cash"' : $nuevo_texto = '"Auto de Prymera"';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_credito = '<h1 style="color: #fff;margin-left: 40px;padding-top: 40px;">Desembolsar tu crédito </br> pre-aprobado es fácil</h1>' : $texto_credito = '<h1 style="color: #fff;margin-left: 40px;padding-top: 40px;">Quiero desembolsar </br>mi crédito pre-aprobado</h1>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $imagen = 'IMG-Consumo1.png' : $imagen = 'IMG-Vehicular1.png';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $terminos_condiciones = '“La oferta pre-aprobada cumplirá las siguientes condiciones: CRÉDITO CONSUMO MI CASH, este producto es ofertado a los clientes que estén en la base de datos de Prymera, previamente evaluados y con condición de pre-aprobados. Los clientes que no estén en la base de datos de Prymera y estén interesados en el producto, estarán sujetos a evaluación crediticia. Los clientes pre-aprobados de la base de datos de Prymera, serán contactados por el Personal de Prymera y deberán acercarse a cualquier agencia de Prymera con la documentación requerida para obtener su CRÉDITO CONSUMO MI CASH, debiendo hacerlo dentro del plazo de oferta que se le indique, siendo que, si se acerca a agencia fuera del plazo indicado, podrá estar sujeto a pasar una nueva evaluación crediticia por la variación de su calificación en la central de riesgos.
 
@@ -206,7 +221,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                         <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Importe: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> S/ '._getSesion('Importe').'</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.$importe.'</p>
                           </div>
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Plazo: </h3>
@@ -221,23 +236,20 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('sess_tea').'</p>
                           </div>
                           <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
-                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TCEA: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('tcea_sess').'</p>
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">TCEA: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '._getSesion('tcea_sess').'</p>
                           </div>
                         </div>
                         <div style="background-color: #378fb7;height: 520px;margin: -172px 0px;border-bottom-right-radius: 40px;">
-                          <h1 style="color: #fff;margin-left: 40px;padding-top: 40px;">Desembolsa tu crédito </br> pre-aprobado es fácil</h1>
-                        <p style="color: #fff;top: 153px;margin-left: 40px;">¿Qué debo hacer?</p>
-                        <p style="color: #fff;margin-left: 40px;">Acércate a la agencia más cercana, ubicada en Av. Túpac Amaru 1210 </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>
-                        <p style="color: #fff;margin-left: 40px;">¿Qué debo presentar?</p>
-                        <p style="color: #fff;margin-left: 40px;">. Tu DNI vigente</p>
-                        <p style="color: #fff;margin-left: 40px;">. Un recibo de un servicio (máximo 2 meses de antiguedad)</p>
-                        <p style="color: #fff;margin-left: 40px;">. Las 2 últimas voletas de pago si tus ingresos son fijos</p>
-                        <p style="color: #fff;margin-left: 40px;">. Las 3 últimas voletas de pago si tus ingresos son variables</p>
-                        <p style="color: #fff;top: 153px;margin-left: 40px;">¡Más beneficios para ti!</p>
-                        <p style="color: #fff;margin-left: 40px;">Si deseas un crédito "Auto de Prymera" con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>
+                        '.$texto_credito.'
+                        <p style="color: #fff;top: 153px;margin-left: 40px;font-size: 18px;">¿Qué debo hacer?</p>
+                        '.$texto_hacer.'
+                        <p style="color: #fff;margin-left: 40px;font-size: 18px;">¿Qué debo presentar?</p>
+                        '.$texto_presentar.'
+                        <p style="color: #fff;top: 153px;margin-left: 40px;font-size: 18px;">¡Más beneficios para ti!</p>
+                        '.$texto_beneficios.'
                         </br>
-                        <p style="color: #fff;margin-left: 40px;font-size: 27px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
+                        <p style="color: #fff;margin-left: 40px;font-size: 18px;">¡No pierdas la oportunidad de cumplir tus sueños, te esperamos!</p>
                         </div>
                         </br>
                         <div style="height: 350px;padding-top: 40px;">

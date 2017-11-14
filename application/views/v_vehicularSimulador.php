@@ -161,7 +161,7 @@
               </div>
               <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
                 <label class="form-label" style="margin-top: 30px;font-size: 16px;">Fecha de Pago</label>
-                <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia">
+                <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia" onchange="cambiarFecha()">
               </div>
             </div>
 
@@ -180,6 +180,10 @@
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">Cuota Mensual*</p>
                           <span class="valor-ajax-valores font-regular" id="cantMensPago">S/ 0</span>
+                </div>
+                <div class="col-md-12 margin-ajax-valores">
+                  <p class="titulo-ajax-valores">Primera Fecha de Pago</p>
+                          <span class="valor-ajax-valores font-regular" id="fecha_change">YYYY-MM-DD</span>
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">TEA</p>
@@ -281,7 +285,12 @@
         $('[data-toggle="tooltip"]').tooltip();
         $('#periodo_gracia').datetimepicker({
           format: 'YYYY-MM-DD'
-        });  
+        }); 
+
+        $('#periodo_gracia').on('dp.change', function(e){ 
+            var fecha = $('#periodo_gracia').val();
+            $('#fecha_change').html(fecha);
+        })
     });
     var rangeSliderPlazo = document.getElementById('slider-range-plazo');
     noUiSlider.create(rangeSliderPlazo, {

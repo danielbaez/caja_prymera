@@ -20,6 +20,11 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>micash-resumen.css?v=<?php echo time();?>">
+    <style type="text/css">
+      .btn-link:focus, .btn-link:hover {
+          color: #337ab7 !important;
+      }
+    </style>
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
       <body style="padding: 0px;">
@@ -321,5 +326,6 @@
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 	  <script type="text/javascript" async src="<?php echo RUTA_JS?>jsresumen_m.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+    <script type="text/javascript"></script>
   </body>
 </html>
