@@ -209,7 +209,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;border-top-left-radius: 40px;">
                         <div class="container-header" style="background-color: #0060aa;height: 115px;">
                         <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;margin: 0 35px;padding-top: 35px;">'.$credito.'</h3>
-                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;margin-top: 1px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;margin: 15px 20px;padding-top: 0px;margin-top: -42px !important;"></h1>
+                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;margin-top: 1px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right; margin: -37px 20px;padding: 0px 0px;"></h1>
                       </div>
                       <div class="container-body" style="text-align: center;margin-top: -20px;">
                         <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
