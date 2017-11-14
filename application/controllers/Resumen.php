@@ -208,8 +208,8 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                     <div style="    margin: auto;width: 100%;max-width: 600px;height: 2000px;">
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;border-top-left-radius: 40px;">
                         <div class="container-header" style="background-color: #0060aa;height: 115px;">
-                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;margin: 0 35px;padding-top: 35px;">'.$credito.'</h3>
-                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;margin-top: 1px;">'.$nuevo_texto.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;margin-top: -45px;"></h1>
+                        <h3 style="font-size: 16px;color: #fff;font-weight: lighter;margin-left: 40px;margin: 0 35px;padding-top: 35px;">'.$credito.' <img class="logo-img" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px;float: right;position: relative;left: -40px;margin-top: -25px; !important;"></h3>
+                        <h1 style="font-size: 32px;color: #fff;margin-left: 40px;margin-top: 1px;">'.$nuevo_texto.'</h1>
                       </div>
                       <div class="container-body" style="text-align: center;margin-top: -20px;">
                         <!--<img src="'.RUTA_IMG.'/fondos/Background.jpg" style="width: 100%;height: 500px;">-->
