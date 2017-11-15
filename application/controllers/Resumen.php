@@ -341,7 +341,7 @@ Financiamiento Regular: Valido sÃ³lo para personas naturales con edad Min. 24 aÃ
                             'newline' => "\r\n"
                            );    
        $poliza        = null;
-       $data_correo   = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+       $data_correo   = $this->M_preaprobacion->getCorreoByAgencia(_getSesion('Agencia'));
         $arrayCorreos = array();
         foreach ($data_correo as $key) {
           array_push($arrayCorreos, $key->CORREO);

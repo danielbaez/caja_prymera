@@ -96,18 +96,18 @@ class M_preaprobacion extends  CI_Model{
     }
 
     function getDireccionAgencia($agencia) {
-      $sql = "SELECT CORREO
-                  FROM correos
-                 WHERE AGENCIA LIKE ?";
+      $sql = "SELECT *
+                  FROM agencias
+                 WHERE AGENCIA LIKE ?
+                 GROUP BY AGENCIA";
         $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }
 
     function getCorreoByAgencia($agencia) {
-      $sql = "SELECT *
+      $sql = "SELECT CORREO
                   FROM correos
-                 WHERE AGENCIA LIKE ?
-                GROUP BY UBICACION";
+                 WHERE AGENCIA LIKE ?";
         $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }
