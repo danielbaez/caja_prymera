@@ -21,27 +21,26 @@ class Resumen extends CI_Controller {
         }
         $arrayUpdt = array('last_page' => N_RESUMEN);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-        $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("tipo_producto");
-        $dato['pago_total'] = _getSesion('pago_total');
-        $dato['nombre'] = ucfirst(_getSesion('nombre'));
+        $dato['pago_total']    = _getSesion('pago_total');
+        $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
-        $dato['marca'] = _getSesion('marca');
-        $dato['modelo'] = _getSesion('modelo');
-        $dato['valor_auto'] = _getSesion('valor_auto');
-        $dato['tcea'] = _getSesion('tcea_sess');
-        $dato['cant_meses'] = _getSesion('cant_meses');
-        $dato['Importe'] = _getSesion('Importe');
+        $dato['marca']         = _getSesion('marca');
+        $dato['modelo']        = _getSesion('modelo');
+        $dato['valor_auto']    = _getSesion('valor_auto');
+        $dato['tcea']          = _getSesion('tcea_sess');
+        $dato['cant_meses']    = _getSesion('cant_meses');
+        $dato['Importe']       = _getSesion('Importe');
         $dato['cuota_inicial'] = _getSesion('cuota_inicial');
-        $dato['tea'] = _getSesion('sess_tea');
-        $dato['Agencia'] = _getSesion('Agencia');
+        $dato['tea']           = _getSesion('sess_tea');
+        $dato['Agencia']       = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
         $this->load->view('v_simuladorResumen', $dato);
     }
 
     function __buildComboAgencias(){
         $agencias = $this->M_preaprobacion->getAgencias();
-        $opt = null;
+        $opt      = null;
         foreach($agencias as $age){
             $agen = str_replace(')', '',str_replace('(', '', $age->agencia));
             $opt .= '<option value="'.$agen.'"> '.$agen.'</option>';
@@ -53,26 +52,26 @@ class Resumen extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $agencia = _post('agencia');
-            $idPersona  = _getSesion('idPersona');
+            $agencia      = _post('agencia');
+            $idPersona    = _getSesion('idPersona');
             $gmailAgencia = null;
             if($agencia != null) {
                 $session = array('Agencia' => $agencia);
                 $this->session->set_userdata($session);
-                $agencia = $this->M_preaprobacion->getAgenciasId($agencia);
+                $agencia   = $this->M_preaprobacion->getAgenciasId($agencia);
                 $arrayUpdt = array('agencia_desembolso' => $agencia[0]->id,
-                                'timestamp_final'   => date("Y-m-d H:i:s"),
-                                'fec_estado' => date("Y-m-d H:i:s"),
-                                'last_page' => N_INTRO_MAPA);
-            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+                                   'timestamp_final'    => date("Y-m-d H:i:s"),
+                                   'fec_estado'         => date("Y-m-d H:i:s"),
+                                   'last_page'          => N_INTRO_MAPA);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona, 'solicitud');
             }else{
-              $arrayUpdt = array('timestamp_final'   => date("Y-m-d H:i:s"),
-                                'fec_estado' => date("Y-m-d H:i:s"),
-                                'last_page' => N_INTRO_MAPA);
+              $arrayUpdt = array('timestamp_final' => date("Y-m-d H:i:s"),
+                                 'fec_estado'      => date("Y-m-d H:i:s"),
+                                 'last_page'       => N_INTRO_MAPA);
               
-            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona, 'solicitud');
             }
-            $validacion = $this->sendMailGmail();
+            $validacion   = $this->sendMailGmail();
             $gmailAgencia = $this->sendMailGmailAgencia();
             //$celular = $this->enviarMail();
             $data['error'] = EXIT_SUCCESS;
@@ -82,11 +81,11 @@ class Resumen extends CI_Controller {
         echo json_encode(array_map('utf8_encode', $data));
     }
 
-    function sendMailGmail(){
+    function sendMailGmail() {
       $data['error'] = EXIT_ERROR;
       $data['msj']   = null;
       try {  
-        $datos_bd = $this->M_preaprobacion->getDireccionByAgencia(_getSesion('Agencia'));
+        $datos_bd  = $this->M_preaprobacion->getDireccionByAgencia(_getSesion('Agencia'));
         $direccion = $datos_bd[0]->UBICACION;
         //cargamos la libreria email de ci
        $this->load->library("email");
@@ -100,7 +99,7 @@ class Resumen extends CI_Controller {
                             'mailtype'  => 'html',
                             'charset'   => 'utf-8',
                             'newline'   => "\r\n"
-                            );    
+                          );    
        $poliza = null;
        //cargamos la configuración para enviar con gmail
        $this->email->initialize($configGmail);
@@ -109,20 +108,19 @@ class Resumen extends CI_Controller {
        $this->email->from('userauto@prymera.com');
        $this->email->to(_getSesion('email'));
        $this->email->subject('Bienvenido/a a Caja Prymera');
-       $texto = null;
-       $nombre = _getSesion('nombre');
-       $tipo_cred = null;
-       $imagen = null;
-       $credito = null;
-       $nuevo_texto = null;
-       $texto_credito = null;
-       $importe = null;
+       $texto                = null;
+       $nombre               = _getSesion('nombre');
+       $tipo_cred            = null;
+       $imagen               = null;
+       $credito              = null;
+       $nuevo_texto          = null;
+       $texto_credito        = null;
+       $importe              = null;
        $terminos_condiciones = null;
-       $texto_beneficios = null;
-       $texto_hacer = null;
-       
+       $texto_beneficios     = null;
+       $texto_hacer          = null;
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;">No te preocupes, un agente de la agencia Independencia ubicada  en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$direccion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
          Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$direccion.' en el horario de atención: Lunes a viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar tu última boleta de pago para que podamos evaluarte.</p>' : $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>';
@@ -279,13 +277,10 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                     </div>
                   </body>
                   </html>';
-
        $this->email->message($texto);
        $this->email->send();
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
-       //con esto podemos ver el resultado
-       //var_dump($this->email->print_debugger());
         $data['error'] = EXIT_SUCCESS;
       }catch (Exception $e){
             $arrayUpdt = array('envio_email' => 2);
@@ -298,12 +293,12 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
         $data['error'] = EXIT_SUCCESS;
         $data['msj']   = null;
         try {
-          $tipo_cred = null;
-          $mensaje = null;
+          $tipo_cred   = null;
+          $mensaje     = null;
           $texto_envio = null;
-          $fecha = explode('-', date("Y-m-d"));
-          $fecha_new = $fecha[1].'-'.($fecha[2]+10);
-          $newDate = date("d-m-Y", strtotime($this->_data_last_month_day()));
+          $fecha       = explode('-', date("Y-m-d"));
+          $fecha_new   = $fecha[1].'-'.($fecha[2]+10);
+          $newDate     = date("d-m-Y", strtotime($this->_data_last_month_day()));
           _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Mi Cash' : $tipo_cred = 'Vehicular';
           _getSesion("tipo_producto") == PRODUCTO_MICASH ? $mensaje = _getSesion('Importe') : $mensaje = 'S/ '._getSesion('Importe');
           _getSesion("tipo_producto") == PRODUCTO_MICASH ? $texto_envio = _getSesion('nombre').' ven a Prymera por tus '._getSesion('Importe').' hasta '.$newDate.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800' : $texto_envio = _getSesion('nombre').' ven por tu Auto de Prymera S/'._getSesion('Importe').' hasta '.$fecha_new.'. TCEA '._getSesion('tcea_sess').' a '._getSesion('cant_meses').'. Cond. al 243-4800';
@@ -330,23 +325,23 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
 
      function sendMailGmailAgencia(){
       $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
+        $data['msj'] = null;
       try {  
        //cargamos la libreria email de ci
        $this->load->library("email");
        //configuracion para gmail
        $configGmail = array(
-       'protocol' => 'smtp',
-       'smtp_host' => 'ssl://smtp.gmail.com',
-       'smtp_port' => 465,
-       'smtp_user' => 'miauto@prymera.pe',
-       'smtp_pass' => '8hUpuv6da_@v',
-       'mailtype' => 'html',
-       'charset' => 'utf-8',
-       'newline' => "\r\n"
-       );    
-       $poliza = null;
-       $data_correo = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+                            'protocol' => 'smtp',
+                            'smtp_host' => 'ssl://smtp.gmail.com',
+                            'smtp_port' => 465,
+                            'smtp_user' => 'miauto@prymera.pe',
+                            'smtp_pass' => '8hUpuv6da_@v',
+                            'mailtype' => 'html',
+                            'charset' => 'utf-8',
+                            'newline' => "\r\n"
+                           );    
+       $poliza        = null;
+       $data_correo   = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
         $arrayCorreos = array();
         foreach ($data_correo as $key) {
           array_push($arrayCorreos, $key->CORREO);
@@ -355,15 +350,15 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
 
        //cargamos la configuración para enviar con gmail6
        $this->email->initialize($configGmail);
-       $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+       $direccion   = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $data_correo = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
-       $ubicacion = $direccion[0]->UBICACION;
-       $correo = $data_correo[0]->CORREO;
+       $ubicacion   = $direccion[0]->UBICACION;
+       $correo      = $data_correo[0]->CORREO;
        $this->email->from('userauto@prymera.com');
        $this->email->to('jsociety.pe@gmail.com');
        $this->email->subject('Bienvenido/a a Caja Prymera');
-       $texto = null;
-       $nombre = _getSesion('nombre');
+       $texto     = null;
+       $nombre    = _getSesion('nombre');
        $tipo_cred = null;
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
@@ -404,11 +399,11 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
       return json_encode(array_map('utf8_encode', $data));
      }
 
-     function _data_last_month_day() { 
+    function _data_last_month_day() { 
       $month = date('m');
       $year = date('Y');
       $day = date("d", mktime(0,0,0, $month+1, 0, $year));
       return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
-  }
+    }
 }
 

@@ -13,7 +13,6 @@ class Vehicular extends CI_Controller {
     }
     
     public function index() {
-        $dato['nombreDato']=':D';
         $dato['tipo_producto'] = _getSesion("TIPO_PROD");
         $this->load->view('v_vehicular', $dato);
     }
@@ -29,26 +28,25 @@ class Vehicular extends CI_Controller {
           //resultado 0 : rechazado
           $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
-           $params = array('token'=> 'E928EUXP',
-                                  'documento'=>_post('dni'),
-                                  'producto'=>'02'
-                    );
-
-          $nombre        = _post('nombre');
+           $params = array('token'     => 'E928EUXP',
+                           'documento' =>_post('dni'),
+                           'producto'  =>'02'
+                          );
+            $nombre        = _post('nombre');
             $apellido      = _post('apellido');
             $dni           = _post('dni');
             $email         = _post('email');
             $tipo_producto = PRODUCTO_VEHICULAR;
             $agencia_user  = $this->M_preaprobacion->getAgencia(_getSesion('id_usuario'));
             $check = _post('check');
-            if($check == true) {
+           if($check == true) {
               $check = 1;//aceptó
            }else {
               $check = 2;//no aceptó
            }
           $result = $client->GetDatosCliente($params);
           $res = $result->return->resultado;
-          if($res == 1){
+          if($res == 1) {
             $documento = $result->return->documento;
             $importeMinimo = $result->return->rango->importeMinimo;
             $importeMaximo = $result->return->rango->importeMaximo;
@@ -62,59 +60,56 @@ class Vehicular extends CI_Controller {
             }
             $plazos = $result->return->rango->plazos;
             $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
-          $session = array('nombre'  => $nombre,
-                'apellido'          => $apellido,
-                'dni'               => $dni,
-                'email'             => $email,
-                'tipo_solicitud'    => $res,
-                'importeMaximo'     => $importeMaximo,
-                'importeMinimo'     => $importeMinimo,
-                'tipo_producto'     => $tipo_producto,
-                'plazos'            => $plazos,
-                'arrDatos'          => $arrDatos
-            );
+          $session = array('nombre'         => $nombre,
+                           'apellido'       => $apellido,
+                           'dni'            => $dni,
+                           'email'          => $email,
+                           'tipo_solicitud' => $res,
+                           'importeMaximo'  => $importeMaximo,
+                           'importeMinimo'  => $importeMinimo,
+                           'tipo_producto'  => $tipo_producto,
+                          );
             $this->session->set_userdata($session);
-            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
-                                'nombre' => $nombre,
-                                'apellido'  => $apellido,
-                                'email'  => $email,
-                                'dni'  => $dni,
-                                'id_tipo_prod' => 2,
-                                'fec_estado' => date("Y-m-d H:i:s"),
-                                'check_autorizo'    => $check,
-                                'ws_error'          => $res,
-                                'ws_resultado'      => json_encode($result),
-                                'ws_timestamp'        => date("Y-m-d H:i:s"),
-                                'cod_agencia'        => $agencia_user[0]->id_agencia,
-                                'last_page' => N_SIMULADOR
+            $arrayInsert = array('id_usuario'     => _getSesion('id_usuario'),
+                                 'nombre'         => $nombre,
+                                 'apellido'       => $apellido,
+                                 'email'          => $email,
+                                 'dni'            => $dni,
+                                 'id_tipo_prod'   => 2,
+                                 'fec_estado'     => date("Y-m-d H:i:s"),
+                                 'check_autorizo' => $check,
+                                 'ws_error'       => $res,
+                                 'ws_resultado'   => json_encode($result),
+                                 'ws_timestamp'   => date("Y-m-d H:i:s"),
+                                 'cod_agencia'    => $agencia_user[0]->id_agencia,
+                                 'last_page'      => N_SIMULADOR
                                 );
             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
-
           }
-          if($res == 0){
-            $session = array('nombre'  => $nombre,
-                'apellido'          => $apellido,
-                'dni'               => $dni,
-                'email'             => $email,
-                'tipo_solicitud'    => $res,
-                'tipo_producto'     => $tipo_producto
-            );
+          if($res == 0) {
+            $session = array('nombre'         => $nombre,
+                             'apellido'       => $apellido,
+                             'dni'            => $dni,
+                             'email'          => $email,
+                             'tipo_solicitud' => $res,
+                             'tipo_producto'  => $tipo_producto
+                            );
             $this->session->set_userdata($session);
-            $arrayInsert = array('id_usuario' => _getSesion('id_usuario'),
-                                'nombre' => $nombre,
-                                'apellido'  => $apellido,
-                                'email'  => $email,
-                                'dni'  => $dni,
-                                'id_tipo_prod' => 2,
-                                'fec_estado' => date("Y-m-d H:i:s"),
-                                'check_autorizo'    => $check,
-                                'ws_error'          => $res,
-                                'ws_resultado'      => json_encode($result),
-                                'ws_timestamp'        => date("Y-m-d H:i:s"),
-                                'cod_agencia'        => $agencia_user[0]->id_agencia,
-                                'last_page' => N_INGRESO_DATOS_RECHAZADO
-                                );
+            $arrayInsert = array('id_usuario'     => _getSesion('id_usuario'),
+                                 'nombre'         => $nombre,
+                                 'apellido'       => $apellido,
+                                 'email'          => $email,
+                                 'dni'            => $dni,
+                                 'id_tipo_prod'   => 2,
+                                 'fec_estado'     => date("Y-m-d H:i:s"),
+                                 'check_autorizo' => $check,
+                                 'ws_error'       => $res,
+                                 'ws_resultado'   => json_encode($result),
+                                 'ws_timestamp'   => date("Y-m-d H:i:s"),
+                                 'cod_agencia'    => $agencia_user[0]->id_agencia,
+                                 'last_page'      => N_INGRESO_DATOS_RECHAZADO
+                                 );
             $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
             $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
             $response = array('status' => 0, 'url' => RUTA_CAJA.'C_losentimos');

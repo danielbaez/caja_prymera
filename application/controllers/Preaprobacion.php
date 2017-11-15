@@ -5,20 +5,16 @@ class Preaprobacion extends CI_Controller {
     
     private $varPagoTotal = null;
     private $varCuotaMensual = null;
-    private $glob_tea = null;
-    private $glob_tcea = null;
     
     function __construct() {
         ob_start();
         parent::__construct();
-
         $this->load->helper("url");
         $this->load->model('M_preaprobacion');
         $this->load->model('M_usuario');
         $this->load->helper("url");
         $this->load->helper("access_helper");
         is_logged();
-        
         $this->array_datos = array(
             array(
                 "plazo" => 12,
