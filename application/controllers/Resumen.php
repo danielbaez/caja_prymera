@@ -208,7 +208,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                         <div class="container" style="width: 600px; max-width: 100%; margin: 0 auto; background-color: #0060aa;padding-bottom: 30px;">
                            <div class="row padding-div-row-header" style="display: flex;
                          align-items: center;">
-                             <div class="col-xs-6 col-title-header-padding" style="max-width: 50%; width: 50%; padding-left: 10px;">
+                             <div class="col-xs-6 col-title-header-padding" style="max-width: 50%; width: 50%; padding-left: 10px;padding-top: 19px;">
                                <h1 class="title-header-first" style="    color: #FFFFFF;
                          font-size: 16px;
                          margin-bottom: 0;"><span>'.$credito.'</span></h1>
@@ -216,7 +216,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                          font-size: 32px;
                          margin-top: 0;"><span>'.$nuevo_texto.'</span></h1>
                              </div>
-                             <div class="col-xs-6 div-logo" style="max-width: 50%; width: 50%; padding-right: 10px;">
+                             <div class="col-xs-6 div-logo" style="max-width: 50%; width: 50%; padding-right: 10px;padding-top: 13px;">
                                <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="'.RUTA_IMG.'/fondos/Logo-Prymera-Blanco.png" style="width: 300px; display: block;
                          max-width: 100%;
                          height: auto;"></a>
