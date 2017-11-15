@@ -15,6 +15,9 @@ class Resumen extends CI_Controller {
     }
 
     public function index() {
+        //$data_correo = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+        //$correo = $data_correo[0]->CORREO;
+        //_log(print_r($data_correo, true));
         $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         if($datos_page[0]->last_page != N_RESUMEN) {
             redirect("/C_main", 'location');
@@ -350,9 +353,11 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
        //cargamos la configuración para enviar con gmail6
        $this->email->initialize($configGmail);
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+       $data_correo = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
+       $correo = $data_correo[0]->CORREO;
        $this->email->from('userauto@prymera.com');
-       $this->email->to('jsociety.pe@gmail.com');
+       $this->email->to('jsociety.pe@gmail.com,jhonatanibericom@gmail.com');
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto = null;
        $nombre = _getSesion('nombre');
