@@ -120,14 +120,14 @@ class Resumen extends CI_Controller {
        $texto_beneficios     = null;
        $texto_hacer          = null;
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$ubicacion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$ubicacion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
          Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$ubicacion.' en el horario de atención: Lunes a viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar tu última boleta de pago para que podamos evaluarte.</p>' : $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_presentar = '<p style="color: #fff;margin-left: 40px;">. Tu DNI vigente</p>
-                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;">. Un recibo de un servicio (máximo 2 meses de antigüedad)</p>
-                        <p style="color: #fff;margin-left: 40px;">. Las 2 últimas boletas de pago si tus ingresos son fijos</p>
-                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;">. Las 3 últimas boletas de pago si tus ingresos son variables</p>' : $texto_presentar = '<p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;">Tu DNI vigente y  un recibo de un servicio </br> (máximo 2 meses de antigüedad).</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_beneficios = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar tu última boleta de pago para que podamos evaluarte.</p>' : $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_presentar = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">. Tu DNI vigente</p>
+                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">. Un recibo de un servicio (máximo 2 meses de antigüedad)</p>
+                        <p style="color: #fff;margin-left: 40px;font-weight: lighter;">. Las 2 últimas boletas de pago si tus ingresos son fijos</p>
+                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">. Las 3 últimas boletas de pago si tus ingresos son variables</p>' : $texto_presentar = '<p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">Tu DNI vigente y  un recibo de un servicio </br> (máximo 2 meses de antigüedad).</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $credito = 'Cr&eacute;dito Consumo' : $credito = 'Cr&eacute;dito Vehicular';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = '"Mi Cash"' : $nuevo_texto = '"Auto de Prymera"';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
@@ -233,7 +233,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                         <img class="img-credit" src="'.RUTA_IMG.'/fondos/'.$imagen.'" style="max-width: 600px;margin: auto;">
                       </div>
                       <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -30px;font-weight: bold;">
-                        <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.$nombre.' </br> te damos la bienvenida!</h1>
+                        <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.ucfirst($nombre).' </br> te damos la bienvenida!</h1>
                         <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;margin-bottom: 30px;">A continuación detallamos las condiciones </br> del '.$tipo_cred.' que solicitaste.</h3>
                         <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
@@ -252,7 +252,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TEA: </h3>
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('sess_tea').'</p>
                           </div>
-                          <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin-left: 40px;margin-top: -10px;">
+                          <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 78%;margin-left: 36px;margin-top: -10px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">TCEA: </h3>
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '._getSesion('tcea_sess').'</p>
                           </div>
