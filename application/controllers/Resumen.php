@@ -123,7 +123,7 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$ubicacion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
          Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$ubicacion.' en el horario de atención: Lunes a viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_beneficios = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar tu última boleta de pago para que podamos evaluarte.</p>' : $texto_beneficios = '<p style="color: #fff;margin-left: 40px;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_beneficios = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar tu última boleta de pago para que podamos evaluarte.</p>' : $texto_beneficios = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Si deseas un '.$credito.' '.$nuevo_texto.' con un monto mayor al pre-aprobado, debes llevar las 3 últimas boletas de pago(ingreso fijo o variable) y el estado de cuenta vigente de tarjetas de crédito u otros créditos que poseas, para que podamos evaluarte.</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_presentar = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">. Tu DNI vigente</p>
                         <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">. Un recibo de un servicio (máximo 2 meses de antigüedad)</p>
                         <p style="color: #fff;margin-left: 40px;font-weight: lighter;">. Las 2 últimas boletas de pago si tus ingresos son fijos</p>
@@ -407,7 +407,6 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
     }
 
     function Redireccionar() {
-      _log('entra');
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
