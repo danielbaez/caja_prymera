@@ -13,7 +13,8 @@ class Vehicular extends CI_Controller {
     }
     
     public function index() {
-        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
+        $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR));
+        $dato['tipo_producto'] = PRODUCTO_VEHICULAR;
         $this->load->view('v_vehicular', $dato);
     }
     

@@ -4,11 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+
       <title>Cr&eacute;dito Auto de Prymera</title>
-    <?php } else { ?>
-        <title>Cr&eacute;dito Mi Cash</title>
-    <?php } ?>
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
@@ -196,7 +193,7 @@
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">Seguro del Auto</p>
-                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 </span><i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor aproximado del seguro seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 5px;right: 75px;color: black;"></i>
+                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 </span><i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor aproximado del seguro anual seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 5px;right: 75px;color: black;"></i>
                           <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
                 </div>
               </div>

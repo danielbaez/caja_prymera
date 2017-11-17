@@ -76,9 +76,6 @@ class Logearse extends CI_Controller {
                                 }
                                 elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
                                 {
-                                    $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH,
-                                                                   'permiso_prod' => PERMISO_MICASH,
-                                                                    'conectado'   => 1));
                                     redirect('Micash');   
                                 }                               
                                 
@@ -95,9 +92,6 @@ class Logearse extends CI_Controller {
                                 }
                                 elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
                                 {
-                                    $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR,
-                                                                   'permiso_prod' => PERMISO_VEHICULAR,
-                                                                    'conectado'   => 1));
                                     redirect('Vehicular');   
                                 }
                             }

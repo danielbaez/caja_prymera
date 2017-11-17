@@ -14,8 +14,9 @@ class Micash extends CI_Controller {
     }
     
     public function index() {
+      $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH));
         $dato['nombreDato']=':D';
-        $dato['tipo_producto'] = _getSesion("TIPO_PROD");
+        $dato['tipo_producto'] = PRODUCTO_MICASH;
         $this->load->view('v_micash', $dato);
     }
     

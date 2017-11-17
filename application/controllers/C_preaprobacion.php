@@ -525,6 +525,19 @@ class C_preaprobacion extends CI_Controller {
             $monto_vehic = _post('monto');
             $importe_auto = $monto-$importe;
             $concesionaria = _post('concesionaria');
+            $fecha       = explode('-', $periodo);
+            $fecha1      = explode('-', date("Y-m-d"));
+            $mes         = $fecha1[1];
+            if($fecha1 == 12) {
+                $mes = 1;
+            }else {
+                $fecha1 = $mes+1;
+            }
+            if($fecha[1] > $fecha1 && $fecha[1]< $mes+1) {
+
+            }else {
+                $data['msj'] = "Seleccione una fecha de uno a dos meses mayor a la actual";
+            }
             $session = array(
                              'pago_total'        => _post('pagotot'),
                              'cuota_mensual'     => _post('mensual'),

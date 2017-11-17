@@ -342,6 +342,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                            );    
        $poliza        = null;
        $data_correo   = $this->M_preaprobacion->getCorreoByAgencia(_getSesion('Agencia'));
+       $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         $arrayCorreos = array();
         foreach ($data_correo as $key) {
           array_push($arrayCorreos, $key->CORREO);
@@ -355,7 +356,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
        $ubicacion   = $direccion[0]->UBICACION;
        $correo      = $data_correo[0]->CORREO;
        $this->email->from('userauto@prymera.com');
-       $this->email->to('jsociety.pe@gmail.com');
+       $this->email->to('ssalas@prymera.pe');
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto     = null;
        $nombre    = _getSesion('nombre');
@@ -365,9 +366,9 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
        $this->email->message('<body>
                                 <h2 style="text-align: center;color: #0152aa;">Estimado Colaborador:</h2>
 
-                                <p style="text-align: center;color: black;">Es un gusto saludarlo e informarle que el siguiente cliente ha solicitado un cr&eacute;dito &quot;'.$tipo_cred.'&quot;. Por favor cont&aacute;ctelo a la brevedad y realice el seguimiento respectivo hasta el desembolso de su cr&eacute;dito.</p>
+                                <p style="text-align: left;color: black;">Es un gusto saludarlo e informarle que el siguiente cliente ha solicitado un &quot;'.$tipo_cred.'&quot;. Por favor cont&aacute;ctelo a la brevedad y realice el seguimiento respectivo hasta el desembolso de su cr&eacute;dito.</p>
 
-                                <p style="margin-left: 30px;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
+                                <p style="text-align: left;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
                                  
                                 <h3 style="margin-left: 30px;color: #0152aa;">Datos del cliente:</h3>
                                 <p style="margin-left: 30px;color: black;"></p>
@@ -376,17 +377,17 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                                 <p>DNI: '._getSesion('dni').'</p>
                                 <p>Tel&eacute;fono: '._getSesion('nro_celular').'</p>
                                 <p>Correo electr&oacute;nico: '._getSesion('email').'</p>
-                                <p>Agencia seleccionada: '._getSesion('Agencia').'</p>
+                                <p style="color: black;">Agencia seleccionada: '._getSesion('Agencia').'</p>
                                  
                                  
                                 <h3 style="margin-left: 30px;color: #0152aa;">Datos del Cr√©dito:</h3>
                                 <p style="margin-left: 30px;color: black;"></p>
-                                <p>Nro. Solicitud:</p>
-                                <p>Importe: '._getSesion('Importe').'</p>
-                                <p>Plazo: '._getSesion('cant_meses').'</p>
-                                <p>Cuota: '._getSesion('cuota_mensual').'</p>
-                                <p>TEA: '._getSesion('sess_tea').'</p>
-                                <p>TCEA: '._getSesion('TCEA').'</p>
+                                <p style="color: black;">Nro. Solicitud: '.$datos_page[0]->id.'</p>
+                                <p style="color: black;">Importe: '._getSesion('Importe').'</p>
+                                <p style="color: black;">Plazo: '._getSesion('cant_meses').'</p>
+                                <p style="color: black;">Cuota: '._getSesion('cuota_mensual').'</p>
+                                <p style="color: black;">TEA: '._getSesion('sess_tea').'</p>
+                                <p style="color: black;">TCEA: '._getSesion('TCEA').'</p>
                               </body>');
        $this->email->send();
        $arrayUpdt = array('envio_email' => 1,);

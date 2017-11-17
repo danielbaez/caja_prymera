@@ -21,6 +21,7 @@ function verificarNumero() {
 	var estado_civil      = $('#estado_civil').val();
 	var nombre_conyugue   = $('#nombre_conyugue').val();
 	var dni_conyugue      = $('#dni_conyugue').val();
+	var email 			  = $('#email').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
     if(uno == null && dos == null && tres == null && cuatro == null && cinco == null && seis == null) {
     	msj('error', 'Ingrese el codigo que se le envi&oacute; al celular');
@@ -50,7 +51,8 @@ function verificarNumero() {
 				nro_fijo : nro_fijo,
 			    estado_civil : estado_civil,
 			    nombre_conyugue : nombre_conyugue,
-				dni_conyugue : dni_conyugue},
+				dni_conyugue : dni_conyugue,
+				email        : email},
 		url   : 'C_confirmacion/verificarNumero',
 		type  : 'POST'
 	}).done(function(data){

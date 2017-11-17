@@ -4,12 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-          <title>Cr&eacute;dito Mi Auto</title>
-        <?php } else { ?>
+        
             <title>Cr&eacute;dito Mi Cash</title>
-        <?php } ?>
         
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand" />
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">

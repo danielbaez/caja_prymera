@@ -220,6 +220,7 @@ class C_confirmacion extends CI_Controller {
             $dni_conyugue   = _post('dni_conyugue');
             $concesionaria = null;
             $Agencia  = _post('Agencia');
+            $email  = _post('email');
             if($tipo_product == PRODUCTO_VEHICULAR) {
                 $concesionaria = _post('concesionaria');
                 if($concesionaria == null) {
@@ -244,7 +245,8 @@ class C_confirmacion extends CI_Controller {
                                  'Distrito'          => $Distrito,
                                  'Agencia'           => $Agencia,
                                  'monto'             => $monto,
-                                 'estado_civil'      => $estado_civil
+                                 'estado_civil'      => $estado_civil,
+                                 'email'             => $email
                                 );
                 $this->session->set_userdata($session);
                 $data['cambio'] = 0;
@@ -266,7 +268,8 @@ class C_confirmacion extends CI_Controller {
                                'nombre_conyugue'    => $nombre_conyugue,
                                'dni_conyugue'       => $dni_conyugue,
                                'status_sol'         => 0,
-                               'last_page'          => N_RESUMEN
+                               'last_page'          => N_RESUMEN,
+                               'email'              => $email
                               );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
