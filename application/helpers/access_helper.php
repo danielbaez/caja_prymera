@@ -110,7 +110,7 @@ function rolPermissions($rol)
 				   		'C_mensaje' => ['index'],
 				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
 				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero', 'Redireccionar'],
-				   		'Resumen' => ['index', 'setearAgencia'],
+				   		'Resumen' => ['index', 'setearAgencia','Redireccionar'],
 				   		'Ubicacion' => ['index']
 				   	],
 				   	'asesor_externo' => [
@@ -122,7 +122,7 @@ function rolPermissions($rol)
 				   		'C_mensaje' => ['index'],
 				   		'C_preaprobacion' => ['index', 'getModelo', 'guardarMarca', 'changeValues'],
 				   		'C_confirmacion' => ['index', 'getProvincia', 'getDistrito', 'ocultarAgencia', 'enviarMail', 'verificarNumero', 'Redireccionar'],
-				   		'Resumen' => ['index', 'setearAgencia'],
+				   		'Resumen' => ['index', 'setearAgencia', 'Redireccionar'],
 				   		'Ubicacion' => ['index']
 				   	]
 				  ];

@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">    
   </head>
-  <body>
+  <body onload="nobackbutton();">
 
   <div class="container-header">
     <div class="container">
@@ -279,7 +279,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-  <script>
+  <script type="text/javascript">
     (function($){
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -570,6 +570,11 @@
   });
 
   })(jQuery);
+  function nobackbutton(){
+       window.location.hash="no-back-button";
+       window.location.hash="Again-No-back-button" //chrome
+       window.onhashchange=function(){window.location.hash="no-back-button";}
+    }
   </script>
   </body>
 </html>

@@ -26,9 +26,9 @@
     </style>
   </head>
   <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-      <body style="padding: 0px;">
+      <body style="padding: 0px;" onload="nobackbutton();">
     <?php } else { ?>
-        <body style="padding: 0px;">
+        <body style="padding: 0px;" onload="nobackbutton();">
     <?php } ?>
     <div class="container-header">
       <div class="container">
@@ -261,7 +261,12 @@
                     </div>
                     <div class="col-xs-12 visible-xs p-t-15"></div>
                     <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0">
-                      <button type="button" class="btn btn-lg m-b-10 btn-resumen" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
+                      <div class="col-xs-12">
+                          <button type="button" class="btn btn-lg m-b-10 btn-resumen" style="font-family: 'quicksandlight';" onclick="irAUbicacion()">Aceptar</button>
+                      </div>
+                      <div class="col-xs-12">
+                        <a id="remove" class="link" onclick="redirect();" style="margin: 2px 0px;">Regresar</a>
+                      </div>
                     </div>
                   </form>
                   <div class="col-xs-12">
@@ -325,6 +330,12 @@
     <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 	  <script type="text/javascript" async src="<?php echo RUTA_JS?>jsresumen_m.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        function nobackbutton(){
+         window.location.hash="no-back-button";
+         window.location.hash="Again-No-back-button" //chrome
+         window.onhashchange=function(){ window.location.hash="no-back-button";}
+      }
+    </script>
   </body>
 </html>

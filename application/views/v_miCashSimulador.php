@@ -23,7 +23,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">    
   </head>
-  <body>
+  <body onload="nobackbutton();">
     
 
   <div class="container-header">
@@ -206,7 +206,7 @@
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 
-  <script>
+  <script type="text/javascript">
   (function($){
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip();   
@@ -346,7 +346,11 @@
       }
     });
   })(jQuery);
-
+    function nobackbutton(){
+       window.location.hash="no-back-button";
+       window.location.hash="Again-No-back-button" //chrome
+       window.onhashchange=function(){window.location.hash="no-back-button";}
+    }
   </script>
   </body>
 </html>

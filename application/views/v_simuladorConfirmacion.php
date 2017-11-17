@@ -20,7 +20,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
   </head>
-  <body>
+  <body onload="nobackbutton();">
 
   <div class="container-header">
     <div class="container">
@@ -321,8 +321,7 @@
   <script type="text/javascript" async src="<?php echo RUTA_JS?>jsconfirmacion.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
-
-  <script>
+  <script type="text/javascript">
     $(document).ready(function(){
       $('#uno').keypress(function() {
         $(this).next(':input').focus();
@@ -383,6 +382,11 @@
       }
     }
     <?php } ?>
+    function nobackbutton(){
+       window.location.hash="no-back-button";
+       window.location.hash="Again-No-back-button" //chrome
+       window.onhashchange=function(){window.location.hash="no-back-button";}
+    }
   </script>
   </body>
 </html>

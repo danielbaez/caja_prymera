@@ -203,7 +203,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                       </style>
                   </head>
                   <body>
-                    <div style="    margin: auto;width: 100%;max-width: 600px;height: 2000px;">
+                    <div style="margin: auto;width: 100%;max-width: 600px;height: 2000px;">
                       <div class="container-fluid" style="max-width: 600px;background-color: #0060aa;border-top-left-radius: 40px;">
                         <div class="container" style="width: 600px; max-width: 100%; margin: 0 auto; background-color: #0060aa;padding-bottom: 30px;">
                            <div class="row padding-div-row-header" style="display: flex;
@@ -405,5 +405,25 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
       $day = date("d", mktime(0,0,0, $month+1, 0, $year));
       return date('Y-m-d', mktime(0,0,0, $month, $day, $year));
     }
+
+    function Redireccionar() {
+      _log('entra');
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $idPersona  = _getSesion('idPersona');
+            $arrayUpdt = array('last_page' => N_CONFIRMAR_DATOS);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+            if(_getSesion('tipo_producto') == PRODUCTO_MICASH) {
+                  $data['location']  = '/C_confirmacion';
+            }else {
+                $data['location']  = '/C_confirmacion';
+            }
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+     }
 }
 
