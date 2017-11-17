@@ -208,7 +208,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                         <div class="container" style="width: 600px; max-width: 100%; margin: 0 auto; background-color: #0060aa;padding-bottom: 30px;">
                            <div class="row padding-div-row-header" style="display: flex;
                          align-items: center;">
-                             <div class="col-xs-6 col-title-header-padding" style="max-width: 50%; width: 50%; padding-left: 10px;padding-top: 19px;">
+                             <div class="col-xs-6 col-title-header-padding" style="max-width: 50%; width: 50%; padding-left: 21px;padding-top: 19px;">
                                <h1 class="title-header-first" style="    color: #FFFFFF;
                          font-size: 16px;
                          margin-bottom: 0;"><span>'.$credito.'</span></h1>
