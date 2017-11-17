@@ -532,7 +532,7 @@ class C_preaprobacion extends CI_Controller {
                              'tcea_sess'         => _post('pors_tcea'),
                              'cant_meses'        => _post('meses'),
                              'Importe'           => number_format($importe_auto,2,".",","),
-                             'cuota_inicial'     => number_format($importe,2,".",","),
+                             'cuota_inicial'     => 'S/ '.number_format($importe,2,".",","),
                              'sess_tea'          => _post('pors_tea'),
                              'seguro'            => _post('seguro'),
                              'valor_auto'        => $monto_vehic.'.00',

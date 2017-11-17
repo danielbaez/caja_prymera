@@ -68,6 +68,8 @@ class Vehicular extends CI_Controller {
                            'importeMaximo'  => $importeMaximo,
                            'importeMinimo'  => $importeMinimo,
                            'tipo_producto'  => $tipo_producto,
+                           'plazos'         => $plazos,
+                           'arrDatos'       => $arrDatos
                           );
             $this->session->set_userdata($session);
             $arrayInsert = array('id_usuario'     => _getSesion('id_usuario'),
