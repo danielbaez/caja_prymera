@@ -213,7 +213,7 @@ Financiamiento Regular: Valido sÃ³lo para personas naturales con edad Min. 24 aÃ
                          font-size: 16px;
                          margin-bottom: 0;"><span>'.$credito.'</span></h1>
                                <h1 class="title-header-second" style="color: #FFFFFF;
-                         font-size: 32px;
+                         font-size: 27px;
                          margin-top: 0;"><span>'.$nuevo_texto.'</span></h1>
                              </div>
                              <div class="col-xs-6 div-logo" style="max-width: 50%; width: 50%; padding-right: 10px;padding-top: 13px;">
