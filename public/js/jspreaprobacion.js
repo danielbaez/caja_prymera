@@ -11,6 +11,21 @@ function addStyle() {
     var monto = document.getElementById('slider-range-value-monto').innerText;
     var pors_tea = document.getElementById('tea').innerText;
     var seguro = document.getElementById('seguroAuto').innerText;
+    //var hoy = new Date();
+    var someDate = new Date();
+	someDate.setDate(someDate.getDate() + 30); //number  of days to add, e.x. 15 days
+	var dateMin = someDate.toISOString().substr(0,10);
+
+	var someFecha = new Date();
+	someFecha.setDate(someFecha.getDate() + 60); //number  of days to add, e.x. 15 days
+	var dateMax = someFecha.toISOString().substr(0,10);
+
+	if(dateMin <= periodo && periodo <= dateMax) {
+		
+	}else {
+		msj('error', 'Seleccione una fecha mayor de 30 d&iacute;as como m&iacute;nimo o 60 d&iacute;as como m&aacute;ximo');
+		return;
+	}
     if(marca == '' || marca == null) {
     	msj('error', 'Seleccione la marca');
 		return;
@@ -43,7 +58,6 @@ function addStyle() {
 			dataType : 'json'
 		}).done(function(data){
 			try{
-				console.log(data);
 				if(data.error == 0){
 					location.href = '/C_confirmacion';
 				}else {

@@ -25,6 +25,7 @@ class Resumen extends CI_Controller {
         $dato['pago_total']    = _getSesion('pago_total');
         $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
+        $dato['fecha_periodo'] = _getSesion('periodo_gracia');
         $dato['marca']         = _getSesion('marca');
         $dato['modelo']        = _getSesion('modelo');
         $dato['valor_auto']    = _getSesion('valor_auto');
@@ -119,7 +120,12 @@ class Resumen extends CI_Controller {
        $terminos_condiciones = null;
        $texto_beneficios     = null;
        $texto_hacer          = null;
+       $texto_periodo        = null;
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_periodo = '' : $texto_periodo = '<div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 78%;margin-left: 36px;margin-top: -10px;">
+                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">Primer pago: </h3>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '._getSesion('periodo_gracia').'</p>
+                          </div>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$ubicacion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
          Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$ubicacion.' en el horario de atención: Lunes a viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
@@ -256,6 +262,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">TCEA: </h3>
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '._getSesion('tcea_sess').'</p>
                           </div>
+                          '.$texto_periodo.'
                         </div>
                         <div style="background-color: #378fb7;height: 520px;margin: -172px 0px;border-bottom-right-radius: 40px;">
                         '.$texto_credito.'

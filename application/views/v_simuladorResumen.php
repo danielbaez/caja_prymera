@@ -244,6 +244,18 @@
                           </div>
                         </div>
                     </div>
+                    <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
+                    <div class="col-xs-12 border-resumen-bottom">
+                        <div class="form-group" style="">                
+                          <div class="col-xs-6">
+                            <span style="">Primer pago: </span>
+                          </div>
+                          <div class="col-xs-6">
+                            <span><?php echo $fecha_periodo?></span>
+                          </div>
+                        </div>
+                    </div>
+                    <?php } ?>
                     <form class="text-center">
                       <div class="form-group" style="padding-bottom: 0">
                           <div class="checkbox" style="margin-left: 24px">
