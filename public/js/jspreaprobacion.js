@@ -20,12 +20,6 @@ function addStyle() {
 	someFecha.setDate(someFecha.getDate() + 60);
 	var dateMax = someFecha.toISOString().substr(0,10);
 
-	if(dateMin <= periodo && periodo <= dateMax) {
-		
-	}else {
-		msj('error', 'Seleccione una fecha mayor de 30 d&iacute;as como m&iacute;nimo o 60 d&iacute;as como m&aacute;ximo');
-		return;
-	}
     if(marca == '' || marca == null) {
     	msj('error', 'Seleccione la marca');
 		return;
@@ -33,6 +27,15 @@ function addStyle() {
     if(modelo == '' || modelo == null) {
     	msj('error', 'Seleccione la modelo');
 		return;
+    }
+    console.log(periodo);
+    if(periodo == null || periodo == '' || periodo == undefined) {
+    }else {
+    	if(dateMin <= periodo && periodo <= dateMax) {
+		}else {
+			msj('error', 'Seleccione una fecha mayor de 30 d&iacute;as como m&iacute;nimo o 60 d&iacute;as como m&aacute;ximo');
+			return;
+		}
     }
 	if(marca == '' && modelo == '') {
 		$("#remove1 a").removeAttr("href");

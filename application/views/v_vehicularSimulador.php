@@ -157,7 +157,7 @@
                 </div>
               </div>
               <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
-                <label class="form-label" style="margin-top: 30px;font-size: 16px;">Fecha de Pago</label>
+                <label class="form-label" style="margin-top: 30px;font-size: 16px;">Primera fecha de Pago</label>
                 <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia" onchange="cambiarFecha()">
               </div>
             </div>
@@ -175,12 +175,14 @@
                           <span class="valor-ajax-valores font-regular" id="cantTotPago">S/ 0</span>
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
-                  <p class="titulo-ajax-valores">Cuota Mensual*</p>
+                  <p class="titulo-ajax-valores">Cuota Mensual</p>
                           <span class="valor-ajax-valores font-regular" id="cantMensPago">S/ 0</span>
+                          <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Cuota referencial sujeta a evaluación según fecha de primer pago seleccionada." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 6px;right: 77px;color: black;"></i>
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">Primera Fecha de Pago</p>
                           <span class="valor-ajax-valores font-regular" id="fecha_change">YYYY-MM-DD</span>
+                          <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Fecha en que Ud. desearía que sea su primer pago." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 6px;right: 44px;color: black;"></i>
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">TEA</p>
@@ -193,7 +195,7 @@
                 </div>
                 <div class="col-md-12 margin-ajax-valores">
                   <p class="titulo-ajax-valores">Seguro del Auto</p>
-                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 </span><i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor aproximado del seguro anual seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 5px;right: 75px;color: black;"></i>
+                          <span class="valor-ajax-valores font-regular" id="seguroAuto">S/ 0 </span><i class="fa fa-1x fa-info-circle icon-info" data-original-title="Valor anual aproximado del seguro vehicular seg&uacute;n marca y modelo, el cual puede variar." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="position: absolute;top: 5px;right: 75px;color: black;"></i>
                           <p class="letra-chica font-bold">*Cuota referencial sujeta a evaluaci&oacute;n</p>
                 </div>
               </div>
