@@ -96,7 +96,7 @@
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
               <?php if(_getSesion('rol') == 'administrador'){ ?>
-                <li><a href="/C_reporte/solicitudesTotales">Clientes en consulta</a></li>
+                <li><a href="/C_reporte/solicitudesTotales">Consultas DNI por agente</a></li>
               <?php } ?>
             </ul>
           </div>

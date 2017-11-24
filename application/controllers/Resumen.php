@@ -133,7 +133,7 @@ class Resumen extends CI_Controller {
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_presentar = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;">. Tu DNI vigente</p>
                         <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">. Un recibo de un servicio (máximo 2 meses de antigüedad)</p>
                         <p style="color: #fff;margin-left: 40px;font-weight: lighter;">. Las 2 últimas boletas de pago si tus ingresos son fijos</p>
-                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">. Las 3 últimas boletas de pago si tus ingresos son variables</p>' : $texto_presentar = '<p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">Tu DNI vigente y  un recibo de un servicio </br> (máximo 2 meses de antigüedad).</p>';
+                        <p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">. Las 3 últimas boletas de pago si tus ingresos son variables</p>' : $texto_presentar = '<p style="color: #fff;margin-left: 40px;padding: 0px;margin: -11px 40px;font-weight: lighter;">Tu DNI vigente y  un recibo de un servicio </br> (máximo 2 meses de antigüedad).</br>Las 2 últimas boletas de pago.</p>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $credito = 'Cr&eacute;dito Consumo' : $credito = 'Cr&eacute;dito Vehicular';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $nuevo_texto = '"Mi Cash"' : $nuevo_texto = '"Auto de Prymera"';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';

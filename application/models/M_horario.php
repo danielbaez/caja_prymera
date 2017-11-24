@@ -5,12 +5,12 @@ class M_horario extends  CI_Model{
         parent::__construct();
     }
 
-    function getHorario($agencia)
+    function getHorario($agencia, $rol)
     {
         if($agencia)
         {
-            $sql = "SELECT * FROM horarios WHERE id_agencia = ?";
-            $result = $this->db->query($sql, array($agencia));    
+            $sql = "SELECT * FROM horarios WHERE id_agencia = ? AND rol = ?";
+            $result = $this->db->query($sql, array($agencia, $rol));    
             return $result->result();
         }
         else
@@ -20,7 +20,7 @@ class M_horario extends  CI_Model{
            	
     }
 
-    function setHorario($agencia, $desde, $hasta)
+    function setHorario($agencia, $desde, $hasta, $rol)
     {
         if($agencia)
         {
@@ -40,26 +40,30 @@ class M_horario extends  CI_Model{
             $data_hasta['sabado'] = $hasta[5];
             $data_hasta['domingo'] = $hasta[6];
 
-            $sql = "SELECT * FROM horarios WHERE id_agencia = ?";
-            $result = $this->db->query($sql, array($agencia));
+            $sql = "SELECT * FROM horarios WHERE id_agencia = ? AND rol = ?";
+            $result = $this->db->query($sql, array($agencia, $rol));
 
             if($result->num_rows() == 2)
             {
                 $this->db->where('id_agencia', $agencia);
+                $this->db->where('rol', $rol);
                 $this->db->where('turno', 'desde');
                 $this->db->update('horarios', $data_desde);
 
                 $this->db->where('id_agencia', $agencia);
+                $this->db->where('rol', $rol);
                 $this->db->where('turno', 'hasta');
                 $this->db->update('horarios', $data_hasta);
             }
             else
             {
                 $data_desde['id_agencia'] = $agencia;
+                $data_desde['rol'] = $rol;
                 $data_desde['turno'] = 'desde';            
                 $this->db->insert('horarios', $data_desde);
 
                 $data_hasta['id_agencia'] = $agencia;
+                $data_hasta['rol'] = $rol;
                 $data_hasta['turno'] = 'hasta';            
                 $this->db->insert('horarios', $data_hasta);
             }  	    	

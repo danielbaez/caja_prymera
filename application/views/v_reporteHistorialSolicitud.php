@@ -410,6 +410,7 @@ $(document).ready(function() {
           var detalle = response.detalle[0];
           var asignar = response.asignar;
           var producto = '';
+          var texto   = '';
           if(detalle.id_producto == 1){
             producto = 'Mi Cash';
           }
@@ -443,6 +444,11 @@ $(document).ready(function() {
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
           }
           if(detalle.id_producto == 2){
+            if(detalle.primer_pago == null) {
+              texto = '-';
+            }else {
+              texto = detalle.primer_pago;
+            }
             dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
             dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
             dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
@@ -450,6 +456,7 @@ $(document).ready(function() {
             dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
             dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
+            dPrestamo += '<p><span>1era Fecha de Pago:</span> '+texto+'</p>';
           }
           
           $('.div-datos-prestamo').html(dPrestamo);

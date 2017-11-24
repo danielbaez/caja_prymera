@@ -115,6 +115,14 @@
 				  	<?php endforeach ?>
 				  </select>	
 				  </div>
+				  <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3" style="margin-bottom: 15px">
+				      <select style="" id="rol" name="rol" class="form-control">
+				      <option value="">Seleccione un rol</option>
+				      <option value="jefe_agencia" <?php if($rol_selected == "jefe_agencia"){ echo 'selected'; } ?>>Jefe</option>
+					  <option value="asesor" <?php if($rol_selected == "asesor"){ echo 'selected'; } ?>>Agente</option>
+					  <option value="asesor_externo" <?php if($rol_selected == "asesor_externo"){ echo 'selected'; } ?>>Agente Externo</option>
+				      </select>
+				  </div>
 				  <?php if(is_array($horarios)){ ?>
 				  <div class="col-xs-12">				  	
 				  	<div class="table-responsive">
@@ -145,13 +153,13 @@
 						  ?>
 						  	<tr>
 						  	<td><?php if($count == 1){ echo "Desde"; } else { echo "hasta"; }  ?></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->lunes ?>" class="form-control" id="time"></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->martes ?>" class="form-control" id="time"></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->miercoles ?>" class="form-control" id="time"></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->jueves ?>" class="form-control" id="time"></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->viernes ?>" class="form-control" id="time"></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->sabado ?>" class="form-control" id="time"></td>
-							<td><input name="<?php echo $variable ?>" style="width: 85%; margin:auto" type="time" value="<?php echo $horario->domingo ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->lunes ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->martes ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->miercoles ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->jueves ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->viernes ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->sabado ?>" class="form-control" id="time"></td>
+							<td><input name="<?php echo $variable ?>" style="width: 95%; margin:auto" type="time" value="<?php echo $horario->domingo ?>" class="form-control" id="time"></td>
 						    </tr>
 						  <?php                 
 						  	}
@@ -221,9 +229,10 @@
 
 		  });
 
-	  		$('#agencia').on('change', function() {
+	  		$('#rol').on('change', function() {
 			  //alert( this.value );
-			  window.location.href = '/C_horario/agencia?agencia='+this.value;
+			  var agencia = $('#agencia option:selected').val();
+			  window.location.href = '/C_horario/agencia?agencia='+agencia+'&rol='+this.value;
 			})
 });
 

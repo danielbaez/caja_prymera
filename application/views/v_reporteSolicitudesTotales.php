@@ -197,6 +197,7 @@
                       <th class="text-center">Estado</th>
                       <th class="text-center">Página</th>
                       <th class="text-center">Nro sol.</th>
+                      <th class="text-center">IP de Acceso</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -293,6 +294,7 @@
                             ?>
                           </td>
                           <td><?php echo $solicitud->id_solicitud ?></td>
+                          <td><?php echo $solicitud->ip_agencia ?></td>
                       </tr>
                       <?php
                       }
@@ -402,7 +404,7 @@ $(document).ready(function() {
 
             },
             exportOptions: {
-                 columns: [1, 2, 3, 4, 5, 6, 7],
+                 columns: [1, 2, 3, 4, 5, 6, 7, 8],
             }
         },
         {
@@ -424,7 +426,7 @@ $(document).ready(function() {
 
             },
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7]
+                columns: [1, 2, 3, 4, 5, 6, 7, 8]
             }
         },
       ],

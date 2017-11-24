@@ -18,6 +18,7 @@ class C_horario extends CI_Controller {
     public function index()
     {             
         $data['agencia_selected'] = '';
+        $data['rol_selected'] = '';
 
         $data['nombre'] = _getSesion("nombre");
 
@@ -33,12 +34,13 @@ class C_horario extends CI_Controller {
     public function agencia()
     {
         $data['agencia_selected'] = $_GET['agencia'];
+        $data['rol_selected'] = $_GET['rol'];
 
         $data['nombre'] = _getSesion("nombre");
         $data['agencias'] = $this->M_agencia->getAllAgencias();
-        if($_GET['agencia'] != '')
+        if($_GET['agencia'] != '' && $_GET['rol'] != '')
         {            
-            $data['horarios'] = $this->M_horario->getHorario($_GET['agencia']);
+            $data['horarios'] = $this->M_horario->getHorario($_GET['agencia'], $_GET['rol']);
         }
         else
         {
@@ -54,7 +56,8 @@ class C_horario extends CI_Controller {
     {
         $acceso = _post('acceso') == 'on' ? 1 : 0;
         $agencia = _post('agencia');
-        if($agencia != '')
+        $rol = _post('rol');
+        if($agencia != '' && $rol != '')
         {
             $desde = _post('desde');
             $hasta = _post('hasta');    
@@ -67,7 +70,7 @@ class C_horario extends CI_Controller {
         }
         
         //exit($agencia);
-        $this->M_horario->setHorario($agencia, $desde, $hasta);
+        $this->M_horario->setHorario($agencia, $desde, $hasta, $rol);
         $this->M_acceso->setAcceso($acceso, 'horario');
         $this->session->set_flashdata('msg', 'Se actualizo el horario correctamente');
         redirect('C_horario');
