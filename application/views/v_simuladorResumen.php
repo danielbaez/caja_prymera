@@ -248,7 +248,7 @@
                     <div class="col-xs-12 border-resumen-bottom">
                         <div class="form-group" style="">                
                           <div class="col-xs-6">
-                            <span style="">Primera fecha de pago: </span>
+                            <span style="">1era fecha de pago: </span>
                           </div>
                           <div class="col-xs-6">
                             <span><?php echo $fecha_periodo?></span>

@@ -122,10 +122,10 @@ class Resumen extends CI_Controller {
        $texto_hacer          = null;
        $texto_periodo        = null;
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_periodo = '' : $texto_periodo = '<div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 78%;margin-left: 36px;margin-top: -10px;">
-                            <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">Primera fecha de pago: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '._getSesion('periodo_gracia').'</p>
-                          </div>';
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_periodo = '' : $texto_periodo = '<div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-right: transparent;border-bottom: transparent;width: 80%;margin: 0 35px;">
+          <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">1era fecha de pago: </h3>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('periodo_gracia').'</p>
+        </div>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$ubicacion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
          Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$ubicacion.' en el horario de atención: Lunes a viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
@@ -241,7 +241,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                       <div class="containet-text" style="width: 100%;height: 360px;background-color: #f1f1f1;margin-top: -30px;font-weight: bold;">
                         <h1 class="title-container" style="color: #378fb7;padding: 30px 40px 0;"> ¡'.ucfirst($nombre).' </br> te damos la bienvenida!</h1>
                         <h3 class="text-container" style="color: #378fb7;font-weight: lighter;margin-left: 40px;position: relative;margin-bottom: 30px;">A continuación detallamos las condiciones </br> del '.$tipo_cred.' que solicitaste.</h3>
-                        <div class="container-tabla" style="width: 90%;z-index: 1000;height: 220px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
+                        <div class="container-tabla" style="width: 90%;z-index: 1000;height: 240px;background-color: #fff;border-bottom-right-radius: 40px;border-top-left-radius: 40px;border: 1px solid #378fb7;position: relative;margin: 0 auto;margin-top: 5px;">
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Importe: </h3>
                             <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.$importe.'</p>
@@ -277,7 +277,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                         </div>
                         </br>
                         <div style="height: 350px;padding-top: 40px;">
-                          <div style="padding: 20px;border: 1px solid;height: 115px;font-size: 8px;">
+                          <div style="padding: 20px;border: 1px solid;height: 115px;font-size: 9px;">
                             '.$terminos_condiciones.'
                           </div>
                         </div>
