@@ -25,7 +25,9 @@ class Resumen extends CI_Controller {
         $dato['pago_total']    = _getSesion('pago_total');
         $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
-        $dato['fecha_periodo'] = _getSesion('periodo_gracia');
+        $fecha = new DateTime(_getSesion('periodo_gracia'));
+        $fecha_d_m_y = $fecha->format('d/m/Y');
+        $dato['fecha_periodo'] = $fecha_d_m_y;
         $dato['marca']         = _getSesion('marca');
         $dato['modelo']        = _getSesion('modelo');
         $dato['valor_auto']    = _getSesion('valor_auto');
@@ -121,10 +123,12 @@ class Resumen extends CI_Controller {
        $texto_beneficios     = null;
        $texto_hacer          = null;
        $texto_periodo        = null;
+       $fecha = new DateTime(_getSesion('periodo_gracia'));
+       $fecha_d_m_y = $fecha->format('d/m/Y');
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_periodo = '' : $texto_periodo = '<div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-right: transparent;border-bottom: transparent;width: 80%;margin: 0 35px;">
           <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">1era fecha de pago: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('periodo_gracia').'</p>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.$fecha_d_m_y.'</p>
         </div>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">Acércate a la agencia de '._getSesion('Agencia').', ubicada en '.$ubicacion.' </br> En el horario de atención: Lunes a Viernes de 9:00am a 6:00pm.</br>y sábados de 8:00am a 1:00pm.</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">No te preocupes, un agente de la agencia Independencia ubicada en C.C. Plaza Norte, Av. Alfredo Mendiola 1400. 1er Nivel se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
