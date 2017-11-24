@@ -95,7 +95,7 @@
               <li><a href="/C_reporte/agenteCliente">Agente - Cliente</a></li>
               <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
               <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
-              <li class="active"><a href="/C_reporte/solicitudesTotales" class="nav-active-a">Clientes en consulta</a></li>
+              <li class="active"><a href="/C_reporte/solicitudesTotales" class="nav-active-a">Consultas DNI por agente</a></li>
             </ul>
           </div>
 

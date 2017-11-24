@@ -638,7 +638,9 @@ class M_solicitud extends  CI_Model{
                     $where .= "ws_error = 0 AND solicitud.cod_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
                 }            
             }*/
+            /*if(_getSesion('rol') == 'jefe_agencia') {
 
+            }*/
             $sql = "SELECT solicitud.last_page, solicitud.ws_error, DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_final,  DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular,agencias.ip as ip_agencia, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
 
             $result = $this->db->query($sql, $filtros);

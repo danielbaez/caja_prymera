@@ -343,7 +343,6 @@ class M_usuario extends  CI_Model{
             $sql = "SELECT usuario.id as id, usuario.nombre, usuario.apellido FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id_sup_agencia = ? AND (usuario.nombre LIKE '%$asesor%' OR usuario.apellido LIKE '%$asesor%') AND usuario.rol = 'asesor'";
             $result = $this->db->query($sql, array($id));
         }    
-        
         return $result->result();
     }
 

@@ -98,7 +98,7 @@ function rolPermissions($rol)
 					'jefe_agencia' => [
 						'C_main' => ['index', 'registrar'],
 						'C_usuario' => ['detalleUsuario', 'logout'],
-						'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'actualizarEstadoSolicitud']
+						'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'actualizarEstadoSolicitud', 'solicitudesTotales']
 					],
 				    'asesor' => [
 				   		'C_reporteAsesor' => ['agenteCliente', 'agenteHistorialSolicitud', 'modalInformacionSolicitud', 'actualizarNotaSolicitud'],

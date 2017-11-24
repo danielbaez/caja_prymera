@@ -375,13 +375,13 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
        $this->email->message('<body>
-                                <h2 style="text-align: center;color: #0152aa;">Estimado Colaborador:</h2>
+                                <h2 style="color: #0152aa;">Estimado Colaborador:</h2>
 
                                 <p style="text-align: left;color: black;">Es un gusto saludarlo e informarle que el siguiente cliente ha solicitado un &quot;'.$tipo_cred.'&quot;. Por favor cont&aacute;ctelo a la brevedad y realice el seguimiento respectivo hasta el desembolso de su cr&eacute;dito.</p>
 
                                 <p style="text-align: left;color: black;">Agradecemos de antemano su colaboraci&oacute;n.</p>
                                  
-                                <h3 style="margin-left: 30px;color: #0152aa;">Datos del cliente:</h3>
+                                <h3 style="color: #0152aa;">Datos del cliente:</h3>
                                 <p style="margin-left: 30px;color: black;"></p>
                                 <p>Nombres: '.ucfirst($nombre).'</p>
                                 <p>Apellidos: '.ucfirst(_getSesion('apellido')).'</p>
@@ -391,7 +391,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                                 <p style="color: black;">Agencia seleccionada: '._getSesion('Agencia').'</p>
                                  
                                  
-                                <h3 style="margin-left: 30px;color: #0152aa;">Datos del Crédito:</h3>
+                                <h3 style="color: #0152aa;">Datos del Crédito:</h3>
                                 <p style="margin-left: 30px;color: black;"></p>
                                 <p style="color: black;">Nro. Solicitud: '.$datos_page[0]->id.'</p>
                                 <p style="color: black;">Importe: '._getSesion('Importe').'</p>
