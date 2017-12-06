@@ -77,6 +77,15 @@ class M_preaprobacion extends  CI_Model{
         $result = $this->db->query($sql, array($Provincia));
         return $result->result();
     }
+
+    function getDistritoLima() {
+        $sql = "SELECT DESC_DISTRITO
+                  FROM ubigeo 
+                 WHERE DESC_PROV LIKE 'LIMA'
+              GROUP BY DESC_DISTRITO";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
     
     function getMarca() {
         $sql = "SELECT MARCA
