@@ -21,11 +21,11 @@
 	/**
 	 * Account SID
 	 **/
-	$config['account_sid']   = '';
+	$config['account_sid']   = 'AC31a24df25cb5382ac8b71a4c5e48dedf';
 	/**
 	 * Auth Token
 	 **/
-	$config['auth_token']    = '';
+	$config['auth_token']    = '7573adb24f72a6e10cf68ade61b23304';
 	/**
 	 * API Version
 	 **/

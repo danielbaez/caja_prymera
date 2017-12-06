@@ -159,7 +159,7 @@
               <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
                 <div class="col-xs-12">
                     <div class="col-xs-9">
-                        <label class="form-label" style="margin-top: 30px;font-size: 16px;margin-left: -10px;">Primera fecha de Pago</label>
+                        <label class="form-label" style="margin-top: 30px;font-size: 16px;margin-left: -10px;">1era fecha de Pago</label>
                     </div>
                     <div class="col-xs-3">
                         <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Fecha en que Ud. desearía que sea su primer pago." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="color: black;margin-top: 30px;margin-left: -130px;"></i>

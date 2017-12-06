@@ -336,11 +336,11 @@ class M_usuario extends  CI_Model{
         if($rol == 'administrador'){
             $sql = "SELECT usuario.id as id, usuario.nombre, usuario.apellido 
                   FROM usuario 
-                 WHERE (nombre LIKE '%$asesor%' OR apellido LIKE '%$asesor%') AND rol = 'asesor'";
+                 WHERE (nombre LIKE '%$asesor%' OR apellido LIKE '%$asesor%') AND rol IN('asesor', 'asesor_externo')";
             $result = $this->db->query($sql);
         }
         if($rol == 'jefe_agencia'){
-            $sql = "SELECT usuario.id as id, usuario.nombre, usuario.apellido FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id_sup_agencia = ? AND (usuario.nombre LIKE '%$asesor%' OR usuario.apellido LIKE '%$asesor%') AND usuario.rol = 'asesor'";
+            $sql = "SELECT usuario.id as id, usuario.nombre, usuario.apellido FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id_sup_agencia = ? AND (usuario.nombre LIKE '%$asesor%' OR usuario.apellido LIKE '%$asesor%') AND usuario.rol IN('asesor', 'asesor_externo')";
             $result = $this->db->query($sql, array($id));
         }    
         return $result->result();
@@ -455,6 +455,25 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
+    function getJefeAgencia() {
+        $sql = "SELECT *
+                  FROM usuario
+                 WHERE estado = 1
+                   AND rol LIKE '%jefe_agencia%'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
+    function getCountAgencia($idagencia) {
+        $sql = "SELECT COUNT(u.id) AS cantidad
+                  FROM usuario u,
+                       agencias a
+                 WHERE a.id = u.id_agencia
+                   AND a.id = ?";
+        $result = $this->db->query($sql, array($idagencia));
+        return $result->result();
+    }
+
     function getDatosTablaAsesor() {
         $sql = "SELECT u.*, a.AGENCIA AS agencia
                   FROM usuario u,
@@ -536,9 +555,36 @@ class M_usuario extends  CI_Model{
         return $result->result();
     }
 
+    function getDatosByIdCorreo($tabla, $columna, $id) {
+        $sql = "SELECT GROUP_CONCAT(CORREO SEPARATOR  ' , ') AS correos
+                  FROM ".$tabla."
+                 WHERE ".$columna." = '".$id."'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
 
     function updateDatosAsesor($arrayData, $idAsesor, $tabla){
         $this->db->where_in('id'  , $idAsesor);
+        $this->db->update($tabla, $arrayData);  
+        if ($this->db->trans_status() == false) {
+            throw new Exception('No se pudo actualizar los datos');
+        }
+        return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
+    }
+
+    function updateDatosAcceso($arrayData, $idAsesor, $tabla){
+        $this->db->where_in('id_agencia'  , $idAsesor);
+        $this->db->update($tabla, $arrayData);  
+        if ($this->db->trans_status() == false) {
+            throw new Exception('No se pudo actualizar los datos');
+        }
+        return array('error' => EXIT_SUCCESS,'msj' => MSJ_UPT);
+    }
+
+    function updateDatosCorreos($arrayData, $nombre, $correo, $tabla){
+        $this->db->where('AGENCIA'  , $nombre);
+        $this->db->where('CORREO'  , $correo);
         $this->db->update($tabla, $arrayData);  
         if ($this->db->trans_status() == false) {
             throw new Exception('No se pudo actualizar los datos');
@@ -602,6 +648,57 @@ class M_usuario extends  CI_Model{
         {
             return ['success' => false];
         }        
+    }
+
+    function getDatosAgencia() {
+        $sql = "SELECT a.id,
+                       a.AGENCIA,
+                       CONCAT(u.nombre, ' ', u.apellido) AS nombre
+                  FROM agencias a,
+                       usuario u
+                 WHERE a.id_sup_agencia = u.id
+                   AND u.rol LIKE 'jefe_agencia'";
+        $result = $this->db->query($sql, array());
+        return $result->result();
+    }
+
+    function deleteAgencia($id_agencia){
+        $rpt['error']    = EXIT_ERROR;
+        $rpt['msj']      = MSJ_ERROR;
+        try{
+            $this->db->where('id', $id_agencia);
+            $this->db->delete('agencias');
+            if($this->db->trans_status() == false){
+                throw new Exception('No se pudo eliminar');
+            }
+            $rpt['error']    = EXIT_SUCCESS;
+            $rpt['msj']      = MSJ_INSERT_SUCCESS;
+        }catch(Exception $e){
+            $rpt['msj'] = $e->getMessage();
+        }
+        return $rpt;
+    }
+
+    function deleteCorreoAgencia($agencia){
+        $sql = "DELETE FROM correos WHERE AGENCIA LIKE ?";
+        $result = $this->db->query($sql, array($agencia));
+        return $result;
+    }
+
+    function deleteAccesoAgencia($idagencia){
+        $sql = "DELETE FROM acceso WHERE id_agencia = ?";
+        $result = $this->db->query($sql, array($idagencia));
+        return $result;
+    }
+
+    function insertarDatos($arrayInsert, $tabla){
+        $this->db->insert($tabla, $arrayInsert);
+        $pers = $this->db->insert_id();
+        if($this->db->trans_status() == false) {
+            throw new Exception('Error al insertar');
+            $data['error'] = EXIT_ERROR;
+        }
+        return array("error" => EXIT_SUCCESS, "msj" => MSJ_INS, "idPers" => $pers);
     }
 }
     

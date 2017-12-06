@@ -132,3 +132,10 @@ defined('N_SIMULADOR') OR define('N_SIMULADOR', 2);
 defined('N_CONFIRMAR_DATOS')   OR define('N_CONFIRMAR_DATOS', 3);
 defined('N_RESUMEN') OR define('N_RESUMEN', 4);
 defined('N_INTRO_MAPA') OR define('N_INTRO_MAPA', 5);
+
+
+defined('MSJ_ERROR') OR define('MSJ_ERROR', 'Hubo un problema');
+defined('MSJ_INSERT_SUCCESS') OR define('MSJ_INSERT_SUCCESS', 'Se ha insertado correctamente');
+
+defined('IP_ON') OR define('IP_ON', 1);
+defined('IP_OFF') OR define('IP_OFF', 1);

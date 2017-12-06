@@ -114,7 +114,12 @@
 .p-t-20 {
 	padding-top: 20px !important;
 }
-
+.p-t23 {
+	padding-top: 23px !important;
+}
+.p-t40 {
+	padding-top: 40px !important;
+}
 .p-r-20 {
 	padding-right: 20px !important;
 }
@@ -166,7 +171,9 @@
 .p-t-30 {
 	padding-top: 30px !important;
 }
-
+.p-t-45 {
+	padding-top: 45px !important;
+}
 .p-r-30 {
 	padding-right: 30px !important;
 }
@@ -325,6 +332,9 @@
 
 .m-l-5 {
 	margin-left: 5px !important;
+}
+.m-l-13 {
+	margin-left: -13px !important;
 }
 
 .m-10 {
