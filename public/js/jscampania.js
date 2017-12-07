@@ -140,7 +140,7 @@ function getModelo() {
 	}
 	$.ajax({
 		data  : { marca : marca},
-		url   : 'C_preaprobacion/getModelo',
+		url   : 'C_campaign/getModelo',
 		type  : 'POST',
 		dataType : 'json'
 	}).done(function(data){
@@ -189,9 +189,13 @@ function verificarCamp() {
 		dataType : 'json'
 	}).done(function(data){
 		try{
-			/*$('#modelo').html('');
-			$('#modelo').append('<option value="">Modelo</option>');
-			$('#modelo').append(data.comboModelo);*/
+			console.log(data);
+			if(data.error == 0){
+				location.href = '/Resumen_Vehicular';
+				//modal('myModaltelef');
+			}else {
+				return;
+			}
 		} catch (err){
 			msj('error',err.message);
 		}

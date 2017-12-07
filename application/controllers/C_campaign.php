@@ -13,6 +13,7 @@ class C_campaign extends CI_Controller {
     
     public function index()
     {
+        _log(print_r($this->session->all_userdata(), true));
         $idPersona  = _getSesion('idPersona');
         $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
@@ -186,45 +187,6 @@ class C_campaign extends CI_Controller {
         echo json_encode(array_map('utf8_encode', $data));
     }
 
-    function verificarCamp() {
-        $data['error'] = EXIT_ERROR;
-        $data['msj']   = null;
-        try {
-            $ingreso_bruto   = _post('ingreso_bruto');
-            $condicion       = _post('condicion');
-            $nivel_educativo = _post('nivel_educativo');
-            $profesion       = _post('profesion');
-            $edad            = _post('edad');
-            $distrito        = _post('distrito');
-            $marca           = _post('marca');
-            $modelo          = _post('modelo');
-            $plazo           = _post('plazo');
-            $valor_vehiculo  = _post('valor_vehiculo');
-            $valor_inicial   = _post('valor_inicial');
-            $primera_fecha   = _post('primera_fecha');
-
-            /*$arrayInsert = array('id_usuario'     => _getSesion('id_usuario'),
-                                 'nombre'         => $nombre,
-                                 'apellido'       => $apellido,
-                                 'email'          => $email,
-                                 'dni'            => $dni,
-                                 'id_tipo_prod'   => 1,
-                                 'fec_estado'     => date("Y-m-d H:i:s"),
-                                 'check_autorizo' => $check,
-                                 'ws_error'       => $res,
-                                 'ws_resultado'   => json_encode($result),
-                                 'ws_timestamp'   => date("Y-m-d H:i:s"),
-                                 'cod_agencia'    => $agencia_user[0]->id_agencia,
-                                 'last_page'      => N_SIMULADOR
-                                );
-            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');*/
-            $data['error']   = EXIT_SUCCESS;
-        } catch (Exception $e){
-            $data['msj'] = $e->getMessage();
-        }
-        echo json_encode(array_map('utf8_encode', $data));
-    }
-
     function changeValues() {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
@@ -234,7 +196,6 @@ class C_campaign extends CI_Controller {
             $condicion       = _post('condicion');
             $nivel_educativo = _post('nivel_educativo');
             $profesion       = _post('profesion');
-            $edad            = _post('edad');
             $distrito        = _post('distrito');
             $marca           = _post('marca');
             $modelo          = _post('modelo');
@@ -245,20 +206,31 @@ class C_campaign extends CI_Controller {
             
             if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
                 $arrayInsert = array('condicion_laboral' => $condicion,
-                                 'nivel_educativo'       => $nombre,
+                                 'nivel_educativo'       => $nivel_educativo,
                                  'profesion'             => $profesion,
-                                 'email'          => $email,
-                                 'dni'            => $dni,
-                                 'id_tipo_prod'   => 1,
-                                 'fec_estado'     => date("Y-m-d H:i:s"),
-                                 'check_autorizo' => $check,
-                                 'ws_error'       => $res,
-                                 'ws_resultado'   => json_encode($result),
-                                 'ws_timestamp'   => date("Y-m-d H:i:s"),
-                                 'cod_agencia'    => $agencia_user[0]->id_agencia,
-                                 'last_page'      => N_SIMULADOR
+                                 'salario'               => $ingreso_bruto,
+                                 'edad'                  => $edad,
+                                 'distrito'              => $distrito,
+                                 'provincia'             => 'LIMA',
+                                 'departamento'          => 'LIMA',
+                                 'marca'                 => $marca,
+                                 'modelo'                => $modelo,
+                                 'plazo'                 => $plazo,
+                                 'valor_auto'            => $valor_vehiculo,
+                                 'cuota_inicial'         => $valor_inicial,
+                                 'nombre'                => "Juan",
+                                 'apellido'              => 'Ramos',
+                                 'fec_estado'            => date("Y-m-d H:i:s"),
+                                 'ws2_timestamp'         => date("Y-m-d H:i:s")
                                 );
-            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');*/
+            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
+            $session = array(
+                             'marca'       => $marca,
+                             'modelo'      => $modelo,
+                             'valor_auto'  => $valor_vehiculo,
+                             'periodo'     => $plazo 
+                             );
+            $this->session->set_userdata($session);
             $data['error'] = EXIT_SUCCESS;
             }
         } catch (Exception $e){

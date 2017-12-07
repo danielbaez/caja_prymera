@@ -24,7 +24,7 @@
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
             <h1 class="title-header-first"><a href="/Vehicular">Cr&eacute;dito Vehicular</a></h1>
-            <h1 class="title-header-second" style="font-size: 28px !important"><a href="/Vehicular">Auto de Prymera - Campañas</a></h1>
+          <h1 class="title-header-second"><a href="/Vehicular">Auto de Prymera</a></h1>
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
@@ -66,7 +66,7 @@
   <div class="container container-simulador">
     <div class="row m-t-40 m-b-20">
       <div class="col-xs-12 col-sm-9 text-center">
-        <h2 class="titulo-simulador font-bold">Hola <?php echo _getSesion('nombreCompleto'); ?><span>, confirma los siguientes datos</span></h2>
+        <h2 class="titulo-simulador font-bold">Hola <?php echo _getSesion('nombre'); ?><span>, confirma los siguientes datos</span></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
         <ul class="nav navbar-nav navbar-right dropdown-menu-user">
@@ -139,7 +139,7 @@
                                 <p id="slider-range-value-edad" class="slider-value"></p>
                               </div>
                               <div class="col-xs-9">
-                                <p class="text-left" style="font-size: 16px">Edad <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                                <p class="text-left" style="font-size: 16px">* Edad<i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                                 <div id="slider-range-edad"></div>
                                 <br>
                                 <div class="col-xs-6 text-left padding-left">
@@ -153,7 +153,7 @@
                             <div class="col-sm-6 p-t-10">
                               <div class="form-group">
                                   <select onkeyup="verificarDatos(event);" class="form-control" id="distrito" name="distrito" onchange="habilitarCampo()">
-                                          <option value="">Distrito</option>
+                                          <option value="">* Distrito</option>
                                           <?php echo $comboDistrito; ?>
                                   </select>
                                 </div>
@@ -166,7 +166,7 @@
                                 <div class="col-sm-6">
                                   <div class="form-group">
                                     <select class="form-control" name="marca" title="Selec. Tipo de pago" id="marca" onchange="getModelo()">
-                                      <option value="">Marca</option>
+                                      <option value="">* Marca</option>
                                       <?php echo $comboMarca?>
                                     </select>
                                   </div>
@@ -174,7 +174,7 @@
                                 <div class="col-sm-6">
                                   <div class="form-group">
                                     <select class="form-control" name="modelo" title="Selec. Tipo de pago" id="modelo">
-                                      <option value="">Modelo</option>
+                                      <option value="">* Modelo</option>
                                     </select>
                                   </div>
                                 </div>
@@ -183,7 +183,7 @@
                                     <p id="slider-range-value-Valor" class="slider-value"></p>
                                   </div>
                                   <div class="col-xs-9">
-                                    <p class="text-left" style="font-size: 16px">Valor del Vehículo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                                    <p class="text-left" style="font-size: 16px">* Valor del Vehículo <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                                     <div id="slider-range-valor"></div>
                                     <br>
                                     <div class="col-xs-6 text-left padding-left">
@@ -196,15 +196,14 @@
                                 </div>
                                 <div class="col-xs-12 p-t-10">
                                     <div class="col-xs-6">
-                                      <label class="m-l-130">Plazo</label>
+                                      <label class="m-l-110">* Plazo</label>
                                     </div>
                                     <div class="col-sm-6">
                                       <div class="form-group">
                                           <select class="form-control" name="plazo" title="Selec. Plazo" id="plazo">
-                                          <option value="">Plazo</option>
-                                          <option value="12">12</option>
-                                          <option value="24">24</option>
-                                          <option value="36">36</option>
+                                          <option value="12">12 Meses</option>
+                                          <option value="24">24 Meses</option>
+                                          <option value="36">36 Meses</option>
                                         </select>
                                       </div>
                                     </div>
@@ -215,7 +214,7 @@
                                     <p id="slider-range-value-Inicial" class="slider-value"></p>
                                   </div>
                                   <div class="col-xs-9">
-                                    <p class="text-left" style="font-size: 16px">Valor Inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                                    <p class="text-left" style="font-size: 16px">* Valor Inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                                     <div id="slider-range-inicial"></div>
                                     <br>
                                     <div class="col-xs-6 text-left padding-left">
