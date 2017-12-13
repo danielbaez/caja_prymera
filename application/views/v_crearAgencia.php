@@ -143,14 +143,14 @@
 				  <div class="form-group div-sexo text-left">
 				  	<div class="col-xs-10">
 				  		<label class="form-label">Nombre</label>
-						<input type="text" class="form-control" id="agencia" name="agencia" placeholder="Nombre" onkeypress="return soloLetras(event)" maxlength="50">
+						<input type="text" class="form-control" id="agencia" name="agencia" placeholder="Nombre" onkeypress="return soloLetras(event)" onchange="habilitarCampo()" maxlength="50">
 				  	</div>
 				  </div>
 				 
 				  <div class="form-group text-left">
 				  	<div class="col-xs-10">
 				  		<label class="form-label p-t-15">Dirección</label>
-						<input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" onkeypress="" maxlength="100">
+						<input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección" onchange="habilitarCampo()" onkeypress="" maxlength="100">
 				  	</div>
 				  </div>
 
@@ -158,7 +158,7 @@
 				 	<div class="col-xs-12 p-0">
 					  	<div class="col-xs-10" id="cont_telef">
 					  		<label class="form-label p-t-15">Teléfono</label>
-							<input type="text" class="form-control" onkeypress="return valida(event)" name="telefonos[]" maxlength="7" id="txtelefono" placeholder="Teléfono"/>
+							<input type="text" class="form-control" onkeypress="return valida(event)" name="telefonos[]" maxlength="7" onchange="habilitarCampo()" id="txtelefono" placeholder="Teléfono"/>
 					  	</div>
 					  	<div class="col-xs-2 p-t-45">
 					  		<button type="button" class="btn btn-default" aria-label="Close" onclick="agregarTelefono()" id="btnTelefono" style="background-color: transparent !important; border: transparent; margin-left: -15px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -170,7 +170,7 @@
 					  <div class="col-xs-12 p-0">
 					  	<div class="col-xs-10" id="cont_correo">
 					  		<label class="form-label p-t-15">Correo</label>
-							<input type="text" class="form-control" id="correo" name="correos[]" placeholder="Correo de la agencia" onkeypress="" maxlength="200">
+							<input type="text" class="form-control" id="correo" name="correos[]" placeholder="Correo de la agencia" onchange="habilitarCampo()" onkeypress="" maxlength="200">
 					  	</div>
 					  	<div class="col-xs-2 p-t-45">
 					  		<button type="button" class="btn btn-default" aria-label="Close" onclick="agregarCorreo()" id="btnCorreo" style="background-color: transparent !important; border: transparent; margin-left: -15px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
@@ -180,7 +180,7 @@
 				  <div class="form-group div-rol-superior text-left">
 				  	<div class="col-xs-10">
 				  		<label class="form-label p-t-15">Jefe</label>
-						<select class="form-control" id="rol_superior" name="rol_superior">
+						<select class="form-control" onchange="habilitarCampo()" id="rol_superior" name="rol_superior">
 						  <option value="">Jefe de Agencia</option>
 						  <?php   foreach ($jefe_agencia as $key => $value) {
 							?>
@@ -194,7 +194,7 @@
 				  	<div class="form-group text-left">
 					  	<div class="col-xs-10">
 					  		<label class="form-label p-t-15">IP</label>
-					  		<input type="text" class="form-control" id="celular" name="celular" placeholder="N&uacute;mero de IP" onkeypress="" maxlength="15">
+					  		<input type="text" class="form-control" onchange="habilitarCampo()" id="celular" name="celular" placeholder="N&uacute;mero de IP" onkeypress="" maxlength="15">
 					  	</div>
 					  	<div class="col-xs-2 p-t40">
 					  		<input type="checkbox" id="toggle_button" data-toggle="toggle" data-on="Sí" data-off="No">
@@ -215,7 +215,7 @@
 					<input type="hidden" name="rol_db" value="">
 					<input type="hidden" name="rol_user" value="<?php echo _getSesion('rol') ?>">
 					<?php if(_getSesion('rol') == 'administrador'){ ?>
-						<input type="button" id="btnGuardar" name="" class="btn btn-primary btn-action" value="Guardar" style="display: block" onclick="guardarAgencia()">
+						<input type="button" id="btnGuardar" name="" class="btn btn-primary btn-action" value="Guardar" style="display: block" onclick="guardarAgencia()" disabled="">
 						<input type="button" id="btnEditar" name="" class="btn btn-primary btn-only-upd" value="Actualizar" onclick="actualizarAgencia()" style="display: none">
 					<?php } ?>
 				<?php if(_getSesion('rol') == 'jefe_agencia'){ ?>
@@ -343,7 +343,19 @@
   } );
 
 });
+	  	function habilitarCampo() {
+	      var agencia         = $('#agencia').val();
+	      var direccion     = $('#direccion').val();
+	      var txtelefono       = $('#txtelefono').val();
+	      var correo         = $('#correo').val();
+	      var rol_superior    = $('#rol_superior').val();
+	      var celular       = $('#celular').val();
 
+	      if(agencia != null && direccion != '' && txtelefono != '' && correo != '' && rol_superior != ''
+	        && celular != '') {
+	        $('#btnGuardar').removeAttr("disabled");
+	      }
+    }
 	  	
 
 	  </script>
