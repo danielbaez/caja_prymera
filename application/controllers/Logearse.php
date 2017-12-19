@@ -92,7 +92,7 @@ class Logearse extends CI_Controller {
                                 }
                                 elseif($datos[0]->rol == 'asesor' || $datos[0]->rol == 'asesor_externo')
                                 {
-                                    redirect('Vehicular');   
+                                    redirect('C_tipoCredito');   
                                 }
                             }
                         }

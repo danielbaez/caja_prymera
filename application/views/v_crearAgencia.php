@@ -351,8 +351,7 @@
 	      var rol_superior    = $('#rol_superior').val();
 	      var celular       = $('#celular').val();
 
-	      if(agencia != null && direccion != '' && txtelefono != '' && correo != '' && rol_superior != ''
-	        && celular != '') {
+	      if(agencia != null && direccion != '' && txtelefono != '' && correo != '' && rol_superior != '') {
 	        $('#btnGuardar').removeAttr("disabled");
 	      }
     }

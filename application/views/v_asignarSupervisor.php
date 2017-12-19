@@ -51,6 +51,7 @@
           <li><a href="/C_horario">Horarios</a></li>
           <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
+          <li><a href="/C_crearAgencia">Crear Agencia</a></li>
         <?php } ?>
         <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
       </ul>
@@ -75,6 +76,7 @@
                             <li><a href="/C_horario">Horarios</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
+                            <li><a href="/C_crearAgencia">Crear Agencia</a></li>
                           <?php } ?>
                           <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
                         </ul>

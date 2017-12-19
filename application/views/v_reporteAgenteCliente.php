@@ -52,6 +52,7 @@
           <li><a href="/C_horario">Horarios</a></li>
           <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
+          <li><a href="/C_crearAgencia">Crear Agencia</a></li>
         <?php }
            elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
           <li><a href="/C_main">Editar Perfil</a></li>
@@ -79,6 +80,7 @@
                             <li><a href="/C_horario">Horarios</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
+                            <li><a href="/C_crearAgencia">Crear Agencia</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                             <li><a href="/C_main">Editar Perfil</a></li>
@@ -151,18 +153,27 @@
                           ?>
                           <option value="0">Abierto</option>
                           <option value="1">Cerrado</option>
+                          <option value="2">Rechazado</option>
+                          <option value="3">Anulado</option>
+                          <option value="4">Caducado</option>
                           <?php
                           }
                           elseif($status == 0){
                           ?>
                           <option selected value="0">Abierto</option>
                           <option value="1">Cerrado</option>
+                          <option value="2">Rechazado</option>
+                          <option value="3">Anulado</option>
+                          <option value="4">Caducado</option>
                           <?php
                           }
                           elseif($status == 1){
                           ?>
                           <option value="0">Abierto</option>
                           <option selected value="1">Cerrado</option>
+                          <option value="2">Rechazado</option>
+                          <option value="3">Anulado</option>
+                          <option value="4">Caducado</option>
                           <?php
                           }
 
@@ -172,6 +183,9 @@
                         ?>
                           <option value="0">Abierto</option>
                           <option value="1">Cerrado</option>
+                          <option value="2">Rechazado</option>
+                          <option value="3">Anulado</option>
+                          <option value="4">Caducado</option>
                         <?php
                         } ?>
                       </select>
