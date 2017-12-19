@@ -367,17 +367,17 @@ class M_solicitud extends  CI_Model{
         $id_usuario = _getSesion('id_usuario');
         if($where != '')
         {
-            $where .= " AND ws_error = 0";    
+            $where .= " AND status_sol = 2";    
         }
         else
         {
             if($rol == 'administrador')
             {
-                $where .= "ws_error = 0";
+                $where .= "status_sol = 2";
             }
             elseif($rol == 'jefe_agencia')
             {
-                $where .= "ws_error = 0 AND solicitud.cod_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
+                $where .= "status_sol = 2 AND solicitud.cod_agencia IN (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
             }
             
         }

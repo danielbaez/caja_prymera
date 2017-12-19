@@ -244,6 +244,7 @@
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Status</th>
                       <th class="text-center">Monto</th>
+                      <th class="text-center">Acción</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -251,7 +252,7 @@
                     if(isset($solicitudes) and count($solicitudes)){
                       foreach ($solicitudes as $solicitud) {
                       ?>
-                      <tr>
+                      <tr id="estado<?php echo $solicitud->id_solicitud ?>" >
                         <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
                         <td><?php echo $solicitud->fecha_solicitud ?></td>
                         <td><?php echo $solicitud->id_solicitud ?></td>
@@ -259,8 +260,23 @@
                         <td><?php echo $solicitud->AGENCIA ?></td>
                         <td><?php echo $solicitud->agencia_desembolso ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
-                        <td><?php echo $solicitud->status_sol == 0 ? 'Abierto' : 'Cerrado' ?></td>
+                        <td id="status<?php echo $solicitud->id_solicitud ?>">
+                          <?php if($solicitud->status_sol == 0) { ?>
+                              <?php echo 'Abierto' ?>
+                          <?php } else if($solicitud->status_sol == 1) { ?>
+                              <?php echo 'Cerrado' ?>
+                          <?php } else if($solicitud->status_sol == 2) { ?>
+                              <?php echo 'Rechazado' ?>
+                          <?php } else if($solicitud->status_sol == 3) { ?>
+                              <?php echo 'Anulado' ?>
+                          <?php } else if($solicitud->status_sol == 4) { ?>
+                              <?php echo 'Caducado' ?>
+                          <?php } ?>
+                        </td>
                         <td><?php echo $solicitud->monto ?></td>
+                        <td id="accion<?php echo $solicitud->id_solicitud ?>"><?php if($solicitud->status_sol == 0) { ?><button type="button" style="background: #fff !important;border: transparent;" class="btn btn-default" onclick="cambiarEstado(<?php echo $solicitud->id_solicitud ?>)"><i class="fa fa-ban" data-original-title="Anular" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></button>
+                          <?php } ?>
+                        </td>
                       </tr>
                       <?php
                       }
@@ -309,7 +325,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
-
+<script type="text/javascript" async src="<?php echo RUTA_JS?>jsreporteAgenteCliente.js?v=<?php echo time();?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
@@ -317,7 +333,7 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-
+  $('[data-toggle="tooltip"]').tooltip();
   $('#desde').datetimepicker({
     format: 'YYYY-MM-DD'
   });

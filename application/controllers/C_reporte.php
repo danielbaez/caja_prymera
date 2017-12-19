@@ -10,6 +10,7 @@ class C_reporte extends CI_Controller {
         $this->load->model('M_producto');
         $this->load->model('M_solicitud');
         $this->load->model('M_usuario');
+        $this->load->model('M_preaprobacion');
         $this->load->helper('url');        
         $this->load->helper("access_helper");
         is_logged();
@@ -101,7 +102,7 @@ class C_reporte extends CI_Controller {
                     );
 
             $data['solicitudes'] = $this->M_solicitud->obtenerAgenteCliente($filtros);
-
+            
             $data['id_asesor'] = $id_asesor;
             $data['asesor'] = $asesor;
             $data['id_tipo_credito'] = $tipo_credito;
@@ -299,6 +300,20 @@ class C_reporte extends CI_Controller {
        $this->email->send();
        //con esto podemos ver el resultado
        var_dump($this->email->print_debugger());
+     }
+
+     function cambiarEstado() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $dato   = _post('dato');
+            $arrayUpdt = array('status_sol' => 3);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $dato , 'solicitud');
+            $data['error'] = EXIT_SUCCESS;
+        } catch (Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
      }
     
 }

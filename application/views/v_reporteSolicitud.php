@@ -237,7 +237,19 @@
                         <td><?php echo $solicitud->agencia_desembolso ?></td>
                         <td><?php echo $solicitud->descripcion ?></td>
                         <td><?php echo $solicitud->asesor_nombre.' '.$solicitud->asesor_apellido ?></td>
-                        <td><?php echo $solicitud->status_sol == 0 ? 'Abierto' : 'Cerrado' ?></td>
+                        <td>
+                          <?php if($solicitud->status_sol == 0) { ?>
+                              <?php echo 'Abierto' ?>
+                          <?php } else if($solicitud->status_sol == 1) { ?>
+                              <?php echo 'Cerrado' ?>
+                          <?php } else if($solicitud->status_sol == 2) { ?>
+                              <?php echo 'Rechazado' ?>
+                          <?php } else if($solicitud->status_sol == 3) { ?>
+                              <?php echo 'Anulado' ?>
+                          <?php } else if($solicitud->status_sol == 4) { ?>
+                              <?php echo 'Caducado' ?>
+                          <?php } ?>
+                        </td>
                         <td><?php echo $solicitud->monto ?></td>
                       </tr>
                       <?php
