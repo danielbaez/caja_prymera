@@ -143,7 +143,7 @@
                                 <div id="slider-range-edad"></div>
                                 <br>
                                 <div class="col-xs-6 text-left padding-left">
-                                  <span id="edadMin" style="font-size: 16px">25</span>
+                                  <span id="edadMin" style="font-size: 16px">24</span>
                                 </div>
                                 <div class="col-xs-6 text-right padding-right">
                                   <span id="edadMax" style="font-size: 16px">70</span>
@@ -187,7 +187,7 @@
                                     <div id="slider-range-valor"></div>
                                     <br>
                                     <div class="col-xs-6 text-left padding-left">
-                                      <span id="valorMin" style="font-size: 16px">S/. 10,000</span>
+                                      <span id="valorMin" style="font-size: 16px">S/. 15,000</span>
                                     </div>
                                     <div class="col-xs-6 text-right padding-right">
                                       <span id="valorMax" style="font-size: 16px">S/. 150,000</span>
@@ -204,6 +204,8 @@
                                           <option value="12">12 Meses</option>
                                           <option value="24">24 Meses</option>
                                           <option value="36">36 Meses</option>
+                                          <option value="48">48 Meses</option>
+                                          <option value="60">60 Meses</option>
                                         </select>
                                       </div>
                                     </div>
@@ -349,23 +351,24 @@
       var edad = '';
       var valor_vehiculo = '';
       function habilitarCampo() {
-      var ingreso_bruto         = $('#ingreso_bruto').val();
-      var condicion     = $('#condicion').val();
-      var nivel_educativo       = $('#nivel_educativo').val();
-      var profesion = $('#profesion').val();
-      var edad    = $('#edad').val();
-      var distrito       = $('#distrito').val();
-      var marca      = $('#marca').val();
-      var modelo        = $('#modelo').val();
-      var plazo        = $('#plazo').val();
-      var valor_vehiculo = $('#valor_vehiculo').val();
-      var valor_inicial       = $('#valor_inicial').val();
+      var ingreso_bruto   = $('#ingreso_bruto').val();
+      var condicion       = $('#condicion').val();
+      var nivel_educativo = $('#nivel_educativo').val();
+      var profesion       = $('#profesion').val();
+      var edad            = $('#edad').val();
+      var distrito        = $('#distrito').val();
+      var marca           = $('#marca').val();
+      var modelo          = $('#modelo').val();
+      var plazo           = $('#plazo').val();
+      var valor_vehiculo  = $('#valor_vehiculo').val();
+      var valor_inicial   = $('#valor_inicial').val();
       var primera_fecha   = $('#primera_fecha').val();
       if(ingreso_bruto != null && condicion != '' && nivel_educativo != '' && profesion != '' && edad != '' 
         && distrito != '' && marca != '' && modelo != '' && plazo != '' && valor_vehiculo != '' && valor_inicial != '' && primera_fecha != '') {
         $('#btnAceptar').removeAttr("disabled");
       }
     }
+    
     function nobackbutton(){
        window.location.hash="no-back-button";
        window.location.hash="Again-No-back-button" //chrome
@@ -378,7 +381,7 @@
         start: [ 25],
         step: 1,
         range: {
-          'min': [  25 ],
+          'min': [  24 ],
           'max': [ 70 ]
         },
         connect: "lower",
@@ -396,31 +399,15 @@
     rangeSliderEdad.noUiSlider.on('change', function( values, handle ) {
     rangeSliderValueElementEdad.innerHTML = values[handle];
     edad = values[handle];
-      
-      /*$.ajax({
-        data  : { edad : edad },
-        url   : 'C_campaign/changeValues',
-        type  : 'POST',
-        dataType: 'json'
-      }).done(function(data){
-          //rangeSliderEdad.setAttribute('disabled', true);  
-
-       /* $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
-        $('#tcea').html(data.tcea+'%');
-        $('#tea').html(data.tea+'%');
-        $('#seguroAuto').html('S/ '+data.seguroAuto);*/
-     //});
     });
     //FIN DE SLIDER EDAD
     //INICIO DE SLIDER VALOR DEL VEHÍCULO
     var rangeSliderValor = document.getElementById('slider-range-valor');
       noUiSlider.create(rangeSliderValor, {
-        start: [ 15000],
+        start: [ 20000],
         step: 1000,
         range: {
-          'min': [  10000 ],
+          'min': [  15000 ],
           'max': [ 150000 ]
         },
         connect: "lower",
@@ -438,22 +425,6 @@
     rangeSliderValor.noUiSlider.on('change', function( values, handle ) {
     rangeSliderValueElementValor.innerHTML = values[handle];
     valor_vehiculo = values[handle];
-      
-      /*$.ajax({
-        data  : { valor_vehiculo : valor_vehiculo },
-        url   : 'C_campaign/changeValues',
-        type  : 'POST',
-        dataType: 'json'
-      }).done(function(data){
-          //rangeSliderValor.setAttribute('disabled', true);  
-
-       /* $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
-        $('#tcea').html(data.tcea+'%');
-        $('#tea').html(data.tea+'%');
-        $('#seguroAuto').html('S/ '+data.seguroAuto);*/
-      //});
     });
     //FIN DE SLIDER VALOR DEL VEHÍCULO
 
@@ -482,22 +453,6 @@
     rangeSliderInicial.noUiSlider.on('change', function( values, handle ) {
     rangeSliderValueElementInicial.innerHTML = values[handle];
     valor_inicial = values[handle];
-      
-      /*$.ajax({
-        data  : { valor_inicial : valor_inicial },
-        url   : 'C_campaign/changeValues',
-        type  : 'POST',
-        dataType: 'json'
-      }).done(function(data){
-          //rangeSliderValor.setAttribute('disabled', true);  
-
-       /* $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
-        $('#tcea').html(data.tcea+'%');
-        $('#tea').html(data.tea+'%');
-        $('#seguroAuto').html('S/ '+data.seguroAuto);*/
-      //});
     });
     //FIN DE SLIDER VALOR DE LA INICIAL
   </script>
