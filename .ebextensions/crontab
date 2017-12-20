@@ -1,3 +1,2 @@
 # clean up files created by above cronjob
- */1 * * * * php /var/www/html/caja_prymera/application/controllers/cron.php > /dev/null 2>&1
- 
+ */1 * * * * php /var/www/html/caja_prymera/application/controllers/Cron.php > /dev/null 2>&1
