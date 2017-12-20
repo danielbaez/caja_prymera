@@ -21,8 +21,8 @@ class M_usuario extends  CI_Model{
     {
         if($usuario->estado == 1)
         {
-            if($usuario->email == 'daniel.baez@comparabien.com')
-            {
+            //if($usuario->email == 'daniel.baez@comparabien.com')
+            //{
                 $rol = $usuario->rol;
 
                 if($rol == 'asesor' || $rol == 'jefe_agencia' || $rol == 'asesor_externo')
@@ -187,11 +187,11 @@ class M_usuario extends  CI_Model{
                 {
                     return array('error' => false);
                 }
-            }
-            else
+            //}
+            /*else
             {
                 return array('error' => false);
-            }
+            }*/
         }
         else
         {
