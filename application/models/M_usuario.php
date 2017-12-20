@@ -69,7 +69,8 @@ class M_usuario extends  CI_Model{
 
                     $result = $this->db->query($sql, array($usuario->id));*/
 
-                    if($rol == 'asesor' || $rol == 'asesor_externo')
+                    //if($rol == 'asesor' || $rol == 'asesor_externo')
+                    if($rol == 'asesor' || $rol == 'asesor_externo' || $rol == 'jefe_agencia')
                     {
                         $acceso = $this->verifyAcceso();
                         
@@ -79,8 +80,17 @@ class M_usuario extends  CI_Model{
                             $result_ip = $this->db->query($sql, array($usuario->id_agencia));                
                             $result_ip = $result_ip->result();*/
 
-                            $sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM agencias INNER JOIN horarios ON agencias.id = horarios.id_agencia where agencias.id = ?";
-                            $result = $this->db->query($sql, array($usuario->id_agencia));
+                            if($rol != 'jefe_agencia')
+                            {
+                                $sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM agencias INNER JOIN horarios ON agencias.id = horarios.id_agencia where agencias.id = ? AND horarios.rol = ?";
+                                $result = $this->db->query($sql, array($usuario->id_agencia, $rol));    
+                            }
+                            if($rol == 'jefe_agencia')
+                            {
+                                $sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM agencias INNER JOIN horarios ON agencias.id = horarios.id_agencia where agencias.id_sup_agencia = ? AND horarios.rol = ?";
+                                $result = $this->db->query($sql, array($usuario->id, $rol));    
+                            }
+                            
 
                             if($result->num_rows() == 1)
                             {
@@ -147,7 +157,7 @@ class M_usuario extends  CI_Model{
                             return array('error' => false);
                         }
                     }
-                    elseif($rol == 'jefe_agencia')
+                    /*elseif($rol == 'jefe_agencia')
                     {
                         $acceso = $this->verifyAcceso();
 
@@ -175,7 +185,7 @@ class M_usuario extends  CI_Model{
                         {
                             return array('error' => false);
                         }
-                    }
+                    }*/
                     /*echo "ip1".$_SERVER['HTTP_CLIENT_IP'];
                     echo "<br>";
                     echo "ip2".$_SERVER['HTTP_X_FORWARDED_FOR'];
