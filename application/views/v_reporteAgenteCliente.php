@@ -50,7 +50,6 @@
         <?php if(_getSesion('rol') == 'administrador'){ ?>
           <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
           <li><a href="/C_horario">Horarios</a></li>
-          <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
           <li><a href="/C_crearAgencia">Crear Agencia</a></li>
         <?php }
@@ -78,7 +77,6 @@
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
                             <li><a href="/C_horario">Horarios</a></li>
-                            <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_crearAgencia">Crear Agencia</a></li>
                           <?php }
@@ -105,7 +103,7 @@
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
-              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Agente</h4>
+              <h4 class="titulo-vista">Reporte Solicitudes por Agente</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/agenteCliente">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
@@ -355,7 +353,7 @@ $(document).ready(function() {
             extend:    'pdf',
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Reporte Consolidado Solicitudes por Agente',
+            title: 'Reporte Solicitudes por Agente',
             orientation: 'landscape',
             pageSize: 'A4',
             filename: 'reporte',
@@ -375,7 +373,7 @@ $(document).ready(function() {
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Reporte Consolidado Solicitudes por Agente',
+            messageTop: 'Reporte Solicitudes por Agente',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',

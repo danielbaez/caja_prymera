@@ -49,7 +49,6 @@
         <?php if(_getSesion('rol') == 'administrador'){ ?>
           <li><a href="/C_main">Editar Perfil</a></li>
           <li><a href="/C_horario">Horarios</a></li>
-          <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
           <li><a href="/C_crearAgencia">Crear Agencia</a></li>
         <?php } ?>
@@ -74,7 +73,6 @@
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                             <li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_horario">Horarios</a></li>
-                            <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
                             <li><a href="/C_crearAgencia">Crear Agencia</a></li>
                           <?php } ?>

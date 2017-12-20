@@ -14,6 +14,12 @@ class M_preaprobacion extends  CI_Model{
         }
         return array("error" => EXIT_SUCCESS, "msj" => MSJ_INS, "idPers" => $pers);
     }
+
+    function insertPrueba() {
+        $sql = "INSERT INTO prueba(nombre) VALUES ('ss')";
+        $result = $this->db->query($sql);
+        return true;
+    }
     
     function updateDatosCliente($arrayData, $idCliente, $tabla){
         $this->db->where('id'  , $idCliente);

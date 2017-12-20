@@ -50,7 +50,6 @@
         <?php if(_getSesion('rol') == 'administrador'){ ?>
           <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
           <li><a href="/C_horario">Horarios</a></li>
-          <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
           <li><a href="/C_crearAgencia">Crear Agencia</a></li>
         <?php }
@@ -78,7 +77,6 @@
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
                             <li><a href="/C_horario">Horarios</a></li>
-                            <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_crearAgencia">Crear Agencia</a></li>
                           <?php }
@@ -105,7 +103,7 @@
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
-              <h4 class="titulo-vista">B&uacute;squeda Consolidado - Total Solicitudes Rechazadas</h4>
+              <h4 class="titulo-vista">Reporte Solicitudes Rechazadas</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/solicitudRechazada">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
@@ -304,7 +302,7 @@ $(document).ready(function() {
             extend:    'pdf',
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Busqueda Consolidado - Total Solicitudes Rechazadas',
+            title: 'Reporte Solicitudes Rechazadas',
             orientation: 'landscape',
             pageSize: 'A4',
             filename: 'reporte',
@@ -324,7 +322,7 @@ $(document).ready(function() {
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Busqueda Consolidado - Total Solicitudes Rechazadas',
+            messageTop: 'Reporte Total Solicitudes Rechazadas',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',

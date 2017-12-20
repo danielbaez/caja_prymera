@@ -49,7 +49,6 @@
         <?php if(_getSesion('rol') == 'administrador'){ ?>
           <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
           <li><a href="/C_horario">Horarios</a></li>
-          <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
           <li><a href="/C_crearAgencia">Crear Agencia</a></li>
         <?php }
@@ -77,7 +76,6 @@
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
                             <li><a href="/C_horario">Horarios</a></li>
-                            <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_crearAgencia">Crear Agencia</a></li>
                           <?php }
@@ -105,7 +103,7 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
                <div class="alert alert-msg" style="display:none; font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px;"></div>
-              <h4 class="titulo-vista">B&uacute;squeda Solicitud - Filtros</h4>
+              <h4 class="titulo-vista">Reporte Historial Solicitud</h4>
               <form class="form-horizontal" method="POST" action="/C_reporte/historialSolicitud">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
@@ -327,7 +325,7 @@ $(document).ready(function() {
             extend:    'pdf', //pdfHtml5
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Busqueda Solicitud - Filtros',
+            title: 'Reporte Historial Solicitud',
             orientation: 'landscape',
             pageSize: 'A4',
             filename: 'reporte',
@@ -350,7 +348,7 @@ $(document).ready(function() {
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Busqueda Solicitud - Filtros',
+            messageTop: 'Reporte Historial Solicitud',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',

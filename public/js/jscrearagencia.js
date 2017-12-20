@@ -289,10 +289,6 @@ function guardarAgencia() {
         msj('error',correo+' no es valido');
         return;
     }
-    if(ip == null || ip == '') {
-      msj('error', 'Ingrese una IP');
-      return;
-    }
     if(jefe_agencia == null || jefe_agencia == '') {
       msj('error', 'Seleccione un Jefe de agencia');
       return;
@@ -393,10 +389,6 @@ function actualizarAgencia() {
     } else {
         msj('error',correo+' no es valido');
         return;
-    }
-    if(ip == null || ip == '') {
-      msj('error', 'Ingrese una IP');
-      return;
     }
     if(jefe_agencia == null || jefe_agencia == '') {
       msj('error', 'Seleccione un Jefe de agencia');
