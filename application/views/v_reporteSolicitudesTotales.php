@@ -52,7 +52,7 @@
           <li><a href="/C_horario">Horarios</a></li>
           <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
-          <li><a href="/C_crearAgencia">Crear Agencia</a></li>
+          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
         <?php }
            elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
           <li><a href="/C_main">Editar Perfil</a></li>
@@ -80,7 +80,7 @@
                             <li><a href="/C_horario">Horarios</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
-                            <li><a href="/C_crearAgencia">Crear Agencia</a></li>
+                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                             <li><a href="/C_main">Editar Perfil</a></li>
@@ -242,28 +242,29 @@
                         <td><?php echo $solicitud->producto ?></td>
                         <td>
                         <?php
-                          if($solicitud->ws_error == 1 && $solicitud->fecha_final != '0000-00-00')
+                          if($solicitud->status_sol == 1)
                           {
-                            if($solicitud->status_sol == 1)
-                            {
-                              echo "Cerrado";
-                            }
-                            else
-                            {
-                              echo "Abierto";
-                            }
+                            echo "Cerrado";
                           }
-                          elseif($solicitud->ws_error == 1 && $solicitud->fecha_final == '0000-00-00')
+                          elseif($solicitud->status_sol == 0)
                           {
-                          ?>
-                          Inconcluso
-                          <?php
+                            echo "Abierto";
                           }
-                          else
+                          elseif($solicitud->status_sol == 5)
                           {
-                          ?>
-                          Rechazado
-                          <?php
+                          echo "Incompleto";
+                          }
+                          elseif($solicitud->status_sol == 4)
+                          {
+                          echo "Caducado";
+                          }
+                          elseif($solicitud->status_sol == 3)
+                          {
+                          echo "Cancelado";
+                          }
+                          elseif($solicitud->status_sol == 2)
+                          {
+                          echo "Rechazado";
                           } 
                           ?>
                         </td>

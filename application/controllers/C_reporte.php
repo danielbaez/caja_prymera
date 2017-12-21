@@ -254,7 +254,7 @@ class C_reporte extends CI_Controller {
                     );
 
             $data['solicitudes'] = $this->M_solicitud->obtenerSolicitudesTotales($filtros);
-
+            //_log(print_r($data['solicitudes'], true));
             $data['id_asesor'] = $id_asesor;
             $data['asesor'] = $asesor;
             //$data['dni'] = $dni;

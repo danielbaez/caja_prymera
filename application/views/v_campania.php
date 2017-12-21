@@ -128,9 +128,94 @@
                           </div>
                             <div class="col-sm-6">
                               <div class="form-group">
-                                  <select onkeyup="verificarDatos(event);" class="form-control" id="profesion" name="profesion" onchange="habilitarCampo()">
+                                  <select onkeyup="verificarDatos(event);" class="selectpicker form-control" id="profesion" name="profesion" data-live-search="true" onchange="habilitarCampo()">
                                           <option value="">Profesión</option>
-                                          <option value="abogado">Abogado</option>
+                                          <option value="Abogado">Abogado</option>
+                                          <option value="Cosmetólogo">Cosmetólogo</option>
+                                          <option value="Peluquero">Peluquero</option>
+                                          <option value="Barbero">Barbero</option>
+                                          <option value="Carpintero">Carpintero</option>
+                                          <option value="Sociólogo">Sociólogo</option>
+                                          <option value="Contador">Contador</option>
+                                          <option value="Decorador">Decorador</option>
+                                          <option value="Dibujante">Dibujante</option>
+                                          <option value="Diseñador">Diseñador</option>
+                                          <option value="Director de Empresas">Director de Empresas</option>
+                                          <option value="Atleta Profesional">Atleta Profesional</option>
+                                          <option value="Escultor">Escultor</option>
+                                          <option value="Entrenador Deportivo">Entrenador Deportivo</option>
+                                          <option value="abogado">Comerciante</option>
+                                          <option value="Ejecutivo">Ejecutivo</option>
+                                          <option value="Enfermero">Enfermero</option>
+                                          <option value="Estudiante">Estudiante</option>
+                                          <option value="Empleado">Empleado</option>
+                                          <option value="Enfermero">Enfermero</option>
+                                          <option value="Especialista en tratamiento de Belleza">Especialista en tratamiento de Belleza</option>
+                                          <option value="Electricista (técnico)">Electricista (técnico)</option>
+                                          <option value="Farmacéutico">Farmacéutico</option>
+                                          <option value="Tapicero">Tapicero</option>
+                                          <option value="Economista">Economista</option>
+                                          <option value="Gasfitero">Gasfitero</option>
+                                          <option value="Veterinario">Veterinario</option>
+                                          <option value="Geógrafo">Geógrafo</option>
+                                          <option value="Ingeniería Administrativa">Ingeniería Administrativa</option>
+                                          <option value="Indepediente">Indepediente</option>
+                                          <option value="Intérprete">Intérprete</option>
+                                          <option value="Traductor">Traductor</option>
+                                          <option value="Filósofo">Filósofo</option>
+                                          <option value="Laboratorista (técnico)">Laboratorista (técnico)</option>
+                                          <option value="Autor">Autor</option>
+                                          <option value="Literato">Literato</option>
+                                          <option value="Crítico">Crítico</option>
+                                          <option value="Escritor">Escritor</option>
+                                          <option value="Locutor">Locutor de radio, TV</option>
+                                          <option value="Mecánico de Naves">Mecánico Motores de Aviones y Naves Marinas</option>
+                                          <option value="Modelo">Modelo</option>
+                                          <option value="Músico">Músico</option>
+                                          <option value="Mecánico">Mecánico de vehículos de motor</option>
+                                          <option value="Ingeniero">Ingeniero</option>
+                                          <option value="Médico">Médico y Cirujano</option>
+                                          <option value="Nutricionista">Nutricionista</option>
+                                          <option value="Obstetriz">Obstetriz</option>
+                                          <option value="Odontólogo">Odontólogo</option>
+                                          <option value="Abogado">Abogado</option>
+                                          <option value="Licenciado">Licenciado</option>
+                                          <option value="Artesano Textil">Artesano Textil</option>
+                                          <option value="Gestor de Negocios">Gestor de Negocios</option>
+                                          <option value="Piloto de Aeronaves">Piloto de Aeronaves</option>
+                                          <option value="Otros">Otros</option>
+                                          <option value="Químico">Químico</option>
+                                          <option value="Médico">Médico</option>
+                                          <option value="Radio Técnico">Radio Técnico</option>
+                                          <option value="Regidor Municipalidades">Regidor Municipalidades</option>
+                                          <option value="Sastre">Sastre</option>
+                                          <option value="Sindico">Sindico</option>
+                                          <option value="Tecnólogo Médico">Tecnólogo Médico</option>
+                                          <option value="Obrero">Obrero</option>
+                                          <option value="Psicólogo">Psicólogo</option>
+                                          <option value="Técnico, Tecnólogo">Técnico, Tecnólogo</option>
+                                          <option value="Periodista">Periodista</option>
+                                          <option value="Vendedor">Vendedor</option>
+                                          <option value="Administrador de Empresa">Administrador de Empresa</option>
+                                          <option value="Chofer">Chofer</option>
+                                          <option value="Secretaria">Secretaria</option>
+                                          <option value="auxiliar">auxiliar</option>
+                                          <option value="Antropólogo, Arqueólogo y Etnólogo">Antropólogo, Arqueólogo y Etnólogo</option>
+                                          <option value="Ama de casa">Ama de casa</option>
+                                          <option value="Actor, Artista y Director de espectáculos">Actor, Artista y Director de espectáculos</option>
+                                          <option value="Administrador">Administrador</option>
+                                          <option value="Agrónomo">Agrónomo</option>
+                                          <option value="Agrimensor y topógrafo">Agrimensor y topógrafo</option>
+                                          <option value="Albañil">Albañil</option>
+                                          <option value="Arquitecto">Arquitecto</option>
+                                          <option value="Analista de Sistemas y Computación">Analista de Sistemas y Computación</option>
+                                          <option value="Pintor">Pintor</option>
+                                          <option value="Publicista">Publicista</option>
+                                          <option value="Biólogo">Biólogo</option>
+                                          <option value="Relacionista Público e Industrial">Relacionista Público e Industrial</option>
+                                          <option value="Fotógrafo y Operador de Cámara, Cine y TV">Fotógrafo y Operador de Cámara, Cine y TV</option>
+                                          <option value="Oficial de Fuerzas Armadas">Oficial de Fuerzas Armadas</option>
+                                          <option value="Operador">Operador</option>
                                   </select>
                                 </div>
                             </div>
@@ -262,8 +347,9 @@
                       <div class="col-xs-12 m-t-0">
                         <a id="remove" class="link" onclick="redirect();" style="margin: 10px 20px;float: left;">Regresar</a>
                       </div>
-                      <input type="hidden" name="tipo_producto_hidden" value="<?php echo $tipo_producto ?>">
-                      <button type="button" style="margin-right: 32px !important;margin-top: -40px !important;" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="verificarCamp()" disabled>Siguiente</button>
+                      <div class="col-xs-6 col-md-offset-6">
+                        <button type="button" style="margin-right: 32px !important;margin-top: -40px !important;" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="verificarCamp()" disabled>Siguiente</button>
+                      </div>
                   </form>
                 </div>                                        
         </div>

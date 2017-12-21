@@ -34,7 +34,8 @@ class Ubicacion extends CI_Controller {
         $dato['ubicacion']     = $direccion[0]->UBICACION;
         $dato['telefono']      = $direccion[0]->TELEFONO;
         $idPersona             = _getSesion('idPersona');
-        $arrayUpdt             = array('last_page' => N_INTRO_MAPA);
+        $arrayUpdt             = array('last_page' => N_INTRO_MAPA,
+                                       'status_sol'     => 0/*abierto*/);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
         $this->load->view('v_simuladorUbicacion', $dato);
     }

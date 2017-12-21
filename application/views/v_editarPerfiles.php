@@ -233,10 +233,7 @@
 					  <label><input type="checkbox" class="inactivo" value="0" name="permiso[]" disabled>Inactivo</label>
 					</div>
 				  </div>
-				  <div class="form-group text-left div-agencias">
-					<!-- <select class="selectpicker" data-live-search="true" title="Agencia" id="agencia" name="agencia[]" multiple> 
-					  <?php //echo $comboAgencias?>
-					</select>-->
+				  <!--<div class="form-group text-left div-agencias">
 					<label class="form-label">Agencias</label>
 					<select multiple="" name="agencia[]" class="form-control" id="agencias" disabled>
     			     <?php foreach ($agencias as $key => $value) {
@@ -245,7 +242,7 @@
                         <?php
                       } ?>
 	               </select>
-				  </div>
+				  </div>-->
                 </div>
 				<div class="col-xs-12">
 				  <div class="form-group col-xs-6 text-left">

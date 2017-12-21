@@ -223,18 +223,36 @@ function eliminar() {
 
 var i = 1;
 function agregarTelefono() {
+  if(i == 1) {
     $('#cont_telef').append('</br><div class="form-group">'+
       '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="7" placeholder="Teléfono"/>'+
+      '<button type="button" class="btn btn-default" aria-label="Close" id="btnT'+i+'" onclick="limpiarInputsTelefonos('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
     i++;
+  }else {
+    $('#cont_telef').append('<div class="form-group">'+
+      '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="7" placeholder="Teléfono"/>'+
+      '<button type="button" class="btn btn-default" aria-label="Close" id="btnT'+i+'" onclick="limpiarInputsTelefonos('+i+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
+    '</div>');
+    i++;
+  }
 }
 
 var x = 1;
 function agregarCorreo() {
+  if(x == 1) {
     $('#cont_correo').append('</br><div class="form-group">'+
-      '<input type="text" class="form-control" id="correos'+i+'" name="correos[]" placeholder="Correo de la agencia" onkeypress="" maxlength="200">'+
-  '</div>');
-  x++;
+    '<input type="text" class="form-control" id="correos'+x+'" name="correos[]" placeholder="Correo de la agencia" onkeypress="" maxlength="200">'+
+    '<button type="button" class="btn btn-default" aria-label="Close" id="btn'+x+'" onclick="limpiarInputsCorreo('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
+    '</div>');
+    x++;
+  }else {
+    $('#cont_correo').append('<div class="form-group">'+
+    '<input type="text" class="form-control" id="correos'+x+'" name="correos[]" placeholder="Correo de la agencia" onkeypress="" maxlength="200">'+
+    '<button type="button" class="btn btn-default" aria-label="Close" id="btn'+x+'" onclick="limpiarInputsCorreo('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
+    '</div>');
+    x++;
+  }
 }
 
 var contador = 1;
@@ -432,4 +450,16 @@ function actualizarAgencia() {
         }
     });
   }
+}
+
+function limpiarInputsCorreo(dato) {
+  $('#btn'+dato).remove();
+  $('#correos'+dato).remove();
+  $('#correos'+dato).val('');
+}
+
+function limpiarInputsTelefonos(datoT) {
+  $('#btnT'+datoT).remove();
+  $('#telefonos'+datoT).remove();
+  $('#telefonos'+datoT).val('');
 }

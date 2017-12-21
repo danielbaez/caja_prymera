@@ -156,6 +156,7 @@
                           <option value="2">Rechazado</option>
                           <option value="3">Anulado</option>
                           <option value="4">Caducado</option>
+                          <option value="5">Incompleto</option>
                           <?php
                           }
                           elseif($status == 0){
@@ -165,6 +166,7 @@
                           <option value="2">Rechazado</option>
                           <option value="3">Anulado</option>
                           <option value="4">Caducado</option>
+                          <option value="5">Incompleto</option>
                           <?php
                           }
                           elseif($status == 1){
@@ -174,6 +176,7 @@
                           <option value="2">Rechazado</option>
                           <option value="3">Anulado</option>
                           <option value="4">Caducado</option>
+                          <option value="5">Incompleto</option>
                           <?php
                           }
 
@@ -186,6 +189,7 @@
                           <option value="2">Rechazado</option>
                           <option value="3">Anulado</option>
                           <option value="4">Caducado</option>
+                          <option value="5">Incompleto</option>
                         <?php
                         } ?>
                       </select>
@@ -271,6 +275,8 @@
                               <?php echo 'Anulado' ?>
                           <?php } else if($solicitud->status_sol == 4) { ?>
                               <?php echo 'Caducado' ?>
+                          <?php } else if($solicitud->status_sol == 5) {  ?>
+                              <?php echo 'Incompleto' ?>
                           <?php } ?>
                         </td>
                         <td><?php echo $solicitud->monto ?></td>

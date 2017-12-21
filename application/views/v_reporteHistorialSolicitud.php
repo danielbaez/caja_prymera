@@ -51,7 +51,7 @@
           <li><a href="/C_horario">Horarios</a></li>
           <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
-          <li><a href="/C_crearAgencia">Crear Agencia</a></li>
+          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
         <?php }
            elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
           <li><a href="/C_main">Editar Perfil</a></li>
@@ -79,7 +79,7 @@
                             <li><a href="/C_horario">Horarios</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
-                            <li><a href="/C_crearAgencia">Crear Agencia</a></li>
+                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                             <li><a href="/C_main">Editar Perfil</a></li>
