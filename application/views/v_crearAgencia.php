@@ -17,6 +17,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap_toggle/css/bootstrap-toggle.min.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
+         <link href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
 		<style>
 		</style>  	
 	</head>
@@ -49,6 +50,7 @@
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php if(_getSesion('rol') == 'administrador'){ ?>
+        	<li><a href="/C_main">Editar Perfil</a></li>
             <li><a href="/C_usuario/asignarSupervisor">Asignar Agentes</a></li>
             <li><a href="/C_horario">Horarios</a></li>
             <li><a href="/C_ip">Asignar IP</a></li>
@@ -76,6 +78,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">                    
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
+                          	<li><a href="/C_main">Editar Perfil</a></li>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Agentes</a></li>
                             <li><a href="/C_horario">Horarios</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
@@ -197,7 +200,8 @@
 					  		<input type="text" class="form-control" onchange="habilitarCampo()" id="celular" name="celular" placeholder="N&uacute;mero de IP" onkeypress="" maxlength="15">
 					  	</div>
 					  	<div class="col-xs-2 p-t40">
-					  		<input type="checkbox" id="toggle_button" data-toggle="toggle" data-on="Sí" data-off="No">
+					  		<!--<input type="checkbox" id="toggle_button" data-toggle="toggle" data-on="Sí" data-off="No">-->
+					  		<p><input id="toggle_button" type="checkbox" checked="checked" data-on-text="SI" data-off-text="NO" name="toggle_button"></p>
 					  	</div>
 					  </div>
 				  </div>
@@ -271,16 +275,33 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
 <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap_toggle/js/bootstrap-toggle.min.js?v=<?php echo time();?>"></script>
 
+<script src="<?php echo RUTA_JS?>highlight.js"></script>
+<script src="https://unpkg.com/bootstrap-switch"></script>
+
 	  <script>
 
-	  	 $(function() {
+	  	/* $(function() {
 		    $('#toggle-two').bootstrapToggle({
 		      on: 'Sí',
 		      off: 'No'
 		    });
-		  })
+		  })*/
 
 	  	$(document).ready(function() {
+
+	  		window.hljs.initHighlightingOnLoad();
+
+			  $('input[type="checkbox"], input[type="radio"]')
+			    .not('[data-switch-no-init]')
+			    .bootstrapSwitch()
+
+			  $('input[name="toggle_button"]').on('toggleState.bootstrapSwitch', function(event, state) {
+			    /*console.log(this); // DOM element
+			    console.log(event); // jQuery event
+			    console.log(state); // true | false*/
+			    console.log('estado: '+state)
+
+			  });
 
 	  		var msgForm = "Debe completar todos los campos";
 	  		var msgEmail = "El email ya existe, eija otro";

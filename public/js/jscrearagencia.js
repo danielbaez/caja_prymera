@@ -146,6 +146,8 @@ function readURL(input) {
 var global_agencia = '';
 var global_correos = '';
 function setearDatos(dato, agencia, nombre) {
+  console.log($('#toggle_button').bootstrapSwitch('state'));
+  //$('input[name="toggle_button"]').bootstrapSwitch('state', true, true);
  $('#agencia').val(agencia);
  $("#cont_correo").find('input:text, input:password, input:file, select, textarea')
   .each(function() {
@@ -179,6 +181,14 @@ function setearDatos(dato, agencia, nombre) {
             $("#rol_superior").val(data.id_sup).change();
             $('#btnGuardar').css('display', 'none');
             $('#btnEditar').css('display', 'block');
+            if(data.switch == 1) {
+              console.log('entra');
+                $('input[name="toggle_button"]').bootstrapSwitch('state', !true, false);
+                $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
+            }else {
+                $('input[name="toggle_button"]').bootstrapSwitch('state', !false, false);
+                $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
+            }
         }else {
         }
       } catch (err){

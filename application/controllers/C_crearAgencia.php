@@ -14,6 +14,7 @@ class C_crearAgencia extends CI_Controller {
     
     public function index()
     {
+        $data['acceso']         = 1;
         $data['nombre']         = _getSesion("nombre");
         $data['comboAgencias']  = $this->__buildComboAgencias();
         $id                     = _getSesion('id_usuario');
@@ -298,9 +299,12 @@ class C_crearAgencia extends CI_Controller {
             $i = 1;
             $x = 1;
             $datos   = $this->M_usuario->getDatosById('agencias', 'id', $id);
+            $ip   = $this->M_usuario->getDatosById('acceso', 'id_agencia', $id);
+            //_log(print_r($ip[0]->ip, true));
             $data['direccion'] = $datos[0]->UBICACION;
             $data['id_sup']    = $datos[0]->id_sup_agencia;
             $data['ip']        = $datos[0]->ip;
+            $data['switch']    = $ip[0]->ip;
             foreach (explode(',', $datos[0]->TELEFONO) as $row) {
                 if($x == 1) {
                     $data['telef_val'] = $row;

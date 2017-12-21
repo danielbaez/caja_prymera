@@ -33,24 +33,25 @@ class Cron extends CI_Controller {
 $host = 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
 $user = 'prymera';
 $pass = 'prymera123';
+/*$host = 'localhost';
+$user = 'root';
+$pass = '';*/
 $db = 'caja_prymera';
 $link = mysqli_connect($host,  $user,  $pass,$db);
 $link->set_charset("utf8");
 $query = "SELECT * 
                   FROM solicitud
                  WHERE status_sol = 0
-                   AND  DATE_ADD('2017-11-15', INTERVAL 2 month)  >= curdate() ";
+                   AND  DATE_ADD(timestamp_final, INTERVAL 2 month)  >= curdate() ";
 $result = mysqli_query( $link ,  $query);
-//print_r($result);
+//print_r(mysqli_fetch_object($result));
 $rows = array();
 while($r = mysqli_fetch_object($result)){
 //$rows[] = array('id'=>$r->codigo,'label'=>$r->codigo .' - '.$r->estado.' - '.$r->ciudad,'value'=>$r->codigo);
-    //print_r($r);
-    
+    $query = 'UPDATE solicitud SET status_sol = 4 WHERE id = "'.$r->id.'";';
+    $resultado = mysqli_query( $link ,  $query);
 }
-$query = "INSERT INTO prueba(nombre) VALUES ('lll')";
-$resultado = mysqli_query( $link ,  $query);
-/*mysqli_close($link);
-print json_encode($rows);*/
+mysqli_close($link);
+//print json_encode($rows);
 
 ?>
