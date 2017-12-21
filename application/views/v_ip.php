@@ -54,7 +54,7 @@
             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
             <li><a href="/C_horario">Horarios</a></li>
             <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
-            <li><a href="/C_crearAgencia" class="navegacion-a">Crear Agencia</a></li>
+            <li><a href="/C_crearAgencia" class="navegacion-a">Administrar Agencia</a></li>
         <?php }
         	 elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
         	<li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
@@ -82,7 +82,7 @@
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
                             <li><a href="/C_horario">Horarios</a></li>
 	                    	<li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
-                        <li><a href="/C_crearAgencia" class="navegacion-a">Crear Agencia</a></li>
+                        <li><a href="/C_crearAgencia" class="navegacion-a">Administrar Agencia</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                             <li><a href="/C_reporte/solicitudes">Ver Reportes</a></li>
