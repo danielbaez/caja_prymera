@@ -1,5 +1,5 @@
 <?php
-require('../config/database.php');
+//require('../config/database.php');
 /*defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cron extends CI_Controller {
