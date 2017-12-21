@@ -31,10 +31,15 @@ class Cron extends CI_Controller {
     }
 }*/
 
-$host = $db['default']['hostname'];
+/*$host = $db['default']['hostname'];
 $user = $db['default']['username'];
 $pass = $db['default']['password'];
-$database = $db['default']['database'];
+$database = $db['default']['database'];*/
+$host = 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
+$user = 'prymera';
+$pass = 'prymera123';
+$database = 'caja_prymera';
+
 $link = mysqli_connect($host,  $user,  $pass,$database);
 $link->set_charset("utf8");
 
