@@ -1,3 +1,4 @@
 # clean up files created by above cronjob
- */1 * * * * php /var/www/html/application/controllers/Cron.php > /dev/null 2>&1
- #*/1 * * * * curl --request GET 'http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/cron'
+ #*/1 * * * * php /var/www/html/application/controllers/Cron.php > /dev/null 2>&1
+ 0 10 * * * curl --request GET 'http://prymeracreditos-env.efwrzdgyhk.us-east-1.elasticbeanstalk.com/cron/verificarEstado'
+ 
