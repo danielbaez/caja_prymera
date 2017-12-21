@@ -16,7 +16,7 @@ class M_producto extends  CI_Model{
         $sql = "SELECT * 
 				  FROM solicitud
 				 WHERE status_sol = 0
-				   AND  DATE_ADD('2017-11-15', INTERVAL 2 month)  >= curdate() ";
+				   AND  DATE_ADD(timestamp_final, INTERVAL 2 month)  <= curdate() ";
         $result = $this->db->query($sql, array());
         return $result->result();
     }
