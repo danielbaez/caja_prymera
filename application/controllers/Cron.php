@@ -1,4 +1,5 @@
 <?php
+require('../config/database.php');
 /*defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cron extends CI_Controller {
@@ -30,14 +31,11 @@ class Cron extends CI_Controller {
     }
 }*/
 
-$host = 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
-$user = 'prymera';
-$pass = 'prymera123';
-/*$host = 'localhost';
-$user = 'root';
-$pass = '';*/
-$db = 'caja_prymera';
-$link = mysqli_connect($host,  $user,  $pass,$db);
+$host = $db['default']['hostname'];
+$user = $db['default']['username'];
+$pass = $db['default']['password'];
+$database = $db['default']['database'];
+$link = mysqli_connect($host,  $user,  $pass,$database);
 $link->set_charset("utf8");
 $query = "SELECT * 
                   FROM solicitud

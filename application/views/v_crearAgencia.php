@@ -70,7 +70,7 @@
 		<div class="col-xs-12 m-t-20 m-b-20">
 		  <div class="hidden-xs col-sm-3"></div>
 		  <div class="col-xs-12 col-sm-6">
-			<h1 class="titulo-vista">Crear Agencias</h1>            
+			<h1 class="titulo-vista">Administrar Agencias</h1>            
 		  </div>
 		  <div class="hidden-xs col-sm-3 text-right">
             <ul class="nav navbar-nav navbar-right dropdown-menu-user">
