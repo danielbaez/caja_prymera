@@ -37,19 +37,20 @@ $pass = $db['default']['password'];
 $database = $db['default']['database'];
 $link = mysqli_connect($host,  $user,  $pass,$database);
 $link->set_charset("utf8");
-$query = "SELECT * 
+
+    $query = "INSERT INTO prueba (nombre) values('dwdw')";
+    mysqli_query( $link ,  $query);
+
+
+/*$query = "SELECT * 
                   FROM solicitud
                  WHERE status_sol = 0
                    AND  DATE_ADD(timestamp_final, INTERVAL 2 month)  >= curdate() ";
 $result = mysqli_query( $link ,  $query);
-//print_r(mysqli_fetch_object($result));
 $rows = array();
 while($r = mysqli_fetch_object($result)){
-//$rows[] = array('id'=>$r->codigo,'label'=>$r->codigo .' - '.$r->estado.' - '.$r->ciudad,'value'=>$r->codigo);
     $query = 'UPDATE solicitud SET status_sol = 4 WHERE id = "'.$r->id.'";';
     $resultado = mysqli_query( $link ,  $query);
-}
+}*/
 mysqli_close($link);
-//print json_encode($rows);
-
 ?>
