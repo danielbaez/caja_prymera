@@ -109,7 +109,7 @@
                       </td>                    
                       <td><?php echo $personal->nombre.' '.$personal->apellido ?></td>
                       <td><?php echo ucfirst($personal->rol) ?></td>
-                      <td><?php echo $personal->agencia ?></td>
+                      <td><?php echo $personal->agencia == null ? '' : $personal->agencia ?></td>
                     </tr>
                   <?php } ?>                
                   </tbody>

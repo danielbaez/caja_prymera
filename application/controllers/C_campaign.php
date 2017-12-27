@@ -203,9 +203,10 @@ class C_campaign extends CI_Controller {
             $valor_vehiculo  = _post('valor_vehiculo');
             $valor_inicial   = _post('valor_inicial');
             $primera_fecha   = _post('primera_fecha');
+            $idPersona         = _getSesion('idPersona');
             
             if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
-                $arrayInsert = array('condicion_laboral' => $condicion,
+                $arrayUpdt = array('condicion_laboral'   => $condicion,
                                  'nivel_educativo'       => $nivel_educativo,
                                  'profesion'             => $profesion,
                                  'salario'               => $ingreso_bruto,
@@ -218,12 +219,12 @@ class C_campaign extends CI_Controller {
                                  'plazo'                 => $plazo,
                                  'valor_auto'            => $valor_vehiculo,
                                  'cuota_inicial'         => $valor_inicial,
-                                 'nombre'                => "Juan",
-                                 'apellido'              => 'Ramos',
+                                 'ws2_timestamp'         => date("Y-m-d H:i:s"),
                                  'fec_estado'            => date("Y-m-d H:i:s"),
-                                 'ws2_timestamp'         => date("Y-m-d H:i:s")
+                                 'last_page'             => N_CONSULTA_DATOS
                                 );
-            $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+
             $session = array(
                              'marca'       => $marca,
                              'modelo'      => $modelo,

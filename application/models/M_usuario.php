@@ -445,11 +445,11 @@ class M_usuario extends  CI_Model{
 
     function getPersonalByRol() {
         $sql = "SELECT u.* , a.AGENCIA AS agencia
-                  FROM usuario u,
-                       agencias a
-                 WHERE a.id = u.id_agencia
-                   AND u.rol LIKE '%asesor%'
+                  FROM usuario u
+             LEFT JOIN agencias a ON a.id = u.id_agencia
+                  WHERE u.rol LIKE '%asesor%'
                    AND u.estado = 1";
+
         $result = $this->db->query($sql, array());
         return $result->result();
     }
@@ -613,12 +613,11 @@ class M_usuario extends  CI_Model{
 
     function getDatosAsesoresByAgencia($agencia) {
         $sql = "SELECT u.*, a.AGENCIA AS agencia
-                  FROM usuario u,
-                       agencias a
-                 WHERE a.id = u.id_agencia
-                   AND u.estado = 1
+                  FROM usuario u
+             LEFT JOIN agencias a ON a.id = u.id_agencia
+                 WHERE u.estado = 1
                    AND u.rol LIKE '%asesor%'
-                   AND u.id_agencia != ?";
+                   AND u.id != ?";
         $result = $this->db->query($sql, array($agencia));
         return $result->result();
     }

@@ -40,8 +40,13 @@ class C_main extends CI_Controller {
         $rol              = _post('rol');
         $rol_superior     = _post('rol_superior');
         $checkPermiso     = _post('permiso');
-        $agencia          = _post('agencia');
+        //$agencia          = _post('agencia');
         
+        $datos_agencia = $this->M_usuario->getDatosById('agencias', 'id_sup_agencia', $rol_superior);
+        
+        $agencia = $datos_agencia[0]->id;
+        /*_log(print_r($agencia, true));
+        return;*/
         if($_FILES["imagen"]["name"]){
             $img_file   = $_FILES["imagen"]["name"];
             $folderName = "public/img/usuarios/";
@@ -96,7 +101,7 @@ class C_main extends CI_Controller {
                                      'permiso'          => $permiso,
                                      'estado'           => 1,
                                      'imagen'           => $name_image,
-                                     'id_agencia' => $agencia[0]
+                                     'id_agencia' => $agencia
                                     );
               $this->M_usuario->crearUsuario($arrayInsert, 'usuario', false);  
             }
@@ -170,7 +175,7 @@ class C_main extends CI_Controller {
                                          'permiso'       => $permiso,
                                          'estado'        => in_array(0, $checkPermiso) ? 0 : 1,
                                          'imagen'        => $name_image,
-                                         'id_agencia'    => $agencia[0]
+                                         'id_agencia'    => $agencia
                                         );
                     if($name_image == '') {
                         unset($arrayUpdate['imagen']);
@@ -219,6 +224,8 @@ class C_main extends CI_Controller {
                 $datos = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, null);
             }
             $id_agencia            = $this->M_preaprobacion->getidByAgencia($agencia);
+            _log(print_r($id_agencia, true));
+            return;
             $datos                 = $this->M_preaprobacion->getDatosPersByRol($rol, $nombre, $id_agencia[0]->id);
             $data['dni']           = $datos[0]->dni;
             $data['nombre']        = $datos[0]->nombre;

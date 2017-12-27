@@ -171,23 +171,28 @@ function setearDatos(dato, agencia, nombre) {
       try{
         data = JSON.parse(data);
         if(data.error == 0){
-            $('#direccion').val(data.direccion);
-            $('#txtelefono').val(data.telef_val);
-            $('#cont_telef').append(data.telefonos);
-            $('#celular').val(data.ip);
-            global_correos = data.data_correos;
-            $('#correo').val(data.correo_val);
-            $('#cont_correo').append(data.correos);
-            $("#rol_superior").val(data.id_sup).change();
-            $('#btnGuardar').css('display', 'none');
-            $('#btnEditar').css('display', 'block');
-            if(data.switch == 1) {
-              console.log('entra');
-                $('input[name="toggle_button"]').bootstrapSwitch('state', !true, false);
-                $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
+            if(data.telefonos == null || data.data_correos == null) {
+              msj('error', 'No existen datos para esta agencia');
+              return;
             }else {
-                $('input[name="toggle_button"]').bootstrapSwitch('state', !false, false);
-                $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
+              $('#direccion').val(data.direccion);
+              $('#txtelefono').val(data.telef_val);
+              $('#cont_telef').append(data.telefonos);
+              $('#celular').val(data.ip);
+              global_correos = data.data_correos;
+              $('#correo').val(data.correo_val);
+              $('#cont_correo').append(data.correos);
+              $("#rol_superior").val(data.id_sup).change();
+              $('#btnGuardar').css('display', 'none');
+              $('#btnEditar').css('display', 'block');
+              if(data.switch == 1) {
+                console.log('entra');
+                  $('input[name="toggle_button"]').bootstrapSwitch('state', !true, false);
+                  $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
+              }else {
+                  $('input[name="toggle_button"]').bootstrapSwitch('state', !false, false);
+                  $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
+              }
             }
         }else {
         }

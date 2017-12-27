@@ -14,6 +14,8 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
@@ -314,6 +316,30 @@
       <br>
     </div>
 
+     <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md centrar" role="document">
+        <div class="modal-content">
+          <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
+            <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Anular solicitud</p>
+          </div>
+          <div class="modal-body modal-reporte-agente">
+            <div class="row">
+              <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
+                <p style=""><span style="font-family: arial !important;font-weight: lighter;">¿</span><span style="font-family: 'quicksandbold' !important">Desea anular la solicitud?</span> Recuerde que no se podrá restaurar la solicitud. </p>
+              </div>
+            </div>              
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block; margin: 0 auto" onclick="cambiarStatus()">Confirmar</button> 
+              </div>                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -334,6 +360,8 @@
 <script type="text/javascript" async src="<?php echo RUTA_JS?>jsreporteAgenteCliente.js?v=<?php echo time();?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 
 
 <script type="text/javascript">

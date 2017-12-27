@@ -13,6 +13,7 @@ class Vehicular extends CI_Controller {
     }
     
     public function index() {
+      _log(_getSesion('tipoCred'));
         $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR));
         $dato['tipo_producto'] = PRODUCTO_VEHICULAR;
         $this->load->view('v_vehicular', $dato);
@@ -27,7 +28,7 @@ class Vehicular extends CI_Controller {
           //resultado 3: token
             //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
            $params = array('token'     => 'E928EUXP',
                            'documento' =>_post('dni'),
@@ -60,7 +61,11 @@ class Vehicular extends CI_Controller {
               }
             }
             $plazos = $result->return->rango->plazos;
-            $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
+            if(_getSesion('tipoCred') == 'camp') {
+              $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_preaprobacion');
+            }else if(_getSesion('tipoCred') == 'eva'){
+              $response = array('status' => 1, 'documento' => $documento, 'rango' => $importeMinimo, 'importeMaximo' => $importeMaximo, 'url' => RUTA_CAJA.'C_campaign');
+            }
           $session = array('nombre'         => $nombre,
                            'apellido'       => $apellido,
                            'dni'            => $dni,
