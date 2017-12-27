@@ -25,9 +25,9 @@ class Micash extends CI_Controller {
         $data['msj']   = null;
         try 
           {
-            //resultado 1 -- ok
+          //resultado 1 -- ok
           //resultado 3: token
-            //resultado 2: error del servidor
+          //resultado 2: error del servidor
           //resultado 0 : rechazado
           $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
@@ -51,7 +51,7 @@ class Micash extends CI_Controller {
            }
           $result = $client->GetDatosCliente($params);
 
-          _log(print_r($result, true));
+          //_log(print_r($result, true));
 
           $res = $result->return->resultado;
           if($res == 1){

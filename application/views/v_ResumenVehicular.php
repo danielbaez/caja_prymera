@@ -198,7 +198,7 @@
                             <span style="">Seguro Auto: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $fecha_periodo?></span>
+                            <span><?php echo $seguro?></span>
                           </div>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 function irAUbicacion() {
-	location.href = '/Ubicacion';
+	location.href = '/C_confirmacion';
 }
 
 function enterIrAUbicacion(e) {

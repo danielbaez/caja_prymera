@@ -15,6 +15,9 @@ class Resumen_Vehicular extends CI_Controller {
     }
 
     public function index() {
+
+        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
+        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        /* $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         if($datos_page[0]->last_page != N_RESUMEN) {
             redirect("/C_main", 'location');
@@ -28,6 +31,7 @@ class Resumen_Vehicular extends CI_Controller {
         $fecha = new DateTime(_getSesion('periodo_gracia'));
         $fecha_d_m_y = $fecha->format('d/m/Y');
         $dato['fecha_periodo'] = $fecha_d_m_y;
+        $dato['seguro']         = _getSesion('seguroAuto');
         $dato['marca']         = _getSesion('marca');
         $dato['modelo']        = _getSesion('modelo');
         $dato['valor_auto']    = _getSesion('valor_auto');

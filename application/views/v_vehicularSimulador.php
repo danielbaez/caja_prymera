@@ -527,12 +527,14 @@
       cuota = $('#slider-range-value-cuota').html();
       marca = $('#marca option:selected').val();
       modelo= $('#modelo option:selected').val();
+      periodo = $('#periodo_gracia').val();
       $.ajax({
         data  : { meses    : meses_pago,
                 cuota : cuota,
                 monto: monto,
                 marca: marca,
-                modelo: modelo
+                modelo: modelo,
+                periodo : periodo
               },
         url   : 'C_preaprobacion/changeValues',
         type  : 'POST',

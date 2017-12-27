@@ -13,7 +13,7 @@ class C_campaign extends CI_Controller {
     
     public function index()
     {
-        _log(print_r($this->session->all_userdata(), true));
+        //_log(print_r($this->session->all_userdata(), true));
         $idPersona  = _getSesion('idPersona');
         $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
@@ -204,35 +204,90 @@ class C_campaign extends CI_Controller {
             $valor_inicial   = _post('valor_inicial');
             $primera_fecha   = _post('primera_fecha');
             $idPersona         = _getSesion('idPersona');
-            
-            if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
-                $arrayUpdt = array('condicion_laboral'   => $condicion,
-                                 'nivel_educativo'       => $nivel_educativo,
-                                 'profesion'             => $profesion,
-                                 'salario'               => $ingreso_bruto,
-                                 'edad'                  => $edad,
-                                 'distrito'              => $distrito,
-                                 'provincia'             => 'LIMA',
-                                 'departamento'          => 'LIMA',
-                                 'marca'                 => $marca,
-                                 'modelo'                => $modelo,
-                                 'plazo'                 => $plazo,
-                                 'valor_auto'            => $valor_vehiculo,
-                                 'cuota_inicial'         => $valor_inicial,
-                                 'ws2_timestamp'         => date("Y-m-d H:i:s"),
-                                 'fec_estado'            => date("Y-m-d H:i:s"),
-                                 'last_page'             => N_CONSULTA_DATOS
-                                );
-            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+            $valorVehiculo = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$valor_vehiculo))));
+            $valorInicial = str_replace('%', '',$valor_inicial);
 
-            $session = array(
-                             'marca'       => $marca,
-                             'modelo'      => $modelo,
-                             'valor_auto'  => $valor_vehiculo,
-                             'periodo'     => $plazo 
-                             );
-            $this->session->set_userdata($session);
-            $data['error'] = EXIT_SUCCESS;
+            $valInicial = $valorVehiculo*($valorInicial/100);
+
+            $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+            $params = array('token'=> 'E928EUXP',
+                            'documento'=> '09763175'/*_getSesion('dni')*/,
+                                  'importeAuto'=> $valorVehiculo,
+                                  'cuotaInicial' => $valInicial,
+                                  'plazo' => $plazo,
+                                  'renta' => floatval($ingreso_bruto),//cambiar
+                                  'marca' => $marca,
+                                  'modelo' => $modelo,
+                                  'condicionLaboral' => $condicion,
+                                  'distrito' => $distrito,
+                                  'profesion' => $profesion,
+                                  'nivelEducativo' => $nivel_educativo,
+                                  'edad' => $edad,
+                                  'fechaPrimerPago' => date("m/d/Y", strtotime($primera_fecha))
+                                );
+
+            $result = $client->GetDatosCreditoVehicularOnline($params);
+            //_log(print_r($result, true));
+            $res = $result->return->resultado;
+            if($res == 1){ 
+
+                $documento = $result->return->documento;
+                $cuotaMensual = $result->return->cuotaMensual;
+                $cuotaMensual = str_replace( ',', '', $cuotaMensual);
+                $cuotaMensual = number_format($cuotaMensual, 2, '.','');
+
+                $datos_tea = $result->return->tea;
+
+                $datos_tcea = $result->return->tcea;
+
+                $seguroAuto = $result->return->seguroAuto;
+
+
+                if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
+                    $arrayUpdt = array('condicion_laboral'   => $condicion,
+                                     'nivel_educativo'       => $nivel_educativo,
+                                     'profesion'             => $profesion,
+                                     'salario'               => $ingreso_bruto,
+                                     'edad'                  => $edad,
+                                     'distrito'              => $distrito,
+                                     'provincia'             => 'LIMA',
+                                     'departamento'          => 'LIMA',
+                                     'marca'                 => $marca,
+                                     'modelo'                => $modelo,
+                                     'plazo'                 => $plazo,
+                                     'valor_auto'            => $valor_vehiculo,
+                                     'cuota_inicial'         => $valor_inicial,
+                                     'ws2_timestamp'         => date("Y-m-d H:i:s"),
+                                     'fec_estado'            => date("Y-m-d H:i:s"),
+                                     'last_page'             => N_CONSULTA_DATOS,
+                                     'cuota_inicial'         => $valInicial,
+                                     'cuota_mensual'         => $cuotaMensual,
+                                     'tea'                   => $datos_tea,
+                                     'tcea'                  => $datos_tcea
+                                    );
+                $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
+
+                $session = array(
+                                 'marca'       => $marca,
+                                 'modelo'      => $modelo,
+                                 'valor_auto'  => $valorVehiculo,
+                                 'periodo'     => $plazo,
+                                 'Importe'     => $valorVehiculo,
+                                 'cuota_inicial' => $valInicial,
+                                 'cuota_mensual' => $cuotaMensual,
+                                 'seguroAuto' => $seguroAuto.'%',
+                                 'sess_tea' => $datos_tea.'%',
+                                 'tcea_sess' => $datos_tcea.'%'
+                                 );
+                $this->session->set_userdata($session);
+                $data['ws_error'] = 1;
+                $data['error'] = EXIT_SUCCESS;
+                }
+            }else if($res == 0) {
+                $data['ws_error'] = 0;
+            }else if($res == 2) {
+                $data['ws_error'] = 2;
             }
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

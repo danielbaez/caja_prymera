@@ -94,9 +94,15 @@ function verificarCamp() {
 		dataType : 'json'
 	}).done(function(data){
 		try{
-			console.log(data);
 			if(data.error == 0){
-				location.href = '/Resumen_Vehicular';
+				if(data.ws_error == 1) {
+					location.href = '/Resumen_Vehicular';
+				}else if(data.ws_error == 0) {
+					location.href = '/C_losentimos';
+				}else if(data.ws_error == 2) {
+					msj('error', 'Error de servidor');
+					return;
+				}
 				//modal('myModaltelef');
 			}else {
 				return;

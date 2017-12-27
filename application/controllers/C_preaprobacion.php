@@ -156,11 +156,21 @@ class C_preaprobacion extends CI_Controller {
             $modelo = _post('modelo');
             $periodo = _post('periodo');
 
+            $date = date("Y-m-d");
+            $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
+            $date = date("m/d/Y",$date);
+
+            if($periodo == null || $periodo == '') {
+                $periodo = $date;
+            }else {
+                $periodo = date("m/d/Y", strtotime($periodo));
+            }
+
           //resultado 1 -- ok
           //resultado 3: token
           //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
           if(_post('action') == 'plazo')
           {
@@ -170,8 +180,8 @@ class C_preaprobacion extends CI_Controller {
                                   'plazo' => $meses,
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
-                                  'modelo' => $modelo/*,
-                                  'periodo_gracia' => $periodo*/
+                                  'modelo' => $modelo,
+                                  'fecha' => $periodo
                                 );
           }
 
@@ -183,8 +193,8 @@ class C_preaprobacion extends CI_Controller {
                                   'plazo' => $meses,
                                   'cuotaInicial' => $data['cuotaMinimo'],
                                   'marca' => $marca,
-                                  'modelo' => $modelo/*,
-                                  'periodo_gracia' => $periodo*/
+                                  'modelo' => $modelo,
+                                  'fecha' => $periodo
                                 );
           }
           else{
@@ -194,11 +204,11 @@ class C_preaprobacion extends CI_Controller {
                                   'plazo' => $meses,
                                   'cuotaInicial' => $cuota,
                                   'marca' => $marca,
-                                  'modelo' => $modelo/*,
-                                  'periodo_gracia' => $periodo*/
+                                  'modelo' => $modelo,
+                                  'fecha' => $periodo
                                 );
           }
-
+          
           $result = $client->GetDatosCreditoVehicular($params);
           
           $res = $result->return->resultado;

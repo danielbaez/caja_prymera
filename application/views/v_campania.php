@@ -110,8 +110,8 @@
                             <div class="form-group">
                                   <select onkeyup="verificarDatos(event);" class="form-control" id="condicion"  name="condicion" onchange="habilitarCampo()">
                                           <option value="">* Condición Laboral</option>
-                                          <option value="dependiente">Dependiente</option>
-                                          <option value="independiente">Independiente</option>
+                                          <option value="Dependiente">Dependiente</option>
+                                          <option value="Independiente">Independiente</option>
                                 </select>
                               </div>
                           </div>
@@ -120,9 +120,9 @@
                             <div class="form-group">
                                   <select onkeyup="verificarDatos(event);" class="form-control" id="nivel_educativo"  name="nivel_educativo" onchange="habilitarCampo()">
                                           <option value="">* Nivel Educativo</option>
-                                          <option value="primaria">Primaria completa</option>
-                                          <option value="secundaria">Secundaria completa</option>
-                                          <option value="superior">Estudios Superiores</option>
+                                          <option value="Primaria completa">Primaria completa</option>
+                                          <option value="Secundaria completa">Secundaria completa</option>
+                                          <option value="Superior Completa">Superior Completa</option>
                                 </select>
                               </div>
                           </div>
@@ -325,7 +325,7 @@
                             <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                             <div class="col-xs-12">
                              <div class="form-group">
-                                <select class="form-control" id="estado_civil"  name="estado_civil" onkeyup="verificarDatos(event);" onchange="mostrarEstadoCivil();habilitarCampo()">
+                                <select class="form-control" id="estado_civil"  name="estado_civil" onkeyup="verificarDatos(event);" onchange="habilitarCampo()">
                                   <option value="">* Estado Civil</option>
                                   <option value="soltero">Soltero</option>
                                   <option value="casado">Casado</option>
