@@ -147,7 +147,7 @@ var global_agencia = '';
 var global_correos = '';
 function setearDatos(dato, agencia, nombre) {
   $('#correos'+num).remove();
-  console.log(num);
+  //console.log(num);
   console.log($('#toggle_button').bootstrapSwitch('state'));
   //$('input[name="toggle_button"]').bootstrapSwitch('state', true, true);
  $('#agencia').val(agencia);

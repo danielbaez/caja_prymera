@@ -246,47 +246,50 @@ class C_campaign extends CI_Controller {
                 $pagoTot = $cuotaMensual*$plazo;
 
                 $importe = $valorVehiculo-$valInicial;
+                if($importe > 150000 || $importe < 15000) {
+                    $data['mensaje'] = 'El importe del pr&eacute;stamo debe ser mayor que 15000 y menor que 150000';
+                }else {
+                    if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
+                        $arrayUpdt = array('condicion_laboral'   => $condicion,
+                                         'nivel_educativo'       => $nivel_educativo,
+                                         'profesion'             => $profesion,
+                                         'salario'               => $ingreso_bruto,
+                                         'edad'                  => $edad,
+                                         'distrito'              => $distrito,
+                                         'provincia'             => 'LIMA',
+                                         'departamento'          => 'LIMA',
+                                         'marca'                 => $marca,
+                                         'modelo'                => $modelo,
+                                         'plazo'                 => $plazo,
+                                         'valor_auto'            => $valor_vehiculo,
+                                         'cuota_inicial'         => $valor_inicial,
+                                         'ws2_timestamp'         => date("Y-m-d H:i:s"),
+                                         'fec_estado'            => date("Y-m-d H:i:s"),
+                                         'last_page'             => N_CONFIRMAR_DATOS,
+                                         'cuota_inicial'         => $valInicial,
+                                         'cuota_mensual'         => $cuotaMensual,
+                                         'tea'                   => $datos_tea,
+                                         'tcea'                  => $datos_tcea
+                                        );
+                    $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
 
-                if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
-                    $arrayUpdt = array('condicion_laboral'   => $condicion,
-                                     'nivel_educativo'       => $nivel_educativo,
-                                     'profesion'             => $profesion,
-                                     'salario'               => $ingreso_bruto,
-                                     'edad'                  => $edad,
-                                     'distrito'              => $distrito,
-                                     'provincia'             => 'LIMA',
-                                     'departamento'          => 'LIMA',
-                                     'marca'                 => $marca,
-                                     'modelo'                => $modelo,
-                                     'plazo'                 => $plazo,
-                                     'valor_auto'            => $valor_vehiculo,
-                                     'cuota_inicial'         => $valor_inicial,
-                                     'ws2_timestamp'         => date("Y-m-d H:i:s"),
-                                     'fec_estado'            => date("Y-m-d H:i:s"),
-                                     'last_page'             => N_CONFIRMAR_DATOS,
-                                     'cuota_inicial'         => $valInicial,
-                                     'cuota_mensual'         => $cuotaMensual,
-                                     'tea'                   => $datos_tea,
-                                     'tcea'                  => $datos_tcea
-                                    );
-                $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
-
-                $session = array(
-                                 'marca'       => $marca,
-                                 'modelo'      => $modelo,
-                                 'valor_auto'  => 'S/ '.$valorVehiculo,
-                                 'periodo'     => $plazo.' meses',
-                                 'Importe'     => $importe,
-                                 'cuota_inicial' => 'S/ '.$valInicial,
-                                 'pagoTotal' => 'S/ '.$pagoTot,
-                                 'cuota_mensual' => 'S/ '.$cuotaMensual,
-                                 'seguroAuto' => 'S/ '.$seguroAuto,
-                                 'sess_tea' => $datos_tea.'%',
-                                 'tcea_sess' => $datos_tcea.'%'
-                                 );
-                $this->session->set_userdata($session);
-                $data['ws_error'] = 1;
-                $data['error'] = EXIT_SUCCESS;
+                    $session = array(
+                                     'marca'       => $marca,
+                                     'modelo'      => $modelo,
+                                     'valor_auto'  => 'S/ '.$valorVehiculo,
+                                     'periodo'     => $plazo.' meses',
+                                     'Importe'     => $importe,
+                                     'cuota_inicial' => 'S/ '.$valInicial,
+                                     'pagoTotal' => 'S/ '.$pagoTot,
+                                     'cuota_mensual' => 'S/ '.$cuotaMensual,
+                                     'seguroAuto' => 'S/ '.$seguroAuto,
+                                     'sess_tea' => $datos_tea.'%',
+                                     'tcea_sess' => $datos_tcea.'%'
+                                     );
+                    $this->session->set_userdata($session);
+                    $data['ws_error'] = 1;
+                    $data['error'] = EXIT_SUCCESS;
+                    }
                 }
             }else if($res == 0) {
                 $data['ws_error'] = 0;

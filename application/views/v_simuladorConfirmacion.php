@@ -235,7 +235,11 @@
                       </div>
                       <div class="col-xs-12 m-t-0">
                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                        <a id="remove" class="link" onclick="redirect();" style="margin: 2px 20px;">Regresar</a>
+                          <?php if ($tipoCred == 'eva') { ?>
+                              <a id="remove" class="link" onclick="redirect(1);" style="margin: 2px 20px;">Regresar</a>
+                            <?php } else{ ?>
+                              <a id="remove" class="link" onclick="redirect(2);" style="margin: 2px 20px;">Regresar</a>
+                            <?php } ?>
                         <?php } else{ ?>
                         <a id="remove" class="link" onclick="redirect();" style="margin: -20px 20px;">Regresar</a>
                         <?php } ?>

@@ -366,14 +366,15 @@ function verificarCampos() {
 	enviarMail();
 }
 
-function redirect() {
+function redirect(dato) {
 	$.ajax({
+		data  : { dato : dato},
 		url   : '/C_confirmacion/Redireccionar',
 		type  : 'POST'
 	}).done(function(data){
 		try{
 		   	data = JSON.parse(data);
-		   	console.log(data);
+		   	//console.log(data);
 		   	if(data.error == 0) {
 		   		location.href = data.location;
 		   	}

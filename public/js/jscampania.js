@@ -76,6 +76,24 @@ function verificarCamp() {
   	var valor_vehiculo = document.getElementById('slider-range-value-Valor').innerText;
   	var edad = document.getElementById('slider-range-value-edad').innerText;
   	var primera_fecha    = $('#primera_fecha').val();
+
+  	var someDate = new Date();
+	someDate.setDate(someDate.getDate() + 30);
+	var dateMin = someDate.toISOString().substr(0,10);
+
+	var someFecha = new Date();
+	someFecha.setDate(someFecha.getDate() + 60);
+	var dateMax = someFecha.toISOString().substr(0,10);
+
+  	if(primera_fecha == null || primera_fecha == '' || primera_fecha == undefined) {
+
+  	}else {
+    	if(dateMin <= primera_fecha && primera_fecha <= dateMax) {
+		}else {
+			msj('error', 'Seleccione una fecha mayor de 30 d&iacute;as como m&iacute;nimo o 60 d&iacute;as como m&aacute;ximo');
+			return;
+		}
+    }
 	$.ajax({
 		data  : { ingreso_bruto   : ingreso_bruto,
 				  condicion 	  : condicion,
@@ -94,6 +112,7 @@ function verificarCamp() {
 		dataType : 'json'
 	}).done(function(data){
 		try{
+			console.log(data.error);
 			if(data.error == 0){
 				if(data.ws_error == 1) {
 					location.href = '/Resumen_Vehicular';
@@ -105,6 +124,7 @@ function verificarCamp() {
 				}
 				//modal('myModaltelef');
 			}else {
+				msj('error', data.mensaje);
 				return;
 			}
 		} catch (err){

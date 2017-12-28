@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Quicksand"/>
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
+    <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
@@ -224,7 +225,7 @@
                                 <p id="slider-range-value-edad" class="slider-value"></p>
                               </div>
                               <div class="col-xs-9">
-                                <p class="text-left" style="font-size: 16px">* Edad<i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                                <p class="text-left" style="font-size: 16px">* Edad<i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es tu edad?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                                 <div id="slider-range-edad"></div>
                                 <br>
                                 <div class="col-xs-6 text-left padding-left">
@@ -281,7 +282,7 @@
                                 </div>
                                 <div class="col-xs-12 p-t-10">
                                     <div class="col-xs-6">
-                                      <label class="m-l-110">* Plazo</label>
+                                      <label class="m-l-110">* Plazo <i class="fa fa-1x fa-info-circle icon-info" style="margin-left: 25px;margin-top: -20px;" data-original-title="&iquest;En cuanto tiempo quieres pagar tu cr&eacute;dito?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></label>
                                     </div>
                                     <div class="col-sm-6">
                                       <div class="form-group">
@@ -301,7 +302,7 @@
                                     <p id="slider-range-value-Inicial" class="slider-value"></p>
                                   </div>
                                   <div class="col-xs-9">
-                                    <p class="text-left" style="font-size: 16px">* Cuota Inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                                    <p class="text-left" style="font-size: 16px">* Cuota Inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cuanto ser&aacute; el monto inicial que dar&aacute;s para el pr&eacute;stamo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                                     <div id="slider-range-inicial"></div>
                                     <br>
                                     <div class="col-xs-6 text-left padding-left">
@@ -411,6 +412,13 @@
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
   <script type="text/javascript">
+
+  $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        $('#periodo_gracia').datetimepicker({
+          format: 'YYYY-MM-DD'
+        }); 
+    });
 
       var valor_inicial = '';
       var edad = '';
