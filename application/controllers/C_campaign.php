@@ -245,6 +245,8 @@ class C_campaign extends CI_Controller {
 
                 $pagoTot = $cuotaMensual*$plazo;
 
+                $importe = $valorVehiculo-$valInicial;
+
                 if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
                     $arrayUpdt = array('condicion_laboral'   => $condicion,
                                      'nivel_educativo'       => $nivel_educativo,
@@ -274,7 +276,7 @@ class C_campaign extends CI_Controller {
                                  'modelo'      => $modelo,
                                  'valor_auto'  => 'S/. '.$valorVehiculo,
                                  'periodo'     => $plazo,
-                                 'Importe'     => $valorVehiculo,
+                                 'Importe'     => $importe,
                                  'cuota_inicial' => 'S/. '.$valInicial,
                                  'pago_total' => 'S/. '.$pagoTot,
                                  'cuota_mensual' => 'S/. '.$cuotaMensual,
