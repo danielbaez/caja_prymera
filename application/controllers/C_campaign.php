@@ -274,13 +274,13 @@ class C_campaign extends CI_Controller {
                 $session = array(
                                  'marca'       => $marca,
                                  'modelo'      => $modelo,
-                                 'valor_auto'  => 'S/. '.$valorVehiculo,
-                                 'periodo'     => $plazo,
+                                 'valor_auto'  => 'S/ '.$valorVehiculo,
+                                 'periodo'     => $plazo.' meses',
                                  'Importe'     => $importe,
-                                 'cuota_inicial' => 'S/. '.$valInicial,
-                                 'pago_total' => 'S/. '.$pagoTot,
-                                 'cuota_mensual' => 'S/. '.$cuotaMensual,
-                                 'seguroAuto' => $seguroAuto.'%',
+                                 'cuota_inicial' => 'S/ '.$valInicial,
+                                 'pago_total' => 'S/ '.$pagoTot,
+                                 'cuota_mensual' => 'S/ '.$cuotaMensual,
+                                 'seguroAuto' => 'S/ '.$seguroAuto,
                                  'sess_tea' => $datos_tea.'%',
                                  'tcea_sess' => $datos_tcea.'%'
                                  );

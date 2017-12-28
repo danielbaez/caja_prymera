@@ -146,6 +146,8 @@ function readURL(input) {
 var global_agencia = '';
 var global_correos = '';
 function setearDatos(dato, agencia, nombre) {
+  $('#correos'+num).remove();
+  console.log(num);
   console.log($('#toggle_button').bootstrapSwitch('state'));
   //$('input[name="toggle_button"]').bootstrapSwitch('state', true, true);
  $('#agencia').val(agencia);
@@ -244,20 +246,24 @@ function agregarTelefono() {
 }
 
 var x = 1;
+var num = null;
 function agregarCorreo() {
   if(x == 1) {
     $('#cont_correo').append('</br><div class="form-group">'+
     '<input type="text" class="form-control" id="correos'+x+'" name="correos[]" placeholder="Correo de la agencia" onkeypress="" maxlength="200">'+
     '<button type="button" class="btn btn-default" aria-label="Close" id="btn'+x+'" onclick="limpiarInputsCorreo('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
+    num = x;
     x++;
   }else {
     $('#cont_correo').append('<div class="form-group">'+
     '<input type="text" class="form-control" id="correos'+x+'" name="correos[]" placeholder="Correo de la agencia" onkeypress="" maxlength="200">'+
     '<button type="button" class="btn btn-default" aria-label="Close" id="btn'+x+'" onclick="limpiarInputsCorreo('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
+    num = x;
     x++;
   }
+  console.log(num);
 }
 
 var contador = 1;

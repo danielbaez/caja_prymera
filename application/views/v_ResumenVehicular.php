@@ -149,6 +149,16 @@
                           </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 border-resumen-bottom">
+                        <div class="form-group" style="">                
+                          <div class="col-xs-6">
+                          <span style="">Plazo de Pr&eacute;stamo: </span>
+                          </div>
+                          <div class="col-xs-6">
+                            <span><?php echo $plazo?></span>
+                          </div>
+                        </div>
+                    </div>
 
                     <div class="col-xs-12 border-resumen-bottom">
                         <div class="form-group" style="">                
