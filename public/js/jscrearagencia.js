@@ -172,7 +172,7 @@ function setearDatos(dato, agencia, nombre) {
         data = JSON.parse(data);
         if(data.error == 0){
             if(data.telefonos == null || data.data_correos == null) {
-              msj('error', 'No existen datos para esta agencia');
+              //msj('error', 'No existen datos para esta agencia');
               return;
             }else {
               $('#direccion').val(data.direccion);
