@@ -122,6 +122,7 @@ class C_preaprobacion extends CI_Controller {
     function changeValues() {
         $minIniPorc         = $this->minIniPorc;
         $maxIniPorc         = $this->maxIniPorc;
+        _log(print_r($maxIniPorc, true));
 
         $meses = preg_replace("/[^0-9]/","",_post('meses'));
         $arr_max = _getSesion('arr_end');

@@ -123,7 +123,7 @@ class Preaprobacion extends CI_Controller {
                           'Importe'=> $importeMaximo,
                           'plazo' => $data['plazo_max'],
                           'fecha' => $date//fecha por corregir
-                    );
+                        );
            
            if($params == null) {
                 //redirect("/C_main", 'location');
@@ -136,6 +136,7 @@ class Preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = $data['cuotaMensual'];
             $this->varCuotaMensual = $data['cuotaMensual'];
             $data['pagoTotal'] = $data['cuotaMensual'] * $data['plazo_max'];
+
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2);
             $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2);
@@ -173,13 +174,17 @@ class Preaprobacion extends CI_Controller {
           //resultado 3: token
             //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://ec2-54-173-46-98.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+
+          $date = date("Y-m-d");
+            $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
+            $date = date("m/d/Y",$date);
 
            $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
                                   'Importe'  => $cantidad,
-                                  'plazo'    => $meses/*,
-                                  'periodo_gracia' => $periodo*/
+                                  'plazo'    => $meses,
+                                  'fecha' => $date
                     );
 
           $result = $client->GetDatosCreditoCash($params);
@@ -192,6 +197,7 @@ class Preaprobacion extends CI_Controller {
             $this->varCuotaMensual = $data['cuotaMensual'];
 
             $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
+
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
             $data['pagoTotal'] = number_format($data['pagoTotal'], 2, '.','');
             $this->varPagoTotal = $data['pagoTotal'];

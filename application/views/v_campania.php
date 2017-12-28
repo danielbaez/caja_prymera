@@ -272,7 +272,7 @@
                                     <div id="slider-range-valor"></div>
                                     <br>
                                     <div class="col-xs-6 text-left padding-left">
-                                      <span id="valorMin" style="font-size: 16px">S/. 15,000</span>
+                                      <span id="valorMin" style="font-size: 16px">S/. 10,000</span>
                                     </div>
                                     <div class="col-xs-6 text-right padding-right">
                                       <span id="valorMax" style="font-size: 16px">S/. 150,000</span>
@@ -493,7 +493,7 @@
         start: [ 20000],
         step: 1000,
         range: {
-          'min': [  15000 ],
+          'min': [  10000 ],
           'max': [ 150000 ]
         },
         connect: "lower",
