@@ -86,7 +86,7 @@
 
                             <?php if(in_array(2, _getSesion('permiso')) && in_array(3, _getSesion('permiso'))){ ?>
                               <div class="col-xs-12 col-sm-6">
-                                <a href="/Vehicular" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
+                                <a href="/C_tipoCredito" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
                                 <h5>Auto de Prymera</h5>
                               </div>
                               <div class="col-xs-12 col-sm-6">
@@ -100,7 +100,7 @@
                                 </div>
                             <?php } elseif(in_array(3, _getSesion('permiso'))){ ?>
                                 <div class="col-xs-12">
-                                    <a href="/Vehicular" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
+                                    <a href="/C_tipoCredito" style="color:black"><i class="fa fa-car fa-5x" aria-hidden="true"></i></a><br>
                                     <h5>Auto de Prymera</h5>
                               </div>
                             <?php } ?>

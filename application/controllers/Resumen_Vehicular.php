@@ -22,8 +22,6 @@ class Resumen_Vehicular extends CI_Controller {
         if($datos_page[0]->last_page != N_RESUMEN) {
             redirect("/C_main", 'location');
         }*/
-        $arrayUpdt = array('last_page' => N_RESUMEN);
-        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total']    = _getSesion('pagoTotal');
         $dato['nombre']        = ucfirst(_getSesion('nombre'));

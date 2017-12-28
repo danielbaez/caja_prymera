@@ -17,6 +17,8 @@ class C_confirmacion extends CI_Controller {
     public function index()
     {
         $datos = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
+        _log($datos[0]->last_page);
+        _log(_getSesion('idPersona'));
         if($datos[0]->last_page != N_CONFIRMAR_DATOS) {
             redirect("/C_main", 'location');
         }
