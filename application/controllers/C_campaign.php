@@ -212,11 +212,11 @@ class C_campaign extends CI_Controller {
             $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
             $params = array('token'=> 'E928EUXP',
-                            'documento'=> '09763175'/*_getSesion('dni')*/,
+                            'documento'=> _getSesion('dni'),
                                   'importeAuto'=> $valorVehiculo,
                                   'cuotaInicial' => $valInicial,
                                   'plazo' => $plazo,
-                                  'renta' => floatval($ingreso_bruto),//cambiar
+                                  'renta' => floatval($ingreso_bruto),
                                   'marca' => $marca,
                                   'modelo' => $modelo,
                                   'condicionLaboral' => $condicion,
@@ -278,7 +278,7 @@ class C_campaign extends CI_Controller {
                                  'periodo'     => $plazo.' meses',
                                  'Importe'     => $importe,
                                  'cuota_inicial' => 'S/ '.$valInicial,
-                                 'pago_total' => 'S/ '.$pagoTot,
+                                 'pagoTotal' => 'S/ '.$pagoTot,
                                  'cuota_mensual' => 'S/ '.$cuotaMensual,
                                  'seguroAuto' => 'S/ '.$seguroAuto,
                                  'sess_tea' => $datos_tea.'%',

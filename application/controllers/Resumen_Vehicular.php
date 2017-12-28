@@ -25,7 +25,7 @@ class Resumen_Vehicular extends CI_Controller {
         $arrayUpdt = array('last_page' => N_RESUMEN);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
-        $dato['pago_total']    = _getSesion('pago_total');
+        $dato['pago_total']    = _getSesion('pagoTotal');
         $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
         $fecha = new DateTime(_getSesion('periodo_gracia'));
