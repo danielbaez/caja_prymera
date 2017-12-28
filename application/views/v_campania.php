@@ -301,7 +301,7 @@
                                     <p id="slider-range-value-Inicial" class="slider-value"></p>
                                   </div>
                                   <div class="col-xs-9">
-                                    <p class="text-left" style="font-size: 16px">* Valor Inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                                    <p class="text-left" style="font-size: 16px">* Cuota Inicial <i class="fa fa-1x fa-info-circle icon-info" data-original-title="&iquest;Cu&aacute;l es el valor del veh&iacute;culo?" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
                                     <div id="slider-range-inicial"></div>
                                     <br>
                                     <div class="col-xs-6 text-left padding-left">
@@ -322,27 +322,6 @@
                                       </div>
                                     </div>
                                 </div>
-                            <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                            <div class="col-xs-12">
-                             <div class="form-group">
-                                <select class="form-control" id="estado_civil"  name="estado_civil" onkeyup="verificarDatos(event);" onchange="habilitarCampo()">
-                                  <option value="">* Estado Civil</option>
-                                  <option value="soltero">Soltero</option>
-                                  <option value="casado">Casado</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xs-12 oculto hidden">
-                              <div class="form-group">
-                                <input type="text" class="form-control" id="nombre_conyugue" name="nombre_conyugue" placeholder="Nombre del Conyugue" maxlength="50" onkeypress="return soloLetras(event)" onkeyup="verificarDatos(event);">
-                              </div>
-                            </div>
-                            <div class="col-xs-12 oculto hidden">
-                              <div class="form-group">
-                                <input type="text" class="form-control" id="dni_conyugue" name="dni_conyugue" placeholder="DNI del Conyugue" maxlength="8" onkeypress="return valida(event)" onkeyup="verificarDatos(event);">
-                              </div>
-                            </div>
-                            <?php } ?>
                       </div>
                       <div class="col-xs-12 m-t-0">
                         <a id="remove" class="link" onclick="redirect();" style="margin: 10px 20px;float: left;">Regresar</a>

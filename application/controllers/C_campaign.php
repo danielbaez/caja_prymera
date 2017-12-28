@@ -243,6 +243,7 @@ class C_campaign extends CI_Controller {
 
                 $seguroAuto = $result->return->seguroAuto;
 
+                $pagoTot = $cuotaMensual*$plazo;
 
                 if($ingreso_bruto != '' && $condicion != '' && $nivel_educativo != '' && $edad != '' && $distrito != '' && $marca != '' && $modelo != '' && $valor_vehiculo != '' && $plazo != '' && $valor_inicial != '' && $primera_fecha != '') {
                     $arrayUpdt = array('condicion_laboral'   => $condicion,
@@ -260,7 +261,7 @@ class C_campaign extends CI_Controller {
                                      'cuota_inicial'         => $valor_inicial,
                                      'ws2_timestamp'         => date("Y-m-d H:i:s"),
                                      'fec_estado'            => date("Y-m-d H:i:s"),
-                                     'last_page'             => N_CONSULTA_DATOS,
+                                     'last_page'             => N_CONFIRMAR_DATOS,
                                      'cuota_inicial'         => $valInicial,
                                      'cuota_mensual'         => $cuotaMensual,
                                      'tea'                   => $datos_tea,
@@ -271,11 +272,12 @@ class C_campaign extends CI_Controller {
                 $session = array(
                                  'marca'       => $marca,
                                  'modelo'      => $modelo,
-                                 'valor_auto'  => $valorVehiculo,
+                                 'valor_auto'  => 'S/. '.$valorVehiculo,
                                  'periodo'     => $plazo,
                                  'Importe'     => $valorVehiculo,
-                                 'cuota_inicial' => $valInicial,
-                                 'cuota_mensual' => $cuotaMensual,
+                                 'cuota_inicial' => 'S/. '.$valInicial,
+                                 'pago_total' => 'S/. '.$pagoTot,
+                                 'cuota_mensual' => 'S/. '.$cuotaMensual,
                                  'seguroAuto' => $seguroAuto.'%',
                                  'sess_tea' => $datos_tea.'%',
                                  'tcea_sess' => $datos_tcea.'%'
@@ -286,7 +288,7 @@ class C_campaign extends CI_Controller {
                 }
             }else if($res == 0) {
                 $data['ws_error'] = 0;
-            }else if($res == 2) {
+            }else if($res == 3) {
                 $data['ws_error'] = 2;
             }
         } catch (Exception $e){
