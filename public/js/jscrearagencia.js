@@ -146,8 +146,12 @@ function readURL(input) {
 var global_agencia = '';
 var global_correos = '';
 function setearDatos(dato, agencia, nombre) {
+  num = 1;
+  $('#telefonos'+numi).remove();
   $('#correos'+num).remove();
-  //console.log(num);
+  $('#btnT'+numi).remove();
+  $('#btn'+num).remove();
+  console.log(num);
   console.log($('#toggle_button').bootstrapSwitch('state'));
   //$('input[name="toggle_button"]').bootstrapSwitch('state', true, true);
  $('#agencia').val(agencia);
@@ -228,6 +232,7 @@ function eliminar() {
   });
 }
 
+var numi = null;
 var i = 1;
 function agregarTelefono() {
   if(i == 1) {
@@ -235,12 +240,14 @@ function agregarTelefono() {
       '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="7" placeholder="Teléfono"/>'+
       '<button type="button" class="btn btn-default" aria-label="Close" id="btnT'+i+'" onclick="limpiarInputsTelefonos('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
+    numi = i;
     i++;
   }else {
     $('#cont_telef').append('<div class="form-group">'+
       '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="7" placeholder="Teléfono"/>'+
       '<button type="button" class="btn btn-default" aria-label="Close" id="btnT'+i+'" onclick="limpiarInputsTelefonos('+i+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
+    numi = i;
     i++;
   }
 }

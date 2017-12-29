@@ -362,9 +362,16 @@
       var concesionaria   = $('#concesionaria').val();
       var estado_civil = $('#estado_civil').val();
       var email         = $('#email').val();
-      if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
+      
+      <?php if($tipoCred == 'eva') { ?>
+        if(nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
         && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != '') {
         $('#btnAceptar').removeAttr("disabled");
+      <?php }else if($tipoCred == 'camp' || $tipoCred == null) { ?> 
+        if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
+        && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != '') {
+        $('#btnAceptar').removeAttr("disabled");
+      <?php } ?>
       }
     }
     <?php }else{ ?>

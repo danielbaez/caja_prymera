@@ -23,8 +23,8 @@
     <div class="container">
       <div class="row padding-div-row-header">
         <div class="col-xs-6 col-title-header-padding">
-          <h1 class="title-header-first"><a href="/Vehicular">Cr&eacute;dito Vehicular</a></h1>
-          <h1 class="title-header-second"><a href="/Vehicular">Auto de Prymera</a></h1>
+          <h1 class="title-header-first"><a >Cr&eacute;dito Vehicular</a></h1>
+          <h1 class="title-header-second"><a >Auto de Prymera</a></h1>
         </div>
         <div class="col-xs-6 div-logo">
           <a href="http://www.prymera.com.pe/" target="_blank"><img alt="" class="img-responsive pull-right img-header" src="<?php echo RUTA_IMG?>fondos/Logo-Prymera-Blanco.png"></a>
