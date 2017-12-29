@@ -459,7 +459,11 @@ $(document).ready(function() {
             producto = 'Mi Cash';
           }
           else if(detalle.id_producto == 2){
-            producto = 'Auto de Prymera';
+            if(detalle.tipoCred == 'camp' || detalle.tipoCred == null) {
+              producto = 'Auto de Prymera';
+            }else {
+              producto = 'Auto de Prymera - Evaluación';
+            }
           }
           $('.modal-title').html('Resumen Solicitud - '+producto);
 

@@ -214,7 +214,7 @@ class C_campaign extends CI_Controller {
             $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
             $params = array('token'=> 'E928EUXP',
-                            'documento'=> '72024242'/*_getSesion('dni')*/,
+                            'documento'=> _getSesion('dni'),
                                   'importeAuto'=> $valorVehiculo,
                                   'cuotaInicial' => $valInicial,
                                   'plazo' => $plazo,
