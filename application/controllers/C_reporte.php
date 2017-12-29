@@ -163,9 +163,11 @@ class C_reporte extends CI_Controller {
 
     public function modalInformacionSolicitud()
     {
+        //_log(_getSesion('tipoCred'));
         $id = _post('id');
         $action = _post('action');
         $detalle = $this->M_solicitud->obtenerDetalleSolicitud($id, $action);
+        //_logLastQuery();
         echo json_encode($detalle);
     }
 

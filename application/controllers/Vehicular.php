@@ -13,7 +13,6 @@ class Vehicular extends CI_Controller {
     }
     
     public function index() {
-      _log(_getSesion('tipoCred'));
         $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR));
         $dato['tipo_producto'] = PRODUCTO_VEHICULAR;
         $this->load->view('v_vehicular', $dato);
@@ -74,7 +73,8 @@ class Vehicular extends CI_Controller {
                                    'ws_resultado'   => json_encode($result),
                                    'ws_timestamp'   => date("Y-m-d H:i:s"),
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
-                                   'status_sol'      => 5//INCOMPLETO
+                                   'status_sol'      => 5/*INCOMPLETO*/,
+                                   'tipo_credito'   => _getSesion('tipoCred')
                                    );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -101,7 +101,8 @@ class Vehicular extends CI_Controller {
                                    'ws_timestamp'   => date("Y-m-d H:i:s"),
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'last_page'      => N_INGRESO_DATOS_RECHAZADO,
-                                   'status_sol'      => 2//RECHAZADO
+                                   'status_sol'      => 2,//RECHAZADO
+                                   'tipo_credito'   => _getSesion('tipoCred')
                                    );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -172,7 +173,8 @@ class Vehicular extends CI_Controller {
                                    'ws_timestamp'   => date("Y-m-d H:i:s"),
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'last_page'      => N_SIMULADOR,
-                                   'status_sol'     => 5//incompleto
+                                   'status_sol'     => 5,//incompleto
+                                   'tipo_credito'   => _getSesion('tipoCred')
                                   );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -199,7 +201,8 @@ class Vehicular extends CI_Controller {
                                    'ws_timestamp'   => date("Y-m-d H:i:s"),
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'last_page'      => N_INGRESO_DATOS_RECHAZADO,
-                                   'status_sol'      => 2//RECHAZADO
+                                   'status_sol'      => 2,//RECHAZADO
+                                   'tipo_credito'   => _getSesion('tipoCred')
                                    );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));

@@ -8,6 +8,7 @@ class C_tipoCredito extends CI_Controller {
 
         $this->load->model('M_horario');
         $this->load->model('M_agencia');
+        $this->load->model('M_preaprobacion');
         $this->load->model('M_acceso');
         $this->load->helper("url");
     }
