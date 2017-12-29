@@ -47,11 +47,11 @@
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php if(_getSesion('rol') == 'administrador'){ ?>
+          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
           <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
-          <li><a href="/C_horario">Horarios</a></li>
           <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
-          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
+          <li><a href="/C_horario">Horarios</a></li>
         <?php }
            elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
           <li><a href="/C_main">Editar Perfil</a></li>
@@ -75,11 +75,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
                         <ul class="dropdown-menu">                    
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
+                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
-                            <li><a href="/C_horario">Horarios</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
-                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
+                            <li><a href="/C_horario">Horarios</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                             <li><a href="/C_main">Editar Perfil</a></li>
@@ -160,7 +160,10 @@
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
                       <th class="text-center" style="display: none">DNI</th>
-                      <th class="text-center" style="display: none">Email</th>
+                      <th class="text-center" style="display: none">Edad</th>
+                      <th class="text-center" style="display: none">Nivel Educativo</th>
+                      <th class="text-center" style="display: none">Profesión</th>
+                      <th class="text-center" style="display: none">Condición Laboral</th>
                       <th class="text-center" style="display: none">Nro Cel</th>
                       <th class="text-center" style="display: none">Fijo</th>
                       <th class="text-center" style="display: none">Importe Préstamo</th>
@@ -203,6 +206,10 @@
                         <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
                         
                         <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->edad ?></td>
+                        <td style="display: none"><?php echo $solicitud->nivel_educativo ?></td>
+                        <td style="display: none"><?php echo $solicitud->profesion ?></td>
+                        <td style="display: none"><?php echo $solicitud->condicion_laboral ?></td>
                         <td style="display: none"><?php echo $solicitud->email_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
@@ -227,8 +234,12 @@
                         <td style="display: none"><?php echo $solicitud->agencia ?></td>
                         <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
                         <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
-
-                        <td><?php echo $solicitud->producto ?></td>
+                        <?php if($solicitud->tipoCred == 'camp' || $solicitud->tipoCred == null) { ?>
+                          <td><?php echo $solicitud->producto ?></td>
+                        <?php }else if($solicitud->tipoCred == 'eva') { ?>
+                          <td><?php echo $solicitud->producto.' - Evaluación' ?></td>
+                        <?php } ?>
+                        
                         <td><?php echo $solicitud->id_solicitud ?></td>
                       </tr>
                       <?php
@@ -423,6 +434,9 @@ $(document).ready(function() {
 
           $('#modalInformacionSolicitud').modal('show');
           
+          if(detalle.tipoCred == 'camp' || detalle.tipoCred == null) {
+
+
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
           if(detalle.id_producto == 2){
@@ -529,6 +543,142 @@ $(document).ready(function() {
           $('.div-datos-solicitud').html(dSolicitud);
 
           $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
+
+          }else if(detalle.tipoCred == 'eva') {
+
+            //EVALUACIÓN
+            var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
+          dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
+          if(detalle.id_producto == 2){
+            dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
+          }          
+          dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
+          if(detalle.id_producto == 2){
+            dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+          }
+          dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
+          dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
+          dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
+          if(detalle.edad == null) {
+            dCliente += '<p><span>Edad:</span> '+'-'+'</p>';
+          }else {
+            dCliente += '<p><span>Edad:</span> '+detalle.edad+'</p>';
+          }
+          if(detalle.profesion == null) {
+            dCliente += '<p><span>Profesión:</span> '+'-'+'</p>';
+          }else {
+            dCliente += '<p><span>Profesión:</span> '+detalle.profesion+'</p>';
+          }
+          if(detalle.nivel_educativo == null) {
+            dCliente += '<p><span>Nivel Educativo:</span> '+'-'+'</p>';
+          }else {
+            dCliente += '<p><span>Nivel Educativo:</span> '+detalle.nivel_educativo+'</p>';
+          }
+          if(detalle.condicion_laboral == null) {
+            dCliente += '<p><span>Condición Laboral:</span> '+'-'+'</p>';
+          }else {
+            dCliente += '<p><span>Condición Laboral:</span> '+detalle.condicion_laboral+'</p>';
+          }
+          $('.div-datos-cliente').html(dCliente);
+
+          var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Pr&eacute;stamo</h4>';
+          if(detalle.id_producto == 1){
+            dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
+          }
+          if(detalle.id_producto == 2){
+            if(detalle.primer_pago == null) {
+              texto = '-';
+            }else {
+              texto = detalle.primer_pago;
+            }
+            dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
+            dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
+            dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
+            dPrestamo += '<p><span>1era Fecha de Pago:</span> '+texto+'</p>';
+          }
+          
+          $('.div-datos-prestamo').html(dPrestamo);
+
+          var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
+          
+          dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
+          dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
+          dEmpleo += '<p><span>Direcci&oacute;n:</span> '+detalle.dir_empleador+'</p>';
+          dEmpleo += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
+          dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
+          dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
+          
+          $('.div-datos-empleo').html(dEmpleo);
+
+          var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
+          dSolicitud += '<p><span>Nro. Solicitud:</span> '+detalle.id_solicitud+'</p>';
+          dSolicitud += '<p><span>Fecha Creación:</span> '+detalle.fecha_solicitud+'</p>';
+          dSolicitud += '<p><span>Hora Creación:</span> '+detalle.hora_solicitud+'</p>';
+          dSolicitud += '<p><span>Fecha Cierre:</span> '+detalle.fecha_cierre+'</p>';
+          dSolicitud += '<p><span>Hora Cierre:</span> '+detalle.hora_cierre+'</p>';
+          
+          dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
+          dSolicitud += '<p><span>Agencia Tramitaci&oacute;n:</span> '+detalle.agencia_desembolso+'</p>';
+          dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
+
+          if("<?php echo _getSesion('rol') ?>" == 'jefe_agencia'){
+            
+            var disabled = 'disabled';
+            if(detalle.status_sol == 0){
+              disabled = '';
+              $('.btn-actualizar-estado').show();
+            }
+            if(detalle.status_sol == 1){
+              $('.btn-actualizar-estado').hide();
+            }
+
+              dSolicitud += '<select name="status" '+disabled+' class="form-control" id="status">';
+            dSolicitud += '<option value="">Status</option>';
+            if(detalle.status_sol == 0){
+              dSolicitud += '<option selected value="0">Abierto</option>';
+              dSolicitud += '<option value="1">Cerrada</option>';
+            }
+            if(detalle.status_sol == 1){
+              dSolicitud += '<option value="0">Abierto</option>';
+              dSolicitud += '<option selected value="1">Cerrada</option>';
+            }
+            
+            dSolicitud += '</select>';
+
+
+            dSolicitud += '<select '+disabled+' style="margin-top:15px" name="id_asesor" class="form-control" id="asesor">';
+            dSolicitud += '<option value="">Asignar nuevo Agente</option>';
+            console.log(asignar)
+            for (var j = 0; j < asignar.length; j++) {
+              dSolicitud += '<option value="'+asignar[j].asignar_id+'">'+asignar[j].asignar_nombre+' '+asignar[j].asignar_apellido+'</option>';
+            }                    
+            dSolicitud += '</select>';
+
+          }
+          else
+          {
+            $('.btn-actualizar-estado').hide();
+          }
+
+          
+
+          $('.div-datos-solicitud').html(dSolicitud);
+
+          $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
+
+          //FIN DE EVALUACIÓN
+
+          }
+
+
 
         }
     });

@@ -48,11 +48,11 @@
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php if(_getSesion('rol') == 'administrador'){ ?>
+          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
           <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
-          <li><a href="/C_horario">Horarios</a></li>
           <li><a href="/C_ip">Asignar IP</a></li>
           <li><a href="/C_main">Editar Perfil</a></li>
-          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
+          <li><a href="/C_horario">Horarios</a></li>
         <?php }
            elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
           <li><a href="/C_main">Editar Perfil</a></li>
@@ -77,10 +77,10 @@
                         <ul class="dropdown-menu">                    
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
                             <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
-                            <li><a href="/C_horario">Horarios</a></li>
+                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
                             <li><a href="/C_ip">Asignar IP</a></li>
                             <li><a href="/C_main">Editar Perfil</a></li>
-                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
+                            <li><a href="/C_horario">Horarios</a></li>
                           <?php }
                              elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
                             <li><a href="/C_main">Editar Perfil</a></li>
@@ -213,6 +213,10 @@
                         <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->edad ?></td>
+                        <td style="display: none"><?php echo $solicitud->nivel_educativo ?></td>
+                        <td style="display: none"><?php echo $solicitud->profesion ?></td>
+                        <td style="display: none"><?php echo $solicitud->condicion_laboral ?></td>
                         <td><?php echo $solicitud->agencia ?></td>
                         <td><?php echo $solicitud->producto ?></td>
                         <td>Rechazado</td>

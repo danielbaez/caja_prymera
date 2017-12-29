@@ -147,6 +147,7 @@ class C_reporte extends CI_Controller {
                     );
 
             $data['solicitudes'] = $this->M_solicitud->obtenerHistorialSolicitud($filtros);
+            //_log(print_r($data['solicitudes'], true));
 
             $data['nro_solicitud'] = $nro_solicitud;
             $data['cliente'] = $cliente;

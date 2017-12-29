@@ -107,6 +107,7 @@
                   <form class="text-center" action="C_resumen" method="POST">
                     <div class="col-xs-12 col-sm-8 linea">  
                         <p class="sub-title"><strong>Datos laborales</strong></p>
+                        <?php if($tipoCred == 'camp' || $tipoCred == null) { ?>
                           <div class="col-xs-12 p-0">
                             <div class="col-sm-12">
                               <div class="form-group">
@@ -123,6 +124,7 @@
                               </div>
                             </div>
                           </div>
+                        <?php } ?>
                           <div class="col-xs-12">
                             <div class="form-group">
                                 <input type="search" class="form-control" id="empleador" name="empleador" maxlength="50" placeholder="* Empleador" onchange="habilitarCampo()" onkeyup="verificarDatos(event);">
