@@ -112,7 +112,7 @@ function verificarCamp() {
 		dataType : 'json'
 	}).done(function(data){
 		try{
-			console.log(data.error);
+			console.log(data.ws_error);
 			if(data.error == 0){
 				if(data.ws_error == 1) {
 					location.href = '/Resumen_Vehicular';

@@ -314,14 +314,18 @@ class C_confirmacion extends CI_Controller {
         try {
             $dato = _post('dato');
             $idPersona  = _getSesion('idPersona');
-            $arrayUpdt = array('last_page' => N_SIMULADOR);
-            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             if(_getSesion('tipo_producto') == PRODUCTO_MICASH) {
+                  $arrayUpdt = array('last_page' => N_SIMULADOR);
+                  $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
                   $data['location']  = '/Preaprobacion';
             }else {
                 if($dato == 1) {
+                    $arrayUpdt = array('last_page' => N_RESUMEN_EVA);
+                    $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
                     $data['location']  = '/Resumen_Vehicular';
                 }else {
+                    $arrayUpdt = array('last_page' => N_SIMULADOR);
+                    $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
                     $data['location']  = '/C_preaprobacion';
                 }
             }

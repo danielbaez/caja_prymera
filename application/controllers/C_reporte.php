@@ -205,6 +205,7 @@ class C_reporte extends CI_Controller {
                     );
 
             $data['solicitudes'] = $this->M_solicitud->obtenerSolicitudRechazada($filtros);
+            _logLastQuery();
 
             $data['id_asesor'] = $id_asesor;
             $data['asesor'] = $asesor;

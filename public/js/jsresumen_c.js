@@ -1,5 +1,18 @@
 function irAUbicacion() {
-	location.href = '/C_confirmacion';
+	$.ajax({
+		url   : 'Resumen_Vehicular/Redireccionar',
+		type  : 'POST'
+	}).done(function(data){
+		try{
+		   	data = JSON.parse(data);
+		   	console.log(data);
+		   	if(data.error == 0) {
+		   		location.href = '/C_confirmacion';
+		   	}
+		} catch (err){
+			msj('error',err.message);
+		}
+	});
 }
 
 function enterIrAUbicacion(e) {
@@ -10,19 +23,18 @@ function enterIrAUbicacion(e) {
 }
 
 function redirect() {
-	/*$.ajax({
-		url   : 'Resumen/Redireccionar',
+	$.ajax({
+		url   : 'Resumen/Regresar',
 		type  : 'POST'
 	}).done(function(data){
 		try{
 		   	data = JSON.parse(data);
-		   	console.log(data);
+		   	//console.log(data);
 		   	if(data.error == 0) {
-		   		location.href = data.location;
+		   		location.href = '/C_campaign';
 		   	}
 		} catch (err){
 			msj('error',err.message);
 		}
-	});*/
-	location.href = '/C_campaign';
+	});
 }

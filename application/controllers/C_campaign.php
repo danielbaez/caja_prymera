@@ -14,8 +14,10 @@ class C_campaign extends CI_Controller {
     public function index()
     {
         //_log(print_r($this->session->all_userdata(), true));
+        $data['tipoCred'] = _getSesion('tipoCred');
         $idPersona  = _getSesion('idPersona');
-        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
+        $arrayUpdt  = array('last_page' => N_SIMULADOR_EVA,
+                            'status_sol' => 5/*inconcluso*/);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
 
         $data['nombre'] = _getSesion('nombre');
@@ -212,7 +214,7 @@ class C_campaign extends CI_Controller {
             $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
             $params = array('token'=> 'E928EUXP',
-                            'documento'=> _getSesion('dni'),
+                            'documento'=> '72024242'/*_getSesion('dni')*/,
                                   'importeAuto'=> $valorVehiculo,
                                   'cuotaInicial' => $valInicial,
                                   'plazo' => $plazo,
@@ -230,6 +232,7 @@ class C_campaign extends CI_Controller {
             $result = $client->GetDatosCreditoVehicularOnline($params);
             //_log(print_r($result, true));
             $res = $result->return->resultado;
+            _log(print_r($res, true));
             if($res == 1){ 
 
                 $documento = $result->return->documento;
@@ -292,8 +295,10 @@ class C_campaign extends CI_Controller {
                     }
                 }
             }else if($res == 0) {
+                $data['error'] = EXIT_SUCCESS;
                 $data['ws_error'] = 0;
             }else if($res == 3) {
+                $data['mensaje'] = 'Error del servidor';
                 $data['ws_error'] = 2;
             }
         } catch (Exception $e){

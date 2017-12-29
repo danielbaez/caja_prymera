@@ -16,7 +16,8 @@ class Resumen_Vehicular extends CI_Controller {
 
     public function index() {
 
-        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
+        $arrayUpdt  = array('last_page' => N_RESUMEN_EVA,
+                            'status_sol' => 5/*inconcluso*/);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
        /* $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
         if($datos_page[0]->last_page != N_RESUMEN) {
@@ -52,6 +53,32 @@ class Resumen_Vehicular extends CI_Controller {
             $opt .= '<option value="'.$agen.'"> '.$agen.'</option>';
         }
         return $opt;
+    }
+
+    function Redireccionar() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+            $data['error']         = EXIT_SUCCESS;
+        } catch (Exception $e) {
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
+    }
+
+    function Regresar() {
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $arrayUpdt  = array('last_page' => N_SIMULADOR_EVA);
+            $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
+            $data['error']         = EXIT_SUCCESS;
+        } catch (Exception $e) {
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode(array_map('utf8_encode', $data));
     }
 }
 
