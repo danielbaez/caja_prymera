@@ -108,8 +108,8 @@ class Logearse extends CI_Controller {
                             }
                             elseif($datos[0]->rol == 'asesor')
                             {
-                                //redirect('C_reporteAsesor/agenteCliente');
-                                redirect('C_usuario/nuevaSolicitud');     
+                                redirect('C_reporteAsesor/agenteCliente');
+                                //redirect('C_usuario/nuevaSolicitud');     
                             }
                             elseif($datos[0]->rol == 'asesor_externo')
                             {
