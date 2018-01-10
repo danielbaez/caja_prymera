@@ -156,19 +156,16 @@
                   <span id="maxCuota" style="font-size: 16px">S/ <?php echo  $cuotaMaximo?></span>
                 </div>
               </div>
-              <div class="form-group text-left" style="width: 70%;margin-left: 170px;">
-                <div class="col-xs-12">
-                    <div class="col-xs-9">
-                        <label class="form-label" style="margin-top: 30px;font-size: 16px;margin-left: -10px;">1era fecha de Pago</label>
-                    </div>
-                    <div class="col-xs-3">
-                        <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Fecha en que Ud. desearía que sea su primer pago." data-toggle="tooltip" data-placement="bottom" aria-hidden="true" style="color: black;margin-top: 30px;margin-left: -130px;"></i>
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia" onchange="cambiarFecha()">
-                </div>
+
+              <div class="col-xs-12 margin-top"></div>
+
+              <div class="col-xs-3">                
               </div>
+              <div class="col-xs-9">
+                <p class="text-left" style="font-size: 16px">1era fecha de Pago <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Fecha en que Ud. desearía que sea su primer pago." data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
+                <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia" onchange="cambiarFecha()" readonly='readonly'>
+              </div>
+
             </div>
 
             <div class="col-xs-12 visible-xs visible-sm margin-top"></div>
@@ -285,13 +282,51 @@
     (function($){
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
+        
         $('#periodo_gracia').datetimepicker({
-          format: 'YYYY-MM-DD'
-        }); 
-
+          format: 'YYYY-MM-DD',
+          minDate : new Date().setDate(new Date().getDate()+30),
+          maxDate : new Date().setDate(new Date().getDate()+60),
+          ignoreReadonly: true
+        });
+        /*var d = new Date();
+        d.setMonth(1);
+        d = d.toISOString().slice(0,10);
+        $('#periodo_gracia').val(d);*/
         $('#periodo_gracia').on('dp.change', function(e){ 
             var fecha = $('#periodo_gracia').val();
             $('#fecha_change').html(fecha);
+
+            meses_pago = $('#slider-range-value-plazo').html();
+            monto   = $('#slider-range-value-monto').html();
+            cuota   = $('#slider-range-value-cuota').html();
+            marca   = $('#marca option:selected').val();
+            modelo  = $('#modelo option:selected').val();
+            periodo = $('#periodo_gracia').val();
+
+            m = monto.replace(/[^0-9.]/g, "");
+            c = cuota.replace(/[^0-9.]/g, "");
+            if(modelo != ''){
+              $.ajax({
+                data  : { meses : meses_pago,
+                        cuota   : cuota,
+                        monto   : monto,
+                        marca   : marca,
+                        periodo : periodo,
+                        modelo  : modelo
+                      },
+                url   : 'C_preaprobacion/changeValues',
+                type  : 'POST',
+                dataType: 'json'
+              }).done(function(data){
+                $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+                $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+                $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+                $('#tcea').html(data.tcea+'%');
+                $('#tea').html(data.tea+'%');
+                $('#seguroAuto').html('S/ '+data.seguroAuto);
+              });
+            }
         })
     });
     var rangeSliderPlazo = document.getElementById('slider-range-plazo');

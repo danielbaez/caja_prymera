@@ -315,6 +315,7 @@
         $('#importePrestamo').html('S/ '+currency(data.importePrestamo));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+        $('#tea').html(data.tea+'%');
         $('#tcea').html(data.tcea+'%');
         glob_pagoTotal = data.pagoTotal;
         glob_cuotaMensual = data.cuotaMensual;
