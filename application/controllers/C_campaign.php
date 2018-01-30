@@ -226,12 +226,13 @@ class C_campaign extends CI_Controller {
                                   'profesion' => $profesion,
                                   'nivelEducativo' => $nivel_educativo,
                                   'edad' => $edad,
-                                  'fechaPrimerPago' => date("m/d/Y", strtotime($primera_fecha))
+                                  //'fechaPrimerPago' => date("m/d/Y", strtotime($primera_fecha))
+                                  'fechaPrimerPago' => $primera_fecha
                                 );
 
             $result = $client->GetDatosCreditoVehicularOnline($params);
-            /*_log(print_r($params, true));
-            _log(print_r($result, true));*/
+            _log(print_r($params, true));
+            _log(print_r($result, true));
             $res = $result->return->resultado;
             //_log(print_r($res, true));
             if($res == 1){ 
