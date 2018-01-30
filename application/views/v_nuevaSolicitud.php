@@ -72,7 +72,7 @@
                     </div>
 
 
-                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 m-t-10">
                       <div class="panel panel-primary" style="border: 1px solid #337ab7;border-top-right-radius: 0px;border-top-left-radius: 40px;border-bottom-left-radius: 0px;border-bottom-right-radius: 40px;"><br>
                         <div class="panel-body" style="margin-top: 15px; margin-bottom: 20px">
                           <!-- <div class="col-xs-12 col-sm-6">

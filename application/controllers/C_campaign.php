@@ -297,9 +297,12 @@ class C_campaign extends CI_Controller {
             }else if($res == 0) {
                 $data['error'] = EXIT_SUCCESS;
                 $data['ws_error'] = 0;
-            }else if($res == 3) {
+            }else if($res == 2) {
                 $data['mensaje'] = 'Error del servidor';
                 $data['ws_error'] = 2;
+            }else if($res == 4) {
+                $data['error'] = EXIT_SUCCESS;
+                $data['ws_error'] = 0;
             }
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

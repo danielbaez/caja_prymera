@@ -90,7 +90,7 @@
                         </div>
                         <div class="panel-body" style="background-color: #fff; padding-top: 5px; padding-bottom: 10px;">
                             <form class="text-center">
-                                <p style="font-size:15px;color: #a3a4a6; margin-bottom: 5px; ">Cr&eacute;dito Auto de Prymera</p>
+                                <p style="font-size:15px;color: #a3a4a6; margin-bottom: 5px; ">Cr&eacute;dito Auto de Prymera - <?php if(_getSesion('tipoCred') == 'eva'){ echo 'Evaluación'; } else { echo 'Campaña'; } ?></p>
                                 <p class="datos" style="margin-bottom: 10px">Ingresa tus datos</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="Nombre" placeholder="Nombre" style="" maxlength="50" onkeypress="return soloLetras(event)" onkeyup="verificarDatos(event);">
