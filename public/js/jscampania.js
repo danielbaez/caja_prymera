@@ -116,7 +116,7 @@ function verificarCamp() {
 			if(data.error == 0){
 				if(data.ws_error == 1) {
 					location.href = '/Resumen_Vehicular';
-				}else if(data.ws_error == 0) {
+				}else if(data.ws_error == 0 || data.ws_error == 4) {
 					location.href = '/C_losentimos';
 				}else if(data.ws_error == 2) {
 					msj('error', 'Error de servidor');

@@ -230,9 +230,10 @@ class C_campaign extends CI_Controller {
                                 );
 
             $result = $client->GetDatosCreditoVehicularOnline($params);
-            //_log(print_r($result, true));
+            /*_log(print_r($params, true));
+            _log(print_r($result, true));*/
             $res = $result->return->resultado;
-            _log(print_r($res, true));
+            //_log(print_r($res, true));
             if($res == 1){ 
 
                 $documento = $result->return->documento;
@@ -302,7 +303,7 @@ class C_campaign extends CI_Controller {
                 $data['ws_error'] = 2;
             }else if($res == 4) {
                 $data['error'] = EXIT_SUCCESS;
-                $data['ws_error'] = 0;
+                $data['ws_error'] = 4;
             }
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
