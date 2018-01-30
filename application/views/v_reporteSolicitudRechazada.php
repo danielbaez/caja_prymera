@@ -194,6 +194,10 @@
                       <th class="text-center" style="display: none">Nro Cel</th>
                       <th class="text-center" style="display: none">Fijo</th>
                       <th class="text-center" style="display: none">Nro Solicitud</th>
+                      <!--<th class="text-center" style="display: none">Edad</th>
+                      <th class="text-center" style="display: none">Nivel Educativo</th>
+                      <th class="text-center" style="display: none">Profesión</th>
+                      <th class="text-center" style="display: none">Condición Laboral</th>-->
                       <th class="text-center">Agencia</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Status</th>
@@ -213,12 +217,16 @@
                         <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
                         <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
-                        <td style="display: none"><?php echo $solicitud->edad ?></td>
+                        <!--<td style="display: none"><?php echo $solicitud->edad ?></td>
                         <td style="display: none"><?php echo $solicitud->nivel_educativo ?></td>
                         <td style="display: none"><?php echo $solicitud->profesion ?></td>
-                        <td style="display: none"><?php echo $solicitud->condicion_laboral ?></td>
+                        <td style="display: none"><?php echo $solicitud->condicion_laboral ?></td>-->
                         <td><?php echo $solicitud->agencia ?></td>
-                        <td><?php echo $solicitud->producto ?></td>
+                        <?php if($solicitud->tipoCred == 'camp' || $solicitud->tipoCred == null) { ?>
+                          <td><?php echo $solicitud->producto ?></td>
+                        <?php }else if($solicitud->tipoCred == 'eva') { ?>
+                          <td><?php echo $solicitud->producto.' - Evaluación' ?></td>
+                        <?php } ?>
                         <td>Rechazado</td>
                       </tr>
                       <?php
