@@ -29,7 +29,7 @@ class Micash extends CI_Controller {
           //resultado 3: token
           //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
            $params = array('token'     => 'E928EUXP',
                            'documento' =>_post('dni'),
