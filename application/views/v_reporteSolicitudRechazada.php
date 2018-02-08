@@ -222,9 +222,9 @@
                         <td style="display: none"><?php echo $solicitud->profesion ?></td>
                         <td style="display: none"><?php echo $solicitud->condicion_laboral ?></td>-->
                         <td><?php echo $solicitud->agencia ?></td>
-                        <?php if($solicitud->tipoCred == 'camp' || $solicitud->tipoCred == null) { ?>
+                        <?php if($solicitud->tipoCred == 2 || $solicitud->tipoCred == null) { ?>
                           <td><?php echo $solicitud->producto ?></td>
-                        <?php }else if($solicitud->tipoCred == 'eva') { ?>
+                        <?php }else if($solicitud->tipoCred == 3) { ?>
                           <td><?php echo $solicitud->producto.' - Evaluación' ?></td>
                         <?php } ?>
                         <td>Rechazado</td>
@@ -471,7 +471,7 @@ $(document).ready(function() {
             producto = 'Mi Cash';
           }
           else if(detalle.id_producto == 2){
-            if(detalle.tipoCred == 'camp' || detalle.tipoCred == null) {
+            if(detalle.tipoCred == 2 || detalle.tipoCred == null) {
               producto = 'Auto de Prymera';
             }else {
               producto = 'Auto de Prymera - Evaluación';
@@ -481,7 +481,7 @@ $(document).ready(function() {
 
             $('#modalInformacionSolicitud').modal('show');
             console.log(detalle)
-            if(detalle.tipoCred == 'camp' || detalle.tipoCred == null) {
+            if(detalle.tipoCred == 2 || detalle.tipoCred == null) {
               var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
               dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
               dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
@@ -498,7 +498,7 @@ $(document).ready(function() {
               dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
               $('.div-datos-solicitud').html(dSolicitud);
-            }else if(detalle.tipoCred == 'eva') {
+            }else if(detalle.tipoCred == 3) {
               console.log(detalle.salario)
               var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
               dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';

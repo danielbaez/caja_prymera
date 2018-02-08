@@ -234,9 +234,9 @@
                         <td style="display: none"><?php echo $solicitud->agencia ?></td>
                         <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
                         <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
-                        <?php if($solicitud->tipoCred == 'camp' || $solicitud->tipoCred == null) { ?>
+                        <?php if($solicitud->tipoCred == 2 || $solicitud->tipoCred == null) { ?>
                           <td><?php echo $solicitud->producto ?></td>
-                        <?php }else if($solicitud->tipoCred == 'eva') { ?>
+                        <?php }else if($solicitud->tipoCred == 3) { ?>
                           <td><?php echo $solicitud->producto.' - Evaluación' ?></td>
                         <?php } ?>
                         
@@ -434,7 +434,7 @@ $(document).ready(function() {
 
           $('#modalInformacionSolicitud').modal('show');
           
-          if(detalle.tipoCred == 'camp' || detalle.tipoCred == null) {
+          if(detalle.tipoCred == 2 || detalle.tipoCred == null) {
 
 
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
@@ -544,7 +544,7 @@ $(document).ready(function() {
 
           $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
 
-          }else if(detalle.tipoCred == 'eva') {
+          }else if(detalle.tipoCred == 3) {
 
             //EVALUACIÓN
             var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';

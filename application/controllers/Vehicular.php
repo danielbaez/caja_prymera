@@ -29,7 +29,7 @@ class Vehicular extends CI_Controller {
           //resultado 0 : rechazado
           $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
-          if(_getSesion('tipoCred') == 'eva') {
+          if(_getSesion('tipoCred') == 3) {
 
             $params = array('token'     => 'E928EUXP',
                            'documento' =>_post('dni'),
@@ -66,7 +66,7 @@ class Vehicular extends CI_Controller {
                                    'apellido'       => $apellido,
                                    'email'          => $email,
                                    'dni'            => $documento,
-                                   'id_tipo_prod'   => 2,
+                                   'id_tipo_prod'   => _getSesion('tipoCred'),
                                    'fec_estado'     => date("Y-m-d H:i:s"),
                                    'check_autorizo' => $check,
                                    'ws_error'       => $res,
@@ -74,7 +74,7 @@ class Vehicular extends CI_Controller {
                                    'ws_timestamp'   => date("Y-m-d H:i:s"),
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'status_sol'      => 5/*INCOMPLETO*/,
-                                   'tipo_credito'   => _getSesion('tipoCred')
+                                   //'tipo_credito'   => _getSesion('tipoCred')
                                    );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -93,7 +93,7 @@ class Vehicular extends CI_Controller {
                                    'apellido'       => $apellido,
                                    'email'          => $email,
                                    'dni'            => $dni,
-                                   'id_tipo_prod'   => 2,
+                                   'id_tipo_prod'   => _getSesion('tipoCred'),
                                    'fec_estado'     => date("Y-m-d H:i:s"),
                                    'check_autorizo' => $check,
                                    'ws_error'       => $res,
@@ -102,7 +102,7 @@ class Vehicular extends CI_Controller {
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'last_page'      => N_INGRESO_DATOS_RECHAZADO,
                                    'status_sol'      => 2,//RECHAZADO
-                                   'tipo_credito'   => _getSesion('tipoCred')
+                                   //'tipo_credito'   => _getSesion('tipoCred')
                                    );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -113,7 +113,7 @@ class Vehicular extends CI_Controller {
             }
 
 
-          }else if(_getSesion('tipoCred') == 'camp') {
+          }else if(_getSesion('tipoCred') == 2) {
             $params = array('token'     => 'E928EUXP',
                            'documento' =>_post('dni'),
                            'producto'  =>'02'
@@ -165,7 +165,7 @@ class Vehicular extends CI_Controller {
                                    'apellido'       => $apellido,
                                    'email'          => $email,
                                    'dni'            => $dni,
-                                   'id_tipo_prod'   => 2,
+                                   'id_tipo_prod'   => _getSesion('tipoCred'),
                                    'fec_estado'     => date("Y-m-d H:i:s"),
                                    'check_autorizo' => $check,
                                    'ws_error'       => $res,
@@ -174,7 +174,7 @@ class Vehicular extends CI_Controller {
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'last_page'      => N_SIMULADOR,
                                    'status_sol'     => 5,//incompleto
-                                   'tipo_credito'   => _getSesion('tipoCred')
+                                   //'tipo_credito'   => _getSesion('tipoCred')
                                   );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
@@ -193,7 +193,7 @@ class Vehicular extends CI_Controller {
                                    'apellido'       => $apellido,
                                    'email'          => $email,
                                    'dni'            => $dni,
-                                   'id_tipo_prod'   => 2,
+                                   'id_tipo_prod'   => _getSesion('tipoCred'),
                                    'fec_estado'     => date("Y-m-d H:i:s"),
                                    'check_autorizo' => $check,
                                    'ws_error'       => $res,
@@ -202,7 +202,7 @@ class Vehicular extends CI_Controller {
                                    'cod_agencia'    => $agencia_user[0]->id_agencia,
                                    'last_page'      => N_INGRESO_DATOS_RECHAZADO,
                                    'status_sol'      => 2,//RECHAZADO
-                                   'tipo_credito'   => _getSesion('tipoCred')
+                                   //'tipo_credito'   => _getSesion('tipoCred')
                                    );
               $datoInsert = $this->M_preaprobacion->insertarDatosCliente($arrayInsert, 'solicitud');
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));

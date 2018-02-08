@@ -107,7 +107,7 @@
                   <form class="text-center" action="C_resumen" method="POST">
                     <div class="col-xs-12 col-sm-8 linea">  
                         <p class="sub-title"><strong>Datos laborales</strong></p>
-                        <?php if($tipoCred == 'camp' || $tipoCred == null) { ?>
+                        <?php if($tipoCred == 2 || $tipoCred == null) { ?>
                           <div class="col-xs-12 p-0">
                             <div class="col-sm-12">
                               <div class="form-group">
@@ -237,7 +237,7 @@
                       </div>
                       <div class="col-xs-12 m-t-0">
                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
-                          <?php if ($tipoCred == 'eva') { ?>
+                          <?php if ($tipoCred == 3) { ?>
                               <a id="remove" class="link" onclick="redirect(1);" style="margin: 2px 20px;">Regresar</a>
                             <?php } else{ ?>
                               <a id="remove" class="link" onclick="redirect(2);" style="margin: 2px 20px;">Regresar</a>
@@ -363,11 +363,11 @@
       var estado_civil = $('#estado_civil').val();
       var email         = $('#email').val();
       
-      <?php if($tipoCred == 'eva') { ?>
+      <?php if($tipoCred == 3) { ?>
         if(nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
         && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != '') {
         $('#btnAceptar').removeAttr("disabled");
-      <?php }else if($tipoCred == 'camp' || $tipoCred == null) { ?> 
+      <?php }else if($tipoCred == 2 || $tipoCred == null) { ?> 
         if(salario != null && nro_celular != '' && empleador != '' && direccion_empresa != '' && Departamento != '' 
         && Provincia != '' && Distrito != '' && Agencia != '' && email != '' && estado_civil != '') {
         $('#btnAceptar').removeAttr("disabled");
