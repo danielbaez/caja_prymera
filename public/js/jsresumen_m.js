@@ -14,8 +14,8 @@ function irAUbicacion() {
 		}).done(function(data){
 			console.log(data);
 			if(data.error == 0 && data.sendMailGmail.send && data.sendMailGmailAgencia.send) {
-				console.log('pasoo')
-				//location.href = '/Ubicacion';
+				//console.log('pasoo')
+				location.href = '/Ubicacion';
 			}else {
 				msj('error', 'Hubo un error, no se puede enviar correo');
 				$('.btn-resumen').attr('disabled', false);
