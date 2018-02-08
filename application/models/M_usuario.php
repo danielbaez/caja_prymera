@@ -35,7 +35,7 @@ class M_usuario extends  CI_Model{
                         $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
                     }
 
-                    $ip = '192.168.1.6';
+                    //$ip = '192.168.1.6';
 
                     $day= date("w");
                     switch($day)
