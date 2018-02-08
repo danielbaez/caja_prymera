@@ -281,15 +281,18 @@ class C_campaign extends CI_Controller {
                     $session = array(
                                      'marca'       => $marca,
                                      'modelo'      => $modelo,
-                                     'valor_auto'  => 'S/ '.$valorVehiculo,
-                                     'periodo'     => $plazo.' meses',
+                                     'valor_auto'  => $valorVehiculo,
+                                     //'periodo'     => $plazo.' meses',
+                                     'cant_meses'     => $plazo.' meses',
                                      'Importe'     => $importe,
-                                     'cuota_inicial' => 'S/ '.$valInicial,
-                                     'pagoTotal' => 'S/ '.$pagoTot,
-                                     'cuota_mensual' => 'S/ '.$cuotaMensual,
-                                     'seguroAuto' => 'S/ '.$seguroAuto,
-                                     'sess_tea' => $datos_tea.'%',
-                                     'tcea_sess' => $datos_tcea.'%'
+                                     'cuota_inicial' => $valInicial,
+                                     //'pagoTotal' => $pagoTot,
+                                     'pago_total' => $pagoTot,
+                                     'cuota_mensual' => $cuotaMensual,
+                                     'seguroAuto' => $seguroAuto,
+                                     'sess_tea' => $datos_tea,
+                                     'tcea_sess' => $datos_tcea,
+                                     'periodo_gracia' => $primera_fecha
                                      );
                     $this->session->set_userdata($session);
                     $data['ws_error'] = 1;

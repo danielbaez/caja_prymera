@@ -9,9 +9,17 @@ function irAUbicacion() {
 		$.ajax({
 			data  : { agencia : agencia},
 			url   : 'Resumen/setearAgencia',
-			type  : 'POST'
+			type  : 'POST',
+			dataType: 'json'
 		}).done(function(data){
-			location.href = '/Ubicacion';
+			console.log(data);
+			if(data.error == 0 && data.sendMailGmail.send && data.sendMailGmailAgencia.send) {
+				console.log('pasoo')
+				//location.href = '/Ubicacion';
+			}else {
+				msj('error', 'Hubo un error, no se puede enviar correo');
+				$('.btn-resumen').attr('disabled', false);
+			}
 		});
 }
 

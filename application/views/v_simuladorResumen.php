@@ -167,7 +167,7 @@
                             <span style="">Importe Pr&eacute;stamo: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php echo 'S/ '.$Importe?><?php }else{ ?><?php echo $Importe.'.00'?><?php } ?></span>
+                            <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php echo 'S/ '.number_format($Importe, 2)?><?php }else{ ?><?php echo $Importe.'.00'?><?php } ?></span>
                           </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                             <span style="">Cuota Inicial: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $cuota_inicial?></span>
+                            <span><?php echo 'S/ '.number_format($cuota_inicial, 2)?></span>
                           </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                             <span style="">Cuota Mensual: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $cuota_mensual?></span>
+                            <span><?php echo 'S/ '.number_format($cuota_mensual, 2)?></span>
                           </div>
                         </div>
                     </div>
@@ -210,7 +210,7 @@
                             <span style="">Pago Total: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $pago_total?></span>
+                            <span><?php echo 'S/ '.number_format($pago_total, 2)?></span>
                           </div>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                             <span style="">TEA: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $tea?></span>
+                            <span><?php echo number_format($tea*100, 2).'%'?></span>
                           </div>
                         </div>
                     </div>
@@ -230,7 +230,7 @@
                             <span style="">TCEA: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $tcea?></span>
+                            <span><?php echo number_format($tcea*100, 2).'%'?></span>
                           </div>
                         </div>
                     </div>
