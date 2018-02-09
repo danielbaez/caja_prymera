@@ -109,7 +109,7 @@
 		  
 		  <div class="col-xs-12 col-md-6 col-seccion">
 			<div class="col-xs-12 div-seccion">
-			  <h4>Agencia</h4>
+			  <h4>Agencias</h4>
 			  <div class="table-responsive">
 				<table class="table table-bordered" id="tabla-usuarios">
 				  <thead>
@@ -138,7 +138,7 @@
 
 		  <div class="col-xs-12 col-md-6 col-seccion">
 			<div class="col-xs-12 div-seccion">
-			  <h4>Editar Agencia</h4>
+			  <h4 class="title-crear-editar-agencia">Crear Agencia</h4>
 			  <div class="alert alert-danger alert-form" style="font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px; display: none">
 	            </div>
 			  <form class="text-center" id="form-create-edit-user" method="POST" enctype="multipart/form-data" autocomplete="false">
@@ -355,7 +355,7 @@
         "zeroRecords":      "No se encontraron registros",
       },
       "bInfo" : false,
-      "pageLength": 15,
+      "pageLength": 10,
       lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
@@ -374,6 +374,10 @@
 
 	      if(agencia != null && direccion != '' && txtelefono != '' && correo != '' && rol_superior != '') {
 	        $('#btnGuardar').removeAttr("disabled");
+	        $('#btnEditar').prop("disabled", false);
+	        
+	      }else {
+	      	$('#btnEditar').prop("disabled", true);
 	      }
     }
 	  	

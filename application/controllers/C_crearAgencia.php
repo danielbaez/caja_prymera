@@ -304,7 +304,7 @@ class C_crearAgencia extends CI_Controller {
             $data['direccion'] = $datos[0]->UBICACION;
             $data['id_sup']    = $datos[0]->id_sup_agencia;
             $data['ip']        = $datos[0]->ip;
-            //$data['switch']    = $ip[0]->ip;
+            $data['switch']    = $ip[0]->ip;
             foreach (explode(',', $datos[0]->TELEFONO) as $row) {
                 if($x == 1) {
                     $data['telef_val'] = $row;

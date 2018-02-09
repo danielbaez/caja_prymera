@@ -40,14 +40,22 @@ class C_horario extends CI_Controller {
         $data['agencias'] = $this->M_agencia->getAllAgencias();
         if($_GET['agencia'] != '' && $_GET['rol'] != '')
         {            
+            $accesoHorario = $this->M_horario->getAccesoHorarioAgencia($_GET['agencia']);
+            $data['accesoHorario'] = $accesoHorario;
             $data['horarios'] = $this->M_horario->getHorario($_GET['agencia'], $_GET['rol']);
+        }
+        elseif($_GET['agencia'] != '')
+        {
+            $accesoHorario = $this->M_horario->getAccesoHorarioAgencia($_GET['agencia']);
+            $data['accesoHorario'] = $accesoHorario;
+            $data['horarios'] = false;
         }
         else
         {
             $data['horarios'] = false;
         }
 
-        $data['acceso'] = $this->M_acceso->getAcceso();
+        //$data['acceso'] = $this->M_acceso->getAcceso();
 
         $this->load->view('v_horarios', $data);
     }
@@ -57,6 +65,14 @@ class C_horario extends CI_Controller {
         $acceso = _post('acceso') == 'on' ? 1 : 0;
         $agencia = _post('agencia');
         $rol = _post('rol');
+        $ins = false;
+
+        if($agencia != '')
+        {
+            $this->M_acceso->setHorarioAgencia($agencia, $acceso, 'horario');            
+            $this->session->set_flashdata('msg', 'Se actualizo el horario correctamente');
+        }
+
         if($agencia != '' && $rol != '')
         {
             $desde = _post('desde');
@@ -68,11 +84,15 @@ class C_horario extends CI_Controller {
             $desde = false;
             $hasta = false;
         }
+
+        if(!$agencia)
+        {
+            redirect('C_horario');
+        }
         
         //exit($agencia);
         $this->M_horario->setHorario($agencia, $desde, $hasta, $rol);
-        $this->M_acceso->setAcceso($acceso, 'horario');
-        $this->session->set_flashdata('msg', 'Se actualizo el horario correctamente');
+       
         redirect('C_horario');
     }
     

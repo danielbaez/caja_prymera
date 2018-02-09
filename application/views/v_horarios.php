@@ -107,7 +107,14 @@
 			<div class="col-xs-12 div-seccion">
 				<form class="form" action="/C_horario/save" method="POST">
 				  <h4>Horario</h4>
-				  <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" <?php echo $acceso[0]->horario == 1 ? 'checked="checked"' : ''; ?>" name="acceso"></p>
+				  
+				  <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" 
+				  	<?php 
+				  	if(isset($accesoHorario)) {
+				  		echo $accesoHorario[0]->horario == 1 ? 'checked="checked"' : ''; 
+				  	}
+			  		?>
+				  	name="acceso"></p>
 				  <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3" style="margin-bottom: 15px">
 				  	<select style="" id="agencia" name="agencia" class="form-control">
 				  	<option value="">Seleccione una agencia</option>
@@ -230,7 +237,16 @@
 
 		  });
 
-	  		$('#rol').on('change', function() {
+	  		$('#agencia').on('change', function() {
+			  //alert( this.value );
+			  var rol = $('#rol option:selected').val();
+			  //if(rol != '' && this.value != '') {
+			  	window.location.href = '/C_horario/agencia?agencia='+this.value+'&rol='+rol;	
+			  //}
+			  
+			})
+
+			$('#rol').on('change', function() {
 			  //alert( this.value );
 			  var agencia = $('#agencia option:selected').val();
 			  window.location.href = '/C_horario/agencia?agencia='+agencia+'&rol='+this.value;

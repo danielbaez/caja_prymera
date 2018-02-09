@@ -48,6 +48,9 @@ function validateEmail(email) {
 }
 
 function limpiar() {
+  $('#btnGuardar').prop("disabled", true);
+  $('#btnEditar').prop("disabled", true);
+  $('.title-crear-editar-agencia').html('Crear Agencia');
   $('#agencia').val(null);
   $('#direccion').val(null);
   $('#txtelefono').val(null);
@@ -146,6 +149,9 @@ function readURL(input) {
 var global_agencia = '';
 var global_correos = '';
 function setearDatos(dato, agencia, nombre) {
+
+  $('.title-crear-editar-agencia').html('Editar Agencia');
+
   num = 1;
   $('#telefonos'+numi).remove();
   $('#correos'+num).remove();
@@ -177,10 +183,10 @@ function setearDatos(dato, agencia, nombre) {
       try{
         data = JSON.parse(data);
         if(data.error == 0){
-            if(data.telefonos == null || data.data_correos == null) {
+            //if(data.telefonos == null || data.data_correos == null) {
               //msj('error', 'No existen datos para esta agencia');
-              return;
-            }else {
+              //return;
+            //}else {
               $('#direccion').val(data.direccion);
               $('#txtelefono').val(data.telef_val);
               $('#cont_telef').append(data.telefonos);
@@ -199,7 +205,7 @@ function setearDatos(dato, agencia, nombre) {
                   $('input[name="toggle_button"]').bootstrapSwitch('state', !false, false);
                   $('input[name="toggle_button"]').bootstrapSwitch('toggleState', true, false);
               }
-            }
+            //}
         }else {
         }
       } catch (err){
