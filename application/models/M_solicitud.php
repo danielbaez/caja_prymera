@@ -651,5 +651,143 @@ class M_solicitud extends  CI_Model{
             return [];
         }
     }
+
+    //****************************************
+
+    function ajaxObtenerHistorialSolicitud($filtros)
+    {
+        foreach($filtros as $key=>$value)
+        {
+            if(is_null($value) || $value == '')
+                unset($filtros[$key]);
+        }
+
+
+        $where = '';
+        $cont = 0;
+        foreach($filtros as $key=>$value)
+        {
+            $cont++;
+            switch ($key) {
+                case 'nro_solicitud':
+                    $a = "solicitud.id = ?";
+                    break;
+                case 'cliente':
+                    $a = "(solicitud.nombre LIKE '%".$filtros['cliente']."%' OR solicitud.apellido LIKE '%".$filtros['cliente']."%')";
+                    unset($filtros['cliente']);
+                    break;
+                case 'dni':
+                    $a = "solicitud.dni = ?";
+                    break;                    
+                case 'fecha':
+                    $a = "date(solicitud.timestamp_final) = ?";
+                    break;                    
+                default:
+                    # code...
+                    break;
+            }
+
+            if($cont == 1)
+            {
+                $where .= $a;
+            }
+            elseif($cont > 1)
+            {
+                $where .= " AND ".$a;
+            }
+        }
+
+        if($where == ''){
+            $where = 'solicitud.ws_error = 1 AND solicitud.timestamp_final <> "00:00:00"';
+        }else{
+            $where .= ' AND solicitud.ws_error = 1 AND solicitud.timestamp_final <> "00:00:00"';
+        }
+
+        $rol = _getSesion('rol');
+        $id_usuario = _getSesion('id_usuario');
+        if($rol == 'administrador')
+        {
+            $draw = isset($_REQUEST["draw"]) ? $_REQUEST["draw"] : 1;
+            $start = isset($_REQUEST["start"]) ? $_REQUEST["start"] : 0;
+            $length = isset($_REQUEST["length"]) ? $_REQUEST["length"] : 10;
+
+            $columns = array(             
+                0 => 'fecha_solicitud',
+                1 => 'nombre', 
+                2 => 'producto',
+                3 => 'id_solicitud' 
+            );
+
+            $orderBy = $columns[$_REQUEST['order'][0]['column']];
+            $orderAscDesc = $_REQUEST['order'][0]['dir'];
+
+            $sql_total = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.id_tipo_prod as tipoCred, solicitud.edad, solicitud.nivel_educativo, solicitud.profesion, solicitud.condicion_laboral, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where";
+
+            $result_total = $this->db->query($sql_total, $filtros);
+
+
+            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.id_tipo_prod as tipoCred, solicitud.edad, solicitud.nivel_educativo, solicitud.profesion, solicitud.condicion_laboral, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where ORDER BY $orderBy $orderAscDesc LIMIT $start, $length";
+
+        }
+        elseif($rol == 'jefe_agencia')
+        {
+            $sql = "SELECT DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.timestamp_final,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.id_tipo_prod as tipoCred, solicitud.edad, solicitud.nivel_educativo, solicitud.profesion,  solicitud.condicion_laboral, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.timestamp_final,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial, solicitud.agencia_desembolso as agencia_desembolso FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where AND cod_agencia = (SELECT GROUP_CONCAT(id) FROM agencias WHERE id_sup_agencia = $id_usuario)";
+        }            
+
+        $result = $this->db->query($sql, $filtros);
+
+        $res = [];
+
+        /*foreach ($result->result() as $key => $value)
+        {
+            if($value->agencia_desembolso != '')
+            {
+                $sql = "SELECT AGENCIA FROM agencias where id = ?";
+                $agencias = $this->db->query($sql, array($value->agencia_desembolso));
+                $a = $agencias->result();
+                $value->agencia_desembolso = $a[0]->AGENCIA;                    
+            }
+            $res[] = $value;              
+        }*/
+
+        $data = [];
+
+        //////
+        foreach($result->result() as $key => $value) {
+
+               $data[] = array(
+                    'fecha_solicitud' => $value->fecha_solicitud,
+                    'nombre' => $value->nombre.' '.$value->apellido,
+                    'producto' => $value->producto,
+                    'id_solicitud' => $value->id_solicitud,
+                    'fecha_default' => $value->fecha_default
+               );
+
+               if($value->agencia_desembolso != '')
+                {
+                    $sql = "SELECT AGENCIA FROM agencias where id = ?";
+                    $agencias = $this->db->query($sql, array($value->agencia_desembolso));
+                    $a = $agencias->result();
+                    $value->agencia_desembolso = $a[0]->AGENCIA;                    
+                }
+                $res[] = $value; 
+          }          
+
+          $output = array(
+               "draw" => $draw,
+                 "recordsTotal" => $result_total->num_rows(),
+                 "recordsFiltered" => $result_total->num_rows(),
+                 "data" => $data
+            );
+          
+        ///////
+
+        return json_encode($output);
+
+
+
+    }
+
+
 }
     

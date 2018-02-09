@@ -106,7 +106,7 @@
             <div class="col-xs-12 col-border-filtros-reporte">
                <div class="alert alert-msg" style="display:none; font-size: 16px; padding: 10px 20px; margin-bottom: 10px; margin-top: 10px;"></div>
               <h4 class="titulo-vista">Reporte Historial Solicitud</h4>
-              <form class="form-horizontal" method="GET" action="/C_reporte/historialSolicitud">
+              <form class="form-horizontal" method="POST" action="/C_reporte/historialSolicitud">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
@@ -156,13 +156,94 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
+                      <th class="text-center" style="display: none">Fecha default</th>
                       <th class="text-center">Fecha Creación</th>
                       <th class="text-center">Cliente</th>
+                      <th class="text-center" style="display: none">DNI</th>
+                      <th class="text-center" style="display: none">Edad</th>
+                      <!--<th class="text-center" style="display: none">Nivel Educativo</th>
+                      <th class="text-center" style="display: none">Profesión</th>
+                      <th class="text-center" style="display: none">Condición Laboral</th>-->
+                      <th class="text-center" style="display: none">Nro Cel</th>
+                      <th class="text-center" style="display: none">Fijo</th>
+                      <th class="text-center" style="display: none">Importe Préstamo</th>
+                      <th class="text-center" style="display: none">Plazo</th>
+                      <th class="text-center" style="display: none">Cuota Mensual</th>
+                      <th class="text-center" style="display: none">Cuota Inicial</th>
+                      <th class="text-center" style="display: none">Total Préstamo</th>
+                      <th class="text-center" style="display: none">TEA</th>
+                      <th class="text-center" style="display: none">TCEA</th>
+
+                      <th class="text-center" style="display: none">Empresa</th>
+                      <th class="text-center" style="display: none">Ingreso Mensual</th>
+                      <th class="text-center" style="display: none">Dirección</th>
+                      <th class="text-center" style="display: none">Distrito</th>
+                      <th class="text-center" style="display: none">Provincia</th>
+                      <th class="text-center" style="display: none">Departamento</th>
+
+
+                      <th class="text-center" style="display: none">Nro Solicitud</th>
+                      <th class="text-center" style="display: none">Fecha Creación</th>
+                      <th class="text-center" style="display: none">Hora Creación</th>
+                      <th class="text-center" style="display: none">Fecha Cierre</th>
+                      <th class="text-center" style="display: none">Hora Cierre</th>
+                      <th class="text-center" style="display: none">Agencia</th>
+                      <th class="text-center" style="display: none">Desembolso</th>
+                      <th class="text-center" style="display: none">Agente</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
                   </thead>
-                  
+                  <tbody>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
+                      <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>                        
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        
+                        <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->edad ?></td>
+                        <!--<td style="display: none"><?php echo $solicitud->nivel_educativo ?></td>
+                        <td style="display: none"><?php echo $solicitud->profesion ?></td>
+                        <td style="display: none"><?php echo $solicitud->condicion_laboral ?></td>-->
+                        <!--<td style="display: none"><?php echo $solicitud->email_titular ?></td>-->
+                        <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->monto ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_inicial ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->tea ?></td>
+                        <td style="display: none"><?php echo $solicitud->tcea ?></td>
+                        <td style="display: none"><?php echo $solicitud->empleador ?></td>
+                        <td style="display: none"><?php echo $solicitud->salario ?></td>
+                        <td style="display: none"><?php echo $solicitud->dir_empleador ?></td>
+                        <td style="display: none"><?php echo $solicitud->distrito ?></td>
+                        <td style="display: none"><?php echo $solicitud->provincia ?></td>
+                        <td style="display: none"><?php echo $solicitud->departamento ?></td>
+                        <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->agencia ?></td>
+                        <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
+                        <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
+
+                        <td><?php echo $solicitud->producto ?></td>
+                        
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
               <?php
@@ -241,40 +322,12 @@ $(document).ready(function() {
 
 
   var table = $('#tabla-solicitudes').DataTable( {
-    "processing": true,
-    "serverSide" : true,
-    "ajax": {
-     "url": '/C_reporte/ajaxHistorialSolicitud',
-     "type": 'GET',
-     "data": {
-      action: 'obtenerHistorialSolicitud',
-      nro_solicitud: '<?php echo isset($_REQUEST["nro_solicitud"]) ? $_REQUEST["nro_solicitud"] : "" ?>',
-      cliente: '<?php echo isset($_REQUEST["cliente"]) ? $_REQUEST["cliente"] : "" ?>',
-      dni: '<?php echo isset($_REQUEST["dni"]) ? $_REQUEST["dni"] : "" ?>',
-      fecha: '<?php echo isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : "" ?>'
-      }
-    },
-    "columns": [
-      {data: 'fecha_solicitud'},
-      {data: 'nombre'},
-      {data: 'producto'},
-      {data: 'id_solicitud'}
-    ],
 
-    "createdRow": function ( row, data, index ) {
-            /*if ( data[5].replace(/[\$,]/g, '') * 1 > 150000 ) {
-                $('td', row).eq(5).addClass('highlight');
-            }*/
-            console.log(data)
-            $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
-            $(row).attr("data-idsolicitud", data.id_solicitud);
-        },
+    "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
 
-    "order": [[ 3, 'desc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
-
-      /*columnDefs: [
+      columnDefs: [
          { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
-     ],*/
+     ],
 
       lengthChange: false,
       buttons: [
@@ -352,38 +405,34 @@ $(document).ready(function() {
   //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
   .appendTo( '.buttons-export' );
 
-  //$('#tabla-solicitudes tbody').on('click', 'tr', function () {
-  $('body').on('click', '#tabla-solicitudes tbody tr', function(e) {
+  $('#tabla-solicitudes tbody').on('click', 'tr', function () {
         //var data = table.row( this ).data();
       //  alert( 'You clicked on '+data[0]+'\'s row' );
     //} );
     $.ajax({
-      data:  {id: $(this).attr('data-idsolicitud')},
-      url:   '/C_reporte/modalInformacionSolicitud',
-      type:  'post',
-      dataType: 'json',
-      success:  function (response) {
-        console.log(response)
+        data:  {id: $(this).attr('data-idSolicitud')},
+        url:   '/C_reporte/modalInformacionSolicitud',
+        type:  'post',
+        dataType: 'json',
+        success:  function (response) {
+          console.log(response)
 
-        var detalle = response.detalle[0];
-        var asignar = response.asignar;
-        var producto = '';
-        var texto   = '';
-        if(detalle.id_producto == 1){
-          producto = 'Mi Cash';
-        }
-        else if(detalle.id_producto == 2){
-          producto = 'Auto Campaña';
-        }
-        else if(detalle.id_producto == 3){
-          producto = 'Auto Evaluación';
-        }
+          var detalle = response.detalle[0];
+          var asignar = response.asignar;
+          var producto = '';
+          var texto   = '';
+          if(detalle.id_producto == 1){
+            producto = 'Mi Cash';
+          }
+          else if(detalle.id_producto == 2){
+            producto = 'Auto de Prymera';
+          }
+          $('.modal-title').html('Resumen Solicitud - '+producto);
 
-        $('.modal-title').html('Resumen Solicitud - '+producto);
+          $('#modalInformacionSolicitud').modal('show');
+          
+          if(detalle.tipoCred == 2 || detalle.tipoCred == 1) {
 
-        $('#modalInformacionSolicitud').modal('show');
-        
-        if(detalle.tipoCred == 2 || detalle.tipoCred == 1) {
 
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
@@ -422,13 +471,11 @@ $(document).ready(function() {
             dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
             dPrestamo += '<p><span>1era Fecha de Pago:</span> '+texto+'</p>';
           }
-        
-          console.log(detalle.id_producto)
-
+          
           $('.div-datos-prestamo').html(dPrestamo);
 
           var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
-        
+          
           dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
           dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
           dEmpleo += '<p><span>Direcci&oacute;n:</span> '+detalle.dir_empleador+'</p>';
@@ -488,15 +535,16 @@ $(document).ready(function() {
             $('.btn-actualizar-estado').hide();
           }
 
-        
+          
 
           $('.div-datos-solicitud').html(dSolicitud);
 
-          $('.btn-actualizar-estado').attr('data-idsolicitud', detalle.id_solicitud);
+          $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
 
-        }else if(detalle.tipoCred == 3) {
-          //EVALUACIÓN
-          var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
+          }else if(detalle.tipoCred == 3) {
+
+            //EVALUACIÓN
+            var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
           if(detalle.id_producto == 2){
             dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
@@ -528,37 +576,43 @@ $(document).ready(function() {
           }else {
             dCliente += '<p><span>Condición Laboral:</span> '+detalle.condicion_laboral+'</p>';
           }
-
           $('.div-datos-cliente').html(dCliente);
 
           var dPrestamo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Pr&eacute;stamo</h4>';
-                   
-          if(detalle.primer_pago == null) {
-            texto = '-';
-          }else {
-            texto = detalle.primer_pago;
+          if(detalle.id_producto == 1){
+            dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
           }
-          dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
-          dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-          //dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
-          dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
-          dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
-          dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
-          dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
-          dPrestamo += '<p><span>1era Fecha de Pago:</span> '+texto+'</p>';
+          if(detalle.id_producto == 2){
+            if(detalle.primer_pago == null) {
+              texto = '-';
+            }else {
+              texto = detalle.primer_pago;
+            }
+            dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
+            dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
+            dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
+            dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
+            dPrestamo += '<p><span>1era Fecha de Pago:</span> '+texto+'</p>';
+          }
           
-        
           $('.div-datos-prestamo').html(dPrestamo);
 
           var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
-        
+          
           dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
           dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
           dEmpleo += '<p><span>Direcci&oacute;n:</span> '+detalle.dir_empleador+'</p>';
           dEmpleo += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
           dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
           dEmpleo += '<p><span>Departamento:</span> '+detalle.departamento+'</p>';
-        
+          
           $('.div-datos-empleo').html(dEmpleo);
 
           var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
@@ -611,21 +665,28 @@ $(document).ready(function() {
             $('.btn-actualizar-estado').hide();
           }
 
+          
+
           $('.div-datos-solicitud').html(dSolicitud);
 
-          $('.btn-actualizar-estado').attr('data-idsolicitud', detalle.id_solicitud);
+          $('.btn-actualizar-estado').attr('data-idSolicitud', detalle.id_solicitud);
 
-        //FIN DE EVALUACIÓN
+          //FIN DE EVALUACIÓN
+
+          }
+
+
+
         }
-      }
-    });       
+    });
+       
   });
 
   $(".btn-actualizar-estado").click(function() {
     var status = $('#status option:selected').val();
     if(status !== ''){
       $.ajax({
-        data:  {status: status, id: $(this).attr('data-idsolicitud'), id_asignar: $("#asesor option:selected").val()},
+        data:  {status: status, id: $(this).attr('data-idSolicitud'), id_asignar: $("#asesor option:selected").val()},
         url:   '/C_reporte/actualizarEstadoSolicitud',
         type:  'post',
         dataType: 'json',

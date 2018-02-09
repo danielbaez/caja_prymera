@@ -93,7 +93,7 @@ function rolPermissions($rol)
 					   	'C_usuario' => ['detalleUsuario', 'verifyEmailAndDNI', 'asignarSupervisor', 'autocompleteGetJefe', 'actualizarTabla', 'getAsesoresByAgencia', 'borrarAsignados', 'guardarPersonalAsignado', 'logout'],
 					   	'C_horario' => ['index', 'agencia', 'save'],
 					   	'C_ip' => ['index', 'save'],
-					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'solicitudesTotales', 'cambiarEstado']
+					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'ajaxHistorialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'solicitudesTotales', 'cambiarEstado']
 					],
 					'jefe_agencia' => [
 						'C_main' => ['index', 'registrar'],

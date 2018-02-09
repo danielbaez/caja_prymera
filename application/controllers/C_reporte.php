@@ -131,7 +131,7 @@ class C_reporte extends CI_Controller {
         echo json_encode($asesores);
     }
 
-    public function historialSolicitud()
+    /*public function historialSolicitud()
     {
         $action = _post('action');
         if(isset($action) and  $action == 'obtenerHistorialSolicitud') {
@@ -157,10 +157,74 @@ class C_reporte extends CI_Controller {
             $this->load->view('v_reporteHistorialSolicitud', $data);
         }
         else
-        {        
+        {      
             $this->load->view('v_reporteHistorialSolicitud', []);
         }
+    }*/
+
+    public function historialSolicitud()
+    {   
+        $this->load->view('v_reporteHistorialSolicitud', []);
     }
+
+    public function ajaxHistorialSolicitud()
+    {
+        $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
+        if($action and  $action == 'obtenerHistorialSolicitud') {
+            $nro_solicitud = $_REQUEST['nro_solicitud'];
+            $cliente = $_REQUEST['cliente'];
+            $dni = $_REQUEST['dni'];
+            $fecha = $_REQUEST['fecha'];
+            $filtros = array(
+                'nro_solicitud' => $nro_solicitud,
+                'cliente' => $cliente,
+                'dni' => $dni,
+                'fecha' => $fecha
+            );
+
+            $data['nro_solicitud'] = $nro_solicitud;
+            $data['cliente'] = $cliente;
+            $data['dni'] = $dni;
+            $data['fecha'] = $fecha;
+
+            echo $this->M_solicitud->ajaxObtenerHistorialSolicitud($filtros);
+        }
+    }
+
+    /*public function ajaxHistorialSolicitud()
+    {
+        $action = $_REQUEST['action'];
+        if(isset($action) and  $action == 'obtenerHistorialSolicitud') {
+            $nro_solicitud = $_REQUEST['nro_solicitud'];
+            $cliente = $_REQUEST['cliente'];
+            $dni = $_REQUEST['dni'];
+            $fecha = $_REQUEST['fecha'];
+            $filtros = array(
+                        'nro_solicitud' => $nro_solicitud,
+                        'cliente' => $cliente,
+                        'dni' => $dni,
+                        'fecha' => $fecha
+                    );
+
+            //////
+            // Datatables Variables
+              $draw = intval($this->input->get("draw"));
+              $start = intval($this->input->get("start"));
+              $length = intval($this->input->get("length"));
+
+
+
+              $books = $this->M_solicitud->ajaxObtenerHistorialSolicitud($filtros);
+
+              
+              echo $books;
+              exit();
+            /////
+
+            
+
+        }
+    }*/
 
     public function modalInformacionSolicitud()
     {
