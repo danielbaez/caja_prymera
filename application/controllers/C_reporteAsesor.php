@@ -51,7 +51,7 @@ class C_reporteAsesor extends CI_Controller {
         }
     }
 
-    public function agenteHistorialSolicitud()
+    /*public function agenteHistorialSolicitud()
     {
         $action = _post('action');
         if(isset($action) and  $action == 'obtenerHistorialSolicitud') {
@@ -80,6 +80,70 @@ class C_reporteAsesor extends CI_Controller {
         else
         {        
             $this->load->view('v_asesorHistorialSolicitud', []);
+        }
+    }*/
+
+    public function agenteHistorialSolicitud()
+    {   
+        $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
+        if($action and  $action == 'obtenerHistorialSolicitud') {
+            $nro_solicitud = $_REQUEST['nro_solicitud'];
+            $cliente = $_REQUEST['cliente'];
+            $dni = $_REQUEST['dni'];
+            $fecha = $_REQUEST['fecha'];
+            $data['nro_solicitud'] = $nro_solicitud;
+            $data['cliente'] = $cliente;
+            $data['dni'] = $dni;
+            $data['fecha'] = $fecha;
+            $this->load->view('v_asesorHistorialSolicitud', $data);
+        }
+        else
+        {
+            $this->load->view('v_asesorHistorialSolicitud', []);    
+        }
+        
+    }
+
+    public function ajaxAgenteHistorialSolicitud()
+    {
+        $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
+        if($action and  $action == 'obtenerHistorialSolicitud') {
+            $nro_solicitud = $_REQUEST['nro_solicitud'];
+            $cliente = $_REQUEST['cliente'];
+            $dni = $_REQUEST['dni'];
+            $fecha = $_REQUEST['fecha'];
+            $filtros = array(
+                'nro_solicitud' => $nro_solicitud,
+                'cliente' => $cliente,
+                'dni' => $dni,
+                'fecha' => $fecha
+            );
+
+            $data['nro_solicitud'] = $nro_solicitud;
+            $data['cliente'] = $cliente;
+            $data['dni'] = $dni;
+            $data['fecha'] = $fecha;
+
+            echo $this->M_solicitud->ajaxObtenerHistorialSolicitud($filtros, false);
+        }
+        elseif($action and  $action == 'print') {
+            $nro_solicitud = $_REQUEST['nro_solicitud'];
+            $cliente = $_REQUEST['cliente'];
+            $dni = $_REQUEST['dni'];
+            $fecha = $_REQUEST['fecha'];
+            $filtros = array(
+                'nro_solicitud' => $nro_solicitud,
+                'cliente' => $cliente,
+                'dni' => $dni,
+                'fecha' => $fecha
+            );
+
+            $data['nro_solicitud'] = $nro_solicitud;
+            $data['cliente'] = $cliente;
+            $data['dni'] = $dni;
+            $data['fecha'] = $fecha;
+
+            echo $this->M_solicitud->ajaxObtenerHistorialSolicitud($filtros, true);
         }
     }
 

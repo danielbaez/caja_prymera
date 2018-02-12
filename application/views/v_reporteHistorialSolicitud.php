@@ -17,6 +17,9 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
+    .hide_column {
+      display : none;
+    }
     </style>    
   </head>
   <body>
@@ -156,8 +159,34 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
-                      <th class="text-center">Fecha Creación</th>
-                      <th class="text-center">Cliente</th>
+                      <th class="text-center hide_column">Fecha default</th>
+                      <th class="text-center r">Fecha Creación</th>
+                      <th class="text-center r">Cliente</th>
+                      <th class="text-center hide_column r">DNI</th>
+                      <th class="text-center hide_column">Edad</th>
+                      <th class="text-center hide_column r">Nro Cel</th>
+                      <th class="text-center hide_column r">Fijo</th>
+                      <th class="text-center hide_column r">Importe Préstamo</th>
+                      <th class="text-center hide_column r">Plazo</th>
+                      <th class="text-center hide_column r">Cuota Mensual</th>
+                      <th class="text-center hide_column r">Cuota Inicial</th>
+                      <th class="text-center hide_column r">Total Préstamo</th>
+                      <th class="text-center hide_column r">TEA</th>
+                      <th class="text-center hide_column r">TCEA</th>
+                      <th class="text-center hide_column">Empresa</th>
+                      <th class="text-center hide_column">Ingreso Mensual</th>
+                      <th class="text-center hide_column">Dirección</th>
+                      <th class="text-center hide_column">Distrito</th>
+                      <th class="text-center hide_column">Provincia</th>
+                      <th class="text-center hide_column">Departamento</th>
+                      <th class="text-center hide_column r">Nro Solicitud</th>
+                      <th class="text-center hide_column">Fecha Creación</th>
+                      <th class="text-center hide_column">Hora Creación</th>
+                      <th class="text-center hide_column">Fecha Cierre</th>
+                      <th class="text-center hide_column">Hora Cierre</th>
+                      <th class="text-center hide_column r">Agencia</th>
+                      <th class="text-center hide_column">Desembolso</th>
+                      <th class="text-center hide_column r">Agente</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
@@ -166,10 +195,10 @@
                 </table>
               </div>
               <?php
-                  if(isset($solicitudes) and count($solicitudes)){ ?>
+                  //if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
-                <?php } ?>
+                <?php //} ?>
             </div>
           </div>
         </div>
@@ -239,6 +268,34 @@ $(document).ready(function() {
     format: 'YYYY-MM-DD'
   });
 
+  jQuery.fn.DataTable.Api.register( 'buttons.exportData()', function ( options ) {
+
+            if ( this.context.length ) {
+                var jsonResult = $.ajax({
+                    url: '/C_reporte/ajaxHistorialSolicitud',
+                    type: 'GET',
+                    data: {
+                      action: 'print',
+                      nro_solicitud: '<?php echo isset($_REQUEST["nro_solicitud"]) ? $_REQUEST["nro_solicitud"] : "" ?>',
+                      cliente: '<?php echo isset($_REQUEST["cliente"]) ? $_REQUEST["cliente"] : "" ?>',
+                      dni: '<?php echo isset($_REQUEST["dni"]) ? $_REQUEST["dni"] : "" ?>',
+                      fecha: '<?php echo isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : "" ?>'
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        //console.log(result)
+                    },
+                    async: false
+                });
+
+                /*console.log(jsonResult);
+                console.log(jsonResult.responseJSON.data);*/
+
+                //return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th").map(function() { return this.innerHTML; }).get()};
+                return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
+            }
+        } );
+
 
   var table = $('#tabla-solicitudes').DataTable( {
     "processing": true,
@@ -255,26 +312,67 @@ $(document).ready(function() {
       }
     },
     "columns": [
+      {data: 'fecha_default'}, //oculto
       {data: 'fecha_solicitud'},
       {data: 'nombre'},
       {data: 'producto'},
-      {data: 'id_solicitud'}
-    ],
+      {data: 'id_solicitud'},
+      {data: 'a'},
+      {data: 'b'},
+      {data: 'c'},
+      {data: 'd'},
+      {data: 'e'},
+      {data: 'f'},
+      {data: 'g'},
+      {data: 'h'},
+      {data: 'i'},
+      {data: 'j'},
+      {data: 'k'},
+      {data: 'l'},
+      {data: 'm'},
+      {data: 'n'},
+      {data: 'o'},
+      {data: 'p'},
+      {data: 'q'},
+      {data: 'r'},
+      {data: 's'},
+      {data: 't'},
+      {data: 'u'},
+      {data: 'v'},
+      {data: 'w'},
+      {data: 'x'},
+      {data: 'y'}
+     ],
 
     "createdRow": function ( row, data, index ) {
-            /*if ( data[5].replace(/[\$,]/g, '') * 1 > 150000 ) {
-                $('td', row).eq(5).addClass('highlight');
-            }*/
-            console.log(data)
-            $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
-            $(row).attr("data-idsolicitud", data.id_solicitud);
-        },
+      //console.log(data)
+      $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
+      $(row).attr("data-idsolicitud", data.id_solicitud);
+    },
 
-    "order": [[ 3, 'desc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
+    "order": [[ 4, 'desc' ]], //defecto ordenar por columna 5 nro solicitud
 
-      /*columnDefs: [
-         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
-     ],*/
+     "columnDefs": [
+     { className: "hide_column", "targets": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] },
+        /*{
+            "targets": [ 0 ],
+            "visible": false,
+            //"searchable": false
+        },*/
+        { targets: 1, orderData: 0}
+      ],
+
+      dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        /*buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],*/
 
       lengthChange: false,
       buttons: [
@@ -284,22 +382,17 @@ $(document).ready(function() {
             titleAttr: 'PDF',
             title: 'Reporte Historial Solicitud',
             orientation: 'landscape',
-            pageSize: 'A4',
+            pageSize: 'A3',
             filename: 'reporte',
             customize: function (doc) {
-
-              /*doc.content[1].table.widths = 
-                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');*/
-           
-                  doc.content.forEach(function(item) {
-
-                    item.alignment = 'center';
-                    //doc.content[1].table.body[i][4].alignment = 'center';
-                    })              
+              doc.content.forEach(function(item) {
+                item.alignment = 'center';
+                })              
             },
 
             exportOptions: {
-                 columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
+                 //columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
+                 //columns: [0, 1, 2, 3, 4],
             }
         },
         {
@@ -311,17 +404,16 @@ $(document).ready(function() {
             filename: 'reporte',
             header: true,
             customize: function( xlsx ) {
-                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+              var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-                var clRow = $('row', sheet);
-                $('row c ', sheet).each(function () {
-                    $(this).attr('s', '51');
-                    //$(this).attr('s', '2');
-                });
-
+              var clRow = $('row', sheet);
+              $('row c ', sheet).each(function () {
+                  $(this).attr('s', '51');
+              });
             },
             exportOptions: {
-                columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+              //columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+              //columns: [0, 1, 2, 3, 4],
             }
         },
       ],
@@ -341,11 +433,12 @@ $(document).ready(function() {
         "zeroRecords":      "No se encontraron registros",
       },
       "bInfo" : false,
+      //"searching": false,
       "pageLength": 10,
-      lengthMenu: [
+      /*lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
-      ]
+      ]*/
   } );
 
   table.buttons().container()
@@ -363,7 +456,7 @@ $(document).ready(function() {
       type:  'post',
       dataType: 'json',
       success:  function (response) {
-        console.log(response)
+        //console.log(response)
 
         var detalle = response.detalle[0];
         var asignar = response.asignar;

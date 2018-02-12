@@ -18,9 +18,6 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
-    .hide_column {
-      display : none;
-    }
     </style>    
   </head>
   <body>
@@ -86,7 +83,7 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">B&uacute;squeda Solicitud - Filtros</h4>
-              <form class="form-horizontal" method="GET" action="/C_reporteAsesor/agenteHistorialSolicitud">
+              <form class="form-horizontal" method="POST" action="/C_reporteAsesor/agenteHistorialSolicitud">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group" style="margin-top: 25px">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                
@@ -133,45 +130,93 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
-                      <th class="text-center hide_column">Fecha default</th>
-                      <th class="text-center r">Fecha Creación</th>
-                      <th class="text-center r">Cliente</th>
-                      <th class="text-center hide_column r">DNI</th>
-                      <th class="text-center hide_column">Edad</th>
-                      <th class="text-center hide_column r">Nro Cel</th>
-                      <th class="text-center hide_column r">Fijo</th>
-                      <th class="text-center hide_column r">Importe Préstamo</th>
-                      <th class="text-center hide_column r">Plazo</th>
-                      <th class="text-center hide_column r">Cuota Mensual</th>
-                      <th class="text-center hide_column r">Cuota Inicial</th>
-                      <th class="text-center hide_column r">Total Préstamo</th>
-                      <th class="text-center hide_column r">TEA</th>
-                      <th class="text-center hide_column r">TCEA</th>
-                      <th class="text-center hide_column">Empresa</th>
-                      <th class="text-center hide_column">Ingreso Mensual</th>
-                      <th class="text-center hide_column">Dirección</th>
-                      <th class="text-center hide_column">Distrito</th>
-                      <th class="text-center hide_column">Provincia</th>
-                      <th class="text-center hide_column">Departamento</th>
-                      <th class="text-center hide_column r">Nro Solicitud</th>
-                      <th class="text-center hide_column">Fecha Creación</th>
-                      <th class="text-center hide_column">Hora Creación</th>
-                      <th class="text-center hide_column">Fecha Cierre</th>
-                      <th class="text-center hide_column">Hora Cierre</th>
-                      <th class="text-center hide_column r">Agencia</th>
-                      <th class="text-center hide_column">Desembolso</th>
-                      <th class="text-center hide_column r">Agente</th>
+                      <th class="text-center" style="display: none">Fecha default</th>
+                      <th class="text-center">Fecha Creación</th>
+                      <th class="text-center">Cliente</th>
+                      <th class="text-center" style="display: none">DNI</th>
+                      <th class="text-center" style="display: none">E-mail</th>
+                      <th class="text-center" style="display: none">Nro Cel</th>
+                      <th class="text-center" style="display: none">Fijo</th>
+                      <th class="text-center" style="display: none">Importe Préstamo</th>
+                      <th class="text-center" style="display: none">Plazo</th>
+                      <th class="text-center" style="display: none">Cuota Mensual</th>
+                      <th class="text-center" style="display: none">Cuota Inicial</th>
+                      <th class="text-center" style="display: none">Total Préstamo</th>
+                      <th class="text-center" style="display: none">TEA</th>
+                      <th class="text-center" style="display: none">TCEA</th>
+
+                      <th class="text-center" style="display: none">Empresa</th>
+                      <th class="text-center" style="display: none">Ingreso Mensual</th>
+                      <th class="text-center" style="display: none">Dirección</th>
+                      <th class="text-center" style="display: none">Distrito</th>
+                      <th class="text-center" style="display: none">Provincia</th>
+                      <th class="text-center" style="display: none">Departamento</th>
+
+
+                      <th class="text-center" style="display: none">Nro- Solicitud</th>
+                      <th class="text-center" style="display: none">Fecha Creación</th>
+                      <th class="text-center" style="display: none">Hora Creación</th>
+                      <th class="text-center" style="display: none">Fecha Cierre</th>
+                      <th class="text-center" style="display: none">Hora Cierre</th>
+                      <th class="text-center" style="display: none">Agencia</th>
+                      <th class="text-center" style="display: none">Desembolso</th>
+                      <th class="text-center" style="display: none">Agente</th>
                       <th class="text-center">Tipo Crédito</th>
                       <th class="text-center">Nro sol.</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
+                      <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>                        
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        
+                        <td style="display: none"><?php echo $solicitud->dni_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->email_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
+                        <td style="display: none"><?php echo $solicitud->monto ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->cuota_inicial ?></td>
+                        <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td>
+                        <td style="display: none"><?php echo $solicitud->tea ?></td>
+                        <td style="display: none"><?php echo $solicitud->tcea ?></td>
+                        <td style="display: none"><?php echo $solicitud->empleador ?></td>
+                        <td style="display: none"><?php echo $solicitud->salario ?></td>
+                        <td style="display: none"><?php echo $solicitud->dir_empleador ?></td>
+                        <td style="display: none"><?php echo $solicitud->distrito ?></td>
+                        <td style="display: none"><?php echo $solicitud->provincia ?></td>
+                        <td style="display: none"><?php echo $solicitud->departamento ?></td>
+                        <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_solicitud ?></td>
+                        <td style="display: none"><?php echo $solicitud->fecha_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
+                        <td style="display: none"><?php echo $solicitud->agencia ?></td>
+                        <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
+                        <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td>
+
+                        <td><?php echo $solicitud->producto ?></td>
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
               <?php
-                  //if(isset($solicitudes) and count($solicitudes)){ ?>
+                  if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
-                <?php //} ?>
+                <?php } ?>
             </div>
           </div>
         </div>
@@ -239,186 +284,87 @@ $(document).ready(function() {
     format: 'YYYY-MM-DD'
   });
 
-  
-  jQuery.fn.DataTable.Api.register( 'buttons.exportData()', function ( options ) {
+        var table = $('#tabla-solicitudes').DataTable( {
 
-            if ( this.context.length ) {
-                var jsonResult = $.ajax({
-                    url: '/C_reporteAsesor/ajaxAgenteHistorialSolicitud',
-                    type: 'GET',
-                    data: {
-                      action: 'print',
-                      nro_solicitud: '<?php echo isset($_REQUEST["nro_solicitud"]) ? $_REQUEST["nro_solicitud"] : "" ?>',
-                      cliente: '<?php echo isset($_REQUEST["cliente"]) ? $_REQUEST["cliente"] : "" ?>',
-                      dni: '<?php echo isset($_REQUEST["dni"]) ? $_REQUEST["dni"] : "" ?>',
-                      fecha: '<?php echo isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : "" ?>'
-                    },
-                    dataType: "json",
-                    success: function (result) {
-                        //console.log(result)
-                    },
-                    async: false
-                });
+          "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
 
-                /*console.log(jsonResult);
-                console.log(jsonResult.responseJSON.data);*/
-
-                //return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th").map(function() { return this.innerHTML; }).get()};
-                return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
-            }
-        } );
-
-
-  var table = $('#tabla-solicitudes').DataTable( {
-    "processing": true,
-    "serverSide" : true,
-    "ajax": {
-     "url": '/C_reporteAsesor/ajaxAgenteHistorialSolicitud',
-     "type": 'GET',
-     "data": {
-      action: 'obtenerHistorialSolicitud',
-      nro_solicitud: '<?php echo isset($_REQUEST["nro_solicitud"]) ? $_REQUEST["nro_solicitud"] : "" ?>',
-      cliente: '<?php echo isset($_REQUEST["cliente"]) ? $_REQUEST["cliente"] : "" ?>',
-      dni: '<?php echo isset($_REQUEST["dni"]) ? $_REQUEST["dni"] : "" ?>',
-      fecha: '<?php echo isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : "" ?>'
-      }
-    },
-    "columns": [
-      {data: 'fecha_default'}, //oculto
-      {data: 'fecha_solicitud'},
-      {data: 'nombre'},
-      {data: 'producto'},
-      {data: 'id_solicitud'},
-      {data: 'a'},
-      {data: 'b'},
-      {data: 'c'},
-      {data: 'd'},
-      {data: 'e'},
-      {data: 'f'},
-      {data: 'g'},
-      {data: 'h'},
-      {data: 'i'},
-      {data: 'j'},
-      {data: 'k'},
-      {data: 'l'},
-      {data: 'm'},
-      {data: 'n'},
-      {data: 'o'},
-      {data: 'p'},
-      {data: 'q'},
-      {data: 'r'},
-      {data: 's'},
-      {data: 't'},
-      {data: 'u'},
-      {data: 'v'},
-      {data: 'w'},
-      {data: 'x'},
-      {data: 'y'}
+      columnDefs: [
+         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
      ],
 
-    "createdRow": function ( row, data, index ) {
-      //console.log(data)
-      $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
-      $(row).attr("data-idsolicitud", data.id_solicitud);
-    },
+            lengthChange: false,
+            buttons: [
+              {
+                  extend:    'pdf',
+                  text:      '<i class="fa fa-print fa-3x"></i>',
+                  titleAttr: 'PDF',
+                  title: 'Busqueda Solicitud - Filtros',
+                  orientation: 'landscape',
+                  pageSize: 'A4',
+                  filename: 'reporte',
+                  customize: function (doc) {
+           
+                  doc.content.forEach(function(item) {
 
-    "order": [[ 4, 'desc' ]], //defecto ordenar por columna 5 nro solicitud
+                    item.alignment = 'center';
+                    })              
+                  },
+                  exportOptions: {
+                      columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
+                  }
+              },
+              {
+                  extend:    'excel',
+                  text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
+                  messageTop: 'Busqueda Solicitud - Filtros',
+                  titleAttr: 'Excel',
+                  title: '',
+                  filename: 'reporte',
+                  header: true,
+                  customize: function( xlsx ) {
+                      var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-     "columnDefs": [
-     { className: "hide_column", "targets": [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27] },
-        /*{
-            "targets": [ 0 ],
-            "visible": false,
-            //"searchable": false
-        },*/
-        { targets: 1, orderData: 0}
-      ],
+                      var clRow = $('row', sheet);
+                      $('row c ', sheet).each(function () {
+                          $(this).attr('s', '51');
+                      });
+                  },
+                  exportOptions: {
+                      columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                  }
+              },
+            ],
+            "language": {
+              "search": "Buscar:",
+              "emptyTable": "No hay registros disponibles",
+              "paginate": {
+                  "first":        "Primero",
+                  "previous":     "Anterior",
+                  "next":         "Siguiente",
+                  "last":         "Ultimo"
+              },
+              "info":             "_START_ a _END_ de _TOTAL_ entradas",
 
-      dom: 'Bfrtip',
-        /*buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],*/
-
-        /*buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ],*/
-
-      lengthChange: false,
-      buttons: [
-        {
-            extend:    'pdf', //pdfHtml5
-            text:      '<i class="fa fa-print fa-3x"></i>',
-            titleAttr: 'PDF',
-            title: 'Reporte Historial Solicitud',
-            orientation: 'landscape',
-            pageSize: 'A3',
-            filename: 'reporte',
-            customize: function (doc) {
-              doc.content.forEach(function(item) {
-                item.alignment = 'center';
-                })              
+              "infoEmpty":        "0 de 0 of 0 entradas",
+              "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+              "zeroRecords":      "No se encontraron registros",
             },
+            "pageLength": 5,
+            lengthMenu: [
+                [ 5, 15, 25, 50, -1 ],
+                [ '5', '15', '25', '50', 'Total' ]
+            ]
+        } );
+     
+        table.buttons().container()
+        //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
+        .appendTo( '.buttons-export' );
 
-            exportOptions: {
-                 //columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
-                 //columns: [0, 1, 2, 3, 4],
-            }
-        },
-        {
-            extend:    'excel',
-            text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Reporte Historial Solicitud',
-            titleAttr: 'Excel',
-            title: '',
-            filename: 'reporte',
-            header: true,
-            customize: function( xlsx ) {
-              var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-              var clRow = $('row', sheet);
-              $('row c ', sheet).each(function () {
-                  $(this).attr('s', '51');
-              });
-            },
-            exportOptions: {
-              //columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
-              //columns: [0, 1, 2, 3, 4],
-            }
-        },
-      ],
-      "language": {
-        "search": "Buscar:",
-        "emptyTable": "No hay registros disponibles",
-        "paginate": {
-            "first":        "Primero",
-            "previous":     "Anterior",
-            "next":         "Siguiente",
-            "last":         "Ultimo"
-        },
-        "info":             "_START_ a _END_ de _TOTAL_ entradas",
+} );
+          
 
-        "infoEmpty":        "0 de 0 of 0 entradas",
-        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
-        "zeroRecords":      "No se encontraron registros",
-      },
-      "bInfo" : false,
-      //"searching": false,
-      "pageLength": 10,
-      /*lengthMenu: [
-          [ 5, 15, 25, 50, -1 ],
-          [ '5', '15', '25', '50', 'Total' ]
-      ]*/
-  } );
-
-  table.buttons().container()
-  //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
-  .appendTo( '.buttons-export' );          
-
-        //$(".tr-ver-info-solicitud").click(function() {
-        $('body').on('click', '#tabla-solicitudes tbody tr', function(e) {
+        $(".tr-ver-info-solicitud").click(function() {
             $.ajax({
                 data:  {id: $(this).attr('data-idSolicitud')},
                 url:   '/C_reporteAsesor/modalInformacionSolicitud',
@@ -433,10 +379,6 @@ $(document).ready(function() {
                   else if(detalle.id_producto == 2){
                     producto = 'Auto de Prymera';
                   }
-                  else if(detalle.id_producto == 3){
-                    producto = 'Auto Evaluación';
-                  }
-
                   $('.modal-title').html('Resumen Solicitud - '+producto);
 
                   $('#modalInformacionSolicitud').modal('show');
@@ -469,16 +411,6 @@ $(document).ready(function() {
                     dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
                     dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
                     dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
-                    dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
-                    dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
-                    dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
-                    dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
-                    dPrestamo += '<p><span>TEA:</span> '+detalle.tea+'%</p>';
-                  }
-                  if(detalle.id_producto == 3){
-                    dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
-                    dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-                    //dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
                     dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
                     dPrestamo += '<p><span>Cuota:</span> '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+' Meses</p>';
                     dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> s/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
@@ -556,7 +488,6 @@ $(document).ready(function() {
       return sValue;
     }
 
-} );
 
       </script>
     </body>

@@ -14,12 +14,9 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
 
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <style>
-    .hide_column {
-      display : none;
-    }
     </style>    
   </head>
   <body>
@@ -109,7 +106,7 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">Reporte Solicitudes de Clientes</h4>
-              <form class="form-horizontal" method="GET" action="/C_reporte/solicitudes">
+              <form class="form-horizontal" method="POST" action="/C_reporte/solicitudes">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
@@ -212,19 +209,56 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
-                      <th class="text-center hide_column">Fecha default</th>
-                      <th class="text-center r">Fecha Creación</th>
-                      <th class="text-center r">Nro sol.</th>
-                      <th class="text-center r">Cliente</th>
-                      <th class="text-center r">DNI</th>
-                      <th class="text-center r">Agencia</th>
-                      <th class="text-center r">Agencia de Tramitaci&oacute;n</th>
-                      <th class="text-center r">Tipo Crédito</th>
-                      <th class="text-center r">Agente</th>
-                      <th class="text-center r">Status</th>
-                      <th class="text-center r">Monto</th>
+                      <th class="text-center" style="display: none">Fecha default</th>
+                      <th class="text-center">Fecha Creación</th>
+                      <th class="text-center">Nro sol.</th>
+                      <th class="text-center">Cliente</th>
+                      <th class="text-center">DNI</th>
+                      <th class="text-center">Agencia</th>
+                      <th class="text-center">Agencia de Tramitaci&oacute;n</th>
+                      <th class="text-center">Tipo Crédito</th>
+                      <th class="text-center">Agente</th>
+                      <th class="text-center">Status</th>
+                      <th class="text-center">Monto</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <tr>
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->dni ?></td>
+                        <td><?php echo $solicitud->AGENCIA ?></td>
+                        <td><?php echo $solicitud->agencia_desembolso ?></td>
+                        <td><?php echo $solicitud->descripcion ?></td>
+                        <td><?php echo $solicitud->asesor_nombre.' '.$solicitud->asesor_apellido ?></td>
+                        <td>
+                          <?php if($solicitud->status_sol == 0) { ?>
+                              <?php echo 'Abierto' ?>
+                          <?php } else if($solicitud->status_sol == 1) { ?>
+                              <?php echo 'Cerrado' ?>
+                          <?php } else if($solicitud->status_sol == 2) { ?>
+                              <?php echo 'Rechazado' ?>
+                          <?php } else if($solicitud->status_sol == 3) { ?>
+                              <?php echo 'Anulado' ?>
+                          <?php } else if($solicitud->status_sol == 4) { ?>
+                              <?php echo 'Caducado' ?>
+                           <?php } else if($solicitud->status_sol == 5) {  ?>
+                              <?php echo 'Incompleto' ?>
+                          <?php } ?>
+                        </td>
+                        <td><?php echo $solicitud->monto ?></td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
               <?php if(isset($solicitudes) and count($solicitudes)){
@@ -239,10 +273,10 @@
                 }
                 ?>
                 <?php
-                  //if(isset($solicitudes) and count($solicitudes)){ ?>
+                  if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
-                <?php //} ?>
+                <?php } ?>
               
             </div>
 
@@ -284,114 +318,20 @@ $(document).ready(function() {
     format: 'YYYY-MM-DD'
   });
 
-  jQuery.fn.DataTable.Api.register( 'buttons.exportData()', function ( options ) {
-
-            if ( this.context.length ) {
-                var jsonResult = $.ajax({
-                    url: '/C_reporte/ajaxSolicitudes',
-                    type: 'GET',
-                    data: {
-                      action: 'print',
-                      agencia: '<?php echo isset($_REQUEST["agencia"]) ? $_REQUEST["agencia"] : "" ?>',
-                      tipo_credito: '<?php echo isset($_REQUEST["tipo_credito"]) ? $_REQUEST["tipo_credito"] : "" ?>',
-                      fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
-                      fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
-                    },
-                    dataType: "json",
-                    success: function (result) {
-                        //console.log(result)
-                    },
-                    async: false
-                });
-
-                /*console.log(jsonResult);
-                console.log(jsonResult.responseJSON.data);*/
-
-                //return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th").map(function() { return this.innerHTML; }).get()};
-                return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
-            }
-        } );
   
 
   var table = $('#tabla-solicitudes').DataTable( {
-    "processing": true,
-    "serverSide" : true,
-    "ajax": {
-     "url": '/C_reporte/ajaxSolicitudes',
-     "type": 'GET',
-     "data": {
-      action: 'obtenerSolicitudes',
-      agencia: '<?php echo isset($_REQUEST["agencia"]) ? $_REQUEST["agencia"] : "" ?>',
-      tipo_credito: '<?php echo isset($_REQUEST["tipo_credito"]) ? $_REQUEST["tipo_credito"] : "" ?>',
-      fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
-      fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
-      }
-    },
-    "columns": [
-      {data: 'fecha_default'}, //oculto
-      {data: 'fecha_solicitud'},
-      {data: 'id_solicitud'},
-      {data: 'nombre'},
-      {data: 'dni'},
-      {data: 'agencia'},
-      {data: 'agencia_desembolso'},
-      {data: 'descripcion'},
-      {data: 'asesor'},
-      {data: 'status_sol'},
-      {data: 'monto'}
+
+      "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
+
+      columnDefs: [
+         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
      ],
-
-    "createdRow": function ( row, data, index ) {
-      console.log(row)
-      if(data.status_sol == 0){
-        data.status_sol = 'Abierto';
-      }else if(data.status_sol == 1){
-        data.status_sol = 'Cerrado';
-      }else if(data.status_sol == 2){
-        data.status_sol = 'Rechazado';
-      }else if(data.status_sol == 3){
-        data.status_sol = 'Anulado';
-      }else if(data.status_sol == 4){
-        data.status_sol = 'Caducado';
-      }else if(data.status_sol == 5){
-        data.status_sol = 'Incompleto';
-      }
-
-      //$('td', row).eq(9).addClass('highlight');
-      $('td', row).eq(9).html(data.status_sol);
-
-      $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
-      $(row).attr("data-idsolicitud", data.id_solicitud);
-    },
-
-    "order": [[ 1, 'desc' ]], //defecto ordenar por columna 5 nro solicitud
-
-     "columnDefs": [
-     { className: "hide_column", "targets": [0] },
-        /*{
-            "targets": [ 0 ],
-            "visible": false,
-            //"searchable": false
-        },*/
-        { targets: 1, orderData: 0}
-      ],
-
-      dom: 'Bfrtip',
-        /*buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],*/
-
-        /*buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5'
-        ],*/
 
       lengthChange: false,
       buttons: [
         {
-            extend:    'pdf', //pdfHtml5
+            extend:    'pdf',
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
             title: 'Reporte Solicitudes de Clientes',
@@ -399,14 +339,16 @@ $(document).ready(function() {
             pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
-              doc.content.forEach(function(item) {
-                item.alignment = 'center';
-                })              
-            },
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
 
+                  doc.content.forEach(function(item) {
+                    item.alignment = 'center';
+                  }) 
+
+            },
             exportOptions: {
-                 //columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
-                 //columns: [0, 1, 2, 3, 4],
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             }
         },
         {
@@ -418,16 +360,15 @@ $(document).ready(function() {
             filename: 'reporte',
             header: true,
             customize: function( xlsx ) {
-              var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-              var clRow = $('row', sheet);
-              $('row c ', sheet).each(function () {
-                  $(this).attr('s', '51');
-              });
+                var clRow = $('row', sheet);
+                $('row c ', sheet).each(function () {
+                    $(this).attr('s', '51');
+                });
             },
             exportOptions: {
-              //columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
-              //columns: [0, 1, 2, 3, 4],
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             }
         },
       ],
@@ -447,13 +388,24 @@ $(document).ready(function() {
         "zeroRecords":      "No se encontraron registros",
       },
       "bInfo" : false,
-      //"searching": false,
       "pageLength": 10,
-      /*lengthMenu: [
+      lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
-      ]*/
+      ],
+      
   } );
+
+
+  //$('#tabla-solicitudes').find("th:eq(1)").off("click.DT").order( [ 0, 1, 2, 3, 4, 5 ], true );
+
+
+  /*$('#tabla-solicitudes').find("th:eq(1)").click(function(e){
+    e.stopPropagation();
+    //alert('hello');
+    $(this).off("click.DT");
+  });*/
+
 
   table.buttons().container()
   //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
