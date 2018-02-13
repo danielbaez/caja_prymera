@@ -86,7 +86,7 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">B&uacute;squeda Solicitud - Filtros</h4>
-              <form class="form-horizontal" method="GET" action="/C_reporteAsesor/agenteHistorialSolicitud">
+              <form class="form-horizontal" method="POST" action="/C_reporteAsesor/agenteHistorialSolicitud">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group" style="margin-top: 25px">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">                

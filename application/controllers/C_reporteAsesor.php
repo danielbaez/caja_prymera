@@ -14,7 +14,7 @@ class C_reporteAsesor extends CI_Controller {
 
     }
     
-    public function agenteCliente()
+    /*public function agenteCliente()
     {      
 
         $data['productos'] = $this->M_producto->getProductos();
@@ -48,6 +48,74 @@ class C_reporteAsesor extends CI_Controller {
         else
         {        
             $this->load->view('v_asesorAgenteCliente', $data);
+        }
+    }*/
+
+    public function agenteCliente()
+    {   
+        $data['productos'] = $this->M_producto->getProductos();
+
+        $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
+        if($action and  $action == 'obtenerAgenteCliente') {
+            $tipo_credito = $_REQUEST['tipo_credito'];
+            $status = $_REQUEST['status'];
+            $fecha_desde = $_REQUEST['fecha_desde'];
+            $fecha_hasta = $_REQUEST['fecha_hasta'];
+
+            $id_asesor = _getSesion('id_usuario');
+
+            $data['id_tipo_credito'] = $tipo_credito;
+            $data['status'] = $status;
+            $data['desde'] = $fecha_desde;
+            $data['hasta'] = $fecha_hasta;
+
+            $this->load->view('v_asesorAgenteCliente', $data);
+        }
+        else
+        {
+            $this->load->view('v_asesorAgenteCliente', $data);    
+        }
+        
+    }
+
+    public function ajaxAgenteCliente()
+    {
+        $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : null;
+        if($action and  $action == 'obtenerAgenteCliente') {
+            $tipo_credito = $_REQUEST['tipo_credito'];
+            $status = $_REQUEST['status'];
+            $fecha_desde = $_REQUEST['fecha_desde'];
+            $fecha_hasta = $_REQUEST['fecha_hasta'];
+
+            $id_asesor = _getSesion('id_usuario');
+
+            $filtros = array(
+                'id_asesor' => $id_asesor,
+                'tipo_credito' => $tipo_credito,
+                'status' => $status,
+                'fecha_desde' => $fecha_desde,
+                'fecha_hasta' => $fecha_hasta
+            );
+
+            echo $this->M_solicitud->ajaxObtenerAsesorAgenteCliente($filtros, false);
+        }
+        elseif($action and  $action == 'print') {
+            $tipo_credito = $_REQUEST['tipo_credito'];
+            $status = $_REQUEST['status'];
+            $fecha_desde = $_REQUEST['fecha_desde'];
+            $fecha_hasta = $_REQUEST['fecha_hasta'];
+
+            $id_asesor = _getSesion('id_usuario');
+
+            $filtros = array(
+                'id_asesor' => $id_asesor,
+                'tipo_credito' => $tipo_credito,
+                'status' => $status,
+                'fecha_desde' => $fecha_desde,
+                'fecha_hasta' => $fecha_hasta
+            );
+
+            echo $this->M_solicitud->ajaxObtenerAsesorAgenteCliente($filtros, true);
         }
     }
 

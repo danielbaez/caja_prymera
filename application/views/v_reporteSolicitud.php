@@ -109,7 +109,7 @@
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
               <h4 class="titulo-vista">Reporte Solicitudes de Clientes</h4>
-              <form class="form-horizontal" method="GET" action="/C_reporte/solicitudes">
+              <form class="form-horizontal" method="POST" action="/C_reporte/solicitudes">
                 <div class="col-xs-12 col-sm-4">
                   <div class="form-group">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
@@ -304,10 +304,26 @@ $(document).ready(function() {
                     async: false
                 });
 
-                /*console.log(jsonResult);
-                console.log(jsonResult.responseJSON.data);*/
+                //console.log(jsonResult);
+                //console.log(jsonResult.responseJSON.data);
 
-                //return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th").map(function() { return this.innerHTML; }).get()};
+                jsonResult.responseJSON.data.forEach(function(part, index, theArray) {
+                  if(part[8] == 0){
+                    aa = 'Abierto';
+                  }else if(part[8] == 1){
+                    aa = 'Cerrado';
+                  }else if(part[8] == 2){
+                    aa = 'Rechazado';
+                  }else if(part[8] == 3){
+                    aa = 'Anulado';
+                  }else if(part[8] == 4){
+                    aa = 'Caducado';
+                  }else if(part[8] == 5){
+                    aa = 'Incompleto';
+                  }
+                  theArray[index][8] = aa;
+                });
+
                 return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
             }
         } );

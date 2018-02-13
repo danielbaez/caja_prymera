@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
+    .hide_column {
+      display : none;
+    }
     </style>    
   </head>
   <body>
@@ -164,153 +167,24 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
-                      <th class="text-center" style="display: none">Fecha default</th>
-                      <th class="text-center">Fecha Creación</th>
-                      <th class="text-center">Cliente</th>
-                      <th class="text-center">DNI</th>
-                      <!-- <th class="text-center" style="display: none">Email</th>
-                      <th class="text-center" style="display: none">Nro Cel</th>
-                      <th class="text-center" style="display: none">Fijo</th>
-                      <th class="text-center" style="display: none">Importe Préstamo</th>
-                      <th class="text-center" style="display: none">Plazo</th>
-                      <th class="text-center" style="display: none">Cuota Mensual</th>
-                      <th class="text-center" style="display: none">Cuota Inicial</th>
-                      <th class="text-center" style="display: none">Total Préstamo</th>
-                      <th class="text-center" style="display: none">TEA</th>
-                      <th class="text-center" style="display: none">TCEA</th>
-
-                      <th class="text-center" style="display: none">Empresa</th>
-                      <th class="text-center" style="display: none">Ingreso Mensual</th>
-                      <th class="text-center" style="display: none">Dirección</th>
-                      <th class="text-center" style="display: none">Distrito</th>
-                      <th class="text-center" style="display: none">Provincia</th>
-                      <th class="text-center" style="display: none">Departamento</th>
-
-
-                      <th class="text-center" style="display: none">Nro Solicitud</th>
-                      <th class="text-center" style="display: none">Fecha Creación</th>
-                      <th class="text-center" style="display: none">Hora Creación</th>
-                      <th class="text-center" style="display: none">Fecha Cierre</th>
-                      <th class="text-center" style="display: none">Hora Cierre</th>
-                      <th class="text-center" style="display: none">Agencia</th>
-                      <th class="text-center" style="display: none">Desembolso</th>
-                      <th class="text-center" style="display: none">Agente</th> -->
-                      <th class="text-center">Tipo Crédito</th>
-                      <th class="text-center">Estado</th>
-                      <th class="text-center">Página</th>
-                      <th class="text-center">Nro sol.</th>
-                      <th class="text-center">IP de Acceso</th>
+                      <th class="text-center hide_column">Fecha default</th>
+                      <th class="text-center r">Fecha Creación</th>
+                      <th class="text-center r">Cliente</th>
+                      <th class="text-center r">DNI</th>
+                      <th class="text-center r">Tipo Crédito</th>
+                      <th class="text-center r">Estado</th>
+                      <th class="text-center r">Página</th>
+                      <th class="text-center r">Nro sol.</th>
+                      <th class="text-center r">IP de Acceso</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <?php
-                    if(isset($solicitudes) and count($solicitudes)){
-                      foreach ($solicitudes as $solicitud) {
-                      ?>
-                      <!-- <tr class="tr-cursor-pointer tr-ver-info-solicitud" data-toggle="modal" data-target="#modalInformacionSolicitud"> -->
-                      <tr class="tr-ver-info-solicitud" data-idSolicitud="<?php echo $solicitud->id_solicitud ?>">
-                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
-                        <td><?php echo $solicitud->fecha_solicitud ?></td>                        
-                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
-                        
-                        <td><?php echo $solicitud->dni_titular ?></td>
-                        <!-- <td style="display: none"><?php echo $solicitud->email_titular ?></td>
-                        <td style="display: none"><?php echo $solicitud->celular_titular ?></td>
-                        <td style="display: none"><?php echo $solicitud->nro_fijo_titular ?></td>
-                        <td style="display: none"><?php echo $solicitud->monto ?></td>
-                        <td style="display: none"><?php echo $solicitud->plazo ?></td>
-                        <td style="display: none"><?php echo $solicitud->cuota_mensual ?></td>
-                        <td style="display: none"><?php echo $solicitud->cuota_inicial ?></td>
-                        <td style="display: none"><?php echo $solicitud->plazo*$solicitud->cuota_mensual ?></td>
-                        <td style="display: none"><?php echo $solicitud->tea ?></td>
-                        <td style="display: none"><?php echo $solicitud->tcea ?></td>
-                        <td style="display: none"><?php echo $solicitud->empleador ?></td>
-                        <td style="display: none"><?php echo $solicitud->salario ?></td>
-                        <td style="display: none"><?php echo $solicitud->dir_empleador ?></td>
-                        <td style="display: none"><?php echo $solicitud->distrito ?></td>
-                        <td style="display: none"><?php echo $solicitud->provincia ?></td>
-                        <td style="display: none"><?php echo $solicitud->departamento ?></td>
-                        <td style="display: none"><?php echo $solicitud->id_solicitud ?></td>
-                        <td style="display: none"><?php echo $solicitud->fecha_solicitud ?></td>
-                        <td style="display: none"><?php echo $solicitud->hora_solicitud ?></td>
-                        <td style="display: none"><?php echo $solicitud->fecha_cierre ?></td>
-                        <td style="display: none"><?php echo $solicitud->hora_cierre ?></td>
-                        <td style="display: none"><?php echo $solicitud->agencia ?></td>
-                        <td style="display: none"><?php echo $solicitud->agencia_desembolso ?></td>
-                        <td style="display: none"><?php echo $solicitud->usuario_nombre.' '.$solicitud->usuario_apellido ?></td> -->
-
-                        <td><?php echo $solicitud->producto ?></td>
-                        <td>
-                        <?php
-                          if($solicitud->status_sol == 1)
-                          {
-                            echo "Cerrado";
-                          }
-                          elseif($solicitud->status_sol == 0)
-                          {
-                            echo "Abierto";
-                          }
-                          elseif($solicitud->status_sol == 5)
-                          {
-                          echo "Incompleto";
-                          }
-                          elseif($solicitud->status_sol == 4)
-                          {
-                          echo "Caducado";
-                          }
-                          elseif($solicitud->status_sol == 3)
-                          {
-                          echo "Cancelado";
-                          }
-                          elseif($solicitud->status_sol == 2)
-                          {
-                          echo "Rechazado";
-                          } 
-                          ?>
-                        </td>
-                        <td>
-                          <?php
-                          if($solicitud->last_page == 0)
-                          {
-                            echo "Lo sentimos";
-                          }
-                          elseif($solicitud->last_page == 1)
-                          {
-                            echo "Te contactamos";
-                          }
-                          elseif($solicitud->last_page == 2)
-                          {
-                            echo "Simulador";
-                          }
-                          elseif($solicitud->last_page == 3)
-                          {
-                            echo "Confirmar Datos";
-                          }
-                          elseif($solicitud->last_page == 4)
-                          {
-                            echo "Resumen Solicitud";
-                          }
-                          elseif($solicitud->last_page == 5)
-                          {
-                            echo "Info y Mapa";
-                          }
-                            ?>
-                          </td>
-                          <td><?php echo $solicitud->id_solicitud ?></td>
-                          <td><?php echo $solicitud->ip_agencia ?></td>
-                      </tr>
-                      <?php
-                      }
-                    }
-                    ?>
-                  </tbody>
                 </table>
               </div>
               <?php
-                  if(isset($solicitudes) and count($solicitudes)){ ?>
+                  //if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
-                <?php } ?>
+                <?php //} ?>
             </div>
           </div>
         </div>
@@ -379,13 +253,171 @@ $(document).ready(function() {
     format: 'YYYY-MM-DD'
   });
 
+  jQuery.fn.DataTable.Api.register( 'buttons.exportData()', function ( options ) {
+
+            if ( this.context.length ) {
+                var jsonResult = $.ajax({
+                    url: '/C_reporte/ajaxSolicitudesTotales',
+                    type: 'GET',
+                    data: {
+                      action: 'print',
+                      asesor: '<?php echo isset($_REQUEST["asesor"]) ? $_REQUEST["asesor"] : "" ?>',
+                      id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
+                      fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
+                      fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        //console.log(result)
+                    },
+                    async: false
+                });
+
+                //console.log(jsonResult);
+                //console.log(jsonResult.responseJSON.data);
+
+                jsonResult.responseJSON.data.forEach(function(part, index, theArray) {
+                  var estado = theArray[index][4];
+                  if(part[4] == 0){
+                    estado = 'Abierto';
+                  }else if(part[4] == 1){
+                    estado = 'Cerrado';
+                  }else if(part[4] == 2){
+                    estado = 'Rechazado';
+                  }else if(part[4] == 3){
+                    estado = 'Anulado';
+                  }else if(part[4] == 4){
+                    estado = 'Caducado';
+                  }else if(part[4] == 5){
+                    estado = 'Incompleto';
+                  }
+                  theArray[index][4] = estado;
+
+                  var page = theArray[index][5];
+                  if(part[5] == 0){
+                    page = 'Lo sentimos';
+                  }else if(part[5] == 1){
+                    page = 'Te contactamos';
+                  }else if(part[5] == 2){
+                    page = 'Simulador';
+                  }else if(part[5] == 3){
+                    page = 'Confirmar Datos';
+                  }else if(part[5] == 4){
+                    page = 'Resumen Solicitud';
+                  }else if(part[5] == 5){
+                    page = 'Info y Mapa';
+                  }else if(part[5] == 7){
+                    page = 'Simulador';
+                  }else if(part[5] == 8){
+                    page = 'Resumen Solicitud';
+                  }
+
+                  theArray[index][5] = page;
+
+                });
+
+                return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
+            }
+        } );
+  
+
   var table = $('#tabla-solicitudes').DataTable( {
-
-    "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
-
-      columnDefs: [
-         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
+    "processing": true,
+    "serverSide" : true,
+    "ajax": {
+     "url": '/C_reporte/ajaxSolicitudesTotales',
+     "type": 'GET',
+     "data": {
+      action: 'obtenerSolicitudesTotales',
+      asesor: '<?php echo isset($_REQUEST["asesor"]) ? $_REQUEST["asesor"] : "" ?>',
+      id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
+      fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
+      fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+      }
+    },
+    "columns": [
+      {data: 'fecha_default'}, //oculto
+      {data: 'fecha_solicitud'},
+      {data: 'nombre'},
+      {data: 'dni'},
+      {data: 'producto'},
+      {data: 'status_sol'},
+      {data: 'last_page'},
+      {data: 'id_solicitud'},
+      {data: 'ip'}
      ],
+
+    "createdRow": function ( row, data, index ) {
+      console.log(data)
+      if(data.status_sol == 0){
+        data.status_sol = 'Abierto';
+      }else if(data.status_sol == 1){
+        data.status_sol = 'Cerrado';
+      }else if(data.status_sol == 2){
+        data.status_sol = 'Rechazado';
+      }else if(data.status_sol == 3){
+        data.status_sol = 'Anulado';
+      }else if(data.status_sol == 4){
+        data.status_sol = 'Caducado';
+      }else if(data.status_sol == 5){
+        data.status_sol = 'Incompleto';
+      }
+
+      //$('td', row).eq(9).addClass('highlight');
+      $('td', row).eq(5).html(data.status_sol);
+
+      if(data.last_page == 0){
+        data.last_page = 'Lo sentimos';
+      }else if(data.last_page == 1){
+        data.last_page = 'Te contactamos';
+      }else if(data.last_page == 2){
+        data.last_page = 'Simulador';
+      }else if(data.last_page == 3){
+        data.last_page = 'Confirmar Datos';
+      }else if(data.last_page == 4){
+        data.last_page = 'Resumen Solicitud';
+      }else if(data.last_page == 5){
+        data.last_page = 'Info y Mapa';
+      }else if(data.last_page == 7){
+        data.last_page = 'Simulador';
+      }else if(data.last_page == 8){
+        data.last_page = 'Resumen Solicitud';
+      }
+
+      $('td', row).eq(6).html(data.last_page);
+
+
+      $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
+      $(row).attr("data-idsolicitud", data.id_solicitud);
+    },
+
+    "order": [[ 1, 'desc' ]], //defecto ordenar por columna 5 nro solicitud
+
+     "columnDefs": [
+     { className: "hide_column", "targets": [0] },
+        /*{
+            "targets": [ 0 ],
+            "visible": false,
+            //"searchable": false
+        },*/
+        { targets: 1, orderData: 0},
+        {
+        "targets": 8,
+        "orderable": false
+        }
+      ],
+
+      dom: 'Bfrtip',
+        /*buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],*/
+
+        /*buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],*/
 
       lengthChange: false,
       buttons: [
@@ -394,20 +426,18 @@ $(document).ready(function() {
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
             title: 'Reporte Consultas DNI por agente',
-            orientation: 'landscape',
+            orientation: 'portrait',
             pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
-              doc.content[1].table.widths = 
-                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-
-                  doc.content.forEach(function(item) {
-                    item.alignment = 'center';
-                  }) 
-
+              doc.content.forEach(function(item) {
+                item.alignment = 'center';
+                })              
             },
+
             exportOptions: {
-                 columns: [1, 2, 3, 4, 5, 6, 7, 8],
+                 //columns: [ 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 20, 25, 27],
+                 //columns: [0, 1, 2, 3, 4],
             }
         },
         {
@@ -419,17 +449,16 @@ $(document).ready(function() {
             filename: 'reporte',
             header: true,
             customize: function( xlsx ) {
-                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+              var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-                var clRow = $('row', sheet);
-                $('row c ', sheet).each(function () {
-                    $(this).attr('s', '51');
-                    //$(this).attr('s', '2');
-                });
-
+              var clRow = $('row', sheet);
+              $('row c ', sheet).each(function () {
+                  $(this).attr('s', '51');
+              });
             },
             exportOptions: {
-                columns: [1, 2, 3, 4, 5, 6, 7, 8]
+              //columns: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+              //columns: [0, 1, 2, 3, 4],
             }
         },
       ],
@@ -449,11 +478,12 @@ $(document).ready(function() {
         "zeroRecords":      "No se encontraron registros",
       },
       "bInfo" : false,
+      //"searching": false,
       "pageLength": 10,
-      lengthMenu: [
+      /*lengthMenu: [
           [ 5, 15, 25, 50, -1 ],
           [ '5', '15', '25', '50', 'Total' ]
-      ]
+      ]*/
   } );
 
   table.buttons().container()

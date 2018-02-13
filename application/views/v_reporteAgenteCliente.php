@@ -20,6 +20,9 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
+    .hide_column {
+      display : none;
+    }
     </style>    
   </head>
   <body>
@@ -147,45 +150,25 @@
                   </div>
                   <div class="form-group"> 
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">      
-                      <label for="status">Status:</label>           
+                                 
                       <select name="status" class="form-control" id="status">
-                        <option value="">Status</option>
+                        
                         <?php if(isset($status)){
-                          if($status == ''){
+                          
                           ?>
-                          <option value="0">Abierto</option>
-                          <option value="1">Cerrado</option>
-                          <option value="2">Rechazado</option>
-                          <option value="3">Anulado</option>
-                          <option value="4">Caducado</option>
-                          <option value="5">Incompleto</option>
+                          <option value="" <?php if($status == '') {echo 'selected';} ?>>Seleccione status</option>
+                          <option value="0" <?php if($status == '0') {echo 'selected';} ?>>Abierto</option>
+                          <option value="1" <?php if($status == '1') {echo 'selected';} ?>>Cerrado</option>
+                          <option value="2" <?php if($status == '2') {echo 'selected';} ?>>Rechazado</option>
+                          <option value="3" <?php if($status == '3') {echo 'selected';} ?>>Anulado</option>
+                          <option value="4" <?php if($status == '4') {echo 'selected';} ?>>Caducado</option>
+                          <option value="5" <?php if($status == '5') {echo 'selected';} ?>>Incompleto</option>
                           <?php
-                          }
-                          elseif($status == 0){
-                          ?>
-                          <option selected value="0">Abierto</option>
-                          <option value="1">Cerrado</option>
-                          <option value="2">Rechazado</option>
-                          <option value="3">Anulado</option>
-                          <option value="4">Caducado</option>
-                          <option value="5">Incompleto</option>
-                          <?php
-                          }
-                          elseif($status == 1){
-                          ?>
-                          <option value="0">Abierto</option>
-                          <option selected value="1">Cerrado</option>
-                          <option value="2">Rechazado</option>
-                          <option value="3">Anulado</option>
-                          <option value="4">Caducado</option>
-                          <option value="5">Incompleto</option>
-                          <?php
-                          }
-
                         }
                         else
                         {
                         ?>
+                          <option value="">Seleccione status</option>
                           <option value="0">Abierto</option>
                           <option value="1">Cerrado</option>
                           <option value="2">Rechazado</option>
@@ -241,56 +224,18 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
-                      <th class="text-center" style="display: none">Fecha default</th>
-                      <th class="text-center">Fecha Creación</th>
-                      <th class="text-center">Nro sol.</th>
-                      <th class="text-center">Cliente</th>
-                      <th class="text-center">Agencia</th>
-                      <th class="text-center">Agencia de Transmisi&oacute;n</th>
-                      <th class="text-center">Tipo Crédito</th>
-                      <th class="text-center">Status</th>
-                      <th class="text-center">Monto</th>
+                      <th class="text-center hide_column">Fecha default</th>
+                      <th class="text-center r">Fecha Creación</th>
+                      <th class="text-center r">Nro sol.</th>
+                      <th class="text-center r">Cliente</th>
+                      <th class="text-center r">Agencia</th>
+                      <th class="text-center r">Agencia de Transmisi&oacute;n</th>
+                      <th class="text-center r">Tipo Crédito</th>
+                      <th class="text-center r">Status</th>
+                      <th class="text-center r">Monto</th>
                       <th class="text-center">Acción</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <?php
-                    if(isset($solicitudes) and count($solicitudes)){
-                      foreach ($solicitudes as $solicitud) {
-                      ?>
-                      <tr id="estado<?php echo $solicitud->id_solicitud ?>" >
-                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
-                        <td><?php echo $solicitud->fecha_solicitud ?></td>
-                        <td><?php echo $solicitud->id_solicitud ?></td>
-                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
-                        <td><?php echo $solicitud->AGENCIA ?></td>
-                        <td><?php echo $solicitud->agencia_desembolso ?></td>
-                        <td><?php echo $solicitud->descripcion ?></td>
-                        <td id="status<?php echo $solicitud->id_solicitud ?>">
-                          <?php if($solicitud->status_sol == 0) { ?>
-                              <?php echo 'Abierto' ?>
-                          <?php } else if($solicitud->status_sol == 1) { ?>
-                              <?php echo 'Cerrado' ?>
-                          <?php } else if($solicitud->status_sol == 2) { ?>
-                              <?php echo 'Rechazado' ?>
-                          <?php } else if($solicitud->status_sol == 3) { ?>
-                              <?php echo 'Anulado' ?>
-                          <?php } else if($solicitud->status_sol == 4) { ?>
-                              <?php echo 'Caducado' ?>
-                          <?php } else if($solicitud->status_sol == 5) {  ?>
-                              <?php echo 'Incompleto' ?>
-                          <?php } ?>
-                        </td>
-                        <td><?php echo $solicitud->monto ?></td>
-                        <td id="accion<?php echo $solicitud->id_solicitud ?>"><?php if($solicitud->status_sol == 0) { ?><button type="button" style="background: #fff !important;border: transparent;" class="btn btn-default" onclick="cambiarEstado(<?php echo $solicitud->id_solicitud ?>)"><i class="fa fa-ban" data-original-title="Anular" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></button>
-                          <?php } ?>
-                        </td>
-                      </tr>
-                      <?php
-                      }
-                    }
-                    ?>
-                  </tbody>
                 </table>
               </div>
               <?php if(isset($solicitudes) and count($solicitudes)){
@@ -305,10 +250,10 @@
                 }
                 ?>
                 <?php
-                  if(isset($solicitudes) and count($solicitudes)){ ?>
+                  //if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
-                <?php } ?>
+                <?php //} ?>
             </div>
           </div>
         </div>
@@ -375,13 +320,127 @@ $(document).ready(function() {
     format: 'YYYY-MM-DD'
   });
 
+  jQuery.fn.DataTable.Api.register( 'buttons.exportData()', function ( options ) {
+
+    if ( this.context.length ) {
+      var jsonResult = $.ajax({
+          url: '/C_reporte/ajaxAgenteCliente',
+          type: 'GET',
+          data: {
+            action: 'print',
+            asesor: '<?php echo isset($_REQUEST["asesor"]) ? $_REQUEST["asesor"] : "" ?>',
+            id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
+            tipo_credito: '<?php echo isset($_REQUEST["tipo_credito"]) ? $_REQUEST["tipo_credito"] : "" ?>',
+            status: '<?php echo isset($_REQUEST["status"]) ? $_REQUEST["status"] : "" ?>',
+            fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
+            fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+          },
+          dataType: "json",
+          success: function (result) {
+              //console.log(result)
+          },
+          async: false
+      });
+
+      //console.log(jsonResult);
+      //console.log(jsonResult.responseJSON.data);
+
+      jsonResult.responseJSON.data.forEach(function(part, index, theArray) {
+        if(part[6] == 0){
+          aa = 'Abierto';
+        }else if(part[6] == 1){
+          aa = 'Cerrado';
+        }else if(part[6] == 2){
+          aa = 'Rechazado';
+        }else if(part[6] == 3){
+          aa = 'Anulado';
+        }else if(part[6] == 4){
+          aa = 'Caducado';
+        }else if(part[6] == 5){
+          aa = 'Incompleto';
+        }
+        theArray[index][6] = aa;
+      });
+
+      return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
+    }
+  } );
+  
+
   var table = $('#tabla-solicitudes').DataTable( {
-
-    "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
-
-      columnDefs: [
-         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
+    "processing": true,
+    "serverSide" : true,
+    "ajax": {
+     "url": '/C_reporte/ajaxAgenteCliente',
+     "type": 'GET',
+     "data": {
+      action: 'obtenerAgenteCliente',
+      asesor: '<?php echo isset($_REQUEST["asesor"]) ? $_REQUEST["asesor"] : "" ?>',
+      id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
+      tipo_credito: '<?php echo isset($_REQUEST["tipo_credito"]) ? $_REQUEST["tipo_credito"] : "" ?>',
+      status: '<?php echo isset($_REQUEST["status"]) ? $_REQUEST["status"] : "" ?>',
+      fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
+      fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+      }
+    },
+    "columns": [
+      {data: 'fecha_default'}, //oculto
+      {data: 'fecha_solicitud'},
+      {data: 'id_solicitud'},
+      {data: 'nombre'},
+      {data: 'agencia'},
+      {data: 'agencia_desembolso'},
+      {data: 'descripcion'},
+      {data: 'status_sol'},
+      {data: 'monto'},
+      {data: 'accion'}
      ],
+
+    "createdRow": function ( row, data, index ) {
+      console.log(data)
+      var a = '';
+      if(data.status_sol == 0){
+
+        //a = '<td id="accion'+data.id_solicitud+'">';
+        
+        a+= '<button type="button" style="background: #fff !important;border: transparent;" class="btn btn-default" onclick="cambiarEstado('+data.id_solicitud+')"><i class="fa fa-ban" data-original-title="Anular" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></button>';
+
+
+        $('td', row).eq(9).html(a);
+
+        $('td', row).eq(9).attr('id', 'accion'+data.id_solicitud);
+
+        data.status_sol = 'Abierto';
+      }else if(data.status_sol == 1){
+        data.status_sol = 'Cerrado';
+      }else if(data.status_sol == 2){
+        data.status_sol = 'Rechazado';
+      }else if(data.status_sol == 3){
+        data.status_sol = 'Anulado';
+      }else if(data.status_sol == 4){
+        data.status_sol = 'Caducado';
+      }else if(data.status_sol == 5){
+        data.status_sol = 'Incompleto';
+      }
+
+      $('td', row).eq(7).html(data.status_sol);
+
+      $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
+      $(row).attr("data-idsolicitud", data.id_solicitud);
+    },
+
+    "order": [[ 1, 'desc' ]],
+
+     "columnDefs": [
+     { className: "hide_column", "targets": [0] },
+        { targets: 1, orderData: 0},
+        {
+        "targets": 9,
+        "orderable": false
+        } 
+      ],
+
+      dom: 'Bfrtip',
 
       lengthChange: false,
       buttons: [
@@ -394,16 +453,12 @@ $(document).ready(function() {
             pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
-              doc.content[1].table.widths = 
-                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
-
-                  doc.content.forEach(function(item) {
-                    item.alignment = 'center';
-                  }) 
-
+              doc.content.forEach(function(item) {
+                item.alignment = 'center';
+                })              
             },
+
             exportOptions: {
-                columns: [ 1, 2, 3, 4, 5, 6, 7, 8]
             }
         },
         {
@@ -415,15 +470,14 @@ $(document).ready(function() {
             filename: 'reporte',
             header: true,
             customize: function( xlsx ) {
-                var sheet = xlsx.xl.worksheets['sheet1.xml'];
+              var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-                var clRow = $('row', sheet);
-                $('row c ', sheet).each(function () {
-                    $(this).attr('s', '51');
-                });
+              var clRow = $('row', sheet);
+              $('row c ', sheet).each(function () {
+                  $(this).attr('s', '51');
+              });
             },
             exportOptions: {
-                columns: [ 1, 2, 3, 4, 5, 6, 7, 8]
             }
         },
       ],
@@ -444,14 +498,9 @@ $(document).ready(function() {
       },
       "bInfo" : false,
       "pageLength": 10,
-      lengthMenu: [
-          [ 5, 15, 25, 50, -1 ],
-          [ '5', '15', '25', '50', 'Total' ]
-      ]
   } );
 
   table.buttons().container()
-  //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
   .appendTo( '.buttons-export' );
 
   var options = {
