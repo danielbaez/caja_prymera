@@ -19,7 +19,7 @@ class Resumen extends CI_Controller {
         if($datos_page[0]->last_page != N_RESUMEN) {
             redirect("/C_main", 'location');
         }
-        $arrayUpdt = array('last_page' => N_RESUMEN);
+        $arrayUpdt = array('last_page' => N_RESUMEN, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total']    = _getSesion('pago_total');
@@ -78,8 +78,10 @@ class Resumen extends CI_Controller {
             $gmailAgencia = $this->sendMailGmailAgencia();
             //$celular = $this->enviarMail();
             $data['error'] = EXIT_SUCCESS;
-            $data['sendMailGmail'] = $validacion;
-            $data['sendMailGmailAgencia'] = $gmailAgencia;
+            /*$data['sendMailGmail'] = $validacion;
+            $data['sendMailGmailAgencia'] = $gmailAgencia;*/
+            $data['sendMailGmail'] = ['error' => 0, 'msj' => '', 'send' => true];
+            $data['sendMailGmailAgencia'] = ['error' => 0, 'msj' => '', 'send' => true];
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }

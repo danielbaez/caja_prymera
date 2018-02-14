@@ -21,7 +21,7 @@ class C_confirmacion extends CI_Controller {
             redirect("/C_main", 'location');
         }
         $idPersona  = _getSesion('idPersona');
-        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
+        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
 
         $data['nombre'] = _getSesion('nombre');
@@ -246,7 +246,7 @@ class C_confirmacion extends CI_Controller {
                                  'Provincia'         => $Provincia,
                                  'Distrito'          => $Distrito,
                                  'Agencia'           => $Agencia,
-                                 'monto'             => $monto,
+                                 //'monto'             => $monto,
                                  'estado_civil'      => $estado_civil,
                                  'email'             => $email
                                 );
@@ -269,7 +269,7 @@ class C_confirmacion extends CI_Controller {
                                'estado_civil'       => $estado_civil,
                                'nombre_conyugue'    => $nombre_conyugue,
                                'dni_conyugue'       => $dni_conyugue,
-                               'status_sol'         => 0,
+                               //'status_sol'         => 0,
                                'last_page'          => N_RESUMEN,
                                'email'              => $email
                               );

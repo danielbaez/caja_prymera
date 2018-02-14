@@ -363,6 +363,9 @@
       periodo = $('#periodo_gracia').val();
       modelo= $('#modelo option:selected').val();
 
+      console.log(monto)
+      console.log(cuota)
+
       m = monto.replace(/[^0-9.]/g, "");
       c = cuota.replace(/[^0-9.]/g, "");
         if(modelo != '') {
@@ -394,13 +397,21 @@
                 start: (data.montoMinimo+data.montoMaximo)/2
             });
 
-            rangeSliderCuota.noUiSlider.updateOptions({
+            if(data.cuotaMinimo == data.cuotaMaximo){
+              $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+              rangeSliderCuota.setAttribute('disabled', true);  
+            }else{
+              rangeSliderCuota.removeAttribute('disabled');
+            }
+
+            /*rangeSliderCuota.noUiSlider.updateOptions({
                 range: {
                     'min': data.cuotaMinimo,
                     'max': data.cuotaMaximo
                 },
                 start: data.cuotaMinimo
-            });
+            });*/
+
             $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
             $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
             $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
@@ -467,13 +478,13 @@
           rangeSliderCuota.removeAttribute('disabled');
         }
 
-        rangeSliderCuota.noUiSlider.updateOptions({
+        /*rangeSliderCuota.noUiSlider.updateOptions({
             range: {
                 'min': data.cuotaMinimo,
                 'max': data.cuotaMaximo
             },
             start: data.cuotaMinimo
-        });
+        });*/
 
         $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
@@ -575,6 +586,7 @@
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
+        console.log(data)
         $('#sueldoMin').html('S/ '+data.montoMinimo);
         $('#sueldoMax').html('S/ '+data.montoMaximo);
         $('#minCuota').html('S/ '+data.cuotaMinimo);
@@ -586,13 +598,21 @@
             },
             start: (data.montoMinimo+data.montoMaximo)/2
         });
-        rangeSliderCuota.noUiSlider.updateOptions({
+
+        if(data.cuotaMinimo == data.cuotaMaximo){
+          $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+          rangeSliderCuota.setAttribute('disabled', true);  
+        }else{
+          rangeSliderCuota.removeAttribute('disabled');
+        }
+
+        /*rangeSliderCuota.noUiSlider.updateOptions({
             range: {
                 'min': data.cuotaMinimo,
                 'max': data.cuotaMaximo
             },
             start: data.cuotaMinimo
-        });
+        });*/
         $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 

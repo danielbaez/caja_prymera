@@ -76,6 +76,7 @@ function limpiar() {
   $('#fecha_ingreso').val(null);
   $('#celular').val(null);
   $('#email').val(null);
+  $('#password').val(null);
   $('#rol').val(null);
   /*$('#rol').html('');
   $('#rol').append('<option value="">Rol</option>');

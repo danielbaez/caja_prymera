@@ -186,7 +186,7 @@ class M_solicitud extends  CI_Model{
                         $value->descripcion,
                         $value->asesor_nombre.' '.$value->asesor_apellido,
                         $value->status_sol,
-                        $value->monto
+                        number_format($value->monto)
                    );
                 } 
 
@@ -225,7 +225,7 @@ class M_solicitud extends  CI_Model{
                         'descripcion' => $value->descripcion,
                         'asesor' => $value->asesor_nombre.' '.$value->asesor_apellido,
                         'status_sol' => $value->status_sol,
-                        'monto' => $value->monto        
+                        'monto' => number_format($value->monto, 2)        
                    );
                 }
             }
@@ -430,7 +430,7 @@ class M_solicitud extends  CI_Model{
                         $value->agencia_desembolso,
                         $value->descripcion,
                         $value->status_sol,
-                        $value->monto
+                        number_format($value->monto, 2)
                    );
                 } 
 
@@ -471,7 +471,7 @@ class M_solicitud extends  CI_Model{
                         'agencia_desembolso' => $value->agencia_desembolso,
                         'descripcion' => $value->descripcion,
                         'status_sol' => $value->status_sol,
-                        'monto' => $value->monto,
+                        'monto' => number_format($value->monto, 2),
                         'accion' => ''        
                    );              
                 }
@@ -1047,7 +1047,7 @@ class M_solicitud extends  CI_Model{
                         $value->agencia_desembolso,
                         $value->descripcion,
                         $value->status_sol,
-                        $value->monto
+                        number_format($value->monto, 2)
                    );
                 } 
 
@@ -1083,7 +1083,7 @@ class M_solicitud extends  CI_Model{
                         'agencia_desembolso' => $value->agencia_desembolso,
                         'descripcion' => $value->descripcion,
                         'status_sol' => $value->status_sol,
-                        'monto' => $value->monto      
+                        'monto' => number_format($value->monto, 2)      
                    );              
                 }
             }
@@ -1382,7 +1382,7 @@ class M_solicitud extends  CI_Model{
                 $where .= " OR solicitud.id LIKE '%".$_REQUEST['search']['value']."%')";
             }
 
-            $sql_total = "SELECT solicitud.last_page, solicitud.ws_error, DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d %H:%i:%s') as fecha_final,  DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular,agencias.ip as ip_agencia, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where ORDER BY fecha_default DESC";
+            $sql_total = "SELECT solicitud.last_page, solicitud.ws_error, DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d %H:%i:%s') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular,agencias.ip as ip_agencia, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where ORDER BY fecha_default DESC";
 
             $result_total = $this->db->query($sql_total, $filtros);
 
@@ -1413,9 +1413,10 @@ class M_solicitud extends  CI_Model{
             }
 
 
-            $sql = "SELECT solicitud.last_page, solicitud.ws_error, DATE_FORMAT(solicitud.timestamp_final,'%Y-%m-%d %H:%i:%s') as fecha_final,  DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular,agencias.ip as ip_agencia, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where ORDER BY $orderBy $orderAscDesc LIMIT $start, $length";
+            $sql = "SELECT solicitud.last_page, solicitud.ws_error, DATE_FORMAT(solicitud.fec_estado,'%Y-%m-%d %H:%i:%s') as fecha_default, DATE_FORMAT(solicitud.fec_estado,'%d-%m-%Y') as fecha_solicitud, solicitud.id as id_solicitud, solicitud.nombre, solicitud.apellido, tipo_producto.descripcion as producto, solicitud.departamento, solicitud.provincia, solicitud.distrito, usuario.nombre as usuario_nombre, usuario.apellido as usuario_apellido, agencias.AGENCIA as agencia, solicitud.status_sol, DATE_FORMAT(solicitud.fec_estado,'%H:%i:%S') as hora_solicitud, DATE_FORMAT(solicitud.timestamp_sol,'%d-%m-%Y') as fecha_cierre, DATE_FORMAT(solicitud.timestamp_sol,'%H:%i:%S') as hora_cierre, solicitud.id as id_solicitud, solicitud.marca, solicitud.modelo, solicitud.valor_auto, solicitud.plazo, solicitud.cuota_mensual, solicitud.tea, solicitud.tcea, solicitud.monto, solicitud.salario, solicitud.empleador, solicitud.dir_empleador, solicitud.nombre_conyugue, solicitud.dni as dni_titular, solicitud.dni_conyugue, solicitud.email as email_titular, solicitud.celular as celular_titular,agencias.ip as ip_agencia, solicitud.nro_fijo as nro_fijo_titular, solicitud.cuota_inicial FROM solicitud INNER JOIN agencias ON solicitud.cod_agencia = agencias.id INNER JOIN tipo_producto ON solicitud.id_tipo_prod = tipo_producto.id INNER JOIN usuario ON solicitud.id_usuario = usuario.id WHERE $where ORDER BY $orderBy $orderAscDesc LIMIT $start, $length";
 
             $result = $this->db->query($sql, $filtros);
+
             if($result->result())
             {
                 foreach ($result->result() as $key => $value)
@@ -1553,11 +1554,11 @@ class M_solicitud extends  CI_Model{
                         $value->dni_titular,
                         $value->celular_titular,
                         $value->nro_fijo_titular,
-                        $value->monto,
+                        number_format($value->monto, 2),
                         $value->plazo,
-                        $value->cuota_mensual,
-                        $value->cuota_inicial,
-                        $value->plazo*$value->cuota_mensual,
+                        number_format($value->cuota_mensual, 2),
+                        number_format($value->cuota_inicial, 2),
+                        number_format($value->plazo*$value->cuota_mensual, 2),
                         $value->tea,
                         $value->tcea,
                         $value->id_solicitud,
@@ -1610,11 +1611,11 @@ class M_solicitud extends  CI_Model{
                         $value->dni_titular,
                         $value->celular_titular,
                         $value->nro_fijo_titular,
-                        $value->monto,
+                        number_format($value->monto, 2),
                         $value->plazo,
-                        $value->cuota_mensual,
-                        $value->cuota_inicial,
-                        $value->plazo*$value->cuota_mensual,
+                        number_format($value->cuota_mensual, 2),
+                        number_format($value->cuota_inicial, 2),
+                        number_format($value->plazo*$value->cuota_mensual, 2),
                         $value->tea,
                         $value->tcea,
                         $value->id_solicitud,
@@ -1660,11 +1661,11 @@ class M_solicitud extends  CI_Model{
                         $value->dni_titular,
                         $value->celular_titular,
                         $value->nro_fijo_titular,
-                        $value->monto,
+                        number_format($value->monto, 2),
                         $value->plazo,
-                        $value->cuota_mensual,
-                        $value->cuota_inicial,
-                        $value->plazo*$value->cuota_mensual,
+                        number_format($value->cuota_mensual, 2),
+                        number_format($value->cuota_inicial, 2),
+                        number_format($value->plazo*$value->cuota_mensual, 2),
                         $value->tea,
                         $value->tcea,
                         $value->id_solicitud,

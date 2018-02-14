@@ -167,7 +167,7 @@
                             <span style="">Importe Pr&eacute;stamo: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?><?php echo 'S/ '.number_format($Importe, 2)?><?php }else{ ?><?php echo $Importe.'.00'?><?php } ?></span>
+                            <span><?php echo 'S/ '.number_format($Importe, 2)?></span>
                           </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                             <span style="">Plazo: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $cant_meses?></span>
+                            <span><?php echo $cant_meses?> meses</span>
                           </div>
                         </div>
                     </div>
@@ -220,7 +220,15 @@
                             <span style="">TEA: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo number_format($tea*100, 2).'%'?></span>
+                            <span>
+                              <?php 
+                              if ($tipo_producto == PRODUCTO_VEHICULAR) {
+                                echo number_format($tea*100, 2).'%';
+                              }else{
+                                echo number_format($tea, 2).'%';
+                              }
+                              ?>
+                              </span>
                           </div>
                         </div>
                     </div>
@@ -230,7 +238,15 @@
                             <span style="">TCEA: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo number_format($tcea*100, 2).'%'?></span>
+                            <span>
+                              <?php 
+                              if ($tipo_producto == PRODUCTO_VEHICULAR) {
+                                echo number_format($tcea*100, 2).'%';
+                              }else{
+                                echo number_format($tcea, 2).'%';
+                              }
+                              ?>
+                            </span>
                           </div>
                         </div>
                     </div>
