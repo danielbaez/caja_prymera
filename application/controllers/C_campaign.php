@@ -211,7 +211,7 @@ class C_campaign extends CI_Controller {
 
             $valInicial = $valorVehiculo*($valorInicial/100);
 
-            $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+            $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
             $params = array('token'=> 'E928EUXP',
                             'documento'=> _getSesion('dni'),
@@ -226,13 +226,15 @@ class C_campaign extends CI_Controller {
                                   'profesion' => $profesion,
                                   'nivelEducativo' => $nivel_educativo,
                                   'edad' => $edad,
-                                  'fechaPrimerPago' => date("m/d/Y", strtotime($primera_fecha))
+                                  //'fechaPrimerPago' => date("m/d/Y", strtotime($primera_fecha))
+                                  'fechaPrimerPago' => $primera_fecha
                                 );
 
             $result = $client->GetDatosCreditoVehicularOnline($params);
-            //_log(print_r($result, true));
+            _log(print_r($params, true));
+            _log(print_r($result, true));
             $res = $result->return->resultado;
-            _log(print_r($res, true));
+            //_log(print_r($res, true));
             if($res == 1){ 
 
                 $documento = $result->return->documento;
@@ -279,15 +281,18 @@ class C_campaign extends CI_Controller {
                     $session = array(
                                      'marca'       => $marca,
                                      'modelo'      => $modelo,
-                                     'valor_auto'  => 'S/ '.$valorVehiculo,
-                                     'periodo'     => $plazo.' meses',
+                                     'valor_auto'  => $valorVehiculo,
+                                     //'periodo'     => $plazo.' meses',
+                                     'cant_meses'     => $plazo.' meses',
                                      'Importe'     => $importe,
-                                     'cuota_inicial' => 'S/ '.$valInicial,
-                                     'pagoTotal' => 'S/ '.$pagoTot,
-                                     'cuota_mensual' => 'S/ '.$cuotaMensual,
-                                     'seguroAuto' => 'S/ '.$seguroAuto,
-                                     'sess_tea' => $datos_tea.'%',
-                                     'tcea_sess' => $datos_tcea.'%'
+                                     'cuota_inicial' => $valInicial,
+                                     //'pagoTotal' => $pagoTot,
+                                     'pago_total' => $pagoTot,
+                                     'cuota_mensual' => $cuotaMensual,
+                                     'seguroAuto' => $seguroAuto,
+                                     'sess_tea' => $datos_tea,
+                                     'tcea_sess' => $datos_tcea,
+                                     'periodo_gracia' => $primera_fecha
                                      );
                     $this->session->set_userdata($session);
                     $data['ws_error'] = 1;
@@ -297,9 +302,12 @@ class C_campaign extends CI_Controller {
             }else if($res == 0) {
                 $data['error'] = EXIT_SUCCESS;
                 $data['ws_error'] = 0;
-            }else if($res == 3) {
+            }else if($res == 2) {
                 $data['mensaje'] = 'Error del servidor';
                 $data['ws_error'] = 2;
+            }else if($res == 4) {
+                $data['error'] = EXIT_SUCCESS;
+                $data['ws_error'] = 4;
             }
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();

@@ -9,9 +9,11 @@ function agregarPersonal() {
 	//var arrayDatos [''];
 	var supervisor = $('#supervisor').val();
 	if(supervisor == null || supervisor == '' || supervisor == undefined) {
-		msj('error', 'Ingrese un supervisor');
+		msj('error', 'Ingrese un jefe de agencia');
 		return;
 	}
+
+
 	$('input[type=checkbox]').each(function () {
 	    if(this.checked == true) {
 	    	dato = $(this).val();
@@ -37,7 +39,7 @@ function guardatAsesoresAsignados() {
 	    ids_user += '-'+id;
 	  });
 	if(ids_user == null || ids_user == '' || ids_user == undefined) {
-		msj('error', 'Asigne agentes a un jefe de agencia');
+		msj('error', 'Asigne asesores a un jefe de agencia');
 		return;
 	}
 	if(agencia == null || agencia == '' || agencia == undefined) {
@@ -63,6 +65,9 @@ function guardatAsesoresAsignados() {
       	$('#personalAsignado').html('');
 			}
 			msj('success', data.msj);
+
+      $('input[name="id_asesor[]"]').attr('disabled', true);
+
 		} catch (err){
 			msj('error',err.message);
 		}

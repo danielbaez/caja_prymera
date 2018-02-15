@@ -93,15 +93,15 @@ function rolPermissions($rol)
 					   	'C_usuario' => ['detalleUsuario', 'verifyEmailAndDNI', 'asignarSupervisor', 'autocompleteGetJefe', 'actualizarTabla', 'getAsesoresByAgencia', 'borrarAsignados', 'guardarPersonalAsignado', 'logout'],
 					   	'C_horario' => ['index', 'agencia', 'save'],
 					   	'C_ip' => ['index', 'save'],
-					   	'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'solicitudesTotales', 'cambiarEstado']
+					   	'C_reporte' => ['solicitudes', 'ajaxSolicitudes', 'agenteCliente', 'ajaxAgenteCliente', 'historialSolicitud', 'ajaxHistorialSolicitud', 'solicitudRechazada', 'ajaxSolicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'solicitudesTotales', 'ajaxSolicitudesTotales', 'cambiarEstado']
 					],
 					'jefe_agencia' => [
 						'C_main' => ['index', 'registrar'],
 						'C_usuario' => ['detalleUsuario', 'logout'],
-						'C_reporte' => ['solicitudes', 'agenteCliente', 'historialSolicitud', 'solicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'actualizarEstadoSolicitud', 'solicitudesTotales', 'cambiarEstado']
+						'C_reporte' => ['solicitudes', 'ajaxSolicitudes', 'agenteCliente', 'ajaxAgenteCliente', 'historialSolicitud', 'ajaxHistorialSolicitud', 'solicitudRechazada', 'ajaxSolicitudRechazada', 'autocompleteGetAsesor', 'modalInformacionSolicitud', 'actualizarEstadoSolicitud', 'solicitudesTotales', 'ajaxSolicitudesTotales', 'cambiarEstado']
 					],
 				    'asesor' => [
-				   		'C_reporteAsesor' => ['agenteCliente', 'agenteHistorialSolicitud', 'modalInformacionSolicitud', 'actualizarNotaSolicitud'],
+				   		'C_reporteAsesor' => ['agenteCliente', 'ajaxAgenteCliente', 'agenteHistorialSolicitud', 'ajaxAgenteHistorialSolicitud', 'modalInformacionSolicitud', 'actualizarNotaSolicitud'],
 				   		'C_usuario' => ['nuevaSolicitud', 'logout'],
 				   		'Vehicular' => ['index', 'solicitar'],
 				   		'Micash' => ['index', 'solicitar'],

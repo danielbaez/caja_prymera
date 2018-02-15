@@ -24,13 +24,13 @@ class Resumen_Vehicular extends CI_Controller {
             redirect("/C_main", 'location');
         }*/
         $dato['tipo_producto'] = _getSesion("tipo_producto");
-        $dato['pago_total']    = _getSesion('pagoTotal');
+        $dato['pago_total']    = _getSesion('pago_total');
         $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
         $fecha = new DateTime(_getSesion('periodo_gracia'));
         $fecha_d_m_y = $fecha->format('d/m/Y');
         $dato['fecha_periodo'] = $fecha_d_m_y;
-        $dato['plazo']         = _getSesion('periodo');
+        
         $dato['seguro']         = _getSesion('seguroAuto');
         $dato['marca']         = _getSesion('marca');
         $dato['modelo']        = _getSesion('modelo');

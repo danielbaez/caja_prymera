@@ -69,4 +69,12 @@ class M_horario extends  CI_Model{
             }  	    	
         }    	
     }
+
+    function getAccesoHorarioAgencia($agencia)
+    {
+        $sql = "SELECT * FROM acceso WHERE id_agencia = ?";
+            $result = $this->db->query($sql, array($agencia));    
+            return $result->result();
+    }
+
 }

@@ -111,19 +111,20 @@
 			<div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 div-seccion">
 			<form class="form" action="/C_ip/save" method="POST" id="form-ip">
         <h4>Asignar IP</h4>
-        <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" <?php echo $acceso[0]->ip == 1 ? 'checked="checked"' : ''; ?>" name="acceso"></p>
+        <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" name="acceso"></p>
 			  <div class="table-responsive">
 				<table class="table table-bordered" id="tabla-agencias">
 				  <thead>
 					<tr class="tr-header-reporte">
-				      <th class="text-center">Agencias</th>
-					  <th class="text-center">IP</th>
+				     <th class="text-center">Agencias</th>
+					   <th class="text-center">IP</th>
+             <th class="text-center">Opción</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<?php
 					$count = 0;
-					 foreach($agencias as $agencia){
+					 foreach($agencias as $key=>$agencia){
 					 	$count++;
 					 	$variable = 'desde[]';
 					 	if($count == 2){
@@ -133,6 +134,9 @@
 					  	<tr>
 					  	<td><?php echo $agencia->AGENCIA ?></td>
 						<td><input name="agencia[<?php echo $agencia->id ?>]" style="width: 85%; margin:auto" type="text" value="<?php echo $agencia->ip ?>" class="form-control" id="ip"></td>
+            <td>
+              <input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" <?php echo $agencia->id_access == 1 ? 'checked="checked"' : ''; ?>" name="ips[<?php echo $agencia->id ?>]">
+            </td>
 					    </tr>
 					  <?php                 
 					  	}
@@ -179,44 +183,52 @@ $(document).ready(function() {
     .not('[data-switch-no-init]')
     .bootstrapSwitch()
 
+  var table = $('#tabla-agencias').DataTable({
+    lengthChange: false,
+    "language": {
+      "search": "Buscar:",
+      "emptyTable": "No hay registros disponibles",
+      "paginate": {
+          "first":        "Primero",
+          "previous":     "Anterior",
+          "next":         "Siguiente",
+          "last":         "Ultimo"
+      },
+      "info":             "_START_ a _END_ de _TOTAL_ entradas",
+
+
+      "infoEmpty":        "0 de 0 of 0 entradas",
+      "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
+      "zeroRecords":      "No se encontraron registros",
+    },
+    "bInfo" : false,
+    "pageLength": 5,
+    lengthMenu: [
+        [ 5, 15, 25, 50, -1 ],
+        [ '5', '15', '25', '50', 'Total' ]
+    ],
+    "dom": 'rtp'
+  });
+
   $('input[name="acceso"]').on('switchChange.bootstrapSwitch', function(event, state) {
     console.log(this); // DOM element
     console.log(event); // jQuery event
     console.log(state); // true | false
 
+    var oTable = $("#tabla-agencias").dataTable();
+    if(state) {
+      $("input[name^='ips']", oTable.fnGetNodes()).bootstrapSwitch('state', true);      
+    }else {
+      $("input[name^='ips']", oTable.fnGetNodes()).bootstrapSwitch('state', false);
+    }
   });
 
-	var table = $('#tabla-agencias').DataTable( {
+  $('#tabla-agencias').on( 'page.dt', function () {
+    var info = table.page.info();
+    console.log(info)
+  });
 
-      lengthChange: false,
-
-      "language": {
-        "search": "Buscar:",
-        "emptyTable": "No hay registros disponibles",
-        "paginate": {
-            "first":        "Primero",
-            "previous":     "Anterior",
-            "next":         "Siguiente",
-            "last":         "Ultimo"
-        },
-        "info":             "_START_ a _END_ de _TOTAL_ entradas",
-
-
-        "infoEmpty":        "0 de 0 of 0 entradas",
-        "infoFiltered":     "(filtrados de un total _MAX_ entradas)",
-        "zeroRecords":      "No se encontraron registros",
-      },
-      "bInfo" : false,
-      "pageLength": 5,
-      lengthMenu: [
-          [ 5, 15, 25, 50, -1 ],
-          [ '5', '15', '25', '50', 'Total' ]
-      ],
-      "dom": 'rtp'
-  	} );
-
-
-   $('#form-ip').on('submit', function(e){
+  $('#form-ip').on('submit', function(e){
       var form = this;
       var params = table.$('input,select,textarea').serializeArray();
       $.each(params, function(){     
@@ -226,7 +238,7 @@ $(document).ready(function() {
                   .attr('type', 'hidden')
                   .attr('name', this.name)
                   .val(this.value)
-        	);
+          );
         } 
       });    
    });      

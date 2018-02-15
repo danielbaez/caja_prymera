@@ -23,11 +23,11 @@ function verificarNumero() {
 	var dni_conyugue      = $('#dni_conyugue').val();
 	var email 			  = $('#email').val();
 	var numero = uno+dos+tres+cuatro+cinco+seis;
-    if(uno == null && dos == null && tres == null && cuatro == null && cinco == null && seis == null) {
+    if(uno == '' || dos == '' || tres == '' || cuatro == '' || cinco == '' || seis == '') {
     	msj('error', 'Ingrese el codigo que se le envi&oacute; al celular');
 		return;
     }
-	if(nro_celular == null) {
+	if(nro_celular == '') {
 		msj('error', 'Seleccione un n&uacute;mero de celular v&aacute;lido');
 		return;
 	}
@@ -224,20 +224,32 @@ function cambiarCelular() {
 function enviarMail() {
 	$('#btnAceptar').attr('disabled', true);
 
-	$('#myModaltelef').modal();
+	$('#myModaltelef').modal({
+	    backdrop:'static', show: true
+	})
 
 	var nro_celular = $('#nro_celular').val();
 	$.ajax({
 		data  : { nro_celular : nro_celular},
 		url   : 'C_confirmacion/enviarMail',
-		type  : 'POST'
+		type  : 'POST',
+		dataType: 'json'
 	}).done(function(data){
-		try{
+		console.log(data);
+		if(data.error == 0) {
+			msj('error', 'SMS enviado');
+		}else {
+			msj('error', 'Ha fallado el envío SMS');
+		}
+
+		/*try{
 		} catch (err){
 			msj('error',err.message);
-		}
+		}*/
 	});
 }
+
+
 
 function reenviarEmail() {
 	var nro_celular = $('#nro_celular').val();

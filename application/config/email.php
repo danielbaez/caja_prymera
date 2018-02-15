@@ -1,28 +1,50 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-	/**
-	* Name:  Email
-	*
-	* Author: Ben Edmunds
-	*		  ben.edmunds@gmail.com
-	*         @Jhonataniberico
-	*
-	* Location:
-	*
-	* Created:  03.29.2011
-	*
-	* Description:  Twilio configuration settings.
-	*
-	*
-	*/
-	/**
-	 * Mode ("sandbox" or "prod")
-	 **/
-	$config['protocol'] = 'smtp';
-	$config['smtp_host'] = 'ssl://smtp.gmail.com';
-	$config['smtp_user'] = 'miauto@prymera.pe';
-	$config['smtp_pass'] = '8hUpuv6da_@v';
-	$config['smtp_port'] = 465;
-	$config['mailtype'] = 'html';
-	$config['charset'] = 'utf-8';
-	$config['newline'] = "\r\n";
+
+$config['data_email'] = [
+	'conf' => [
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.gmail.com',
+		'smtp_user' => 'miauto@prymera.pe',
+		'smtp_pass' => '8hUpuv6da_@v',
+		'smtp_port' => 465,
+		'mailtype' => 'html',
+		'charset' => 'utf-8',
+		'newline' => "\r\n"
+	],
+	'from' => 'userauto@prymera.com'
+];
+
+/*$config['data_email'] = [
+	'conf' => [
+		'protocol' => 'smtp',
+		'smtp_host' => 'ssl://smtp.gmail.com',
+		'smtp_user' => 'danielestiphenbaezgaray@gmail.com',
+		'smtp_pass' => '',
+		'smtp_port' => 465,
+		'mailtype' => 'html',
+		'charset' => 'utf-8',
+		'newline' => "\r\n"
+	],
+	'from' => 'daniel.baez@comparabien.com'
+];*/
+
+/*$config['data_email'] = [
+	'conf' => [
+		'protocol' => 'smtp',
+		'smtp_host' => 'smtp.pepipost.com',
+		'smtp_user' => 'comparabien',
+		'smtp_pass' => '',
+		'smtp_port' => 25,
+		'mailtype' => 'html',
+		'charset' => 'utf-8',
+		'newline' => "\r\n"
+	],
+	'from' => 'comparabien.sac@comparabien.com'
+];*/
+
+
+
+
+
+	
 

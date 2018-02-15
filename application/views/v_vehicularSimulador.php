@@ -348,6 +348,7 @@
     if(<?php echo $plazo_min ?> == <?php echo $plazo_max ?>){
       rangeSliderPlazo.setAttribute('disabled', true);
     }
+
     var rangeSliderValueElementPlazos = document.getElementById('slider-range-value-plazo');
     rangeSliderPlazo.noUiSlider.on('update', function( values, handle ) {
       rangeSliderValueElementPlazos.innerHTML = values[handle];
@@ -394,13 +395,21 @@
                 start: (data.montoMinimo+data.montoMaximo)/2
             });
 
-            rangeSliderCuota.noUiSlider.updateOptions({
+            if(data.cuotaMinimo == data.cuotaMaximo){
+              $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+              rangeSliderCuota.setAttribute('disabled', true);  
+            }else{
+              rangeSliderCuota.removeAttribute('disabled');
+
+              rangeSliderCuota.noUiSlider.updateOptions({
                 range: {
                     'min': data.cuotaMinimo,
                     'max': data.cuotaMaximo
                 },
                 start: data.cuotaMinimo
-            });
+              });
+            }
+
             $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
             $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
             $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
@@ -425,7 +434,7 @@
           thousand: ',',
           prefix: ' S/ ',
         })
-      });
+    });
 
     var rangeSliderValueElementMonto = document.getElementById('slider-range-value-monto');
     rangeSliderMonto.noUiSlider.on('update', function( values, handle ) {
@@ -433,56 +442,56 @@
       meses_pago = values[handle];
     });
     rangeSliderMonto.noUiSlider.on('change', function( values, handle ) {
-    rangeSliderValueElementMonto.innerHTML = values[handle];
-      
-    meses   = $('#slider-range-value-plazo').html();
-    monto   = values[handle];
-    cuota   = $('#slider-range-value-cuota').html();
-    marca   = $('#marca option:selected').val();
-    modelo  = $('#modelo option:selected').val();
-    periodo = $('#periodo_gracia').val();
+      rangeSliderValueElementMonto.innerHTML = values[handle];
+        
+      meses   = $('#slider-range-value-plazo').html();
+      monto   = values[handle];
+      cuota   = $('#slider-range-value-cuota').html();
+      marca   = $('#marca option:selected').val();
+      modelo  = $('#modelo option:selected').val();
+      periodo = $('#periodo_gracia').val();
 
-    m = monto.replace(/[^0-9.]/g, "");
-    c = cuota.replace(/[^0-9.]/g, "");
-    if(modelo != ''){
-      $.ajax({
-        data  : { meses : meses,
-                cuota   : cuota,
-                monto   : monto,
-                marca   : marca,
-                periodo : periodo,
-                modelo  : modelo, action: 'monto'
+      m = monto.replace(/[^0-9.]/g, "");
+      c = cuota.replace(/[^0-9.]/g, "");
+      if(modelo != ''){
+        $.ajax({
+          data  : { meses : meses,
+                  cuota   : cuota,
+                  monto   : monto,
+                  marca   : marca,
+                  periodo : periodo,
+                  modelo  : modelo, action: 'monto'
+                },
+          url   : 'C_preaprobacion/changeValues',
+          type  : 'POST',
+          dataType: 'json'
+        }).done(function(data){
+          $('#minCuota').html('S/ '+data.cuotaMinimo);
+          $('#maxCuota').html('S/ '+data.cuotaMaximo);
+
+          if(data.cuotaMinimo == data.cuotaMaximo){
+            $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+            rangeSliderCuota.setAttribute('disabled', true);  
+          }else{
+            rangeSliderCuota.removeAttribute('disabled');
+
+            rangeSliderCuota.noUiSlider.updateOptions({
+              range: {
+                  'min': data.cuotaMinimo,
+                  'max': data.cuotaMaximo
               },
-        url   : 'C_preaprobacion/changeValues',
-        type  : 'POST',
-        dataType: 'json'
-      }).done(function(data){
-        $('#minCuota').html('S/ '+data.cuotaMinimo);
-        $('#maxCuota').html('S/ '+data.cuotaMaximo);
+              start: data.cuotaMinimo
+            });
+          }
 
-        if(data.cuotaMinimo == data.cuotaMaximo){
-          $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
-          rangeSliderCuota.setAttribute('disabled', true);  
-        }else{
-          rangeSliderCuota.removeAttribute('disabled');
-        }
-
-        rangeSliderCuota.noUiSlider.updateOptions({
-            range: {
-                'min': data.cuotaMinimo,
-                'max': data.cuotaMaximo
-            },
-            start: data.cuotaMinimo
+          $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
+          $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
+          $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
+          $('#tcea').html(data.tcea+'%');
+          $('#tea').html(data.tea+'%');
+          $('#seguroAuto').html('S/ '+data.seguroAuto);
         });
-
-        $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
-        $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
-        $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 
-        $('#tcea').html(data.tcea+'%');
-        $('#tea').html(data.tea+'%');
-        $('#seguroAuto').html('S/ '+data.seguroAuto);
-      });
-    }  
+      }  
     });
 
     //dias
@@ -501,6 +510,11 @@
         prefix: ' S/ ',
       })
     });
+
+    if(<?php echo $cuotaMinimo ?> == <?php echo $cuotaMaximo ?>){
+      rangeSliderCuota.setAttribute('disabled', true);
+    }
+
     var rangeSliderValueElementCuotas = document.getElementById('slider-range-value-cuota');
     rangeSliderCuota.noUiSlider.on('update', function( values, handle ) {
       rangeSliderValueElementCuotas.innerHTML = values[handle];
@@ -563,18 +577,21 @@
       marca = $('#marca option:selected').val();
       modelo= $('#modelo option:selected').val();
       periodo = $('#periodo_gracia').val();
+
       $.ajax({
         data  : { meses    : meses_pago,
                 cuota : cuota,
                 monto: monto,
                 marca: marca,
                 modelo: modelo,
-                periodo : periodo
+                periodo : periodo,
+                action  : 'modelo'
               },
         url   : 'C_preaprobacion/changeValues',
         type  : 'POST',
         dataType: 'json'
       }).done(function(data){
+        console.log(data)
         $('#sueldoMin').html('S/ '+data.montoMinimo);
         $('#sueldoMax').html('S/ '+data.montoMaximo);
         $('#minCuota').html('S/ '+data.cuotaMinimo);
@@ -586,13 +603,22 @@
             },
             start: (data.montoMinimo+data.montoMaximo)/2
         });
-        rangeSliderCuota.noUiSlider.updateOptions({
+
+        if(data.cuotaMinimo == data.cuotaMaximo){
+          $('#slider-range-value-cuota').html('S/ '+data.cuotaMinimo)
+          rangeSliderCuota.setAttribute('disabled', true);  
+        }else{
+          rangeSliderCuota.removeAttribute('disabled');
+
+          rangeSliderCuota.noUiSlider.updateOptions({
             range: {
                 'min': data.cuotaMinimo,
                 'max': data.cuotaMaximo
             },
             start: data.cuotaMinimo
-        });
+          });
+        }
+
         $('#importePrestamo').html('S/ '+currency(data.importeeeeee));
         $('#cantTotPago').html('S/ '+currency(data.pagoTotal));  
         $('#cantMensPago').html('S/ '+currency(data.cuotaMensual)); 

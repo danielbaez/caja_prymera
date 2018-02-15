@@ -101,7 +101,7 @@ class C_main extends CI_Controller {
                                      'permiso'          => $permiso,
                                      'estado'           => 1,
                                      'imagen'           => $name_image,
-                                     'id_agencia' => $agencia
+                                     //'id_agencia' => $agencia
                                     );
               $this->M_usuario->crearUsuario($arrayInsert, 'usuario', false);  
             }
@@ -175,7 +175,7 @@ class C_main extends CI_Controller {
                                          'permiso'       => $permiso,
                                          'estado'        => in_array(0, $checkPermiso) ? 0 : 1,
                                          'imagen'        => $name_image,
-                                         'id_agencia'    => $agencia
+                                         //'id_agencia'    => $agencia
                                         );
                     if($name_image == '') {
                         unset($arrayUpdate['imagen']);

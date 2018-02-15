@@ -85,7 +85,7 @@ function verificarCamp() {
 	someFecha.setDate(someFecha.getDate() + 60);
 	var dateMax = someFecha.toISOString().substr(0,10);
 
-  	if(primera_fecha == null || primera_fecha == '' || primera_fecha == undefined) {
+  	/*if(primera_fecha == null || primera_fecha == '' || primera_fecha == undefined) {
 
   	}else {
     	if(dateMin <= primera_fecha && primera_fecha <= dateMax) {
@@ -93,7 +93,7 @@ function verificarCamp() {
 			msj('error', 'Seleccione una fecha mayor de 30 d&iacute;as como m&iacute;nimo o 60 d&iacute;as como m&aacute;ximo');
 			return;
 		}
-    }
+    }*/
 	$.ajax({
 		data  : { ingreso_bruto   : ingreso_bruto,
 				  condicion 	  : condicion,
@@ -116,7 +116,7 @@ function verificarCamp() {
 			if(data.error == 0){
 				if(data.ws_error == 1) {
 					location.href = '/Resumen_Vehicular';
-				}else if(data.ws_error == 0) {
+				}else if(data.ws_error == 0 || data.ws_error == 4) {
 					location.href = '/C_losentimos';
 				}else if(data.ws_error == 2) {
 					msj('error', 'Error de servidor');

@@ -14,6 +14,35 @@ class Micash extends CI_Controller {
     }
     
     public function index() {
+
+      $this->session->unset_userdata('nombre');
+      $this->session->unset_userdata('apellido');
+      $this->session->unset_userdata('dni');
+      $this->session->unset_userdata('email');
+      $this->session->unset_userdata('importeMaximo');
+      $this->session->unset_userdata('importeMinimo');
+      $this->session->unset_userdata('plazos');
+      $this->session->unset_userdata('pago_total');
+      $this->session->unset_userdata('cuota_mensual');
+      $this->session->unset_userdata('TCEA');
+      $this->session->unset_userdata('tcea_sess');
+      $this->session->unset_userdata('cant_meses');
+      $this->session->unset_userdata('Importe');
+      $this->session->unset_userdata('sess_tea');
+      $this->session->unset_userdata('periodo');
+      $this->session->unset_userdata('codigo_ver');
+      $this->session->unset_userdata('salario');
+      $this->session->unset_userdata('nro_celular');
+      $this->session->unset_userdata('empleador');
+      $this->session->unset_userdata('direccion_empresa');
+      $this->session->unset_userdata('Departamento');
+      $this->session->unset_userdata('Provincia');
+      $this->session->unset_userdata('Distrito');
+      $this->session->unset_userdata('Agencia');
+      $this->session->unset_userdata('estado_civil');
+
+      //print_r($this->session->all_userdata());exit();
+
       $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_MICASH));
         $dato['nombreDato']=':D';
         $dato['tipo_producto'] = PRODUCTO_MICASH;
@@ -29,7 +58,7 @@ class Micash extends CI_Controller {
           //resultado 3: token
           //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
            $params = array('token'     => 'E928EUXP',
                            'documento' =>_post('dni'),

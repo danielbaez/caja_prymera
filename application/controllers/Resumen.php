@@ -19,7 +19,7 @@ class Resumen extends CI_Controller {
         if($datos_page[0]->last_page != N_RESUMEN) {
             redirect("/C_main", 'location');
         }
-        $arrayUpdt = array('last_page' => N_RESUMEN);
+        $arrayUpdt = array('last_page' => N_RESUMEN, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
         $dato['pago_total']    = _getSesion('pago_total');
@@ -38,6 +38,10 @@ class Resumen extends CI_Controller {
         $dato['tea']           = _getSesion('sess_tea');
         $dato['Agencia']       = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
+
+
+        //print_r($this->session->all_userdata());exit();
+
         $this->load->view('v_simuladorResumen', $dato);
     }
 
@@ -74,14 +78,18 @@ class Resumen extends CI_Controller {
               
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona, 'solicitud');
             }
-            $validacion   = $this->sendMailGmail();
+            $validacion = $this->sendMailGmail();
             $gmailAgencia = $this->sendMailGmailAgencia();
             //$celular = $this->enviarMail();
             $data['error'] = EXIT_SUCCESS;
+            /*$data['sendMailGmail'] = $validacion;
+            $data['sendMailGmailAgencia'] = $gmailAgencia;*/
+            $data['sendMailGmail'] = ['error' => 0, 'msj' => '', 'send' => true];
+            $data['sendMailGmailAgencia'] = ['error' => 0, 'msj' => '', 'send' => true];
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
-        echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode($data);
     }
 
     function sendMailGmail() {
@@ -92,23 +100,19 @@ class Resumen extends CI_Controller {
         $direccion = $datos_bd[0]->UBICACION;
         //cargamos la libreria email de ci
        $this->load->library("email");
-       //configuracion para gmail
-       $configGmail = array(
-                            'protocol'  => 'smtp',
-                            'smtp_host' => 'ssl://smtp.gmail.com',
-                            'smtp_port' => 465,
-                            'smtp_user' => 'miauto@prymera.pe',
-                            'smtp_pass' => '8hUpuv6da_@v',
-                            'mailtype'  => 'html',
-                            'charset'   => 'utf-8',
-                            'newline'   => "\r\n"
-                          );    
+
+       $this->config->load("email");
+
+       $arrConfGmail = $this->config->item('data_email');
+       $configGmail = $arrConfGmail['conf'];
+       $from = $arrConfGmail['from'];
+        
        $poliza = null;
        //cargamos la configuraci√≥n para enviar con gmail
        $this->email->initialize($configGmail);
        $direccion = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion = $direccion[0]->UBICACION;
-       $this->email->from('userauto@prymera.com');
+       $this->email->from($from);
        $this->email->to(_getSesion('email'));
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto                = null;
@@ -123,12 +127,12 @@ class Resumen extends CI_Controller {
        $texto_beneficios     = null;
        $texto_hacer          = null;
        $texto_periodo        = null;
-       $fecha = new DateTime(_getSesion('periodo_gracia'));
-       $fecha_d_m_y = $fecha->format('d/m/Y');
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '._getSesion('Importe');
+       //$fecha = new DateTime(_getSesion('periodo_gracia'));
+       //$fecha_d_m_y = $fecha->format('d/m/Y');
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '.number_format(_getSesion('Importe'), 2);
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_periodo = '' : $texto_periodo = '<div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-right: transparent;border-bottom: transparent;width: 80%;margin: 0 35px;">
           <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">1era fecha de pago: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.$fecha_d_m_y.'</p>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('periodo_gracia').'</p>
         </div>';
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">Ac√©rcate a la agencia '._getSesion('Agencia').'</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">No te preocupes, un agente de la agencia '._getSesion('Agencia').' se contactar√° a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
@@ -256,15 +260,15 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                           </div>
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Cuota: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cuota_mensual').'</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;">S/ '.number_format(_getSesion('cuota_mensual'), 2).'</p>
                           </div>
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TEA: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('sess_tea').'</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.number_format(_getSesion('sess_tea')*100, 2).'%</p>
                           </div>
                           <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 78%;margin-left: 36px;margin-top: -10px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">TCEA: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '._getSesion('tcea_sess').'</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '.number_format(_getSesion('tcea_sess')*100, 2).'%</p>
                           </div>
                           '.$texto_periodo.'
                         </div>
@@ -289,7 +293,15 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                   </body>
                   </html>';
        $this->email->message($texto);
-       $this->email->send();
+       
+       if($this->email->send()){
+        $data['send'] = true;
+       }else {
+        $data['send'] = false;
+       }
+       //$this->email->print_debugger();
+
+
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $data['error'] = EXIT_SUCCESS;
@@ -297,7 +309,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
             $arrayUpdt = array('envio_email' => 2);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
       }
-      return json_encode(array_map('utf8_encode', $data));
+      return $data;
      }
 
      function enviarMail() {
@@ -339,18 +351,15 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
         $data['msj'] = null;
       try {  
        //cargamos la libreria email de ci
+
        $this->load->library("email");
-       //configuracion para gmail
-       $configGmail = array(
-                            'protocol' => 'smtp',
-                            'smtp_host' => 'ssl://smtp.gmail.com',
-                            'smtp_port' => 465,
-                            'smtp_user' => 'miauto@prymera.pe',
-                            'smtp_pass' => '8hUpuv6da_@v',
-                            'mailtype' => 'html',
-                            'charset' => 'utf-8',
-                            'newline' => "\r\n"
-                           );    
+
+       $this->config->load("email");
+
+       $arrConfGmail = $this->config->item('data_email');
+       $configGmail = $arrConfGmail['conf'];
+       $from = $arrConfGmail['from'];
+
        $poliza        = null;
        $data_correo   = $this->M_preaprobacion->getCorreoByAgencia(_getSesion('Agencia'));
        $datos_page = $this->M_usuario->getDatosById('solicitud', 'id', _getSesion('idPersona'));
@@ -363,11 +372,14 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
        //cargamos la configuraci√≥n para enviar con gmail6
        $this->email->initialize($configGmail);
        $direccion   = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
-       $data_correo = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
+       //print_r($direccion);
+       //$data_correo = $this->M_preaprobacion->getDireccionAgencia(_getSesion('Agencia'));
        $ubicacion   = $direccion[0]->UBICACION;
-       $correo      = $data_correo[0]->CORREO;
-       $this->email->from('userauto@prymera.com');
-       $this->email->to('ssalas@prymera.pe');
+       //$correo      = $data_correo[0]->CORREO;
+       $this->email->from($from);
+       //$this->email->to('ssalas@prymera.pe');
+       $this->email->to('daniel.baez@comparabien.com');
+       //$this->email->to($correos); // estos correos se envian
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto     = null;
        $nombre    = _getSesion('nombre');
@@ -394,13 +406,18 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
                                 <h3 style="color: #0152aa;">Datos del Cr√©dito:</h3>
                                 <p style="margin-left: 30px;color: black;"></p>
                                 <p style="color: black;">Nro. Solicitud: '.$datos_page[0]->id.'</p>
-                                <p style="color: black;">Importe: '._getSesion('Importe').'</p>
+                                <p style="color: black;">Importe:S/ '.number_format(_getSesion('Importe'), 2).'</p>
                                 <p style="color: black;">Plazo: '._getSesion('cant_meses').'</p>
-                                <p style="color: black;">Cuota: '._getSesion('cuota_mensual').'</p>
-                                <p style="color: black;">TEA: '._getSesion('sess_tea').'</p>
-                                <p style="color: black;">TCEA: '._getSesion('TCEA').'</p>
+                                <p style="color: black;">Cuota:S/ '.number_format(_getSesion('cuota_mensual'), 2).'</p>
+                                <p style="color: black;">TEA: '.number_format(_getSesion('sess_tea')*100, 2).'%</p>
+                                <p style="color: black;">TCEA: '.number_format(_getSesion('tcea_sess')*100, 2).'%</p>
+                                <p style="color: black;">1ra fecha de pago: '._getSesion('periodo_gracia').'</p>
                               </body>');
-       $this->email->send();
+       if($this->email->send()){
+        $data['send'] = true;
+       }else {
+        $data['send'] = false;
+       }
        $arrayUpdt = array('envio_email' => 1,);
        $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $data['error'] = EXIT_SUCCESS;
@@ -408,7 +425,7 @@ Financiamiento Regular: Valido s√≥lo para personas naturales con edad Min. 24 a√
             $arrayUpdt = array('envio_email' => 2);
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
       }
-      return json_encode(array_map('utf8_encode', $data));
+      return $data;
      }
 
     function _data_last_month_day() { 

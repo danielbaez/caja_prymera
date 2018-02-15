@@ -13,6 +13,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.css?v=<?php echo time();?>">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">   
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
@@ -109,7 +110,7 @@
                           </div>
                           <div class="col-xs-6">
                             <div class="form-group">
-                                  <select onkeyup="verificarDatos(event);" class="form-control" id="condicion"  name="condicion" onchange="habilitarCampo()">
+                                  <select  class="form-control" id="condicion"  name="condicion" onchange="habilitarCampo()">
                                           <option value="">* Condición Laboral</option>
                                           <option value="Dependiente">Dependiente</option>
                                           <option value="Independiente">Independiente</option>
@@ -119,7 +120,7 @@
                           <div class="col-xs-12 p-0">
                             <div class="col-xs-6">
                             <div class="form-group">
-                                  <select onkeyup="verificarDatos(event);" class="form-control" id="nivel_educativo"  name="nivel_educativo" onchange="habilitarCampo()">
+                                  <select  class="form-control" id="nivel_educativo"  name="nivel_educativo" onchange="habilitarCampo()">
                                           <option value="">* Nivel Educativo</option>
                                           <option value="Primaria completa">Primaria completa</option>
                                           <option value="Secundaria completa">Secundaria completa</option>
@@ -129,7 +130,7 @@
                           </div>
                             <div class="col-sm-6">
                               <div class="form-group">
-                                  <select onkeyup="verificarDatos(event);" class="selectpicker form-control" id="profesion" name="profesion" data-live-search="true" onchange="habilitarCampo()">
+                                  <select  class="selectpicker form-control" id="profesion" name="profesion" data-live-search="true" onchange="habilitarCampo()">
                                           <option value="">Profesión</option>
                                           <option value="Abogado">Abogado</option>
                                           <option value="Cosmetólogo">Cosmetólogo</option>
@@ -238,7 +239,7 @@
                             </div>
                             <div class="col-sm-6 p-t-10">
                               <div class="form-group">
-                                  <select onkeyup="verificarDatos(event);" class="form-control" id="distrito" name="distrito" onchange="habilitarCampo()">
+                                  <select  class="form-control" id="distrito" name="distrito" onchange="habilitarCampo()">
                                           <option value="">* Distrito</option>
                                           <?php echo $comboDistrito; ?>
                                   </select>
@@ -251,7 +252,7 @@
                               <div class="col-xs-12 p-0">
                                 <div class="col-sm-6">
                                   <div class="form-group">
-                                    <select class="form-control" name="marca" title="Selec. Tipo de pago" id="marca" onchange="getModelo()">
+                                    <select class="form-control" name="marca" title="Selec. Tipo de pago" id="marca" onchange="getModelo(); habilitarCampo()">
                                       <option value="">* Marca</option>
                                       <?php echo $comboMarca?>
                                     </select>
@@ -259,7 +260,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                   <div class="form-group">
-                                    <select class="form-control" name="modelo" title="Selec. Tipo de pago" id="modelo">
+                                    <select class="form-control" name="modelo" title="Selec. Tipo de pago" id="modelo" onchange="habilitarCampo()">
                                       <option value="">* Modelo</option>
                                     </select>
                                   </div>
@@ -319,7 +320,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                       <div class="form-group">
-                                          <input type="date" class="form-control" onchange="habilitarCampo()" id="primera_fecha" name="primera_fecha" placeholder="1era fecha de pago" onkeypress="return valida(event)" onkeyup="verificarDatos(event);" maxlength="7">
+                                          <!--<input type="date" class="form-control" onchange="habilitarCampo()" id="primera_fecha" name="primera_fecha" placeholder="1era fecha de pago" onkeypress="return valida(event)"  maxlength="7">-->
+                                          <input type="text" class="form-control" id="primera_fecha" name="primera_fecha" readonly='readonly'>
                                       </div>
                                     </div>
                                 </div>
@@ -410,35 +412,51 @@
   <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
   <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>noUiSlider/nouislider.min.js?v=<?php echo time();?>"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
   <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
   <script type="text/javascript">
 
   $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
-        $('#periodo_gracia').datetimepicker({
+        /*$('#periodo_gracia').datetimepicker({
           format: 'YYYY-MM-DD'
-        }); 
+        }); */
+
+
+        $('#primera_fecha').datetimepicker({
+          format: 'DD/MM/YYYY',
+          minDate : new Date().setDate(new Date().getDate()+31),
+          maxDate : new Date().setDate(new Date().getDate()+59),
+          ignoreReadonly: true
+        });
+
+        $('#primera_fecha').on('dp.change', function(e){ 
+          habilitarCampo();
+        });
+
+
     });
 
       var valor_inicial = '';
       var edad = '';
       var valor_vehiculo = '';
+
       function habilitarCampo() {
       var ingreso_bruto   = $('#ingreso_bruto').val();
       var condicion       = $('#condicion').val();
       var nivel_educativo = $('#nivel_educativo').val();
       var profesion       = $('#profesion').val();
-      var edad            = $('#edad').val();
       var distrito        = $('#distrito').val();
       var marca           = $('#marca').val();
       var modelo          = $('#modelo').val();
-      var plazo           = $('#plazo').val();
-      var valor_vehiculo  = $('#valor_vehiculo').val();
-      var valor_inicial   = $('#valor_inicial').val();
-      var primera_fecha   = $('#primera_fecha').val();
-      if(ingreso_bruto != null && condicion != '' && nivel_educativo != '' && profesion != '' && edad != '' 
-        && distrito != '' && marca != '' && modelo != '' && plazo != '' && valor_vehiculo != '' && valor_inicial != '' && primera_fecha != '') {
+      var plazo           = $('#plazo').val();      
+
+      if(ingreso_bruto != null && condicion != '' && nivel_educativo != '' && profesion != '' && distrito != '' && marca != '' && modelo != '' && plazo != '') {
+
         $('#btnAceptar').removeAttr("disabled");
+      }else {
+        $('#btnAceptar').prop( "disabled", true );
       }
     }
     

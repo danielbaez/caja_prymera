@@ -21,7 +21,7 @@ class C_confirmacion extends CI_Controller {
             redirect("/C_main", 'location');
         }
         $idPersona  = _getSesion('idPersona');
-        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS);
+        $arrayUpdt  = array('last_page' => N_CONFIRMAR_DATOS, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
 
         $data['nombre'] = _getSesion('nombre');
@@ -232,6 +232,7 @@ class C_confirmacion extends CI_Controller {
                 $concesionaria = $concecionaria[0]->id;
             }
             if(/*$numero != _getSesion('codigo_ver')*/false) {
+            //if($numero != _getSesion('codigo_ver')) {
                 $data['mensaje'] = "El n&uacute;mero ingresado no es v&aacute;";
                 $data['cambio'] = 1;
                 $arrayUpdt = array('validar_celular' => 0);
@@ -245,7 +246,7 @@ class C_confirmacion extends CI_Controller {
                                  'Provincia'         => $Provincia,
                                  'Distrito'          => $Distrito,
                                  'Agencia'           => $Agencia,
-                                 'monto'             => $monto,
+                                 //'monto'             => $monto,
                                  'estado_civil'      => $estado_civil,
                                  'email'             => $email
                                 );
@@ -268,7 +269,7 @@ class C_confirmacion extends CI_Controller {
                                'estado_civil'       => $estado_civil,
                                'nombre_conyugue'    => $nombre_conyugue,
                                'dni_conyugue'       => $dni_conyugue,
-                               'status_sol'         => 0,
+                               //'status_sol'         => 0,
                                'last_page'          => N_RESUMEN,
                                'email'              => $email
                               );
@@ -280,9 +281,9 @@ class C_confirmacion extends CI_Controller {
         echo json_encode(array_map('utf8_encode', $data));
     }
 
-    function enviarMail() {
-        $data['error'] = EXIT_SUCCESS;
-        $data['msj']   = null;
+    //function enviarMail() {
+        //$data['error'] = EXIT_SUCCESS;
+        //$data['msj']   = null;
         /*try {
         //twilio enviar msn
         $aleatorio = rand ( 100000 , 999999 );
@@ -305,7 +306,38 @@ class C_confirmacion extends CI_Controller {
         }catch (Exception $e){
             $data['error'] = EXIT_ERROR;
         }*/
-        echo json_encode(array_map('utf8_encode', $data));
+        //echo json_encode(array_map('utf8_encode', $data));
+    //}
+
+    function enviarMail() {
+        //twilio enviar msn
+        $data['error'] = EXIT_SUCCESS;
+        $data['msj']   = null;
+        try {
+            $aleatorio = rand ( 100000 , 999999 );
+            $numero = _post('nro_celular');
+            $this->load->library('twilio');
+            $from = '786-220-7333';
+            $to = '+51 '.$numero;
+            $message = 'Tu código de verificación es '.$aleatorio;
+            $session = array('codigo_ver' => $aleatorio);
+            $this->session->set_userdata($session);
+            $response = $this->twilio->sms($from, $to, $message);
+            //print_r($response);
+            /*if($response->IsError)
+              exit('Error: ' . $response->ErrorMessage);
+            else
+              exit('Sent message to ' . $to);*/
+            if($response->IsError) {
+              $data['error'] = EXIT_ERROR;
+            }
+            else {
+            }
+        }catch (Exception $e){
+            $data['error'] = EXIT_ERROR;
+        }
+        //echo json_encode(array_map('utf8_encode', $data));
+        echo json_encode($data);
     }
 
      function Redireccionar() {

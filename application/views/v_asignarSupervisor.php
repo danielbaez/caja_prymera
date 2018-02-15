@@ -105,7 +105,7 @@
                       ?>
                     <tr id="check_<?php echo $personal->id ?>">
                       <td>
-                        <input type="checkbox" onclick="agregarPersonal()" data-nombre="<?php echo $personal->nombre ?>" data-apellido="<?php echo $personal->apellido ?>" data-rol="<?php echo $personal->rol ?>" data-agencia="<?php echo $personal->agencia ?>" name="id_asesor[]" value="<?php echo $personal->id ?>">
+                        <input type="checkbox" disabled onclick="agregarPersonal()" data-nombre="<?php echo $personal->nombre ?>" data-apellido="<?php echo $personal->apellido ?>" data-rol="<?php echo $personal->rol ?>" data-agencia="<?php echo $personal->agencia ?>" name="id_asesor[]" value="<?php echo $personal->id ?>">
                       </td>                    
                       <td><?php echo $personal->nombre.' '.$personal->apellido ?></td>
                       <td><?php echo ucfirst($personal->rol) ?></td>

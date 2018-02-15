@@ -49,7 +49,7 @@ class Preaprobacion extends CI_Controller {
         $data['tipo_producto'] = _getSesion("TIPO_PROD");
         $apellido = _getSesion('apellido');
 
-        $arrayUpdt = array('last_page'     => N_SIMULADOR);
+        $arrayUpdt = array('last_page' => N_SIMULADOR, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
 
         $data['comboConcecionaria'] = $this->__buildComboConcecionaria();
@@ -112,7 +112,7 @@ class Preaprobacion extends CI_Controller {
            //resultado 3: token
            //resultado 2: error del servidor
            //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
             $date = date("Y-m-d");
             $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
@@ -174,7 +174,7 @@ class Preaprobacion extends CI_Controller {
           //resultado 3: token
             //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
           $date = date("Y-m-d");
             $date = strtotime(date("Y-m-d", strtotime($date)) . " +1 month");
@@ -488,13 +488,13 @@ class Preaprobacion extends CI_Controller {
             $Departamento = _post('Departamento');
             $Provincia = _post('Provincia');
             $Distrito = _post('Distrito');
-            $pagoTot  = _post('pagotot');
+            /*$pagoTot  = _post('pagotot');
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');
-            $importe  = _post('cuotaIni');
+            $importe  = _post('cuotaIni');*/
             $numero  = _post('numero');
-            $varTcea  = _post('pors_tcea');
-            $varTea   = _post('pors_tea');
+            /*$varTcea  = _post('pors_tcea');
+            $varTea   = _post('pors_tea');*/
             $Agencia  = _post('Agencia');
             $concesionaria = _post('concesionaria');
             if($numero != _getSesion('codigo_ver')) {
@@ -508,12 +508,12 @@ class Preaprobacion extends CI_Controller {
                             'Departamento'      => $Departamento,
                             'Provincia'         => $Provincia,
                             'Distrito'          => $Distrito,
-                            'pago_total'        => $pagoTot,
+                            /*'pago_total'        => $pagoTot,
                             'cuota_mensual'     => $cuotaMens,
                             'TCEA'              => $varTcea,
                             'cant_meses'        => $meses,
                             'Importe'           => $importe,
-                            'sess_tea'          => $varTea,
+                            'sess_tea'          => $varTea,*/
                             'Agencia'           => $Agencia,
                             'concesionaria'     => $concesionaria
                 );
@@ -564,7 +564,7 @@ class Preaprobacion extends CI_Controller {
             $Agencia  = _post('Agencia');
             $seguro  = _post('seguro');
             $idPersona = _getSesion('idPersona');
-            $session = array(
+            /*$session = array(
                              'pago_total'        => _post('pagotot'),
                              'cuota_mensual'     => _post('mensual'),
                              'TCEA'              => _post('pors_tcea'),
@@ -572,6 +572,17 @@ class Preaprobacion extends CI_Controller {
                              'cant_meses'        => _post('meses'),
                              'Importe'           => _post('cuotaIni'),
                              'sess_tea'          => _post('pors_tea'),
+                             'periodo'           => $periodo 
+                             );*/
+
+            $session = array(
+                             'pago_total'        => $cuotaMens*$meses,
+                             'cuota_mensual'     => $cuotaMens,
+                             'TCEA'              => $varTcea,
+                             'tcea_sess'         => $varTcea,
+                             'cant_meses'        => $meses,
+                             'Importe'           => $importe,
+                             'sess_tea'          => $varTea,
                              'periodo'           => $periodo 
                              );
             $this->session->set_userdata($session);
@@ -586,7 +597,8 @@ class Preaprobacion extends CI_Controller {
                                 'marca'         => $marca,
                                 'modelo'        => $modelo,
                                 'last_page'     => N_CONFIRMAR_DATOS,
-                                'periodo_gracia'=> $periodo                            
+                                'periodo_gracia'=> $periodo,
+                                //'status_sol'    => 5                             
                                 );
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['cambio'] = 0;

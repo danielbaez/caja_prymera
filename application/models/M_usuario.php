@@ -35,7 +35,7 @@ class M_usuario extends  CI_Model{
                         $ip = $_SERVER['REMOTE_ADDR']; // IP Acceso
                     }
 
-                    $ip = '192.168.1.6';
+                    //$ip = '192.168.1.6';
 
                     $day= date("w");
                     switch($day)
@@ -72,6 +72,20 @@ class M_usuario extends  CI_Model{
                     //if($rol == 'asesor' || $rol == 'asesor_externo')
                     if($rol == 'asesor' || $rol == 'asesor_externo' || $rol == 'jefe_agencia')
                     {
+                        if(($rol == 'asesor' || $rol == 'asesor_externo') && $usuario->id_agencia == '')
+                        {
+                            return array('error' => 'Usuario sin agencia');
+                        }
+                        if($rol == 'jefe_agencia')
+                        {
+                            $sss = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
+                            $q = $this->db->query($sss, array($usuario->id)); 
+                            if($q->num_rows() == 0)
+                            {
+                                return array('error' => 'Usuario sin agencia');
+                            }
+                        }
+
                         $acceso = $this->verifyAcceso();
                         
                         if($acceso[0]->ip == 1 || $acceso[0]->horario == 1)
@@ -86,7 +100,8 @@ class M_usuario extends  CI_Model{
                                 $result = $this->db->query($sql, array($usuario->id_agencia, $rol));    
                             }
                             if($rol == 'jefe_agencia')
-                            {
+                            {                                    
+                                
                                 $sql = "SELECT agencias.ip, GROUP_CONCAT($dia_db SEPARATOR '*') as nuevoa, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), 1, POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))-1) AS Desdeee, SUBSTR(GROUP_CONCAT($dia_db SEPARATOR '*'), POSITION('*' IN GROUP_CONCAT($dia_db SEPARATOR '*'))+1, length(GROUP_CONCAT($dia_db SEPARATOR '*'))) AS Hastaaa FROM agencias INNER JOIN horarios ON agencias.id = horarios.id_agencia where agencias.id_sup_agencia = ? AND horarios.rol = ?";
                                 $result = $this->db->query($sql, array($usuario->id, $rol));    
                             }
@@ -285,7 +300,15 @@ class M_usuario extends  CI_Model{
                 $sql = "SELECT * FROM usuario WHERE id IN (SELECT agencias.id_sup_agencia as superior FROM usuario INNER JOIN agencias ON usuario.id_agencia = agencias.id WHERE agencias.id = ?)";
                 $agencias = $this->db->query($sql, array($value->id_agencia));
                 $a = $agencias->result();
-                $value->rol_superior = $a[0]->id;
+                if($a)
+                {
+                    $value->rol_superior = $a[0]->id;    
+                }
+                else
+                {
+                    $value->rol_superior = '';
+                }
+                
                 
             }
             elseif($value->rol == 'jefe_agencia')
@@ -617,9 +640,21 @@ class M_usuario extends  CI_Model{
              LEFT JOIN agencias a ON a.id = u.id_agencia
                  WHERE u.estado = 1
                    AND u.rol LIKE '%asesor%'
-                   AND u.id != ?";
+                   AND u.id_agencia != ?";
         $result = $this->db->query($sql, array($agencia));
-        return $result->result();
+        $r1 = $result->result();
+        //return $r1;
+
+        $sql2 = "SELECT u.*, '' AS agencia
+                  FROM usuario u
+                  WHERE u.estado = 1
+                   AND u.rol LIKE '%asesor%'
+                   AND u.id_agencia is NULL";
+        $result2 = $this->db->query($sql2, array());
+        $r2 = $result2->result();
+
+        return array_merge($r1, $r2);
+
     }
 
     function verifyEmailAndDNI($dni, $email, $id_usuario, $action) {
@@ -660,13 +695,15 @@ class M_usuario extends  CI_Model{
     }
 
     function getDatosAgencia() {
-        $sql = "SELECT a.id,
+        /*$sql = "SELECT a.id,
                        a.AGENCIA,
                        CONCAT(u.nombre, ' ', u.apellido) AS nombre
                   FROM agencias a,
                        usuario u
                  WHERE a.id_sup_agencia = u.id
-                   AND u.rol LIKE 'jefe_agencia'";
+                   AND u.rol LIKE 'jefe_agencia'";*/
+
+        $sql = "SELECT agencias.id, agencias.AGENCIA, CONCAT(usuario.nombre, ' ', usuario.apellido) as nombre FROM agencias left join usuario on agencias.id_sup_agencia = usuario.id";    
         $result = $this->db->query($sql, array());
         return $result->result();
     }

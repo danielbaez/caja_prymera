@@ -8,18 +8,18 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">   
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>font-awesome/css/font-awesome.min.css?v=<?php echo time();?>">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.bootstrap.min.css">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>simuladores.css?v=<?php echo time();?>">
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
-    .hide_column {
-      display : none;
-    }
     </style>    
   </head>
   <body>
@@ -49,7 +49,16 @@
     </div>    
     <div class="collapse navbar-collapse custom-menu-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/C_usuario/nuevaSolicitud">Crear Solicitud</a></li>
+        <?php if(_getSesion('rol') == 'administrador'){ ?>
+          <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
+          <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+          <li><a href="/C_ip">Asignar IP</a></li>
+          <li><a href="/C_main">Editar Perfil</a></li>
+          <li><a href="/C_horario">Horarios</a></li>
+        <?php }
+           elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+          <li><a href="/C_main">Editar Perfil</a></li>
+        <?php } ?>
         <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
       </ul>
     </div>
@@ -67,8 +76,17 @@
             <ul class="nav navbar-nav navbar-right dropdown-menu-user">
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="usuario-logueado font-bold"><?php echo _getSesion('nombreCompleto') ?></span> <span class="caret"></span></a>
-                        <ul class="dropdown-menu">                   
-                          <li><a href="/C_usuario/nuevaSolicitud">Crear Solicitud</a></li>
+                        <ul class="dropdown-menu">                    
+                          <?php if(_getSesion('rol') == 'administrador'){ ?>
+                            <li><a href="/C_crearAgencia">Administrar Agencia</a></li>
+                            <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+                            <li><a href="/C_ip">Asignar IP</a></li>
+                            <li><a href="/C_main">Editar Perfil</a></li>
+                            <li><a href="/C_horario">Horarios</a></li>
+                          <?php }
+                             elseif(_getSesion('rol') == 'jefe_agencia'){ ?>
+                            <li><a href="/C_main">Editar Perfil</a></li>
+                          <?php } ?>
                           <li><a href="/C_usuario/logout" class="navegacion-a">Cerrar Sesi&oacute;n</a></li>
                         </ul>
                       </li>
@@ -77,19 +95,31 @@
 
           <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="/C_reporteAsesor/agenteCliente" class="nav-active-a">Agente - Cliente</a></li>
-              <li><a href="/C_reporteAsesor/agenteHistorialSolicitud">Historial Solicitud</a></li>
+              <li><a href="/C_reporte/solicitudes">Solicitudes</a></li>
+              <li class="active"><a href="/C_reporte/agenteCliente" class="nav-active-a">Agente - Cliente</a></li>
+              <li><a href="/C_reporte/historialSolicitud">Historial Solicitud</a></li>
+              <li><a href="/C_reporte/solicitudRechazada">Solicitudes Rechazadas</a></li>
+              <?php if(_getSesion('rol') == 'administrador' || _getSesion('rol') == 'jefe_agencia'){ ?>
+                <li><a href="/C_reporte/solicitudesTotales">Consultas DNI por agente</a></li>
+              <?php } ?>
             </ul>
           </div>
 
           <div class="col-xs-12">
             <div class="col-xs-12 col-border-filtros-reporte">
-              <h4 class="titulo-vista">Reporte Consolidado Solicitudes por Agente</h4>
-              <form class="form-horizontal" method="POST" action="/C_reporteAsesor/agenteCliente">
+              <h4 class="titulo-vista">Reporte Solicitudes por Agente</h4>
+              <form class="form-horizontal" method="POST" action="/C_reporte/agenteCliente">
                 <div class="col-xs-12 col-sm-4">
-                  
-                  <div class="form-group" style="margin-top: 30px"> 
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                  <div class="form-group">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">
+                      <label for="email">* Agente:</label>                
+                      <input type="text" class="form-control" name="asesor" value="<?php echo isset($asesor) ? $asesor : '' ?>" id="asesor" placeholder="Agente">
+                      <input type="hidden" class="form-control" name="id_asesor" value="<?php echo isset($id_asesor) ? $id_asesor : '' ?>">
+                    </div>  
+                  </div>
+                  <div class="form-group"> 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">      
+                      <label for="email">Tipo de Cr&eacute;dito:</label>           
                       <select name="tipo_credito" class="form-control" id="tipo_credito">
                         <option value="">Tipo de Cr&eacute;dito</option>
                         <?php foreach ($productos as $producto) {
@@ -116,7 +146,8 @@
                     </div>
                   </div>
                   <div class="form-group"> 
-                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">                 
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-left">      
+                                 
                       <select name="status" class="form-control" id="status">
                         
                         <?php if(isset($status)){
@@ -190,17 +221,56 @@
                 <table id="tabla-solicitudes" class="table table-bordered">
                   <thead>
                     <tr class="tr-header-reporte">
-                      <th class="text-center hide_column">Fecha default</th>
-                      <th class="text-center r">Fecha Creación</th>
-                      <th class="text-center r">Nro sol.</th>
-                      <th class="text-center r">Cliente</th>
-                      <th class="text-center r">Agencia</th>
-                      <th class="text-center r">Agencia de Transmisi&oacute;n</th>
-                      <th class="text-center r">Tipo Crédito</th>
-                      <th class="text-center r">Status</th>
-                      <th class="text-center r">Monto</th>
+                      <th class="text-center" style="display: none">Fecha default</th>
+                      <th class="text-center">Fecha Creación</th>
+                      <th class="text-center">Nro sol.</th>
+                      <th class="text-center">Cliente</th>
+                      <th class="text-center">Agencia</th>
+                      <th class="text-center">Agencia de Transmisi&oacute;n</th>
+                      <th class="text-center">Tipo Crédito</th>
+                      <th class="text-center">Status</th>
+                      <th class="text-center">Monto</th>
+                      <th class="text-center">Acción</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <?php
+                    if(isset($solicitudes) and count($solicitudes)){
+                      foreach ($solicitudes as $solicitud) {
+                      ?>
+                      <tr id="estado<?php echo $solicitud->id_solicitud ?>" >
+                        <td style="display: none"><?php echo $solicitud->fecha_default ?></td>
+                        <td><?php echo $solicitud->fecha_solicitud ?></td>
+                        <td><?php echo $solicitud->id_solicitud ?></td>
+                        <td><?php echo $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                        <td><?php echo $solicitud->AGENCIA ?></td>
+                        <td><?php echo $solicitud->agencia_desembolso ?></td>
+                        <td><?php echo $solicitud->descripcion ?></td>
+                        <td id="status<?php echo $solicitud->id_solicitud ?>">
+                          <?php if($solicitud->status_sol == 0) { ?>
+                              <?php echo 'Abierto' ?>
+                          <?php } else if($solicitud->status_sol == 1) { ?>
+                              <?php echo 'Cerrado' ?>
+                          <?php } else if($solicitud->status_sol == 2) { ?>
+                              <?php echo 'Rechazado' ?>
+                          <?php } else if($solicitud->status_sol == 3) { ?>
+                              <?php echo 'Anulado' ?>
+                          <?php } else if($solicitud->status_sol == 4) { ?>
+                              <?php echo 'Caducado' ?>
+                          <?php } else if($solicitud->status_sol == 5) {  ?>
+                              <?php echo 'Incompleto' ?>
+                          <?php } ?>
+                        </td>
+                        <td><?php echo $solicitud->monto ?></td>
+                        <td id="accion<?php echo $solicitud->id_solicitud ?>"><?php if($solicitud->status_sol == 0) { ?><button type="button" style="background: #fff !important;border: transparent;" class="btn btn-default" onclick="cambiarEstado(<?php echo $solicitud->id_solicitud ?>)"><i class="fa fa-ban" data-original-title="Anular" data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></button>
+                          <?php } ?>
+                        </td>
+                      </tr>
+                      <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
                 </table>
               </div>
               <?php if(isset($solicitudes) and count($solicitudes)){
@@ -215,10 +285,10 @@
                 }
                 ?>
                 <?php
-                  //if(isset($solicitudes) and count($solicitudes)){ ?>
+                  if(isset($solicitudes) and count($solicitudes)){ ?>
                 <div class="col-xs-12 text-right buttons-export" style="margin-top: 20px; margin-bottom: 15px">
                 </div>
-                <?php //} ?>
+                <?php } ?>
             </div>
           </div>
         </div>
@@ -226,11 +296,35 @@
       <br>
     </div>
 
+     <div class="modal fade" aria-label="Close" id="myModaltelef" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-md centrar" role="document">
+        <div class="modal-content">
+          <div class="modal-header"><button type="button" style="" class="close btn-close" data-dismiss="modal" onclick="limpiarCampos()"><span style="" aria-hidden="true">&times;</span></button>
+            <p style="text-align: center;font-size: 18px;color: #0060aa;font-weight: bold !important;font-family: quicksandbold !important;">Anular solicitud</p>
+          </div>
+          <div class="modal-body modal-reporte-agente">
+            <div class="row">
+              <div class="col-xs-12 modal-div-text ocultar" id="tablaCronograma" style="">
+                <p style=""><span style="font-family: arial !important;font-weight: lighter;">¿</span><span style="font-family: 'quicksandbold' !important">Desea anular la solicitud?</span> Recuerde que no se podrá restaurar la solicitud. </p>
+              </div>
+            </div>              
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-xs-12">
+                <button type="button confirmar" class="btn btn-lg botones" id="confirmar" aria-label="Close" style="display: block; margin: 0 auto" onclick="cambiarStatus()">Confirmar</button> 
+              </div>                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js"></script>   
 
 <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
 <script type="text/javascript" src="https:cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -243,16 +337,17 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
-
-
+<script type="text/javascript" async src="<?php echo RUTA_JS?>jsreporteAgenteCliente.js?v=<?php echo time();?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
+<script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
 
 
 <script type="text/javascript">
 
 $(document).ready(function() {
-
+  $('[data-toggle="tooltip"]').tooltip();
   $('#desde').datetimepicker({
     format: 'YYYY-MM-DD'
   });
@@ -260,112 +355,13 @@ $(document).ready(function() {
     format: 'YYYY-MM-DD'
   });
 
-  jQuery.fn.DataTable.Api.register( 'buttons.exportData()', function ( options ) {
-
-    if ( this.context.length ) {
-      var jsonResult = $.ajax({
-          url: '/C_reporteAsesor/ajaxAgenteCliente',
-          type: 'GET',
-          data: {
-            action: 'print',
-            asesor: '<?php echo isset($_REQUEST["asesor"]) ? $_REQUEST["asesor"] : "" ?>',
-            id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
-            tipo_credito: '<?php echo isset($_REQUEST["tipo_credito"]) ? $_REQUEST["tipo_credito"] : "" ?>',
-            status: '<?php echo isset($_REQUEST["status"]) ? $_REQUEST["status"] : "" ?>',
-            fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
-            fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
-          },
-          dataType: "json",
-          success: function (result) {
-              //console.log(result)
-          },
-          async: false
-      });
-
-      //console.log(jsonResult);
-      //console.log(jsonResult.responseJSON.data);
-
-      jsonResult.responseJSON.data.forEach(function(part, index, theArray) {
-        if(part[6] == 0){
-          aa = 'Abierto';
-        }else if(part[6] == 1){
-          aa = 'Cerrado';
-        }else if(part[6] == 2){
-          aa = 'Rechazado';
-        }else if(part[6] == 3){
-          aa = 'Anulado';
-        }else if(part[6] == 4){
-          aa = 'Caducado';
-        }else if(part[6] == 5){
-          aa = 'Incompleto';
-        }
-        theArray[index][6] = aa;
-      });
-
-      return {body: jsonResult.responseJSON.data, header: $("#tabla-solicitudes thead tr th.r").map(function() { return this.innerHTML; }).get()};
-    }
-  } );
-  
-
   var table = $('#tabla-solicitudes').DataTable( {
-    "processing": true,
-    "serverSide" : true,
-    "ajax": {
-     "url": '/C_reporteAsesor/ajaxAgenteCliente',
-     "type": 'GET',
-     "data": {
-      action: 'obtenerAgenteCliente',
-      asesor: '<?php echo isset($_REQUEST["asesor"]) ? $_REQUEST["asesor"] : "" ?>',
-      id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
-      tipo_credito: '<?php echo isset($_REQUEST["tipo_credito"]) ? $_REQUEST["tipo_credito"] : "" ?>',
-      status: '<?php echo isset($_REQUEST["status"]) ? $_REQUEST["status"] : "" ?>',
-      fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
-      fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
-      }
-    },
-    "columns": [
-      {data: 'fecha_default'}, //oculto
-      {data: 'fecha_solicitud'},
-      {data: 'id_solicitud'},
-      {data: 'nombre'},
-      {data: 'agencia'},
-      {data: 'agencia_desembolso'},
-      {data: 'descripcion'},
-      {data: 'status_sol'},
-      {data: 'monto'}
+
+    "order": [[ 0, 'asc' ]], //defecto ordenar por columna 0 (oculta) fecha asc
+
+      columnDefs: [
+         { targets: 1, orderData: 0},   //cuando ordena por la columna 1(fecha), ordenene con los datos de la columna 0(oculta) 
      ],
-
-    "createdRow": function ( row, data, index ) {
-      console.log(data)
-      var a = '';
-      if(data.status_sol == 0){
-        data.status_sol = 'Abierto';
-      }else if(data.status_sol == 1){
-        data.status_sol = 'Cerrado';
-      }else if(data.status_sol == 2){
-        data.status_sol = 'Rechazado';
-      }else if(data.status_sol == 3){
-        data.status_sol = 'Anulado';
-      }else if(data.status_sol == 4){
-        data.status_sol = 'Caducado';
-      }else if(data.status_sol == 5){
-        data.status_sol = 'Incompleto';
-      }
-
-      $('td', row).eq(7).html(data.status_sol);
-
-      $(row).addClass('tr-cursor-pointer tr-ver-info-solicitud');
-      $(row).attr("data-idsolicitud", data.id_solicitud);
-    },
-
-    "order": [[ 1, 'desc' ]],
-
-     "columnDefs": [
-     { className: "hide_column", "targets": [0] },
-        { targets: 1, orderData: 0},
-      ],
-
-      dom: 'Bfrtip',
 
       lengthChange: false,
       buttons: [
@@ -373,36 +369,41 @@ $(document).ready(function() {
             extend:    'pdf',
             text:      '<i class="fa fa-print fa-3x"></i>',
             titleAttr: 'PDF',
-            title: 'Reporte Consolidado Solicitudes por Agente',
+            title: 'Reporte Solicitudes por Agente',
             orientation: 'landscape',
             pageSize: 'A4',
             filename: 'reporte',
             customize: function (doc) {
-              doc.content.forEach(function(item) {
-                item.alignment = 'center';
-                })              
-            },
+              doc.content[1].table.widths = 
+                  Array(doc.content[1].table.body[0].length + 1).join('*').split('');
 
+                  doc.content.forEach(function(item) {
+                    item.alignment = 'center';
+                  }) 
+
+            },
             exportOptions: {
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8]
             }
         },
         {
             extend:    'excel',
             text:      '<i class="fa fa-file-excel-o fa-3x" style="color:green"></i>',
-            messageTop: 'Reporte Consolidado Solicitudes por Agente',
+            messageTop: 'Reporte Solicitudes por Agente',
             titleAttr: 'Excel',
             title: '',
             filename: 'reporte',
             header: true,
             customize: function( xlsx ) {
-              var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
-              var clRow = $('row', sheet);
-              $('row c ', sheet).each(function () {
-                  $(this).attr('s', '51');
-              });
+                var clRow = $('row', sheet);
+                $('row c ', sheet).each(function () {
+                    $(this).attr('s', '51');
+                });
             },
             exportOptions: {
+                columns: [ 1, 2, 3, 4, 5, 6, 7, 8]
             }
         },
       ],
@@ -423,13 +424,59 @@ $(document).ready(function() {
       },
       "bInfo" : false,
       "pageLength": 10,
+      lengthMenu: [
+          [ 5, 15, 25, 50, -1 ],
+          [ '5', '15', '25', '50', 'Total' ]
+      ]
   } );
 
   table.buttons().container()
+  //.appendTo( '#tabla-solicitudes_wrapper .col-sm-6:eq(0)' );
   .appendTo( '.buttons-export' );
 
+  var options = {
+
+    url: function() {
+      return "/C_reporte/autocompleteGetAsesor";
+    },
+
+    getValue: function(element) {
+      return element.nombre+' '+element.apellido;
+    },
+
+    ajaxSettings: {
+      dataType: "json",
+      method: "POST",
+      data: {
+        dataType: "json"
+      }
+    },
+
+    preparePostData: function(data) {
+      data.asesor = $("#asesor").val();
+      return data;
+    },
+
+    list: {
+      onClickEvent: function(data) {
+        var value = $("#asesor").getSelectedItemData();
+        console.log(value)
+        $('input[name="id_asesor"]').val(value.id);
+      } 
+      /*onSelectItemEvent: function() {
+        var value = $("#asesor").getSelectedItemData()
+        alert(1)
+        console.log(value)
+      }*/
+    },
+
+    requestDelay: 400
+  };
+
+  $("#asesor").easyAutocomplete(options);
 
 } );
+
 </script>
     </body>
 </html>

@@ -177,12 +177,12 @@
 					<!-- <select class="form-control" id="rol" name="rol" onchange="verificarRol()"> -->
                     <select class="form-control cambio-rol" id="rol" name="rol">
 					  <option value="">Rol</option>
-					  <option value="jefe_agencia">Jefe</option>
-					  <option value="asesor">Agente</option>
-					  <option value="asesor_externo">Agente Externo</option>
+					  <option value="jefe_agencia">Jefe de agencia</option>
+					  <option value="asesor">Asesor</option>
+					  <option value="asesor_externo">Asesor Externo</option>
 					</select>
 				  </div>
-				  <div class="form-group div-rol-superior text-left">
+				  <div class="form-group div-rol-superior text-left" style="display: none">
 				  	<label class="form-label">Superior</label>
 					<select disabled class="form-control ocultar" id="rol_superior" name="rol_superior">
 					  <option value="">Rol Superior</option>
@@ -379,6 +379,7 @@
 
 	  		var rol_user = $('input[name="rol_user"]').val();
 
+	  		$('.div-rol-superior').hide();
 
             if(rol_user == 'jefe_agencia'){
             	$('.btn-only-upd').hide();
@@ -417,7 +418,7 @@
 		  		//$('input[type="submit"]').val('Guardar');
 		  		$('.btn-action').val('Guardar');
 		  		$("input[name='permiso[]']").prop("checked", false);
-		  		$('.div-rol-superior').show();
+		  		//$('.div-rol-superior').show();
 
 		  		$.ajax({
 					data:  {},
@@ -449,11 +450,9 @@
 	  	});
 
         $(".cambio-rol").change(function() {
-
+        	$('.div-rol-superior').hide();
         	$('#rol_superior').attr('disabled', false)
-            if($(this).val() == 'jefe_agencia'){
-                $('.div-rol-superior').hide();
-                
+            if($(this).val() == 'jefe_agencia'){                
 
                 $.ajax({
 				data:  {id: $(this).val(), action: 'jefe'},
@@ -480,13 +479,13 @@
 
             }
             else if($(this).val() == 'asesor' || $(this).val() == 'asesor_externo'){
-                $('.div-rol-superior').show();
+                //$('.div-rol-superior').show();
                 $("#rol_superior").val("").change();
                 $('#agencias').attr('disabled', true)
 
             }
             else{
-            	$('.div-rol-superior').show();
+            	//$('.div-rol-superior').show();
             	$('#agencias').attr('disabled', true)
             	$('#rol_superior').attr('disabled', true)
             }
@@ -652,7 +651,7 @@
                         $('.div-agencias').show();
 						  $('.div-rol').show();
 						  $('.div-permisos').show();
-						  $('.div-rol-superior').show();
+						  $('.div-rol-superior').hide();
 						$('#rol').val(response[0].rol);
 						$('#rol_superior').val(response[0].rol_superior);
 
@@ -674,7 +673,7 @@
                         $('.div-agencias').show();
 						  $('.div-rol').show();
 						  $('.div-permisos').show();
-						  $('.div-rol-superior').show();
+						  $('.div-rol-superior').hide();
 						$('#rol').val(response[0].rol);
 						$('#rol_superior').val(response[0].rol_superior);
 
@@ -813,7 +812,7 @@
 							}else{
 
 								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != '' && permiso){
-							    	if(rol == 'asesor'){
+							    	/*if(rol == 'asesor' || rol == 'asesor_externo'){
 							    		if(rol_superior != ''){
 							    			$this.submit();
 							    		}else{
@@ -824,7 +823,8 @@
 							    		}
 							    	}else{
 							    		$this.submit();		    		
-							    	}
+							    	}*/
+							    	$this.submit();
 							    }else{
 							    	$('.alert-success').hide();
 							    	$('.alert-form').html(msgForm).show();

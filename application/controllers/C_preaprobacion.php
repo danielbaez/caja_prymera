@@ -27,7 +27,7 @@ class C_preaprobacion extends CI_Controller {
         $data['comboMarca']         = $this->__buildMarca();
 
         $idPersona = _getSesion('idPersona');
-        $arrayUpdt = array('last_page' => N_SIMULADOR);
+        $arrayUpdt = array('last_page' => N_SIMULADOR, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona , 'solicitud');
         $data['nombre'] = ucfirst(_getSesion('nombre'));
         $data['email']=_getSesion('email');
@@ -116,6 +116,8 @@ class C_preaprobacion extends CI_Controller {
         $data['cuotaMaximo']      = round($maxInicial/100)*100;
         $data['cuotaMinimo']      = round($minInicial/100)*100;
 
+        //print_r($this->session->all_userdata());
+
         $this->load->view('v_vehicularSimulador', $data);
     }
     
@@ -135,7 +137,7 @@ class C_preaprobacion extends CI_Controller {
         $data['montoMaximo']      = round($maxAuto/100)*100;
         $data['montoMinimo']      = round($minAuto/100)*100;
 
-        if(_post('action') == 'plazo')
+        if(_post('action') == 'plazo' || _post('action') == 'modelo')
         {
             $valorAuto = round((($data['montoMinimo']+$data['montoMaximo'])/2)/100)*100;
         }else{
@@ -170,9 +172,9 @@ class C_preaprobacion extends CI_Controller {
           //resultado 3: token
           //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://li880-20.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://ec2-54-173-105-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
-          if(_post('action') == 'plazo')
+          if(_post('action') == 'plazo' || _post('action') == 'modelo')
           {
                 $params = array('token'=> 'E928EUXP',
                                   'documento'=>_getSesion('dni'),
@@ -218,8 +220,9 @@ class C_preaprobacion extends CI_Controller {
             $data['cuotaMensual'] = str_replace( ',', '', $data['cuotaMensual']);
             $data['cuotaMensual'] = number_format($data['cuotaMensual'], 2, '.','');
 
+
             $data['params'] = $params;
-            $data['rrr'] = $result->return->cuotaMensual;
+            unset($data['params']['token']);
 
             $data['pagoTotal'] = $data['cuotaMensual'] * $meses;
             $data['pagoTotal'] = str_replace( ',', '', $data['pagoTotal']);
@@ -537,16 +540,18 @@ class C_preaprobacion extends CI_Controller {
             $concesionaria = _post('concesionaria');
             
             $session = array(
-                             'pago_total'        => _post('pagotot'),
-                             'cuota_mensual'     => _post('mensual'),
-                             'TCEA'              => _post('pors_tcea'),
-                             'tcea_sess'         => _post('pors_tcea'),
-                             'cant_meses'        => _post('meses'),
-                             'Importe'           => number_format($importe_auto,2,".",","),
-                             'cuota_inicial'     => 'S/ '.number_format($importe,2,".",","),
-                             'sess_tea'          => _post('pors_tea'),
-                             'seguro'            => _post('seguro'),
-                             'valor_auto'        => $monto_vehic.'.00',
+                             'pago_total'        => $pagoTot,
+                             'cuota_mensual'     => $cuotaMens,
+                             'TCEA'              => $varTcea,
+                             'tcea_sess'         => $varTcea,
+                             'cant_meses'        => $meses,
+                             /*'Importe'           => number_format($importe_auto,2,".",","),
+                             'cuota_inicial'     => 'S/ '.number_format($importe,2,".",","),*/
+                             'Importe'           => $importe_auto,
+                             'cuota_inicial'     => $importe,
+                             'sess_tea'          => $varTea,
+                             'seguro'            => $seguro,
+                             'valor_auto'        => $monto,
                              'marca'             => $marca,
                              'modelo'            => $modelo,
                              'periodo_gracia'    => $periodo
