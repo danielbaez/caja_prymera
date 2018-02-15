@@ -49,7 +49,7 @@ class Vehicular extends CI_Controller {
       $this->session->unset_userdata('Agencia');
       $this->session->unset_userdata('estado_civil');
 
-      print_r($this->session->all_userdata());exit();
+      //print_r($this->session->all_userdata());exit();
 
 
         $this->session->set_userdata(array('TIPO_PROD' =>PRODUCTO_VEHICULAR));
