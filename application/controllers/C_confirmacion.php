@@ -205,7 +205,7 @@ class C_confirmacion extends CI_Controller {
             $Distrito = _post('Distrito');
             $codigo = _post('codigo');
             $nro_fijo = _post('nro_fijo');
-            $telefono = '0'.$codigo.$nro_fijo;
+            $telefono = $codigo.$nro_fijo;
             $pagoTot  = _post('pagotot');
             $cuotaMens  = _post('mensual');
             $meses  = _post('meses');

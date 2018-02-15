@@ -19,6 +19,7 @@ class Micash extends CI_Controller {
       $this->session->unset_userdata('apellido');
       $this->session->unset_userdata('dni');
       $this->session->unset_userdata('email');
+      $this->session->unset_userdata('idPersona');
       $this->session->unset_userdata('importeMaximo');
       $this->session->unset_userdata('importeMinimo');
       $this->session->unset_userdata('plazos');

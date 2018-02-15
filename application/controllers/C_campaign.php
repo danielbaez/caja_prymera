@@ -194,19 +194,24 @@ class C_campaign extends CI_Controller {
         $data['msj']   = null;
         try {
             $edad            = _post('edad');
-            $ingreso_bruto   = _post('ingreso_bruto');
+            //$ingreso_bruto   = _post('ingreso_bruto');
+            $ingreso_bruto   = preg_replace('/[^0-9.]/', "", _post('ingreso_bruto'));
             $condicion       = _post('condicion');
             $nivel_educativo = _post('nivel_educativo');
             $profesion       = _post('profesion');
             $distrito        = _post('distrito');
             $marca           = _post('marca');
             $modelo          = _post('modelo');
-            $plazo           = _post('plazo');
-            $valor_vehiculo  = _post('valor_vehiculo');
-            $valor_inicial   = _post('valor_inicial');
+            $plazo           = preg_replace('/[^0-9.]/', "", _post('plazo'));
+            //$valor_vehiculo  = _post('valor_vehiculo');
+            $valor_vehiculo  = preg_replace('/[^0-9.]/', "", _post('valor_vehiculo'));
+            
+            //$valor_inicial   = _post('valor_inicial');
+            $valor_inicial  = preg_replace('/[^0-9.]/', "", _post('valor_inicial'));
             $primera_fecha   = _post('primera_fecha');
             $idPersona         = _getSesion('idPersona');
-            $valorVehiculo = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$valor_vehiculo))));
+            //$valorVehiculo = intval(str_replace(',', '',str_replace(' ', '',str_replace('S/', '',$valor_vehiculo))));
+            $valorVehiculo = $valor_vehiculo;
             $valorInicial = str_replace('%', '',$valor_inicial);
 
             $valInicial = $valorVehiculo*($valorInicial/100);
@@ -274,7 +279,9 @@ class C_campaign extends CI_Controller {
                                          'cuota_inicial'         => $valInicial,
                                          'cuota_mensual'         => $cuotaMensual,
                                          'tea'                   => $datos_tea,
-                                         'tcea'                  => $datos_tcea
+                                         'tcea'                  => $datos_tcea,
+                                         'costo_seguro'          => $seguroAuto,
+                                         'periodo_gracia'        => implode("-", array_reverse(explode("/", $primera_fecha)))
                                         );
                     $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
 
@@ -283,7 +290,7 @@ class C_campaign extends CI_Controller {
                                      'modelo'      => $modelo,
                                      'valor_auto'  => $valorVehiculo,
                                      //'periodo'     => $plazo.' meses',
-                                     'cant_meses'     => $plazo.' meses',
+                                     'cant_meses'     => $plazo,
                                      'Importe'     => $importe,
                                      'cuota_inicial' => $valInicial,
                                      //'pagoTotal' => $pagoTot,
@@ -292,7 +299,7 @@ class C_campaign extends CI_Controller {
                                      'seguroAuto' => $seguroAuto,
                                      'sess_tea' => $datos_tea,
                                      'tcea_sess' => $datos_tcea,
-                                     'periodo_gracia' => $primera_fecha
+                                     'periodo_gracia' => implode("-", array_reverse(explode("/", $primera_fecha)))
                                      );
                     $this->session->set_userdata($session);
                     $data['ws_error'] = 1;

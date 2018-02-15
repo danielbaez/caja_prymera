@@ -148,7 +148,7 @@
                           <span style="">Plazo de Pr&eacute;stamo: </span>
                           </div>
                           <div class="col-xs-6">
-                            <span><?php echo $cant_meses?></span>
+                            <span><?php echo $cant_meses?> meses</span>
                           </div>
                         </div>
                     </div>
@@ -222,6 +222,16 @@
                           </div>
                           <div class="col-xs-6">
                             <span><?php echo number_format($tcea*100, 2).'%'?></span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 border-resumen-bottom">
+                        <div class="form-group" style="">                
+                          <div class="col-xs-6">
+                            <span style="">1era fecha de pago: </span>
+                          </div>
+                          <div class="col-xs-6">
+                            <span><?php echo $fecha_periodo?></span>
                           </div>
                         </div>
                     </div>
