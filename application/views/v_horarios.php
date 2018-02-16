@@ -106,6 +106,7 @@
 		  <div class="col-xs-12 col-md-12 col-seccion">
 			<div class="col-xs-12 div-seccion">
 				<form class="form" action="/C_horario/save" method="POST">
+					<input type="hidden" name="name">
 				  <h4>Horario</h4>
 				  
 				  <p><input id="switch-state" type="checkbox" data-on-text="SI" data-off-text="NO" 
@@ -177,23 +178,23 @@
 						?>
 							<tr>
 								<td>Desde</td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="desde[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="desde[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
 							</tr>
 							<tr>
 								<td>Hasta</td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
-								<td><input name="hasta[]" style="width: 85%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
+								<td><input name="hasta[]" style="width: 100%; margin:auto" type="time" value="" class="form-control" id="time"></td></td>
 							</tr>
 						<?php
 						}
@@ -251,6 +252,11 @@
 			  var agencia = $('#agencia option:selected').val();
 			  window.location.href = '/C_horario/agencia?agencia='+agencia+'&rol='+this.value;
 			})
+
+			$('form').on('submit', function(){
+				var n = $('#agencia option:selected').text();
+			  	$('input[name="name"]').val(n);
+			});
 });
 
 

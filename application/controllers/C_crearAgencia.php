@@ -357,6 +357,7 @@ class C_crearAgencia extends CI_Controller {
             }else {
                 
             }
+            $this->session->set_flashdata('msg', 'Se elimino la agencia correctamente');
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }
@@ -409,6 +410,7 @@ class C_crearAgencia extends CI_Controller {
                                  'id_agencia' =>$id[0]->id);
             $this->M_usuario->insertarDatos($arrayInsert, 'acceso'); 
 
+            $this->session->set_flashdata('msg', 'Se agrego la agencia correctamente');
          $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
@@ -465,6 +467,9 @@ class C_crearAgencia extends CI_Controller {
                                  'horario' => 0);
             $this->M_usuario->updateDatosAcceso($arrayUpdate,$id[0]->id, 'acceso'); 
          $data['error'] = EXIT_SUCCESS;
+
+         $this->session->set_flashdata('msg', 'Se actualizo la agencia correctamente');
+
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }

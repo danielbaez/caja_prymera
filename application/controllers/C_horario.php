@@ -64,13 +64,14 @@ class C_horario extends CI_Controller {
     {
         $acceso = _post('acceso') == 'on' ? 1 : 0;
         $agencia = _post('agencia');
+        $name = _post('name');
         $rol = _post('rol');
         $ins = false;
 
         if($agencia != '')
         {
             $this->M_acceso->setHorarioAgencia($agencia, $acceso, 'horario');            
-            $this->session->set_flashdata('msg', 'Se actualizo el horario correctamente');
+            $this->session->set_flashdata('msg', "Se actualizo el horario de la agencia {$name} correctamente");
         }
 
         if($agencia != '' && $rol != '')
