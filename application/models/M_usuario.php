@@ -86,7 +86,7 @@ class M_usuario extends  CI_Model{
                             }
                         }
 
-                        $acceso = $this->verifyAcceso();
+                        $acceso = $this->verifyAcceso($usuario->id_agencia);
                         
                         if($acceso[0]->ip == 1 || $acceso[0]->horario == 1)
                         {
@@ -224,10 +224,10 @@ class M_usuario extends  CI_Model{
         }   
     }
 
-    function verifyAcceso()
+    function verifyAcceso($id_agencia)
     {
-        $sql = "SELECT * FROM acceso";
-        $result = $this->db->query($sql, array());
+        $sql = "SELECT * FROM acceso WHERE id_agencia = ?";
+        $result = $this->db->query($sql, array($id_agencia));
         return $result->result();
     }
 
