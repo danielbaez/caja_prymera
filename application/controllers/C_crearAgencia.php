@@ -463,8 +463,7 @@ class C_crearAgencia extends CI_Controller {
                                  'id_sup_agencia' => $jefe_agencia);
             $this->M_usuario->updateDatosAsesor($arrayUpdateAgencias, $id[0]->id, 'agencias'); 
             //ACCESO
-            $arrayUpdate = array('ip' => $toggle,
-                                 'horario' => 0);
+            $arrayUpdate = array('ip' => $toggle);
             $this->M_usuario->updateDatosAcceso($arrayUpdate,$id[0]->id, 'acceso'); 
          $data['error'] = EXIT_SUCCESS;
 

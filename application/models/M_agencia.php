@@ -102,7 +102,7 @@ class M_agencia extends  CI_Model{
 
     function getAllAgenciasIPPPPP()
     {
-        $sql = "SELECT agencias.*, acceso.ip as id_access FROM agencias LEFT JOIN acceso ON agencias.id = acceso.id_agencia";
+        $sql = "SELECT agencias.*, acceso.ip as id_access FROM agencias LEFT JOIN acceso ON agencias.id = acceso.id_agencia group by agencias.id";
         $result = $this->db->query($sql, array());    
         return $result->result();
     }
