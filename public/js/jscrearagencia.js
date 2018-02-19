@@ -1,6 +1,6 @@
 var global_img = null;
 function valida(e){
-    tecla = (document.all) ? e.keyCode : e.which;
+    /*tecla = (document.all) ? e.keyCode : e.which;
 
     //Tecla de retroceso para borrar, siempre la permite
     if (tecla==8){
@@ -10,7 +10,7 @@ function valida(e){
     // Patron de entrada, en este caso solo acepta numeros
     patron =/[0-9]/;
     tecla_final = String.fromCharCode(tecla);
-    return patron.test(tecla_final);
+    return patron.test(tecla_final);*/
 }
 
 $( document ).ready(function() {
@@ -243,14 +243,14 @@ var i = 1;
 function agregarTelefono() {
   if(i == 1) {
     $('#cont_telef').append('</br><div class="form-group">'+
-      '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="7" placeholder="Teléfono"/>'+
+      '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="12" placeholder="Teléfono"/>'+
       '<button type="button" class="btn btn-default" aria-label="Close" id="btnT'+i+'" onclick="limpiarInputsTelefonos('+x+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
     numi = i;
     i++;
   }else {
     $('#cont_telef').append('<div class="form-group">'+
-      '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="7" placeholder="Teléfono"/>'+
+      '<input type="text" class="form-control" onkeypress="return valida(event)" id="telefonos'+i+'" name="telefonos[]" maxlength="12" placeholder="Teléfono"/>'+
       '<button type="button" class="btn btn-default" aria-label="Close" id="btnT'+i+'" onclick="limpiarInputsTelefonos('+i+')" style="background-color: transparent !important;border: transparent;float:  right;margin-right: -50px;margin-top: -33px;"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button>'+
     '</div>');
     numi = i;

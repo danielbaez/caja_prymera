@@ -161,7 +161,7 @@
 				 	<div class="col-xs-12 p-0">
 					  	<div class="col-xs-10" id="cont_telef">
 					  		<label class="form-label p-t-15">Teléfono</label>
-							<input type="text" class="form-control" onkeypress="return valida(event)" name="telefonos[]" maxlength="7" onchange="habilitarCampo()" id="txtelefono" placeholder="Teléfono"/>
+							<input type="text" class="form-control" onkeypress="return valida(event)" name="telefonos[]" maxlength="12" onchange="habilitarCampo()" id="txtelefono" placeholder="Teléfono"/>
 					  	</div>
 					  	<div class="col-xs-2 p-t-45">
 					  		<button type="button" class="btn btn-default" aria-label="Close" onclick="agregarTelefono()" id="btnTelefono" style="background-color: transparent !important; border: transparent; margin-left: -15px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
