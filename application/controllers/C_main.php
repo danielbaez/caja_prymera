@@ -98,7 +98,7 @@ class C_main extends CI_Controller {
                                      'fecha_ingreso'    => $fecha_ingreso,
                                      'celular'          => $celular,
                                      'rol'              => $rol,
-                                     'permiso'          => $permiso,
+                                     //'permiso'          => $permiso,
                                      'estado'           => 1,
                                      'imagen'           => $name_image,
                                      //'id_agencia' => $agencia
@@ -161,8 +161,30 @@ class C_main extends CI_Controller {
                     $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', $agencia, $id_usuario);  
                 }
                 elseif($rol == 'asesor' || $rol == 'asesor_externo') {
-                    $permiso = implode(",",$checkPermiso);
-                    $arrayUpdate = array('nombre'        => $nombres,
+
+
+                    $userr = $this->M_usuario->getLoginById($id_usuario);
+                    if($userr[0]->rol == 'asesor' || $userr[0]->rol == 'asesor_externo')
+                    {
+                        $permiso = implode(",",$checkPermiso);
+                        $arrayUpdate = array('nombre'        => $nombres,
+                                         'apellido'      => $apellidos,
+                                         'email'         => $email,
+                                         'password'      => $this->get_hash($password),
+                                         'dni'           => $dni,
+                                         'sexo'          => $sexo,
+                                         'fecha_nac'     => $fecha_nacimiento,
+                                         'fecha_ingreso' => $fecha_ingreso,
+                                         'celular'       => $celular,
+                                         'rol'           => $rol,                                      
+                                         'estado'        => in_array(0, $checkPermiso) ? 0 : 1,
+                                         'imagen'        => $name_image
+                                        );
+                    }
+                    elseif($userr[0]->rol == 'jefe_agencia')
+                    {
+                        $permiso = implode(",",$checkPermiso);
+                        $arrayUpdate = array('nombre'        => $nombres,
                                          'apellido'      => $apellidos,
                                          'email'         => $email,
                                          'password'      => $this->get_hash($password),
@@ -172,11 +194,14 @@ class C_main extends CI_Controller {
                                          'fecha_ingreso' => $fecha_ingreso,
                                          'celular'       => $celular,
                                          'rol'           => $rol,
-                                         'permiso'       => $permiso,
+                                         'permiso'       => NULL,                                         
                                          'estado'        => in_array(0, $checkPermiso) ? 0 : 1,
                                          'imagen'        => $name_image,
-                                         //'id_agencia'    => $agencia
+                                         'id_agencia'    => NULL
                                         );
+                    }
+
+                    
                     if($name_image == '') {
                         unset($arrayUpdate['imagen']);
                     }

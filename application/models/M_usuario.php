@@ -450,7 +450,7 @@ class M_usuario extends  CI_Model{
             $result = $this->db->query($sql, array($id_usuario));
 
             if($arrayUpdate['estado'] == 1){
-                $sql = "UPDATE agencias set id_sup_agencia = ? WHERE id IN ?";
+                $sql = "UPDATE agencias set id_sup_agencia = ? WHERE id = ?";
                 $result = $this->db->query($sql, array($id_usuario, $agencias));
             }           
 
@@ -726,7 +726,7 @@ class M_usuario extends  CI_Model{
     }
 
     function deleteCorreoAgencia($agencia){
-        $sql = "DELETE FROM correos WHERE AGENCIA LIKE ?";
+        $sql = "DELETE FROM correos WHERE AGENCIA = ?";
         $result = $this->db->query($sql, array($agencia));
         return $result;
     }

@@ -7,6 +7,7 @@ class C_usuario extends CI_Controller {
         parent::__construct();
 
         $this->load->model('M_usuario');
+        $this->load->model('M_agencia');
         $this->load->model('M_preaprobacion');
         $this->load->helper("url");
         $this->load->helper("access_helper");
@@ -116,7 +117,12 @@ class C_usuario extends CI_Controller {
                                 </div>';
             }
             $data['html'] = $cabecera;
-            $arrayUpdt = array('id_agencia' => $agencia);
+            
+            $getIDJefe = $this->M_agencia->getAgencias('agenciaByAgente', $agencia);
+
+            $jefe_agencia = $this->M_usuario->getLoginById($getIDJefe[0]->id_sup_agencia);            
+
+            $arrayUpdt = array('id_agencia' => $agencia, 'permiso' => $jefe_agencia[0]->permiso);
             $mensajes = $this->M_usuario->updateDatosAsesor($arrayUpdt,$array_asesores , 'usuario');
             $data['msj'] = $mensajes['msj'];
             $data['error'] = $mensajes['error'];

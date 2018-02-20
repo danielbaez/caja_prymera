@@ -220,7 +220,7 @@
 					<input type="text" class="form-control hidden" id="nombre_img" name="nombre_img">
 				  </div>
 				  
-				  <div class="form-group text-left div-permisos">
+				  <div class="form-group text-left div-permisos" style="display: none">
 				  	<label class="form-label">Permisos</label>
 					<div class="checkbox">
 
@@ -446,13 +446,16 @@
 
 	  		$('#blah').attr('src', '/public/img/fondos/user.png');
 
+	  		$('.div-permisos').hide();
 
 	  	});
 
         $(".cambio-rol").change(function() {
         	$('.div-rol-superior').hide();
         	$('#rol_superior').attr('disabled', false)
-            if($(this).val() == 'jefe_agencia'){                
+            if($(this).val() == 'jefe_agencia'){
+
+            	$('.div-permisos').show();                
 
                 $.ajax({
 				data:  {id: $(this).val(), action: 'jefe'},
@@ -481,7 +484,8 @@
             else if($(this).val() == 'asesor' || $(this).val() == 'asesor_externo'){
                 //$('.div-rol-superior').show();
                 $("#rol_superior").val("").change();
-                $('#agencias').attr('disabled', true)
+                $('#agencias').attr('disabled', true);
+                $('.div-permisos').hide();
 
             }
             else{
@@ -574,32 +578,36 @@
 
                     //console.log(response[0].permiso)
 
-                    var per = response[0].permiso.split(',');
+                    if(response[0].permiso != null){
+                    	var per = response[0].permiso.split(',');
 
-                    var estado = response[0].estado;
+	                    var estado = response[0].estado;
 
-                    $('input[name="permiso[]"]').each(function() {
-				    	$(this).prop('checked', false);
-				  	});
+	                    $('input[name="permiso[]"]').each(function() {
+					    	$(this).prop('checked', false);
+					  	});
 
-                    if(estado == 1)
-                    {
-                    	for(var c= 0; c<per.length; c++){
-	                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
-	                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("disabled", false);
+	                    if(estado == 1)
+	                    {
+	                    	for(var c= 0; c<per.length; c++){
+		                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
+		                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("disabled", false);
+		                    }
 	                    }
-                    }
-                    else
-                    {
-                    	$("input[name='permiso[]'][value='0']").prop("checked", true);
+	                    else
+	                    {
+	                    	$("input[name='permiso[]'][value='0']").prop("checked", true);
+	                    }
+
+	                    if($("input[name='permiso[]'][value='0']").is(":checked")) {
+				        	$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', true).prop('checked', false);
+				        	$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', true).prop('checked', false);		        	
+				        }else{
+				        	
+				        }
                     }
 
-                    if($("input[name='permiso[]'][value='0']").is(":checked")) {
-			        	$('input:checkbox[name="permiso[]"][value="2"]').prop('disabled', true).prop('checked', false);
-			        	$('input:checkbox[name="permiso[]"][value="3"]').prop('disabled', true).prop('checked', false);		        	
-			        }else{
-			        	
-			        }
+                    
 
                     ////////
 
@@ -650,7 +658,7 @@
 
                         $('.div-agencias').show();
 						  $('.div-rol').show();
-						  $('.div-permisos').show();
+						  //$('.div-permisos').show();
 						  $('.div-rol-superior').hide();
 						$('#rol').val(response[0].rol);
 						$('#rol_superior').val(response[0].rol_superior);
@@ -658,6 +666,8 @@
                         $("#agencias").val([response[0].id_agencia]);
 
                         $("#agencias").removeAttr('multiple');
+
+                        $('.div-permisos').hide();
 
 					}
 
@@ -699,16 +709,31 @@
 					    	$(this).prop('disabled', true);
 					  	});
 
-	                    if(estado == 1)
-	                    {
-	                    	for(var c= 0; c<per.length; c++){
-		                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
+	                    
+
+
+
+	                    if(response[0].permiso != null){
+	                    	var per = response[0].permiso.split(',');
+
+		                    var estado = response[0].estado;
+
+		                    $('input[name="permiso[]"]').each(function() {
+						    	$(this).prop('checked', false);
+						  	});
+
+		                    if(estado == 1)
+		                    {
+		                    	for(var c= 0; c<per.length; c++){
+			                    	$("input[name='permiso[]'][value='"+per[c]+"']").prop("checked", true);
+			                    }
+		                    }
+		                    else
+		                    {
+		                    	$("input[name='permiso[]'][value='0']").prop("checked", true);
 		                    }
 	                    }
-	                    else
-	                    {
-	                    	$("input[name='permiso[]'][value='0']").prop("checked", true);
-	                    }
+	                    
 					}			
 					
 				}
@@ -811,7 +836,17 @@
 						    	return false;
 							}else{
 
-								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != '' && permiso){
+								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != ''){
+
+									if(rol == 'jefe_agencia' && !permiso) {
+										$('.alert-success').hide();
+								    	$('.alert-form').html(msgForm).show();
+								    	$('html').animate({scrollTop:0},500);
+								    	return false;
+									}
+
+									$this.submit();									
+
 							    	/*if(rol == 'asesor' || rol == 'asesor_externo'){
 							    		if(rol_superior != ''){
 							    			$this.submit();
@@ -824,7 +859,7 @@
 							    	}else{
 							    		$this.submit();		    		
 							    	}*/
-							    	$this.submit();
+							    	
 							    }else{
 							    	$('.alert-success').hide();
 							    	$('.alert-form').html(msgForm).show();
