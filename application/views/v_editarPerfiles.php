@@ -229,10 +229,17 @@
 					<div class="checkbox">
 					  <label><input type="checkbox" value="3" name="permiso[]" id="permiso">Auto de Prymera</label>
 					</div>
-					<div class="checkbox">
+					<!-- <div class="checkbox">
 					  <label><input type="checkbox" class="inactivo" value="0" name="permiso[]" disabled>Inactivo</label>
-					</div>
+					</div> -->
 				  </div>
+
+				  <div class="form-group text-left div-estado">
+				  	<label class="form-label">Estado</label><br>
+					<label class="radio-inline"><input type="radio" name="estado" value="1" checked>Activo</label>
+					<label class="radio-inline"><input type="radio" name="estado" value="0">Inactivo</label>
+				  </div>
+
 				  <!--<div class="form-group text-left div-agencias">
 					<label class="form-label">Agencias</label>
 					<select multiple="" name="agencia[]" class="form-control" id="agencias" disabled>
@@ -578,6 +585,8 @@
 
                     //console.log(response[0].permiso)
 
+                    $("input[name=estado][value='"+response[0].estado+"']").prop("checked",true);
+
                     if(response[0].permiso != null){
                     	var per = response[0].permiso.split(',');
 
@@ -672,6 +681,8 @@
 					}
 
 					else if(rol_user == 'jefe_agencia' && (response[0].rol == 'asesor' || response[0].rol == 'asesor_externo')){
+
+						$("input[name='estado']").attr('disabled',true);
 
 						//$("#blah").unbind("click")
 						$("#blah").off('click');
@@ -807,8 +818,15 @@
 						    	return false;
 							}else{
 
-								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != ''){
-					    			$this.submit();
+								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && celular != ''){
+									if(email){
+										$this.submit();
+									}else{
+										$('.alert-success').hide();
+					    				$('.alert-form').html('Ingrese un email válido').show();
+					    				$('html').animate({scrollTop:0},500);
+								    	return false;	
+									}					    			
 				    			}else{
 				    				alert(2)
 				    				$('.alert-success').hide();
@@ -836,16 +854,22 @@
 						    	return false;
 							}else{
 
-								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && email && celular != '' && rol != ''){
+								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && celular != '' && rol != ''){
 
-									if(rol == 'jefe_agencia' && !permiso) {
+									if(email){
+										if(rol == 'jefe_agencia' && !permiso) {
+											$('.alert-success').hide();
+									    	$('.alert-form').html(msgForm).show();
+									    	$('html').animate({scrollTop:0},500);
+									    	return false;
+										}
+										$this.submit();									
+									}else{
 										$('.alert-success').hide();
-								    	$('.alert-form').html(msgForm).show();
-								    	$('html').animate({scrollTop:0},500);
-								    	return false;
+					    				$('.alert-form').html('Ingrese un email válido').show();
+					    				$('html').animate({scrollTop:0},500);
+								    	return false;	
 									}
-
-									$this.submit();									
 
 							    	/*if(rol == 'asesor' || rol == 'asesor_externo'){
 							    		if(rol_superior != ''){

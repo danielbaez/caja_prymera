@@ -72,9 +72,17 @@ class M_usuario extends  CI_Model{
                     //if($rol == 'asesor' || $rol == 'asesor_externo')
                     if($rol == 'asesor' || $rol == 'asesor_externo' || $rol == 'jefe_agencia')
                     {
-                        if(($rol == 'asesor' || $rol == 'asesor_externo') && $usuario->id_agencia == '')
+
+                        if(($rol == 'asesor' || $rol == 'asesor_externo'))
                         {
-                            return array('error' => 'Usuario sin agencia');
+                            if($usuario->id_agencia == '')
+                            {
+                                return array('error' => 'Usuario sin agencia');
+                            }
+                            else
+                            {
+                                $acceso = $this->verifyAcceso($usuario->id_agencia);
+                            }
                         }
                         if($rol == 'jefe_agencia')
                         {
@@ -84,9 +92,12 @@ class M_usuario extends  CI_Model{
                             {
                                 return array('error' => 'Usuario sin agencia');
                             }
-                        }
-
-                        $acceso = $this->verifyAcceso($usuario->id_agencia);
+                            else
+                            {
+                                $dd = $q->result();
+                                $acceso = $this->verifyAcceso($dd[0]->id);
+                            }
+                        }                       
                         
                         if($acceso[0]->ip == 1 || $acceso[0]->horario == 1)
                         {
@@ -745,6 +756,19 @@ class M_usuario extends  CI_Model{
             $data['error'] = EXIT_ERROR;
         }
         return array("error" => EXIT_SUCCESS, "msj" => MSJ_INS, "idPers" => $pers);
+    }
+
+    function actualizarPermisoAgentesByJefe($arrayUpdate, $tabla, $id_usuario)
+    {
+        $sql = "SELECT * FROM agencias WHERE id_sup_agencia = ?";
+        $result = $this->db->query($sql, array($id_usuario));
+        if($result->num_rows() > 0)
+        {
+            $r = $result->result();
+            $this->db->where_in('id_agencia', $r[0]->id);
+            $this->db->update($tabla, $arrayUpdate);             
+        }
+
     }
 }
     

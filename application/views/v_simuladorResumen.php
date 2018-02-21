@@ -221,8 +221,12 @@
                           </div>
                           <div class="col-xs-6">
                             <span>
-                              <?php 
-                                echo number_format($tea, 2).'%';
+                              <?php
+                                if ($tipoCred == 3){ 
+                                  echo number_format($tea*100, 2).'%';
+                                }else{ 
+                                  echo number_format($tea, 2).'%';
+                                }
                               ?>
                               </span>
                           </div>
@@ -235,8 +239,12 @@
                           </div>
                           <div class="col-xs-6">
                             <span>
-                              <?php 
-                                echo number_format($tcea, 2).'%';
+                              <?php
+                                if ($tipoCred == 3){ 
+                                  echo number_format($tcea*100, 2).'%';
+                                }else{ 
+                                  echo number_format($tcea, 2).'%';
+                                }
                               ?>
                             </span>
                           </div>

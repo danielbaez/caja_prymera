@@ -22,6 +22,7 @@ class Resumen extends CI_Controller {
         $arrayUpdt = array('last_page' => N_RESUMEN, 'status_sol' => 5);
         $this->M_preaprobacion->updateDatosCliente($arrayUpdt,_getSesion('idPersona') , 'solicitud');
         $dato['tipo_producto'] = _getSesion("tipo_producto");
+        $dato['tipoCred'] = _getSesion("tipoCred");
         $dato['pago_total']    = _getSesion('pago_total');
         $dato['nombre']        = ucfirst(_getSesion('nombre'));
         $dato['cuota_mensual'] = _getSesion('cuota_mensual');
