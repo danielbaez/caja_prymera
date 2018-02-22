@@ -163,7 +163,7 @@
               </div>
               <div class="col-xs-9">
                 <p class="text-left" style="font-size: 16px">1era fecha de Pago <i class="fa fa-1x fa-info-circle icon-info" data-original-title="Fecha en que Ud. desearía que sea su primer pago." data-toggle="tooltip" data-placement="bottom" aria-hidden="true"></i></p>
-                <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia" onchange="cambiarFecha()" readonly='readonly'>
+                <input type="text" class="form-control" id="periodo_gracia" name="periodo_gracia" onchange="cambiarFecha()" readonly='readonly' style="background: white">
               </div>
 
             </div>

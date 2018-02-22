@@ -321,13 +321,13 @@
                                     <div class="col-sm-6">
                                       <div class="form-group">
                                           <!--<input type="date" class="form-control" onchange="habilitarCampo()" id="primera_fecha" name="primera_fecha" placeholder="1era fecha de pago" onkeypress="return valida(event)"  maxlength="7">-->
-                                          <input type="text" class="form-control" id="primera_fecha" name="primera_fecha" readonly='readonly'>
+                                          <input type="text" class="form-control" id="primera_fecha" name="primera_fecha" readonly='readonly' style="background: white">
                                       </div>
                                     </div>
                                 </div>
                       </div>
                       <div class="col-xs-12 m-t-0">
-                        <a id="remove" class="link" onclick="redirect();" style="margin: 10px 20px;float: left;">Regresar</a>
+                        <a id="remove" class="link" onclick="redirect();" style="margin: 20px 20px;float: left;"></a>
                       </div>
                       <div class="col-xs-6 col-md-offset-6">
                         <button type="button" style="margin-right: 32px !important;margin-top: -40px !important;" class="btn btn-lg btn-aceptar selector mousehover" id="btnAceptar" onclick="verificarCamp()" disabled>Siguiente</button>
