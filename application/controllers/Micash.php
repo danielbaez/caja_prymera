@@ -41,6 +41,7 @@ class Micash extends CI_Controller {
       $this->session->unset_userdata('Distrito');
       $this->session->unset_userdata('Agencia');
       $this->session->unset_userdata('estado_civil');
+      $this->session->unset_userdata('tipoCred'); //no borrar en vehicular
 
       //print_r($this->session->all_userdata());exit();
 

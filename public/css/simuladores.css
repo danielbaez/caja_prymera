@@ -181,12 +181,12 @@ margin-top: 40px
     	padding-top: 0 !important;
 	}
  		}
-@media (max-width: 699px) { 
+@media (max-width: 768px) { 
 
    .titulo-simulador{
 	font-size: 24px;
 	line-height: 28px;
-
+	text-align: center !important
 	}
 }
 
@@ -205,3 +205,16 @@ margin-top: 40px
 /*.margin-ajax-valores p,span{
     font-weight: bold;
 }*/
+
+@media (max-width: 991px) { 
+
+  .linea-left {
+	    border-left: none !important;
+	    border-top: 1px solid #a3a4a6;
+	    padding-top: 20px
+	}
+}
+
+.linea-left {
+    border-left: 1px solid #a3a4a6;
+}

@@ -235,7 +235,7 @@
                             </div>
                             <?php } ?>
                       </div>
-                      <div class="col-xs-12 m-t-0">
+                      <div class="col-xs-12 m-t-20">
                         <?php if ($tipo_producto == PRODUCTO_VEHICULAR) { ?>
                           <?php if ($tipoCred == 3) { ?>
                               <a id="remove" class="link" onclick="redirect(1);" style="margin: 2px 20px;">Regresar</a>

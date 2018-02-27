@@ -23,7 +23,8 @@ function enterIrAUbicacion(e) {
 }
 
 function redirect() {
-	$.ajax({
+	window.history.back();
+	/*$.ajax({
 		url   : 'Resumen/Regresar',
 		type  : 'POST'
 	}).done(function(data){
@@ -36,5 +37,5 @@ function redirect() {
 		} catch (err){
 			msj('error',err.message);
 		}
-	});
+	});*/
 }

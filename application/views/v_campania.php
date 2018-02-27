@@ -68,7 +68,7 @@
   <div class="container container-simulador">
     <div class="row m-t-40 m-b-20">
       <div class="col-xs-12 col-sm-9 text-center">
-        <h2 class="titulo-simulador font-bold">Hola <?php echo _getSesion('nombre'); ?><span>, confirma los siguientes datos</span></h2>
+        <h2 class="titulo-simulador font-bold text-right">Hola <?php echo _getSesion('nombre'); ?><span>, confirma los siguientes datos</span></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
         <ul class="nav navbar-nav navbar-right dropdown-menu-user">
@@ -96,10 +96,10 @@
           <?php if($tipo_product == '') {?>
             <h2>Completa los datos:</h2>
           <?php  } else {?>
-          <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <div class="col-xs-12">
                 <div class="col-xs-12 card-border">
                   <form class="text-center" action="C_resumen" method="POST">
-                    <div class="col-xs-12 col-sm-6 linea">  
+                    <div class="col-xs-12 col-sm-12 col-md-6 ">  
                         <p class="sub-title"><strong>Datos Personales</strong></p>
                           <div class="col-xs-6 p-0">
                             <div class="col-sm-12">
@@ -247,7 +247,7 @@
                             </div>
                           </div>
                       </div>
-                      <div class="col-xs-12 col-sm-6">
+                      <div class="col-xs-12 col-sm-12 col-md-6 linea-left">
                               <p class="sub-title"><strong>Datos de tu Préstamo</strong></p>
                               <div class="col-xs-12 p-0">
                                 <div class="col-sm-6">

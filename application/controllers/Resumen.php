@@ -37,6 +37,7 @@ class Resumen extends CI_Controller {
         $dato['Importe']       = _getSesion('Importe');
         $dato['cuota_inicial'] = _getSesion('cuota_inicial');
         $dato['tea']           = _getSesion('sess_tea');
+        $dato['seguroAuto']           = _getSesion('seguroAuto');
         $dato['Agencia']       = _getSesion('Agencia');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
 

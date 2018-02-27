@@ -250,6 +250,22 @@
                           </div>
                         </div>
                     </div>
+                    <?php if ($tipoCred == 3){  ?>
+                    <div class="col-xs-12 border-resumen-bottom">
+                        <div class="form-group" style="">                
+                          <div class="col-xs-6">
+                            <span style="">Seguro Auto: </span>
+                          </div>
+                          <div class="col-xs-6">
+                            <span>
+                              <?php
+                                  echo 'S/ '.number_format($seguroAuto, 2);
+                              ?>
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                    <?php } ?>
                     <div class="col-xs-12 border-resumen-bottom">
                         <div class="form-group" style="">                
                           <div class="col-xs-6">
