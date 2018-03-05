@@ -476,7 +476,7 @@ $(document).ready(function() {
 
         $('#modalInformacionSolicitud').modal('show');
         
-        if(detalle.tipoCred == 2 || detalle.tipoCred == 1) {
+        if(detalle.id_producto == 2 || detalle.id_producto == 1) {
 
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
@@ -523,7 +523,7 @@ $(document).ready(function() {
           var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
         
           dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
-          dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
+          dEmpleo += '<p><span>Ingreso Mensual:</span> '+detalle.salario+'</p>';
           dEmpleo += '<p><span>Direcci&oacute;n:</span> '+detalle.dir_empleador+'</p>';
           dEmpleo += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
           dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';
@@ -587,18 +587,14 @@ $(document).ready(function() {
 
           $('.btn-actualizar-estado').attr('data-idsolicitud', detalle.id_solicitud);
 
-        }else if(detalle.tipoCred == 3) {
+        }else if(detalle.id_producto == 3) {
           //EVALUACIÓN
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
-          if(detalle.id_producto == 2){
-            dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
-          }          
           dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
-          if(detalle.id_producto == 2){
-            dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
-          }
-          dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
+          dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
+          dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+          dCliente += '<p><span>E-mail:</span> '+detalle.email_titular+'</p>';
           dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
           dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
           if(detalle.edad == null) {
@@ -648,7 +644,7 @@ $(document).ready(function() {
           var dEmpleo = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Empleo</h4>';
         
           dEmpleo += '<p><span>Empresa:</span> '+detalle.empleador+'</p>';
-          dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+detalle.salario+'</p>';
+          dEmpleo += '<p><span>Ingreso Mensual:</span> S/ '+currency(parseFloat(detalle.salario).toFixed(2))+'</p>';
           dEmpleo += '<p><span>Direcci&oacute;n:</span> '+detalle.dir_empleador+'</p>';
           dEmpleo += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
           dEmpleo += '<p><span>Provincia:</span> '+detalle.provincia+'</p>';

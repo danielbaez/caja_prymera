@@ -254,8 +254,8 @@ class C_confirmacion extends CI_Controller {
                 $data['cambio'] = 0;
             }
             $agencia = $this->M_preaprobacion->getAgenciasId($Agencia);
-            $arrayUpdt = array('salario'            => $salario,
-                               'celular'            => $nro_celular,
+
+            $arrayUpdt = array('celular'            => $nro_celular,
                                'empleador'          => $empleador,
                                'dir_empleador'      => $direccion_empresa,
                                'departamento'       => $Departamento,
@@ -273,6 +273,12 @@ class C_confirmacion extends CI_Controller {
                                'last_page'          => N_RESUMEN,
                                'email'              => $email
                               );
+
+            if(_getSesion("tipo_producto") == 1 || _getSesion("tipo_producto") == 2)
+            {
+                $arrayUpdt['salario'] = $salario;
+            }
+
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt,$idPersona , 'solicitud');
             $data['error'] = EXIT_SUCCESS;
         } catch (Exception $e){

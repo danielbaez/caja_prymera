@@ -68,7 +68,7 @@
   <div class="container container-simulador">
     <div class="row m-t-40 m-b-20">
       <div class="col-xs-12 col-sm-9 text-center">
-        <h2 class="titulo-simulador font-bold text-right">Hola <?php echo _getSesion('nombre'); ?><span>, confirma los siguientes datos</span></h2>
+        <h2 class="titulo-simulador font-bold text-right">Hola <?php echo ucfirst(_getSesion('nombre')); ?><span>, confirma los siguientes datos</span></h2>
       </div>
       <div class="hidden-xs hidden-xs col-sm-3 button-login text-right">
         <ul class="nav navbar-nav navbar-right dropdown-menu-user">
