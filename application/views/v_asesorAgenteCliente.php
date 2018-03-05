@@ -195,7 +195,7 @@
                       <th class="text-center r">Nro sol.</th>
                       <th class="text-center r">Cliente</th>
                       <th class="text-center r">Agencia</th>
-                      <th class="text-center r">Agencia de Transmisi&oacute;n</th>
+                      <th class="text-center r">Agencia de Tramitaci&oacute;n</th>
                       <th class="text-center r">Tipo Crédito</th>
                       <th class="text-center r">Status</th>
                       <th class="text-center r">Monto</th>
@@ -321,6 +321,9 @@ $(document).ready(function() {
       status: '<?php echo isset($_REQUEST["status"]) ? $_REQUEST["status"] : "" ?>',
       fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
       fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+      },
+      error: function (xhr, error, thrown) {
+       window.location.href = '/';
       }
     },
     "columns": [

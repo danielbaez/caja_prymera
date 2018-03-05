@@ -302,6 +302,8 @@
 
 	  		var msgForm = "Debe completar todos los campos";
 	  		var msgEmail = "El email ya existe, eija otro";
+	  		var msgFechas = "La fecha de ingreso debe se mayor a la fecha de nacimiento";
+	  		var msg18 = "Debe ser mayor igual a los 18 años";
 
   var table = $('#tabla-usuarios').DataTable( {
 
@@ -818,6 +820,32 @@
 						    	return false;
 							}else{
 
+								var today = new Date();
+								var dd = today.getDate();
+								var mm = today.getMonth()+1; //January is 0!
+
+								var yyyy = today.getFullYear();
+								if(dd<10){
+								    dd='0'+dd;
+								} 
+								if(mm<10){
+								    mm='0'+mm;
+								} 
+								var _18 = (yyyy-18)+'-'+mm+'-'+dd;
+								if(fecha_nacimiento > _18) {
+									$('.alert-success').hide();
+							    	$('.alert-form').html(msg18).show();
+							    	$('html').animate({scrollTop:0},500);
+									return false;
+								}
+
+								if(fecha_nacimiento > fecha_ingreso) {
+									$('.alert-success').hide();
+							    	$('.alert-form').html(msgFechas).show();
+							    	$('html').animate({scrollTop:0},500);
+									return false;
+								}
+
 								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && celular != ''){
 									if(email){
 										$this.submit();
@@ -853,6 +881,31 @@
 						    	$('html').animate({scrollTop:0},500);
 						    	return false;
 							}else{
+								var today = new Date();
+								var dd = today.getDate();
+								var mm = today.getMonth()+1; //January is 0!
+
+								var yyyy = today.getFullYear();
+								if(dd<10){
+								    dd='0'+dd;
+								} 
+								if(mm<10){
+								    mm='0'+mm;
+								} 
+								var _18 = (yyyy-18)+'-'+mm+'-'+dd;
+								if(fecha_nacimiento > _18) {
+									$('.alert-success').hide();
+							    	$('.alert-form').html(msg18).show();
+							    	$('html').animate({scrollTop:0},500);
+									return false;
+								}
+
+								if(fecha_nacimiento > fecha_ingreso) {
+									$('.alert-success').hide();
+							    	$('.alert-form').html(msgFechas).show();
+							    	$('html').animate({scrollTop:0},500);
+									return false;
+								}
 
 								if(nombres != '' && apellidos != '' && sexo != '' && fecha_nacimiento != '' && fecha_ingreso != '' && dni != '' && celular != '' && rol != ''){
 

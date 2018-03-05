@@ -64,7 +64,9 @@ function guardatAsesoresAsignados() {
       	$('#agencias').append('<option value="">Agencias</option>');
       	$('#personalAsignado').html('');
 			}
-			msj('success', data.msj);
+			//msj('success', data.msj);
+
+      window.location.href = '/C_usuario/asignarSupervisor';
 
       $('input[name="id_asesor[]"]').attr('disabled', true);
 

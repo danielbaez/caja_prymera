@@ -333,6 +333,9 @@ $(document).ready(function() {
       id_asesor: '<?php echo isset($_REQUEST["id_asesor"]) ? $_REQUEST["id_asesor"] : "" ?>',
       fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
       fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+      },
+      error: function (xhr, error, thrown) {
+       window.location.href = '/';
       }
     },
     "columns": [

@@ -236,7 +236,16 @@ class C_main extends CI_Controller {
                     if($password == '') {
                         unset($arrayUpdate['password']);
                     }
-                    $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario); 
+
+                    if($userr[0]->rol == 'asesor' || $userr[0]->rol == 'asesor_externo')
+                    {
+                        $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', false, $id_usuario);     
+                    }
+                    elseif($userr[0]->rol == 'jefe_agencia')
+                    {
+                        $this->M_usuario->actualizarUsuario($arrayUpdate, 'usuario', true, $id_usuario);     
+                    }   
+                    
                 }
             }
             if($rol_user == 'jefe_agencia') {

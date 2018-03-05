@@ -13,7 +13,7 @@
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>header.css?v=<?php echo time();?>">
         <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>dashboard.css?v=<?php echo time();?>">
-
+        <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
         <link href="https://unpkg.com/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" rel="stylesheet">
 		<style>
 		</style>  	
@@ -217,9 +217,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 	  <script type="text/javascript" src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
-
+	  <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
+	  <script src="<?php echo RUTA_JS?>Utils.js?v=<?php echo time();?>"></script>
 	  <script src="<?php echo RUTA_JS?>highlight.js"></script>
-<script src="https://unpkg.com/bootstrap-switch"></script>
+	<script src="https://unpkg.com/bootstrap-switch"></script>
 
 	  <script>
 
@@ -253,7 +254,28 @@
 			  window.location.href = '/C_horario/agencia?agencia='+agencia+'&rol='+this.value;
 			})
 
-			$('form').on('submit', function(){
+			$('form').on('submit', function(evt){
+				var from = [];
+				var to = [];
+				$('input[name^="desde"]').each(function() {
+				    //console.log($(this).val());
+				    from.push($(this).val());
+				});
+				$('input[name^="hasta"]').each(function() {
+				    //console.log($(this).val());
+				    to.push($(this).val());
+				});
+
+				for(var i=0; i<7; i++) {
+					
+					if(from[i] > to[i]) {
+						console.log(from[i], to[i]);
+						msj('erro', 'Verifica que las horas desde tienen que ser menor que las horas hasta');
+						evt.preventDefault();
+						break;
+					}
+				}
+
 				var n = $('#agencia option:selected').text();
 			  	$('input[name="name"]').val(n);
 			});

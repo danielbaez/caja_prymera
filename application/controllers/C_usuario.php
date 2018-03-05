@@ -126,6 +126,7 @@ class C_usuario extends CI_Controller {
             $mensajes = $this->M_usuario->updateDatosAsesor($arrayUpdt,$array_asesores , 'usuario');
             $data['msj'] = $mensajes['msj'];
             $data['error'] = $mensajes['error'];
+            $this->session->set_flashdata('msg', $mensajes['msj']);
         } catch (Exception $e){
             $data['msj'] = $e->getMessage();
         }

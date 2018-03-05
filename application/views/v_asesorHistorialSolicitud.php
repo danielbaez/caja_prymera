@@ -281,6 +281,9 @@ $(document).ready(function() {
       cliente: '<?php echo isset($_REQUEST["cliente"]) ? $_REQUEST["cliente"] : "" ?>',
       dni: '<?php echo isset($_REQUEST["dni"]) ? $_REQUEST["dni"] : "" ?>',
       fecha: '<?php echo isset($_REQUEST["fecha"]) ? $_REQUEST["fecha"] : "" ?>'
+      },
+      error: function (xhr, error, thrown) {
+       window.location.href = '/';
       }
     },
     "columns": [

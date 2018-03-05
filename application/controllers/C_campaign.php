@@ -272,6 +272,7 @@ class C_campaign extends CI_Controller {
                                          'modelo'                => $modelo,
                                          'plazo'                 => $plazo,
                                          'valor_auto'            => $valor_vehiculo,
+                                         'monto'                 => $importe,
                                          'cuota_inicial'         => $valor_inicial,
                                          'ws2_timestamp'         => date("Y-m-d H:i:s"),
                                          'fec_estado'            => date("Y-m-d H:i:s"),

@@ -312,6 +312,9 @@ $(document).ready(function() {
       agencia: '<?php echo isset($_REQUEST["agencia"]) ? $_REQUEST["agencia"] : "" ?>',
       fecha_desde: '<?php echo isset($_REQUEST["fecha_desde"]) ? $_REQUEST["fecha_desde"] : "" ?>',
       fecha_hasta: '<?php echo isset($_REQUEST["fecha_hasta"]) ? $_REQUEST["fecha_hasta"] : "" ?>'
+      },
+      error: function (xhr, error, thrown) {
+       window.location.href = '/';
       }
     },
     "columns": [

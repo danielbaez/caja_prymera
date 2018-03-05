@@ -83,6 +83,19 @@
                       </li>
                   </ul>
             </div>
+
+            <?php
+            $msg = $this->session->flashdata('msg');
+            if(isset($msg)) {
+            ?>
+              <div class="col-xs-12">
+              <div class="alert alert-success" style="font-size: 16px; padding: 10px 20px; margin-bottom: 0px; margin-top: 10px;">
+                  <?php echo $msg; ?>
+              </div>
+            </div>
+            <?php
+            }
+            ?>
           
           <div class="col-xs-12 col-md-6 col-seccion">
             <div class="col-xs-12 div-seccion">

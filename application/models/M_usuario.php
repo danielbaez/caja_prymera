@@ -143,7 +143,7 @@ class M_usuario extends  CI_Model{
                                 {
                                     if($ip_db != $ip)
                                     {
-                                        return array('error' => 'No esta conectado a una ip especifica');
+                                        return array('error' => 'El usuario no corresponde al ip de esta agencia');
                                     }
                                     if($now < $desde || $now > $hasta)
                                     {
@@ -158,7 +158,7 @@ class M_usuario extends  CI_Model{
                                 {
                                     if($ip_db != $ip)
                                     {
-                                        return array('error' => 'No esta conectado a una ip especifica');
+                                        return array('error' => 'El usuario no corresponde al ip de esta agencia');
                                     }
                                     else
                                     {
@@ -200,7 +200,7 @@ class M_usuario extends  CI_Model{
 
                             if(!in_array($ip, $ips))
                             {
-                                return array('error' => 'No esta conectado a una ip especifica');
+                                return array('error' => 'El usuario no corresponde al ip de esta agencia');
                             }
                             else
                             {
@@ -460,10 +460,10 @@ class M_usuario extends  CI_Model{
             $sql = "UPDATE agencias set id_sup_agencia = NULL WHERE id_sup_agencia = ?";
             $result = $this->db->query($sql, array($id_usuario));
 
-            if($arrayUpdate['estado'] == 1){
+            /*if($arrayUpdate['estado'] == 1){
                 $sql = "UPDATE agencias set id_sup_agencia = ? WHERE id = ?";
                 $result = $this->db->query($sql, array($id_usuario, $agencias));
-            }           
+            }*/           
 
             if(!empty($result)){
                 return true;
