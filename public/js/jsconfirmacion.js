@@ -389,11 +389,11 @@ function redirect(dato) {
 		   	//console.log(data);
 		   	
 
-		   	if(dato == 1){
+		   	//if(dato == 1){
 		   		window.location.hash="aaa";
 		        window.location.hash="aaa" //chrome
 		        window.onhashchange=function(){window.history.back();}
-		   	}
+		   	//}
 
 		   	/*if(data.error == 0) {
 		   		location.href = data.location;

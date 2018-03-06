@@ -309,7 +309,7 @@ $(document).ready(function() {
                   }else if(part[5] == 7){
                     page = 'Simulador';
                   }else if(part[5] == 8){
-                    page = 'Resumen Solicitud';
+                    page = 'Préstamo pre-aprobado';
                   }
 
                   theArray[index][5] = page;
@@ -384,7 +384,7 @@ $(document).ready(function() {
       }else if(data.last_page == 7){
         data.last_page = 'Simulador';
       }else if(data.last_page == 8){
-        data.last_page = 'Resumen Solicitud';
+        data.last_page = 'Préstamo pre-aprobado';
       }
 
       $('td', row).eq(6).html(data.last_page);

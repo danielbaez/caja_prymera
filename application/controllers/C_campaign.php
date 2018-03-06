@@ -280,7 +280,7 @@ class C_campaign extends CI_Controller {
                                          'cuota_inicial'         => $cuotaInicial_ws,
                                          'ws2_timestamp'         => date("Y-m-d H:i:s"),
                                          'fec_estado'            => date("Y-m-d H:i:s"),
-                                         'last_page'             => N_CONFIRMAR_DATOS,
+                                         'last_page'             => N_RESUMEN_EVA,
                                          'cuota_mensual'         => $cuotaMensual,
                                          'tea'                   => $datos_tea,
                                          'tcea'                  => $datos_tcea,
