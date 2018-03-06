@@ -48,6 +48,7 @@ class Vehicular extends CI_Controller {
       $this->session->unset_userdata('Distrito');
       $this->session->unset_userdata('Agencia');
       $this->session->unset_userdata('estado_civil');
+      $this->session->unset_userdata('ws_diferent');
 
       //print_r($this->session->all_userdata());exit();
 

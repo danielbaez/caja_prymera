@@ -240,12 +240,16 @@ class C_campaign extends CI_Controller {
             _log(print_r($result, true));
             $res = $result->return->resultado;
             //_log(print_r($res, true));
-            if($res == 1){ 
+            if($res == 1){
+
+                $cuotaInicial_ws = $result->return->cuotaInicial;
+                $plazo_ws = $result->return->plazo;
+                $prestamo_ws = $result->return->prestamo;
 
                 $documento = $result->return->documento;
                 $cuotaMensual = $result->return->cuotaMensual;
-                $cuotaMensual = str_replace( ',', '', $cuotaMensual);
-                $cuotaMensual = number_format($cuotaMensual, 2, '.','');
+                /*$cuotaMensual = str_replace( ',', '', $cuotaMensual);
+                $cuotaMensual = number_format($cuotaMensual, 2, '.','');*/
 
                 $datos_tea = $result->return->tea;
 
@@ -253,7 +257,7 @@ class C_campaign extends CI_Controller {
 
                 $seguroAuto = $result->return->seguroAuto;
 
-                $pagoTot = $cuotaMensual*$plazo;
+                $pagoTot = $cuotaMensual*$plazo_ws;
 
                 $importe = $valorVehiculo-$valInicial;
                 if($importe > 150000 || $importe < 15000) {
@@ -270,14 +274,13 @@ class C_campaign extends CI_Controller {
                                          'departamento'          => 'LIMA',
                                          'marca'                 => $marca,
                                          'modelo'                => $modelo,
-                                         'plazo'                 => $plazo,
+                                         'plazo'                 => $plazo_ws,
                                          'valor_auto'            => $valor_vehiculo,
-                                         'monto'                 => $importe,
-                                         'cuota_inicial'         => $valor_inicial,
+                                         'monto'                 => $prestamo_ws,
+                                         'cuota_inicial'         => $cuotaInicial_ws,
                                          'ws2_timestamp'         => date("Y-m-d H:i:s"),
                                          'fec_estado'            => date("Y-m-d H:i:s"),
                                          'last_page'             => N_CONFIRMAR_DATOS,
-                                         'cuota_inicial'         => $valInicial,
                                          'cuota_mensual'         => $cuotaMensual,
                                          'tea'                   => $datos_tea,
                                          'tcea'                  => $datos_tcea,
@@ -291,9 +294,9 @@ class C_campaign extends CI_Controller {
                                      'modelo'      => $modelo,
                                      'valor_auto'  => $valorVehiculo,
                                      //'periodo'     => $plazo.' meses',
-                                     'cant_meses'     => $plazo,
-                                     'Importe'     => $importe,
-                                     'cuota_inicial' => $valInicial,
+                                     'cant_meses'     => $plazo_ws,
+                                     'Importe'     => $prestamo_ws,
+                                     'cuota_inicial' => $cuotaInicial_ws,
                                      //'pagoTotal' => $pagoTot,
                                      'pago_total' => $pagoTot,
                                      'cuota_mensual' => $cuotaMensual,
@@ -302,6 +305,17 @@ class C_campaign extends CI_Controller {
                                      'tcea_sess' => $datos_tcea,
                                      'periodo_gracia' => implode("-", array_reverse(explode("/", $primera_fecha)))
                                      );
+
+
+                    if($valInicial != $cuotaInicial_ws) 
+                    {
+                        $session['ws_diferent'] = true;
+                    }
+                    else
+                    {
+                        $session['ws_diferent'] = false;
+                    }
+
                     $this->session->set_userdata($session);
                     $data['ws_error'] = 1;
                     $data['error'] = EXIT_SUCCESS;

@@ -387,9 +387,17 @@ function redirect(dato) {
 		try{
 		   	data = JSON.parse(data);
 		   	//console.log(data);
-		   	if(data.error == 0) {
-		   		location.href = data.location;
+		   	
+
+		   	if(dato == 1){
+		   		window.location.hash="aaa";
+		        window.location.hash="aaa" //chrome
+		        window.onhashchange=function(){window.history.back();}
 		   	}
+
+		   	/*if(data.error == 0) {
+		   		location.href = data.location;
+		   	}*/
 		} catch (err){
 			msj('error',err.message);
 		}

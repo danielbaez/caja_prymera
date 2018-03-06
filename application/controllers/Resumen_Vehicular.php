@@ -42,6 +42,7 @@ class Resumen_Vehicular extends CI_Controller {
         $dato['cuota_inicial'] = _getSesion('cuota_inicial');
         $dato['tea']           = _getSesion('sess_tea');
         $dato['Agencia']       = _getSesion('Agencia');
+        $dato['ws_diferent']       = _getSesion('ws_diferent');
         $dato['comboAgencias'] = $this->__buildComboAgencias();
         $this->load->view('v_ResumenVehicular', $dato);
     }

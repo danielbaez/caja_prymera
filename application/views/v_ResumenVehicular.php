@@ -9,6 +9,7 @@
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_FONTS?>quicksand.css?v=<?php echo time();?>">
     <link type="image/x-icon"   rel="shortcut icon" href="<?php echo RUTA_IMG?>fondos/favicom_blanco.jpg">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>bootstrap/css/bootstrap.min.css?v=<?php echo time();?>">
+    <link type="text/css"       rel="stylesheet"    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_PLUGINS?>toaster/toastr.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>global.css?v=<?php echo time();?>">
     <link type="text/css"       rel="stylesheet"    href="<?php echo RUTA_CSS?>m-p.css?v=<?php echo time();?>">
@@ -160,6 +161,11 @@
                           </div>
                           <div class="col-xs-6">
                             <span><?php echo 'S/ '. number_format($Importe, 2)?></span>
+                            <?php if($ws_diferent){
+                              ?>
+                              <i class="fa fa-exclamation fa-2x" aria-hidden="true"></i>
+                              <?php
+                            } ?>
                           </div>
                         </div>
                     </div>
@@ -171,6 +177,11 @@
                           </div>
                           <div class="col-xs-6">
                             <span><?php echo 'S/ '. number_format($cuota_inicial, 2)?></span>
+                            <?php if($ws_diferent){
+                              ?>
+                              <i class="fa fa-exclamation fa-2x" aria-hidden="true"></i>
+                              <?php
+                            } ?>
                           </div>
                         </div>
                     </div>
