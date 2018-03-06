@@ -449,10 +449,14 @@ $(document).ready(function() {
                   dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
                   dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
                   if(detalle.id_producto == 2 || detalle.id_producto == 3){
-                    dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
+                    if(detalle.nombre_conyugue != ''){
+                      dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';    
+                    }                    
                   }          
                   if(detalle.id_producto == 2 || detalle.id_producto == 3){
-                    dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+                    if(detalle.nombre_conyugue != ''){
+                      dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+                    }
                   }
                   dCliente += '<p><span>E-mail:</span> '+detalle.email_titular+'</p>';
                   dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';

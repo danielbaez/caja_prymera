@@ -482,14 +482,21 @@ $(document).ready(function() {
         if(detalle.id_producto == 2 || detalle.id_producto == 1) {
 
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
+
+
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
-          if(detalle.id_producto == 2){
-            dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
-          }          
           dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
           if(detalle.id_producto == 2){
-            dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+            if(detalle.nombre_conyugue != ''){
+              dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';    
+            }                    
+          }          
+          if(detalle.id_producto == 2){
+            if(detalle.nombre_conyugue != ''){
+              dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+            }
           }
+
           dCliente += '<p><span>e-mail:</span> '+detalle.email_titular+'</p>';
           dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
           dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
@@ -595,8 +602,10 @@ $(document).ready(function() {
           var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
           dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
           dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
-          dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
-          dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>'; 
+          if(detalle.nombre_conyugue != ''){
+            dCliente += '<p><span>Conyuge:</span> '+detalle.nombre_conyugue+'</p>';  
+            dCliente += '<p><span>DNI Conyuge:</span> '+detalle.dni_conyugue+'</p>';   
+          }          
           dCliente += '<p><span>E-mail:</span> '+detalle.email_titular+'</p>';
           dCliente += '<p><span>Nro Cel:</span> '+detalle.celular_titular+'</p>';
           dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
