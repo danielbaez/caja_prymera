@@ -21,13 +21,11 @@
 	/**
 	 * Account SID
 	 **/
-	$config['account_sid']   = 'AC77feb14fb8318b31887b54f8e73ac887'; //CB
-	//$config['account_sid']   = 'AC31a24df25cb5382ac8b71a4c5e48dedf'; CP
+	$config['account_sid']   = 'AC31a24df25cb5382ac8b71a4c5e48dedf';
 	/**
 	 * Auth Token
 	 **/
-	$config['auth_token']    = 'a63f28a80f7201154023bfdfb0589207'; //CB
-	//$config['auth_token']    = '7573adb24f72a6e10cf68ade61b23304'; //CP
+	$config['auth_token']    = '7573adb24f72a6e10cf68ade61b23304';
 	/**
 	 * API Version
 	 **/
@@ -35,7 +33,6 @@
 	/**
 	 * Twilio Phone Number
 	 **/
-	$config['number']        = '786-220-7333'; //CB
-	$config['number']        = ''; //CP
+	$config['number']        = '';
 
 /* End of file twilio.php */

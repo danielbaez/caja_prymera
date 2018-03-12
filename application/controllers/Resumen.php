@@ -80,11 +80,11 @@ class Resumen extends CI_Controller {
               
             $this->M_preaprobacion->updateDatosCliente($arrayUpdt, $idPersona, 'solicitud');
             }
-            $validacion = $this->sendMailGmail();
-            $gmailAgencia = $this->sendMailGmailAgencia();
             //$celular = $this->enviarMail();
             $data['error'] = EXIT_SUCCESS;
-            /*$data['sendMailGmail'] = $validacion;
+            /*$validacion = $this->sendMailGmail();
+            $gmailAgencia = $this->sendMailGmailAgencia();
+            $data['sendMailGmail'] = $validacion;
             $data['sendMailGmailAgencia'] = $gmailAgencia;*/
             $data['sendMailGmail'] = ['error' => 0, 'msj' => '', 'send' => true];
             $data['sendMailGmailAgencia'] = ['error' => 0, 'msj' => '', 'send' => true];
@@ -131,11 +131,31 @@ class Resumen extends CI_Controller {
        $texto_periodo        = null;
        //$fecha = new DateTime(_getSesion('periodo_gracia'));
        //$fecha_d_m_y = $fecha->format('d/m/Y');
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = _getSesion('Importe') : $importe = 'S/ '.number_format(_getSesion('Importe'), 2);
-       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_periodo = '' : $texto_periodo = '<div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-right: transparent;border-bottom: transparent;width: 80%;margin: 0 35px;">
+       _getSesion('tipo_producto') == PRODUCTO_MICASH ? $importe = 'S/ '.number_format(_getSesion('Importe'), 2) : $importe = 'S/ '.number_format(_getSesion('Importe'), 2);
+
+
+
+       if(_getSesion('tipo_producto') == PRODUCTO_MICASH) {
+        $texto_periodo = '';
+       }else {
+        $fecha = new DateTime(_getSesion('periodo_gracia'));
+        $texto_periodo = '<div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-right: transparent;border-bottom: transparent;width: 80%;margin: 0 35px;">
           <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">1era fecha de pago: </h3>
-          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('periodo_gracia').'</p>
+          <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.$fecha->format('d/m/Y').'</p>
         </div>';
+       }
+
+
+       if(_getSesion("tipoCred") == 3) {
+        $teaaa= number_format(_getSesion('sess_tea')*100, 2);
+        $tceaaa= number_format(_getSesion('tcea_sess')*100, 2);
+       }else{
+        $teaaa= _getSesion('sess_tea');
+        $tceaaa= _getSesion('tcea_sess');
+       }
+
+
+
        _getSesion('tipo_producto') == PRODUCTO_MICASH ? $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">Acércate a la agencia '._getSesion('Agencia').'</p>' : $texto_hacer = '<p style="color: #fff;margin-left: 40px;font-weight: lighter;width: 85%;">No te preocupes, un agente de la agencia '._getSesion('Agencia').' se contactará a la brevedad para confirmar tus datos  y coordinar la firma y/o recojo de documentos.
          </br>
          Si tienes alguna duda y prefieres ir a la agencia '._getSesion('Agencia').' puedes dirigirte a '.$ubicacion.' en el horario de atención: Lunes a Viernes de 09:00 a.m. a 6:00 p.m. </br>Sábados de 09:00 a.m. a 1:00 p.m.</p>';
@@ -258,7 +278,7 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                           </div>
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Plazo: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cant_meses').'</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '._getSesion('cant_meses').' meses</p>
                           </div>
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">Cuota: </h3>
@@ -266,11 +286,11 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                           </div>
                           <div class="contenido" style="border: 1px solid #dadada;border-left: transparent;border-top: transparent;border-right: transparent;width: 80%;margin: 0 35px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px 0;">TEA: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.number_format(_getSesion('sess_tea')*100, 2).'%</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 0;"> '.$teaaa.'%</p>
                           </div>
                           <div class="contenido" style="border-left: transparent;border-top: transparent;border-right: transparent;width: 78%;margin-left: 36px;margin-top: -10px;">
                             <h3 style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;margin: 10px -5px;">TCEA: </h3>
-                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '.number_format(_getSesion('tcea_sess')*100, 2).'%</p>
+                            <p style="color: #378fb7;font-weight: lighter;width: 48%;display: inline-block;text-align: right;margin: 10px 5px;"> '.$tceaaa.'%</p>
                           </div>
                           '.$texto_periodo.'
                         </div>
@@ -380,14 +400,39 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
        //$correo      = $data_correo[0]->CORREO;
        $this->email->from($from);
        //$this->email->to('ssalas@prymera.pe');
-       $this->email->to('daniel.baez@comparabien.com');
-       //$this->email->to($correos); // estos correos se envian
+       //$this->email->to('daniel.baez@comparabien.com');
+       $this->email->to($correos); // estos correos se envian
        $this->email->subject('Bienvenido/a a Caja Prymera');
        $texto     = null;
        $nombre    = _getSesion('nombre');
        $tipo_cred = null;
-       _getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';
+       
+       /*_getSesion("tipo_producto") == PRODUCTO_MICASH ? $tipo_cred = 'Cr&eacute;dito Mi Cash' : $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera';*/
+
+       if(_getSesion('tipo_producto') == PRODUCTO_MICASH) {
+        $tipo_cred = 'Cr&eacute;dito Mi Cash';
+       }elseif(_getSesion("tipoCred") == 2) {
+        $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera - Campaña';
+       }elseif(_getSesion("tipoCred") == 3) {
+        $tipo_cred = 'Cr&eacute;dito Vehicular Auto de Prymera - Evaluación';
+       }
+
        _getSesion("tipo_producto") == PRODUCTO_MICASH ? $poliza = '' : $poliza = '<p>Seguro: '._getSesion('seguro').'</p>';
+
+
+       if(_getSesion('tipo_producto') == PRODUCTO_MICASH) {
+        $ff = '';
+       }else {
+        $fecha = new DateTime(_getSesion('periodo_gracia'));
+        $ff = '<p style="color: black;">1ra fecha de pago: '.$fecha->format('d/m/Y').'</p>';
+       }
+
+       if(_getSesion("tipoCred") == 3) {
+        $tea_tcea= '<p style="color: black;">TEA: '.number_format(_getSesion('sess_tea')*100, 2).'%</p><p style="color: black;">TCEA: '.number_format(_getSesion('tcea_sess')*100, 2).'%</p>';
+       }else{
+        $tea_tcea= '<p style="color: black;">TEA: '._getSesion('sess_tea').'%</p><p style="color: black;">TCEA: '._getSesion('tcea_sess').'%</p>';
+       }      
+
        $this->email->message('<body>
                                 <h2 style="color: #0152aa;">Estimado Colaborador:</h2>
 
@@ -409,11 +454,10 @@ Financiamiento Regular: Valido sólo para personas naturales con edad Min. 24 a�
                                 <p style="margin-left: 30px;color: black;"></p>
                                 <p style="color: black;">Nro. Solicitud: '.$datos_page[0]->id.'</p>
                                 <p style="color: black;">Importe:S/ '.number_format(_getSesion('Importe'), 2).'</p>
-                                <p style="color: black;">Plazo: '._getSesion('cant_meses').'</p>
+                                <p style="color: black;">Plazo: '._getSesion('cant_meses').' meses</p>
                                 <p style="color: black;">Cuota:S/ '.number_format(_getSesion('cuota_mensual'), 2).'</p>
-                                <p style="color: black;">TEA: '.number_format(_getSesion('sess_tea')*100, 2).'%</p>
-                                <p style="color: black;">TCEA: '.number_format(_getSesion('tcea_sess')*100, 2).'%</p>
-                                <p style="color: black;">1ra fecha de pago: '._getSesion('periodo_gracia').'</p>
+                                '.$tea_tcea.'
+                                '.$ff.'
                               </body>');
        if($this->email->send()){
         $data['send'] = true;
