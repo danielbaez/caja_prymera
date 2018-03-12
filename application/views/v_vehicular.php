@@ -179,7 +179,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>Monto a financiar:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
-                                <span>M&iacute;nimo 10,000 Soles y M&aacute;ximo 150,000 Soles.</span>
+                                <span>M&iacute;nimo 15,000 Soles y M&aacute;ximo 150,000 Soles.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left font-bold">
@@ -193,7 +193,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span><strong>TEA:</strong></span>
                             </div>
                             <div class="col-xs-6 col-sm-9 text-left espacio-top-bottom">
-                                <span>M&iacute;nimo 12% - M&aacute;ximo 20%.</span>
+                                <span>M&iacute;nimo 11% - M&aacute;ximo 19%.</span>
                             </div>
                             <div class="col-xs-12"></div>
                             <div class="col-xs-6 col-sm-3 text-left font-bold">
@@ -236,7 +236,7 @@
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Ingresos m&iacute;nimo: 2,000 soles.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
-                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Edad: M&iacute;nimo 23 a&ntilde;os y M&aacute;ximo 70 a&ntilde;os.</span>
+                                <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Edad: M&iacute;nimo 24 a&ntilde;os y M&aacute;ximo 70 a&ntilde;os.</span>
                             </div>
                             <div class="col-xs-12 espacio-top-bottom">
                                 <i class="fa fa-chevron-right flecha-caracteristicas" aria-hidden="true"></i> <span>Calificaci&oacute;n Normal (RCC) en los &uacute;ltimos 6 meses o score de aprobaci&oacute;n seg&uacute;n la evaluaci&oacute;n del &aacute;rea de Riesgos.</span>

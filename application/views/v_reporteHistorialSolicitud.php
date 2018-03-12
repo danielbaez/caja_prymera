@@ -522,7 +522,8 @@ $(document).ready(function() {
             dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
             dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
             dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';
-            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';  
+            dPrestamo += '<p><span>TCEA:</span> '+detalle.tcea+'%</p>';
+            dPrestamo += '<p><span>TEA:</span> '+detalle.tea+'%</p>';  
             dPrestamo += '<p><span>1era Fecha de Pago:</span> '+texto+'</p>';
           }
         
@@ -641,7 +642,7 @@ $(document).ready(function() {
           }
           dPrestamo += '<p><span>Auto:</span> '+detalle.marca+'</p>';
           dPrestamo += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-          //dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
+          dPrestamo += '<p><span>Importe Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.monto.replace(",", ".")).toFixed(2))+'</p>';
           dPrestamo += '<p><span>Plazo:</span> '+detalle.plazo+' Meses</p>';
           dPrestamo += '<p><span>Cuota:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")).toFixed(2))+'</p>';
           dPrestamo += '<p><span>Total de Pr&eacute;stamo:</span> S/ '+currency(parseFloat(detalle.cuota_mensual.replace(",", ".")*detalle.plazo.replace(",", ".")).toFixed(2))+'</p>';

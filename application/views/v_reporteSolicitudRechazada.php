@@ -519,7 +519,7 @@ $(document).ready(function() {
 
             $('#modalInformacionSolicitud').modal('show');
             console.log(detalle)
-            if(detalle.tipoCred == 2 || detalle.tipoCred == 1) {
+            if(detalle.id_producto == 2 || detalle.id_producto == 1) {
               var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
               dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
               dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
@@ -536,42 +536,44 @@ $(document).ready(function() {
               dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
 
               $('.div-datos-solicitud').html(dSolicitud);
-            }else if(detalle.tipoCred == 3) {
+            }else if(detalle.id_producto == 3) {
               console.log(detalle.salario)
               var dCliente = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos del Cliente</h4>';
               dCliente += '<p><span>Titular:</span> '+detalle.nombre_titular+' '+detalle.apellido_titular+'</p>';
               dCliente += '<p><span>DNI Titular:</span> '+detalle.dni_titular+'</p>';
               dCliente += '<p><span>E-mail:</span> '+detalle.email_titular+'</p>';
-              if(detalle.salario == null) {
-                dCliente += '<p><span>Salario:</span> '+'-'+'</p>';
-              }else {
-                dCliente += '<p><span>Salario:</span> '+detalle.salario+'</p>';
-              }
-              if(detalle.distrito == null) {
-                dCliente += '<p><span>Distrito:</span> '+'-'+'</p>';
-              }else {
-                dCliente += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
-              }
-              if(detalle.condicion_laboral == null) {
-                dCliente += '<p><span>Condición Laboral:</span> '+'-'+'</p>';
-              }else {
-                dCliente += '<p><span>Condición Laboral:</span> '+detalle.condicion_laboral+'</p>';
-              }
-              if(detalle.nivel_educativo == null) {
-                dCliente += '<p><span>Nivel Educativo:</span> '+'-'+'</p>';
-              }else {
-                dCliente += '<p><span>Nivel Educativo:</span> '+detalle.nivel_educativo+'</p>';
-              }
-              if(detalle.profesion == null) {
-                dCliente += '<p><span>Profesión:</span> '+'-'+'</p>';
-              }else {
-                dCliente += '<p><span>Profesión:</span> '+detalle.profesion+'</p>';
-              }
-              if(detalle.edad == null) {
-                dCliente += '<p><span>Edad:</span> '+'-'+'</p>';
-              }else {
-                dCliente += '<p><span>Edad:</span> '+detalle.edad+'</p>';
-              }
+              dCliente += '<p><span>Nro. Cel:</span> '+detalle.celular_titular+'</p>';
+              dCliente += '<p><span>Fijo:</span> '+detalle.nro_fijo_titular+'</p>';
+              // if(detalle.salario == null) {
+              //   dCliente += '<p><span>Salario:</span> '+'-'+'</p>';
+              // }else {
+              //   dCliente += '<p><span>Salario:</span> '+detalle.salario+'</p>';
+              // }
+              // if(detalle.distrito == null) {
+              //   dCliente += '<p><span>Distrito:</span> '+'-'+'</p>';
+              // }else {
+              //   dCliente += '<p><span>Distrito:</span> '+detalle.distrito+'</p>';
+              // }
+              // if(detalle.condicion_laboral == null) {
+              //   dCliente += '<p><span>Condición Laboral:</span> '+'-'+'</p>';
+              // }else {
+              //   dCliente += '<p><span>Condición Laboral:</span> '+detalle.condicion_laboral+'</p>';
+              // }
+              // if(detalle.nivel_educativo == null) {
+              //   dCliente += '<p><span>Nivel Educativo:</span> '+'-'+'</p>';
+              // }else {
+              //   dCliente += '<p><span>Nivel Educativo:</span> '+detalle.nivel_educativo+'</p>';
+              // }
+              // if(detalle.profesion == null) {
+              //   dCliente += '<p><span>Profesión:</span> '+'-'+'</p>';
+              // }else {
+              //   dCliente += '<p><span>Profesión:</span> '+detalle.profesion+'</p>';
+              // }
+              // if(detalle.edad == null) {
+              //   dCliente += '<p><span>Edad:</span> '+'-'+'</p>';
+              // }else {
+              //   dCliente += '<p><span>Edad:</span> '+detalle.edad+'</p>';
+              // }
               $('.div-datos-cliente').html(dCliente);
 
               var dSolicitud = '<h4 class="modal-reporte-informacion-solicitud-titulo">Datos de Solicitud</h4>';
@@ -580,36 +582,36 @@ $(document).ready(function() {
               dSolicitud += '<p><span>Hora:</span> '+detalle.hora_solicitud+'</p>';
               dSolicitud += '<p><span>Agencia:</span> '+detalle.agencia+'</p>';
               dSolicitud += '<p><span>Agente:</span> '+detalle.usuario_nombre+' '+detalle.usuario_apellido+'</p>';
-              if(detalle.marca == null) {
-                dSolicitud += '<p><span>Marca:</span> '+'-'+'</p>';
-              }else {
-                dSolicitud += '<p><span>Marca:</span> '+detalle.marca+'</p>';
-              }
-              if(detalle.modelo == null) {
-                dSolicitud += '<p><span>Modelo:</span> '+'-'+'</p>';
-              }else {
-                dSolicitud += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
-              }
-              if(detalle.cuota_inicial == null) {
-                dSolicitud += '<p><span>Cuota Inicial:</span> '+'-'+'</p>';
-              }else {
-                dSolicitud += '<p><span>Cuota Inicial:</span> '+detalle.cuota_inicial+'</p>';
-              }
-              if(detalle.cuota_mensual == null) {
-                dSolicitud += '<p><span>Cuota Mensual:</span> '+'-'+'</p>';
-              }else {
-                dSolicitud += '<p><span>Cuota Mensual:</span> '+detalle.cuota_mensual+'</p>';
-              }
-              if(detalle.tea == null) {
-                dSolicitud += '<p><span>TEA:</span> '+'-'+'</p>';
-              }else {
-                dSolicitud += '<p><span>TEA:</span> '+detalle.tea+'</p>';
-              }
-              if(detalle.tcea == null) {
-                dSolicitud += '<p><span>TCEA:</span> '+'-'+'</p>';
-              }else {
-                dSolicitud += '<p><span>TCEA:</span> '+detalle.tcea+'</p>';
-              }
+              // if(detalle.marca == null) {
+              //   dSolicitud += '<p><span>Marca:</span> '+'-'+'</p>';
+              // }else {
+              //   dSolicitud += '<p><span>Marca:</span> '+detalle.marca+'</p>';
+              // }
+              // if(detalle.modelo == null) {
+              //   dSolicitud += '<p><span>Modelo:</span> '+'-'+'</p>';
+              // }else {
+              //   dSolicitud += '<p><span>Modelo:</span> '+detalle.modelo+'</p>';
+              // }
+              // if(detalle.cuota_inicial == null) {
+              //   dSolicitud += '<p><span>Cuota Inicial:</span> '+'-'+'</p>';
+              // }else {
+              //   dSolicitud += '<p><span>Cuota Inicial:</span> '+detalle.cuota_inicial+'</p>';
+              // }
+              // if(detalle.cuota_mensual == null) {
+              //   dSolicitud += '<p><span>Cuota Mensual:</span> '+'-'+'</p>';
+              // }else {
+              //   dSolicitud += '<p><span>Cuota Mensual:</span> '+detalle.cuota_mensual+'</p>';
+              // }
+              // if(detalle.tea == null) {
+              //   dSolicitud += '<p><span>TEA:</span> '+'-'+'</p>';
+              // }else {
+              //   dSolicitud += '<p><span>TEA:</span> '+detalle.tea+'</p>';
+              // }
+              // if(detalle.tcea == null) {
+              //   dSolicitud += '<p><span>TCEA:</span> '+'-'+'</p>';
+              // }else {
+              //   dSolicitud += '<p><span>TCEA:</span> '+detalle.tcea+'</p>';
+              // }
               
 
               $('.div-datos-solicitud').html(dSolicitud);
