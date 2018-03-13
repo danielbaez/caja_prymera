@@ -39,7 +39,7 @@ function guardatAsesoresAsignados() {
 	    ids_user += '-'+id;
 	  });
 	if(ids_user == null || ids_user == '' || ids_user == undefined) {
-		msj('error', 'Asigne asesores a un jefe de agencia');
+		msj('error', 'Asigne asesores a un jefe');
 		return;
 	}
 	if(agencia == null || agencia == '' || agencia == undefined) {

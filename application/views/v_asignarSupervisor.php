@@ -64,7 +64,7 @@
         <div class="col-xs-12 m-t-20 m-b-20">
           <div class="hidden-xs col-sm-3"></div>
           <div class="col-xs-12 col-sm-6">
-            <h1 class="titulo-vista">Asignaci&oacute;n de Asesores</h1>            
+            <h1 class="titulo-vista">Asignaci&oacute;n de Agentes</h1>            
           </div>
           <div class="hidden-xs col-sm-3 text-right">
             <ul class="nav navbar-nav navbar-right dropdown-menu-user">
@@ -139,7 +139,7 @@
             <div class="col-xs-12 div-seccion">
               <form class="form-horizontal form-asignar-supervisor">
                 <div class="form-group">
-                  <label class="control-label col-sm-4" for="supervisor">Jefe de Agencia:</label>
+                  <label class="control-label col-sm-4" for="supervisor">Jefe:</label>
                   <div class="col-sm-6">
                     <input type="text" class="form-control" name="supervisor" id="supervisor">
                   </div>

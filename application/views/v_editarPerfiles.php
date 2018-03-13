@@ -177,9 +177,9 @@
 					<!-- <select class="form-control" id="rol" name="rol" onchange="verificarRol()"> -->
                     <select class="form-control cambio-rol" id="rol" name="rol">
 					  <option value="">Rol</option>
-					  <option value="jefe_agencia">Jefe de agencia</option>
-					  <option value="asesor">Asesor</option>
-					  <option value="asesor_externo">Asesor Externo</option>
+					  <option value="jefe_agencia">Jefe</option>
+					  <option value="asesor">Agente</option>
+					  <option value="asesor_externo">Agente Externo</option>
 					</select>
 				  </div>
 				  <div class="form-group div-rol-superior text-left" style="display: none">
