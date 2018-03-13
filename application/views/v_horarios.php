@@ -48,7 +48,7 @@
       <ul class="nav navbar-nav">
         <?php if(_getSesion('rol') == 'administrador'){ ?>
             <li><a href="/C_crearAgencia" class="navegacion-a">Administrar Agencia</a></li>
-            <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+            <li><a href="/C_usuario/asignarSupervisor">Asignar Agentes</a></li>
         	<li><a href="/C_main">Editar Perfil</a></li>
             <li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
         <?php }
@@ -75,7 +75,7 @@
                         <ul class="dropdown-menu">                    
                           <?php if(_getSesion('rol') == 'administrador'){ ?>
 	                    	<li><a href="/C_crearAgencia" class="navegacion-a">Administrar Agencia</a></li>
-                            <li><a href="/C_usuario/asignarSupervisor">Asignar Asesores</a></li>
+                            <li><a href="/C_usuario/asignarSupervisor">Asignar Agentes</a></li>
                           	<li><a href="/C_main">Editar Perfil</a></li>
 	                    	<li><a href="/C_reporte/solicitudes" class="navegacion-a">Ver Reportes</a></li>
 	                    	<!--<li><a href="/C_ip">Asignar IP</a></li>-->
