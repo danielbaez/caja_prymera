@@ -172,7 +172,7 @@
                       <th class="text-center r">Cliente</th>
                       <th class="text-center r">DNI</th>
                       <th class="text-center r">Tipo Crédito</th>
-                      <th class="text-center r">Estado</th>
+                      <th class="text-center r">Estatus</th>
                       <th class="text-center r">Página</th>
                       <th class="text-center r">Nro sol.</th>
                       <th class="text-center r">IP de Acceso</th>
