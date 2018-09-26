@@ -216,7 +216,7 @@ class C_campaign extends CI_Controller {
 
             $valInicial = $valorVehiculo*($valorInicial/100);
 
-            $client = new SoapClient('http://ec2-54-91-230-111.compute-1.amazonaws.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+            $client = new SoapClient('http://52.204.72.89:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
             $params = array('token'=> 'E928EUXP',
                             'documento'=> _getSesion('dni'),
