@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com',
+	'hostname' => 'prymera.cj5fulkdhm3j.us-east-1.rds.amazonaws.com',
 	'username' => 'prymera',
 	'password' => 'prymera123',
 	'database' => 'caja_prymera',

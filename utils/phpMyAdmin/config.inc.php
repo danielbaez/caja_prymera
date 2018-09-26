@@ -28,7 +28,7 @@ $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
+$cfg['Servers'][$i]['host'] = 'prymera.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 $cfg['Servers'][$i]['port'] = '3306';

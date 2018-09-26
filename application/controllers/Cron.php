@@ -26,7 +26,7 @@ class Cron extends CI_Controller {
     }
 }
 
-/*$host = 'aa9l2j7sx52ixf.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
+/*$host = 'prymera.cj5fulkdhm3j.us-east-1.rds.amazonaws.com';
 $user = 'prymera';
 $pass = 'prymera123';
 $database = 'caja_prymera';
