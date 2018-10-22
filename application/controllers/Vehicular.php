@@ -67,7 +67,7 @@ class Vehicular extends CI_Controller {
           //resultado 3: token
             //resultado 2: error del servidor
           //resultado 0 : rechazado
-          $client = new SoapClient('http://52.204.72.89:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
+          $client = new SoapClient('http://li839-42.members.linode.com:8080/PrymeraScoringWS/services/GetDatosCreditoVehicular?wsdl');
 
           if(_getSesion('tipoCred') == 3) {
 
