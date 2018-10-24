@@ -148,7 +148,7 @@ class Vehicular extends CI_Controller {
               $this->session->set_userdata(array('idPersona' =>$datoInsert['idPers']));
               $response = array('status' => 0, 'url' => RUTA_CAJA.'C_losentimos');
             }
-            if($res == 3){
+            if($res == 2 || $res == 3){
               $response = array('status' => 2);
             }
 
